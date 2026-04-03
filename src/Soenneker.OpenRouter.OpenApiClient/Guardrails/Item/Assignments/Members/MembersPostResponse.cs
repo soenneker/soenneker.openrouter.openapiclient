@@ -15,7 +15,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Guardrails.Item.Assignments.Members
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Number of members successfully assigned</summary>
-        public double? AssignedCount { get; set; }
+        public int? AssignedCount { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Guardrails.Item.Assignments.Members.MembersPostResponse"/> and sets the default values.
         /// </summary>
@@ -41,7 +41,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Guardrails.Item.Assignments.Members
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "assigned_count", n => { AssignedCount = n.GetDoubleValue(); } },
+                { "assigned_count", n => { AssignedCount = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -51,7 +51,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Guardrails.Item.Assignments.Members
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteDoubleValue("assigned_count", AssignedCount);
+            writer.WriteIntValue("assigned_count", AssignedCount);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

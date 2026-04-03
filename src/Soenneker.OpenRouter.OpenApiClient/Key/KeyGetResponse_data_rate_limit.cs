@@ -33,7 +33,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Key
         public string Note { get; set; }
 #endif
         /// <summary>Number of requests allowed per interval</summary>
-        public double? Requests { get; set; }
+        public int? Requests { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Key.KeyGetResponse_data_rate_limit"/> and sets the default values.
         /// </summary>
@@ -61,7 +61,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Key
             {
                 { "interval", n => { Interval = n.GetStringValue(); } },
                 { "note", n => { Note = n.GetStringValue(); } },
-                { "requests", n => { Requests = n.GetDoubleValue(); } },
+                { "requests", n => { Requests = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -73,7 +73,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Key
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("interval", Interval);
             writer.WriteStringValue("note", Note);
-            writer.WriteDoubleValue("requests", Requests);
+            writer.WriteIntValue("requests", Requests);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

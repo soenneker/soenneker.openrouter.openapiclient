@@ -16,7 +16,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Auth.Keys.Code
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The application ID associated with this auth code</summary>
-        public double? AppId { get; set; }
+        public int? AppId { get; set; }
         /// <summary>ISO 8601 timestamp of when the auth code was created</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -58,7 +58,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Auth.Keys.Code
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "app_id", n => { AppId = n.GetDoubleValue(); } },
+                { "app_id", n => { AppId = n.GetIntValue(); } },
                 { "created_at", n => { CreatedAt = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
             };
@@ -70,7 +70,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Auth.Keys.Code
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteDoubleValue("app_id", AppId);
+            writer.WriteIntValue("app_id", AppId);
             writer.WriteStringValue("created_at", CreatedAt);
             writer.WriteStringValue("id", Id);
             writer.WriteAdditionalData(AdditionalData);

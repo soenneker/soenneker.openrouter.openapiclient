@@ -32,9 +32,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public string CanonicalSlug { get; set; }
 #endif
         /// <summary>Maximum context length in tokens</summary>
-        public double? ContextLength { get; set; }
+        public int? ContextLength { get; set; }
         /// <summary>Unix timestamp of when the model was created</summary>
-        public double? Created { get; set; }
+        public int? Created { get; set; }
         /// <summary>Default parameters for this model</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -150,8 +150,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             {
                 { "architecture", n => { Architecture = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ModelArchitecture>(global::Soenneker.OpenRouter.OpenApiClient.Models.ModelArchitecture.CreateFromDiscriminatorValue); } },
                 { "canonical_slug", n => { CanonicalSlug = n.GetStringValue(); } },
-                { "context_length", n => { ContextLength = n.GetDoubleValue(); } },
-                { "created", n => { Created = n.GetDoubleValue(); } },
+                { "context_length", n => { ContextLength = n.GetIntValue(); } },
+                { "created", n => { Created = n.GetIntValue(); } },
                 { "default_parameters", n => { DefaultParameters = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.DefaultParameters>(global::Soenneker.OpenRouter.OpenApiClient.Models.DefaultParameters.CreateFromDiscriminatorValue); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "expiration_date", n => { ExpirationDate = n.GetStringValue(); } },
@@ -174,8 +174,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ModelArchitecture>("architecture", Architecture);
             writer.WriteStringValue("canonical_slug", CanonicalSlug);
-            writer.WriteDoubleValue("context_length", ContextLength);
-            writer.WriteDoubleValue("created", Created);
+            writer.WriteIntValue("context_length", ContextLength);
+            writer.WriteIntValue("created", Created);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.DefaultParameters>("default_parameters", DefaultParameters);
             writer.WriteStringValue("description", Description);
             writer.WriteStringValue("expiration_date", ExpirationDate);

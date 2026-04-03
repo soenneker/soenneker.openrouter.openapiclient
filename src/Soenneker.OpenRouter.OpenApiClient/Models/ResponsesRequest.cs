@@ -52,7 +52,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public string Instructions { get; set; }
 #endif
         /// <summary>The max_output_tokens property</summary>
-        public double? MaxOutputTokens { get; set; }
+        public int? MaxOutputTokens { get; set; }
         /// <summary>The max_tool_calls property</summary>
         public int? MaxToolCalls { get; set; }
         /// <summary>Metadata key-value pairs for the request. Keys must be ≤64 characters and cannot contain brackets. Values must be ≤512 characters. Maximum 16 pairs allowed.</summary>
@@ -191,7 +191,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public UntypedNode Tools { get; set; }
 #endif
         /// <summary>The top_k property</summary>
-        public double? TopK { get; set; }
+        public int? TopK { get; set; }
         /// <summary>The top_logprobs property</summary>
         public int? TopLogprobs { get; set; }
         /// <summary>The top_p property</summary>
@@ -246,7 +246,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "include", n => { Include = n.GetCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ResponseIncludesEnum>()?.AsList(); } },
                 { "input", n => { Input = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.Inputs>(global::Soenneker.OpenRouter.OpenApiClient.Models.Inputs.CreateFromDiscriminatorValue); } },
                 { "instructions", n => { Instructions = n.GetStringValue(); } },
-                { "max_output_tokens", n => { MaxOutputTokens = n.GetDoubleValue(); } },
+                { "max_output_tokens", n => { MaxOutputTokens = n.GetIntValue(); } },
                 { "max_tool_calls", n => { MaxToolCalls = n.GetIntValue(); } },
                 { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.RequestMetadata>(global::Soenneker.OpenRouter.OpenApiClient.Models.RequestMetadata.CreateFromDiscriminatorValue); } },
                 { "modalities", n => { Modalities = n.GetCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputModalityEnum>()?.AsList(); } },
@@ -270,7 +270,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "text", n => { Text = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.TextExtendedConfig>(global::Soenneker.OpenRouter.OpenApiClient.Models.TextExtendedConfig.CreateFromDiscriminatorValue); } },
                 { "tool_choice", n => { ToolChoice = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAIResponsesToolChoice>(global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAIResponsesToolChoice.CreateFromDiscriminatorValue); } },
                 { "tools", n => { Tools = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
-                { "top_k", n => { TopK = n.GetDoubleValue(); } },
+                { "top_k", n => { TopK = n.GetIntValue(); } },
                 { "top_logprobs", n => { TopLogprobs = n.GetIntValue(); } },
                 { "top_p", n => { TopP = n.GetDoubleValue(); } },
                 { "trace", n => { Trace = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesRequest_trace>(global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesRequest_trace.CreateFromDiscriminatorValue); } },
@@ -291,7 +291,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ResponseIncludesEnum>("include", Include);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.Inputs>("input", Input);
             writer.WriteStringValue("instructions", Instructions);
-            writer.WriteDoubleValue("max_output_tokens", MaxOutputTokens);
+            writer.WriteIntValue("max_output_tokens", MaxOutputTokens);
             writer.WriteIntValue("max_tool_calls", MaxToolCalls);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.RequestMetadata>("metadata", Metadata);
             writer.WriteCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputModalityEnum>("modalities", Modalities);
@@ -315,7 +315,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.TextExtendedConfig>("text", Text);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAIResponsesToolChoice>("tool_choice", ToolChoice);
             writer.WriteObjectValue<UntypedNode>("tools", Tools);
-            writer.WriteDoubleValue("top_k", TopK);
+            writer.WriteIntValue("top_k", TopK);
             writer.WriteIntValue("top_logprobs", TopLogprobs);
             writer.WriteDoubleValue("top_p", TopP);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesRequest_trace>("trace", Trace);

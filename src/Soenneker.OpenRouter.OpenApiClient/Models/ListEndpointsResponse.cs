@@ -24,7 +24,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ListEndpointsResponse_architecture Architecture { get; set; }
 #endif
         /// <summary>Unix timestamp of when the model was created</summary>
-        public double? Created { get; set; }
+        public int? Created { get; set; }
         /// <summary>Description of the model</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -83,7 +83,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "architecture", n => { Architecture = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ListEndpointsResponse_architecture>(global::Soenneker.OpenRouter.OpenApiClient.Models.ListEndpointsResponse_architecture.CreateFromDiscriminatorValue); } },
-                { "created", n => { Created = n.GetDoubleValue(); } },
+                { "created", n => { Created = n.GetIntValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "endpoints", n => { Endpoints = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpoint>(global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpoint.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
@@ -98,7 +98,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ListEndpointsResponse_architecture>("architecture", Architecture);
-            writer.WriteDoubleValue("created", Created);
+            writer.WriteIntValue("created", Created);
             writer.WriteStringValue("description", Description);
             writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpoint>("endpoints", Endpoints);
             writer.WriteStringValue("id", Id);

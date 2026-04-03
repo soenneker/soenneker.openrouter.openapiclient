@@ -52,9 +52,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Return log probabilities</summary>
         public bool? Logprobs { get; set; }
         /// <summary>Maximum tokens in completion</summary>
-        public double? MaxCompletionTokens { get; set; }
+        public int? MaxCompletionTokens { get; set; }
         /// <summary>Maximum tokens (deprecated, use max_completion_tokens). Note: some providers enforce a minimum of 16.</summary>
-        public double? MaxTokens { get; set; }
+        public int? MaxTokens { get; set; }
         /// <summary>List of messages for the conversation</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -95,7 +95,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public List<string> Models { get; set; }
 #endif
-        /// <summary>The parallel_tool_calls property</summary>
+        /// <summary>Whether to enable parallel function calling during tool use. When true, the model may generate multiple tool calls in a single response.</summary>
         public bool? ParallelToolCalls { get; set; }
         /// <summary>Plugins you want to enable for this request, including their settings.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -183,7 +183,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatFunctionTool> Tools { get; set; }
 #endif
         /// <summary>Number of top log probabilities to return (0-20)</summary>
-        public double? TopLogprobs { get; set; }
+        public int? TopLogprobs { get; set; }
         /// <summary>Nucleus sampling parameter (0-1)</summary>
         public double? TopP { get; set; }
         /// <summary>Metadata for observability and tracing. Known keys (trace_id, trace_name, span_name, generation_name, parent_span_id) have special handling. Additional keys are passed through as custom metadata to configured broadcast destinations.</summary>
@@ -233,8 +233,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "image_config", n => { ImageConfig = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest_image_config>(global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest_image_config.CreateFromDiscriminatorValue); } },
                 { "logit_bias", n => { LogitBias = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest_logit_bias>(global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest_logit_bias.CreateFromDiscriminatorValue); } },
                 { "logprobs", n => { Logprobs = n.GetBoolValue(); } },
-                { "max_completion_tokens", n => { MaxCompletionTokens = n.GetDoubleValue(); } },
-                { "max_tokens", n => { MaxTokens = n.GetDoubleValue(); } },
+                { "max_completion_tokens", n => { MaxCompletionTokens = n.GetIntValue(); } },
+                { "max_tokens", n => { MaxTokens = n.GetIntValue(); } },
                 { "messages", n => { Messages = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatMessages>(global::Soenneker.OpenRouter.OpenApiClient.Models.ChatMessages.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest_metadata>(global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest_metadata.CreateFromDiscriminatorValue); } },
                 { "modalities", n => { Modalities = n.GetCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest_modalities>()?.AsList(); } },
@@ -256,7 +256,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "temperature", n => { Temperature = n.GetDoubleValue(); } },
                 { "tool_choice", n => { ToolChoice = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatToolChoice>(global::Soenneker.OpenRouter.OpenApiClient.Models.ChatToolChoice.CreateFromDiscriminatorValue); } },
                 { "tools", n => { Tools = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatFunctionTool>(global::Soenneker.OpenRouter.OpenApiClient.Models.ChatFunctionTool.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "top_logprobs", n => { TopLogprobs = n.GetDoubleValue(); } },
+                { "top_logprobs", n => { TopLogprobs = n.GetIntValue(); } },
                 { "top_p", n => { TopP = n.GetDoubleValue(); } },
                 { "trace", n => { Trace = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest_trace>(global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest_trace.CreateFromDiscriminatorValue); } },
                 { "user", n => { User = n.GetStringValue(); } },
@@ -275,8 +275,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest_image_config>("image_config", ImageConfig);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest_logit_bias>("logit_bias", LogitBias);
             writer.WriteBoolValue("logprobs", Logprobs);
-            writer.WriteDoubleValue("max_completion_tokens", MaxCompletionTokens);
-            writer.WriteDoubleValue("max_tokens", MaxTokens);
+            writer.WriteIntValue("max_completion_tokens", MaxCompletionTokens);
+            writer.WriteIntValue("max_tokens", MaxTokens);
             writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatMessages>("messages", Messages);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest_metadata>("metadata", Metadata);
             writer.WriteCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest_modalities>("modalities", Modalities);
@@ -298,7 +298,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteDoubleValue("temperature", Temperature);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatToolChoice>("tool_choice", ToolChoice);
             writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatFunctionTool>("tools", Tools);
-            writer.WriteDoubleValue("top_logprobs", TopLogprobs);
+            writer.WriteIntValue("top_logprobs", TopLogprobs);
             writer.WriteDoubleValue("top_p", TopP);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest_trace>("trace", Trace);
             writer.WriteStringValue("user", User);

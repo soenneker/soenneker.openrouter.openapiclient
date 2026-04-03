@@ -32,9 +32,5 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning disable CS1591
         Refusal,
         #pragma warning restore CS1591
-        [EnumMember(Value = "compaction")]
-        #pragma warning disable CS1591
-        Compaction,
-        #pragma warning restore CS1591
     }
 }

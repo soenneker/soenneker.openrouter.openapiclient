@@ -15,7 +15,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Guardrails.Item.Assignments.Keys.Re
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Number of keys successfully unassigned</summary>
-        public double? UnassignedCount { get; set; }
+        public int? UnassignedCount { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Guardrails.Item.Assignments.Keys.Remove.RemovePostResponse"/> and sets the default values.
         /// </summary>
@@ -41,7 +41,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Guardrails.Item.Assignments.Keys.Re
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "unassigned_count", n => { UnassignedCount = n.GetDoubleValue(); } },
+                { "unassigned_count", n => { UnassignedCount = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -51,7 +51,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Guardrails.Item.Assignments.Keys.Re
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteDoubleValue("unassigned_count", UnassignedCount);
+            writer.WriteIntValue("unassigned_count", UnassignedCount);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

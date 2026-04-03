@@ -18,6 +18,7 @@ using Soenneker.OpenRouter.OpenApiClient.Key;
 using Soenneker.OpenRouter.OpenApiClient.Keys;
 using Soenneker.OpenRouter.OpenApiClient.Messages;
 using Soenneker.OpenRouter.OpenApiClient.ModelsRequests;
+using Soenneker.OpenRouter.OpenApiClient.Organization;
 using Soenneker.OpenRouter.OpenApiClient.Providers;
 using Soenneker.OpenRouter.OpenApiClient.Responses;
 using System.Collections.Generic;
@@ -91,6 +92,11 @@ namespace Soenneker.OpenRouter.OpenApiClient
         public global::Soenneker.OpenRouter.OpenApiClient.ModelsRequests.ModelsRequestBuilder Models
         {
             get => new global::Soenneker.OpenRouter.OpenApiClient.ModelsRequests.ModelsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The organization property</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Organization.OrganizationRequestBuilder Organization
+        {
+            get => new global::Soenneker.OpenRouter.OpenApiClient.Organization.OrganizationRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The providers property</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Providers.ProvidersRequestBuilder Providers

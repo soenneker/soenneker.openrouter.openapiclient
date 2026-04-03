@@ -22,7 +22,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Activity
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ActivityRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/activity{?date*}", pathParameters)
+        public ActivityRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/activity{?api_key_hash*,date*,user_id*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,26 +30,27 @@ namespace Soenneker.OpenRouter.OpenApiClient.Activity
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ActivityRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/activity{?date*}", rawUrl)
+        public ActivityRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/activity{?api_key_hash*,date*,user_id*}", rawUrl)
         {
         }
         /// <summary>
         /// Returns user activity data grouped by endpoint for the last 30 (completed) UTC days. [Management key](/docs/guides/overview/auth/management-api-keys) required.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Activity.ActivityGetResponse"/></returns>
+        /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ActivityResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BadRequestResponse">When receiving a 400 status code</exception>
         /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.UnauthorizedResponse">When receiving a 401 status code</exception>
         /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ForbiddenResponse">When receiving a 403 status code</exception>
+        /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.NotFoundResponse">When receiving a 404 status code</exception>
         /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.InternalServerResponse">When receiving a 500 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.OpenRouter.OpenApiClient.Activity.ActivityGetResponse?> GetAsync(Action<RequestConfiguration<global::Soenneker.OpenRouter.OpenApiClient.Activity.ActivityRequestBuilder.ActivityRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.OpenRouter.OpenApiClient.Models.ActivityResponse?> GetAsync(Action<RequestConfiguration<global::Soenneker.OpenRouter.OpenApiClient.Activity.ActivityRequestBuilder.ActivityRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.OpenRouter.OpenApiClient.Activity.ActivityGetResponse> GetAsync(Action<RequestConfiguration<global::Soenneker.OpenRouter.OpenApiClient.Activity.ActivityRequestBuilder.ActivityRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.OpenRouter.OpenApiClient.Models.ActivityResponse> GetAsync(Action<RequestConfiguration<global::Soenneker.OpenRouter.OpenApiClient.Activity.ActivityRequestBuilder.ActivityRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
@@ -58,9 +59,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Activity
                 { "400", global::Soenneker.OpenRouter.OpenApiClient.Models.BadRequestResponse.CreateFromDiscriminatorValue },
                 { "401", global::Soenneker.OpenRouter.OpenApiClient.Models.UnauthorizedResponse.CreateFromDiscriminatorValue },
                 { "403", global::Soenneker.OpenRouter.OpenApiClient.Models.ForbiddenResponse.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.OpenRouter.OpenApiClient.Models.NotFoundResponse.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.OpenRouter.OpenApiClient.Models.InternalServerResponse.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<global::Soenneker.OpenRouter.OpenApiClient.Activity.ActivityGetResponse>(requestInfo, global::Soenneker.OpenRouter.OpenApiClient.Activity.ActivityGetResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.OpenRouter.OpenApiClient.Models.ActivityResponse>(requestInfo, global::Soenneker.OpenRouter.OpenApiClient.Models.ActivityResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Returns user activity data grouped by endpoint for the last 30 (completed) UTC days. [Management key](/docs/guides/overview/auth/management-api-keys) required.
@@ -96,6 +98,16 @@ namespace Soenneker.OpenRouter.OpenApiClient.Activity
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class ActivityRequestBuilderGetQueryParameters 
         {
+            /// <summary>Filter by API key hash (SHA-256 hex string, as returned by the keys API).</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("api_key_hash")]
+            public string? ApiKeyHash { get; set; }
+#nullable restore
+#else
+            [QueryParameter("api_key_hash")]
+            public string ApiKeyHash { get; set; }
+#endif
             /// <summary>Filter by a single UTC date in the last 30 days (YYYY-MM-DD format).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -105,6 +117,16 @@ namespace Soenneker.OpenRouter.OpenApiClient.Activity
 #else
             [QueryParameter("date")]
             public string Date { get; set; }
+#endif
+            /// <summary>Filter by org member user ID. Only applicable for organization accounts.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("user_id")]
+            public string? UserId { get; set; }
+#nullable restore
+#else
+            [QueryParameter("user_id")]
+            public string UserId { get; set; }
 #endif
         }
     }

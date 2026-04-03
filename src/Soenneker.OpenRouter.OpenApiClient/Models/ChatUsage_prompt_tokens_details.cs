@@ -16,13 +16,13 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Audio input tokens</summary>
-        public double? AudioTokens { get; set; }
+        public int? AudioTokens { get; set; }
         /// <summary>Cached prompt tokens</summary>
-        public double? CachedTokens { get; set; }
+        public int? CachedTokens { get; set; }
         /// <summary>Tokens written to cache. Only returned for models with explicit caching and cache write pricing.</summary>
-        public double? CacheWriteTokens { get; set; }
+        public int? CacheWriteTokens { get; set; }
         /// <summary>Video input tokens</summary>
-        public double? VideoTokens { get; set; }
+        public int? VideoTokens { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ChatUsage_prompt_tokens_details"/> and sets the default values.
         /// </summary>
@@ -48,10 +48,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "audio_tokens", n => { AudioTokens = n.GetDoubleValue(); } },
-                { "cache_write_tokens", n => { CacheWriteTokens = n.GetDoubleValue(); } },
-                { "cached_tokens", n => { CachedTokens = n.GetDoubleValue(); } },
-                { "video_tokens", n => { VideoTokens = n.GetDoubleValue(); } },
+                { "audio_tokens", n => { AudioTokens = n.GetIntValue(); } },
+                { "cache_write_tokens", n => { CacheWriteTokens = n.GetIntValue(); } },
+                { "cached_tokens", n => { CachedTokens = n.GetIntValue(); } },
+                { "video_tokens", n => { VideoTokens = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -61,10 +61,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteDoubleValue("audio_tokens", AudioTokens);
-            writer.WriteDoubleValue("cached_tokens", CachedTokens);
-            writer.WriteDoubleValue("cache_write_tokens", CacheWriteTokens);
-            writer.WriteDoubleValue("video_tokens", VideoTokens);
+            writer.WriteIntValue("audio_tokens", AudioTokens);
+            writer.WriteIntValue("cached_tokens", CachedTokens);
+            writer.WriteIntValue("cache_write_tokens", CacheWriteTokens);
+            writer.WriteIntValue("video_tokens", VideoTokens);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

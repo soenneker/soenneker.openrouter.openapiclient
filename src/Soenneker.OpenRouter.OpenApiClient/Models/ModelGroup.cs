@@ -31,6 +31,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning disable CS1591
         Gemini,
         #pragma warning restore CS1591
+        [EnumMember(Value = "Gemma")]
+        #pragma warning disable CS1591
+        Gemma,
+        #pragma warning restore CS1591
         [EnumMember(Value = "Grok")]
         #pragma warning disable CS1591
         Grok,

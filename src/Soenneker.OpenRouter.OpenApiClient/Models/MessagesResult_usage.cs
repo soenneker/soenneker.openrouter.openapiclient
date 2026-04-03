@@ -48,14 +48,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public double? InputTokens { get; set; }
         /// <summary>The is_byok property</summary>
         public bool? IsByok { get; set; }
-        /// <summary>The iterations property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResult_usage.MessagesResult_usage_iterations>? Iterations { get; set; }
-#nullable restore
-#else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResult_usage.MessagesResult_usage_iterations> Iterations { get; set; }
-#endif
         /// <summary>The output_tokens property</summary>
         public double? OutputTokens { get; set; }
         /// <summary>The server_tool_use property</summary>
@@ -109,7 +101,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "inference_geo", n => { InferenceGeo = n.GetStringValue(); } },
                 { "input_tokens", n => { InputTokens = n.GetDoubleValue(); } },
                 { "is_byok", n => { IsByok = n.GetBoolValue(); } },
-                { "iterations", n => { Iterations = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResult_usage.MessagesResult_usage_iterations>(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResult_usage.MessagesResult_usage_iterations.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "output_tokens", n => { OutputTokens = n.GetDoubleValue(); } },
                 { "server_tool_use", n => { ServerToolUse = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResult_usage_server_tool_use>(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResult_usage_server_tool_use.CreateFromDiscriminatorValue); } },
                 { "service_tier", n => { ServiceTier = n.GetStringValue(); } },
@@ -131,78 +122,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteStringValue("inference_geo", InferenceGeo);
             writer.WriteDoubleValue("input_tokens", InputTokens);
             writer.WriteBoolValue("is_byok", IsByok);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResult_usage.MessagesResult_usage_iterations>("iterations", Iterations);
             writer.WriteDoubleValue("output_tokens", OutputTokens);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResult_usage_server_tool_use>("server_tool_use", ServerToolUse);
             writer.WriteStringValue("service_tier", ServiceTier);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResult_usage_speed>("speed", Speed);
             writer.WriteAdditionalData(AdditionalData);
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResult_usage_iterationsMember1"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResult_usage_iterationsMember2"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResult_usage_iterationsMember3"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class MessagesResult_usage_iterations : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResult_usage_iterationsMember1"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResult_usage_iterationsMember1? MessagesResultUsageIterationsMember1 { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResult_usage_iterationsMember1 MessagesResultUsageIterationsMember1 { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResult_usage_iterationsMember2"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResult_usage_iterationsMember2? MessagesResultUsageIterationsMember2 { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResult_usage_iterationsMember2 MessagesResultUsageIterationsMember2 { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResult_usage_iterationsMember3"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResult_usage_iterationsMember3? MessagesResultUsageIterationsMember3 { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResult_usage_iterationsMember3 MessagesResultUsageIterationsMember3 { get; set; }
-#endif
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResult_usage.MessagesResult_usage_iterations"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResult_usage.MessagesResult_usage_iterations CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var result = new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResult_usage.MessagesResult_usage_iterations();
-                result.MessagesResultUsageIterationsMember1 = new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResult_usage_iterationsMember1();
-                result.MessagesResultUsageIterationsMember2 = new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResult_usage_iterationsMember2();
-                result.MessagesResultUsageIterationsMember3 = new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResult_usage_iterationsMember3();
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(MessagesResultUsageIterationsMember1 != null || MessagesResultUsageIterationsMember2 != null || MessagesResultUsageIterationsMember3 != null)
-                {
-                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(MessagesResultUsageIterationsMember1, MessagesResultUsageIterationsMember2, MessagesResultUsageIterationsMember3);
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResult_usage_iterationsMember1>(null, MessagesResultUsageIterationsMember1, MessagesResultUsageIterationsMember2, MessagesResultUsageIterationsMember3);
-            }
         }
     }
 }

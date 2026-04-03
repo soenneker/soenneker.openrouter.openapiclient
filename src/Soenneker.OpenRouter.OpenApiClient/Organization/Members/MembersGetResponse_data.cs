@@ -5,27 +5,32 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using System.Collections.Generic;
 using System.IO;
 using System;
-namespace Soenneker.OpenRouter.OpenApiClient.Models
+namespace Soenneker.OpenRouter.OpenApiClient.Organization.Members
 {
-    /// <summary>
-    /// Audio output data or reference
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class ChatAudioOutput : IAdditionalDataHolder, IParsable
+    #pragma warning disable CS1591
+    public partial class MembersGetResponse_data : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Base64 encoded audio data</summary>
+        /// <summary>Email address of the member</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Data { get; set; }
+        public string? Email { get; set; }
 #nullable restore
 #else
-        public string Data { get; set; }
+        public string Email { get; set; }
 #endif
-        /// <summary>Audio expiration timestamp</summary>
-        public int? ExpiresAt { get; set; }
-        /// <summary>Audio output identifier</summary>
+        /// <summary>First name of the member</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? FirstName { get; set; }
+#nullable restore
+#else
+        public string FirstName { get; set; }
+#endif
+        /// <summary>User ID of the organization member</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Id { get; set; }
@@ -33,30 +38,32 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public string Id { get; set; }
 #endif
-        /// <summary>Audio transcript</summary>
+        /// <summary>Last name of the member</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Transcript { get; set; }
+        public string? LastName { get; set; }
 #nullable restore
 #else
-        public string Transcript { get; set; }
+        public string LastName { get; set; }
 #endif
+        /// <summary>Role of the member in the organization</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Organization.Members.MembersGetResponse_data_role? Role { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ChatAudioOutput"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Organization.Members.MembersGetResponse_data"/> and sets the default values.
         /// </summary>
-        public ChatAudioOutput()
+        public MembersGetResponse_data()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ChatAudioOutput"/></returns>
+        /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Organization.Members.MembersGetResponse_data"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.OpenRouter.OpenApiClient.Models.ChatAudioOutput CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.OpenRouter.OpenApiClient.Organization.Members.MembersGetResponse_data CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.OpenRouter.OpenApiClient.Models.ChatAudioOutput();
+            return new global::Soenneker.OpenRouter.OpenApiClient.Organization.Members.MembersGetResponse_data();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -66,10 +73,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "data", n => { Data = n.GetStringValue(); } },
-                { "expires_at", n => { ExpiresAt = n.GetIntValue(); } },
+                { "email", n => { Email = n.GetStringValue(); } },
+                { "first_name", n => { FirstName = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
-                { "transcript", n => { Transcript = n.GetStringValue(); } },
+                { "last_name", n => { LastName = n.GetStringValue(); } },
+                { "role", n => { Role = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Organization.Members.MembersGetResponse_data_role>(); } },
             };
         }
         /// <summary>
@@ -79,10 +87,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("data", Data);
-            writer.WriteIntValue("expires_at", ExpiresAt);
+            writer.WriteStringValue("email", Email);
+            writer.WriteStringValue("first_name", FirstName);
             writer.WriteStringValue("id", Id);
-            writer.WriteStringValue("transcript", Transcript);
+            writer.WriteStringValue("last_name", LastName);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Organization.Members.MembersGetResponse_data_role>("role", Role);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

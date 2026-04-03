@@ -16,11 +16,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Context length from the top provider</summary>
-        public double? ContextLength { get; set; }
+        public int? ContextLength { get; set; }
         /// <summary>Whether the top provider moderates content</summary>
         public bool? IsModerated { get; set; }
         /// <summary>Maximum completion tokens from the top provider</summary>
-        public double? MaxCompletionTokens { get; set; }
+        public int? MaxCompletionTokens { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.TopProviderInfo"/> and sets the default values.
         /// </summary>
@@ -46,9 +46,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "context_length", n => { ContextLength = n.GetDoubleValue(); } },
+                { "context_length", n => { ContextLength = n.GetIntValue(); } },
                 { "is_moderated", n => { IsModerated = n.GetBoolValue(); } },
-                { "max_completion_tokens", n => { MaxCompletionTokens = n.GetDoubleValue(); } },
+                { "max_completion_tokens", n => { MaxCompletionTokens = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -58,9 +58,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteDoubleValue("context_length", ContextLength);
+            writer.WriteIntValue("context_length", ContextLength);
             writer.WriteBoolValue("is_moderated", IsModerated);
-            writer.WriteDoubleValue("max_completion_tokens", MaxCompletionTokens);
+            writer.WriteIntValue("max_completion_tokens", MaxCompletionTokens);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

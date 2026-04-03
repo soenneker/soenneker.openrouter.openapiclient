@@ -18,10 +18,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>UTF-8 bytes of the token</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<double?>? Bytes { get; set; }
+        public List<int?>? Bytes { get; set; }
 #nullable restore
 #else
-        public List<double?> Bytes { get; set; }
+        public List<int?> Bytes { get; set; }
 #endif
         /// <summary>Log probability of the token</summary>
         public double? Logprob { get; set; }
@@ -66,7 +66,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "bytes", n => { Bytes = n.GetCollectionOfPrimitiveValues<double?>()?.AsList(); } },
+                { "bytes", n => { Bytes = n.GetCollectionOfPrimitiveValues<int?>()?.AsList(); } },
                 { "logprob", n => { Logprob = n.GetDoubleValue(); } },
                 { "token", n => { Token = n.GetStringValue(); } },
                 { "top_logprobs", n => { TopLogprobs = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatTokenLogprob_top_logprobs>(global::Soenneker.OpenRouter.OpenApiClient.Models.ChatTokenLogprob_top_logprobs.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -79,7 +79,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfPrimitiveValues<double?>("bytes", Bytes);
+            writer.WriteCollectionOfPrimitiveValues<int?>("bytes", Bytes);
             writer.WriteDoubleValue("logprob", Logprob);
             writer.WriteStringValue("token", Token);
             writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatTokenLogprob_top_logprobs>("top_logprobs", TopLogprobs);

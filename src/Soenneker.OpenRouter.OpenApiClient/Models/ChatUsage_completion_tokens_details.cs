@@ -14,15 +14,15 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     public partial class ChatUsage_completion_tokens_details : IAdditionalDataHolder, IParsable
     {
         /// <summary>Accepted prediction tokens</summary>
-        public double? AcceptedPredictionTokens { get; set; }
+        public int? AcceptedPredictionTokens { get; set; }
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Tokens used for audio output</summary>
-        public double? AudioTokens { get; set; }
+        public int? AudioTokens { get; set; }
         /// <summary>Tokens used for reasoning</summary>
-        public double? ReasoningTokens { get; set; }
+        public int? ReasoningTokens { get; set; }
         /// <summary>Rejected prediction tokens</summary>
-        public double? RejectedPredictionTokens { get; set; }
+        public int? RejectedPredictionTokens { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ChatUsage_completion_tokens_details"/> and sets the default values.
         /// </summary>
@@ -48,10 +48,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "accepted_prediction_tokens", n => { AcceptedPredictionTokens = n.GetDoubleValue(); } },
-                { "audio_tokens", n => { AudioTokens = n.GetDoubleValue(); } },
-                { "reasoning_tokens", n => { ReasoningTokens = n.GetDoubleValue(); } },
-                { "rejected_prediction_tokens", n => { RejectedPredictionTokens = n.GetDoubleValue(); } },
+                { "accepted_prediction_tokens", n => { AcceptedPredictionTokens = n.GetIntValue(); } },
+                { "audio_tokens", n => { AudioTokens = n.GetIntValue(); } },
+                { "reasoning_tokens", n => { ReasoningTokens = n.GetIntValue(); } },
+                { "rejected_prediction_tokens", n => { RejectedPredictionTokens = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -61,10 +61,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteDoubleValue("accepted_prediction_tokens", AcceptedPredictionTokens);
-            writer.WriteDoubleValue("audio_tokens", AudioTokens);
-            writer.WriteDoubleValue("reasoning_tokens", ReasoningTokens);
-            writer.WriteDoubleValue("rejected_prediction_tokens", RejectedPredictionTokens);
+            writer.WriteIntValue("accepted_prediction_tokens", AcceptedPredictionTokens);
+            writer.WriteIntValue("audio_tokens", AudioTokens);
+            writer.WriteIntValue("reasoning_tokens", ReasoningTokens);
+            writer.WriteIntValue("rejected_prediction_tokens", RejectedPredictionTokens);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

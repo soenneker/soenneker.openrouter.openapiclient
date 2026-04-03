@@ -32,7 +32,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management ContextManagement { get; set; }
 #endif
         /// <summary>The max_tokens property</summary>
-        public double? MaxTokens { get; set; }
+        public int? MaxTokens { get; set; }
         /// <summary>The messages property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -195,7 +195,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             {
                 { "cache_control", n => { CacheControl = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_cache_control>(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_cache_control.CreateFromDiscriminatorValue); } },
                 { "context_management", n => { ContextManagement = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management>(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management.CreateFromDiscriminatorValue); } },
-                { "max_tokens", n => { MaxTokens = n.GetDoubleValue(); } },
+                { "max_tokens", n => { MaxTokens = n.GetIntValue(); } },
                 { "messages", n => { Messages = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesMessageParam>(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesMessageParam.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_metadata>(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_metadata.CreateFromDiscriminatorValue); } },
                 { "model", n => { Model = n.GetStringValue(); } },
@@ -229,7 +229,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_cache_control>("cache_control", CacheControl);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management>("context_management", ContextManagement);
-            writer.WriteDoubleValue("max_tokens", MaxTokens);
+            writer.WriteIntValue("max_tokens", MaxTokens);
             writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesMessageParam>("messages", Messages);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_metadata>("metadata", Metadata);
             writer.WriteStringValue("model", Model);

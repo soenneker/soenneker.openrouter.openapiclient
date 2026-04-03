@@ -24,7 +24,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatChoice.ChatChoice_finish_reason FinishReason { get; set; }
 #endif
         /// <summary>Choice index</summary>
-        public double? Index { get; set; }
+        public int? Index { get; set; }
         /// <summary>Log probabilities for the completion</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -67,7 +67,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "finish_reason", n => { FinishReason = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatChoice.ChatChoice_finish_reason>(global::Soenneker.OpenRouter.OpenApiClient.Models.ChatChoice.ChatChoice_finish_reason.CreateFromDiscriminatorValue); } },
-                { "index", n => { Index = n.GetDoubleValue(); } },
+                { "index", n => { Index = n.GetIntValue(); } },
                 { "logprobs", n => { Logprobs = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatTokenLogprobs>(global::Soenneker.OpenRouter.OpenApiClient.Models.ChatTokenLogprobs.CreateFromDiscriminatorValue); } },
                 { "message", n => { Message = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatAssistantMessage>(global::Soenneker.OpenRouter.OpenApiClient.Models.ChatAssistantMessage.CreateFromDiscriminatorValue); } },
             };
@@ -80,7 +80,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatChoice.ChatChoice_finish_reason>("finish_reason", FinishReason);
-            writer.WriteDoubleValue("index", Index);
+            writer.WriteIntValue("index", Index);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatTokenLogprobs>("logprobs", Logprobs);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatAssistantMessage>("message", Message);
             writer.WriteAdditionalData(AdditionalData);

@@ -18,7 +18,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Generation
         /// <summary>Type of API used for the generation</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Generation.GenerationGetResponse_data_api_type? ApiType { get; set; }
         /// <summary>ID of the app that made the request</summary>
-        public double? AppId { get; set; }
+        public int? AppId { get; set; }
         /// <summary>Discount applied due to caching</summary>
         public double? CacheDiscount { get; set; }
         /// <summary>Whether the generation was cancelled</summary>
@@ -88,23 +88,23 @@ namespace Soenneker.OpenRouter.OpenApiClient.Generation
         public string NativeFinishReason { get; set; }
 #endif
         /// <summary>Native cached tokens as reported by provider</summary>
-        public double? NativeTokensCached { get; set; }
+        public int? NativeTokensCached { get; set; }
         /// <summary>Native completion tokens as reported by provider</summary>
-        public double? NativeTokensCompletion { get; set; }
+        public int? NativeTokensCompletion { get; set; }
         /// <summary>Native completion image tokens as reported by provider</summary>
-        public double? NativeTokensCompletionImages { get; set; }
+        public int? NativeTokensCompletionImages { get; set; }
         /// <summary>Native prompt tokens as reported by provider</summary>
-        public double? NativeTokensPrompt { get; set; }
+        public int? NativeTokensPrompt { get; set; }
         /// <summary>Native reasoning tokens as reported by provider</summary>
-        public double? NativeTokensReasoning { get; set; }
+        public int? NativeTokensReasoning { get; set; }
         /// <summary>Number of audio inputs in the prompt</summary>
-        public double? NumInputAudioPrompt { get; set; }
+        public int? NumInputAudioPrompt { get; set; }
         /// <summary>Number of media items in the completion</summary>
-        public double? NumMediaCompletion { get; set; }
+        public int? NumMediaCompletion { get; set; }
         /// <summary>Number of media items in the prompt</summary>
-        public double? NumMediaPrompt { get; set; }
+        public int? NumMediaPrompt { get; set; }
         /// <summary>Number of search results included</summary>
-        public double? NumSearchResults { get; set; }
+        public int? NumSearchResults { get; set; }
         /// <summary>Origin URL of the request</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -148,9 +148,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Generation
         /// <summary>Whether the response was streamed</summary>
         public bool? Streamed { get; set; }
         /// <summary>Number of tokens in the completion</summary>
-        public double? TokensCompletion { get; set; }
+        public int? TokensCompletion { get; set; }
         /// <summary>Number of tokens in the prompt</summary>
-        public double? TokensPrompt { get; set; }
+        public int? TokensPrompt { get; set; }
         /// <summary>Total cost of the generation in USD</summary>
         public double? TotalCost { get; set; }
         /// <summary>Upstream provider&apos;s identifier for this generation</summary>
@@ -199,7 +199,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Generation
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "api_type", n => { ApiType = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Generation.GenerationGetResponse_data_api_type>(); } },
-                { "app_id", n => { AppId = n.GetDoubleValue(); } },
+                { "app_id", n => { AppId = n.GetIntValue(); } },
                 { "cache_discount", n => { CacheDiscount = n.GetDoubleValue(); } },
                 { "cancelled", n => { Cancelled = n.GetBoolValue(); } },
                 { "created_at", n => { CreatedAt = n.GetStringValue(); } },
@@ -213,23 +213,23 @@ namespace Soenneker.OpenRouter.OpenApiClient.Generation
                 { "model", n => { Model = n.GetStringValue(); } },
                 { "moderation_latency", n => { ModerationLatency = n.GetDoubleValue(); } },
                 { "native_finish_reason", n => { NativeFinishReason = n.GetStringValue(); } },
-                { "native_tokens_cached", n => { NativeTokensCached = n.GetDoubleValue(); } },
-                { "native_tokens_completion", n => { NativeTokensCompletion = n.GetDoubleValue(); } },
-                { "native_tokens_completion_images", n => { NativeTokensCompletionImages = n.GetDoubleValue(); } },
-                { "native_tokens_prompt", n => { NativeTokensPrompt = n.GetDoubleValue(); } },
-                { "native_tokens_reasoning", n => { NativeTokensReasoning = n.GetDoubleValue(); } },
-                { "num_input_audio_prompt", n => { NumInputAudioPrompt = n.GetDoubleValue(); } },
-                { "num_media_completion", n => { NumMediaCompletion = n.GetDoubleValue(); } },
-                { "num_media_prompt", n => { NumMediaPrompt = n.GetDoubleValue(); } },
-                { "num_search_results", n => { NumSearchResults = n.GetDoubleValue(); } },
+                { "native_tokens_cached", n => { NativeTokensCached = n.GetIntValue(); } },
+                { "native_tokens_completion", n => { NativeTokensCompletion = n.GetIntValue(); } },
+                { "native_tokens_completion_images", n => { NativeTokensCompletionImages = n.GetIntValue(); } },
+                { "native_tokens_prompt", n => { NativeTokensPrompt = n.GetIntValue(); } },
+                { "native_tokens_reasoning", n => { NativeTokensReasoning = n.GetIntValue(); } },
+                { "num_input_audio_prompt", n => { NumInputAudioPrompt = n.GetIntValue(); } },
+                { "num_media_completion", n => { NumMediaCompletion = n.GetIntValue(); } },
+                { "num_media_prompt", n => { NumMediaPrompt = n.GetIntValue(); } },
+                { "num_search_results", n => { NumSearchResults = n.GetIntValue(); } },
                 { "origin", n => { Origin = n.GetStringValue(); } },
                 { "provider_name", n => { ProviderName = n.GetStringValue(); } },
                 { "provider_responses", n => { ProviderResponses = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Generation.GenerationGetResponse_data_provider_responses>(global::Soenneker.OpenRouter.OpenApiClient.Generation.GenerationGetResponse_data_provider_responses.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "request_id", n => { RequestId = n.GetStringValue(); } },
                 { "router", n => { Router = n.GetStringValue(); } },
                 { "streamed", n => { Streamed = n.GetBoolValue(); } },
-                { "tokens_completion", n => { TokensCompletion = n.GetDoubleValue(); } },
-                { "tokens_prompt", n => { TokensPrompt = n.GetDoubleValue(); } },
+                { "tokens_completion", n => { TokensCompletion = n.GetIntValue(); } },
+                { "tokens_prompt", n => { TokensPrompt = n.GetIntValue(); } },
                 { "total_cost", n => { TotalCost = n.GetDoubleValue(); } },
                 { "upstream_id", n => { UpstreamId = n.GetStringValue(); } },
                 { "upstream_inference_cost", n => { UpstreamInferenceCost = n.GetDoubleValue(); } },
@@ -245,7 +245,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Generation
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Generation.GenerationGetResponse_data_api_type>("api_type", ApiType);
-            writer.WriteDoubleValue("app_id", AppId);
+            writer.WriteIntValue("app_id", AppId);
             writer.WriteDoubleValue("cache_discount", CacheDiscount);
             writer.WriteBoolValue("cancelled", Cancelled);
             writer.WriteStringValue("created_at", CreatedAt);
@@ -259,23 +259,23 @@ namespace Soenneker.OpenRouter.OpenApiClient.Generation
             writer.WriteStringValue("model", Model);
             writer.WriteDoubleValue("moderation_latency", ModerationLatency);
             writer.WriteStringValue("native_finish_reason", NativeFinishReason);
-            writer.WriteDoubleValue("native_tokens_cached", NativeTokensCached);
-            writer.WriteDoubleValue("native_tokens_completion", NativeTokensCompletion);
-            writer.WriteDoubleValue("native_tokens_completion_images", NativeTokensCompletionImages);
-            writer.WriteDoubleValue("native_tokens_prompt", NativeTokensPrompt);
-            writer.WriteDoubleValue("native_tokens_reasoning", NativeTokensReasoning);
-            writer.WriteDoubleValue("num_input_audio_prompt", NumInputAudioPrompt);
-            writer.WriteDoubleValue("num_media_completion", NumMediaCompletion);
-            writer.WriteDoubleValue("num_media_prompt", NumMediaPrompt);
-            writer.WriteDoubleValue("num_search_results", NumSearchResults);
+            writer.WriteIntValue("native_tokens_cached", NativeTokensCached);
+            writer.WriteIntValue("native_tokens_completion", NativeTokensCompletion);
+            writer.WriteIntValue("native_tokens_completion_images", NativeTokensCompletionImages);
+            writer.WriteIntValue("native_tokens_prompt", NativeTokensPrompt);
+            writer.WriteIntValue("native_tokens_reasoning", NativeTokensReasoning);
+            writer.WriteIntValue("num_input_audio_prompt", NumInputAudioPrompt);
+            writer.WriteIntValue("num_media_completion", NumMediaCompletion);
+            writer.WriteIntValue("num_media_prompt", NumMediaPrompt);
+            writer.WriteIntValue("num_search_results", NumSearchResults);
             writer.WriteStringValue("origin", Origin);
             writer.WriteStringValue("provider_name", ProviderName);
             writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Generation.GenerationGetResponse_data_provider_responses>("provider_responses", ProviderResponses);
             writer.WriteStringValue("request_id", RequestId);
             writer.WriteStringValue("router", Router);
             writer.WriteBoolValue("streamed", Streamed);
-            writer.WriteDoubleValue("tokens_completion", TokensCompletion);
-            writer.WriteDoubleValue("tokens_prompt", TokensPrompt);
+            writer.WriteIntValue("tokens_completion", TokensCompletion);
+            writer.WriteIntValue("tokens_prompt", TokensPrompt);
             writer.WriteDoubleValue("total_cost", TotalCost);
             writer.WriteStringValue("upstream_id", UpstreamId);
             writer.WriteDoubleValue("upstream_inference_cost", UpstreamInferenceCost);

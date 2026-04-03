@@ -23,7 +23,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Guardrails.Assignments.Keys
         public List<global::Soenneker.OpenRouter.OpenApiClient.Guardrails.Assignments.Keys.KeysGetResponse_data> Data { get; set; }
 #endif
         /// <summary>Total number of key assignments for this guardrail</summary>
-        public double? TotalCount { get; set; }
+        public int? TotalCount { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Guardrails.Assignments.Keys.KeysGetResponse"/> and sets the default values.
         /// </summary>
@@ -50,7 +50,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Guardrails.Assignments.Keys
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "data", n => { Data = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Guardrails.Assignments.Keys.KeysGetResponse_data>(global::Soenneker.OpenRouter.OpenApiClient.Guardrails.Assignments.Keys.KeysGetResponse_data.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "total_count", n => { TotalCount = n.GetDoubleValue(); } },
+                { "total_count", n => { TotalCount = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -61,7 +61,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Guardrails.Assignments.Keys
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Guardrails.Assignments.Keys.KeysGetResponse_data>("data", Data);
-            writer.WriteDoubleValue("total_count", TotalCount);
+            writer.WriteIntValue("total_count", TotalCount);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

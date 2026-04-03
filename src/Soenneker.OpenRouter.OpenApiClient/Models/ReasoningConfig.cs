@@ -16,7 +16,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The enabled property</summary>
         public bool? Enabled { get; set; }
         /// <summary>The max_tokens property</summary>
-        public double? MaxTokens { get; set; }
+        public int? MaxTokens { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -36,7 +36,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>(base.GetFieldDeserializers())
             {
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
-                { "max_tokens", n => { MaxTokens = n.GetDoubleValue(); } },
+                { "max_tokens", n => { MaxTokens = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -48,7 +48,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             base.Serialize(writer);
             writer.WriteBoolValue("enabled", Enabled);
-            writer.WriteDoubleValue("max_tokens", MaxTokens);
+            writer.WriteIntValue("max_tokens", MaxTokens);
         }
     }
 }

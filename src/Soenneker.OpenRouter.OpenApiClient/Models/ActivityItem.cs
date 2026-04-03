@@ -17,7 +17,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>BYOK inference cost in USD (external credits spent)</summary>
         public double? ByokUsageInference { get; set; }
         /// <summary>Total completion tokens generated</summary>
-        public double? CompletionTokens { get; set; }
+        public int? CompletionTokens { get; set; }
         /// <summary>Date of the activity (YYYY-MM-DD format)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -51,7 +51,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public string ModelPermaslug { get; set; }
 #endif
         /// <summary>Total prompt tokens used</summary>
-        public double? PromptTokens { get; set; }
+        public int? PromptTokens { get; set; }
         /// <summary>Name of the provider serving this endpoint</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -61,9 +61,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public string ProviderName { get; set; }
 #endif
         /// <summary>Total reasoning tokens used</summary>
-        public double? ReasoningTokens { get; set; }
+        public int? ReasoningTokens { get; set; }
         /// <summary>Number of requests made</summary>
-        public double? Requests { get; set; }
+        public int? Requests { get; set; }
         /// <summary>Total cost in USD (OpenRouter credits spent)</summary>
         public double? Usage { get; set; }
         /// <summary>
@@ -92,15 +92,15 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "byok_usage_inference", n => { ByokUsageInference = n.GetDoubleValue(); } },
-                { "completion_tokens", n => { CompletionTokens = n.GetDoubleValue(); } },
+                { "completion_tokens", n => { CompletionTokens = n.GetIntValue(); } },
                 { "date", n => { Date = n.GetStringValue(); } },
                 { "endpoint_id", n => { EndpointId = n.GetStringValue(); } },
                 { "model", n => { Model = n.GetStringValue(); } },
                 { "model_permaslug", n => { ModelPermaslug = n.GetStringValue(); } },
-                { "prompt_tokens", n => { PromptTokens = n.GetDoubleValue(); } },
+                { "prompt_tokens", n => { PromptTokens = n.GetIntValue(); } },
                 { "provider_name", n => { ProviderName = n.GetStringValue(); } },
-                { "reasoning_tokens", n => { ReasoningTokens = n.GetDoubleValue(); } },
-                { "requests", n => { Requests = n.GetDoubleValue(); } },
+                { "reasoning_tokens", n => { ReasoningTokens = n.GetIntValue(); } },
+                { "requests", n => { Requests = n.GetIntValue(); } },
                 { "usage", n => { Usage = n.GetDoubleValue(); } },
             };
         }
@@ -112,15 +112,15 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDoubleValue("byok_usage_inference", ByokUsageInference);
-            writer.WriteDoubleValue("completion_tokens", CompletionTokens);
+            writer.WriteIntValue("completion_tokens", CompletionTokens);
             writer.WriteStringValue("date", Date);
             writer.WriteStringValue("endpoint_id", EndpointId);
             writer.WriteStringValue("model", Model);
             writer.WriteStringValue("model_permaslug", ModelPermaslug);
-            writer.WriteDoubleValue("prompt_tokens", PromptTokens);
+            writer.WriteIntValue("prompt_tokens", PromptTokens);
             writer.WriteStringValue("provider_name", ProviderName);
-            writer.WriteDoubleValue("reasoning_tokens", ReasoningTokens);
-            writer.WriteDoubleValue("requests", Requests);
+            writer.WriteIntValue("reasoning_tokens", ReasoningTokens);
+            writer.WriteIntValue("requests", Requests);
             writer.WriteDoubleValue("usage", Usage);
             writer.WriteAdditionalData(AdditionalData);
         }

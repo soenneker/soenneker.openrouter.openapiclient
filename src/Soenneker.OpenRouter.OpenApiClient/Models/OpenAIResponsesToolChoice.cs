@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAIResponsesToolChoiceMember1"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAIResponsesToolChoiceMember2"/>, <see cref="string"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAIResponsesToolChoiceMember1"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAIResponsesToolChoiceMember2"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ToolChoiceAllowed"/>, <see cref="string"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class OpenAIResponsesToolChoice : IComposedTypeWrapper, IParsable
@@ -37,6 +37,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public string String { get; set; }
 #endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ToolChoiceAllowed"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ToolChoiceAllowed? ToolChoiceAllowed { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ToolChoiceAllowed ToolChoiceAllowed { get; set; }
+#endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -53,6 +61,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             else {
                 result.OpenAIResponsesToolChoiceMember1 = new global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAIResponsesToolChoiceMember1();
                 result.OpenAIResponsesToolChoiceMember2 = new global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAIResponsesToolChoiceMember2();
+                result.ToolChoiceAllowed = new global::Soenneker.OpenRouter.OpenApiClient.Models.ToolChoiceAllowed();
             }
             return result;
         }
@@ -62,9 +71,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(OpenAIResponsesToolChoiceMember1 != null || OpenAIResponsesToolChoiceMember2 != null)
+            if(OpenAIResponsesToolChoiceMember1 != null || OpenAIResponsesToolChoiceMember2 != null || ToolChoiceAllowed != null)
             {
-                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(OpenAIResponsesToolChoiceMember1, OpenAIResponsesToolChoiceMember2);
+                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(OpenAIResponsesToolChoiceMember1, OpenAIResponsesToolChoiceMember2, ToolChoiceAllowed);
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -80,7 +89,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 writer.WriteStringValue(null, String);
             }
             else {
-                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAIResponsesToolChoiceMember1>(null, OpenAIResponsesToolChoiceMember1, OpenAIResponsesToolChoiceMember2);
+                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAIResponsesToolChoiceMember1>(null, OpenAIResponsesToolChoiceMember1, OpenAIResponsesToolChoiceMember2, ToolChoiceAllowed);
             }
         }
     }

@@ -24,7 +24,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatChoice> Choices { get; set; }
 #endif
         /// <summary>Unix timestamp of creation</summary>
-        public double? Created { get; set; }
+        public int? Created { get; set; }
         /// <summary>Unique completion identifier</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -93,7 +93,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "choices", n => { Choices = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatChoice>(global::Soenneker.OpenRouter.OpenApiClient.Models.ChatChoice.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "created", n => { Created = n.GetDoubleValue(); } },
+                { "created", n => { Created = n.GetIntValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "model", n => { Model = n.GetStringValue(); } },
                 { "object", n => { Object = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatResult_object>(); } },
@@ -110,7 +110,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatChoice>("choices", Choices);
-            writer.WriteDoubleValue("created", Created);
+            writer.WriteIntValue("created", Created);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("model", Model);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatResult_object>("object", Object);

@@ -36,14 +36,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #endif
         /// <summary>The input_tokens property</summary>
         public double? InputTokens { get; set; }
-        /// <summary>The iterations property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_usage.BaseMessagesResult_usage_iterations>? Iterations { get; set; }
-#nullable restore
-#else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_usage.BaseMessagesResult_usage_iterations> Iterations { get; set; }
-#endif
         /// <summary>The output_tokens property</summary>
         public double? OutputTokens { get; set; }
         /// <summary>The server_tool_use property</summary>
@@ -88,7 +80,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "cache_read_input_tokens", n => { CacheReadInputTokens = n.GetDoubleValue(); } },
                 { "inference_geo", n => { InferenceGeo = n.GetStringValue(); } },
                 { "input_tokens", n => { InputTokens = n.GetDoubleValue(); } },
-                { "iterations", n => { Iterations = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_usage.BaseMessagesResult_usage_iterations>(global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_usage.BaseMessagesResult_usage_iterations.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "output_tokens", n => { OutputTokens = n.GetDoubleValue(); } },
                 { "server_tool_use", n => { ServerToolUse = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_usage_server_tool_use>(global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_usage_server_tool_use.CreateFromDiscriminatorValue); } },
                 { "service_tier", n => { ServiceTier = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_usage_service_tier>(); } },
@@ -107,78 +98,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteDoubleValue("cache_read_input_tokens", CacheReadInputTokens);
             writer.WriteStringValue("inference_geo", InferenceGeo);
             writer.WriteDoubleValue("input_tokens", InputTokens);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_usage.BaseMessagesResult_usage_iterations>("iterations", Iterations);
             writer.WriteDoubleValue("output_tokens", OutputTokens);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_usage_server_tool_use>("server_tool_use", ServerToolUse);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_usage_service_tier>("service_tier", ServiceTier);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_usage_speed>("speed", Speed);
             writer.WriteAdditionalData(AdditionalData);
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_usage_iterationsMember1"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_usage_iterationsMember2"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_usage_iterationsMember3"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class BaseMessagesResult_usage_iterations : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_usage_iterationsMember1"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_usage_iterationsMember1? BaseMessagesResultUsageIterationsMember1 { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_usage_iterationsMember1 BaseMessagesResultUsageIterationsMember1 { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_usage_iterationsMember2"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_usage_iterationsMember2? BaseMessagesResultUsageIterationsMember2 { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_usage_iterationsMember2 BaseMessagesResultUsageIterationsMember2 { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_usage_iterationsMember3"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_usage_iterationsMember3? BaseMessagesResultUsageIterationsMember3 { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_usage_iterationsMember3 BaseMessagesResultUsageIterationsMember3 { get; set; }
-#endif
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_usage.BaseMessagesResult_usage_iterations"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_usage.BaseMessagesResult_usage_iterations CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var result = new global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_usage.BaseMessagesResult_usage_iterations();
-                result.BaseMessagesResultUsageIterationsMember1 = new global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_usage_iterationsMember1();
-                result.BaseMessagesResultUsageIterationsMember2 = new global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_usage_iterationsMember2();
-                result.BaseMessagesResultUsageIterationsMember3 = new global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_usage_iterationsMember3();
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(BaseMessagesResultUsageIterationsMember1 != null || BaseMessagesResultUsageIterationsMember2 != null || BaseMessagesResultUsageIterationsMember3 != null)
-                {
-                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(BaseMessagesResultUsageIterationsMember1, BaseMessagesResultUsageIterationsMember2, BaseMessagesResultUsageIterationsMember3);
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_usage_iterationsMember1>(null, BaseMessagesResultUsageIterationsMember1, BaseMessagesResultUsageIterationsMember2, BaseMessagesResultUsageIterationsMember3);
-            }
         }
     }
 }

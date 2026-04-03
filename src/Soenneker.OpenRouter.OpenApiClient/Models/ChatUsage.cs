@@ -16,7 +16,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Number of tokens in the completion</summary>
-        public double? CompletionTokens { get; set; }
+        public int? CompletionTokens { get; set; }
         /// <summary>Detailed completion token usage</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -26,7 +26,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatUsage_completion_tokens_details CompletionTokensDetails { get; set; }
 #endif
         /// <summary>Number of tokens in the prompt</summary>
-        public double? PromptTokens { get; set; }
+        public int? PromptTokens { get; set; }
         /// <summary>Detailed prompt token usage</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -36,7 +36,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatUsage_prompt_tokens_details PromptTokensDetails { get; set; }
 #endif
         /// <summary>Total number of tokens</summary>
-        public double? TotalTokens { get; set; }
+        public int? TotalTokens { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ChatUsage"/> and sets the default values.
         /// </summary>
@@ -62,11 +62,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "completion_tokens", n => { CompletionTokens = n.GetDoubleValue(); } },
+                { "completion_tokens", n => { CompletionTokens = n.GetIntValue(); } },
                 { "completion_tokens_details", n => { CompletionTokensDetails = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatUsage_completion_tokens_details>(global::Soenneker.OpenRouter.OpenApiClient.Models.ChatUsage_completion_tokens_details.CreateFromDiscriminatorValue); } },
-                { "prompt_tokens", n => { PromptTokens = n.GetDoubleValue(); } },
+                { "prompt_tokens", n => { PromptTokens = n.GetIntValue(); } },
                 { "prompt_tokens_details", n => { PromptTokensDetails = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatUsage_prompt_tokens_details>(global::Soenneker.OpenRouter.OpenApiClient.Models.ChatUsage_prompt_tokens_details.CreateFromDiscriminatorValue); } },
-                { "total_tokens", n => { TotalTokens = n.GetDoubleValue(); } },
+                { "total_tokens", n => { TotalTokens = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -76,11 +76,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteDoubleValue("completion_tokens", CompletionTokens);
+            writer.WriteIntValue("completion_tokens", CompletionTokens);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatUsage_completion_tokens_details>("completion_tokens_details", CompletionTokensDetails);
-            writer.WriteDoubleValue("prompt_tokens", PromptTokens);
+            writer.WriteIntValue("prompt_tokens", PromptTokens);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatUsage_prompt_tokens_details>("prompt_tokens_details", PromptTokensDetails);
-            writer.WriteDoubleValue("total_tokens", TotalTokens);
+            writer.WriteIntValue("total_tokens", TotalTokens);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

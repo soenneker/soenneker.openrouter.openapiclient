@@ -16,7 +16,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Total number of available models</summary>
-        public double? Count { get; set; }
+        public int? Count { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ModelsCountResponse_data"/> and sets the default values.
         /// </summary>
@@ -42,7 +42,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "count", n => { Count = n.GetDoubleValue(); } },
+                { "count", n => { Count = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -52,7 +52,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteDoubleValue("count", Count);
+            writer.WriteIntValue("count", Count);
             writer.WriteAdditionalData(AdditionalData);
         }
     }
