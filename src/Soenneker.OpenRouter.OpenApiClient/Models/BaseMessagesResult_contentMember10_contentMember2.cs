@@ -25,11 +25,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The file_type property</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_contentMember10_contentMember2_file_type? FileType { get; set; }
         /// <summary>The num_lines property</summary>
-        public double? NumLines { get; set; }
+        public int? NumLines { get; set; }
         /// <summary>The start_line property</summary>
-        public double? StartLine { get; set; }
+        public int? StartLine { get; set; }
         /// <summary>The total_lines property</summary>
-        public double? TotalLines { get; set; }
+        public int? TotalLines { get; set; }
         /// <summary>The type property</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_contentMember10_contentMember2_type? Type { get; set; }
         /// <summary>
@@ -59,9 +59,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             {
                 { "content", n => { Content = n.GetStringValue(); } },
                 { "file_type", n => { FileType = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_contentMember10_contentMember2_file_type>(); } },
-                { "num_lines", n => { NumLines = n.GetDoubleValue(); } },
-                { "start_line", n => { StartLine = n.GetDoubleValue(); } },
-                { "total_lines", n => { TotalLines = n.GetDoubleValue(); } },
+                { "num_lines", n => { NumLines = n.GetIntValue(); } },
+                { "start_line", n => { StartLine = n.GetIntValue(); } },
+                { "total_lines", n => { TotalLines = n.GetIntValue(); } },
                 { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_contentMember10_contentMember2_type>(); } },
             };
         }
@@ -74,9 +74,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("content", Content);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_contentMember10_contentMember2_file_type>("file_type", FileType);
-            writer.WriteDoubleValue("num_lines", NumLines);
-            writer.WriteDoubleValue("start_line", StartLine);
-            writer.WriteDoubleValue("total_lines", TotalLines);
+            writer.WriteIntValue("num_lines", NumLines);
+            writer.WriteIntValue("start_line", StartLine);
+            writer.WriteIntValue("total_lines", TotalLines);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_contentMember10_contentMember2_type>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }

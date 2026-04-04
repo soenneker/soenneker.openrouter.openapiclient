@@ -95,25 +95,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Organization.Members
         public partial class MembersRequestBuilderGetQueryParameters 
         {
             /// <summary>Maximum number of records to return (max 100)</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
             [QueryParameter("limit")]
-            public string? Limit { get; set; }
-#nullable restore
-#else
-            [QueryParameter("limit")]
-            public string Limit { get; set; }
-#endif
+            public int? Limit { get; set; }
             /// <summary>Number of records to skip for pagination</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
             [QueryParameter("offset")]
-            public string? Offset { get; set; }
-#nullable restore
-#else
-            [QueryParameter("offset")]
-            public string Offset { get; set; }
-#endif
+            public int? Offset { get; set; }
         }
     }
 }

@@ -24,7 +24,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public List<string> AllowedDomains { get; set; }
 #endif
         /// <summary>Which search engine to use. &quot;auto&quot; (default) uses native if the provider supports it, otherwise Exa. &quot;native&quot; forces the provider&apos;s built-in search. &quot;exa&quot; forces the Exa search API. &quot;firecrawl&quot; uses Firecrawl (requires BYOK). &quot;parallel&quot; uses the Parallel search API.</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatWebSearchShorthand_engine? Engine { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchEngineEnum? Engine { get; set; }
         /// <summary>Exclude search results from these domains. Supported by Exa, Parallel, Anthropic, and xAI. Not supported with Firecrawl, OpenAI (silently ignored), or Perplexity.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -40,22 +40,22 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The parameters property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatWebSearchShorthand_parameters? Parameters { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchConfig? Parameters { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatWebSearchShorthand_parameters Parameters { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchConfig Parameters { get; set; }
 #endif
         /// <summary>How much context to retrieve per result. Defaults to medium (15000 chars). Only applies when using the Exa engine; ignored with native provider search.</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatWebSearchShorthand_search_context_size? SearchContextSize { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.SearchQualityLevel? SearchContextSize { get; set; }
         /// <summary>The type property</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatWebSearchShorthand_type? Type { get; set; }
         /// <summary>Approximate user location for location-biased results.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatWebSearchShorthand_user_location? UserLocation { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchUserLocationServerTool? UserLocation { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatWebSearchShorthand_user_location UserLocation { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchUserLocationServerTool UserLocation { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ChatWebSearchShorthand"/> and sets the default values.
@@ -83,14 +83,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "allowed_domains", n => { AllowedDomains = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "engine", n => { Engine = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatWebSearchShorthand_engine>(); } },
+                { "engine", n => { Engine = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchEngineEnum>(); } },
                 { "excluded_domains", n => { ExcludedDomains = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "max_results", n => { MaxResults = n.GetDoubleValue(); } },
                 { "max_total_results", n => { MaxTotalResults = n.GetDoubleValue(); } },
-                { "parameters", n => { Parameters = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatWebSearchShorthand_parameters>(global::Soenneker.OpenRouter.OpenApiClient.Models.ChatWebSearchShorthand_parameters.CreateFromDiscriminatorValue); } },
-                { "search_context_size", n => { SearchContextSize = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatWebSearchShorthand_search_context_size>(); } },
+                { "parameters", n => { Parameters = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchConfig>(global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchConfig.CreateFromDiscriminatorValue); } },
+                { "search_context_size", n => { SearchContextSize = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SearchQualityLevel>(); } },
                 { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatWebSearchShorthand_type>(); } },
-                { "user_location", n => { UserLocation = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatWebSearchShorthand_user_location>(global::Soenneker.OpenRouter.OpenApiClient.Models.ChatWebSearchShorthand_user_location.CreateFromDiscriminatorValue); } },
+                { "user_location", n => { UserLocation = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchUserLocationServerTool>(global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchUserLocationServerTool.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -101,14 +101,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<string>("allowed_domains", AllowedDomains);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatWebSearchShorthand_engine>("engine", Engine);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchEngineEnum>("engine", Engine);
             writer.WriteCollectionOfPrimitiveValues<string>("excluded_domains", ExcludedDomains);
             writer.WriteDoubleValue("max_results", MaxResults);
             writer.WriteDoubleValue("max_total_results", MaxTotalResults);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatWebSearchShorthand_parameters>("parameters", Parameters);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatWebSearchShorthand_search_context_size>("search_context_size", SearchContextSize);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchConfig>("parameters", Parameters);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SearchQualityLevel>("search_context_size", SearchContextSize);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatWebSearchShorthand_type>("type", Type);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatWebSearchShorthand_user_location>("user_location", UserLocation);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchUserLocationServerTool>("user_location", UserLocation);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

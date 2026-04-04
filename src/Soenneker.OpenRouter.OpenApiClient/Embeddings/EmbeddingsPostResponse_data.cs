@@ -7,14 +7,15 @@ using System.IO;
 using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Embeddings
 {
+    /// <summary>
+    /// A single embedding object
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public partial class EmbeddingsPostResponse_data : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The embedding property</summary>
+        /// <summary>Embedding vector as an array of floats or a base64 string</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.OpenRouter.OpenApiClient.Embeddings.EmbeddingsPostResponse_data.EmbeddingsPostResponse_data_embedding? Embedding { get; set; }
@@ -22,8 +23,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Embeddings
 #else
         public global::Soenneker.OpenRouter.OpenApiClient.Embeddings.EmbeddingsPostResponse_data.EmbeddingsPostResponse_data_embedding Embedding { get; set; }
 #endif
-        /// <summary>The index property</summary>
-        public double? Index { get; set; }
+        /// <summary>Index of the embedding in the input list</summary>
+        public int? Index { get; set; }
         /// <summary>The object property</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Embeddings.EmbeddingsPostResponse_data_object? Object { get; set; }
         /// <summary>
@@ -52,7 +53,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Embeddings
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "embedding", n => { Embedding = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Embeddings.EmbeddingsPostResponse_data.EmbeddingsPostResponse_data_embedding>(global::Soenneker.OpenRouter.OpenApiClient.Embeddings.EmbeddingsPostResponse_data.EmbeddingsPostResponse_data_embedding.CreateFromDiscriminatorValue); } },
-                { "index", n => { Index = n.GetDoubleValue(); } },
+                { "index", n => { Index = n.GetIntValue(); } },
                 { "object", n => { Object = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Embeddings.EmbeddingsPostResponse_data_object>(); } },
             };
         }
@@ -64,7 +65,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Embeddings
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Embeddings.EmbeddingsPostResponse_data.EmbeddingsPostResponse_data_embedding>("embedding", Embedding);
-            writer.WriteDoubleValue("index", Index);
+            writer.WriteIntValue("index", Index);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Embeddings.EmbeddingsPostResponse_data_object>("object", Object);
             writer.WriteAdditionalData(AdditionalData);
         }

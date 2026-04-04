@@ -31,7 +31,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.ModelsRequests
             get => new global::Soenneker.OpenRouter.OpenApiClient.ModelsRequests.User.UserRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Soenneker.OpenRouter.OpenApiClient.modelsRequests.item collection</summary>
-        /// <param name="position">Unique identifier of the item</param>
+        /// <param name="position">The author/organization of the model</param>
         /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.ModelsRequests.Item.WithAuthorItemRequestBuilder"/></returns>
         public global::Soenneker.OpenRouter.OpenApiClient.ModelsRequests.Item.WithAuthorItemRequestBuilder this[string position]
         {

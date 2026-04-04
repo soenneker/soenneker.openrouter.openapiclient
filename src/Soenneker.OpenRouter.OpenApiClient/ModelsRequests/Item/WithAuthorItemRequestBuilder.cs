@@ -16,7 +16,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.ModelsRequests.Item
     public partial class WithAuthorItemRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Soenneker.OpenRouter.OpenApiClient.modelsRequests.item.item collection</summary>
-        /// <param name="position">Unique identifier of the item</param>
+        /// <param name="position">The model slug</param>
         /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.ModelsRequests.Item.Item.WithSlugItemRequestBuilder"/></returns>
         public global::Soenneker.OpenRouter.OpenApiClient.ModelsRequests.Item.Item.WithSlugItemRequestBuilder this[string position]
         {

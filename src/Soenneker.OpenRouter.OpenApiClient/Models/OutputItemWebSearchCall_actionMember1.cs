@@ -33,10 +33,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The sources property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemWebSearchCall_actionMember1_sources>? Sources { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchSource>? Sources { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemWebSearchCall_actionMember1_sources> Sources { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchSource> Sources { get; set; }
 #endif
         /// <summary>The type property</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemWebSearchCall_actionMember1_type? Type { get; set; }
@@ -67,7 +67,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             {
                 { "queries", n => { Queries = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "query", n => { Query = n.GetStringValue(); } },
-                { "sources", n => { Sources = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemWebSearchCall_actionMember1_sources>(global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemWebSearchCall_actionMember1_sources.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "sources", n => { Sources = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchSource>(global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchSource.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemWebSearchCall_actionMember1_type>(); } },
             };
         }
@@ -80,7 +80,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<string>("queries", Queries);
             writer.WriteStringValue("query", Query);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemWebSearchCall_actionMember1_sources>("sources", Sources);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchSource>("sources", Sources);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemWebSearchCall_actionMember1_type>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }

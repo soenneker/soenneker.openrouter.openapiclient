@@ -18,13 +18,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Constrains effort on reasoning for reasoning models</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest_reasoning_effort? Effort { get; set; }
         /// <summary>The summary property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest_reasoning.ChatRequest_reasoning_summary? Summary { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest_reasoning.ChatRequest_reasoning_summary Summary { get; set; }
-#endif
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatReasoningSummaryVerbosityEnum? Summary { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest_reasoning"/> and sets the default values.
         /// </summary>
@@ -51,7 +45,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "effort", n => { Effort = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest_reasoning_effort>(); } },
-                { "summary", n => { Summary = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest_reasoning.ChatRequest_reasoning_summary>(global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest_reasoning.ChatRequest_reasoning_summary.CreateFromDiscriminatorValue); } },
+                { "summary", n => { Summary = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatReasoningSummaryVerbosityEnum>(); } },
             };
         }
         /// <summary>
@@ -62,79 +56,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest_reasoning_effort>("effort", Effort);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest_reasoning.ChatRequest_reasoning_summary>("summary", Summary);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatReasoningSummaryVerbosityEnum>("summary", Summary);
             writer.WriteAdditionalData(AdditionalData);
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ChatReasoningSummaryVerbosityEnum"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest_reasoning_summaryMember1"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest_reasoning_summaryMember2"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class ChatRequest_reasoning_summary : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ChatReasoningSummaryVerbosityEnum"/></summary>
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatReasoningSummaryVerbosityEnum? ChatReasoningSummaryVerbosityEnum { get; set; }
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest_reasoning_summaryMember1"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest_reasoning_summaryMember1? ChatRequestReasoningSummaryMember1 { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest_reasoning_summaryMember1 ChatRequestReasoningSummaryMember1 { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest_reasoning_summaryMember2"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest_reasoning_summaryMember2? ChatRequestReasoningSummaryMember2 { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest_reasoning_summaryMember2 ChatRequestReasoningSummaryMember2 { get; set; }
-#endif
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest_reasoning.ChatRequest_reasoning_summary"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest_reasoning.ChatRequest_reasoning_summary CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var result = new global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest_reasoning.ChatRequest_reasoning_summary();
-                if(parseNode.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatReasoningSummaryVerbosityEnum>() is global::Soenneker.OpenRouter.OpenApiClient.Models.ChatReasoningSummaryVerbosityEnum chatReasoningSummaryVerbosityEnumValue)
-                {
-                    result.ChatReasoningSummaryVerbosityEnum = chatReasoningSummaryVerbosityEnumValue;
-                }
-                else {
-                    result.ChatRequestReasoningSummaryMember1 = new global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest_reasoning_summaryMember1();
-                    result.ChatRequestReasoningSummaryMember2 = new global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest_reasoning_summaryMember2();
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(ChatRequestReasoningSummaryMember1 != null || ChatRequestReasoningSummaryMember2 != null)
-                {
-                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(ChatRequestReasoningSummaryMember1, ChatRequestReasoningSummaryMember2);
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(ChatReasoningSummaryVerbosityEnum != null)
-                {
-                    writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatReasoningSummaryVerbosityEnum>(null, ChatReasoningSummaryVerbosityEnum);
-                }
-                else {
-                    writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest_reasoning_summaryMember1>(null, ChatRequestReasoningSummaryMember1, ChatRequestReasoningSummaryMember2);
-                }
-            }
         }
     }
 }

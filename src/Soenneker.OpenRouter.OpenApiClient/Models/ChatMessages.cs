@@ -63,23 +63,23 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("role")?.GetStringValue();
             var result = new global::Soenneker.OpenRouter.OpenApiClient.Models.ChatMessages();
-            if("ChatAssistantMessage".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("assistant".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.ChatAssistantMessage = new global::Soenneker.OpenRouter.OpenApiClient.Models.ChatAssistantMessage();
             }
-            else if("ChatDeveloperMessage".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("developer".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.ChatDeveloperMessage = new global::Soenneker.OpenRouter.OpenApiClient.Models.ChatDeveloperMessage();
             }
-            else if("ChatSystemMessage".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("system".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.ChatSystemMessage = new global::Soenneker.OpenRouter.OpenApiClient.Models.ChatSystemMessage();
             }
-            else if("ChatToolMessage".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("tool".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.ChatToolMessage = new global::Soenneker.OpenRouter.OpenApiClient.Models.ChatToolMessage();
             }
-            else if("ChatUserMessage".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("user".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.ChatUserMessage = new global::Soenneker.OpenRouter.OpenApiClient.Models.ChatUserMessage();
             }

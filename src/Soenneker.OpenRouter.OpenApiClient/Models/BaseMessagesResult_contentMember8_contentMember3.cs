@@ -31,7 +31,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public string EncryptedStdout { get; set; }
 #endif
         /// <summary>The return_code property</summary>
-        public double? ReturnCode { get; set; }
+        public int? ReturnCode { get; set; }
         /// <summary>The stderr property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -69,7 +69,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             {
                 { "content", n => { Content = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_contentMember8_contentMember3_content>(global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_contentMember8_contentMember3_content.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "encrypted_stdout", n => { EncryptedStdout = n.GetStringValue(); } },
-                { "return_code", n => { ReturnCode = n.GetDoubleValue(); } },
+                { "return_code", n => { ReturnCode = n.GetIntValue(); } },
                 { "stderr", n => { Stderr = n.GetStringValue(); } },
                 { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_contentMember8_contentMember3_type>(); } },
             };
@@ -83,7 +83,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_contentMember8_contentMember3_content>("content", Content);
             writer.WriteStringValue("encrypted_stdout", EncryptedStdout);
-            writer.WriteDoubleValue("return_code", ReturnCode);
+            writer.WriteIntValue("return_code", ReturnCode);
             writer.WriteStringValue("stderr", Stderr);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_contentMember8_contentMember3_type>("type", Type);
             writer.WriteAdditionalData(AdditionalData);

@@ -16,8 +16,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The type property</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember2_keepMember1_type? Type { get; set; }
-        /// <summary>The value property</summary>
-        public double? Value { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember2_keepMember1"/> and sets the default values.
         /// </summary>
@@ -44,7 +42,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember2_keepMember1_type>(); } },
-                { "value", n => { Value = n.GetDoubleValue(); } },
             };
         }
         /// <summary>
@@ -55,7 +52,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember2_keepMember1_type>("type", Type);
-            writer.WriteDoubleValue("value", Value);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

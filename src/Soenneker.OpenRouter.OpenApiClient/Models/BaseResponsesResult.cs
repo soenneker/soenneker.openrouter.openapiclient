@@ -123,10 +123,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The reasoning property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.BaseReasoningConfig? Reasoning { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.BaseResponsesResult_reasoning? Reasoning { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.BaseReasoningConfig Reasoning { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.BaseResponsesResult_reasoning Reasoning { get; set; }
 #endif
         /// <summary>The safety_identifier property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -235,7 +235,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "previous_response_id", n => { PreviousResponseId = n.GetStringValue(); } },
                 { "prompt", n => { Prompt = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.StoredPromptTemplate>(global::Soenneker.OpenRouter.OpenApiClient.Models.StoredPromptTemplate.CreateFromDiscriminatorValue); } },
                 { "prompt_cache_key", n => { PromptCacheKey = n.GetStringValue(); } },
-                { "reasoning", n => { Reasoning = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.BaseReasoningConfig>(global::Soenneker.OpenRouter.OpenApiClient.Models.BaseReasoningConfig.CreateFromDiscriminatorValue); } },
+                { "reasoning", n => { Reasoning = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.BaseResponsesResult_reasoning>(global::Soenneker.OpenRouter.OpenApiClient.Models.BaseResponsesResult_reasoning.CreateFromDiscriminatorValue); } },
                 { "safety_identifier", n => { SafetyIdentifier = n.GetStringValue(); } },
                 { "service_tier", n => { ServiceTier = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ServiceTierEnum>(); } },
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAIResponsesResponseStatus>(); } },
@@ -278,7 +278,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteStringValue("previous_response_id", PreviousResponseId);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.StoredPromptTemplate>("prompt", Prompt);
             writer.WriteStringValue("prompt_cache_key", PromptCacheKey);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.BaseReasoningConfig>("reasoning", Reasoning);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.BaseResponsesResult_reasoning>("reasoning", Reasoning);
             writer.WriteStringValue("safety_identifier", SafetyIdentifier);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ServiceTierEnum>("service_tier", ServiceTier);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAIResponsesResponseStatus>("status", Status);

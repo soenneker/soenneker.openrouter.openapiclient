@@ -41,13 +41,13 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The cache_control property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember5_cache_control? CacheControl { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective? CacheControl { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember5_cache_control CacheControl { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective CacheControl { get; set; }
 #endif
         /// <summary>The max_uses property</summary>
-        public double? MaxUses { get; set; }
+        public int? MaxUses { get; set; }
         /// <summary>The name property</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember5_name? Name { get; set; }
         /// <summary>The type property</summary>
@@ -55,10 +55,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The user_location property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember5_user_location? UserLocation { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.Preview_WebSearchUserLocation? UserLocation { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember5_user_location UserLocation { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.Preview_WebSearchUserLocation UserLocation { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember5"/> and sets the default values.
@@ -88,11 +88,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "allowed_callers", n => { AllowedCallers = n.GetCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember5_allowed_callers>()?.AsList(); } },
                 { "allowed_domains", n => { AllowedDomains = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "blocked_domains", n => { BlockedDomains = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "cache_control", n => { CacheControl = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember5_cache_control>(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember5_cache_control.CreateFromDiscriminatorValue); } },
-                { "max_uses", n => { MaxUses = n.GetDoubleValue(); } },
+                { "cache_control", n => { CacheControl = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective>(global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective.CreateFromDiscriminatorValue); } },
+                { "max_uses", n => { MaxUses = n.GetIntValue(); } },
                 { "name", n => { Name = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember5_name>(); } },
                 { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember5_type>(); } },
-                { "user_location", n => { UserLocation = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember5_user_location>(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember5_user_location.CreateFromDiscriminatorValue); } },
+                { "user_location", n => { UserLocation = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.Preview_WebSearchUserLocation>(global::Soenneker.OpenRouter.OpenApiClient.Models.Preview_WebSearchUserLocation.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -105,11 +105,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember5_allowed_callers>("allowed_callers", AllowedCallers);
             writer.WriteCollectionOfPrimitiveValues<string>("allowed_domains", AllowedDomains);
             writer.WriteCollectionOfPrimitiveValues<string>("blocked_domains", BlockedDomains);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember5_cache_control>("cache_control", CacheControl);
-            writer.WriteDoubleValue("max_uses", MaxUses);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective>("cache_control", CacheControl);
+            writer.WriteIntValue("max_uses", MaxUses);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember5_name>("name", Name);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember5_type>("type", Type);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember5_user_location>("user_location", UserLocation);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.Preview_WebSearchUserLocation>("user_location", UserLocation);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

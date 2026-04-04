@@ -65,11 +65,19 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteAdditionalData(AdditionalData);
         }
         /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember2_keepMember1"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember2_keepMember2"/>, <see cref="string"/>
+        /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicThinkingTurns"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember2_keepMember1"/>, <see cref="string"/>
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class MessagesRequest_context_management_editsMember2_keep : IComposedTypeWrapper, IParsable
         {
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicThinkingTurns"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicThinkingTurns? AnthropicThinkingTurns { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicThinkingTurns AnthropicThinkingTurns { get; set; }
+#endif
             /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember2_keepMember1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -77,14 +85,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #nullable restore
 #else
             public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember2_keepMember1 MessagesRequestContextManagementEditsMember2KeepMember1 { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember2_keepMember2"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember2_keepMember2? MessagesRequestContextManagementEditsMember2KeepMember2 { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember2_keepMember2 MessagesRequestContextManagementEditsMember2KeepMember2 { get; set; }
 #endif
             /// <summary>Composed type representation for type <see cref="string"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -108,8 +108,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                     result.String = stringValue;
                 }
                 else {
+                    result.AnthropicThinkingTurns = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicThinkingTurns();
                     result.MessagesRequestContextManagementEditsMember2KeepMember1 = new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember2_keepMember1();
-                    result.MessagesRequestContextManagementEditsMember2KeepMember2 = new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember2_keepMember2();
                 }
                 return result;
             }
@@ -119,9 +119,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
             public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
             {
-                if(MessagesRequestContextManagementEditsMember2KeepMember1 != null || MessagesRequestContextManagementEditsMember2KeepMember2 != null)
+                if(AnthropicThinkingTurns != null || MessagesRequestContextManagementEditsMember2KeepMember1 != null)
                 {
-                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(MessagesRequestContextManagementEditsMember2KeepMember1, MessagesRequestContextManagementEditsMember2KeepMember2);
+                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(AnthropicThinkingTurns, MessagesRequestContextManagementEditsMember2KeepMember1);
                 }
                 return new Dictionary<string, Action<IParseNode>>();
             }
@@ -137,7 +137,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                     writer.WriteStringValue(null, String);
                 }
                 else {
-                    writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember2_keepMember1>(null, MessagesRequestContextManagementEditsMember2KeepMember1, MessagesRequestContextManagementEditsMember2KeepMember2);
+                    writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicThinkingTurns>(null, AnthropicThinkingTurns, MessagesRequestContextManagementEditsMember2KeepMember1);
                 }
             }
         }

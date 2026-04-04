@@ -123,7 +123,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteAdditionalData(AdditionalData);
         }
         /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_contentMember1"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_contentMember10"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_contentMember11"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_contentMember12"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_contentMember2"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_contentMember3"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_contentMember4"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_contentMember5"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_contentMember6"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_contentMember7"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_contentMember8"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_contentMember9"/>
+        /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_contentMember1"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_contentMember10"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_contentMember11"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_contentMember12"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_contentMember13"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_contentMember2"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_contentMember3"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_contentMember4"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_contentMember5"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_contentMember6"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_contentMember7"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_contentMember8"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_contentMember9"/>
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class BaseMessagesResult_content : IComposedTypeWrapper, IParsable
@@ -159,6 +159,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #nullable restore
 #else
             public global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_contentMember12 BaseMessagesResultContentMember12 { get; set; }
+#endif
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_contentMember13"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_contentMember13? BaseMessagesResultContentMember13 { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_contentMember13 BaseMessagesResultContentMember13 { get; set; }
 #endif
             /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_contentMember2"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -252,6 +260,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 }
                 else if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
                 {
+                    result.BaseMessagesResultContentMember13 = new global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_contentMember13();
+                }
+                else if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+                {
                     result.BaseMessagesResultContentMember2 = new global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_contentMember2();
                 }
                 else if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
@@ -305,6 +317,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 else if(BaseMessagesResultContentMember12 != null)
                 {
                     return BaseMessagesResultContentMember12.GetFieldDeserializers();
+                }
+                else if(BaseMessagesResultContentMember13 != null)
+                {
+                    return BaseMessagesResultContentMember13.GetFieldDeserializers();
                 }
                 else if(BaseMessagesResultContentMember2 != null)
                 {
@@ -362,6 +378,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 else if(BaseMessagesResultContentMember12 != null)
                 {
                     writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_contentMember12>(null, BaseMessagesResultContentMember12);
+                }
+                else if(BaseMessagesResultContentMember13 != null)
+                {
+                    writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_contentMember13>(null, BaseMessagesResultContentMember13);
                 }
                 else if(BaseMessagesResultContentMember2 != null)
                 {

@@ -15,7 +15,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The budget_tokens property</summary>
-        public double? BudgetTokens { get; set; }
+        public int? BudgetTokens { get; set; }
         /// <summary>The type property</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_thinkingMember1_type? Type { get; set; }
         /// <summary>
@@ -43,7 +43,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "budget_tokens", n => { BudgetTokens = n.GetDoubleValue(); } },
+                { "budget_tokens", n => { BudgetTokens = n.GetIntValue(); } },
                 { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_thinkingMember1_type>(); } },
             };
         }
@@ -54,7 +54,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteDoubleValue("budget_tokens", BudgetTokens);
+            writer.WriteIntValue("budget_tokens", BudgetTokens);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_thinkingMember1_type>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }

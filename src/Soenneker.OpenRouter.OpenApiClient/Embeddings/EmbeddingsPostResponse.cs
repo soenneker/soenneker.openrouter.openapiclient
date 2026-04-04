@@ -7,14 +7,15 @@ using System.IO;
 using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Embeddings
 {
+    /// <summary>
+    /// Embeddings response containing embedding vectors
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public partial class EmbeddingsPostResponse : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The data property</summary>
+        /// <summary>List of embedding objects</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.OpenRouter.OpenApiClient.Embeddings.EmbeddingsPostResponse_data>? Data { get; set; }
@@ -22,7 +23,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Embeddings
 #else
         public List<global::Soenneker.OpenRouter.OpenApiClient.Embeddings.EmbeddingsPostResponse_data> Data { get; set; }
 #endif
-        /// <summary>The id property</summary>
+        /// <summary>Unique identifier for the embeddings response</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Id { get; set; }
@@ -30,7 +31,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Embeddings
 #else
         public string Id { get; set; }
 #endif
-        /// <summary>The model property</summary>
+        /// <summary>The model used for embeddings</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Model { get; set; }
@@ -40,7 +41,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Embeddings
 #endif
         /// <summary>The object property</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Embeddings.EmbeddingsPostResponse_object? Object { get; set; }
-        /// <summary>The usage property</summary>
+        /// <summary>Token usage statistics</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.OpenRouter.OpenApiClient.Embeddings.EmbeddingsPostResponse_usage? Usage { get; set; }

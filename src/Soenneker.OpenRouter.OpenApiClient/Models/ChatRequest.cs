@@ -15,13 +15,13 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Enable automatic prompt caching. When set, the system automatically applies cache breakpoints to the last cacheable block in the request. Currently supported for Anthropic Claude models.</summary>
+        /// <summary>The cache_control property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest_cache_control? CacheControl { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective? CacheControl { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest_cache_control CacheControl { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective CacheControl { get; set; }
 #endif
         /// <summary>Debug options for inspecting request transformations (streaming only)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -227,7 +227,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "cache_control", n => { CacheControl = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest_cache_control>(global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest_cache_control.CreateFromDiscriminatorValue); } },
+                { "cache_control", n => { CacheControl = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective>(global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective.CreateFromDiscriminatorValue); } },
                 { "debug", n => { Debug = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatDebugOptions>(global::Soenneker.OpenRouter.OpenApiClient.Models.ChatDebugOptions.CreateFromDiscriminatorValue); } },
                 { "frequency_penalty", n => { FrequencyPenalty = n.GetDoubleValue(); } },
                 { "image_config", n => { ImageConfig = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest_image_config>(global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest_image_config.CreateFromDiscriminatorValue); } },
@@ -269,7 +269,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest_cache_control>("cache_control", CacheControl);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective>("cache_control", CacheControl);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatDebugOptions>("debug", Debug);
             writer.WriteDoubleValue("frequency_penalty", FrequencyPenalty);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest_image_config>("image_config", ImageConfig);
@@ -515,23 +515,23 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
                 var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
                 var result = new global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest.ChatRequest_response_format();
-                if("ChatFormatGrammarConfig".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+                if("grammar".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
                 {
                     result.ChatFormatGrammarConfig = new global::Soenneker.OpenRouter.OpenApiClient.Models.ChatFormatGrammarConfig();
                 }
-                else if("ChatFormatJsonSchemaConfig".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+                else if("json_schema".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
                 {
                     result.ChatFormatJsonSchemaConfig = new global::Soenneker.OpenRouter.OpenApiClient.Models.ChatFormatJsonSchemaConfig();
                 }
-                else if("ChatFormatPythonConfig".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+                else if("python".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
                 {
                     result.ChatFormatPythonConfig = new global::Soenneker.OpenRouter.OpenApiClient.Models.ChatFormatPythonConfig();
                 }
-                else if("ChatFormatTextConfig".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+                else if("text".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
                 {
                     result.ChatFormatTextConfig = new global::Soenneker.OpenRouter.OpenApiClient.Models.ChatFormatTextConfig();
                 }
-                else if("FormatJsonObjectConfig".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+                else if("json_object".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
                 {
                     result.FormatJsonObjectConfig = new global::Soenneker.OpenRouter.OpenApiClient.Models.FormatJsonObjectConfig();
                 }

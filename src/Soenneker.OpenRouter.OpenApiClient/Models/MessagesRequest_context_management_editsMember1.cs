@@ -17,10 +17,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The clear_at_least property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember1_clear_at_least? ClearAtLeast { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicInputTokensClearAtLeast? ClearAtLeast { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember1_clear_at_least ClearAtLeast { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicInputTokensClearAtLeast ClearAtLeast { get; set; }
 #endif
         /// <summary>The clear_tool_inputs property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -41,10 +41,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The keep property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember1_keep? Keep { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicToolUsesKeep? Keep { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember1_keep Keep { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicToolUsesKeep Keep { get; set; }
 #endif
         /// <summary>The trigger property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -81,10 +81,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "clear_at_least", n => { ClearAtLeast = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember1_clear_at_least>(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember1_clear_at_least.CreateFromDiscriminatorValue); } },
+                { "clear_at_least", n => { ClearAtLeast = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicInputTokensClearAtLeast>(global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicInputTokensClearAtLeast.CreateFromDiscriminatorValue); } },
                 { "clear_tool_inputs", n => { ClearToolInputs = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember1.MessagesRequest_context_management_editsMember1_clear_tool_inputs>(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember1.MessagesRequest_context_management_editsMember1_clear_tool_inputs.CreateFromDiscriminatorValue); } },
                 { "exclude_tools", n => { ExcludeTools = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "keep", n => { Keep = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember1_keep>(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember1_keep.CreateFromDiscriminatorValue); } },
+                { "keep", n => { Keep = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicToolUsesKeep>(global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicToolUsesKeep.CreateFromDiscriminatorValue); } },
                 { "trigger", n => { Trigger = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember1.MessagesRequest_context_management_editsMember1_trigger>(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember1.MessagesRequest_context_management_editsMember1_trigger.CreateFromDiscriminatorValue); } },
                 { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember1_type>(); } },
             };
@@ -96,10 +96,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember1_clear_at_least>("clear_at_least", ClearAtLeast);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicInputTokensClearAtLeast>("clear_at_least", ClearAtLeast);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember1.MessagesRequest_context_management_editsMember1_clear_tool_inputs>("clear_tool_inputs", ClearToolInputs);
             writer.WriteCollectionOfPrimitiveValues<string>("exclude_tools", ExcludeTools);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember1_keep>("keep", Keep);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicToolUsesKeep>("keep", Keep);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember1.MessagesRequest_context_management_editsMember1_trigger>("trigger", Trigger);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember1_type>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
@@ -183,26 +183,26 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             }
         }
         /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember1_triggerMember1"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember1_triggerMember2"/>
+        /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicInputTokensTrigger"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicToolUsesKeep"/>
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class MessagesRequest_context_management_editsMember1_trigger : IComposedTypeWrapper, IParsable
         {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember1_triggerMember1"/></summary>
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicInputTokensTrigger"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember1_triggerMember1? MessagesRequestContextManagementEditsMember1TriggerMember1 { get; set; }
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicInputTokensTrigger? AnthropicInputTokensTrigger { get; set; }
 #nullable restore
 #else
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember1_triggerMember1 MessagesRequestContextManagementEditsMember1TriggerMember1 { get; set; }
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicInputTokensTrigger AnthropicInputTokensTrigger { get; set; }
 #endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember1_triggerMember2"/></summary>
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicToolUsesKeep"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember1_triggerMember2? MessagesRequestContextManagementEditsMember1TriggerMember2 { get; set; }
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicToolUsesKeep? AnthropicToolUsesKeep { get; set; }
 #nullable restore
 #else
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember1_triggerMember2 MessagesRequestContextManagementEditsMember1TriggerMember2 { get; set; }
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicToolUsesKeep AnthropicToolUsesKeep { get; set; }
 #endif
             /// <summary>
             /// Creates a new instance of the appropriate class based on discriminator value
@@ -212,15 +212,15 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             public static global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember1.MessagesRequest_context_management_editsMember1_trigger CreateFromDiscriminatorValue(IParseNode parseNode)
             {
                 if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
+                var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
                 var result = new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember1.MessagesRequest_context_management_editsMember1_trigger();
-                if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+                if("input_tokens".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
                 {
-                    result.MessagesRequestContextManagementEditsMember1TriggerMember1 = new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember1_triggerMember1();
+                    result.AnthropicInputTokensTrigger = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicInputTokensTrigger();
                 }
-                else if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+                else if("tool_uses".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
                 {
-                    result.MessagesRequestContextManagementEditsMember1TriggerMember2 = new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember1_triggerMember2();
+                    result.AnthropicToolUsesKeep = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicToolUsesKeep();
                 }
                 return result;
             }
@@ -230,13 +230,13 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
             public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
             {
-                if(MessagesRequestContextManagementEditsMember1TriggerMember1 != null)
+                if(AnthropicInputTokensTrigger != null)
                 {
-                    return MessagesRequestContextManagementEditsMember1TriggerMember1.GetFieldDeserializers();
+                    return AnthropicInputTokensTrigger.GetFieldDeserializers();
                 }
-                else if(MessagesRequestContextManagementEditsMember1TriggerMember2 != null)
+                else if(AnthropicToolUsesKeep != null)
                 {
-                    return MessagesRequestContextManagementEditsMember1TriggerMember2.GetFieldDeserializers();
+                    return AnthropicToolUsesKeep.GetFieldDeserializers();
                 }
                 return new Dictionary<string, Action<IParseNode>>();
             }
@@ -247,13 +247,13 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             public virtual void Serialize(ISerializationWriter writer)
             {
                 if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(MessagesRequestContextManagementEditsMember1TriggerMember1 != null)
+                if(AnthropicInputTokensTrigger != null)
                 {
-                    writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember1_triggerMember1>(null, MessagesRequestContextManagementEditsMember1TriggerMember1);
+                    writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicInputTokensTrigger>(null, AnthropicInputTokensTrigger);
                 }
-                else if(MessagesRequestContextManagementEditsMember1TriggerMember2 != null)
+                else if(AnthropicToolUsesKeep != null)
                 {
-                    writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember1_triggerMember2>(null, MessagesRequestContextManagementEditsMember1TriggerMember2);
+                    writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicToolUsesKeep>(null, AnthropicToolUsesKeep);
                 }
             }
         }

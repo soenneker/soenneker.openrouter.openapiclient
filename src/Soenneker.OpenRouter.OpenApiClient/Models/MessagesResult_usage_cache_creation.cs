@@ -15,9 +15,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The ephemeral_1h_input_tokens property</summary>
-        public double? Ephemeral1hInputTokens { get; set; }
+        public int? Ephemeral1hInputTokens { get; set; }
         /// <summary>The ephemeral_5m_input_tokens property</summary>
-        public double? Ephemeral5mInputTokens { get; set; }
+        public int? Ephemeral5mInputTokens { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResult_usage_cache_creation"/> and sets the default values.
         /// </summary>
@@ -43,8 +43,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "ephemeral_1h_input_tokens", n => { Ephemeral1hInputTokens = n.GetDoubleValue(); } },
-                { "ephemeral_5m_input_tokens", n => { Ephemeral5mInputTokens = n.GetDoubleValue(); } },
+                { "ephemeral_1h_input_tokens", n => { Ephemeral1hInputTokens = n.GetIntValue(); } },
+                { "ephemeral_5m_input_tokens", n => { Ephemeral5mInputTokens = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -54,8 +54,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteDoubleValue("ephemeral_1h_input_tokens", Ephemeral1hInputTokens);
-            writer.WriteDoubleValue("ephemeral_5m_input_tokens", Ephemeral5mInputTokens);
+            writer.WriteIntValue("ephemeral_1h_input_tokens", Ephemeral1hInputTokens);
+            writer.WriteIntValue("ephemeral_5m_input_tokens", Ephemeral5mInputTokens);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

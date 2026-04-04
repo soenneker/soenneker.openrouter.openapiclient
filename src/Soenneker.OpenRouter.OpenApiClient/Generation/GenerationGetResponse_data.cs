@@ -2,6 +2,7 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
+using Soenneker.OpenRouter.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
 using System;
@@ -124,10 +125,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Generation
         /// <summary>List of provider responses for this generation, including fallback attempts</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Generation.GenerationGetResponse_data_provider_responses>? ProviderResponses { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderResponse>? ProviderResponses { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Generation.GenerationGetResponse_data_provider_responses> ProviderResponses { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderResponse> ProviderResponses { get; set; }
 #endif
         /// <summary>Unique identifier grouping all generations from a single API request</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -224,7 +225,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Generation
                 { "num_search_results", n => { NumSearchResults = n.GetIntValue(); } },
                 { "origin", n => { Origin = n.GetStringValue(); } },
                 { "provider_name", n => { ProviderName = n.GetStringValue(); } },
-                { "provider_responses", n => { ProviderResponses = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Generation.GenerationGetResponse_data_provider_responses>(global::Soenneker.OpenRouter.OpenApiClient.Generation.GenerationGetResponse_data_provider_responses.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "provider_responses", n => { ProviderResponses = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderResponse>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderResponse.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "request_id", n => { RequestId = n.GetStringValue(); } },
                 { "router", n => { Router = n.GetStringValue(); } },
                 { "streamed", n => { Streamed = n.GetBoolValue(); } },
@@ -270,7 +271,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Generation
             writer.WriteIntValue("num_search_results", NumSearchResults);
             writer.WriteStringValue("origin", Origin);
             writer.WriteStringValue("provider_name", ProviderName);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Generation.GenerationGetResponse_data_provider_responses>("provider_responses", ProviderResponses);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderResponse>("provider_responses", ProviderResponses);
             writer.WriteStringValue("request_id", RequestId);
             writer.WriteStringValue("router", Router);
             writer.WriteBoolValue("streamed", Streamed);

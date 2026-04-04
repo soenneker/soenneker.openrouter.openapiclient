@@ -23,13 +23,13 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public List<string> Lines { get; set; }
 #endif
         /// <summary>The new_lines property</summary>
-        public double? NewLines { get; set; }
+        public int? NewLines { get; set; }
         /// <summary>The new_start property</summary>
-        public double? NewStart { get; set; }
+        public int? NewStart { get; set; }
         /// <summary>The old_lines property</summary>
-        public double? OldLines { get; set; }
+        public int? OldLines { get; set; }
         /// <summary>The old_start property</summary>
-        public double? OldStart { get; set; }
+        public int? OldStart { get; set; }
         /// <summary>The type property</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_contentMember10_contentMember4_type? Type { get; set; }
         /// <summary>
@@ -58,10 +58,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "lines", n => { Lines = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "new_lines", n => { NewLines = n.GetDoubleValue(); } },
-                { "new_start", n => { NewStart = n.GetDoubleValue(); } },
-                { "old_lines", n => { OldLines = n.GetDoubleValue(); } },
-                { "old_start", n => { OldStart = n.GetDoubleValue(); } },
+                { "new_lines", n => { NewLines = n.GetIntValue(); } },
+                { "new_start", n => { NewStart = n.GetIntValue(); } },
+                { "old_lines", n => { OldLines = n.GetIntValue(); } },
+                { "old_start", n => { OldStart = n.GetIntValue(); } },
                 { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_contentMember10_contentMember4_type>(); } },
             };
         }
@@ -73,10 +73,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<string>("lines", Lines);
-            writer.WriteDoubleValue("new_lines", NewLines);
-            writer.WriteDoubleValue("new_start", NewStart);
-            writer.WriteDoubleValue("old_lines", OldLines);
-            writer.WriteDoubleValue("old_start", OldStart);
+            writer.WriteIntValue("new_lines", NewLines);
+            writer.WriteIntValue("new_start", NewStart);
+            writer.WriteIntValue("old_lines", OldLines);
+            writer.WriteIntValue("old_start", OldStart);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_contentMember10_contentMember4_type>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }

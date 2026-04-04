@@ -23,9 +23,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public string CitedText { get; set; }
 #endif
         /// <summary>The end_block_index property</summary>
-        public double? EndBlockIndex { get; set; }
+        public int? EndBlockIndex { get; set; }
         /// <summary>The search_result_index property</summary>
-        public double? SearchResultIndex { get; set; }
+        public int? SearchResultIndex { get; set; }
         /// <summary>The source property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -35,7 +35,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public string Source { get; set; }
 #endif
         /// <summary>The start_block_index property</summary>
-        public double? StartBlockIndex { get; set; }
+        public int? StartBlockIndex { get; set; }
         /// <summary>The title property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -72,10 +72,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "cited_text", n => { CitedText = n.GetStringValue(); } },
-                { "end_block_index", n => { EndBlockIndex = n.GetDoubleValue(); } },
-                { "search_result_index", n => { SearchResultIndex = n.GetDoubleValue(); } },
+                { "end_block_index", n => { EndBlockIndex = n.GetIntValue(); } },
+                { "search_result_index", n => { SearchResultIndex = n.GetIntValue(); } },
                 { "source", n => { Source = n.GetStringValue(); } },
-                { "start_block_index", n => { StartBlockIndex = n.GetDoubleValue(); } },
+                { "start_block_index", n => { StartBlockIndex = n.GetIntValue(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
                 { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_contentMember1_citationsMember5_type>(); } },
             };
@@ -88,10 +88,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("cited_text", CitedText);
-            writer.WriteDoubleValue("end_block_index", EndBlockIndex);
-            writer.WriteDoubleValue("search_result_index", SearchResultIndex);
+            writer.WriteIntValue("end_block_index", EndBlockIndex);
+            writer.WriteIntValue("search_result_index", SearchResultIndex);
             writer.WriteStringValue("source", Source);
-            writer.WriteDoubleValue("start_block_index", StartBlockIndex);
+            writer.WriteIntValue("start_block_index", StartBlockIndex);
             writer.WriteStringValue("title", Title);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_contentMember1_citationsMember5_type>("type", Type);
             writer.WriteAdditionalData(AdditionalData);

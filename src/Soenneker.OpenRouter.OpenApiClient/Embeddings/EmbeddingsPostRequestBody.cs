@@ -8,18 +8,19 @@ using System.IO;
 using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Embeddings
 {
+    /// <summary>
+    /// Embeddings request input
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public partial class EmbeddingsPostRequestBody : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The dimensions property</summary>
+        /// <summary>The number of dimensions for the output embeddings</summary>
         public int? Dimensions { get; set; }
-        /// <summary>The encoding_format property</summary>
+        /// <summary>The format of the output embeddings</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Embeddings.EmbeddingsPostRequestBody_encoding_format? EncodingFormat { get; set; }
-        /// <summary>The input property</summary>
+        /// <summary>Text, token, or multimodal input(s) to embed</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.OpenRouter.OpenApiClient.Embeddings.EmbeddingsPostRequestBody.EmbeddingsPostRequestBody_input? Input { get; set; }
@@ -27,7 +28,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Embeddings
 #else
         public global::Soenneker.OpenRouter.OpenApiClient.Embeddings.EmbeddingsPostRequestBody.EmbeddingsPostRequestBody_input Input { get; set; }
 #endif
-        /// <summary>The input_type property</summary>
+        /// <summary>The type of input (e.g. search_query, search_document)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? InputType { get; set; }
@@ -35,7 +36,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Embeddings
 #else
         public string InputType { get; set; }
 #endif
-        /// <summary>The model property</summary>
+        /// <summary>The model to use for embeddings</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Model { get; set; }
@@ -51,7 +52,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Embeddings
 #else
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferences Provider { get; set; }
 #endif
-        /// <summary>The user property</summary>
+        /// <summary>A unique identifier for the end-user</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? User { get; set; }

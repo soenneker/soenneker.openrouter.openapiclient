@@ -23,7 +23,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public string CitedText { get; set; }
 #endif
         /// <summary>The document_index property</summary>
-        public double? DocumentIndex { get; set; }
+        public int? DocumentIndex { get; set; }
         /// <summary>The document_title property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -33,7 +33,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public string DocumentTitle { get; set; }
 #endif
         /// <summary>The end_page_number property</summary>
-        public double? EndPageNumber { get; set; }
+        public int? EndPageNumber { get; set; }
         /// <summary>The file_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -43,7 +43,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public string FileId { get; set; }
 #endif
         /// <summary>The start_page_number property</summary>
-        public double? StartPageNumber { get; set; }
+        public int? StartPageNumber { get; set; }
         /// <summary>The type property</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_contentMember1_citationsMember2_type? Type { get; set; }
         /// <summary>
@@ -72,11 +72,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "cited_text", n => { CitedText = n.GetStringValue(); } },
-                { "document_index", n => { DocumentIndex = n.GetDoubleValue(); } },
+                { "document_index", n => { DocumentIndex = n.GetIntValue(); } },
                 { "document_title", n => { DocumentTitle = n.GetStringValue(); } },
-                { "end_page_number", n => { EndPageNumber = n.GetDoubleValue(); } },
+                { "end_page_number", n => { EndPageNumber = n.GetIntValue(); } },
                 { "file_id", n => { FileId = n.GetStringValue(); } },
-                { "start_page_number", n => { StartPageNumber = n.GetDoubleValue(); } },
+                { "start_page_number", n => { StartPageNumber = n.GetIntValue(); } },
                 { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_contentMember1_citationsMember2_type>(); } },
             };
         }
@@ -88,11 +88,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("cited_text", CitedText);
-            writer.WriteDoubleValue("document_index", DocumentIndex);
+            writer.WriteIntValue("document_index", DocumentIndex);
             writer.WriteStringValue("document_title", DocumentTitle);
-            writer.WriteDoubleValue("end_page_number", EndPageNumber);
+            writer.WriteIntValue("end_page_number", EndPageNumber);
             writer.WriteStringValue("file_id", FileId);
-            writer.WriteDoubleValue("start_page_number", StartPageNumber);
+            writer.WriteIntValue("start_page_number", StartPageNumber);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_contentMember1_citationsMember2_type>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }

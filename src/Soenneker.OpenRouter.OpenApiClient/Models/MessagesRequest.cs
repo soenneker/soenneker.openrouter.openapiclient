@@ -18,10 +18,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The cache_control property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_cache_control? CacheControl { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective? CacheControl { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_cache_control CacheControl { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective CacheControl { get; set; }
 #endif
         /// <summary>The context_management property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -149,7 +149,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public List<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest.MessagesRequest_tools> Tools { get; set; }
 #endif
         /// <summary>The top_k property</summary>
-        public double? TopK { get; set; }
+        public int? TopK { get; set; }
         /// <summary>The top_p property</summary>
         public double? TopP { get; set; }
         /// <summary>Metadata for observability and tracing. Known keys (trace_id, trace_name, span_name, generation_name, parent_span_id) have special handling. Additional keys are passed through as custom metadata to configured broadcast destinations.</summary>
@@ -193,7 +193,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "cache_control", n => { CacheControl = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_cache_control>(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_cache_control.CreateFromDiscriminatorValue); } },
+                { "cache_control", n => { CacheControl = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective>(global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective.CreateFromDiscriminatorValue); } },
                 { "context_management", n => { ContextManagement = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management>(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management.CreateFromDiscriminatorValue); } },
                 { "max_tokens", n => { MaxTokens = n.GetIntValue(); } },
                 { "messages", n => { Messages = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesMessageParam>(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesMessageParam.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -214,7 +214,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "thinking", n => { Thinking = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest.MessagesRequest_thinking>(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest.MessagesRequest_thinking.CreateFromDiscriminatorValue); } },
                 { "tool_choice", n => { ToolChoice = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest.MessagesRequest_tool_choice>(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest.MessagesRequest_tool_choice.CreateFromDiscriminatorValue); } },
                 { "tools", n => { Tools = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest.MessagesRequest_tools>(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest.MessagesRequest_tools.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "top_k", n => { TopK = n.GetDoubleValue(); } },
+                { "top_k", n => { TopK = n.GetIntValue(); } },
                 { "top_p", n => { TopP = n.GetDoubleValue(); } },
                 { "trace", n => { Trace = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_trace>(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_trace.CreateFromDiscriminatorValue); } },
                 { "user", n => { User = n.GetStringValue(); } },
@@ -227,7 +227,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_cache_control>("cache_control", CacheControl);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective>("cache_control", CacheControl);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management>("context_management", ContextManagement);
             writer.WriteIntValue("max_tokens", MaxTokens);
             writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesMessageParam>("messages", Messages);
@@ -248,7 +248,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest.MessagesRequest_thinking>("thinking", Thinking);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest.MessagesRequest_tool_choice>("tool_choice", ToolChoice);
             writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest.MessagesRequest_tools>("tools", Tools);
-            writer.WriteDoubleValue("top_k", TopK);
+            writer.WriteIntValue("top_k", TopK);
             writer.WriteDoubleValue("top_p", TopP);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_trace>("trace", Trace);
             writer.WriteStringValue("user", User);
@@ -410,18 +410,18 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             }
         }
         /// <summary>
-        /// Composed type wrapper for classes <see cref="string"/>, List&lt;global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_systemMember1&gt;
+        /// Composed type wrapper for classes <see cref="string"/>, List&lt;global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextBlockParam&gt;
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class MessagesRequest_system : IComposedTypeWrapper, IParsable
         {
-            /// <summary>Composed type representation for type List&lt;global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_systemMember1&gt;</summary>
+            /// <summary>Composed type representation for type List&lt;global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextBlockParam&gt;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            public List<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_systemMember1>? MessagesRequestSystemMember1 { get; set; }
+            public List<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextBlockParam>? AnthropicTextBlockParam { get; set; }
 #nullable restore
 #else
-            public List<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_systemMember1> MessagesRequestSystemMember1 { get; set; }
+            public List<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextBlockParam> AnthropicTextBlockParam { get; set; }
 #endif
             /// <summary>Composed type representation for type <see cref="string"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -444,9 +444,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 {
                     result.String = stringValue;
                 }
-                else if(parseNode.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_systemMember1>(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_systemMember1.CreateFromDiscriminatorValue)?.AsList() is List<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_systemMember1> messagesRequestSystemMember1Value)
+                else if(parseNode.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextBlockParam>(global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextBlockParam.CreateFromDiscriminatorValue)?.AsList() is List<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextBlockParam> anthropicTextBlockParamValue)
                 {
-                    result.MessagesRequestSystemMember1 = messagesRequestSystemMember1Value;
+                    result.AnthropicTextBlockParam = anthropicTextBlockParamValue;
                 }
                 return result;
             }
@@ -469,9 +469,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 {
                     writer.WriteStringValue(null, String);
                 }
-                else if(MessagesRequestSystemMember1 != null)
+                else if(AnthropicTextBlockParam != null)
                 {
-                    writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_systemMember1>(null, MessagesRequestSystemMember1);
+                    writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextBlockParam>(null, AnthropicTextBlockParam);
                 }
             }
         }

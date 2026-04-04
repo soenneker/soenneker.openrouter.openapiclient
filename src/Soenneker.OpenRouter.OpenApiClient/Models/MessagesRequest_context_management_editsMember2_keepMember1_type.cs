@@ -8,9 +8,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     public enum MessagesRequest_context_management_editsMember2_keepMember1_type
     #pragma warning restore CS1591
     {
-        [EnumMember(Value = "thinking_turns")]
+        [EnumMember(Value = "all")]
         #pragma warning disable CS1591
-        Thinking_turns,
+        All,
         #pragma warning restore CS1591
     }
 }

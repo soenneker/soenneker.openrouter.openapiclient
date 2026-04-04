@@ -27,10 +27,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The trigger property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember3_trigger? Trigger { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicInputTokensTrigger? Trigger { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember3_trigger Trigger { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicInputTokensTrigger Trigger { get; set; }
 #endif
         /// <summary>The type property</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember3_type? Type { get; set; }
@@ -61,7 +61,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             {
                 { "instructions", n => { Instructions = n.GetStringValue(); } },
                 { "pause_after_compaction", n => { PauseAfterCompaction = n.GetBoolValue(); } },
-                { "trigger", n => { Trigger = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember3_trigger>(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember3_trigger.CreateFromDiscriminatorValue); } },
+                { "trigger", n => { Trigger = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicInputTokensTrigger>(global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicInputTokensTrigger.CreateFromDiscriminatorValue); } },
                 { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember3_type>(); } },
             };
         }
@@ -74,7 +74,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("instructions", Instructions);
             writer.WriteBoolValue("pause_after_compaction", PauseAfterCompaction);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember3_trigger>("trigger", Trigger);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicInputTokensTrigger>("trigger", Trigger);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember3_type>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }

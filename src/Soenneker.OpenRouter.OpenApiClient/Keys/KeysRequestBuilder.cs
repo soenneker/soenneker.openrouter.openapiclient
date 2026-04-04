@@ -171,15 +171,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Keys
             public string IncludeDisabled { get; set; }
 #endif
             /// <summary>Number of API keys to skip for pagination</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
             [QueryParameter("offset")]
-            public string? Offset { get; set; }
-#nullable restore
-#else
-            [QueryParameter("offset")]
-            public string Offset { get; set; }
-#endif
+            public int? Offset { get; set; }
         }
     }
 }

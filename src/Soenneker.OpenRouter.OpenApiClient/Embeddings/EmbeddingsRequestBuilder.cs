@@ -43,7 +43,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Embeddings
         /// Submits an embedding request to the embeddings router
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Embeddings.EmbeddingsPostResponse"/></returns>
-        /// <param name="body">The request body</param>
+        /// <param name="body">Embeddings request input</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BadRequestResponse">When receiving a 400 status code</exception>
@@ -86,7 +86,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Embeddings
         /// Submits an embedding request to the embeddings router
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">The request body</param>
+        /// <param name="body">Embeddings request input</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

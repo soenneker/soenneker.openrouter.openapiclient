@@ -85,11 +85,19 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteAdditionalData(AdditionalData);
         }
         /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_contentMember7_contentMember2_content_sourceMember1"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_contentMember7_contentMember2_content_sourceMember2"/>
+        /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicPlainTextSourceResponse"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_contentMember7_contentMember2_content_sourceMember1"/>
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class BaseMessagesResult_contentMember7_contentMember2_content_source : IComposedTypeWrapper, IParsable
         {
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicPlainTextSourceResponse"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicPlainTextSourceResponse? AnthropicPlainTextSourceResponse { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicPlainTextSourceResponse AnthropicPlainTextSourceResponse { get; set; }
+#endif
             /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_contentMember7_contentMember2_content_sourceMember1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -97,14 +105,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #nullable restore
 #else
             public global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_contentMember7_contentMember2_content_sourceMember1 BaseMessagesResultContentMember7ContentMember2ContentSourceMember1 { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_contentMember7_contentMember2_content_sourceMember2"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_contentMember7_contentMember2_content_sourceMember2? BaseMessagesResultContentMember7ContentMember2ContentSourceMember2 { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_contentMember7_contentMember2_content_sourceMember2 BaseMessagesResultContentMember7ContentMember2ContentSourceMember2 { get; set; }
 #endif
             /// <summary>
             /// Creates a new instance of the appropriate class based on discriminator value
@@ -115,8 +115,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             {
                 if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
                 var result = new global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_contentMember7_contentMember2_content.BaseMessagesResult_contentMember7_contentMember2_content_source();
+                result.AnthropicPlainTextSourceResponse = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicPlainTextSourceResponse();
                 result.BaseMessagesResultContentMember7ContentMember2ContentSourceMember1 = new global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_contentMember7_contentMember2_content_sourceMember1();
-                result.BaseMessagesResultContentMember7ContentMember2ContentSourceMember2 = new global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_contentMember7_contentMember2_content_sourceMember2();
                 return result;
             }
             /// <summary>
@@ -125,9 +125,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
             public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
             {
-                if(BaseMessagesResultContentMember7ContentMember2ContentSourceMember1 != null || BaseMessagesResultContentMember7ContentMember2ContentSourceMember2 != null)
+                if(AnthropicPlainTextSourceResponse != null || BaseMessagesResultContentMember7ContentMember2ContentSourceMember1 != null)
                 {
-                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(BaseMessagesResultContentMember7ContentMember2ContentSourceMember1, BaseMessagesResultContentMember7ContentMember2ContentSourceMember2);
+                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(AnthropicPlainTextSourceResponse, BaseMessagesResultContentMember7ContentMember2ContentSourceMember1);
                 }
                 return new Dictionary<string, Action<IParseNode>>();
             }
@@ -138,7 +138,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             public virtual void Serialize(ISerializationWriter writer)
             {
                 if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_contentMember7_contentMember2_content_sourceMember1>(null, BaseMessagesResultContentMember7ContentMember2ContentSourceMember1, BaseMessagesResultContentMember7ContentMember2ContentSourceMember2);
+                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicPlainTextSourceResponse>(null, AnthropicPlainTextSourceResponse, BaseMessagesResultContentMember7ContentMember2ContentSourceMember1);
             }
         }
     }

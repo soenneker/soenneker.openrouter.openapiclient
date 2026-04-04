@@ -7,19 +7,20 @@ using System.IO;
 using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Embeddings
 {
+    /// <summary>
+    /// Token usage statistics
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public partial class EmbeddingsPostResponse_usage : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The cost property</summary>
+        /// <summary>Cost of the request in credits</summary>
         public double? Cost { get; set; }
-        /// <summary>The prompt_tokens property</summary>
-        public double? PromptTokens { get; set; }
-        /// <summary>The total_tokens property</summary>
-        public double? TotalTokens { get; set; }
+        /// <summary>Number of tokens in the input</summary>
+        public int? PromptTokens { get; set; }
+        /// <summary>Total number of tokens used</summary>
+        public int? TotalTokens { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Embeddings.EmbeddingsPostResponse_usage"/> and sets the default values.
         /// </summary>
@@ -46,8 +47,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Embeddings
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "cost", n => { Cost = n.GetDoubleValue(); } },
-                { "prompt_tokens", n => { PromptTokens = n.GetDoubleValue(); } },
-                { "total_tokens", n => { TotalTokens = n.GetDoubleValue(); } },
+                { "prompt_tokens", n => { PromptTokens = n.GetIntValue(); } },
+                { "total_tokens", n => { TotalTokens = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -58,8 +59,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Embeddings
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDoubleValue("cost", Cost);
-            writer.WriteDoubleValue("prompt_tokens", PromptTokens);
-            writer.WriteDoubleValue("total_tokens", TotalTokens);
+            writer.WriteIntValue("prompt_tokens", PromptTokens);
+            writer.WriteIntValue("total_tokens", TotalTokens);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

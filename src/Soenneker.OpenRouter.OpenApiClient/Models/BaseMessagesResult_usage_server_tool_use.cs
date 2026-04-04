@@ -15,9 +15,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The web_fetch_requests property</summary>
-        public double? WebFetchRequests { get; set; }
+        public int? WebFetchRequests { get; set; }
         /// <summary>The web_search_requests property</summary>
-        public double? WebSearchRequests { get; set; }
+        public int? WebSearchRequests { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_usage_server_tool_use"/> and sets the default values.
         /// </summary>
@@ -43,8 +43,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "web_fetch_requests", n => { WebFetchRequests = n.GetDoubleValue(); } },
-                { "web_search_requests", n => { WebSearchRequests = n.GetDoubleValue(); } },
+                { "web_fetch_requests", n => { WebFetchRequests = n.GetIntValue(); } },
+                { "web_search_requests", n => { WebSearchRequests = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -54,8 +54,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteDoubleValue("web_fetch_requests", WebFetchRequests);
-            writer.WriteDoubleValue("web_search_requests", WebSearchRequests);
+            writer.WriteIntValue("web_fetch_requests", WebFetchRequests);
+            writer.WriteIntValue("web_search_requests", WebSearchRequests);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

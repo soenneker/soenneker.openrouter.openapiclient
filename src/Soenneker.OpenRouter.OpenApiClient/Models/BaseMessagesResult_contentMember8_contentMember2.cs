@@ -23,7 +23,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public List<global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_contentMember8_contentMember2_content> Content { get; set; }
 #endif
         /// <summary>The return_code property</summary>
-        public double? ReturnCode { get; set; }
+        public int? ReturnCode { get; set; }
         /// <summary>The stderr property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -68,7 +68,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "content", n => { Content = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_contentMember8_contentMember2_content>(global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_contentMember8_contentMember2_content.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "return_code", n => { ReturnCode = n.GetDoubleValue(); } },
+                { "return_code", n => { ReturnCode = n.GetIntValue(); } },
                 { "stderr", n => { Stderr = n.GetStringValue(); } },
                 { "stdout", n => { Stdout = n.GetStringValue(); } },
                 { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_contentMember8_contentMember2_type>(); } },
@@ -82,7 +82,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_contentMember8_contentMember2_content>("content", Content);
-            writer.WriteDoubleValue("return_code", ReturnCode);
+            writer.WriteIntValue("return_code", ReturnCode);
             writer.WriteStringValue("stderr", Stderr);
             writer.WriteStringValue("stdout", Stdout);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_contentMember8_contentMember2_type>("type", Type);

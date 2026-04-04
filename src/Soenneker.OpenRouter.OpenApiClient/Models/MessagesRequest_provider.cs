@@ -15,7 +15,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     {
         /// <summary>Whether to allow backup providers to serve requests- true: (default) when the primary provider (or your custom providers in &quot;order&quot;) is unavailable, use the next best provider.- false: use only the primary/custom provider, and return the upstream error if it&apos;s unavailable.</summary>
         public bool? AllowFallbacks { get; set; }
-        /// <summary>Data collection setting. If no available model provider meets the requirement, your request will return an error.- allow: (default) allow providers which store user data non-transiently and may train on it- deny: use only providers which do not collect user data.</summary>
+        /// <summary>The data_collection property</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.DataCollection? DataCollection { get; set; }
         /// <summary>Whether to restrict routing to only models that allow text distillation. When true, only models where the author has allowed distillation will be used.</summary>
         public bool? EnforceDistillableText { get; set; }

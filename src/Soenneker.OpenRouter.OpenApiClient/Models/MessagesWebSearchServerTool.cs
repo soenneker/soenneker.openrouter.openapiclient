@@ -18,10 +18,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The parameters property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesWebSearchServerTool_parameters? Parameters { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchConfig? Parameters { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesWebSearchServerTool_parameters Parameters { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchConfig Parameters { get; set; }
 #endif
         /// <summary>The type property</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesWebSearchServerTool_type? Type { get; set; }
@@ -50,7 +50,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "parameters", n => { Parameters = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesWebSearchServerTool_parameters>(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesWebSearchServerTool_parameters.CreateFromDiscriminatorValue); } },
+                { "parameters", n => { Parameters = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchConfig>(global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchConfig.CreateFromDiscriminatorValue); } },
                 { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesWebSearchServerTool_type>(); } },
             };
         }
@@ -61,7 +61,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesWebSearchServerTool_parameters>("parameters", Parameters);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchConfig>("parameters", Parameters);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesWebSearchServerTool_type>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
