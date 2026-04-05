@@ -20,6 +20,7 @@ using Soenneker.OpenRouter.OpenApiClient.Messages;
 using Soenneker.OpenRouter.OpenApiClient.ModelsRequests;
 using Soenneker.OpenRouter.OpenApiClient.Organization;
 using Soenneker.OpenRouter.OpenApiClient.Providers;
+using Soenneker.OpenRouter.OpenApiClient.Rerank;
 using Soenneker.OpenRouter.OpenApiClient.Responses;
 using System.Collections.Generic;
 using System.IO;
@@ -102,6 +103,11 @@ namespace Soenneker.OpenRouter.OpenApiClient
         public global::Soenneker.OpenRouter.OpenApiClient.Providers.ProvidersRequestBuilder Providers
         {
             get => new global::Soenneker.OpenRouter.OpenApiClient.Providers.ProvidersRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The rerank property</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Rerank.RerankRequestBuilder Rerank
+        {
+            get => new global::Soenneker.OpenRouter.OpenApiClient.Rerank.RerankRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The responses property</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Responses.ResponsesRequestBuilder Responses

@@ -28,5 +28,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning disable CS1591
         Video,
         #pragma warning restore CS1591
+        [EnumMember(Value = "rerank")]
+        #pragma warning disable CS1591
+        Rerank,
+        #pragma warning restore CS1591
     }
 }

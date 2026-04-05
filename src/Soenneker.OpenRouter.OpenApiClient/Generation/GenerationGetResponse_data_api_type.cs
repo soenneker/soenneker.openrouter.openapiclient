@@ -15,6 +15,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Generation
         #pragma warning disable CS1591
         Embeddings,
         #pragma warning restore CS1591
+        [EnumMember(Value = "rerank")]
+        #pragma warning disable CS1591
+        Rerank,
+        #pragma warning restore CS1591
         [EnumMember(Value = "video")]
         #pragma warning disable CS1591
         Video,

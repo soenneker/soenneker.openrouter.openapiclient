@@ -21917,7 +21917,8 @@
           "image",
           "embeddings",
           "audio",
-          "video"
+          "video",
+          "rerank"
         ],
         "example": "text",
         "x-speakeasy-unknown-values": "allow"
@@ -25462,6 +25463,7 @@
                           "enum": [
                             "completions",
                             "embeddings",
+                            "rerank",
                             "video",
                             null
                           ],
@@ -30642,6 +30644,380 @@
           "$ref": "#/components/parameters/AppCategories"
         }
       ]
+    },
+    "/rerank": {
+      "post": {
+        "x-speakeasy-name-override": "rerank",
+        "tags": [
+          "Rerank"
+        ],
+        "summary": "Submit a rerank request",
+        "description": "Submits a rerank request to the rerank router",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "model": {
+                    "type": "string",
+                    "description": "The rerank model to use",
+                    "example": "cohere/rerank-v3.5"
+                  },
+                  "query": {
+                    "type": "string",
+                    "description": "The search query to rerank documents against",
+                    "example": "What is the capital of France?"
+                  },
+                  "documents": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "The list of documents to rerank",
+                    "example": [
+                      "Paris is the capital of France.",
+                      "Berlin is the capital of Germany."
+                    ]
+                  },
+                  "top_n": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "exclusiveMinimum": 0,
+                    "description": "Number of most relevant documents to return",
+                    "example": 3
+                  },
+                  "provider": {
+                    "$ref": "#/components/schemas/ProviderPreferences"
+                  }
+                },
+                "required": [
+                  "model",
+                  "query",
+                  "documents"
+                ],
+                "description": "Rerank request input",
+                "example": {
+                  "model": "cohere/rerank-v3.5",
+                  "query": "What is the capital of France?",
+                  "documents": [
+                    "Paris is the capital of France.",
+                    "Berlin is the capital of Germany."
+                  ],
+                  "top_n": 3
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Rerank response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "description": "Unique identifier for the rerank response (ORID format)",
+                      "example": "gen-rerank-1234567890-abc"
+                    },
+                    "model": {
+                      "type": "string",
+                      "description": "The model used for reranking",
+                      "example": "cohere/rerank-v3.5"
+                    },
+                    "provider": {
+                      "type": "string",
+                      "description": "The provider that served the rerank request",
+                      "example": "Cohere"
+                    },
+                    "results": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "index": {
+                            "type": "integer",
+                            "description": "Index of the document in the original input list",
+                            "example": 0
+                          },
+                          "relevance_score": {
+                            "type": "number",
+                            "format": "double",
+                            "description": "Relevance score of the document to the query",
+                            "example": 0.98
+                          },
+                          "document": {
+                            "type": "object",
+                            "properties": {
+                              "text": {
+                                "type": "string",
+                                "description": "The document text",
+                                "example": "Paris is the capital of France."
+                              }
+                            },
+                            "required": [
+                              "text"
+                            ],
+                            "description": "The document object containing the original text"
+                          }
+                        },
+                        "required": [
+                          "index",
+                          "relevance_score",
+                          "document"
+                        ],
+                        "description": "A single rerank result",
+                        "example": {
+                          "index": 0,
+                          "relevance_score": 0.98,
+                          "document": {
+                            "text": "Paris is the capital of France."
+                          }
+                        }
+                      },
+                      "description": "List of rerank results sorted by relevance",
+                      "example": [
+                        {
+                          "index": 0,
+                          "relevance_score": 0.98,
+                          "document": {
+                            "text": "Paris is the capital of France."
+                          }
+                        }
+                      ]
+                    },
+                    "usage": {
+                      "type": "object",
+                      "properties": {
+                        "total_tokens": {
+                          "type": "integer",
+                          "description": "Total number of tokens used",
+                          "example": 150
+                        },
+                        "search_units": {
+                          "type": "integer",
+                          "description": "Number of search units consumed (Cohere billing)",
+                          "example": 1
+                        },
+                        "cost": {
+                          "type": "number",
+                          "format": "double",
+                          "description": "Cost of the request in credits",
+                          "example": 0.001
+                        }
+                      },
+                      "description": "Usage statistics",
+                      "example": {
+                        "total_tokens": 150,
+                        "search_units": 1
+                      }
+                    }
+                  },
+                  "required": [
+                    "model",
+                    "results"
+                  ],
+                  "description": "Rerank response containing ranked results",
+                  "example": {
+                    "id": "gen-rerank-1234567890-abc",
+                    "model": "cohere/rerank-v3.5",
+                    "results": [
+                      {
+                        "index": 0,
+                        "relevance_score": 0.98,
+                        "document": {
+                          "text": "Paris is the capital of France."
+                        }
+                      }
+                    ],
+                    "usage": {
+                      "total_tokens": 150,
+                      "search_units": 1
+                    }
+                  }
+                }
+              },
+              "text/event-stream": {
+                "schema": {
+                  "type": "string",
+                  "description": "Not used for rerank - rerank does not support streaming"
+                },
+                "x-speakeasy-sse-sentinel": "[DONE]"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request - Invalid request parameters or malformed input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Authentication required or invalid credentials",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponse"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Payment Required - Insufficient credits or quota to complete request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaymentRequiredResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found - Resource does not exist",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFoundResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests - Rate limit exceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TooManyRequestsResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error - Unexpected server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerResponse"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Bad Gateway - Provider/upstream API failure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadGatewayResponse"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable - Service temporarily unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceUnavailableResponse"
+                }
+              }
+            }
+          },
+          "524": {
+            "description": "Cloudflare Timeout - Provider request timed out at CDN edge",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EdgeNetworkTimeoutResponse"
+                }
+              }
+            }
+          },
+          "529": {
+            "description": "Provider Overloaded - Provider is temporarily overloaded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProviderOverloadedResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "createRerank"
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
+    },
+    "/rerank/models": {
+      "get": {
+        "tags": [
+          "Rerank"
+        ],
+        "x-speakeasy-name-override": "listModels",
+        "summary": "List all rerank models",
+        "description": "Returns a list of all available rerank models and their properties",
+        "responses": {
+          "200": {
+            "description": "Returns a list of rerank models",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelsListResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request - Invalid request parameters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "listRerankModels"
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     }
   },
   "tags": [
@@ -30696,6 +31072,10 @@
     {
       "name": "Providers",
       "description": "Provider information endpoints"
+    },
+    {
+      "name": "Rerank",
+      "description": "Rerank endpoints"
     },
     {
       "name": "beta.responses",
