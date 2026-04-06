@@ -22126,6 +22126,23 @@
           "repetition_penalty": 1
         }
       },
+      "ModelLinks": {
+        "type": "object",
+        "properties": {
+          "details": {
+            "type": "string",
+            "description": "URL for the model details/endpoints API",
+            "example": "/api/v1/models/openai/gpt-5.4/endpoints"
+          }
+        },
+        "required": [
+          "details"
+        ],
+        "description": "Related API endpoints and resources for this model.",
+        "example": {
+          "details": "/api/v1/models/openai/gpt-5.4/endpoints"
+        }
+      },
       "Model": {
         "type": "object",
         "properties": {
@@ -22198,6 +22215,9 @@
             "nullable": true,
             "description": "The date after which the model may be removed. ISO 8601 date string (YYYY-MM-DD) or null if no expiration.",
             "example": "2025-06-01"
+          },
+          "links": {
+            "$ref": "#/components/schemas/ModelLinks"
           }
         },
         "required": [
@@ -22211,7 +22231,8 @@
           "top_provider",
           "per_request_limits",
           "supported_parameters",
-          "default_parameters"
+          "default_parameters",
+          "links"
         ],
         "description": "Information about an AI model available on OpenRouter",
         "example": {
@@ -22251,7 +22272,10 @@
           ],
           "default_parameters": null,
           "knowledge_cutoff": null,
-          "expiration_date": null
+          "expiration_date": null,
+          "links": {
+            "details": "/api/v1/models/openai/gpt-5.4/endpoints"
+          }
         }
       },
       "ModelsListResponseData": {
@@ -22298,7 +22322,10 @@
             ],
             "default_parameters": null,
             "knowledge_cutoff": null,
-            "expiration_date": null
+            "expiration_date": null,
+            "links": {
+              "details": "/api/v1/models/openai/gpt-5.4/endpoints"
+            }
           }
         ]
       },
@@ -22354,7 +22381,10 @@
               ],
               "default_parameters": null,
               "knowledge_cutoff": null,
-              "expiration_date": null
+              "expiration_date": null,
+              "links": {
+                "details": "/api/v1/models/openai/gpt-5.4/endpoints"
+              }
             }
           ]
         }
@@ -30964,60 +30994,6 @@
           "$ref": "#/components/parameters/AppCategories"
         }
       ]
-    },
-    "/rerank/models": {
-      "get": {
-        "tags": [
-          "Rerank"
-        ],
-        "x-speakeasy-name-override": "listModels",
-        "summary": "List all rerank models",
-        "description": "Returns a list of all available rerank models and their properties",
-        "responses": {
-          "200": {
-            "description": "Returns a list of rerank models",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ModelsListResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request - Invalid request parameters",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BadRequestResponse"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/InternalServerResponse"
-                }
-              }
-            }
-          }
-        },
-        "operationId": "listRerankModels"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
     }
   },
   "tags": [
@@ -31075,7 +31051,7 @@
     },
     {
       "name": "Rerank",
-      "description": "Rerank endpoints"
+      "description": "Reranking endpoints"
     },
     {
       "name": "beta.responses",

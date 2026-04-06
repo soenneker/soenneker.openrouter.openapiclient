@@ -4,7 +4,6 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.OpenRouter.OpenApiClient.Models;
-using Soenneker.OpenRouter.OpenApiClient.Rerank.ModelsRequests;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -18,11 +17,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Rerank
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class RerankRequestBuilder : BaseRequestBuilder
     {
-        /// <summary>The models property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Rerank.ModelsRequests.ModelsRequestBuilder Models
-        {
-            get => new global::Soenneker.OpenRouter.OpenApiClient.Rerank.ModelsRequests.ModelsRequestBuilder(PathParameters, RequestAdapter);
-        }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Rerank.RerankRequestBuilder"/> and sets the default values.
         /// </summary>

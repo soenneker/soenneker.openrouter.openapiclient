@@ -83,6 +83,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public string KnowledgeCutoff { get; set; }
 #endif
+        /// <summary>Related API endpoints and resources for this model.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ModelLinks? Links { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ModelLinks Links { get; set; }
+#endif
         /// <summary>Display name of the model</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -158,6 +166,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "hugging_face_id", n => { HuggingFaceId = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "knowledge_cutoff", n => { KnowledgeCutoff = n.GetStringValue(); } },
+                { "links", n => { Links = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ModelLinks>(global::Soenneker.OpenRouter.OpenApiClient.Models.ModelLinks.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "per_request_limits", n => { PerRequestLimits = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PerRequestLimits>(global::Soenneker.OpenRouter.OpenApiClient.Models.PerRequestLimits.CreateFromDiscriminatorValue); } },
                 { "pricing", n => { Pricing = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing>(global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing.CreateFromDiscriminatorValue); } },
@@ -182,6 +191,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteStringValue("hugging_face_id", HuggingFaceId);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("knowledge_cutoff", KnowledgeCutoff);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ModelLinks>("links", Links);
             writer.WriteStringValue("name", Name);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PerRequestLimits>("per_request_limits", PerRequestLimits);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing>("pricing", Pricing);
