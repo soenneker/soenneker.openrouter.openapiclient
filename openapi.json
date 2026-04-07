@@ -2181,9 +2181,6 @@
               },
               {
                 "nullable": true
-              },
-              {
-                "nullable": true
               }
             ]
           },
@@ -2251,9 +2248,6 @@
                 "enum": [
                   "never"
                 ]
-              },
-              {
-                "nullable": true
               },
               {
                 "nullable": true
@@ -7456,7 +7450,7 @@
           "type": "response.function_call_arguments.delta",
           "item_id": "item-1",
           "output_index": 0,
-          "delta": "{\"city\": \"San",
+          "delta": "{\"city\": \"...\"}",
           "sequence_number": 4
         }
       },
@@ -7475,7 +7469,7 @@
           "type": "response.function_call_arguments.delta",
           "item_id": "item-1",
           "output_index": 0,
-          "delta": "{\"city\": \"San",
+          "delta": "{\"city\": \"...\"}",
           "sequence_number": 4
         }
       },
@@ -19911,7 +19905,7 @@
               "arguments": {
                 "type": "string",
                 "description": "Function arguments as JSON string",
-                "example": "{\"location\": \"San Francisco, CA\"}"
+                "example": "{\"location\": \"...\"}"
               }
             },
             "description": "Function call details"
@@ -19927,7 +19921,7 @@
           "type": "function",
           "function": {
             "name": "get_weather",
-            "arguments": "{\"location\": \"San Francisco, CA\"}"
+            "arguments": "{\"location\": \"...\"}"
           }
         }
       },
@@ -24207,6 +24201,7 @@
       "AppDisplayName": {
         "name": "X-OpenRouter-Title",
         "in": "header",
+        "x-speakeasy-name-override": "appTitle",
         "schema": {
           "type": "string"
         },
@@ -24215,6 +24210,7 @@
       "AppCategories": {
         "name": "X-OpenRouter-Categories",
         "in": "header",
+        "x-speakeasy-name-override": "appCategories",
         "schema": {
           "type": "string"
         },
@@ -25258,6 +25254,8 @@
       "post": {
         "security": [],
         "x-speakeasy-name-override": "createCoinbaseCharge",
+        "x-speakeasy-ignore": true,
+        "x-fern-ignore": true,
         "deprecated": true,
         "tags": [
           "Credits"
@@ -30009,7 +30007,7 @@
                     "type": "string",
                     "format": "uri",
                     "description": "The callback URL to redirect to after authorization. Note, only https URLs on ports 443 and 3000 are allowed.",
-                    "example": "https://myapp.com/auth/callback"
+                    "example": "https://localhost:3000/auth/callback"
                   },
                   "code_challenge": {
                     "type": "string",
@@ -30075,7 +30073,7 @@
                   "callback_url"
                 ],
                 "example": {
-                  "callback_url": "https://myapp.com/auth/callback",
+                  "callback_url": "https://localhost:3000/auth/callback",
                   "code_challenge": "E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM",
                   "code_challenge_method": "S256",
                   "limit": 100
