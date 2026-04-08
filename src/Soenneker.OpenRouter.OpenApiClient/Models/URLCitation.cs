@@ -15,9 +15,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The end_index property</summary>
-        public double? EndIndex { get; set; }
+        public int? EndIndex { get; set; }
         /// <summary>The start_index property</summary>
-        public double? StartIndex { get; set; }
+        public int? StartIndex { get; set; }
         /// <summary>The title property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -61,8 +61,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "end_index", n => { EndIndex = n.GetDoubleValue(); } },
-                { "start_index", n => { StartIndex = n.GetDoubleValue(); } },
+                { "end_index", n => { EndIndex = n.GetIntValue(); } },
+                { "start_index", n => { StartIndex = n.GetIntValue(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
                 { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.URLCitation_type>(); } },
                 { "url", n => { Url = n.GetStringValue(); } },
@@ -75,8 +75,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteDoubleValue("end_index", EndIndex);
-            writer.WriteDoubleValue("start_index", StartIndex);
+            writer.WriteIntValue("end_index", EndIndex);
+            writer.WriteIntValue("start_index", StartIndex);
             writer.WriteStringValue("title", Title);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.URLCitation_type>("type", Type);
             writer.WriteStringValue("url", Url);

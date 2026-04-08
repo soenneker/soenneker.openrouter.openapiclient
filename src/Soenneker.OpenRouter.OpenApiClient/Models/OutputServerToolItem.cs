@@ -24,7 +24,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public string Id { get; set; }
 #endif
         /// <summary>The status property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.OutputServerToolItem_status? Status { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ToolCallStatus? Status { get; set; }
         /// <summary>Server tool type (e.g. openrouter:datetime, openrouter:web_search)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -59,7 +59,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "id", n => { Id = n.GetStringValue(); } },
-                { "status", n => { Status = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputServerToolItem_status>(); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ToolCallStatus>(); } },
                 { "type", n => { Type = n.GetStringValue(); } },
             };
         }
@@ -71,7 +71,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("id", Id);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputServerToolItem_status>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ToolCallStatus>("status", Status);
             writer.WriteStringValue("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }

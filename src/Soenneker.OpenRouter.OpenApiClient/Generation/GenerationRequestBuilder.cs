@@ -104,6 +104,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Generation
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class GenerationRequestBuilderGetQueryParameters 
         {
+            /// <summary>The generation ID</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("id")]

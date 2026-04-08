@@ -33,9 +33,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public List<string> ExcludedDomains { get; set; }
 #endif
         /// <summary>Maximum number of search results to return per search call. Defaults to 5. Applies to Exa, Firecrawl, and Parallel engines; ignored with native provider search.</summary>
-        public double? MaxResults { get; set; }
+        public int? MaxResults { get; set; }
         /// <summary>Maximum total number of search results across all search calls in a single request. Once this limit is reached, the tool will stop returning new results. Useful for controlling cost and context size in agentic loops.</summary>
-        public double? MaxTotalResults { get; set; }
+        public int? MaxTotalResults { get; set; }
         /// <summary>How much context to retrieve per result. Defaults to medium (15000 chars). Only applies when using the Exa engine; ignored with native provider search.</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.SearchQualityLevel? SearchContextSize { get; set; }
         /// <summary>Approximate user location for location-biased results.</summary>
@@ -74,8 +74,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "allowed_domains", n => { AllowedDomains = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "engine", n => { Engine = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchEngineEnum>(); } },
                 { "excluded_domains", n => { ExcludedDomains = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "max_results", n => { MaxResults = n.GetDoubleValue(); } },
-                { "max_total_results", n => { MaxTotalResults = n.GetDoubleValue(); } },
+                { "max_results", n => { MaxResults = n.GetIntValue(); } },
+                { "max_total_results", n => { MaxTotalResults = n.GetIntValue(); } },
                 { "search_context_size", n => { SearchContextSize = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SearchQualityLevel>(); } },
                 { "user_location", n => { UserLocation = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchUserLocationServerTool>(global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchUserLocationServerTool.CreateFromDiscriminatorValue); } },
             };
@@ -90,8 +90,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("allowed_domains", AllowedDomains);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchEngineEnum>("engine", Engine);
             writer.WriteCollectionOfPrimitiveValues<string>("excluded_domains", ExcludedDomains);
-            writer.WriteDoubleValue("max_results", MaxResults);
-            writer.WriteDoubleValue("max_total_results", MaxTotalResults);
+            writer.WriteIntValue("max_results", MaxResults);
+            writer.WriteIntValue("max_total_results", MaxTotalResults);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SearchQualityLevel>("search_context_size", SearchContextSize);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchUserLocationServerTool>("user_location", UserLocation);
             writer.WriteAdditionalData(AdditionalData);

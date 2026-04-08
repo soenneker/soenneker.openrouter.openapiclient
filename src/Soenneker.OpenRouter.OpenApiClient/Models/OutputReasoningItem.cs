@@ -13,8 +13,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class OutputReasoningItem : global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemReasoning, IParsable
     {
-        /// <summary>The format of the reasoning content</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.OutputReasoningItem_format? Format { get; set; }
+        /// <summary>The format property</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningFormat? Format { get; set; }
         /// <summary>A signature for the reasoning content, used for verification</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -41,7 +41,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>(base.GetFieldDeserializers())
             {
-                { "format", n => { Format = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputReasoningItem_format>(); } },
+                { "format", n => { Format = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningFormat>(); } },
                 { "signature", n => { Signature = n.GetStringValue(); } },
             };
         }
@@ -53,7 +53,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             base.Serialize(writer);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputReasoningItem_format>("format", Format);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningFormat>("format", Format);
             writer.WriteStringValue("signature", Signature);
         }
     }

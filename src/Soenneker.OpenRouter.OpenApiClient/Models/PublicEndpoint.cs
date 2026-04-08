@@ -16,7 +16,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The context_length property</summary>
-        public double? ContextLength { get; set; }
+        public int? ContextLength { get; set; }
         /// <summary>Latency percentiles in milliseconds over the last 30 minutes. Latency measures time to first token. Only visible when authenticated with an API key or cookie; returns null for unauthenticated requests.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -26,9 +26,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public global::Soenneker.OpenRouter.OpenApiClient.Models.PercentileStats LatencyLast30m { get; set; }
 #endif
         /// <summary>The max_completion_tokens property</summary>
-        public double? MaxCompletionTokens { get; set; }
+        public int? MaxCompletionTokens { get; set; }
         /// <summary>The max_prompt_tokens property</summary>
-        public double? MaxPromptTokens { get; set; }
+        public int? MaxPromptTokens { get; set; }
         /// <summary>The unique identifier for the model (permaslug)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -124,10 +124,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "context_length", n => { ContextLength = n.GetDoubleValue(); } },
+                { "context_length", n => { ContextLength = n.GetIntValue(); } },
                 { "latency_last_30m", n => { LatencyLast30m = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PercentileStats>(global::Soenneker.OpenRouter.OpenApiClient.Models.PercentileStats.CreateFromDiscriminatorValue); } },
-                { "max_completion_tokens", n => { MaxCompletionTokens = n.GetDoubleValue(); } },
-                { "max_prompt_tokens", n => { MaxPromptTokens = n.GetDoubleValue(); } },
+                { "max_completion_tokens", n => { MaxCompletionTokens = n.GetIntValue(); } },
+                { "max_prompt_tokens", n => { MaxPromptTokens = n.GetIntValue(); } },
                 { "model_id", n => { ModelId = n.GetStringValue(); } },
                 { "model_name", n => { ModelName = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
@@ -151,10 +151,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteDoubleValue("context_length", ContextLength);
+            writer.WriteIntValue("context_length", ContextLength);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PercentileStats>("latency_last_30m", LatencyLast30m);
-            writer.WriteDoubleValue("max_completion_tokens", MaxCompletionTokens);
-            writer.WriteDoubleValue("max_prompt_tokens", MaxPromptTokens);
+            writer.WriteIntValue("max_completion_tokens", MaxCompletionTokens);
+            writer.WriteIntValue("max_prompt_tokens", MaxPromptTokens);
             writer.WriteStringValue("model_id", ModelId);
             writer.WriteStringValue("model_name", ModelName);
             writer.WriteStringValue("name", Name);

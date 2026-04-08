@@ -15,9 +15,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The effort property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningEffortEnum? Effort { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningEffort? Effort { get; set; }
         /// <summary>The summary property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningSummaryVerbosityEnum? Summary { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningSummaryVerbosity? Summary { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BaseReasoningConfig"/> and sets the default values.
         /// </summary>
@@ -43,8 +43,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "effort", n => { Effort = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningEffortEnum>(); } },
-                { "summary", n => { Summary = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningSummaryVerbosityEnum>(); } },
+                { "effort", n => { Effort = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningEffort>(); } },
+                { "summary", n => { Summary = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningSummaryVerbosity>(); } },
             };
         }
         /// <summary>
@@ -54,8 +54,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningEffortEnum>("effort", Effort);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningSummaryVerbosityEnum>("summary", Summary);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningEffort>("effort", Effort);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningSummaryVerbosity>("summary", Summary);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

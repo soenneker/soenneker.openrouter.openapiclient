@@ -34,9 +34,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public List<string> ExcludedDomains { get; set; }
 #endif
         /// <summary>Maximum number of search results to return per search call. Defaults to 5. Applies to Exa, Firecrawl, and Parallel engines; ignored with native provider search.</summary>
-        public double? MaxResults { get; set; }
+        public int? MaxResults { get; set; }
         /// <summary>Maximum total number of search results across all search calls in a single request. Once this limit is reached, the tool will stop returning new results. Useful for controlling cost and context size in agentic loops.</summary>
-        public double? MaxTotalResults { get; set; }
+        public int? MaxTotalResults { get; set; }
         /// <summary>The parameters property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -85,8 +85,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "allowed_domains", n => { AllowedDomains = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "engine", n => { Engine = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchEngineEnum>(); } },
                 { "excluded_domains", n => { ExcludedDomains = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "max_results", n => { MaxResults = n.GetDoubleValue(); } },
-                { "max_total_results", n => { MaxTotalResults = n.GetDoubleValue(); } },
+                { "max_results", n => { MaxResults = n.GetIntValue(); } },
+                { "max_total_results", n => { MaxTotalResults = n.GetIntValue(); } },
                 { "parameters", n => { Parameters = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchConfig>(global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchConfig.CreateFromDiscriminatorValue); } },
                 { "search_context_size", n => { SearchContextSize = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SearchQualityLevel>(); } },
                 { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatWebSearchShorthand_type>(); } },
@@ -103,8 +103,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("allowed_domains", AllowedDomains);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchEngineEnum>("engine", Engine);
             writer.WriteCollectionOfPrimitiveValues<string>("excluded_domains", ExcludedDomains);
-            writer.WriteDoubleValue("max_results", MaxResults);
-            writer.WriteDoubleValue("max_total_results", MaxTotalResults);
+            writer.WriteIntValue("max_results", MaxResults);
+            writer.WriteIntValue("max_total_results", MaxTotalResults);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchConfig>("parameters", Parameters);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SearchQualityLevel>("search_context_size", SearchContextSize);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatWebSearchShorthand_type>("type", Type);

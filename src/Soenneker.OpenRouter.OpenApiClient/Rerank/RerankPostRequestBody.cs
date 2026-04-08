@@ -32,7 +32,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Rerank
 #else
         public string Model { get; set; }
 #endif
-        /// <summary>Provider routing preferences for the request.</summary>
+        /// <summary>The provider property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferences? Provider { get; set; }

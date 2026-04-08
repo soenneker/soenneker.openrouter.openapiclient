@@ -146,6 +146,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Generation
 #else
         public string Router { get; set; }
 #endif
+        /// <summary>Session identifier grouping multiple generations in the same session</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SessionId { get; set; }
+#nullable restore
+#else
+        public string SessionId { get; set; }
+#endif
         /// <summary>Whether the response was streamed</summary>
         public bool? Streamed { get; set; }
         /// <summary>Number of tokens in the completion</summary>
@@ -228,6 +236,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Generation
                 { "provider_responses", n => { ProviderResponses = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderResponse>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderResponse.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "request_id", n => { RequestId = n.GetStringValue(); } },
                 { "router", n => { Router = n.GetStringValue(); } },
+                { "session_id", n => { SessionId = n.GetStringValue(); } },
                 { "streamed", n => { Streamed = n.GetBoolValue(); } },
                 { "tokens_completion", n => { TokensCompletion = n.GetIntValue(); } },
                 { "tokens_prompt", n => { TokensPrompt = n.GetIntValue(); } },
@@ -274,6 +283,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Generation
             writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderResponse>("provider_responses", ProviderResponses);
             writer.WriteStringValue("request_id", RequestId);
             writer.WriteStringValue("router", Router);
+            writer.WriteStringValue("session_id", SessionId);
             writer.WriteBoolValue("streamed", Streamed);
             writer.WriteIntValue("tokens_completion", TokensCompletion);
             writer.WriteIntValue("tokens_prompt", TokensPrompt);

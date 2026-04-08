@@ -15,7 +15,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The input_tokens property</summary>
-        public double? InputTokens { get; set; }
+        public int? InputTokens { get; set; }
         /// <summary>The input_tokens_details property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -25,7 +25,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAIResponsesUsage_input_tokens_details InputTokensDetails { get; set; }
 #endif
         /// <summary>The output_tokens property</summary>
-        public double? OutputTokens { get; set; }
+        public int? OutputTokens { get; set; }
         /// <summary>The output_tokens_details property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -35,7 +35,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAIResponsesUsage_output_tokens_details OutputTokensDetails { get; set; }
 #endif
         /// <summary>The total_tokens property</summary>
-        public double? TotalTokens { get; set; }
+        public int? TotalTokens { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAIResponsesUsage"/> and sets the default values.
         /// </summary>
@@ -61,11 +61,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "input_tokens", n => { InputTokens = n.GetDoubleValue(); } },
+                { "input_tokens", n => { InputTokens = n.GetIntValue(); } },
                 { "input_tokens_details", n => { InputTokensDetails = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAIResponsesUsage_input_tokens_details>(global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAIResponsesUsage_input_tokens_details.CreateFromDiscriminatorValue); } },
-                { "output_tokens", n => { OutputTokens = n.GetDoubleValue(); } },
+                { "output_tokens", n => { OutputTokens = n.GetIntValue(); } },
                 { "output_tokens_details", n => { OutputTokensDetails = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAIResponsesUsage_output_tokens_details>(global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAIResponsesUsage_output_tokens_details.CreateFromDiscriminatorValue); } },
-                { "total_tokens", n => { TotalTokens = n.GetDoubleValue(); } },
+                { "total_tokens", n => { TotalTokens = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -75,11 +75,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteDoubleValue("input_tokens", InputTokens);
+            writer.WriteIntValue("input_tokens", InputTokens);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAIResponsesUsage_input_tokens_details>("input_tokens_details", InputTokensDetails);
-            writer.WriteDoubleValue("output_tokens", OutputTokens);
+            writer.WriteIntValue("output_tokens", OutputTokens);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAIResponsesUsage_output_tokens_details>("output_tokens_details", OutputTokensDetails);
-            writer.WriteDoubleValue("total_tokens", TotalTokens);
+            writer.WriteIntValue("total_tokens", TotalTokens);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

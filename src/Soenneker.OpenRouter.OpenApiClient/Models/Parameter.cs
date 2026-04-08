@@ -44,6 +44,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning disable CS1591
         Max_tokens,
         #pragma warning restore CS1591
+        [EnumMember(Value = "max_completion_tokens")]
+        #pragma warning disable CS1591
+        Max_completion_tokens,
+        #pragma warning restore CS1591
         [EnumMember(Value = "logit_bias")]
         #pragma warning disable CS1591
         Logit_bias,

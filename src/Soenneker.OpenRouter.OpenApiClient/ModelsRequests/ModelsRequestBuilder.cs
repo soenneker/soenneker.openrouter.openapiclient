@@ -130,6 +130,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.ModelsRequests
             [QueryParameter("output_modalities")]
             public string OutputModalities { get; set; }
 #endif
+            /// <summary>Filter models by supported parameter (comma-separated)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("supported_parameters")]

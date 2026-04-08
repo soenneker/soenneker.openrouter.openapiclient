@@ -23,7 +23,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public string FileId { get; set; }
 #endif
         /// <summary>The index property</summary>
-        public double? Index { get; set; }
+        public int? Index { get; set; }
         /// <summary>The type property</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.FilePath_type? Type { get; set; }
         /// <summary>
@@ -52,7 +52,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "file_id", n => { FileId = n.GetStringValue(); } },
-                { "index", n => { Index = n.GetDoubleValue(); } },
+                { "index", n => { Index = n.GetIntValue(); } },
                 { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.FilePath_type>(); } },
             };
         }
@@ -64,7 +64,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("file_id", FileId);
-            writer.WriteDoubleValue("index", Index);
+            writer.WriteIntValue("index", Index);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.FilePath_type>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }

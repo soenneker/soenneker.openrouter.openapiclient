@@ -55,10 +55,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The user_location property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.Preview_WebSearchUserLocation? UserLocation { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicWebSearchToolUserLocation? UserLocation { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.Preview_WebSearchUserLocation UserLocation { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicWebSearchToolUserLocation UserLocation { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember5"/> and sets the default values.
@@ -92,7 +92,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "max_uses", n => { MaxUses = n.GetIntValue(); } },
                 { "name", n => { Name = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember5_name>(); } },
                 { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember5_type>(); } },
-                { "user_location", n => { UserLocation = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.Preview_WebSearchUserLocation>(global::Soenneker.OpenRouter.OpenApiClient.Models.Preview_WebSearchUserLocation.CreateFromDiscriminatorValue); } },
+                { "user_location", n => { UserLocation = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicWebSearchToolUserLocation>(global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicWebSearchToolUserLocation.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -109,7 +109,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteIntValue("max_uses", MaxUses);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember5_name>("name", Name);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember5_type>("type", Type);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.Preview_WebSearchUserLocation>("user_location", UserLocation);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicWebSearchToolUserLocation>("user_location", UserLocation);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

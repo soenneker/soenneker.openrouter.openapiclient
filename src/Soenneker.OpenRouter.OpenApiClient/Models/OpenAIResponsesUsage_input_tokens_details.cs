@@ -15,7 +15,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The cached_tokens property</summary>
-        public double? CachedTokens { get; set; }
+        public int? CachedTokens { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAIResponsesUsage_input_tokens_details"/> and sets the default values.
         /// </summary>
@@ -41,7 +41,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "cached_tokens", n => { CachedTokens = n.GetDoubleValue(); } },
+                { "cached_tokens", n => { CachedTokens = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -51,7 +51,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteDoubleValue("cached_tokens", CachedTokens);
+            writer.WriteIntValue("cached_tokens", CachedTokens);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -58,7 +58,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>The reset_interval property</summary>
+        /// <summary>Interval at which the limit resets (daily, weekly, monthly)</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.GuardrailInterval? ResetInterval { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.CreateGuardrailRequest"/> and sets the default values.

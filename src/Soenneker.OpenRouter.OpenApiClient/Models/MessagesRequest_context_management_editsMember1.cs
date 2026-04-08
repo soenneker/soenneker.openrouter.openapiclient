@@ -183,7 +183,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             }
         }
         /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicInputTokensTrigger"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicToolUsesKeep"/>
+        /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicInputTokensTrigger"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicToolUsesTrigger"/>
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class MessagesRequest_context_management_editsMember1_trigger : IComposedTypeWrapper, IParsable
@@ -196,13 +196,13 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
             public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicInputTokensTrigger AnthropicInputTokensTrigger { get; set; }
 #endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicToolUsesKeep"/></summary>
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicToolUsesTrigger"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicToolUsesKeep? AnthropicToolUsesKeep { get; set; }
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicToolUsesTrigger? AnthropicToolUsesTrigger { get; set; }
 #nullable restore
 #else
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicToolUsesKeep AnthropicToolUsesKeep { get; set; }
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicToolUsesTrigger AnthropicToolUsesTrigger { get; set; }
 #endif
             /// <summary>
             /// Creates a new instance of the appropriate class based on discriminator value
@@ -220,7 +220,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 }
                 else if("tool_uses".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
                 {
-                    result.AnthropicToolUsesKeep = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicToolUsesKeep();
+                    result.AnthropicToolUsesTrigger = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicToolUsesTrigger();
                 }
                 return result;
             }
@@ -234,9 +234,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 {
                     return AnthropicInputTokensTrigger.GetFieldDeserializers();
                 }
-                else if(AnthropicToolUsesKeep != null)
+                else if(AnthropicToolUsesTrigger != null)
                 {
-                    return AnthropicToolUsesKeep.GetFieldDeserializers();
+                    return AnthropicToolUsesTrigger.GetFieldDeserializers();
                 }
                 return new Dictionary<string, Action<IParseNode>>();
             }
@@ -251,9 +251,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 {
                     writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicInputTokensTrigger>(null, AnthropicInputTokensTrigger);
                 }
-                else if(AnthropicToolUsesKeep != null)
+                else if(AnthropicToolUsesTrigger != null)
                 {
-                    writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicToolUsesKeep>(null, AnthropicToolUsesKeep);
+                    writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicToolUsesTrigger>(null, AnthropicToolUsesTrigger);
                 }
             }
         }

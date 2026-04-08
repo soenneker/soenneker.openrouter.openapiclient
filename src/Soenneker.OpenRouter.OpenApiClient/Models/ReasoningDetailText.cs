@@ -16,7 +16,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The format property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningDetailText_format? Format { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningFormat? Format { get; set; }
         /// <summary>The id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -26,7 +26,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public string Id { get; set; }
 #endif
         /// <summary>The index property</summary>
-        public double? Index { get; set; }
+        public int? Index { get; set; }
         /// <summary>The signature property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -70,9 +70,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "format", n => { Format = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningDetailText_format>(); } },
+                { "format", n => { Format = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningFormat>(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
-                { "index", n => { Index = n.GetDoubleValue(); } },
+                { "index", n => { Index = n.GetIntValue(); } },
                 { "signature", n => { Signature = n.GetStringValue(); } },
                 { "text", n => { Text = n.GetStringValue(); } },
                 { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningDetailText_type>(); } },
@@ -85,9 +85,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningDetailText_format>("format", Format);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningFormat>("format", Format);
             writer.WriteStringValue("id", Id);
-            writer.WriteDoubleValue("index", Index);
+            writer.WriteIntValue("index", Index);
             writer.WriteStringValue("signature", Signature);
             writer.WriteStringValue("text", Text);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningDetailText_type>("type", Type);

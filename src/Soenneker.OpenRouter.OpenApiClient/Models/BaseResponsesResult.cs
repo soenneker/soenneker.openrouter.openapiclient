@@ -123,10 +123,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The reasoning property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.BaseResponsesResult_reasoning? Reasoning { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.BaseReasoningConfig? Reasoning { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.BaseResponsesResult_reasoning Reasoning { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.BaseReasoningConfig Reasoning { get; set; }
 #endif
         /// <summary>The safety_identifier property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -137,7 +137,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public string SafetyIdentifier { get; set; }
 #endif
         /// <summary>The service_tier property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ServiceTierEnum? ServiceTier { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ServiceTier? ServiceTier { get; set; }
         /// <summary>The status property</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAIResponsesResponseStatus? Status { get; set; }
         /// <summary>The store property</summary>
@@ -173,7 +173,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The top_p property</summary>
         public double? TopP { get; set; }
         /// <summary>The truncation property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.TruncationEnum? Truncation { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.Truncation? Truncation { get; set; }
         /// <summary>The usage property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -235,9 +235,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "previous_response_id", n => { PreviousResponseId = n.GetStringValue(); } },
                 { "prompt", n => { Prompt = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.StoredPromptTemplate>(global::Soenneker.OpenRouter.OpenApiClient.Models.StoredPromptTemplate.CreateFromDiscriminatorValue); } },
                 { "prompt_cache_key", n => { PromptCacheKey = n.GetStringValue(); } },
-                { "reasoning", n => { Reasoning = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.BaseResponsesResult_reasoning>(global::Soenneker.OpenRouter.OpenApiClient.Models.BaseResponsesResult_reasoning.CreateFromDiscriminatorValue); } },
+                { "reasoning", n => { Reasoning = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.BaseReasoningConfig>(global::Soenneker.OpenRouter.OpenApiClient.Models.BaseReasoningConfig.CreateFromDiscriminatorValue); } },
                 { "safety_identifier", n => { SafetyIdentifier = n.GetStringValue(); } },
-                { "service_tier", n => { ServiceTier = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ServiceTierEnum>(); } },
+                { "service_tier", n => { ServiceTier = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ServiceTier>(); } },
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAIResponsesResponseStatus>(); } },
                 { "store", n => { Store = n.GetBoolValue(); } },
                 { "temperature", n => { Temperature = n.GetDoubleValue(); } },
@@ -246,7 +246,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "tools", n => { Tools = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "top_logprobs", n => { TopLogprobs = n.GetIntValue(); } },
                 { "top_p", n => { TopP = n.GetDoubleValue(); } },
-                { "truncation", n => { Truncation = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.TruncationEnum>(); } },
+                { "truncation", n => { Truncation = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.Truncation>(); } },
                 { "usage", n => { Usage = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAIResponsesUsage>(global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAIResponsesUsage.CreateFromDiscriminatorValue); } },
                 { "user", n => { User = n.GetStringValue(); } },
             };
@@ -278,9 +278,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteStringValue("previous_response_id", PreviousResponseId);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.StoredPromptTemplate>("prompt", Prompt);
             writer.WriteStringValue("prompt_cache_key", PromptCacheKey);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.BaseResponsesResult_reasoning>("reasoning", Reasoning);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.BaseReasoningConfig>("reasoning", Reasoning);
             writer.WriteStringValue("safety_identifier", SafetyIdentifier);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ServiceTierEnum>("service_tier", ServiceTier);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ServiceTier>("service_tier", ServiceTier);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAIResponsesResponseStatus>("status", Status);
             writer.WriteBoolValue("store", Store);
             writer.WriteDoubleValue("temperature", Temperature);
@@ -289,7 +289,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteObjectValue<UntypedNode>("tools", Tools);
             writer.WriteIntValue("top_logprobs", TopLogprobs);
             writer.WriteDoubleValue("top_p", TopP);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.TruncationEnum>("truncation", Truncation);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.Truncation>("truncation", Truncation);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAIResponsesUsage>("usage", Usage);
             writer.WriteStringValue("user", User);
             writer.WriteAdditionalData(AdditionalData);

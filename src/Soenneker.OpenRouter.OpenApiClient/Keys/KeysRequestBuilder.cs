@@ -161,15 +161,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Keys
         public partial class KeysRequestBuilderGetQueryParameters 
         {
             /// <summary>Whether to include disabled API keys in the response</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
             [QueryParameter("include_disabled")]
-            public string? IncludeDisabled { get; set; }
-#nullable restore
-#else
-            [QueryParameter("include_disabled")]
-            public string IncludeDisabled { get; set; }
-#endif
+            public bool? IncludeDisabled { get; set; }
             /// <summary>Number of API keys to skip for pagination</summary>
             [QueryParameter("offset")]
             public int? Offset { get; set; }

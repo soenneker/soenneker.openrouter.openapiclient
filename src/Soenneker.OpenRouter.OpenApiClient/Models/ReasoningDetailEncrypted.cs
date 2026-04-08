@@ -24,7 +24,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public string Data { get; set; }
 #endif
         /// <summary>The format property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningDetailEncrypted_format? Format { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningFormat? Format { get; set; }
         /// <summary>The id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -34,7 +34,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public string Id { get; set; }
 #endif
         /// <summary>The index property</summary>
-        public double? Index { get; set; }
+        public int? Index { get; set; }
         /// <summary>The type property</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningDetailEncrypted_type? Type { get; set; }
         /// <summary>
@@ -63,9 +63,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "data", n => { Data = n.GetStringValue(); } },
-                { "format", n => { Format = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningDetailEncrypted_format>(); } },
+                { "format", n => { Format = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningFormat>(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
-                { "index", n => { Index = n.GetDoubleValue(); } },
+                { "index", n => { Index = n.GetIntValue(); } },
                 { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningDetailEncrypted_type>(); } },
             };
         }
@@ -77,9 +77,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("data", Data);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningDetailEncrypted_format>("format", Format);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningFormat>("format", Format);
             writer.WriteStringValue("id", Id);
-            writer.WriteDoubleValue("index", Index);
+            writer.WriteIntValue("index", Index);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningDetailEncrypted_type>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }

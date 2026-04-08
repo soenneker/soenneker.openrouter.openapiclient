@@ -14,7 +14,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     public partial class MessagesResult : global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult, IParsable
     {
         /// <summary>The provider property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResult_provider? Provider { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderName? Provider { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -33,7 +33,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>(base.GetFieldDeserializers())
             {
-                { "provider", n => { Provider = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResult_provider>(); } },
+                { "provider", n => { Provider = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderName>(); } },
             };
         }
         /// <summary>
@@ -44,7 +44,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             base.Serialize(writer);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResult_provider>("provider", Provider);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderName>("provider", Provider);
         }
     }
 }
