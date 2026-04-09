@@ -5,12 +5,12 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public enum FileCitation_type
+    public enum OutputWebSearchServerToolItem_type
     #pragma warning restore CS1591
     {
-        [EnumMember(Value = "file_citation")]
+        [EnumMember(Value = "openrouter:web_search")]
         #pragma warning disable CS1591
-        File_citation,
+        OpenrouterWeb_search,
         #pragma warning restore CS1591
     }
 }

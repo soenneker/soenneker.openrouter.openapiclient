@@ -19,7 +19,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Keys
     public partial class KeysRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Soenneker.OpenRouter.OpenApiClient.keys.item collection</summary>
-        /// <param name="position">The hash identifier of the API key to update</param>
+        /// <param name="position">The hash identifier of the API key to delete</param>
         /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Keys.Item.WithHashItemRequestBuilder"/></returns>
         public global::Soenneker.OpenRouter.OpenApiClient.Keys.Item.WithHashItemRequestBuilder this[string position]
         {

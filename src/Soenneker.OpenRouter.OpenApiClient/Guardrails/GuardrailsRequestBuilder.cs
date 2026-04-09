@@ -25,7 +25,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Guardrails
             get => new global::Soenneker.OpenRouter.OpenApiClient.Guardrails.Assignments.AssignmentsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Soenneker.OpenRouter.OpenApiClient.guardrails.item collection</summary>
-        /// <param name="position">The unique identifier of the guardrail to retrieve</param>
+        /// <param name="position">The unique identifier of the guardrail to delete</param>
         /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Guardrails.Item.GuardrailsItemRequestBuilder"/></returns>
         public global::Soenneker.OpenRouter.OpenApiClient.Guardrails.Item.GuardrailsItemRequestBuilder this[Guid position]
         {

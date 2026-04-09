@@ -5,12 +5,12 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public enum OutputMessage_type
+    public enum AnthropicBase64PdfSource_type
     #pragma warning restore CS1591
     {
-        [EnumMember(Value = "message")]
+        [EnumMember(Value = "base64")]
         #pragma warning disable CS1591
-        Message,
+        Base64,
         #pragma warning restore CS1591
     }
 }

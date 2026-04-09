@@ -5,12 +5,12 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public enum AnthropicBase64PDFSource_type
+    public enum OpenRouterWebSearchServerTool_type
     #pragma warning restore CS1591
     {
-        [EnumMember(Value = "base64")]
+        [EnumMember(Value = "openrouter:web_search")]
         #pragma warning disable CS1591
-        Base64,
+        OpenrouterWeb_search,
         #pragma warning restore CS1591
     }
 }

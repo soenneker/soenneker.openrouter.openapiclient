@@ -8,13 +8,21 @@ using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     /// <summary>
-    /// A generic OpenRouter server tool output item
+    /// An openrouter:datetime server tool output item
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class OutputServerToolItem : IAdditionalDataHolder, IParsable
+    public partial class OutputDatetimeItem : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>ISO 8601 datetime string</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Datetime { get; set; }
+#nullable restore
+#else
+        public string Datetime { get; set; }
+#endif
         /// <summary>The id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -25,30 +33,32 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #endif
         /// <summary>The status property</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ToolCallStatus? Status { get; set; }
-        /// <summary>Server tool type (e.g. openrouter:datetime, openrouter:web_search)</summary>
+        /// <summary>IANA timezone name</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Type { get; set; }
+        public string? Timezone { get; set; }
 #nullable restore
 #else
-        public string Type { get; set; }
+        public string Timezone { get; set; }
 #endif
+        /// <summary>The type property</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.OutputDatetimeItem_type? Type { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputServerToolItem"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputDatetimeItem"/> and sets the default values.
         /// </summary>
-        public OutputServerToolItem()
+        public OutputDatetimeItem()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputServerToolItem"/></returns>
+        /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputDatetimeItem"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.OpenRouter.OpenApiClient.Models.OutputServerToolItem CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.OpenRouter.OpenApiClient.Models.OutputDatetimeItem CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.OpenRouter.OpenApiClient.Models.OutputServerToolItem();
+            return new global::Soenneker.OpenRouter.OpenApiClient.Models.OutputDatetimeItem();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -58,9 +68,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "datetime", n => { Datetime = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ToolCallStatus>(); } },
-                { "type", n => { Type = n.GetStringValue(); } },
+                { "timezone", n => { Timezone = n.GetStringValue(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputDatetimeItem_type>(); } },
             };
         }
         /// <summary>
@@ -70,9 +82,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteStringValue("datetime", Datetime);
             writer.WriteStringValue("id", Id);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ToolCallStatus>("status", Status);
-            writer.WriteStringValue("type", Type);
+            writer.WriteStringValue("timezone", Timezone);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputDatetimeItem_type>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

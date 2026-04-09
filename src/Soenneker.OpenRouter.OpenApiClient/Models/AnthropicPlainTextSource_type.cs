@@ -5,12 +5,12 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public enum OutputMessage_role
+    public enum AnthropicPlainTextSource_type
     #pragma warning restore CS1591
     {
-        [EnumMember(Value = "assistant")]
+        [EnumMember(Value = "text")]
         #pragma warning disable CS1591
-        Assistant,
+        Text,
         #pragma warning restore CS1591
     }
 }

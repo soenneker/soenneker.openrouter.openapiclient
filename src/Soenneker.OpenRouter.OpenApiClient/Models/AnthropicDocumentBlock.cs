@@ -85,26 +85,26 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteAdditionalData(AdditionalData);
         }
         /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicBase64PDFSource"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicPlainTextSourceResponse"/>
+        /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicBase64PdfSource"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicPlainTextSource"/>
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class AnthropicDocumentBlock_source : IComposedTypeWrapper, IParsable
         {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicBase64PDFSource"/></summary>
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicBase64PdfSource"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicBase64PDFSource? AnthropicBase64PDFSource { get; set; }
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicBase64PdfSource? AnthropicBase64PdfSource { get; set; }
 #nullable restore
 #else
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicBase64PDFSource AnthropicBase64PDFSource { get; set; }
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicBase64PdfSource AnthropicBase64PdfSource { get; set; }
 #endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicPlainTextSourceResponse"/></summary>
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicPlainTextSource"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicPlainTextSourceResponse? AnthropicPlainTextSourceResponse { get; set; }
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicPlainTextSource? AnthropicPlainTextSource { get; set; }
 #nullable restore
 #else
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicPlainTextSourceResponse AnthropicPlainTextSourceResponse { get; set; }
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicPlainTextSource AnthropicPlainTextSource { get; set; }
 #endif
             /// <summary>
             /// Creates a new instance of the appropriate class based on discriminator value
@@ -115,8 +115,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             {
                 if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
                 var result = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicDocumentBlock.AnthropicDocumentBlock_source();
-                result.AnthropicBase64PDFSource = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicBase64PDFSource();
-                result.AnthropicPlainTextSourceResponse = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicPlainTextSourceResponse();
+                result.AnthropicBase64PdfSource = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicBase64PdfSource();
+                result.AnthropicPlainTextSource = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicPlainTextSource();
                 return result;
             }
             /// <summary>
@@ -125,9 +125,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
             public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
             {
-                if(AnthropicBase64PDFSource != null || AnthropicPlainTextSourceResponse != null)
+                if(AnthropicBase64PdfSource != null || AnthropicPlainTextSource != null)
                 {
-                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(AnthropicBase64PDFSource, AnthropicPlainTextSourceResponse);
+                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(AnthropicBase64PdfSource, AnthropicPlainTextSource);
                 }
                 return new Dictionary<string, Action<IParseNode>>();
             }
@@ -138,7 +138,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             public virtual void Serialize(ISerializationWriter writer)
             {
                 if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicBase64PDFSource>(null, AnthropicBase64PDFSource, AnthropicPlainTextSourceResponse);
+                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicBase64PdfSource>(null, AnthropicBase64PdfSource, AnthropicPlainTextSource);
             }
         }
     }

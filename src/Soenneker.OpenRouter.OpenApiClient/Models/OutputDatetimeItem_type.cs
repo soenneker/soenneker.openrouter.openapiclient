@@ -5,12 +5,12 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public enum OpenAIResponsesRefusalContent_type
+    public enum OutputDatetimeItem_type
     #pragma warning restore CS1591
     {
-        [EnumMember(Value = "refusal")]
+        [EnumMember(Value = "openrouter:datetime")]
         #pragma warning disable CS1591
-        Refusal,
+        OpenrouterDatetime,
         #pragma warning restore CS1591
     }
 }

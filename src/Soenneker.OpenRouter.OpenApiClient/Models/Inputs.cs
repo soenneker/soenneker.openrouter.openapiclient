@@ -8,18 +8,18 @@ using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="string"/>, List&lt;global::Soenneker.OpenRouter.OpenApiClient.Models.OutputServerToolItem&gt;
+    /// Composed type wrapper for classes <see cref="string"/>, List&lt;global::Soenneker.OpenRouter.OpenApiClient.Models.OutputWebSearchServerToolItem&gt;
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Inputs : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Composed type representation for type List&lt;global::Soenneker.OpenRouter.OpenApiClient.Models.OutputServerToolItem&gt;</summary>
+        /// <summary>Composed type representation for type List&lt;global::Soenneker.OpenRouter.OpenApiClient.Models.OutputWebSearchServerToolItem&gt;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputServerToolItem>? OutputServerToolItem { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputWebSearchServerToolItem>? OutputWebSearchServerToolItem { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputServerToolItem> OutputServerToolItem { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputWebSearchServerToolItem> OutputWebSearchServerToolItem { get; set; }
 #endif
         /// <summary>Composed type representation for type <see cref="string"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -42,9 +42,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             {
                 result.String = stringValue;
             }
-            else if(parseNode.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputServerToolItem>(global::Soenneker.OpenRouter.OpenApiClient.Models.OutputServerToolItem.CreateFromDiscriminatorValue)?.AsList() is List<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputServerToolItem> outputServerToolItemValue)
+            else if(parseNode.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputWebSearchServerToolItem>(global::Soenneker.OpenRouter.OpenApiClient.Models.OutputWebSearchServerToolItem.CreateFromDiscriminatorValue)?.AsList() is List<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputWebSearchServerToolItem> outputWebSearchServerToolItemValue)
             {
-                result.OutputServerToolItem = outputServerToolItemValue;
+                result.OutputWebSearchServerToolItem = outputWebSearchServerToolItemValue;
             }
             return result;
         }
@@ -67,9 +67,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             {
                 writer.WriteStringValue(null, String);
             }
-            else if(OutputServerToolItem != null)
+            else if(OutputWebSearchServerToolItem != null)
             {
-                writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputServerToolItem>(null, OutputServerToolItem);
+                writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputWebSearchServerToolItem>(null, OutputWebSearchServerToolItem);
             }
         }
     }

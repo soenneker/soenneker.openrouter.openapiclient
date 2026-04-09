@@ -686,7 +686,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             }
         }
         /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.DatetimeServerTool"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember1"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember2"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember3"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember4"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember5"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesWebSearchServerTool"/>
+        /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.DatetimeServerTool"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember1"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember2"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember3"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember4"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember5"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OpenRouterWebSearchServerTool"/>
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class MessagesRequest_tools : IComposedTypeWrapper, IParsable
@@ -739,13 +739,13 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
             public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember5 MessagesRequestToolsMember5 { get; set; }
 #endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesWebSearchServerTool"/></summary>
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OpenRouterWebSearchServerTool"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesWebSearchServerTool? MessagesWebSearchServerTool { get; set; }
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.OpenRouterWebSearchServerTool? OpenRouterWebSearchServerTool { get; set; }
 #nullable restore
 #else
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesWebSearchServerTool MessagesWebSearchServerTool { get; set; }
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.OpenRouterWebSearchServerTool OpenRouterWebSearchServerTool { get; set; }
 #endif
             /// <summary>
             /// Creates a new instance of the appropriate class based on discriminator value
@@ -762,7 +762,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 result.MessagesRequestToolsMember3 = new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember3();
                 result.MessagesRequestToolsMember4 = new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember4();
                 result.MessagesRequestToolsMember5 = new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember5();
-                result.MessagesWebSearchServerTool = new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesWebSearchServerTool();
+                result.OpenRouterWebSearchServerTool = new global::Soenneker.OpenRouter.OpenApiClient.Models.OpenRouterWebSearchServerTool();
                 return result;
             }
             /// <summary>
@@ -771,9 +771,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
             public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
             {
-                if(DatetimeServerTool != null || MessagesRequestToolsMember1 != null || MessagesRequestToolsMember2 != null || MessagesRequestToolsMember3 != null || MessagesRequestToolsMember4 != null || MessagesRequestToolsMember5 != null || MessagesWebSearchServerTool != null)
+                if(DatetimeServerTool != null || MessagesRequestToolsMember1 != null || MessagesRequestToolsMember2 != null || MessagesRequestToolsMember3 != null || MessagesRequestToolsMember4 != null || MessagesRequestToolsMember5 != null || OpenRouterWebSearchServerTool != null)
                 {
-                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(DatetimeServerTool, MessagesRequestToolsMember1, MessagesRequestToolsMember2, MessagesRequestToolsMember3, MessagesRequestToolsMember4, MessagesRequestToolsMember5, MessagesWebSearchServerTool);
+                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(DatetimeServerTool, MessagesRequestToolsMember1, MessagesRequestToolsMember2, MessagesRequestToolsMember3, MessagesRequestToolsMember4, MessagesRequestToolsMember5, OpenRouterWebSearchServerTool);
                 }
                 return new Dictionary<string, Action<IParseNode>>();
             }
@@ -784,7 +784,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             public virtual void Serialize(ISerializationWriter writer)
             {
                 if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.DatetimeServerTool>(null, DatetimeServerTool, MessagesRequestToolsMember1, MessagesRequestToolsMember2, MessagesRequestToolsMember3, MessagesRequestToolsMember4, MessagesRequestToolsMember5, MessagesWebSearchServerTool);
+                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.DatetimeServerTool>(null, DatetimeServerTool, MessagesRequestToolsMember1, MessagesRequestToolsMember2, MessagesRequestToolsMember3, MessagesRequestToolsMember4, MessagesRequestToolsMember5, OpenRouterWebSearchServerTool);
             }
         }
     }

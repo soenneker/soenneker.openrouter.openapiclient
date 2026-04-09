@@ -8,11 +8,19 @@ using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputFileSearchCallItem"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputFunctionCallItem"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputImageGenerationCallItem"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputMessageItem"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputReasoningItem"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputServerToolItem"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputWebSearchCallItem"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputDatetimeItem"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputFileSearchCallItem"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputFunctionCallItem"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputImageGenerationCallItem"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputMessageItem"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputReasoningItem"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputWebSearchCallItem"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputWebSearchServerToolItem"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class OutputItems : IComposedTypeWrapper, IParsable
     {
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputDatetimeItem"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.OutputDatetimeItem? OutputDatetimeItem { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.OutputDatetimeItem OutputDatetimeItem { get; set; }
+#endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputFileSearchCallItem"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -53,14 +61,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public global::Soenneker.OpenRouter.OpenApiClient.Models.OutputReasoningItem OutputReasoningItem { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputServerToolItem"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.OutputServerToolItem? OutputServerToolItem { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.OutputServerToolItem OutputServerToolItem { get; set; }
-#endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputWebSearchCallItem"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -68,6 +68,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.OpenRouter.OpenApiClient.Models.OutputWebSearchCallItem OutputWebSearchCallItem { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputWebSearchServerToolItem"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.OutputWebSearchServerToolItem? OutputWebSearchServerToolItem { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.OutputWebSearchServerToolItem OutputWebSearchServerToolItem { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -77,14 +85,40 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public static global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItems CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
+            var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
             var result = new global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItems();
-            result.OutputFileSearchCallItem = new global::Soenneker.OpenRouter.OpenApiClient.Models.OutputFileSearchCallItem();
-            result.OutputFunctionCallItem = new global::Soenneker.OpenRouter.OpenApiClient.Models.OutputFunctionCallItem();
-            result.OutputImageGenerationCallItem = new global::Soenneker.OpenRouter.OpenApiClient.Models.OutputImageGenerationCallItem();
-            result.OutputMessageItem = new global::Soenneker.OpenRouter.OpenApiClient.Models.OutputMessageItem();
-            result.OutputReasoningItem = new global::Soenneker.OpenRouter.OpenApiClient.Models.OutputReasoningItem();
-            result.OutputServerToolItem = new global::Soenneker.OpenRouter.OpenApiClient.Models.OutputServerToolItem();
-            result.OutputWebSearchCallItem = new global::Soenneker.OpenRouter.OpenApiClient.Models.OutputWebSearchCallItem();
+            if("openrouter:datetime".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                result.OutputDatetimeItem = new global::Soenneker.OpenRouter.OpenApiClient.Models.OutputDatetimeItem();
+            }
+            else if("file_search_call".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                result.OutputFileSearchCallItem = new global::Soenneker.OpenRouter.OpenApiClient.Models.OutputFileSearchCallItem();
+            }
+            else if("function_call".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                result.OutputFunctionCallItem = new global::Soenneker.OpenRouter.OpenApiClient.Models.OutputFunctionCallItem();
+            }
+            else if("image_generation_call".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                result.OutputImageGenerationCallItem = new global::Soenneker.OpenRouter.OpenApiClient.Models.OutputImageGenerationCallItem();
+            }
+            else if("message".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                result.OutputMessageItem = new global::Soenneker.OpenRouter.OpenApiClient.Models.OutputMessageItem();
+            }
+            else if("reasoning".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                result.OutputReasoningItem = new global::Soenneker.OpenRouter.OpenApiClient.Models.OutputReasoningItem();
+            }
+            else if("web_search_call".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                result.OutputWebSearchCallItem = new global::Soenneker.OpenRouter.OpenApiClient.Models.OutputWebSearchCallItem();
+            }
+            else if("openrouter:web_search".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                result.OutputWebSearchServerToolItem = new global::Soenneker.OpenRouter.OpenApiClient.Models.OutputWebSearchServerToolItem();
+            }
             return result;
         }
         /// <summary>
@@ -93,9 +127,37 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(OutputFileSearchCallItem != null || OutputFunctionCallItem != null || OutputImageGenerationCallItem != null || OutputMessageItem != null || OutputReasoningItem != null || OutputServerToolItem != null || OutputWebSearchCallItem != null)
+            if(OutputDatetimeItem != null)
             {
-                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(OutputFileSearchCallItem, OutputFunctionCallItem, OutputImageGenerationCallItem, OutputMessageItem, OutputReasoningItem, OutputServerToolItem, OutputWebSearchCallItem);
+                return OutputDatetimeItem.GetFieldDeserializers();
+            }
+            else if(OutputFileSearchCallItem != null)
+            {
+                return OutputFileSearchCallItem.GetFieldDeserializers();
+            }
+            else if(OutputFunctionCallItem != null)
+            {
+                return OutputFunctionCallItem.GetFieldDeserializers();
+            }
+            else if(OutputImageGenerationCallItem != null)
+            {
+                return OutputImageGenerationCallItem.GetFieldDeserializers();
+            }
+            else if(OutputMessageItem != null)
+            {
+                return OutputMessageItem.GetFieldDeserializers();
+            }
+            else if(OutputReasoningItem != null)
+            {
+                return OutputReasoningItem.GetFieldDeserializers();
+            }
+            else if(OutputWebSearchCallItem != null)
+            {
+                return OutputWebSearchCallItem.GetFieldDeserializers();
+            }
+            else if(OutputWebSearchServerToolItem != null)
+            {
+                return OutputWebSearchServerToolItem.GetFieldDeserializers();
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -106,7 +168,38 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputFileSearchCallItem>(null, OutputFileSearchCallItem, OutputFunctionCallItem, OutputImageGenerationCallItem, OutputMessageItem, OutputReasoningItem, OutputServerToolItem, OutputWebSearchCallItem);
+            if(OutputDatetimeItem != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputDatetimeItem>(null, OutputDatetimeItem);
+            }
+            else if(OutputFileSearchCallItem != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputFileSearchCallItem>(null, OutputFileSearchCallItem);
+            }
+            else if(OutputFunctionCallItem != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputFunctionCallItem>(null, OutputFunctionCallItem);
+            }
+            else if(OutputImageGenerationCallItem != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputImageGenerationCallItem>(null, OutputImageGenerationCallItem);
+            }
+            else if(OutputMessageItem != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputMessageItem>(null, OutputMessageItem);
+            }
+            else if(OutputReasoningItem != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputReasoningItem>(null, OutputReasoningItem);
+            }
+            else if(OutputWebSearchCallItem != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputWebSearchCallItem>(null, OutputWebSearchCallItem);
+            }
+            else if(OutputWebSearchServerToolItem != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputWebSearchServerToolItem>(null, OutputWebSearchServerToolItem);
+            }
         }
     }
 }

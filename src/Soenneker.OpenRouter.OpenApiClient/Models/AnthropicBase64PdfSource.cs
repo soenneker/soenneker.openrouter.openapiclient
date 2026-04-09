@@ -9,7 +9,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class AnthropicPlainTextSourceResponse : IAdditionalDataHolder, IParsable
+    public partial class AnthropicBase64PdfSource : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -23,25 +23,25 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public string Data { get; set; }
 #endif
         /// <summary>The media_type property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicPlainTextSourceResponse_media_type? MediaType { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicBase64PdfSource_media_type? MediaType { get; set; }
         /// <summary>The type property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicPlainTextSourceResponse_type? Type { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicBase64PdfSource_type? Type { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicPlainTextSourceResponse"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicBase64PdfSource"/> and sets the default values.
         /// </summary>
-        public AnthropicPlainTextSourceResponse()
+        public AnthropicBase64PdfSource()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicPlainTextSourceResponse"/></returns>
+        /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicBase64PdfSource"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicPlainTextSourceResponse CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicBase64PdfSource CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicPlainTextSourceResponse();
+            return new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicBase64PdfSource();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -52,8 +52,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "data", n => { Data = n.GetStringValue(); } },
-                { "media_type", n => { MediaType = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicPlainTextSourceResponse_media_type>(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicPlainTextSourceResponse_type>(); } },
+                { "media_type", n => { MediaType = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicBase64PdfSource_media_type>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicBase64PdfSource_type>(); } },
             };
         }
         /// <summary>
@@ -64,8 +64,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("data", Data);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicPlainTextSourceResponse_media_type>("media_type", MediaType);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicPlainTextSourceResponse_type>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicBase64PdfSource_media_type>("media_type", MediaType);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicBase64PdfSource_type>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -8,39 +8,41 @@ using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     /// <summary>
-    /// OpenRouter built-in server tool: searches the web for current information
+    /// An openrouter:web_search server tool output item
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class MessagesWebSearchServerTool : IAdditionalDataHolder, IParsable
+    public partial class OutputWebSearchServerToolItem : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The parameters property</summary>
+        /// <summary>The id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchConfig? Parameters { get; set; }
+        public string? Id { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchConfig Parameters { get; set; }
+        public string Id { get; set; }
 #endif
+        /// <summary>The status property</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ToolCallStatus? Status { get; set; }
         /// <summary>The type property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesWebSearchServerTool_type? Type { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.OutputWebSearchServerToolItem_type? Type { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesWebSearchServerTool"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputWebSearchServerToolItem"/> and sets the default values.
         /// </summary>
-        public MessagesWebSearchServerTool()
+        public OutputWebSearchServerToolItem()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesWebSearchServerTool"/></returns>
+        /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputWebSearchServerToolItem"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesWebSearchServerTool CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.OpenRouter.OpenApiClient.Models.OutputWebSearchServerToolItem CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesWebSearchServerTool();
+            return new global::Soenneker.OpenRouter.OpenApiClient.Models.OutputWebSearchServerToolItem();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -50,8 +52,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "parameters", n => { Parameters = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchConfig>(global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchConfig.CreateFromDiscriminatorValue); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesWebSearchServerTool_type>(); } },
+                { "id", n => { Id = n.GetStringValue(); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ToolCallStatus>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputWebSearchServerToolItem_type>(); } },
             };
         }
         /// <summary>
@@ -61,8 +64,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchConfig>("parameters", Parameters);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesWebSearchServerTool_type>("type", Type);
+            writer.WriteStringValue("id", Id);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ToolCallStatus>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputWebSearchServerToolItem_type>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -9,45 +9,39 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class ResponseOutputText_logprobs_top_logprobs : IAdditionalDataHolder, IParsable
+    public partial class AnthropicPlainTextSource : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The bytes property</summary>
+        /// <summary>The data property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<int?>? Bytes { get; set; }
+        public string? Data { get; set; }
 #nullable restore
 #else
-        public List<int?> Bytes { get; set; }
+        public string Data { get; set; }
 #endif
-        /// <summary>The logprob property</summary>
-        public double? Logprob { get; set; }
-        /// <summary>The token property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Token { get; set; }
-#nullable restore
-#else
-        public string Token { get; set; }
-#endif
+        /// <summary>The media_type property</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicPlainTextSource_media_type? MediaType { get; set; }
+        /// <summary>The type property</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicPlainTextSource_type? Type { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ResponseOutputText_logprobs_top_logprobs"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicPlainTextSource"/> and sets the default values.
         /// </summary>
-        public ResponseOutputText_logprobs_top_logprobs()
+        public AnthropicPlainTextSource()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ResponseOutputText_logprobs_top_logprobs"/></returns>
+        /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicPlainTextSource"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.OpenRouter.OpenApiClient.Models.ResponseOutputText_logprobs_top_logprobs CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicPlainTextSource CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.OpenRouter.OpenApiClient.Models.ResponseOutputText_logprobs_top_logprobs();
+            return new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicPlainTextSource();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -57,9 +51,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "bytes", n => { Bytes = n.GetCollectionOfPrimitiveValues<int?>()?.AsList(); } },
-                { "logprob", n => { Logprob = n.GetDoubleValue(); } },
-                { "token", n => { Token = n.GetStringValue(); } },
+                { "data", n => { Data = n.GetStringValue(); } },
+                { "media_type", n => { MediaType = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicPlainTextSource_media_type>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicPlainTextSource_type>(); } },
             };
         }
         /// <summary>
@@ -69,9 +63,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfPrimitiveValues<int?>("bytes", Bytes);
-            writer.WriteDoubleValue("logprob", Logprob);
-            writer.WriteStringValue("token", Token);
+            writer.WriteStringValue("data", Data);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicPlainTextSource_media_type>("media_type", MediaType);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicPlainTextSource_type>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }
