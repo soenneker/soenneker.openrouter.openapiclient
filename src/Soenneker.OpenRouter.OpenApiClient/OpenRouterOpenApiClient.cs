@@ -22,6 +22,7 @@ using Soenneker.OpenRouter.OpenApiClient.Organization;
 using Soenneker.OpenRouter.OpenApiClient.Providers;
 using Soenneker.OpenRouter.OpenApiClient.Rerank;
 using Soenneker.OpenRouter.OpenApiClient.Responses;
+using Soenneker.OpenRouter.OpenApiClient.Videos;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -113,6 +114,11 @@ namespace Soenneker.OpenRouter.OpenApiClient
         public global::Soenneker.OpenRouter.OpenApiClient.Responses.ResponsesRequestBuilder Responses
         {
             get => new global::Soenneker.OpenRouter.OpenApiClient.Responses.ResponsesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The videos property</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Videos.VideosRequestBuilder Videos
+        {
+            get => new global::Soenneker.OpenRouter.OpenApiClient.Videos.VideosRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.OpenRouterOpenApiClient"/> and sets the default values.
