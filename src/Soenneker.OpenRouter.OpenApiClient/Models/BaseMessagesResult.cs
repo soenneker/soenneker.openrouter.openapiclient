@@ -49,6 +49,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #endif
         /// <summary>The role property</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_role? Role { get; set; }
+        /// <summary>Structured information about a refusal</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicRefusalStopDetails? StopDetails { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicRefusalStopDetails StopDetails { get; set; }
+#endif
         /// <summary>The stop_reason property</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ORAnthropicStopReason? StopReason { get; set; }
         /// <summary>The stop_sequence property</summary>
@@ -99,6 +107,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "model", n => { Model = n.GetStringValue(); } },
                 { "role", n => { Role = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_role>(); } },
+                { "stop_details", n => { StopDetails = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicRefusalStopDetails>(global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicRefusalStopDetails.CreateFromDiscriminatorValue); } },
                 { "stop_reason", n => { StopReason = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ORAnthropicStopReason>(); } },
                 { "stop_sequence", n => { StopSequence = n.GetStringValue(); } },
                 { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_type>(); } },
@@ -117,6 +126,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("model", Model);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_role>("role", Role);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicRefusalStopDetails>("stop_details", StopDetails);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ORAnthropicStopReason>("stop_reason", StopReason);
             writer.WriteStringValue("stop_sequence", StopSequence);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult_type>("type", Type);
