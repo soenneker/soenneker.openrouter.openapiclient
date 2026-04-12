@@ -7868,6 +7868,37 @@
         ],
         "type": "object"
       },
+      "FrameImage": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ContentPartImage"
+          },
+          {
+            "properties": {
+              "frame_type": {
+                "description": "Whether this image represents the first or last frame of the video",
+                "enum": [
+                  "first_frame",
+                  "last_frame"
+                ],
+                "example": "first_frame",
+                "type": "string",
+                "x-speakeasy-unknown-values": "allow"
+              }
+            },
+            "required": [
+              "frame_type"
+            ],
+            "type": "object"
+          }
+        ],
+        "example": {
+          "image_url": {
+            "url": "https://example.com/image.png"
+          },
+          "type": "image_url"
+        }
+      },
       "FunctionCallArgsDeltaEvent": {
         "allOf": [
           {
@@ -17776,6 +17807,13 @@
             "exclusiveMinimum": true,
             "minimum": 0,
             "type": "integer"
+          },
+          "frame_images": {
+            "description": "Images to use as the first and/or last frame of the generated video. Each image must specify a frame_type of first_frame or last_frame.",
+            "items": {
+              "$ref": "#/components/schemas/FrameImage"
+            },
+            "type": "array"
           },
           "generate_audio": {
             "description": "Whether to generate audio alongside the video. Defaults to true for models that support audio output, false otherwise.",
