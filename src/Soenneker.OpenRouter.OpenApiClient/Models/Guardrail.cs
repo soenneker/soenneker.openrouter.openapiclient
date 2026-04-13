@@ -50,6 +50,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public bool? EnforceZdr { get; set; }
         /// <summary>Unique identifier for the guardrail</summary>
         public Guid? Id { get; set; }
+        /// <summary>Array of model canonical_slugs to exclude from routing</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? IgnoredModels { get; set; }
+#nullable restore
+#else
+        public List<string> IgnoredModels { get; set; }
+#endif
         /// <summary>List of provider IDs to exclude from routing</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -109,6 +117,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "enforce_zdr", n => { EnforceZdr = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
+                { "ignored_models", n => { IgnoredModels = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "ignored_providers", n => { IgnoredProviders = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "limit_usd", n => { LimitUsd = n.GetDoubleValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
@@ -129,6 +138,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteStringValue("description", Description);
             writer.WriteBoolValue("enforce_zdr", EnforceZdr);
             writer.WriteGuidValue("id", Id);
+            writer.WriteCollectionOfPrimitiveValues<string>("ignored_models", IgnoredModels);
             writer.WriteCollectionOfPrimitiveValues<string>("ignored_providers", IgnoredProviders);
             writer.WriteDoubleValue("limit_usd", LimitUsd);
             writer.WriteStringValue("name", Name);

@@ -40,6 +40,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #endif
         /// <summary>Whether to enforce zero data retention</summary>
         public bool? EnforceZdr { get; set; }
+        /// <summary>Array of model identifiers to exclude from routing (slug or canonical_slug accepted)</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? IgnoredModels { get; set; }
+#nullable restore
+#else
+        public List<string> IgnoredModels { get; set; }
+#endif
         /// <summary>List of provider IDs to exclude from routing</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -89,6 +97,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "allowed_providers", n => { AllowedProviders = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "enforce_zdr", n => { EnforceZdr = n.GetBoolValue(); } },
+                { "ignored_models", n => { IgnoredModels = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "ignored_providers", n => { IgnoredProviders = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "limit_usd", n => { LimitUsd = n.GetDoubleValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
@@ -106,6 +115,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("allowed_providers", AllowedProviders);
             writer.WriteStringValue("description", Description);
             writer.WriteBoolValue("enforce_zdr", EnforceZdr);
+            writer.WriteCollectionOfPrimitiveValues<string>("ignored_models", IgnoredModels);
             writer.WriteCollectionOfPrimitiveValues<string>("ignored_providers", IgnoredProviders);
             writer.WriteDoubleValue("limit_usd", LimitUsd);
             writer.WriteStringValue("name", Name);

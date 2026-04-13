@@ -18,14 +18,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_aspect_ratio? AspectRatio { get; set; }
         /// <summary>Duration of the generated video in seconds</summary>
         public int? Duration { get; set; }
-        /// <summary>Images to use as the first and/or last frame of the generated video. Each image must specify a frame_type of first_frame or last_frame.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.FrameImage>? FrameImages { get; set; }
-#nullable restore
-#else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.FrameImage> FrameImages { get; set; }
-#endif
         /// <summary>Whether to generate audio alongside the video. Defaults to true for models that support audio output, false otherwise.</summary>
         public bool? GenerateAudio { get; set; }
         /// <summary>Reference images to guide video generation</summary>
@@ -99,7 +91,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             {
                 { "aspect_ratio", n => { AspectRatio = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_aspect_ratio>(); } },
                 { "duration", n => { Duration = n.GetIntValue(); } },
-                { "frame_images", n => { FrameImages = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.FrameImage>(global::Soenneker.OpenRouter.OpenApiClient.Models.FrameImage.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "generate_audio", n => { GenerateAudio = n.GetBoolValue(); } },
                 { "input_references", n => { InputReferences = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentPartImage>(global::Soenneker.OpenRouter.OpenApiClient.Models.ContentPartImage.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "model", n => { Model = n.GetStringValue(); } },
@@ -119,7 +110,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_aspect_ratio>("aspect_ratio", AspectRatio);
             writer.WriteIntValue("duration", Duration);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.FrameImage>("frame_images", FrameImages);
             writer.WriteBoolValue("generate_audio", GenerateAudio);
             writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentPartImage>("input_references", InputReferences);
             writer.WriteStringValue("model", Model);
