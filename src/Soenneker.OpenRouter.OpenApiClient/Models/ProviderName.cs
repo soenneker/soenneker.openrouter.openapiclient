@@ -104,6 +104,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning disable CS1591
         DeepSeek,
         #pragma warning restore CS1591
+        [EnumMember(Value = "DekaLLM")]
+        #pragma warning disable CS1591
+        DekaLLM,
+        #pragma warning restore CS1591
         [EnumMember(Value = "Featherless")]
         #pragma warning disable CS1591
         Featherless,
@@ -239,6 +243,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         [EnumMember(Value = "Phala")]
         #pragma warning disable CS1591
         Phala,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Recraft")]
+        #pragma warning disable CS1591
+        Recraft,
         #pragma warning restore CS1591
         [EnumMember(Value = "Reka")]
         #pragma warning disable CS1591

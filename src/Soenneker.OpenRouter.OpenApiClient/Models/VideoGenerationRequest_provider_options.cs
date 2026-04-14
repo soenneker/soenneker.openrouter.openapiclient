@@ -239,6 +239,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider_options_deepseek Deepseek { get; set; }
 #endif
+        /// <summary>The dekallm property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider_options_dekallm? Dekallm { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider_options_dekallm Dekallm { get; set; }
+#endif
         /// <summary>The enfer property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -639,6 +647,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider_options_phala Phala { get; set; }
 #endif
+        /// <summary>The recraft property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider_options_recraft? Recraft { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider_options_recraft Recraft { get; set; }
+#endif
         /// <summary>The recursal property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -900,6 +916,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "crusoe", n => { Crusoe = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider_options_crusoe>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider_options_crusoe.CreateFromDiscriminatorValue); } },
                 { "deepinfra", n => { Deepinfra = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider_options_deepinfra>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider_options_deepinfra.CreateFromDiscriminatorValue); } },
                 { "deepseek", n => { Deepseek = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider_options_deepseek>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider_options_deepseek.CreateFromDiscriminatorValue); } },
+                { "dekallm", n => { Dekallm = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider_options_dekallm>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider_options_dekallm.CreateFromDiscriminatorValue); } },
                 { "enfer", n => { Enfer = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider_options_enfer>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider_options_enfer.CreateFromDiscriminatorValue); } },
                 { "fake-provider", n => { FakeProvider = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider_options_fakeProvider>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider_options_fakeProvider.CreateFromDiscriminatorValue); } },
                 { "featherless", n => { Featherless = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider_options_featherless>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider_options_featherless.CreateFromDiscriminatorValue); } },
@@ -950,6 +967,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "parasail", n => { Parasail = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider_options_parasail>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider_options_parasail.CreateFromDiscriminatorValue); } },
                 { "perplexity", n => { Perplexity = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider_options_perplexity>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider_options_perplexity.CreateFromDiscriminatorValue); } },
                 { "phala", n => { Phala = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider_options_phala>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider_options_phala.CreateFromDiscriminatorValue); } },
+                { "recraft", n => { Recraft = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider_options_recraft>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider_options_recraft.CreateFromDiscriminatorValue); } },
                 { "recursal", n => { Recursal = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider_options_recursal>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider_options_recursal.CreateFromDiscriminatorValue); } },
                 { "reflection", n => { Reflection = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider_options_reflection>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider_options_reflection.CreateFromDiscriminatorValue); } },
                 { "reka", n => { Reka = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider_options_reka>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider_options_reka.CreateFromDiscriminatorValue); } },
@@ -1013,6 +1031,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider_options_crusoe>("crusoe", Crusoe);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider_options_deepinfra>("deepinfra", Deepinfra);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider_options_deepseek>("deepseek", Deepseek);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider_options_dekallm>("dekallm", Dekallm);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider_options_enfer>("enfer", Enfer);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider_options_fakeProvider>("fake-provider", FakeProvider);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider_options_featherless>("featherless", Featherless);
@@ -1063,6 +1082,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider_options_parasail>("parasail", Parasail);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider_options_perplexity>("perplexity", Perplexity);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider_options_phala>("phala", Phala);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider_options_recraft>("recraft", Recraft);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider_options_recursal>("recursal", Recursal);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider_options_reflection>("reflection", Reflection);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider_options_reka>("reka", Reka);

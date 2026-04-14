@@ -1538,6 +1538,43 @@
         ],
         "type": "object"
       },
+      "AnthropicRefusalStopDetails": {
+        "description": "Structured information about a refusal",
+        "example": {
+          "category": "cyber",
+          "explanation": "The request was refused due to policy.",
+          "type": "refusal"
+        },
+        "nullable": true,
+        "properties": {
+          "category": {
+            "enum": [
+              "cyber",
+              "bio",
+              null
+            ],
+            "nullable": true,
+            "type": "string",
+            "x-speakeasy-unknown-values": "allow"
+          },
+          "explanation": {
+            "nullable": true,
+            "type": "string"
+          },
+          "type": {
+            "enum": [
+              "refusal"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "category",
+          "explanation"
+        ],
+        "type": "object"
+      },
       "AnthropicSearchResultBlockParam": {
         "example": {
           "content": [
@@ -3386,6 +3423,7 @@
           "id": "msg_01XFDUDYJgAACzvnptvVoYEL",
           "model": "claude-sonnet-4-5-20250929",
           "role": "assistant",
+          "stop_details": null,
           "stop_reason": "end_turn",
           "stop_sequence": null,
           "type": "message",
@@ -3417,6 +3455,9 @@
               "assistant"
             ],
             "type": "string"
+          },
+          "stop_details": {
+            "$ref": "#/components/schemas/AnthropicRefusalStopDetails"
           },
           "stop_reason": {
             "$ref": "#/components/schemas/ORAnthropicStopReason"
@@ -3471,6 +3512,7 @@
           "content",
           "model",
           "stop_reason",
+          "stop_details",
           "stop_sequence",
           "usage"
         ],
@@ -5052,6 +5094,9 @@
             "$ref": "#/components/schemas/DatetimeServerTool"
           },
           {
+            "$ref": "#/components/schemas/ChatSearchModelsServerTool"
+          },
+          {
             "$ref": "#/components/schemas/OpenRouterWebSearchServerTool"
           },
           {
@@ -5693,6 +5738,30 @@
           "model",
           "object",
           "system_fingerprint"
+        ],
+        "type": "object"
+      },
+      "ChatSearchModelsServerTool": {
+        "description": "OpenRouter built-in server tool: searches and filters AI models available on OpenRouter",
+        "example": {
+          "parameters": {
+            "max_results": 5
+          },
+          "type": "openrouter:experimental__search_models"
+        },
+        "properties": {
+          "parameters": {
+            "$ref": "#/components/schemas/SearchModelsServerToolConfig"
+          },
+          "type": {
+            "enum": [
+              "openrouter:experimental__search_models"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "type"
         ],
         "type": "object"
       },
@@ -7864,6 +7933,37 @@
         ],
         "type": "object"
       },
+      "FrameImage": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ContentPartImage"
+          },
+          {
+            "properties": {
+              "frame_type": {
+                "description": "Whether this image represents the first or last frame of the video",
+                "enum": [
+                  "first_frame",
+                  "last_frame"
+                ],
+                "example": "first_frame",
+                "type": "string",
+                "x-speakeasy-unknown-values": "allow"
+              }
+            },
+            "required": [
+              "frame_type"
+            ],
+            "type": "object"
+          }
+        ],
+        "example": {
+          "image_url": {
+            "url": "https://example.com/image.png"
+          },
+          "type": "image_url"
+        }
+      },
       "FunctionCallArgsDeltaEvent": {
         "allOf": [
           {
@@ -9895,6 +9995,7 @@
         "description": "Event sent when the message metadata changes (e.g., stop_reason)",
         "example": {
           "delta": {
+            "stop_details": null,
             "stop_reason": "end_turn",
             "stop_sequence": null
           },
@@ -9909,6 +10010,9 @@
               "container": {
                 "$ref": "#/components/schemas/AnthropicContainer"
               },
+              "stop_details": {
+                "$ref": "#/components/schemas/AnthropicRefusalStopDetails"
+              },
               "stop_reason": {
                 "$ref": "#/components/schemas/ORAnthropicStopReason"
               },
@@ -9919,6 +10023,7 @@
             },
             "required": [
               "container",
+              "stop_details",
               "stop_reason",
               "stop_sequence"
             ],
@@ -11041,6 +11146,9 @@
                   "$ref": "#/components/schemas/DatetimeServerTool"
                 },
                 {
+                  "$ref": "#/components/schemas/ChatSearchModelsServerTool"
+                },
+                {
                   "$ref": "#/components/schemas/OpenRouterWebSearchServerTool"
                 }
               ]
@@ -11160,6 +11268,7 @@
           "id": "msg_01XFDUDYJgAACzvnptvVoYEL",
           "model": "claude-sonnet-4-5-20250929",
           "role": "assistant",
+          "stop_details": null,
           "stop_reason": "end_turn",
           "stop_sequence": null,
           "type": "message",
@@ -11183,6 +11292,7 @@
             "id": "msg_01XFDUDYJgAACzvnptvVoYEL",
             "model": "claude-sonnet-4-5-20250929",
             "role": "assistant",
+            "stop_details": null,
             "stop_reason": null,
             "stop_sequence": null,
             "type": "message",
@@ -11265,6 +11375,7 @@
                   "Crusoe",
                   "DeepInfra",
                   "DeepSeek",
+                  "DekaLLM",
                   "Featherless",
                   "Fireworks",
                   "Friendli",
@@ -11299,6 +11410,7 @@
                   "Parasail",
                   "Perplexity",
                   "Phala",
+                  "Recraft",
                   "Reka",
                   "Relace",
                   "SambaNova",
@@ -11326,6 +11438,9 @@
                   "assistant"
                 ],
                 "type": "string"
+              },
+              "stop_details": {
+                "$ref": "#/components/schemas/AnthropicRefusalStopDetails"
               },
               "stop_reason": {
                 "nullable": true
@@ -11379,6 +11494,7 @@
               "content",
               "model",
               "stop_reason",
+              "stop_details",
               "stop_sequence",
               "usage"
             ],
@@ -13628,6 +13744,7 @@
             "openrouter:browser_use": "#/components/schemas/OutputBrowserUseServerToolItem",
             "openrouter:code_interpreter": "#/components/schemas/OutputCodeInterpreterServerToolItem",
             "openrouter:datetime": "#/components/schemas/OutputDatetimeItem",
+            "openrouter:experimental__search_models": "#/components/schemas/OutputSearchModelsServerToolItem",
             "openrouter:file_search": "#/components/schemas/OutputFileSearchServerToolItem",
             "openrouter:image_generation": "#/components/schemas/OutputImageGenerationServerToolItem",
             "openrouter:mcp": "#/components/schemas/OutputMcpServerToolItem",
@@ -13716,6 +13833,9 @@
           },
           {
             "$ref": "#/components/schemas/OutputMcpServerToolItem"
+          },
+          {
+            "$ref": "#/components/schemas/OutputSearchModelsServerToolItem"
           }
         ]
       },
@@ -14091,6 +14211,37 @@
           ],
           "type": "reasoning"
         }
+      },
+      "OutputSearchModelsServerToolItem": {
+        "description": "An openrouter:experimental__search_models server tool output item",
+        "example": {
+          "id": "sm_tmp_abc123",
+          "query": "Claude Opus",
+          "status": "completed",
+          "type": "openrouter:experimental__search_models"
+        },
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "query": {
+            "type": "string"
+          },
+          "status": {
+            "$ref": "#/components/schemas/ToolCallStatus"
+          },
+          "type": {
+            "enum": [
+              "openrouter:experimental__search_models"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "status",
+          "type"
+        ],
+        "type": "object"
       },
       "OutputTextEditorServerToolItem": {
         "description": "An openrouter:text_editor server tool output item",
@@ -14703,6 +14854,7 @@
           "Crusoe",
           "DeepInfra",
           "DeepSeek",
+          "DekaLLM",
           "Featherless",
           "Fireworks",
           "Friendli",
@@ -14737,6 +14889,7 @@
           "Parasail",
           "Perplexity",
           "Phala",
+          "Recraft",
           "Reka",
           "Relace",
           "SambaNova",
@@ -15081,6 +15234,7 @@
               "Crusoe",
               "DeepInfra",
               "DeepSeek",
+              "DekaLLM",
               "Featherless",
               "Fireworks",
               "Friendli",
@@ -15115,6 +15269,7 @@
               "Parasail",
               "Perplexity",
               "Phala",
+              "Recraft",
               "Reka",
               "Relace",
               "SambaNova",
@@ -16605,6 +16760,9 @@
                   "$ref": "#/components/schemas/DatetimeServerTool"
                 },
                 {
+                  "$ref": "#/components/schemas/ChatSearchModelsServerTool"
+                },
+                {
                   "$ref": "#/components/schemas/WebSearchServerTool_OpenRouter"
                 }
               ]
@@ -16645,6 +16803,20 @@
         "example": "medium",
         "type": "string",
         "x-speakeasy-unknown-values": "allow"
+      },
+      "SearchModelsServerToolConfig": {
+        "description": "Configuration for the openrouter:experimental__search_models server tool",
+        "example": {
+          "max_results": 5
+        },
+        "properties": {
+          "max_results": {
+            "description": "Maximum number of models to return. Defaults to 5, max 20.",
+            "example": 5,
+            "type": "integer"
+          }
+        },
+        "type": "object"
       },
       "SearchQualityLevel": {
         "description": "How much context to retrieve per result. Defaults to medium (15000 chars). Only applies when using the Exa engine; ignored with native provider search.",
@@ -17787,12 +17959,18 @@
           "duration": {
             "description": "Duration of the generated video in seconds",
             "example": 8,
-            "exclusiveMinimum": true,
-            "minimum": 0,
+            "minimum": 1,
             "type": "integer"
           },
+          "frame_images": {
+            "description": "Images to use as the first and/or last frame of the generated video. Each image must specify a frame_type of first_frame or last_frame.",
+            "items": {
+              "$ref": "#/components/schemas/FrameImage"
+            },
+            "type": "array"
+          },
           "generate_audio": {
-            "description": "Whether to generate audio alongside the video. Defaults to true for models that support audio output, false otherwise.",
+            "description": "Whether to generate audio alongside the video. Defaults to the endpoint's generate_audio capability flag, false if not set.",
             "example": true,
             "type": "boolean"
           },
@@ -17991,6 +18169,12 @@
                     "type": "object"
                   },
                   "deepseek": {
+                    "additionalProperties": {
+                      "nullable": true
+                    },
+                    "type": "object"
+                  },
+                  "dekallm": {
                     "additionalProperties": {
                       "nullable": true
                     },
@@ -18296,6 +18480,12 @@
                     },
                     "type": "object"
                   },
+                  "recraft": {
+                    "additionalProperties": {
+                      "nullable": true
+                    },
+                    "type": "object"
+                  },
                   "recursal": {
                     "additionalProperties": {
                       "nullable": true
@@ -18557,17 +18747,23 @@
           "canonical_slug": "google/veo-3.1",
           "created": 1700000000,
           "description": "Google video generation model",
+          "generate_audio": true,
           "id": "google/veo-3.1",
           "name": "Veo 3.1",
           "pricing_skus": {
             "generate": "0.50"
           },
+          "seed": null,
           "supported_aspect_ratios": [
             "16:9"
           ],
           "supported_durations": [
             5,
             8
+          ],
+          "supported_frame_images": [
+            "first_frame",
+            "last_frame"
           ],
           "supported_resolutions": [
             "720p"
@@ -18597,6 +18793,11 @@
             "example": "GPT-4 is a large multimodal model that can solve difficult problems with greater accuracy.",
             "type": "string"
           },
+          "generate_audio": {
+            "description": "Whether the model supports generating audio alongside video",
+            "nullable": true,
+            "type": "boolean"
+          },
           "hugging_face_id": {
             "description": "Hugging Face model identifier, if applicable",
             "example": "microsoft/DialoGPT-medium",
@@ -18621,6 +18822,11 @@
             "nullable": true,
             "type": "object"
           },
+          "seed": {
+            "description": "Whether the model supports deterministic generation via seed parameter",
+            "nullable": true,
+            "type": "boolean"
+          },
           "supported_aspect_ratios": {
             "description": "Supported output aspect ratios",
             "items": {
@@ -18643,6 +18849,19 @@
             "description": "Supported video durations in seconds",
             "items": {
               "type": "integer"
+            },
+            "nullable": true,
+            "type": "array"
+          },
+          "supported_frame_images": {
+            "description": "Supported frame image types (e.g. first_frame, last_frame)",
+            "items": {
+              "enum": [
+                "first_frame",
+                "last_frame"
+              ],
+              "type": "string",
+              "x-speakeasy-unknown-values": "allow"
             },
             "nullable": true,
             "type": "array"
@@ -18713,6 +18932,9 @@
           "supported_aspect_ratios",
           "supported_sizes",
           "supported_durations",
+          "supported_frame_images",
+          "generate_audio",
+          "seed",
           "allowed_passthrough_parameters"
         ],
         "type": "object"
@@ -18725,17 +18947,23 @@
               "canonical_slug": "google/veo-3.1",
               "created": 1700000000,
               "description": "Google video generation model",
+              "generate_audio": true,
               "id": "google/veo-3.1",
               "name": "Veo 3.1",
               "pricing_skus": {
                 "generate": "0.50"
               },
+              "seed": null,
               "supported_aspect_ratios": [
                 "16:9"
               ],
               "supported_durations": [
                 5,
                 8
+              ],
+              "supported_frame_images": [
+                "first_frame",
+                "last_frame"
               ],
               "supported_resolutions": [
                 "720p"
@@ -20243,8 +20471,7 @@
                   "dimensions": {
                     "description": "The number of dimensions for the output embeddings",
                     "example": 1536,
-                    "exclusiveMinimum": 0,
-                    "minimum": 0,
+                    "minimum": 1,
                     "type": "integer"
                   },
                   "encoding_format": {
@@ -26656,8 +26883,7 @@
                   "top_n": {
                     "description": "Number of most relevant documents to return",
                     "example": 3,
-                    "exclusiveMinimum": 0,
-                    "minimum": 0,
+                    "minimum": 1,
                     "type": "integer"
                   }
                 },
@@ -27706,17 +27932,23 @@
                       "canonical_slug": "google/veo-3.1",
                       "created": 1700000000,
                       "description": "Google video generation model",
+                      "generate_audio": true,
                       "id": "google/veo-3.1",
                       "name": "Veo 3.1",
                       "pricing_skus": {
                         "generate": "0.50"
                       },
+                      "seed": null,
                       "supported_aspect_ratios": [
                         "16:9"
                       ],
                       "supported_durations": [
                         5,
                         8
+                      ],
+                      "supported_frame_images": [
+                        "first_frame",
+                        "last_frame"
                       ],
                       "supported_resolutions": [
                         "720p"

@@ -40,6 +40,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public string Description { get; set; }
 #endif
+        /// <summary>Whether the model supports generating audio alongside video</summary>
+        public bool? GenerateAudio { get; set; }
         /// <summary>Hugging Face model identifier, if applicable</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -72,6 +74,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModel_pricing_skus PricingSkus { get; set; }
 #endif
+        /// <summary>Whether the model supports deterministic generation via seed parameter</summary>
+        public bool? Seed { get; set; }
         /// <summary>Supported output aspect ratios</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -87,6 +91,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #nullable restore
 #else
         public List<int?> SupportedDurations { get; set; }
+#endif
+        /// <summary>Supported frame image types (e.g. first_frame, last_frame)</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModel_supported_frame_images?>? SupportedFrameImages { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModel_supported_frame_images?> SupportedFrameImages { get; set; }
 #endif
         /// <summary>Supported output resolutions</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -133,12 +145,15 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "canonical_slug", n => { CanonicalSlug = n.GetStringValue(); } },
                 { "created", n => { Created = n.GetIntValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
+                { "generate_audio", n => { GenerateAudio = n.GetBoolValue(); } },
                 { "hugging_face_id", n => { HuggingFaceId = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "pricing_skus", n => { PricingSkus = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModel_pricing_skus>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModel_pricing_skus.CreateFromDiscriminatorValue); } },
+                { "seed", n => { Seed = n.GetBoolValue(); } },
                 { "supported_aspect_ratios", n => { SupportedAspectRatios = n.GetCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModel_supported_aspect_ratios>()?.AsList(); } },
                 { "supported_durations", n => { SupportedDurations = n.GetCollectionOfPrimitiveValues<int?>()?.AsList(); } },
+                { "supported_frame_images", n => { SupportedFrameImages = n.GetCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModel_supported_frame_images>()?.AsList(); } },
                 { "supported_resolutions", n => { SupportedResolutions = n.GetCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModel_supported_resolutions>()?.AsList(); } },
                 { "supported_sizes", n => { SupportedSizes = n.GetCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModel_supported_sizes>()?.AsList(); } },
             };
@@ -154,12 +169,15 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteStringValue("canonical_slug", CanonicalSlug);
             writer.WriteIntValue("created", Created);
             writer.WriteStringValue("description", Description);
+            writer.WriteBoolValue("generate_audio", GenerateAudio);
             writer.WriteStringValue("hugging_face_id", HuggingFaceId);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("name", Name);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModel_pricing_skus>("pricing_skus", PricingSkus);
+            writer.WriteBoolValue("seed", Seed);
             writer.WriteCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModel_supported_aspect_ratios>("supported_aspect_ratios", SupportedAspectRatios);
             writer.WriteCollectionOfPrimitiveValues<int?>("supported_durations", SupportedDurations);
+            writer.WriteCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModel_supported_frame_images>("supported_frame_images", SupportedFrameImages);
             writer.WriteCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModel_supported_resolutions>("supported_resolutions", SupportedResolutions);
             writer.WriteCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModel_supported_sizes>("supported_sizes", SupportedSizes);
             writer.WriteAdditionalData(AdditionalData);
