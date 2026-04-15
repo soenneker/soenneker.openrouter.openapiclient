@@ -5,12 +5,16 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public enum OutputSearchModelsServerToolItem_type
+    public enum AnthropicThinkingDisplay
     #pragma warning restore CS1591
     {
-        [EnumMember(Value = "openrouter:experimental__search_models")]
+        [EnumMember(Value = "summarized")]
         #pragma warning disable CS1591
-        OpenrouterExperimental__search_models,
+        Summarized,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "omitted")]
+        #pragma warning disable CS1591
+        Omitted,
         #pragma warning restore CS1591
     }
 }
