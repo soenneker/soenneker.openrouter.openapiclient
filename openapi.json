@@ -1934,19 +1934,15 @@
             "type": "array"
           },
           "new_lines": {
-            "nullable": true,
             "type": "integer"
           },
           "new_start": {
-            "nullable": true,
             "type": "integer"
           },
           "old_lines": {
-            "nullable": true,
             "type": "integer"
           },
           "old_start": {
-            "nullable": true,
             "type": "integer"
           },
           "type": {
@@ -2059,15 +2055,12 @@
             "x-speakeasy-unknown-values": "allow"
           },
           "num_lines": {
-            "nullable": true,
             "type": "integer"
           },
           "start_line": {
-            "nullable": true,
             "type": "integer"
           },
           "total_lines": {
-            "nullable": true,
             "type": "integer"
           },
           "type": {
@@ -2113,17 +2106,6 @@
           "signature"
         ],
         "type": "object"
-      },
-      "AnthropicThinkingDisplay": {
-        "enum": [
-          "summarized",
-          "omitted",
-          null
-        ],
-        "example": "summarized",
-        "nullable": true,
-        "type": "string",
-        "x-speakeasy-unknown-values": "allow"
       },
       "AnthropicThinkingTurns": {
         "example": {
@@ -2458,11 +2440,9 @@
             "$ref": "#/components/schemas/AnthropicCacheCreation"
           },
           "cache_creation_input_tokens": {
-            "nullable": true,
             "type": "integer"
           },
           "cache_read_input_tokens": {
-            "nullable": true,
             "type": "integer"
           },
           "inference_geo": {
@@ -3930,7 +3910,6 @@
             "type": "boolean"
           },
           "completed_at": {
-            "nullable": true,
             "type": "integer"
           },
           "created_at": {
@@ -3942,7 +3921,6 @@
           },
           "frequency_penalty": {
             "format": "double",
-            "nullable": true,
             "type": "number"
           },
           "id": {
@@ -3957,12 +3935,12 @@
             "nullable": true
           },
           "max_output_tokens": {
-            "nullable": true,
-            "type": "integer"
+            "type": "integer",
+            "nullable": true
           },
           "max_tool_calls": {
-            "nullable": true,
-            "type": "integer"
+            "type": "integer",
+            "nullable": true
           },
           "metadata": {
             "$ref": "#/components/schemas/RequestMetadata"
@@ -4020,7 +3998,6 @@
           },
           "presence_penalty": {
             "format": "double",
-            "nullable": true,
             "type": "number"
           },
           "previous_response_id": {
@@ -4053,7 +4030,6 @@
           },
           "temperature": {
             "format": "double",
-            "nullable": true,
             "type": "number"
           },
           "text": {
@@ -4152,7 +4128,6 @@
           },
           "top_p": {
             "format": "double",
-            "nullable": true,
             "type": "number"
           },
           "truncation": {
@@ -5119,12 +5094,6 @@
             "$ref": "#/components/schemas/DatetimeServerTool"
           },
           {
-            "$ref": "#/components/schemas/ImageGenerationServerTool_OpenRouter"
-          },
-          {
-            "$ref": "#/components/schemas/ChatSearchModelsServerTool"
-          },
-          {
             "$ref": "#/components/schemas/OpenRouterWebSearchServerTool"
           },
           {
@@ -5367,11 +5336,31 @@
             "description": "Frequency penalty (-2.0 to 2.0)",
             "example": 0,
             "format": "double",
-            "nullable": true,
             "type": "number"
           },
           "image_config": {
-            "$ref": "#/components/schemas/ImageConfig"
+            "additionalProperties": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "format": "double",
+                  "type": "number"
+                },
+                {
+                  "items": {
+                    "nullable": true
+                  },
+                  "type": "array"
+                }
+              ]
+            },
+            "description": "Provider-specific image configuration options. Keys and values vary by model/provider. See https://openrouter.ai/docs/guides/overview/multimodal/image-generation for more details.",
+            "example": {
+              "aspect_ratio": "16:9"
+            },
+            "type": "object"
           },
           "logit_bias": {
             "additionalProperties": {
@@ -5394,13 +5383,11 @@
           "max_completion_tokens": {
             "description": "Maximum tokens in completion",
             "example": 100,
-            "nullable": true,
             "type": "integer"
           },
           "max_tokens": {
             "description": "Maximum tokens (deprecated, use max_completion_tokens). Note: some providers enforce a minimum of 16.",
             "example": 100,
-            "nullable": true,
             "type": "integer"
           },
           "messages": {
@@ -5498,7 +5485,6 @@
             "description": "Presence penalty (-2.0 to 2.0)",
             "example": 0,
             "format": "double",
-            "nullable": true,
             "type": "number"
           },
           "provider": {
@@ -5572,7 +5558,6 @@
           "seed": {
             "description": "Random seed for deterministic outputs",
             "example": 42,
-            "nullable": true,
             "type": "integer"
           },
           "service_tier": {
@@ -5629,7 +5614,6 @@
             "description": "Sampling temperature (0-2)",
             "example": 0.7,
             "format": "double",
-            "nullable": true,
             "type": "number"
           },
           "tool_choice": {
@@ -5654,14 +5638,12 @@
           "top_logprobs": {
             "description": "Number of top log probabilities to return (0-20)",
             "example": 5,
-            "nullable": true,
             "type": "integer"
           },
           "top_p": {
             "description": "Nucleus sampling parameter (0-1)",
             "example": 1,
             "format": "double",
-            "nullable": true,
             "type": "number"
           },
           "trace": {
@@ -5753,30 +5735,6 @@
           "model",
           "object",
           "system_fingerprint"
-        ],
-        "type": "object"
-      },
-      "ChatSearchModelsServerTool": {
-        "description": "OpenRouter built-in server tool: searches and filters AI models available on OpenRouter",
-        "example": {
-          "parameters": {
-            "max_results": 5
-          },
-          "type": "openrouter:experimental__search_models"
-        },
-        "properties": {
-          "parameters": {
-            "$ref": "#/components/schemas/SearchModelsServerToolConfig"
-          },
-          "type": {
-            "enum": [
-              "openrouter:experimental__search_models"
-            ],
-            "type": "string"
-          }
-        },
-        "required": [
-          "type"
         ],
         "type": "object"
       },
@@ -6333,22 +6291,18 @@
             "properties": {
               "accepted_prediction_tokens": {
                 "description": "Accepted prediction tokens",
-                "nullable": true,
                 "type": "integer"
               },
               "audio_tokens": {
                 "description": "Tokens used for audio output",
-                "nullable": true,
                 "type": "integer"
               },
               "reasoning_tokens": {
                 "description": "Tokens used for reasoning",
-                "nullable": true,
                 "type": "integer"
               },
               "rejected_prediction_tokens": {
                 "description": "Rejected prediction tokens",
-                "nullable": true,
                 "type": "integer"
               }
             },
@@ -7117,7 +7071,6 @@
             "description": "Spending limit in USD",
             "example": 50,
             "format": "double",
-            "nullable": true,
             "type": "number"
           },
           "name": {
@@ -7298,32 +7251,33 @@
         "properties": {
           "frequency_penalty": {
             "format": "double",
-            "nullable": true,
-            "type": "number"
+            "type": "number",
+            "nullable": true
           },
           "presence_penalty": {
             "format": "double",
-            "nullable": true,
-            "type": "number"
+            "type": "number",
+            "nullable": true
           },
           "repetition_penalty": {
             "format": "double",
-            "nullable": true,
-            "type": "number"
+            "type": "number",
+            "nullable": true
           },
           "temperature": {
             "format": "double",
-            "nullable": true,
-            "type": "number"
+            "type": "number",
+            "nullable": true
           },
           "top_k": {
+            "minimum": 0,
             "nullable": true,
             "type": "integer"
           },
           "top_p": {
             "format": "double",
-            "nullable": true,
-            "type": "number"
+            "type": "number",
+            "nullable": true
           }
         },
         "type": "object"
@@ -8344,7 +8298,6 @@
             "description": "Spending limit in USD",
             "example": 100,
             "format": "double",
-            "nullable": true,
             "type": "number"
           },
           "name": {
@@ -8381,31 +8334,6 @@
         "nullable": true,
         "type": "string",
         "x-speakeasy-unknown-values": "allow"
-      },
-      "ImageConfig": {
-        "additionalProperties": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "format": "double",
-              "type": "number"
-            },
-            {
-              "items": {
-                "nullable": true
-              },
-              "type": "array"
-            }
-          ]
-        },
-        "description": "Provider-specific image configuration options. Keys and values vary by model/provider. See https://openrouter.ai/docs/guides/overview/multimodal/image-generation for more details.",
-        "example": {
-          "aspect_ratio": "16:9",
-          "quality": "high"
-        },
-        "type": "object"
       },
       "ImageGenCallCompletedEvent": {
         "allOf": [
@@ -8579,65 +8507,6 @@
         "required": [
           "type"
         ],
-        "type": "object"
-      },
-      "ImageGenerationServerTool_OpenRouter": {
-        "description": "OpenRouter built-in server tool: generates images from text prompts using an image generation model",
-        "example": {
-          "parameters": {
-            "model": "openai/gpt-image-1",
-            "quality": "high",
-            "size": "1024x1024"
-          },
-          "type": "openrouter:image_generation"
-        },
-        "properties": {
-          "parameters": {
-            "$ref": "#/components/schemas/ImageGenerationServerToolConfig"
-          },
-          "type": {
-            "enum": [
-              "openrouter:image_generation"
-            ],
-            "type": "string"
-          }
-        },
-        "required": [
-          "type"
-        ],
-        "type": "object"
-      },
-      "ImageGenerationServerToolConfig": {
-        "additionalProperties": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "format": "double",
-              "type": "number"
-            },
-            {
-              "items": {
-                "nullable": true
-              },
-              "type": "array"
-            }
-          ]
-        },
-        "description": "Configuration for the openrouter:image_generation server tool. Accepts all image_config params (aspect_ratio, quality, size, background, output_format, output_compression, moderation, etc.) plus a model field.",
-        "example": {
-          "aspect_ratio": "16:9",
-          "model": "openai/gpt-image-1",
-          "quality": "high"
-        },
-        "properties": {
-          "model": {
-            "description": "Which image generation model to use (e.g. \"openai/gpt-image-1\"). Defaults to \"openai/gpt-image-1\".",
-            "example": "openai/gpt-image-1",
-            "type": "string"
-          }
-        },
         "type": "object"
       },
       "ImageGenerationStatus": {
@@ -10933,9 +10802,6 @@
                   "budget_tokens": {
                     "type": "integer"
                   },
-                  "display": {
-                    "$ref": "#/components/schemas/AnthropicThinkingDisplay"
-                  },
                   "type": {
                     "enum": [
                       "enabled"
@@ -10965,9 +10831,6 @@
               },
               {
                 "properties": {
-                  "display": {
-                    "$ref": "#/components/schemas/AnthropicThinkingDisplay"
-                  },
                   "type": {
                     "enum": [
                       "adaptive"
@@ -11172,7 +11035,6 @@
                       "$ref": "#/components/schemas/AnthropicCacheControlDirective"
                     },
                     "max_uses": {
-                      "nullable": true,
                       "type": "integer"
                     },
                     "name": {
@@ -11229,7 +11091,6 @@
                       "$ref": "#/components/schemas/AnthropicCacheControlDirective"
                     },
                     "max_uses": {
-                      "nullable": true,
                       "type": "integer"
                     },
                     "name": {
@@ -11256,12 +11117,6 @@
                 },
                 {
                   "$ref": "#/components/schemas/DatetimeServerTool"
-                },
-                {
-                  "$ref": "#/components/schemas/ImageGenerationServerTool_OpenRouter"
-                },
-                {
-                  "$ref": "#/components/schemas/ChatSearchModelsServerTool"
                 },
                 {
                   "$ref": "#/components/schemas/OpenRouterWebSearchServerTool"
@@ -11311,7 +11166,6 @@
                     "properties": {
                       "cost": {
                         "format": "double",
-                        "nullable": true,
                         "type": "number"
                       },
                       "cost_details": {
@@ -11323,7 +11177,6 @@
                           },
                           "upstream_inference_cost": {
                             "format": "double",
-                            "nullable": true,
                             "type": "number"
                           },
                           "upstream_inference_prompt_cost": {
@@ -11754,7 +11607,6 @@
           "context_length": {
             "description": "Maximum context length in tokens",
             "example": 8192,
-            "nullable": true,
             "type": "integer"
           },
           "created": {
@@ -14653,25 +14505,21 @@
           "p50": {
             "description": "Maximum p50 latency (seconds)",
             "format": "double",
-            "nullable": true,
             "type": "number"
           },
           "p75": {
             "description": "Maximum p75 latency (seconds)",
             "format": "double",
-            "nullable": true,
             "type": "number"
           },
           "p90": {
             "description": "Maximum p90 latency (seconds)",
             "format": "double",
-            "nullable": true,
             "type": "number"
           },
           "p99": {
             "description": "Maximum p99 latency (seconds)",
             "format": "double",
-            "nullable": true,
             "type": "number"
           }
         },
@@ -14730,25 +14578,21 @@
           "p50": {
             "description": "Minimum p50 throughput (tokens/sec)",
             "format": "double",
-            "nullable": true,
             "type": "number"
           },
           "p75": {
             "description": "Minimum p75 throughput (tokens/sec)",
             "format": "double",
-            "nullable": true,
             "type": "number"
           },
           "p90": {
             "description": "Minimum p90 throughput (tokens/sec)",
             "format": "double",
-            "nullable": true,
             "type": "number"
           },
           "p99": {
             "description": "Minimum p99 throughput (tokens/sec)",
             "format": "double",
-            "nullable": true,
             "type": "number"
           }
         },
@@ -15493,11 +15337,9 @@
             "$ref": "#/components/schemas/PercentileStats"
           },
           "max_completion_tokens": {
-            "nullable": true,
             "type": "integer"
           },
           "max_prompt_tokens": {
-            "nullable": true,
             "type": "integer"
           },
           "model_id": {
@@ -15694,18 +15536,15 @@
           "uptime_last_1d": {
             "description": "Uptime percentage over the last 1 day, calculated as successful requests / (successful + error requests) * 100. Rate-limited requests are excluded. Returns null if insufficient data.",
             "format": "double",
-            "nullable": true,
             "type": "number"
           },
           "uptime_last_30m": {
             "format": "double",
-            "nullable": true,
             "type": "number"
           },
           "uptime_last_5m": {
             "description": "Uptime percentage over the last 5 minutes, calculated as successful requests / (successful + error requests) * 100. Rate-limited requests are excluded. Returns null if insufficient data.",
             "format": "double",
-            "nullable": true,
             "type": "number"
           }
         },
@@ -15908,7 +15747,6 @@
                 "type": "boolean"
               },
               "max_tokens": {
-                "nullable": true,
                 "type": "integer"
               }
             },
@@ -16604,11 +16442,25 @@
           },
           "frequency_penalty": {
             "format": "double",
-            "nullable": true,
             "type": "number"
           },
           "image_config": {
-            "$ref": "#/components/schemas/ImageConfig"
+            "additionalProperties": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "format": "double",
+                  "type": "number"
+                }
+              ]
+            },
+            "description": "Provider-specific image configuration options. Keys and values vary by model/provider. See https://openrouter.ai/docs/features/multimodal/image-generation for more details.",
+            "example": {
+              "aspect_ratio": "16:9"
+            },
+            "type": "object"
           },
           "include": {
             "items": {
@@ -16625,11 +16477,9 @@
             "type": "string"
           },
           "max_output_tokens": {
-            "nullable": true,
             "type": "integer"
           },
           "max_tool_calls": {
-            "nullable": true,
             "type": "integer"
           },
           "metadata": {
@@ -16698,7 +16548,6 @@
           },
           "presence_penalty": {
             "format": "double",
-            "nullable": true,
             "type": "number"
           },
           "previous_response_id": {
@@ -16755,7 +16604,6 @@
           },
           "temperature": {
             "format": "double",
-            "nullable": true,
             "type": "number"
           },
           "text": {
@@ -16847,12 +16695,6 @@
                   "$ref": "#/components/schemas/DatetimeServerTool"
                 },
                 {
-                  "$ref": "#/components/schemas/ImageGenerationServerTool_OpenRouter"
-                },
-                {
-                  "$ref": "#/components/schemas/ChatSearchModelsServerTool"
-                },
-                {
                   "$ref": "#/components/schemas/WebSearchServerTool_OpenRouter"
                 }
               ]
@@ -16863,12 +16705,10 @@
             "type": "integer"
           },
           "top_logprobs": {
-            "nullable": true,
             "type": "integer"
           },
           "top_p": {
             "format": "double",
-            "nullable": true,
             "type": "number"
           },
           "trace": {
@@ -16895,20 +16735,6 @@
         "example": "medium",
         "type": "string",
         "x-speakeasy-unknown-values": "allow"
-      },
-      "SearchModelsServerToolConfig": {
-        "description": "Configuration for the openrouter:experimental__search_models server tool",
-        "example": {
-          "max_results": 5
-        },
-        "properties": {
-          "max_results": {
-            "description": "Maximum number of models to return. Defaults to 5, max 20.",
-            "example": 5,
-            "type": "integer"
-          }
-        },
-        "type": "object"
       },
       "SearchQualityLevel": {
         "description": "How much context to retrieve per result. Defaults to medium (15000 chars). Only applies when using the Exa engine; ignored with native provider search.",
@@ -17643,8 +17469,8 @@
           "context_length": {
             "description": "Context length from the top provider",
             "example": 8192,
-            "nullable": true,
-            "type": "integer"
+            "type": "integer",
+            "nullable": true
           },
           "is_moderated": {
             "description": "Whether the top provider moderates content",
@@ -17654,8 +17480,8 @@
           "max_completion_tokens": {
             "description": "Maximum completion tokens from the top provider",
             "example": 4096,
-            "nullable": true,
-            "type": "integer"
+            "type": "integer",
+            "nullable": true
           }
         },
         "required": [
@@ -17875,7 +17701,6 @@
             "description": "New spending limit in USD",
             "example": 75,
             "format": "double",
-            "nullable": true,
             "type": "number"
           },
           "name": {
@@ -17975,14 +17800,12 @@
               "cost": {
                 "description": "Cost of the completion",
                 "format": "double",
-                "nullable": true,
                 "type": "number"
               },
               "cost_details": {
                 "properties": {
                   "upstream_inference_cost": {
                     "format": "double",
-                    "nullable": true,
                     "type": "number"
                   },
                   "upstream_inference_input_cost": {
@@ -18827,7 +18650,6 @@
           "cost": {
             "description": "The cost of the video generation in USD.",
             "format": "double",
-            "nullable": true,
             "type": "number"
           },
           "is_byok": {
@@ -20655,6 +20477,32 @@
                                       "image_url"
                                     ],
                                     "type": "object"
+                                  },
+                                  {
+                                    "properties": {
+                                      "type": {
+                                        "enum": [
+                                          "video_url"
+                                        ],
+                                        "type": "string"
+                                      },
+                                      "video_url": {
+                                        "properties": {
+                                          "url": {
+                                            "type": "string"
+                                          }
+                                        },
+                                        "required": [
+                                          "url"
+                                        ],
+                                        "type": "object"
+                                      }
+                                    },
+                                    "required": [
+                                      "type",
+                                      "video_url"
+                                    ],
+                                    "type": "object"
                                   }
                                 ]
                               },
@@ -21381,14 +21229,12 @@
                         "app_id": {
                           "description": "ID of the app that made the request",
                           "example": 12345,
-                          "nullable": true,
                           "type": "integer"
                         },
                         "cache_discount": {
                           "description": "Discount applied due to caching",
                           "example": 0.0002,
                           "format": "double",
-                          "nullable": true,
                           "type": "number"
                         },
                         "cancelled": {
@@ -21418,7 +21264,6 @@
                           "description": "Time taken for generation in milliseconds",
                           "example": 1200,
                           "format": "double",
-                          "nullable": true,
                           "type": "number"
                         },
                         "http_referer": {
@@ -21440,7 +21285,6 @@
                           "description": "Total latency in milliseconds",
                           "example": 1250,
                           "format": "double",
-                          "nullable": true,
                           "type": "number"
                         },
                         "model": {
@@ -21452,7 +21296,6 @@
                           "description": "Moderation latency in milliseconds",
                           "example": 50,
                           "format": "double",
-                          "nullable": true,
                           "type": "number"
                         },
                         "native_finish_reason": {
@@ -21464,55 +21307,46 @@
                         "native_tokens_cached": {
                           "description": "Native cached tokens as reported by provider",
                           "example": 3,
-                          "nullable": true,
                           "type": "integer"
                         },
                         "native_tokens_completion": {
                           "description": "Native completion tokens as reported by provider",
                           "example": 25,
-                          "nullable": true,
                           "type": "integer"
                         },
                         "native_tokens_completion_images": {
                           "description": "Native completion image tokens as reported by provider",
                           "example": 0,
-                          "nullable": true,
                           "type": "integer"
                         },
                         "native_tokens_prompt": {
                           "description": "Native prompt tokens as reported by provider",
                           "example": 10,
-                          "nullable": true,
                           "type": "integer"
                         },
                         "native_tokens_reasoning": {
                           "description": "Native reasoning tokens as reported by provider",
                           "example": 5,
-                          "nullable": true,
                           "type": "integer"
                         },
                         "num_input_audio_prompt": {
                           "description": "Number of audio inputs in the prompt",
                           "example": 0,
-                          "nullable": true,
                           "type": "integer"
                         },
                         "num_media_completion": {
                           "description": "Number of media items in the completion",
                           "example": 0,
-                          "nullable": true,
                           "type": "integer"
                         },
                         "num_media_prompt": {
                           "description": "Number of media items in the prompt",
                           "example": 1,
-                          "nullable": true,
                           "type": "integer"
                         },
                         "num_search_results": {
                           "description": "Number of search results included",
                           "example": 5,
-                          "nullable": true,
                           "type": "integer"
                         },
                         "origin": {
@@ -21560,13 +21394,11 @@
                         "tokens_completion": {
                           "description": "Number of tokens in the completion",
                           "example": 25,
-                          "nullable": true,
                           "type": "integer"
                         },
                         "tokens_prompt": {
                           "description": "Number of tokens in the prompt",
                           "example": 10,
-                          "nullable": true,
                           "type": "integer"
                         },
                         "total_cost": {
@@ -21585,7 +21417,6 @@
                           "description": "Cost charged by the upstream provider",
                           "example": 0.0012,
                           "format": "double",
-                          "nullable": true,
                           "type": "number"
                         },
                         "usage": {
@@ -21810,7 +21641,6 @@
               "description": "Number of records to skip for pagination",
               "example": 0,
               "minimum": 0,
-              "nullable": true,
               "type": "integer"
             }
           },
@@ -22406,7 +22236,6 @@
               "description": "Number of records to skip for pagination",
               "example": 0,
               "minimum": 0,
-              "nullable": true,
               "type": "integer"
             }
           },
@@ -22807,7 +22636,6 @@
               "description": "Number of records to skip for pagination",
               "example": 0,
               "minimum": 0,
-              "nullable": true,
               "type": "integer"
             }
           },
@@ -23197,7 +23025,6 @@
               "description": "Number of records to skip for pagination",
               "example": 0,
               "minimum": 0,
-              "nullable": true,
               "type": "integer"
             }
           },
@@ -23323,7 +23150,6 @@
               "description": "Number of records to skip for pagination",
               "example": 0,
               "minimum": 0,
-              "nullable": true,
               "type": "integer"
             }
           },
@@ -23593,14 +23419,12 @@
                           "description": "Spending limit for the API key in USD",
                           "example": 100,
                           "format": "double",
-                          "nullable": true,
                           "type": "number"
                         },
                         "limit_remaining": {
                           "description": "Remaining spending limit in USD",
                           "example": 74.5,
                           "format": "double",
-                          "nullable": true,
                           "type": "number"
                         },
                         "limit_reset": {
@@ -23775,7 +23599,6 @@
               "description": "Number of API keys to skip for pagination",
               "example": 0,
               "minimum": 0,
-              "nullable": true,
               "type": "integer"
             }
           }
@@ -23930,14 +23753,12 @@
                             "description": "Spending limit for the API key in USD",
                             "example": 100,
                             "format": "double",
-                            "nullable": true,
                             "type": "number"
                           },
                           "limit_remaining": {
                             "description": "Remaining spending limit in USD",
                             "example": 74.5,
                             "format": "double",
-                            "nullable": true,
                             "type": "number"
                           },
                           "limit_reset": {
@@ -24117,7 +23938,6 @@
                     "description": "Optional spending limit for the API key in USD",
                     "example": 50,
                     "format": "double",
-                    "nullable": true,
                     "type": "number"
                   },
                   "limit_reset": {
@@ -24296,14 +24116,12 @@
                           "description": "Spending limit for the API key in USD",
                           "example": 100,
                           "format": "double",
-                          "nullable": true,
                           "type": "number"
                         },
                         "limit_remaining": {
                           "description": "Remaining spending limit in USD",
                           "example": 74.5,
                           "format": "double",
-                          "nullable": true,
                           "type": "number"
                         },
                         "limit_reset": {
@@ -24747,14 +24565,12 @@
                           "description": "Spending limit for the API key in USD",
                           "example": 100,
                           "format": "double",
-                          "nullable": true,
                           "type": "number"
                         },
                         "limit_remaining": {
                           "description": "Remaining spending limit in USD",
                           "example": 74.5,
                           "format": "double",
-                          "nullable": true,
                           "type": "number"
                         },
                         "limit_reset": {
@@ -24952,7 +24768,6 @@
                     "description": "New spending limit for the API key in USD",
                     "example": 75,
                     "format": "double",
-                    "nullable": true,
                     "type": "number"
                   },
                   "limit_reset": {
@@ -25125,14 +24940,12 @@
                           "description": "Spending limit for the API key in USD",
                           "example": 100,
                           "format": "double",
-                          "nullable": true,
                           "type": "number"
                         },
                         "limit_remaining": {
                           "description": "Remaining spending limit in USD",
                           "example": 74.5,
                           "format": "double",
-                          "nullable": true,
                           "type": "number"
                         },
                         "limit_reset": {
@@ -26115,7 +25928,6 @@
               "description": "Number of records to skip for pagination",
               "example": 0,
               "minimum": 0,
-              "nullable": true,
               "type": "integer"
             }
           },

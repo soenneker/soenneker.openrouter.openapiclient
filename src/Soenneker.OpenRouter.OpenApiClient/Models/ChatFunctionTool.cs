@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ChatFunctionToolMember1"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ChatSearchModelsServerTool"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ChatWebSearchShorthand"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.DatetimeServerTool"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerTool_OpenRouter"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OpenRouterWebSearchServerTool"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ChatFunctionToolMember1"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ChatWebSearchShorthand"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.DatetimeServerTool"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OpenRouterWebSearchServerTool"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ChatFunctionTool : IComposedTypeWrapper, IParsable
@@ -20,14 +20,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatFunctionToolMember1 ChatFunctionToolMember1 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ChatSearchModelsServerTool"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatSearchModelsServerTool? ChatSearchModelsServerTool { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatSearchModelsServerTool ChatSearchModelsServerTool { get; set; }
 #endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ChatWebSearchShorthand"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -44,14 +36,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.OpenRouter.OpenApiClient.Models.DatetimeServerTool DatetimeServerTool { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerTool_OpenRouter"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerTool_OpenRouter? ImageGenerationServerToolOpenRouter { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerTool_OpenRouter ImageGenerationServerToolOpenRouter { get; set; }
 #endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OpenRouterWebSearchServerTool"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -71,10 +55,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var result = new global::Soenneker.OpenRouter.OpenApiClient.Models.ChatFunctionTool();
             result.ChatFunctionToolMember1 = new global::Soenneker.OpenRouter.OpenApiClient.Models.ChatFunctionToolMember1();
-            result.ChatSearchModelsServerTool = new global::Soenneker.OpenRouter.OpenApiClient.Models.ChatSearchModelsServerTool();
             result.ChatWebSearchShorthand = new global::Soenneker.OpenRouter.OpenApiClient.Models.ChatWebSearchShorthand();
             result.DatetimeServerTool = new global::Soenneker.OpenRouter.OpenApiClient.Models.DatetimeServerTool();
-            result.ImageGenerationServerToolOpenRouter = new global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerTool_OpenRouter();
             result.OpenRouterWebSearchServerTool = new global::Soenneker.OpenRouter.OpenApiClient.Models.OpenRouterWebSearchServerTool();
             return result;
         }
@@ -84,9 +66,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(ChatFunctionToolMember1 != null || ChatSearchModelsServerTool != null || ChatWebSearchShorthand != null || DatetimeServerTool != null || ImageGenerationServerToolOpenRouter != null || OpenRouterWebSearchServerTool != null)
+            if(ChatFunctionToolMember1 != null || ChatWebSearchShorthand != null || DatetimeServerTool != null || OpenRouterWebSearchServerTool != null)
             {
-                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(ChatFunctionToolMember1, ChatSearchModelsServerTool, ChatWebSearchShorthand, DatetimeServerTool, ImageGenerationServerToolOpenRouter, OpenRouterWebSearchServerTool);
+                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(ChatFunctionToolMember1, ChatWebSearchShorthand, DatetimeServerTool, OpenRouterWebSearchServerTool);
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -97,7 +79,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatFunctionToolMember1>(null, ChatFunctionToolMember1, ChatSearchModelsServerTool, ChatWebSearchShorthand, DatetimeServerTool, ImageGenerationServerToolOpenRouter, OpenRouterWebSearchServerTool);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatFunctionToolMember1>(null, ChatFunctionToolMember1, ChatWebSearchShorthand, DatetimeServerTool, OpenRouterWebSearchServerTool);
         }
     }
 }

@@ -16,8 +16,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The budget_tokens property</summary>
         public int? BudgetTokens { get; set; }
-        /// <summary>The display property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicThinkingDisplay? Display { get; set; }
         /// <summary>The type property</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_thinkingMember1_type? Type { get; set; }
         /// <summary>
@@ -46,7 +44,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "budget_tokens", n => { BudgetTokens = n.GetIntValue(); } },
-                { "display", n => { Display = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicThinkingDisplay>(); } },
                 { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_thinkingMember1_type>(); } },
             };
         }
@@ -58,7 +55,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("budget_tokens", BudgetTokens);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicThinkingDisplay>("display", Display);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_thinkingMember1_type>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
