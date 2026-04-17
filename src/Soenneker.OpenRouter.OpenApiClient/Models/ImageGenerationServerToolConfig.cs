@@ -7,33 +7,38 @@ using System.IO;
 using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
+    /// <summary>
+    /// Configuration for the openrouter:image_generation server tool. Accepts all image_config params (aspect_ratio, quality, size, background, output_format, output_compression, moderation, etc.) plus a model field.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
-    public partial class MessagesRequest_thinkingMember3 : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
+    public partial class ImageGenerationServerToolConfig : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The display property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicThinkingDisplay? Display { get; set; }
-        /// <summary>The type property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_thinkingMember3_type? Type { get; set; }
+        /// <summary>Which image generation model to use (e.g. &quot;openai/gpt-5-image&quot;). Defaults to &quot;openai/gpt-5-image&quot;.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Model { get; set; }
+#nullable restore
+#else
+        public string Model { get; set; }
+#endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_thinkingMember3"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerToolConfig"/> and sets the default values.
         /// </summary>
-        public MessagesRequest_thinkingMember3()
+        public ImageGenerationServerToolConfig()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_thinkingMember3"/></returns>
+        /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerToolConfig"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_thinkingMember3 CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerToolConfig CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_thinkingMember3();
+            return new global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerToolConfig();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -43,8 +48,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "display", n => { Display = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicThinkingDisplay>(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_thinkingMember3_type>(); } },
+                { "model", n => { Model = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -54,8 +58,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicThinkingDisplay>("display", Display);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_thinkingMember3_type>("type", Type);
+            writer.WriteStringValue("model", Model);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

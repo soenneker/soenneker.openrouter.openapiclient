@@ -3,9 +3,10 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
-    /// <summary>How much effort the model should put into its response. Higher effort levels may result in more thorough analysis but take longer. Valid values are `low`, `medium`, `high`, `xhigh`, or `max`.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public enum MessagesOutputConfig_effort
+    #pragma warning disable CS1591
+    public enum TextExtendedConfig_verbosity
+    #pragma warning restore CS1591
     {
         [EnumMember(Value = "low")]
         #pragma warning disable CS1591

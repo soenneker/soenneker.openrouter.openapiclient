@@ -19,13 +19,13 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public bool? Background { get; set; }
         /// <summary>The frequency_penalty property</summary>
         public double? FrequencyPenalty { get; set; }
-        /// <summary>Provider-specific image configuration options. Keys and values vary by model/provider. See https://openrouter.ai/docs/features/multimodal/image-generation for more details.</summary>
+        /// <summary>Provider-specific image configuration options. Keys and values vary by model/provider. See https://openrouter.ai/docs/guides/overview/multimodal/image-generation for more details.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesRequest_image_config? ImageConfig { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageConfig? ImageConfig { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesRequest_image_config ImageConfig { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageConfig ImageConfig { get; set; }
 #endif
         /// <summary>The include property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -242,7 +242,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             {
                 { "background", n => { Background = n.GetBoolValue(); } },
                 { "frequency_penalty", n => { FrequencyPenalty = n.GetDoubleValue(); } },
-                { "image_config", n => { ImageConfig = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesRequest_image_config>(global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesRequest_image_config.CreateFromDiscriminatorValue); } },
+                { "image_config", n => { ImageConfig = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageConfig>(global::Soenneker.OpenRouter.OpenApiClient.Models.ImageConfig.CreateFromDiscriminatorValue); } },
                 { "include", n => { Include = n.GetCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ResponseIncludesEnum>()?.AsList(); } },
                 { "input", n => { Input = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.Inputs>(global::Soenneker.OpenRouter.OpenApiClient.Models.Inputs.CreateFromDiscriminatorValue); } },
                 { "instructions", n => { Instructions = n.GetStringValue(); } },
@@ -287,7 +287,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("background", Background);
             writer.WriteDoubleValue("frequency_penalty", FrequencyPenalty);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesRequest_image_config>("image_config", ImageConfig);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageConfig>("image_config", ImageConfig);
             writer.WriteCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ResponseIncludesEnum>("include", Include);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.Inputs>("input", Input);
             writer.WriteStringValue("instructions", Instructions);

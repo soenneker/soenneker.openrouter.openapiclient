@@ -36,10 +36,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Provider-specific image configuration options. Keys and values vary by model/provider. See https://openrouter.ai/docs/guides/overview/multimodal/image-generation for more details.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest_image_config? ImageConfig { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageConfig? ImageConfig { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest_image_config ImageConfig { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageConfig ImageConfig { get; set; }
 #endif
         /// <summary>Token logit bias adjustments</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -230,7 +230,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "cache_control", n => { CacheControl = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective>(global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective.CreateFromDiscriminatorValue); } },
                 { "debug", n => { Debug = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatDebugOptions>(global::Soenneker.OpenRouter.OpenApiClient.Models.ChatDebugOptions.CreateFromDiscriminatorValue); } },
                 { "frequency_penalty", n => { FrequencyPenalty = n.GetDoubleValue(); } },
-                { "image_config", n => { ImageConfig = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest_image_config>(global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest_image_config.CreateFromDiscriminatorValue); } },
+                { "image_config", n => { ImageConfig = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageConfig>(global::Soenneker.OpenRouter.OpenApiClient.Models.ImageConfig.CreateFromDiscriminatorValue); } },
                 { "logit_bias", n => { LogitBias = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest_logit_bias>(global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest_logit_bias.CreateFromDiscriminatorValue); } },
                 { "logprobs", n => { Logprobs = n.GetBoolValue(); } },
                 { "max_completion_tokens", n => { MaxCompletionTokens = n.GetIntValue(); } },
@@ -272,7 +272,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective>("cache_control", CacheControl);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatDebugOptions>("debug", Debug);
             writer.WriteDoubleValue("frequency_penalty", FrequencyPenalty);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest_image_config>("image_config", ImageConfig);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageConfig>("image_config", ImageConfig);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest_logit_bias>("logit_bias", LogitBias);
             writer.WriteBoolValue("logprobs", Logprobs);
             writer.WriteIntValue("max_completion_tokens", MaxCompletionTokens);

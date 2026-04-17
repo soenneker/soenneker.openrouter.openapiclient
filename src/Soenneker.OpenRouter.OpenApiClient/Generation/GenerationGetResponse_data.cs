@@ -182,6 +182,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Generation
 #else
         public string UserAgent { get; set; }
 #endif
+        /// <summary>The resolved web search engine used for this generation (e.g. exa, firecrawl, parallel)</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? WebSearchEngine { get; set; }
+#nullable restore
+#else
+        public string WebSearchEngine { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Generation.GenerationGetResponse_data"/> and sets the default values.
         /// </summary>
@@ -245,6 +253,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Generation
                 { "upstream_inference_cost", n => { UpstreamInferenceCost = n.GetDoubleValue(); } },
                 { "usage", n => { Usage = n.GetDoubleValue(); } },
                 { "user_agent", n => { UserAgent = n.GetStringValue(); } },
+                { "web_search_engine", n => { WebSearchEngine = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -292,6 +301,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Generation
             writer.WriteDoubleValue("upstream_inference_cost", UpstreamInferenceCost);
             writer.WriteDoubleValue("usage", Usage);
             writer.WriteStringValue("user_agent", UserAgent);
+            writer.WriteStringValue("web_search_engine", WebSearchEngine);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

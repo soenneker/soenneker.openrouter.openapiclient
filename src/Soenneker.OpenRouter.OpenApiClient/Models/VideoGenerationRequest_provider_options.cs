@@ -127,6 +127,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider_options_azure Azure { get; set; }
 #endif
+        /// <summary>The baidu property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider_options_baidu? Baidu { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider_options_baidu Baidu { get; set; }
+#endif
         /// <summary>The baseten property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -902,6 +910,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "atoma", n => { Atoma = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider_options_atoma>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider_options_atoma.CreateFromDiscriminatorValue); } },
                 { "avian", n => { Avian = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider_options_avian>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider_options_avian.CreateFromDiscriminatorValue); } },
                 { "azure", n => { Azure = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider_options_azure>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider_options_azure.CreateFromDiscriminatorValue); } },
+                { "baidu", n => { Baidu = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider_options_baidu>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider_options_baidu.CreateFromDiscriminatorValue); } },
                 { "baseten", n => { Baseten = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider_options_baseten>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider_options_baseten.CreateFromDiscriminatorValue); } },
                 { "black-forest-labs", n => { BlackForestLabs = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider_options_blackForestLabs>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider_options_blackForestLabs.CreateFromDiscriminatorValue); } },
                 { "byteplus", n => { Byteplus = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider_options_byteplus>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider_options_byteplus.CreateFromDiscriminatorValue); } },
@@ -1017,6 +1026,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider_options_atoma>("atoma", Atoma);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider_options_avian>("avian", Avian);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider_options_azure>("azure", Azure);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider_options_baidu>("baidu", Baidu);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider_options_baseten>("baseten", Baseten);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider_options_blackForestLabs>("black-forest-labs", BlackForestLabs);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider_options_byteplus>("byteplus", Byteplus);

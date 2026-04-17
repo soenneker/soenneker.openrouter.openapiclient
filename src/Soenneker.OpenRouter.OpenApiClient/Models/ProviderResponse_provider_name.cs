@@ -139,6 +139,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning disable CS1591
         Ambient,
         #pragma warning restore CS1591
+        [EnumMember(Value = "Baidu")]
+        #pragma warning disable CS1591
+        Baidu,
+        #pragma warning restore CS1591
         [EnumMember(Value = "Amazon Bedrock")]
         #pragma warning disable CS1591
         AmazonBedrock,
