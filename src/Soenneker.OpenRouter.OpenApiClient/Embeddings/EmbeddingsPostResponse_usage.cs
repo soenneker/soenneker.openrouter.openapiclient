@@ -19,6 +19,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Embeddings
         public double? Cost { get; set; }
         /// <summary>Number of tokens in the input</summary>
         public int? PromptTokens { get; set; }
+        /// <summary>Per-modality token breakdown. Only present when the input contains 2+ modalities (e.g. text + image) and the upstream provider returns modality-level usage data. Only non-zero modality counts are included.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Embeddings.EmbeddingsPostResponse_usage_prompt_tokens_details? PromptTokensDetails { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Embeddings.EmbeddingsPostResponse_usage_prompt_tokens_details PromptTokensDetails { get; set; }
+#endif
         /// <summary>Total number of tokens used</summary>
         public int? TotalTokens { get; set; }
         /// <summary>
@@ -48,6 +56,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Embeddings
             {
                 { "cost", n => { Cost = n.GetDoubleValue(); } },
                 { "prompt_tokens", n => { PromptTokens = n.GetIntValue(); } },
+                { "prompt_tokens_details", n => { PromptTokensDetails = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Embeddings.EmbeddingsPostResponse_usage_prompt_tokens_details>(global::Soenneker.OpenRouter.OpenApiClient.Embeddings.EmbeddingsPostResponse_usage_prompt_tokens_details.CreateFromDiscriminatorValue); } },
                 { "total_tokens", n => { TotalTokens = n.GetIntValue(); } },
             };
         }
@@ -60,6 +69,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Embeddings
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDoubleValue("cost", Cost);
             writer.WriteIntValue("prompt_tokens", PromptTokens);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Embeddings.EmbeddingsPostResponse_usage_prompt_tokens_details>("prompt_tokens_details", PromptTokensDetails);
             writer.WriteIntValue("total_tokens", TotalTokens);
             writer.WriteAdditionalData(AdditionalData);
         }
