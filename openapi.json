@@ -10,12 +10,22 @@
         "description": "The app identifier should be your app's URL and is used as the primary identifier for rankings.\nThis is used to track API usage per application.\n"
       },
       "AppDisplayName": {
-        "name": "X-Title",
+        "name": "X-OpenRouter-Title",
         "in": "header",
+        "x-speakeasy-name-override": "appTitle",
         "schema": {
           "type": "string"
         },
         "description": "The app display name allows you to customize how your app appears in OpenRouter's dashboard.\n"
+      },
+      "AppCategories": {
+        "name": "X-OpenRouter-Categories",
+        "in": "header",
+        "x-speakeasy-name-override": "appCategories",
+        "schema": {
+          "type": "string"
+        },
+        "description": "Comma-separated list of app categories (e.g. \"cli-agent,cloud-agent\"). Used for marketplace rankings.\n"
       }
     },
     "schemas": {
@@ -3927,7 +3937,8 @@
             "type": "integer"
           },
           "error": {
-            "$ref": "#/components/schemas/ResponsesErrorField"
+            "$ref": "#/components/schemas/ResponsesErrorField",
+            "nullable": true
           },
           "frequency_penalty": {
             "format": "double",
@@ -3938,10 +3949,12 @@
             "type": "string"
           },
           "incomplete_details": {
-            "$ref": "#/components/schemas/IncompleteDetails"
+            "$ref": "#/components/schemas/IncompleteDetails",
+            "nullable": true
           },
           "instructions": {
-            "$ref": "#/components/schemas/BaseInputs"
+            "$ref": "#/components/schemas/BaseInputs",
+            "nullable": true
           },
           "max_output_tokens": {
             "nullable": true,
@@ -4022,7 +4035,8 @@
             "type": "string"
           },
           "reasoning": {
-            "$ref": "#/components/schemas/BaseReasoningConfig"
+            "$ref": "#/components/schemas/BaseReasoningConfig",
+            "nullable": true
           },
           "safety_identifier": {
             "nullable": true,
@@ -4043,7 +4057,8 @@
             "type": "number"
           },
           "text": {
-            "$ref": "#/components/schemas/TextConfig"
+            "$ref": "#/components/schemas/TextConfig",
+            "nullable": true
           },
           "tool_choice": {
             "$ref": "#/components/schemas/OpenAIResponsesToolChoice"
@@ -4132,7 +4147,8 @@
             "type": "array"
           },
           "top_logprobs": {
-            "type": "integer"
+            "type": "integer",
+            "nullable": true
           },
           "top_p": {
             "format": "double",
@@ -4140,7 +4156,8 @@
             "type": "number"
           },
           "truncation": {
-            "$ref": "#/components/schemas/Truncation"
+            "$ref": "#/components/schemas/Truncation",
+            "nullable": true
           },
           "usage": {
             "$ref": "#/components/schemas/OpenAIResponsesUsage"
@@ -14317,7 +14334,8 @@
           "embeddings",
           "audio",
           "video",
-          "rerank"
+          "rerank",
+          "tts"
         ],
         "example": "text",
         "type": "string",
@@ -19761,7 +19779,18 @@
         "tags": [
           "Analytics"
         ]
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/auth/keys": {
       "post": {
@@ -19903,7 +19932,18 @@
         "tags": [
           "OAuth"
         ]
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/auth/keys/code": {
       "post": {
@@ -20132,7 +20172,18 @@
           "OAuth"
         ],
         "x-speakeasy-name-override": "createAuthCode"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/chat/completions": {
       "post": {
@@ -20443,7 +20494,18 @@
         "x-speakeasy-group": "chat",
         "x-speakeasy-name-override": "send",
         "x-speakeasy-stream-request-field": "stream"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/credits": {
       "get": {
@@ -20557,7 +20619,18 @@
           "Credits"
         ],
         "x-speakeasy-name-override": "getCredits"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/credits/coinbase": {
       "post": {
@@ -20593,7 +20666,18 @@
         "x-fern-ignore": true,
         "x-speakeasy-ignore": true,
         "x-speakeasy-name-override": "createCoinbaseCharge"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/embeddings": {
       "post": {
@@ -21100,7 +21184,18 @@
           "Embeddings"
         ],
         "x-speakeasy-name-override": "generate"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/embeddings/models": {
       "get": {
@@ -21197,7 +21292,18 @@
           "Embeddings"
         ],
         "x-speakeasy-name-override": "listModels"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/endpoints/zdr": {
       "get": {
@@ -21332,7 +21438,18 @@
           "Endpoints"
         ],
         "x-speakeasy-name-override": "listZdrEndpoints"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/generation": {
       "get": {
@@ -21408,6 +21525,7 @@
                             "completions",
                             "embeddings",
                             "rerank",
+                            "tts",
                             "video",
                             null
                           ],
@@ -21827,7 +21945,18 @@
         "tags": [
           "Generations"
         ]
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/guardrails": {
       "get": {
@@ -22065,7 +22194,18 @@
           "Guardrails"
         ],
         "x-speakeasy-name-override": "create"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/guardrails/{id}": {
       "delete": {
@@ -22389,7 +22529,18 @@
           "Guardrails"
         ],
         "x-speakeasy-name-override": "update"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/guardrails/{id}/assignments/keys": {
       "get": {
@@ -22649,7 +22800,18 @@
           "Guardrails"
         ],
         "x-speakeasy-name-override": "bulkAssignKeys"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/guardrails/{id}/assignments/keys/remove": {
       "post": {
@@ -22768,7 +22930,18 @@
           "Guardrails"
         ],
         "x-speakeasy-name-override": "bulkUnassignKeys"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/guardrails/{id}/assignments/members": {
       "get": {
@@ -23028,7 +23201,18 @@
           "Guardrails"
         ],
         "x-speakeasy-name-override": "bulkAssignMembers"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/guardrails/{id}/assignments/members/remove": {
       "post": {
@@ -23148,7 +23332,18 @@
           "Guardrails"
         ],
         "x-speakeasy-name-override": "bulkUnassignMembers"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/guardrails/assignments/keys": {
       "get": {
@@ -23263,7 +23458,18 @@
           },
           "type": "offsetLimit"
         }
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/guardrails/assignments/members": {
       "get": {
@@ -23377,7 +23583,18 @@
           },
           "type": "offsetLimit"
         }
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/key": {
       "get": {
@@ -23681,7 +23898,18 @@
           "API Keys"
         ],
         "x-speakeasy-name-override": "getCurrentKeyMetadata"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/keys": {
       "get": {
@@ -23712,6 +23940,18 @@
               "nullable": true,
               "type": "integer"
             }
+          },
+          {
+            "description": "Filter API keys by workspace ID. By default, keys in the default workspace are returned.",
+            "in": "query",
+            "name": "workspace_id",
+            "required": false,
+            "schema": {
+              "description": "Filter API keys by workspace ID. By default, keys in the default workspace are returned.",
+              "example": "0df9e665-d932-5740-b2c7-b52af166bc11",
+              "format": "uuid",
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -23740,7 +23980,8 @@
                       "usage": 25.5,
                       "usage_daily": 25.5,
                       "usage_monthly": 25.5,
-                      "usage_weekly": 25.5
+                      "usage_weekly": 25.5,
+                      "workspace_id": "0df9e665-d932-5740-b2c7-b52af166bc11"
                     }
                   ]
                 },
@@ -23767,7 +24008,8 @@
                         "usage": 25.5,
                         "usage_daily": 25.5,
                         "usage_monthly": 25.5,
-                        "usage_weekly": 25.5
+                        "usage_weekly": 25.5,
+                        "workspace_id": "0df9e665-d932-5740-b2c7-b52af166bc11"
                       }
                     ]
                   },
@@ -23795,7 +24037,8 @@
                           "usage": 25.5,
                           "usage_daily": 25.5,
                           "usage_monthly": 25.5,
-                          "usage_weekly": 25.5
+                          "usage_weekly": 25.5,
+                          "workspace_id": "0df9e665-d932-5740-b2c7-b52af166bc11"
                         },
                         "properties": {
                           "byok_usage": {
@@ -23914,6 +24157,11 @@
                             "example": 25.5,
                             "format": "double",
                             "type": "number"
+                          },
+                          "workspace_id": {
+                            "description": "The workspace ID this API key belongs to.",
+                            "example": "0df9e665-d932-5740-b2c7-b52af166bc11",
+                            "type": "string"
                           }
                         },
                         "required": [
@@ -23935,7 +24183,8 @@
                           "byok_usage_monthly",
                           "created_at",
                           "updated_at",
-                          "creator_user_id"
+                          "creator_user_id",
+                          "workspace_id"
                         ],
                         "type": "object"
                       },
@@ -24072,6 +24321,12 @@
                     "example": "My New API Key",
                     "minLength": 1,
                     "type": "string"
+                  },
+                  "workspace_id": {
+                    "description": "The workspace to create the API key in. Defaults to the default workspace if not provided.",
+                    "example": "0df9e665-d932-5740-b2c7-b52af166bc11",
+                    "format": "uuid",
+                    "type": "string"
                   }
                 },
                 "required": [
@@ -24108,7 +24363,8 @@
                     "usage": 0,
                     "usage_daily": 0,
                     "usage_monthly": 0,
-                    "usage_weekly": 0
+                    "usage_weekly": 0,
+                    "workspace_id": "0df9e665-d932-5740-b2c7-b52af166bc11"
                   },
                   "key": "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"
                 },
@@ -24134,7 +24390,8 @@
                       "usage": 0,
                       "usage_daily": 0,
                       "usage_monthly": 0,
-                      "usage_weekly": 0
+                      "usage_weekly": 0,
+                      "workspace_id": "0df9e665-d932-5740-b2c7-b52af166bc11"
                     },
                     "key": "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"
                   },
@@ -24161,7 +24418,8 @@
                         "usage": 25.5,
                         "usage_daily": 25.5,
                         "usage_monthly": 25.5,
-                        "usage_weekly": 25.5
+                        "usage_weekly": 25.5,
+                        "workspace_id": "0df9e665-d932-5740-b2c7-b52af166bc11"
                       },
                       "properties": {
                         "byok_usage": {
@@ -24280,6 +24538,11 @@
                           "example": 25.5,
                           "format": "double",
                           "type": "number"
+                        },
+                        "workspace_id": {
+                          "description": "The workspace ID this API key belongs to.",
+                          "example": "0df9e665-d932-5740-b2c7-b52af166bc11",
+                          "type": "string"
                         }
                       },
                       "required": [
@@ -24301,7 +24564,8 @@
                         "byok_usage_monthly",
                         "created_at",
                         "updated_at",
-                        "creator_user_id"
+                        "creator_user_id",
+                        "workspace_id"
                       ],
                       "type": "object"
                     },
@@ -24353,6 +24617,22 @@
             },
             "description": "Unauthorized - Authentication required or invalid credentials"
           },
+          "403": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": {
+                    "code": 403,
+                    "message": "Only management keys can perform this operation"
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ForbiddenResponse"
+                }
+              }
+            },
+            "description": "Forbidden - Authentication successful but insufficient permissions"
+          },
           "429": {
             "content": {
               "application/json": {
@@ -24391,7 +24671,18 @@
           "API Keys"
         ],
         "x-speakeasy-name-override": "create"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/keys/{hash}": {
       "delete": {
@@ -24550,7 +24841,8 @@
                     "usage": 25.5,
                     "usage_daily": 25.5,
                     "usage_monthly": 25.5,
-                    "usage_weekly": 25.5
+                    "usage_weekly": 25.5,
+                    "workspace_id": "0df9e665-d932-5740-b2c7-b52af166bc11"
                   }
                 },
                 "schema": {
@@ -24575,7 +24867,8 @@
                       "usage": 25.5,
                       "usage_daily": 25.5,
                       "usage_monthly": 25.5,
-                      "usage_weekly": 25.5
+                      "usage_weekly": 25.5,
+                      "workspace_id": "0df9e665-d932-5740-b2c7-b52af166bc11"
                     }
                   },
                   "properties": {
@@ -24601,7 +24894,8 @@
                         "usage": 25.5,
                         "usage_daily": 25.5,
                         "usage_monthly": 25.5,
-                        "usage_weekly": 25.5
+                        "usage_weekly": 25.5,
+                        "workspace_id": "0df9e665-d932-5740-b2c7-b52af166bc11"
                       },
                       "properties": {
                         "byok_usage": {
@@ -24720,6 +25014,11 @@
                           "example": 25.5,
                           "format": "double",
                           "type": "number"
+                        },
+                        "workspace_id": {
+                          "description": "The workspace ID this API key belongs to.",
+                          "example": "0df9e665-d932-5740-b2c7-b52af166bc11",
+                          "type": "string"
                         }
                       },
                       "required": [
@@ -24741,7 +25040,8 @@
                         "byok_usage_monthly",
                         "created_at",
                         "updated_at",
-                        "creator_user_id"
+                        "creator_user_id",
+                        "workspace_id"
                       ],
                       "type": "object"
                     }
@@ -24928,7 +25228,8 @@
                     "usage": 25.5,
                     "usage_daily": 25.5,
                     "usage_monthly": 25.5,
-                    "usage_weekly": 25.5
+                    "usage_weekly": 25.5,
+                    "workspace_id": "0df9e665-d932-5740-b2c7-b52af166bc11"
                   }
                 },
                 "schema": {
@@ -24953,7 +25254,8 @@
                       "usage": 25.5,
                       "usage_daily": 25.5,
                       "usage_monthly": 25.5,
-                      "usage_weekly": 25.5
+                      "usage_weekly": 25.5,
+                      "workspace_id": "0df9e665-d932-5740-b2c7-b52af166bc11"
                     }
                   },
                   "properties": {
@@ -24979,7 +25281,8 @@
                         "usage": 25.5,
                         "usage_daily": 25.5,
                         "usage_monthly": 25.5,
-                        "usage_weekly": 25.5
+                        "usage_weekly": 25.5,
+                        "workspace_id": "0df9e665-d932-5740-b2c7-b52af166bc11"
                       },
                       "properties": {
                         "byok_usage": {
@@ -25098,6 +25401,11 @@
                           "example": 25.5,
                           "format": "double",
                           "type": "number"
+                        },
+                        "workspace_id": {
+                          "description": "The workspace ID this API key belongs to.",
+                          "example": "0df9e665-d932-5740-b2c7-b52af166bc11",
+                          "type": "string"
                         }
                       },
                       "required": [
@@ -25119,7 +25427,8 @@
                         "byok_usage_monthly",
                         "created_at",
                         "updated_at",
-                        "creator_user_id"
+                        "creator_user_id",
+                        "workspace_id"
                       ],
                       "type": "object"
                     }
@@ -25219,7 +25528,18 @@
           "API Keys"
         ],
         "x-speakeasy-name-override": "update"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/messages": {
       "post": {
@@ -25446,7 +25766,18 @@
         "x-speakeasy-ignore": true,
         "x-speakeasy-name-override": "create",
         "x-speakeasy-stream-request-field": "stream"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/models": {
       "get": {
@@ -25596,7 +25927,18 @@
           "Models"
         ],
         "x-speakeasy-name-override": "list"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/models/{author}/{slug}/endpoints": {
       "get": {
@@ -25762,7 +26104,18 @@
           "Endpoints"
         ],
         "x-speakeasy-name-override": "list"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/models/count": {
       "get": {
@@ -25834,7 +26187,18 @@
           "Models"
         ],
         "x-speakeasy-name-override": "count"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/models/user": {
       "get": {
@@ -25956,7 +26320,18 @@
           "Models"
         ],
         "x-speakeasy-name-override": "listForUser"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/organization/members": {
       "get": {
@@ -26144,7 +26519,18 @@
           },
           "type": "offsetLimit"
         }
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/providers": {
       "get": {
@@ -26795,7 +27181,18 @@
           "Providers"
         ],
         "x-speakeasy-name-override": "list"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/rerank": {
       "post": {
@@ -27171,7 +27568,18 @@
           "Rerank"
         ],
         "x-speakeasy-name-override": "rerank"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/responses": {
       "post": {
@@ -27461,7 +27869,927 @@
         ],
         "x-speakeasy-name-override": "send",
         "x-speakeasy-stream-request-field": "stream"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
+    },
+    "/tts": {
+      "post": {
+        "description": "Synthesizes audio from the input text",
+        "operationId": "createTts",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "Text-to-speech request input",
+                "example": {
+                  "input": "Hello world",
+                  "model": "elevenlabs/eleven-turbo-v2",
+                  "response_format": "pcm",
+                  "speed": 1,
+                  "voice": "alloy"
+                },
+                "properties": {
+                  "input": {
+                    "description": "Text to synthesize",
+                    "example": "Hello world",
+                    "maxLength": 4096,
+                    "type": "string"
+                  },
+                  "model": {
+                    "description": "TTS model identifier",
+                    "example": "elevenlabs/eleven-turbo-v2",
+                    "type": "string"
+                  },
+                  "provider": {
+                    "description": "Provider-specific passthrough configuration",
+                    "properties": {
+                      "options": {
+                        "description": "Provider-specific options keyed by provider slug. The options for the matched provider are spread into the upstream request body.",
+                        "properties": {
+                          "01ai": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "ai21": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "aion-labs": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "akashml": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "alibaba": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "amazon-bedrock": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "amazon-nova": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "ambient": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "anthropic": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "anyscale": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "arcee-ai": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "atlas-cloud": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "atoma": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "avian": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "azure": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "baidu": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "baseten": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "black-forest-labs": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "byteplus": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "centml": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "cerebras": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "chutes": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "cirrascale": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "clarifai": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "cloudflare": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "cohere": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "crofai": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "crusoe": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "deepinfra": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "deepseek": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "dekallm": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "enfer": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "fake-provider": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "featherless": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "fireworks": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "friendli": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "gmicloud": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "google-ai-studio": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "google-vertex": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "gopomelo": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "groq": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "huggingface": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "hyperbolic": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "hyperbolic-quantized": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "inception": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "inceptron": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "inference-net": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "infermatic": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "inflection": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "inocloud": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "io-net": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "ionstream": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "klusterai": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "lambda": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "lepton": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "liquid": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "lynn": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "lynn-private": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "mancer": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "mancer-old": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "mara": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "meta": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "minimax": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "mistral": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "modal": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "modelrun": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "modular": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "moonshotai": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "morph": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "ncompass": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "nebius": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "nextbit": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "nineteen": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "novita": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "nvidia": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "octoai": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "open-inference": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "openai": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "parasail": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "perplexity": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "phala": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "recraft": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "recursal": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "reflection": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "reka": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "relace": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "replicate": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "sambanova": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "sambanova-cloaked": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "seed": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "sf-compute": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "siliconflow": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "sourceful": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "stealth": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "stepfun": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "streamlake": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "switchpoint": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "targon": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "together": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "together-lite": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "ubicloud": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "upstage": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "venice": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "wandb": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "xai": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "xiaomi": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          },
+                          "z-ai": {
+                            "additionalProperties": {
+                              "nullable": true
+                            },
+                            "type": "object"
+                          }
+                        },
+                        "type": "object"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "response_format": {
+                    "default": "pcm",
+                    "description": "Audio output format",
+                    "enum": [
+                      "mp3",
+                      "pcm"
+                    ],
+                    "example": "pcm",
+                    "type": "string",
+                    "x-speakeasy-unknown-values": "allow"
+                  },
+                  "speed": {
+                    "description": "Playback speed multiplier. Only used by models that support it (e.g. OpenAI TTS). Ignored by other providers.",
+                    "example": 1,
+                    "format": "double",
+                    "type": "number"
+                  },
+                  "voice": {
+                    "description": "Voice identifier",
+                    "example": "alloy",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "model",
+                  "input",
+                  "voice"
+                ],
+                "type": "object"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "description": "Raw audio bytestream. Content-Type varies by requested format (audio/mpeg for mp3, audio/L16 for pcm).",
+                  "example": "<binary audio data>",
+                  "format": "binary",
+                  "type": "string"
+                }
+              }
+            },
+            "description": "Audio bytes stream"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": {
+                    "code": 400,
+                    "message": "Invalid request parameters"
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestResponse"
+                }
+              }
+            },
+            "description": "Bad Request - Invalid request parameters or malformed input"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": {
+                    "code": 401,
+                    "message": "Missing Authentication header"
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponse"
+                }
+              }
+            },
+            "description": "Unauthorized - Authentication required or invalid credentials"
+          },
+          "402": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": {
+                    "code": 402,
+                    "message": "Insufficient credits. Add more using https://openrouter.ai/credits"
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/PaymentRequiredResponse"
+                }
+              }
+            },
+            "description": "Payment Required - Insufficient credits or quota to complete request"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": {
+                    "code": 404,
+                    "message": "Resource not found"
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/NotFoundResponse"
+                }
+              }
+            },
+            "description": "Not Found - Resource does not exist"
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": {
+                    "code": 429,
+                    "message": "Rate limit exceeded"
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/TooManyRequestsResponse"
+                }
+              }
+            },
+            "description": "Too Many Requests - Rate limit exceeded"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": {
+                    "code": 500,
+                    "message": "Internal Server Error"
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error - Unexpected server error"
+          },
+          "502": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": {
+                    "code": 502,
+                    "message": "Provider returned error"
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/BadGatewayResponse"
+                }
+              }
+            },
+            "description": "Bad Gateway - Provider/upstream API failure"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": {
+                    "code": 503,
+                    "message": "Service temporarily unavailable"
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceUnavailableResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable - Service temporarily unavailable"
+          },
+          "524": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": {
+                    "code": 524,
+                    "message": "Request timed out. Please try again later."
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/EdgeNetworkTimeoutResponse"
+                }
+              }
+            },
+            "description": "Infrastructure Timeout - Provider request timed out at edge network"
+          },
+          "529": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": {
+                    "code": 529,
+                    "message": "Provider returned error"
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ProviderOverloadedResponse"
+                }
+              }
+            },
+            "description": "Provider Overloaded - Provider is temporarily overloaded"
+          }
+        },
+        "summary": "Create speech",
+        "tags": [
+          "TTS"
+        ],
+        "x-speakeasy-name-override": "createSpeech"
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/videos": {
       "post": {
@@ -27603,7 +28931,18 @@
           "Video Generation"
         ],
         "x-speakeasy-name-override": "generate"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/videos/{jobId}": {
       "get": {
@@ -27698,7 +29037,18 @@
           "Video Generation"
         ],
         "x-speakeasy-name-override": "getGeneration"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/videos/{jobId}/content": {
       "get": {
@@ -27827,7 +29177,18 @@
           "Video Generation"
         ],
         "x-speakeasy-name-override": "getVideoContent"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/videos/models": {
       "get": {
@@ -27913,7 +29274,18 @@
         "tags": [
           "Video Generation"
         ]
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     }
   },
   "security": [
@@ -27986,6 +29358,10 @@
       "name": "Rerank"
     },
     {
+      "description": "Text-to-speech endpoints",
+      "name": "TTS"
+    },
+    {
       "description": "Video Generation endpoints",
       "name": "Video Generation"
     },
@@ -28021,6 +29397,9 @@
       },
       {
         "$ref": "#/components/parameters/AppDisplayName"
+      },
+      {
+        "$ref": "#/components/parameters/AppCategories"
       }
     ]
   }

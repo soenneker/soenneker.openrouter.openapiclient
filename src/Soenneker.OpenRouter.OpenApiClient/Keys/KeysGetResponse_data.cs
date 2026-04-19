@@ -96,6 +96,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Keys
         public double? UsageMonthly { get; set; }
         /// <summary>OpenRouter credit usage (in USD) for the current UTC week (Monday-Sunday)</summary>
         public double? UsageWeekly { get; set; }
+        /// <summary>The workspace ID this API key belongs to.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? WorkspaceId { get; set; }
+#nullable restore
+#else
+        public string WorkspaceId { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Keys.KeysGetResponse_data"/> and sets the default values.
         /// </summary>
@@ -141,6 +149,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Keys
                 { "usage_daily", n => { UsageDaily = n.GetDoubleValue(); } },
                 { "usage_monthly", n => { UsageMonthly = n.GetDoubleValue(); } },
                 { "usage_weekly", n => { UsageWeekly = n.GetDoubleValue(); } },
+                { "workspace_id", n => { WorkspaceId = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -170,6 +179,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Keys
             writer.WriteDoubleValue("usage_daily", UsageDaily);
             writer.WriteDoubleValue("usage_monthly", UsageMonthly);
             writer.WriteDoubleValue("usage_weekly", UsageWeekly);
+            writer.WriteStringValue("workspace_id", WorkspaceId);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

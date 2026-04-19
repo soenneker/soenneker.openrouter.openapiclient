@@ -38,6 +38,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Keys
 #else
         public string Name { get; set; }
 #endif
+        /// <summary>The workspace to create the API key in. Defaults to the default workspace if not provided.</summary>
+        public Guid? WorkspaceId { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Keys.KeysPostRequestBody"/> and sets the default values.
         /// </summary>
@@ -69,6 +71,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Keys
                 { "limit", n => { Limit = n.GetDoubleValue(); } },
                 { "limit_reset", n => { LimitReset = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Keys.KeysPostRequestBody_limit_reset>(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
+                { "workspace_id", n => { WorkspaceId = n.GetGuidValue(); } },
             };
         }
         /// <summary>
@@ -84,6 +87,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Keys
             writer.WriteDoubleValue("limit", Limit);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Keys.KeysPostRequestBody_limit_reset>("limit_reset", LimitReset);
             writer.WriteStringValue("name", Name);
+            writer.WriteGuidValue("workspace_id", WorkspaceId);
             writer.WriteAdditionalData(AdditionalData);
         }
     }
