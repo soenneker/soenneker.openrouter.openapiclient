@@ -86,6 +86,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public string UpdatedAt { get; set; }
 #endif
+        /// <summary>The workspace ID this guardrail belongs to.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? WorkspaceId { get; set; }
+#nullable restore
+#else
+        public string WorkspaceId { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.Guardrail"/> and sets the default values.
         /// </summary>
@@ -123,6 +131,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "reset_interval", n => { ResetInterval = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.GuardrailInterval>(); } },
                 { "updated_at", n => { UpdatedAt = n.GetStringValue(); } },
+                { "workspace_id", n => { WorkspaceId = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -144,6 +153,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteStringValue("name", Name);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.GuardrailInterval>("reset_interval", ResetInterval);
             writer.WriteStringValue("updated_at", UpdatedAt);
+            writer.WriteStringValue("workspace_id", WorkspaceId);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

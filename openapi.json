@@ -7129,6 +7129,12 @@
           },
           "reset_interval": {
             "$ref": "#/components/schemas/GuardrailInterval"
+          },
+          "workspace_id": {
+            "description": "The workspace to create the guardrail in. Defaults to the default workspace if not provided.",
+            "example": "0df9e665-d932-5740-b2c7-b52af166bc11",
+            "format": "uuid",
+            "type": "string"
           }
         },
         "required": [
@@ -7154,7 +7160,8 @@
             "limit_usd": 50,
             "name": "My New Guardrail",
             "reset_interval": "monthly",
-            "updated_at": null
+            "updated_at": null,
+            "workspace_id": "0df9e665-d932-5740-b2c7-b52af166bc11"
           }
         },
         "properties": {
@@ -8180,7 +8187,8 @@
             "limit_usd": 100,
             "name": "Production Guardrail",
             "reset_interval": "monthly",
-            "updated_at": "2025-08-24T15:45:00Z"
+            "updated_at": "2025-08-24T15:45:00Z",
+            "workspace_id": "0df9e665-d932-5740-b2c7-b52af166bc11"
           }
         },
         "properties": {
@@ -8266,7 +8274,8 @@
           "limit_usd": 100,
           "name": "Production Guardrail",
           "reset_interval": "monthly",
-          "updated_at": "2025-08-24T15:45:00Z"
+          "updated_at": "2025-08-24T15:45:00Z",
+          "workspace_id": "0df9e665-d932-5740-b2c7-b52af166bc11"
         },
         "properties": {
           "allowed_models": {
@@ -8360,12 +8369,18 @@
             "example": "2025-08-24T15:45:00Z",
             "nullable": true,
             "type": "string"
+          },
+          "workspace_id": {
+            "description": "The workspace ID this guardrail belongs to.",
+            "example": "0df9e665-d932-5740-b2c7-b52af166bc11",
+            "type": "string"
           }
         },
         "required": [
           "id",
           "name",
-          "created_at"
+          "created_at",
+          "workspace_id"
         ],
         "type": "object"
       },
@@ -9540,7 +9555,8 @@
               "limit_usd": 100,
               "name": "Production Guardrail",
               "reset_interval": "monthly",
-              "updated_at": "2025-08-24T15:45:00Z"
+              "updated_at": "2025-08-24T15:45:00Z",
+              "workspace_id": "0df9e665-d932-5740-b2c7-b52af166bc11"
             }
           ],
           "total_count": 1
@@ -14335,7 +14351,8 @@
           "audio",
           "video",
           "rerank",
-          "tts"
+          "tts",
+          "stt"
         ],
         "example": "text",
         "type": "string",
@@ -18031,7 +18048,8 @@
             "limit_usd": 75,
             "name": "Updated Guardrail Name",
             "reset_interval": "weekly",
-            "updated_at": "2025-08-24T16:00:00Z"
+            "updated_at": "2025-08-24T16:00:00Z",
+            "workspace_id": "0df9e665-d932-5740-b2c7-b52af166bc11"
           }
         },
         "properties": {
@@ -21526,6 +21544,7 @@
                             "embeddings",
                             "rerank",
                             "tts",
+                            "stt",
                             "video",
                             null
                           ],
@@ -21988,6 +22007,18 @@
               "minimum": 1,
               "type": "integer"
             }
+          },
+          {
+            "description": "Filter guardrails by workspace ID. By default, guardrails in the default workspace are returned.",
+            "in": "query",
+            "name": "workspace_id",
+            "required": false,
+            "schema": {
+              "description": "Filter guardrails by workspace ID. By default, guardrails in the default workspace are returned.",
+              "example": "0df9e665-d932-5740-b2c7-b52af166bc11",
+              "format": "uuid",
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -22012,7 +22043,8 @@
                       "limit_usd": 100,
                       "name": "Production Guardrail",
                       "reset_interval": "monthly",
-                      "updated_at": "2025-08-24T15:45:00Z"
+                      "updated_at": "2025-08-24T15:45:00Z",
+                      "workspace_id": "0df9e665-d932-5740-b2c7-b52af166bc11"
                     }
                   ],
                   "total_count": 1
@@ -22130,7 +22162,8 @@
                     "limit_usd": 50,
                     "name": "My New Guardrail",
                     "reset_interval": "monthly",
-                    "updated_at": null
+                    "updated_at": null,
+                    "workspace_id": "0df9e665-d932-5740-b2c7-b52af166bc11"
                   }
                 },
                 "schema": {
@@ -22171,6 +22204,22 @@
               }
             },
             "description": "Unauthorized - Authentication required or invalid credentials"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": {
+                    "code": 403,
+                    "message": "Only management keys can perform this operation"
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ForbiddenResponse"
+                }
+              }
+            },
+            "description": "Forbidden - Authentication successful but insufficient permissions"
           },
           "500": {
             "content": {
@@ -22332,7 +22381,8 @@
                     "limit_usd": 100,
                     "name": "Production Guardrail",
                     "reset_interval": "monthly",
-                    "updated_at": "2025-08-24T15:45:00Z"
+                    "updated_at": "2025-08-24T15:45:00Z",
+                    "workspace_id": "0df9e665-d932-5740-b2c7-b52af166bc11"
                   }
                 },
                 "schema": {
@@ -22449,7 +22499,8 @@
                     "limit_usd": 75,
                     "name": "Updated Guardrail Name",
                     "reset_interval": "weekly",
-                    "updated_at": "2025-08-24T16:00:00Z"
+                    "updated_at": "2025-08-24T16:00:00Z",
+                    "workspace_id": "0df9e665-d932-5740-b2c7-b52af166bc11"
                   }
                 },
                 "schema": {
@@ -27902,7 +27953,6 @@
                   "input": {
                     "description": "Text to synthesize",
                     "example": "Hello world",
-                    "maxLength": 4096,
                     "type": "string"
                   },
                   "model": {

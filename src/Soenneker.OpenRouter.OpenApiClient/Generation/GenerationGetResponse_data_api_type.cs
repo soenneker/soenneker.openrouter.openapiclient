@@ -23,6 +23,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Generation
         #pragma warning disable CS1591
         Tts,
         #pragma warning restore CS1591
+        [EnumMember(Value = "stt")]
+        #pragma warning disable CS1591
+        Stt,
+        #pragma warning restore CS1591
         [EnumMember(Value = "video")]
         #pragma warning disable CS1591
         Video,

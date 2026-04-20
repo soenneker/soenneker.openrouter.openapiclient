@@ -68,6 +68,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #endif
         /// <summary>Interval at which the limit resets (daily, weekly, monthly)</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.GuardrailInterval? ResetInterval { get; set; }
+        /// <summary>The workspace to create the guardrail in. Defaults to the default workspace if not provided.</summary>
+        public Guid? WorkspaceId { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.CreateGuardrailRequest"/> and sets the default values.
         /// </summary>
@@ -102,6 +104,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "limit_usd", n => { LimitUsd = n.GetDoubleValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "reset_interval", n => { ResetInterval = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.GuardrailInterval>(); } },
+                { "workspace_id", n => { WorkspaceId = n.GetGuidValue(); } },
             };
         }
         /// <summary>
@@ -120,6 +123,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteDoubleValue("limit_usd", LimitUsd);
             writer.WriteStringValue("name", Name);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.GuardrailInterval>("reset_interval", ResetInterval);
+            writer.WriteGuidValue("workspace_id", WorkspaceId);
             writer.WriteAdditionalData(AdditionalData);
         }
     }
