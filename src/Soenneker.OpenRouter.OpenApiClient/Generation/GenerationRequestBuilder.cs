@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.OpenRouter.OpenApiClient.Generation.Content;
 using Soenneker.OpenRouter.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -17,6 +18,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Generation
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class GenerationRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The content property</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Generation.Content.ContentRequestBuilder Content
+        {
+            get => new global::Soenneker.OpenRouter.OpenApiClient.Generation.Content.ContentRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Generation.GenerationRequestBuilder"/> and sets the default values.
         /// </summary>
@@ -36,7 +42,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Generation
         /// <summary>
         /// Get request &amp; usage metadata for a generation
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Generation.GenerationGetResponse"/></returns>
+        /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.GenerationResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.UnauthorizedResponse">When receiving a 401 status code</exception>
@@ -49,11 +55,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Generation
         /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOverloadedResponse">When receiving a 529 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.OpenRouter.OpenApiClient.Generation.GenerationGetResponse?> GetAsync(Action<RequestConfiguration<global::Soenneker.OpenRouter.OpenApiClient.Generation.GenerationRequestBuilder.GenerationRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.OpenRouter.OpenApiClient.Models.GenerationResponse?> GetAsync(Action<RequestConfiguration<global::Soenneker.OpenRouter.OpenApiClient.Generation.GenerationRequestBuilder.GenerationRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.OpenRouter.OpenApiClient.Generation.GenerationGetResponse> GetAsync(Action<RequestConfiguration<global::Soenneker.OpenRouter.OpenApiClient.Generation.GenerationRequestBuilder.GenerationRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.OpenRouter.OpenApiClient.Models.GenerationResponse> GetAsync(Action<RequestConfiguration<global::Soenneker.OpenRouter.OpenApiClient.Generation.GenerationRequestBuilder.GenerationRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
@@ -68,7 +74,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Generation
                 { "524", global::Soenneker.OpenRouter.OpenApiClient.Models.EdgeNetworkTimeoutResponse.CreateFromDiscriminatorValue },
                 { "529", global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOverloadedResponse.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<global::Soenneker.OpenRouter.OpenApiClient.Generation.GenerationGetResponse>(requestInfo, global::Soenneker.OpenRouter.OpenApiClient.Generation.GenerationGetResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.OpenRouter.OpenApiClient.Models.GenerationResponse>(requestInfo, global::Soenneker.OpenRouter.OpenApiClient.Models.GenerationResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Get request &amp; usage metadata for a generation

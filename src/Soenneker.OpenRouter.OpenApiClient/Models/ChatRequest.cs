@@ -305,7 +305,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteAdditionalData(AdditionalData);
         }
         /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AutoRouterPlugin"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ContextCompressionPlugin"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.FileParserPlugin"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ModerationPlugin"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ResponseHealingPlugin"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchPlugin"/>
+        /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AutoRouterPlugin"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ContextCompressionPlugin"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.FileParserPlugin"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ModerationPlugin"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ParetoRouterPlugin"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ResponseHealingPlugin"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchPlugin"/>
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class ChatRequest_plugins : IComposedTypeWrapper, IParsable
@@ -341,6 +341,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #nullable restore
 #else
             public global::Soenneker.OpenRouter.OpenApiClient.Models.ModerationPlugin ModerationPlugin { get; set; }
+#endif
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ParetoRouterPlugin"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.ParetoRouterPlugin? ParetoRouterPlugin { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.ParetoRouterPlugin ParetoRouterPlugin { get; set; }
 #endif
             /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ResponseHealingPlugin"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -384,6 +392,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 {
                     result.ModerationPlugin = new global::Soenneker.OpenRouter.OpenApiClient.Models.ModerationPlugin();
                 }
+                else if("pareto-router".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+                {
+                    result.ParetoRouterPlugin = new global::Soenneker.OpenRouter.OpenApiClient.Models.ParetoRouterPlugin();
+                }
                 else if("response-healing".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
                 {
                     result.ResponseHealingPlugin = new global::Soenneker.OpenRouter.OpenApiClient.Models.ResponseHealingPlugin();
@@ -415,6 +427,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 else if(ModerationPlugin != null)
                 {
                     return ModerationPlugin.GetFieldDeserializers();
+                }
+                else if(ParetoRouterPlugin != null)
+                {
+                    return ParetoRouterPlugin.GetFieldDeserializers();
                 }
                 else if(ResponseHealingPlugin != null)
                 {
@@ -448,6 +464,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 else if(ModerationPlugin != null)
                 {
                     writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ModerationPlugin>(null, ModerationPlugin);
+                }
+                else if(ParetoRouterPlugin != null)
+                {
+                    writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ParetoRouterPlugin>(null, ParetoRouterPlugin);
                 }
                 else if(ResponseHealingPlugin != null)
                 {

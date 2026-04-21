@@ -7,6 +7,7 @@ using Microsoft.Kiota.Serialization.Json;
 using Microsoft.Kiota.Serialization.Multipart;
 using Microsoft.Kiota.Serialization.Text;
 using Soenneker.OpenRouter.OpenApiClient.Activity;
+using Soenneker.OpenRouter.OpenApiClient.Audio;
 using Soenneker.OpenRouter.OpenApiClient.Auth;
 using Soenneker.OpenRouter.OpenApiClient.Chat;
 using Soenneker.OpenRouter.OpenApiClient.Credits;
@@ -22,8 +23,8 @@ using Soenneker.OpenRouter.OpenApiClient.Organization;
 using Soenneker.OpenRouter.OpenApiClient.Providers;
 using Soenneker.OpenRouter.OpenApiClient.Rerank;
 using Soenneker.OpenRouter.OpenApiClient.Responses;
-using Soenneker.OpenRouter.OpenApiClient.Tts;
 using Soenneker.OpenRouter.OpenApiClient.Videos;
+using Soenneker.OpenRouter.OpenApiClient.Workspaces;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -40,6 +41,11 @@ namespace Soenneker.OpenRouter.OpenApiClient
         public global::Soenneker.OpenRouter.OpenApiClient.Activity.ActivityRequestBuilder Activity
         {
             get => new global::Soenneker.OpenRouter.OpenApiClient.Activity.ActivityRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The audio property</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Audio.AudioRequestBuilder Audio
+        {
+            get => new global::Soenneker.OpenRouter.OpenApiClient.Audio.AudioRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The auth property</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Auth.AuthRequestBuilder Auth
@@ -116,15 +122,15 @@ namespace Soenneker.OpenRouter.OpenApiClient
         {
             get => new global::Soenneker.OpenRouter.OpenApiClient.Responses.ResponsesRequestBuilder(PathParameters, RequestAdapter);
         }
-        /// <summary>The tts property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Tts.TtsRequestBuilder Tts
-        {
-            get => new global::Soenneker.OpenRouter.OpenApiClient.Tts.TtsRequestBuilder(PathParameters, RequestAdapter);
-        }
         /// <summary>The videos property</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Videos.VideosRequestBuilder Videos
         {
             get => new global::Soenneker.OpenRouter.OpenApiClient.Videos.VideosRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The workspaces property</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Workspaces.WorkspacesRequestBuilder Workspaces
+        {
+            get => new global::Soenneker.OpenRouter.OpenApiClient.Workspaces.WorkspacesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.OpenRouterOpenApiClient"/> and sets the default values.
