@@ -97,6 +97,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public int? NativeTokensPrompt { get; set; }
         /// <summary>Native reasoning tokens as reported by provider</summary>
         public int? NativeTokensReasoning { get; set; }
+        /// <summary>Number of web fetches performed</summary>
+        public int? NumFetches { get; set; }
         /// <summary>Number of audio inputs in the prompt</summary>
         public int? NumInputAudioPrompt { get; set; }
         /// <summary>Number of media items in the completion</summary>
@@ -234,6 +236,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "native_tokens_completion_images", n => { NativeTokensCompletionImages = n.GetIntValue(); } },
                 { "native_tokens_prompt", n => { NativeTokensPrompt = n.GetIntValue(); } },
                 { "native_tokens_reasoning", n => { NativeTokensReasoning = n.GetIntValue(); } },
+                { "num_fetches", n => { NumFetches = n.GetIntValue(); } },
                 { "num_input_audio_prompt", n => { NumInputAudioPrompt = n.GetIntValue(); } },
                 { "num_media_completion", n => { NumMediaCompletion = n.GetIntValue(); } },
                 { "num_media_prompt", n => { NumMediaPrompt = n.GetIntValue(); } },
@@ -282,6 +285,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteIntValue("native_tokens_completion_images", NativeTokensCompletionImages);
             writer.WriteIntValue("native_tokens_prompt", NativeTokensPrompt);
             writer.WriteIntValue("native_tokens_reasoning", NativeTokensReasoning);
+            writer.WriteIntValue("num_fetches", NumFetches);
             writer.WriteIntValue("num_input_audio_prompt", NumInputAudioPrompt);
             writer.WriteIntValue("num_media_completion", NumMediaCompletion);
             writer.WriteIntValue("num_media_prompt", NumMediaPrompt);

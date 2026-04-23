@@ -706,7 +706,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             }
         }
         /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ChatSearchModelsServerTool"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.DatetimeServerTool"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerTool_OpenRouter"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember1"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember2"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember3"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember4"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember5"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OpenRouterWebSearchServerTool"/>
+        /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ChatSearchModelsServerTool"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.DatetimeServerTool"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerTool_OpenRouter"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember1"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember2"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember3"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember4"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember5"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OpenRouterWebSearchServerTool"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.WebFetchServerTool"/>
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class MessagesRequest_tools : IComposedTypeWrapper, IParsable
@@ -783,6 +783,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
             public global::Soenneker.OpenRouter.OpenApiClient.Models.OpenRouterWebSearchServerTool OpenRouterWebSearchServerTool { get; set; }
 #endif
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.WebFetchServerTool"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.WebFetchServerTool? WebFetchServerTool { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.WebFetchServerTool WebFetchServerTool { get; set; }
+#endif
             /// <summary>
             /// Creates a new instance of the appropriate class based on discriminator value
             /// </summary>
@@ -801,6 +809,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 result.MessagesRequestToolsMember4 = new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember4();
                 result.MessagesRequestToolsMember5 = new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember5();
                 result.OpenRouterWebSearchServerTool = new global::Soenneker.OpenRouter.OpenApiClient.Models.OpenRouterWebSearchServerTool();
+                result.WebFetchServerTool = new global::Soenneker.OpenRouter.OpenApiClient.Models.WebFetchServerTool();
                 return result;
             }
             /// <summary>
@@ -809,9 +818,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
             public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
             {
-                if(ChatSearchModelsServerTool != null || DatetimeServerTool != null || ImageGenerationServerToolOpenRouter != null || MessagesRequestToolsMember1 != null || MessagesRequestToolsMember2 != null || MessagesRequestToolsMember3 != null || MessagesRequestToolsMember4 != null || MessagesRequestToolsMember5 != null || OpenRouterWebSearchServerTool != null)
+                if(ChatSearchModelsServerTool != null || DatetimeServerTool != null || ImageGenerationServerToolOpenRouter != null || MessagesRequestToolsMember1 != null || MessagesRequestToolsMember2 != null || MessagesRequestToolsMember3 != null || MessagesRequestToolsMember4 != null || MessagesRequestToolsMember5 != null || OpenRouterWebSearchServerTool != null || WebFetchServerTool != null)
                 {
-                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(ChatSearchModelsServerTool, DatetimeServerTool, ImageGenerationServerToolOpenRouter, MessagesRequestToolsMember1, MessagesRequestToolsMember2, MessagesRequestToolsMember3, MessagesRequestToolsMember4, MessagesRequestToolsMember5, OpenRouterWebSearchServerTool);
+                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(ChatSearchModelsServerTool, DatetimeServerTool, ImageGenerationServerToolOpenRouter, MessagesRequestToolsMember1, MessagesRequestToolsMember2, MessagesRequestToolsMember3, MessagesRequestToolsMember4, MessagesRequestToolsMember5, OpenRouterWebSearchServerTool, WebFetchServerTool);
                 }
                 return new Dictionary<string, Action<IParseNode>>();
             }
@@ -822,7 +831,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             public virtual void Serialize(ISerializationWriter writer)
             {
                 if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatSearchModelsServerTool>(null, ChatSearchModelsServerTool, DatetimeServerTool, ImageGenerationServerToolOpenRouter, MessagesRequestToolsMember1, MessagesRequestToolsMember2, MessagesRequestToolsMember3, MessagesRequestToolsMember4, MessagesRequestToolsMember5, OpenRouterWebSearchServerTool);
+                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatSearchModelsServerTool>(null, ChatSearchModelsServerTool, DatetimeServerTool, ImageGenerationServerToolOpenRouter, MessagesRequestToolsMember1, MessagesRequestToolsMember2, MessagesRequestToolsMember3, MessagesRequestToolsMember4, MessagesRequestToolsMember5, OpenRouterWebSearchServerTool, WebFetchServerTool);
             }
         }
     }
