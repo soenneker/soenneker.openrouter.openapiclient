@@ -575,6 +575,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequest_provider_options_nebius Nebius { get; set; }
 #endif
+        /// <summary>The nexAgi property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequest_provider_options_nexAgi? NexAgi { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequest_provider_options_nexAgi NexAgi { get; set; }
+#endif
         /// <summary>The nextbit property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -966,6 +974,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "morph", n => { Morph = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequest_provider_options_morph>(global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequest_provider_options_morph.CreateFromDiscriminatorValue); } },
                 { "ncompass", n => { Ncompass = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequest_provider_options_ncompass>(global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequest_provider_options_ncompass.CreateFromDiscriminatorValue); } },
                 { "nebius", n => { Nebius = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequest_provider_options_nebius>(global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequest_provider_options_nebius.CreateFromDiscriminatorValue); } },
+                { "nex-agi", n => { NexAgi = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequest_provider_options_nexAgi>(global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequest_provider_options_nexAgi.CreateFromDiscriminatorValue); } },
                 { "nextbit", n => { Nextbit = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequest_provider_options_nextbit>(global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequest_provider_options_nextbit.CreateFromDiscriminatorValue); } },
                 { "nineteen", n => { Nineteen = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequest_provider_options_nineteen>(global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequest_provider_options_nineteen.CreateFromDiscriminatorValue); } },
                 { "novita", n => { Novita = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequest_provider_options_novita>(global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequest_provider_options_novita.CreateFromDiscriminatorValue); } },
@@ -1082,6 +1091,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequest_provider_options_morph>("morph", Morph);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequest_provider_options_ncompass>("ncompass", Ncompass);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequest_provider_options_nebius>("nebius", Nebius);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequest_provider_options_nexAgi>("nex-agi", NexAgi);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequest_provider_options_nextbit>("nextbit", Nextbit);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequest_provider_options_nineteen>("nineteen", Nineteen);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequest_provider_options_novita>("novita", Novita);

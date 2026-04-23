@@ -216,6 +216,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning disable CS1591
         Nebius,
         #pragma warning restore CS1591
+        [EnumMember(Value = "Nex AGI")]
+        #pragma warning disable CS1591
+        NexAGI,
+        #pragma warning restore CS1591
         [EnumMember(Value = "NextBit")]
         #pragma warning disable CS1591
         NextBit,

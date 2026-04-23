@@ -45,7 +45,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchConfig Parameters { get; set; }
 #endif
-        /// <summary>How much context to retrieve per result. Defaults to medium (15000 chars). Only applies when using the Exa engine; ignored with native provider search.</summary>
+        /// <summary>How much context to retrieve per result. Defaults to medium (15000 chars). Applies to Exa and Parallel engines; ignored with native provider search and Firecrawl.</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.SearchQualityLevel? SearchContextSize { get; set; }
         /// <summary>The type property</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatWebSearchShorthand_type? Type { get; set; }

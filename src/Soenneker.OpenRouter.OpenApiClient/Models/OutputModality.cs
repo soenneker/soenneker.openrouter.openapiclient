@@ -32,9 +32,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning disable CS1591
         Rerank,
         #pragma warning restore CS1591
-        [EnumMember(Value = "tts")]
+        [EnumMember(Value = "speech")]
         #pragma warning disable CS1591
-        Tts,
+        Speech,
         #pragma warning restore CS1591
     }
 }
