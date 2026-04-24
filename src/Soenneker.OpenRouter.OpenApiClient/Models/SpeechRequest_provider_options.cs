@@ -663,6 +663,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequest_provider_options_phala Phala { get; set; }
 #endif
+        /// <summary>The poolside property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequest_provider_options_poolside? Poolside { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequest_provider_options_poolside Poolside { get; set; }
+#endif
         /// <summary>The recraft property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -985,6 +993,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "parasail", n => { Parasail = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequest_provider_options_parasail>(global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequest_provider_options_parasail.CreateFromDiscriminatorValue); } },
                 { "perplexity", n => { Perplexity = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequest_provider_options_perplexity>(global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequest_provider_options_perplexity.CreateFromDiscriminatorValue); } },
                 { "phala", n => { Phala = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequest_provider_options_phala>(global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequest_provider_options_phala.CreateFromDiscriminatorValue); } },
+                { "poolside", n => { Poolside = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequest_provider_options_poolside>(global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequest_provider_options_poolside.CreateFromDiscriminatorValue); } },
                 { "recraft", n => { Recraft = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequest_provider_options_recraft>(global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequest_provider_options_recraft.CreateFromDiscriminatorValue); } },
                 { "recursal", n => { Recursal = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequest_provider_options_recursal>(global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequest_provider_options_recursal.CreateFromDiscriminatorValue); } },
                 { "reflection", n => { Reflection = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequest_provider_options_reflection>(global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequest_provider_options_reflection.CreateFromDiscriminatorValue); } },
@@ -1102,6 +1111,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequest_provider_options_parasail>("parasail", Parasail);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequest_provider_options_perplexity>("perplexity", Perplexity);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequest_provider_options_phala>("phala", Phala);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequest_provider_options_poolside>("poolside", Poolside);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequest_provider_options_recraft>("recraft", Recraft);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequest_provider_options_recursal>("recursal", Recursal);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequest_provider_options_reflection>("reflection", Reflection);

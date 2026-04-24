@@ -16,6 +16,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Aspect ratio of the generated video</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_aspect_ratio? AspectRatio { get; set; }
+        /// <summary>URL to receive a webhook notification when the video generation job completes. Overrides the workspace-level default callback URL if set. Must be HTTPS.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? CallbackUrl { get; set; }
+#nullable restore
+#else
+        public string CallbackUrl { get; set; }
+#endif
         /// <summary>Duration of the generated video in seconds</summary>
         public int? Duration { get; set; }
         /// <summary>Images to use as the first and/or last frame of the generated video. Each image must specify a frame_type of first_frame or last_frame.</summary>
@@ -98,6 +106,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "aspect_ratio", n => { AspectRatio = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_aspect_ratio>(); } },
+                { "callback_url", n => { CallbackUrl = n.GetStringValue(); } },
                 { "duration", n => { Duration = n.GetIntValue(); } },
                 { "frame_images", n => { FrameImages = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.FrameImage>(global::Soenneker.OpenRouter.OpenApiClient.Models.FrameImage.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "generate_audio", n => { GenerateAudio = n.GetBoolValue(); } },
@@ -118,6 +127,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_aspect_ratio>("aspect_ratio", AspectRatio);
+            writer.WriteStringValue("callback_url", CallbackUrl);
             writer.WriteIntValue("duration", Duration);
             writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.FrameImage>("frame_images", FrameImages);
             writer.WriteBoolValue("generate_audio", GenerateAudio);

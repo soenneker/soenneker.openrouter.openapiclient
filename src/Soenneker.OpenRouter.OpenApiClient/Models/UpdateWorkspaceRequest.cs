@@ -46,6 +46,16 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public string Description { get; set; }
 #endif
+        /// <summary>Optional array of API key IDs to filter I/O logging</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<int?>? IoLoggingApiKeyIds { get; set; }
+#nullable restore
+#else
+        public List<int?> IoLoggingApiKeyIds { get; set; }
+#endif
+        /// <summary>Sampling rate for I/O logging (0.0001-1)</summary>
+        public double? IoLoggingSamplingRate { get; set; }
         /// <summary>Whether data discount logging is enabled</summary>
         public bool? IsDataDiscountLoggingEnabled { get; set; }
         /// <summary>Whether broadcast is enabled</summary>
@@ -97,6 +107,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "default_provider_sort", n => { DefaultProviderSort = n.GetStringValue(); } },
                 { "default_text_model", n => { DefaultTextModel = n.GetStringValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
+                { "io_logging_api_key_ids", n => { IoLoggingApiKeyIds = n.GetCollectionOfPrimitiveValues<int?>()?.AsList(); } },
+                { "io_logging_sampling_rate", n => { IoLoggingSamplingRate = n.GetDoubleValue(); } },
                 { "is_data_discount_logging_enabled", n => { IsDataDiscountLoggingEnabled = n.GetBoolValue(); } },
                 { "is_observability_broadcast_enabled", n => { IsObservabilityBroadcastEnabled = n.GetBoolValue(); } },
                 { "is_observability_io_logging_enabled", n => { IsObservabilityIoLoggingEnabled = n.GetBoolValue(); } },
@@ -115,6 +127,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteStringValue("default_provider_sort", DefaultProviderSort);
             writer.WriteStringValue("default_text_model", DefaultTextModel);
             writer.WriteStringValue("description", Description);
+            writer.WriteCollectionOfPrimitiveValues<int?>("io_logging_api_key_ids", IoLoggingApiKeyIds);
+            writer.WriteDoubleValue("io_logging_sampling_rate", IoLoggingSamplingRate);
             writer.WriteBoolValue("is_data_discount_logging_enabled", IsDataDiscountLoggingEnabled);
             writer.WriteBoolValue("is_observability_broadcast_enabled", IsObservabilityBroadcastEnabled);
             writer.WriteBoolValue("is_observability_io_logging_enabled", IsObservabilityIoLoggingEnabled);

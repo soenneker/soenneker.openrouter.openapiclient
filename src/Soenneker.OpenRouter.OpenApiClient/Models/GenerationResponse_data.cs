@@ -139,6 +139,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public string RequestId { get; set; }
 #endif
+        /// <summary>If this generation was served from response cache, contains the original generation ID. Null otherwise.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ResponseCacheSourceId { get; set; }
+#nullable restore
+#else
+        public string ResponseCacheSourceId { get; set; }
+#endif
         /// <summary>Router used for the request (e.g., openrouter/auto)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -245,6 +253,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "provider_name", n => { ProviderName = n.GetStringValue(); } },
                 { "provider_responses", n => { ProviderResponses = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderResponse>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderResponse.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "request_id", n => { RequestId = n.GetStringValue(); } },
+                { "response_cache_source_id", n => { ResponseCacheSourceId = n.GetStringValue(); } },
                 { "router", n => { Router = n.GetStringValue(); } },
                 { "session_id", n => { SessionId = n.GetStringValue(); } },
                 { "streamed", n => { Streamed = n.GetBoolValue(); } },
@@ -294,6 +303,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteStringValue("provider_name", ProviderName);
             writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderResponse>("provider_responses", ProviderResponses);
             writer.WriteStringValue("request_id", RequestId);
+            writer.WriteStringValue("response_cache_source_id", ResponseCacheSourceId);
             writer.WriteStringValue("router", Router);
             writer.WriteStringValue("session_id", SessionId);
             writer.WriteBoolValue("streamed", Streamed);

@@ -38,6 +38,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #endif
         /// <summary>The max_results property</summary>
         public int? MaxResults { get; set; }
+        /// <summary>Maximum number of times the model can invoke web search in a single turn. Passed through to native providers that support it (e.g. Anthropic).</summary>
+        public int? MaxUses { get; set; }
         /// <summary>The search_prompt property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -45,6 +47,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #nullable restore
 #else
         public string SearchPrompt { get; set; }
+#endif
+        /// <summary>The user_location property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchUserLocation? UserLocation { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchUserLocation UserLocation { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchPlugin"/> and sets the default values.
@@ -77,7 +87,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "id", n => { Id = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchPlugin_id>(); } },
                 { "include_domains", n => { IncludeDomains = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "max_results", n => { MaxResults = n.GetIntValue(); } },
+                { "max_uses", n => { MaxUses = n.GetIntValue(); } },
                 { "search_prompt", n => { SearchPrompt = n.GetStringValue(); } },
+                { "user_location", n => { UserLocation = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchUserLocation>(global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchUserLocation.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -93,7 +105,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchPlugin_id>("id", Id);
             writer.WriteCollectionOfPrimitiveValues<string>("include_domains", IncludeDomains);
             writer.WriteIntValue("max_results", MaxResults);
+            writer.WriteIntValue("max_uses", MaxUses);
             writer.WriteStringValue("search_prompt", SearchPrompt);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchUserLocation>("user_location", UserLocation);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

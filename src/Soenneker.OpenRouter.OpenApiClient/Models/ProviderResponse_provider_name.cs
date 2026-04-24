@@ -355,6 +355,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning disable CS1591
         Parasail,
         #pragma warning restore CS1591
+        [EnumMember(Value = "Poolside")]
+        #pragma warning disable CS1591
+        Poolside,
+        #pragma warning restore CS1591
         [EnumMember(Value = "Perplexity")]
         #pragma warning disable CS1591
         Perplexity,
