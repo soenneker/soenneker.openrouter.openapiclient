@@ -25,6 +25,18 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatUsage_completion_tokens_details CompletionTokensDetails { get; set; }
 #endif
+        /// <summary>Cost of the completion</summary>
+        public double? Cost { get; set; }
+        /// <summary>Breakdown of upstream inference costs</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.CostDetails? CostDetails { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.CostDetails CostDetails { get; set; }
+#endif
+        /// <summary>Whether a request was made using a Bring Your Own Key configuration</summary>
+        public bool? IsByok { get; set; }
         /// <summary>Number of tokens in the prompt</summary>
         public int? PromptTokens { get; set; }
         /// <summary>Detailed prompt token usage</summary>
@@ -64,6 +76,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             {
                 { "completion_tokens", n => { CompletionTokens = n.GetIntValue(); } },
                 { "completion_tokens_details", n => { CompletionTokensDetails = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatUsage_completion_tokens_details>(global::Soenneker.OpenRouter.OpenApiClient.Models.ChatUsage_completion_tokens_details.CreateFromDiscriminatorValue); } },
+                { "cost", n => { Cost = n.GetDoubleValue(); } },
+                { "cost_details", n => { CostDetails = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.CostDetails>(global::Soenneker.OpenRouter.OpenApiClient.Models.CostDetails.CreateFromDiscriminatorValue); } },
+                { "is_byok", n => { IsByok = n.GetBoolValue(); } },
                 { "prompt_tokens", n => { PromptTokens = n.GetIntValue(); } },
                 { "prompt_tokens_details", n => { PromptTokensDetails = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatUsage_prompt_tokens_details>(global::Soenneker.OpenRouter.OpenApiClient.Models.ChatUsage_prompt_tokens_details.CreateFromDiscriminatorValue); } },
                 { "total_tokens", n => { TotalTokens = n.GetIntValue(); } },
@@ -78,6 +93,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("completion_tokens", CompletionTokens);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatUsage_completion_tokens_details>("completion_tokens_details", CompletionTokensDetails);
+            writer.WriteDoubleValue("cost", Cost);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.CostDetails>("cost_details", CostDetails);
+            writer.WriteBoolValue("is_byok", IsByok);
             writer.WriteIntValue("prompt_tokens", PromptTokens);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatUsage_prompt_tokens_details>("prompt_tokens_details", PromptTokensDetails);
             writer.WriteIntValue("total_tokens", TotalTokens);

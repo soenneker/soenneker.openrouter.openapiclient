@@ -36,5 +36,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning disable CS1591
         Speech,
         #pragma warning restore CS1591
+        [EnumMember(Value = "transcription")]
+        #pragma warning disable CS1591
+        Transcription,
+        #pragma warning restore CS1591
     }
 }

@@ -14,13 +14,13 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     {
         /// <summary>The cost property</summary>
         public double? Cost { get; set; }
-        /// <summary>The cost_details property</summary>
+        /// <summary>Breakdown of upstream inference costs</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResult_usage_cost_details? CostDetails { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.CostDetails? CostDetails { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResult_usage_cost_details CostDetails { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.CostDetails CostDetails { get; set; }
 #endif
         /// <summary>The is_byok property</summary>
         public bool? IsByok { get; set; }
@@ -53,7 +53,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>(base.GetFieldDeserializers())
             {
                 { "cost", n => { Cost = n.GetDoubleValue(); } },
-                { "cost_details", n => { CostDetails = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResult_usage_cost_details>(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResult_usage_cost_details.CreateFromDiscriminatorValue); } },
+                { "cost_details", n => { CostDetails = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.CostDetails>(global::Soenneker.OpenRouter.OpenApiClient.Models.CostDetails.CreateFromDiscriminatorValue); } },
                 { "is_byok", n => { IsByok = n.GetBoolValue(); } },
                 { "iterations", n => { Iterations = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicUsageIteration>(global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicUsageIteration.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "speed", n => { Speed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicSpeed>(); } },
@@ -68,7 +68,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             base.Serialize(writer);
             writer.WriteDoubleValue("cost", Cost);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResult_usage_cost_details>("cost_details", CostDetails);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.CostDetails>("cost_details", CostDetails);
             writer.WriteBoolValue("is_byok", IsByok);
             writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicUsageIteration>("iterations", Iterations);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicSpeed>("speed", Speed);

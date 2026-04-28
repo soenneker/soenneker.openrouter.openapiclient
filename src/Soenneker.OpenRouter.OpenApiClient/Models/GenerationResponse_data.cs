@@ -105,6 +105,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public int? NumMediaCompletion { get; set; }
         /// <summary>Number of media items in the prompt</summary>
         public int? NumMediaPrompt { get; set; }
+        /// <summary>Number of audio output tokens reported by the provider</summary>
+        public int? NumOutputAudioCompletion { get; set; }
         /// <summary>Number of search results included</summary>
         public int? NumSearchResults { get; set; }
         /// <summary>Origin URL of the request</summary>
@@ -248,6 +250,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "num_input_audio_prompt", n => { NumInputAudioPrompt = n.GetIntValue(); } },
                 { "num_media_completion", n => { NumMediaCompletion = n.GetIntValue(); } },
                 { "num_media_prompt", n => { NumMediaPrompt = n.GetIntValue(); } },
+                { "num_output_audio_completion", n => { NumOutputAudioCompletion = n.GetIntValue(); } },
                 { "num_search_results", n => { NumSearchResults = n.GetIntValue(); } },
                 { "origin", n => { Origin = n.GetStringValue(); } },
                 { "provider_name", n => { ProviderName = n.GetStringValue(); } },
@@ -298,6 +301,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteIntValue("num_input_audio_prompt", NumInputAudioPrompt);
             writer.WriteIntValue("num_media_completion", NumMediaCompletion);
             writer.WriteIntValue("num_media_prompt", NumMediaPrompt);
+            writer.WriteIntValue("num_output_audio_completion", NumOutputAudioCompletion);
             writer.WriteIntValue("num_search_results", NumSearchResults);
             writer.WriteStringValue("origin", Origin);
             writer.WriteStringValue("provider_name", ProviderName);
