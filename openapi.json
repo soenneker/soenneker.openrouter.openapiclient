@@ -10,12 +10,22 @@
         "description": "The app identifier should be your app's URL and is used as the primary identifier for rankings.\nThis is used to track API usage per application.\n"
       },
       "AppDisplayName": {
-        "name": "X-Title",
+        "name": "X-OpenRouter-Title",
         "in": "header",
+        "x-speakeasy-name-override": "appTitle",
         "schema": {
           "type": "string"
         },
         "description": "The app display name allows you to customize how your app appears in OpenRouter's dashboard.\n"
+      },
+      "AppCategories": {
+        "name": "X-OpenRouter-Categories",
+        "in": "header",
+        "x-speakeasy-name-override": "appCategories",
+        "schema": {
+          "type": "string"
+        },
+        "description": "Comma-separated list of app categories (e.g. \"cli-agent,cloud-agent\"). Used for marketplace rankings.\n"
       }
     },
     "schemas": {
@@ -3927,7 +3937,8 @@
             "type": "integer"
           },
           "error": {
-            "$ref": "#/components/schemas/ResponsesErrorField"
+            "$ref": "#/components/schemas/ResponsesErrorField",
+            "nullable": true
           },
           "frequency_penalty": {
             "format": "double",
@@ -3938,10 +3949,12 @@
             "type": "string"
           },
           "incomplete_details": {
-            "$ref": "#/components/schemas/IncompleteDetails"
+            "$ref": "#/components/schemas/IncompleteDetails",
+            "nullable": true
           },
           "instructions": {
-            "$ref": "#/components/schemas/BaseInputs"
+            "$ref": "#/components/schemas/BaseInputs",
+            "nullable": true
           },
           "max_output_tokens": {
             "nullable": true,
@@ -4022,7 +4035,8 @@
             "type": "string"
           },
           "reasoning": {
-            "$ref": "#/components/schemas/BaseReasoningConfig"
+            "$ref": "#/components/schemas/BaseReasoningConfig",
+            "nullable": true
           },
           "safety_identifier": {
             "nullable": true,
@@ -4043,7 +4057,8 @@
             "type": "number"
           },
           "text": {
-            "$ref": "#/components/schemas/TextConfig"
+            "$ref": "#/components/schemas/TextConfig",
+            "nullable": true
           },
           "tool_choice": {
             "$ref": "#/components/schemas/OpenAIResponsesToolChoice"
@@ -4132,7 +4147,8 @@
             "type": "array"
           },
           "top_logprobs": {
-            "type": "integer"
+            "type": "integer",
+            "nullable": true
           },
           "top_p": {
             "format": "double",
@@ -4140,7 +4156,8 @@
             "type": "number"
           },
           "truncation": {
-            "$ref": "#/components/schemas/Truncation"
+            "$ref": "#/components/schemas/Truncation",
+            "nullable": true
           },
           "usage": {
             "$ref": "#/components/schemas/OpenAIResponsesUsage"
@@ -12648,6 +12665,7 @@
           "description": "GPT-4 is a large multimodal model that can solve difficult problems with greater accuracy.",
           "expiration_date": null,
           "id": "openai/gpt-4",
+          "is_private": false,
           "knowledge_cutoff": null,
           "links": {
             "details": "/api/v1/models/openai/gpt-5.4/endpoints"
@@ -12716,6 +12734,11 @@
             "example": "openai/gpt-4",
             "type": "string"
           },
+          "is_private": {
+            "description": "Whether this model is only visible to explicitly granted users or organizations.",
+            "example": false,
+            "type": "boolean"
+          },
           "knowledge_cutoff": {
             "description": "The date up to which the model was trained on data. ISO 8601 date string (YYYY-MM-DD) or null if unknown.",
             "example": "2024-10-01",
@@ -12749,6 +12772,7 @@
         },
         "required": [
           "id",
+          "is_private",
           "canonical_slug",
           "name",
           "created",
@@ -15382,6 +15406,7 @@
       "OutputWebFetchServerToolItem": {
         "description": "An openrouter:web_fetch server tool output item",
         "example": {
+          "httpStatus": 200,
           "id": "wf_tmp_abc123",
           "status": "completed",
           "title": "Example Domain",
@@ -15391,6 +15416,14 @@
         "properties": {
           "content": {
             "type": "string"
+          },
+          "error": {
+            "description": "The error message if the fetch failed.",
+            "type": "string"
+          },
+          "httpStatus": {
+            "description": "The HTTP status code returned by the upstream URL fetch.",
+            "type": "integer"
           },
           "id": {
             "type": "string"
@@ -15930,6 +15963,62 @@
         ],
         "type": "object"
       },
+      "PrivateModelEndpointsResponse": {
+        "description": "Private model endpoints available to the authenticated user",
+        "example": {
+          "data": {
+            "architecture": {
+              "input_modalities": [
+                "text"
+              ],
+              "instruct_type": "chatml",
+              "modality": "text->text",
+              "output_modalities": [
+                "text"
+              ],
+              "tokenizer": "GPT"
+            },
+            "created": 1692901234,
+            "description": "GPT-4 is a large multimodal model that can solve difficult problems with greater accuracy.",
+            "endpoints": [
+              {
+                "context_length": 8192,
+                "max_completion_tokens": 4096,
+                "max_prompt_tokens": 8192,
+                "model_name": "GPT-4",
+                "name": "OpenAI: GPT-4",
+                "pricing": {
+                  "completion": "0.00006",
+                  "image": "0",
+                  "prompt": "0.00003",
+                  "request": "0"
+                },
+                "provider_name": "OpenAI",
+                "quantization": "fp16",
+                "status": "default",
+                "supported_parameters": [
+                  "temperature",
+                  "top_p",
+                  "max_tokens"
+                ],
+                "tag": "openai",
+                "uptime_last_30m": 99.5
+              }
+            ],
+            "id": "openai/gpt-4",
+            "name": "GPT-4"
+          }
+        },
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/ListEndpointsResponse"
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "type": "object"
+      },
       "ProviderName": {
         "enum": [
           "AkashML",
@@ -16017,6 +16106,671 @@
         "example": "OpenAI",
         "type": "string",
         "x-speakeasy-unknown-values": "allow"
+      },
+      "ProviderOptions": {
+        "description": "Provider-specific options keyed by provider slug. The options for the matched provider are spread into the upstream request body.",
+        "example": {
+          "openai": {
+            "max_tokens": 1000
+          }
+        },
+        "properties": {
+          "01ai": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "ai21": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "aion-labs": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "akashml": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "alibaba": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "amazon-bedrock": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "amazon-nova": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "ambient": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "anthropic": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "anyscale": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "arcee-ai": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "atlas-cloud": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "atoma": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "avian": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "azure": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "baidu": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "baseten": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "black-forest-labs": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "byteplus": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "centml": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "cerebras": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "chutes": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "cirrascale": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "clarifai": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "cloudflare": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "cohere": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "crofai": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "crusoe": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "deepinfra": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "deepseek": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "dekallm": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "enfer": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "fake-provider": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "featherless": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "fireworks": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "friendli": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "gmicloud": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "google-ai-studio": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "google-vertex": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "gopomelo": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "groq": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "huggingface": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "hyperbolic": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "hyperbolic-quantized": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "inception": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "inceptron": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "inference-net": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "infermatic": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "inflection": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "inocloud": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "io-net": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "ionstream": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "klusterai": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "lambda": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "lepton": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "liquid": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "lynn": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "lynn-private": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "mancer": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "mancer-old": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "mara": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "meta": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "minimax": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "mistral": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "modal": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "modelrun": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "modular": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "moonshotai": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "morph": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "ncompass": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "nebius": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "nex-agi": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "nextbit": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "nineteen": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "novita": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "nvidia": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "octoai": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "open-inference": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "openai": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "parasail": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "perplexity": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "phala": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "poolside": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "recraft": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "recursal": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "reflection": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "reka": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "relace": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "replicate": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "sambanova": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "sambanova-cloaked": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "seed": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "sf-compute": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "siliconflow": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "sourceful": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "stealth": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "stepfun": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "streamlake": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "switchpoint": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "targon": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "together": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "together-lite": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "ubicloud": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "upstage": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "venice": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "wandb": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "xai": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "xiaomi": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "z-ai": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          }
+        },
+        "type": "object"
       },
       "ProviderOverloadedResponse": {
         "description": "Provider Overloaded - Provider is temporarily overloaded",
@@ -18050,664 +18804,7 @@
             "description": "Provider-specific passthrough configuration",
             "properties": {
               "options": {
-                "description": "Provider-specific options keyed by provider slug. The options for the matched provider are spread into the upstream request body.",
-                "properties": {
-                  "01ai": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "ai21": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "aion-labs": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "akashml": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "alibaba": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "amazon-bedrock": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "amazon-nova": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "ambient": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "anthropic": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "anyscale": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "arcee-ai": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "atlas-cloud": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "atoma": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "avian": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "azure": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "baidu": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "baseten": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "black-forest-labs": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "byteplus": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "centml": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "cerebras": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "chutes": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "cirrascale": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "clarifai": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "cloudflare": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "cohere": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "crofai": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "crusoe": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "deepinfra": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "deepseek": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "dekallm": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "enfer": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "fake-provider": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "featherless": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "fireworks": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "friendli": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "gmicloud": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "google-ai-studio": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "google-vertex": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "gopomelo": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "groq": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "huggingface": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "hyperbolic": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "hyperbolic-quantized": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "inception": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "inceptron": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "inference-net": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "infermatic": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "inflection": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "inocloud": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "io-net": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "ionstream": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "klusterai": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "lambda": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "lepton": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "liquid": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "lynn": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "lynn-private": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "mancer": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "mancer-old": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "mara": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "meta": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "minimax": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "mistral": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "modal": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "modelrun": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "modular": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "moonshotai": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "morph": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "ncompass": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "nebius": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "nex-agi": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "nextbit": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "nineteen": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "novita": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "nvidia": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "octoai": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "open-inference": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "openai": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "parasail": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "perplexity": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "phala": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "poolside": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "recraft": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "recursal": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "reflection": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "reka": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "relace": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "replicate": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "sambanova": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "sambanova-cloaked": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "seed": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "sf-compute": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "siliconflow": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "sourceful": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "stealth": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "stepfun": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "streamlake": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "switchpoint": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "targon": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "together": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "together-lite": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "ubicloud": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "upstage": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "venice": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "wandb": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "xai": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "xiaomi": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "z-ai": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  }
-                },
-                "type": "object"
+                "$ref": "#/components/schemas/ProviderOptions"
               }
             },
             "type": "object"
@@ -19161,6 +19258,141 @@
           "logprob": -0.5,
           "token": "Hello"
         }
+      },
+      "STTInputAudio": {
+        "description": "Base64-encoded audio to transcribe",
+        "example": {
+          "data": "UklGRiQA...",
+          "format": "wav"
+        },
+        "properties": {
+          "data": {
+            "description": "Base64-encoded audio data (raw bytes, not a data URI)",
+            "type": "string"
+          },
+          "format": {
+            "description": "Audio format (e.g., wav, mp3, flac, m4a, ogg, webm, aac). Supported formats vary by provider.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "data",
+          "format"
+        ],
+        "type": "object"
+      },
+      "STTRequest": {
+        "description": "Speech-to-text request input. Accepts a JSON body with input_audio containing base64-encoded audio.",
+        "example": {
+          "input_audio": {
+            "data": "UklGRiQA...",
+            "format": "wav"
+          },
+          "language": "en",
+          "model": "openai/whisper-large-v3"
+        },
+        "properties": {
+          "input_audio": {
+            "$ref": "#/components/schemas/STTInputAudio"
+          },
+          "language": {
+            "description": "ISO-639-1 language code (e.g., \"en\", \"ja\"). Auto-detected if omitted.",
+            "example": "en",
+            "type": "string"
+          },
+          "model": {
+            "description": "STT model identifier",
+            "example": "openai/whisper-large-v3",
+            "type": "string"
+          },
+          "provider": {
+            "description": "Provider-specific passthrough configuration",
+            "properties": {
+              "options": {
+                "$ref": "#/components/schemas/ProviderOptions"
+              }
+            },
+            "type": "object"
+          },
+          "temperature": {
+            "description": "Sampling temperature for transcription",
+            "example": 0,
+            "format": "double",
+            "type": "number"
+          }
+        },
+        "required": [
+          "model",
+          "input_audio"
+        ],
+        "type": "object"
+      },
+      "STTResponse": {
+        "description": "STT response containing transcribed text and optional usage statistics",
+        "example": {
+          "text": "Hello, this is a test of OpenAI speech-to-text transcription.",
+          "usage": {
+            "cost": 0.000508,
+            "input_tokens": 83,
+            "output_tokens": 30,
+            "seconds": 9.2,
+            "total_tokens": 113
+          }
+        },
+        "properties": {
+          "text": {
+            "description": "The transcribed text",
+            "example": "Hello, this is a test of OpenAI speech-to-text transcription. The weather is sunny today and the temperature is around 72 degrees.",
+            "type": "string"
+          },
+          "usage": {
+            "$ref": "#/components/schemas/STTUsage"
+          }
+        },
+        "required": [
+          "text"
+        ],
+        "type": "object"
+      },
+      "STTUsage": {
+        "description": "Aggregated usage statistics for the request",
+        "example": {
+          "cost": 0.000508,
+          "input_tokens": 83,
+          "output_tokens": 30,
+          "seconds": 9.2,
+          "total_tokens": 113
+        },
+        "properties": {
+          "cost": {
+            "description": "Total cost of the request in USD",
+            "example": 0.000508,
+            "format": "double",
+            "type": "number"
+          },
+          "input_tokens": {
+            "description": "Number of input tokens billed for this request",
+            "example": 83,
+            "type": "integer"
+          },
+          "output_tokens": {
+            "description": "Number of output tokens generated",
+            "example": 30,
+            "type": "integer"
+          },
+          "seconds": {
+            "description": "Duration of the input audio in seconds",
+            "example": 9.2,
+            "format": "double",
+            "type": "number"
+          },
+          "total_tokens": {
+            "description": "Total number of tokens used (input + output)",
+            "example": 113,
+            "type": "integer"
+          }
+        },
+        "type": "object"
       },
       "TextConfig": {
         "description": "Text output configuration including format and verbosity",
@@ -19963,671 +20195,20 @@
             "description": "Provider-specific passthrough configuration",
             "properties": {
               "options": {
-                "description": "Provider-specific options keyed by provider slug. The options for the matched provider are spread into the upstream request body.",
-                "example": {
-                  "google-vertex": {
-                    "output_config": {
-                      "effort": "low"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/ProviderOptions"
+                  },
+                  {
+                    "example": {
+                      "google-vertex": {
+                        "output_config": {
+                          "effort": "low"
+                        }
+                      }
                     }
                   }
-                },
-                "properties": {
-                  "01ai": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "ai21": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "aion-labs": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "akashml": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "alibaba": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "amazon-bedrock": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "amazon-nova": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "ambient": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "anthropic": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "anyscale": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "arcee-ai": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "atlas-cloud": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "atoma": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "avian": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "azure": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "baidu": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "baseten": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "black-forest-labs": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "byteplus": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "centml": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "cerebras": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "chutes": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "cirrascale": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "clarifai": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "cloudflare": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "cohere": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "crofai": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "crusoe": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "deepinfra": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "deepseek": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "dekallm": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "enfer": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "fake-provider": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "featherless": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "fireworks": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "friendli": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "gmicloud": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "google-ai-studio": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "google-vertex": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "gopomelo": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "groq": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "huggingface": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "hyperbolic": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "hyperbolic-quantized": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "inception": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "inceptron": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "inference-net": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "infermatic": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "inflection": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "inocloud": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "io-net": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "ionstream": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "klusterai": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "lambda": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "lepton": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "liquid": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "lynn": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "lynn-private": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "mancer": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "mancer-old": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "mara": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "meta": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "minimax": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "mistral": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "modal": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "modelrun": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "modular": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "moonshotai": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "morph": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "ncompass": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "nebius": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "nex-agi": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "nextbit": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "nineteen": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "novita": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "nvidia": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "octoai": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "open-inference": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "openai": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "parasail": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "perplexity": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "phala": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "poolside": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "recraft": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "recursal": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "reflection": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "reka": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "relace": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "replicate": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "sambanova": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "sambanova-cloaked": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "seed": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "sf-compute": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "siliconflow": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "sourceful": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "stealth": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "stepfun": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "streamlake": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "switchpoint": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "targon": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "together": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "together-lite": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "ubicloud": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "upstage": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "venice": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "wandb": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "xai": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "xiaomi": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  },
-                  "z-ai": {
-                    "additionalProperties": {
-                      "nullable": true
-                    },
-                    "type": "object"
-                  }
-                },
-                "type": "object"
+                ]
               }
             },
             "type": "object"
@@ -21823,7 +21404,18 @@
         "tags": [
           "Analytics"
         ]
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/audio/speech": {
       "post": {
@@ -22026,7 +21618,240 @@
           "TTS"
         ],
         "x-speakeasy-name-override": "createSpeech"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
+    },
+    "/audio/transcriptions": {
+      "post": {
+        "description": "Transcribes audio into text",
+        "operationId": "createAudioTranscriptions",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "example": {
+                "input_audio": {
+                  "data": "UklGRiQA...",
+                  "format": "wav"
+                },
+                "language": "en",
+                "model": "openai/whisper-large-v3"
+              },
+              "schema": {
+                "$ref": "#/components/schemas/STTRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "text": "Hello, this is a test of OpenAI speech-to-text transcription.",
+                  "usage": {
+                    "cost": 0.000508,
+                    "input_tokens": 83,
+                    "output_tokens": 30,
+                    "seconds": 9.2,
+                    "total_tokens": 113
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/STTResponse"
+                }
+              }
+            },
+            "description": "Transcription result"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": {
+                    "code": 400,
+                    "message": "Invalid request parameters"
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestResponse"
+                }
+              }
+            },
+            "description": "Bad Request - Invalid request parameters or malformed input"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": {
+                    "code": 401,
+                    "message": "Missing Authentication header"
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponse"
+                }
+              }
+            },
+            "description": "Unauthorized - Authentication required or invalid credentials"
+          },
+          "402": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": {
+                    "code": 402,
+                    "message": "Insufficient credits. Add more using https://openrouter.ai/credits"
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/PaymentRequiredResponse"
+                }
+              }
+            },
+            "description": "Payment Required - Insufficient credits or quota to complete request"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": {
+                    "code": 404,
+                    "message": "Resource not found"
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/NotFoundResponse"
+                }
+              }
+            },
+            "description": "Not Found - Resource does not exist"
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": {
+                    "code": 429,
+                    "message": "Rate limit exceeded"
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/TooManyRequestsResponse"
+                }
+              }
+            },
+            "description": "Too Many Requests - Rate limit exceeded"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": {
+                    "code": 500,
+                    "message": "Internal Server Error"
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error - Unexpected server error"
+          },
+          "502": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": {
+                    "code": 502,
+                    "message": "Provider returned error"
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/BadGatewayResponse"
+                }
+              }
+            },
+            "description": "Bad Gateway - Provider/upstream API failure"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": {
+                    "code": 503,
+                    "message": "Service temporarily unavailable"
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceUnavailableResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable - Service temporarily unavailable"
+          },
+          "524": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": {
+                    "code": 524,
+                    "message": "Request timed out. Please try again later."
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/EdgeNetworkTimeoutResponse"
+                }
+              }
+            },
+            "description": "Infrastructure Timeout - Provider request timed out at edge network"
+          },
+          "529": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": {
+                    "code": 529,
+                    "message": "Provider returned error"
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ProviderOverloadedResponse"
+                }
+              }
+            },
+            "description": "Provider Overloaded - Provider is temporarily overloaded"
+          }
+        },
+        "summary": "Create transcription",
+        "tags": [
+          "STT"
+        ],
+        "x-speakeasy-name-override": "createTranscription"
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/auth/keys": {
       "post": {
@@ -22168,7 +21993,18 @@
         "tags": [
           "OAuth"
         ]
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/auth/keys/code": {
       "post": {
@@ -22397,7 +22233,18 @@
           "OAuth"
         ],
         "x-speakeasy-name-override": "createAuthCode"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/chat/completions": {
       "post": {
@@ -22708,7 +22555,18 @@
         "x-speakeasy-group": "chat",
         "x-speakeasy-name-override": "send",
         "x-speakeasy-stream-request-field": "stream"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/credits": {
       "get": {
@@ -22822,7 +22680,18 @@
           "Credits"
         ],
         "x-speakeasy-name-override": "getCredits"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/credits/coinbase": {
       "post": {
@@ -22858,7 +22727,18 @@
         "x-fern-ignore": true,
         "x-speakeasy-ignore": true,
         "x-speakeasy-name-override": "createCoinbaseCharge"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/embeddings": {
       "post": {
@@ -23365,7 +23245,18 @@
           "Embeddings"
         ],
         "x-speakeasy-name-override": "generate"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/embeddings/models": {
       "get": {
@@ -23462,7 +23353,18 @@
           "Embeddings"
         ],
         "x-speakeasy-name-override": "listModels"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/endpoints/zdr": {
       "get": {
@@ -23597,7 +23499,18 @@
           "Endpoints"
         ],
         "x-speakeasy-name-override": "listZdrEndpoints"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/generation": {
       "get": {
@@ -23802,7 +23715,18 @@
         "tags": [
           "Generations"
         ]
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/generation/content": {
       "get": {
@@ -23981,7 +23905,18 @@
         "tags": [
           "Generations"
         ]
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/guardrails": {
       "get": {
@@ -24249,7 +24184,18 @@
           "Guardrails"
         ],
         "x-speakeasy-name-override": "create"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/guardrails/{id}": {
       "delete": {
@@ -24575,7 +24521,18 @@
           "Guardrails"
         ],
         "x-speakeasy-name-override": "update"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/guardrails/{id}/assignments/keys": {
       "get": {
@@ -24835,7 +24792,18 @@
           "Guardrails"
         ],
         "x-speakeasy-name-override": "bulkAssignKeys"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/guardrails/{id}/assignments/keys/remove": {
       "post": {
@@ -24954,7 +24922,18 @@
           "Guardrails"
         ],
         "x-speakeasy-name-override": "bulkUnassignKeys"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/guardrails/{id}/assignments/members": {
       "get": {
@@ -25214,7 +25193,18 @@
           "Guardrails"
         ],
         "x-speakeasy-name-override": "bulkAssignMembers"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/guardrails/{id}/assignments/members/remove": {
       "post": {
@@ -25334,7 +25324,18 @@
           "Guardrails"
         ],
         "x-speakeasy-name-override": "bulkUnassignMembers"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/guardrails/assignments/keys": {
       "get": {
@@ -25449,7 +25450,18 @@
           },
           "type": "offsetLimit"
         }
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/guardrails/assignments/members": {
       "get": {
@@ -25563,7 +25575,18 @@
           },
           "type": "offsetLimit"
         }
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/key": {
       "get": {
@@ -25867,7 +25890,18 @@
           "API Keys"
         ],
         "x-speakeasy-name-override": "getCurrentKeyMetadata"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/keys": {
       "get": {
@@ -26629,7 +26663,18 @@
           "API Keys"
         ],
         "x-speakeasy-name-override": "create"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/keys/{hash}": {
       "delete": {
@@ -27475,7 +27520,18 @@
           "API Keys"
         ],
         "x-speakeasy-name-override": "update"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/messages": {
       "post": {
@@ -27702,7 +27758,18 @@
         "x-speakeasy-ignore": true,
         "x-speakeasy-name-override": "create",
         "x-speakeasy-stream-request-field": "stream"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/models": {
       "get": {
@@ -27852,7 +27919,18 @@
           "Models"
         ],
         "x-speakeasy-name-override": "list"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/models/{author}/{slug}/endpoints": {
       "get": {
@@ -27968,7 +28046,98 @@
                   },
                   "properties": {
                     "data": {
-                      "$ref": "#/components/schemas/ListEndpointsResponse"
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/ListEndpointsResponse"
+                        },
+                        {
+                          "properties": {
+                            "architecture": {
+                              "allOf": [
+                                {
+                                  "$ref": "#/components/schemas/ModelArchitecture"
+                                },
+                                {
+                                  "example": {
+                                    "instruct_type": "chatml",
+                                    "modality": "text",
+                                    "tokenizer": "GPT"
+                                  },
+                                  "properties": {
+                                    "input_modalities": {
+                                      "description": "Supported input modalities",
+                                      "items": {
+                                        "$ref": "#/components/schemas/InputModality"
+                                      },
+                                      "type": "array"
+                                    },
+                                    "instruct_type": {
+                                      "$ref": "#/components/schemas/InstructType"
+                                    },
+                                    "modality": {
+                                      "description": "Primary modality of the model",
+                                      "example": "text",
+                                      "nullable": true,
+                                      "type": "string"
+                                    },
+                                    "output_modalities": {
+                                      "description": "Supported output modalities",
+                                      "items": {
+                                        "$ref": "#/components/schemas/OutputModality"
+                                      },
+                                      "type": "array"
+                                    },
+                                    "tokenizer": {
+                                      "allOf": [
+                                        {
+                                          "$ref": "#/components/schemas/ModelGroup"
+                                        },
+                                        {
+                                          "nullable": true
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "required": [
+                                    "tokenizer",
+                                    "instruct_type",
+                                    "modality",
+                                    "input_modalities",
+                                    "output_modalities"
+                                  ]
+                                }
+                              ]
+                            },
+                            "created": {
+                              "description": "Unix timestamp of when the model was created",
+                              "example": 1692901234,
+                              "type": "integer"
+                            },
+                            "description": {
+                              "description": "Description of the model",
+                              "example": "GPT-4 is a large multimodal model that can solve difficult problems with greater accuracy.",
+                              "type": "string"
+                            },
+                            "endpoints": {
+                              "description": "List of available endpoints for this model",
+                              "items": {
+                                "$ref": "#/components/schemas/PublicEndpoint"
+                              },
+                              "type": "array"
+                            },
+                            "id": {
+                              "description": "Unique identifier for the model",
+                              "example": "openai/gpt-4",
+                              "type": "string"
+                            },
+                            "name": {
+                              "description": "Display name of the model",
+                              "example": "GPT-4",
+                              "type": "string"
+                            }
+                          }
+                        }
+                      ]
                     }
                   },
                   "required": [
@@ -28018,7 +28187,18 @@
           "Endpoints"
         ],
         "x-speakeasy-name-override": "list"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/models/count": {
       "get": {
@@ -28090,7 +28270,18 @@
           "Models"
         ],
         "x-speakeasy-name-override": "count"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/models/user": {
       "get": {
@@ -28212,7 +28403,18 @@
           "Models"
         ],
         "x-speakeasy-name-override": "listForUser"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/organization/members": {
       "get": {
@@ -28400,7 +28602,326 @@
           },
           "type": "offsetLimit"
         }
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
+    },
+    "/private/models/{author}/{slug}": {
+      "get": {
+        "operationId": "listPrivateModels",
+        "parameters": [
+          {
+            "description": "The author/organization of the model",
+            "in": "path",
+            "name": "author",
+            "required": true,
+            "schema": {
+              "description": "The author/organization of the model",
+              "example": "openai",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The model slug",
+            "in": "path",
+            "name": "slug",
+            "required": true,
+            "schema": {
+              "description": "The model slug",
+              "example": "gpt-4",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "data": [
+                    {
+                      "architecture": {
+                        "input_modalities": [
+                          "text"
+                        ],
+                        "instruct_type": "chatml",
+                        "modality": "text->text",
+                        "output_modalities": [
+                          "text"
+                        ],
+                        "tokenizer": "GPT"
+                      },
+                      "canonical_slug": "openai/gpt-4",
+                      "context_length": 8192,
+                      "created": 1692901234,
+                      "default_parameters": null,
+                      "description": "GPT-4 is a large multimodal model that can solve difficult problems with greater accuracy.",
+                      "expiration_date": null,
+                      "id": "openai/gpt-4",
+                      "knowledge_cutoff": null,
+                      "links": {
+                        "details": "/api/v1/private/models/openai/gpt-4/endpoints"
+                      },
+                      "name": "GPT-4",
+                      "per_request_limits": null,
+                      "pricing": {
+                        "completion": "0.00006",
+                        "image": "0",
+                        "prompt": "0.00003",
+                        "request": "0"
+                      },
+                      "supported_parameters": [
+                        "temperature",
+                        "top_p",
+                        "max_tokens"
+                      ],
+                      "top_provider": {
+                        "context_length": 8192,
+                        "is_moderated": true,
+                        "max_completion_tokens": 4096
+                      }
+                    }
+                  ]
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ModelsListResponse"
+                }
+              }
+            },
+            "description": "Returns a private model available to the authenticated user"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": {
+                    "code": 401,
+                    "message": "Missing Authentication header"
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponse"
+                }
+              }
+            },
+            "description": "Unauthorized - Authentication required or invalid credentials"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": {
+                    "code": 404,
+                    "message": "Resource not found"
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/NotFoundResponse"
+                }
+              }
+            },
+            "description": "Not Found - Resource does not exist"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": {
+                    "code": 500,
+                    "message": "Internal Server Error"
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error - Unexpected server error"
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "summary": "Get a private model",
+        "tags": [
+          "Models"
+        ]
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
+    },
+    "/private/models/{author}/{slug}/endpoints": {
+      "get": {
+        "operationId": "listPrivateModelsEndpoints",
+        "parameters": [
+          {
+            "description": "The author/organization of the model",
+            "in": "path",
+            "name": "author",
+            "required": true,
+            "schema": {
+              "description": "The author/organization of the model",
+              "example": "openai",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The model slug",
+            "in": "path",
+            "name": "slug",
+            "required": true,
+            "schema": {
+              "description": "The model slug",
+              "example": "gpt-4",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "data": {
+                    "architecture": {
+                      "input_modalities": [
+                        "text"
+                      ],
+                      "instruct_type": "chatml",
+                      "modality": "text->text",
+                      "output_modalities": [
+                        "text"
+                      ],
+                      "tokenizer": "GPT"
+                    },
+                    "created": 1692901234,
+                    "description": "GPT-4 is a large multimodal model that can solve difficult problems with greater accuracy.",
+                    "endpoints": [
+                      {
+                        "context_length": 8192,
+                        "max_completion_tokens": 4096,
+                        "max_prompt_tokens": 8192,
+                        "model_name": "GPT-4",
+                        "name": "OpenAI: GPT-4",
+                        "pricing": {
+                          "completion": "0.00006",
+                          "image": "0",
+                          "prompt": "0.00003",
+                          "request": "0"
+                        },
+                        "provider_name": "OpenAI",
+                        "quantization": "fp16",
+                        "status": "default",
+                        "supported_parameters": [
+                          "temperature",
+                          "top_p",
+                          "max_tokens"
+                        ],
+                        "tag": "openai",
+                        "uptime_last_30m": 99.5
+                      }
+                    ],
+                    "id": "openai/gpt-4",
+                    "name": "GPT-4"
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/PrivateModelEndpointsResponse"
+                }
+              }
+            },
+            "description": "Returns private model endpoints available to the authenticated user"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": {
+                    "code": 401,
+                    "message": "Missing Authentication header"
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponse"
+                }
+              }
+            },
+            "description": "Unauthorized - Authentication required or invalid credentials"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": {
+                    "code": 404,
+                    "message": "Resource not found"
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/NotFoundResponse"
+                }
+              }
+            },
+            "description": "Not Found - Resource does not exist"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": {
+                    "code": 500,
+                    "message": "Internal Server Error"
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error - Unexpected server error"
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "summary": "List endpoints for a private model",
+        "tags": [
+          "Models"
+        ]
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/providers": {
       "get": {
@@ -29051,7 +29572,18 @@
           "Providers"
         ],
         "x-speakeasy-name-override": "list"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/rerank": {
       "post": {
@@ -29427,7 +29959,18 @@
           "Rerank"
         ],
         "x-speakeasy-name-override": "rerank"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/responses": {
       "post": {
@@ -29717,7 +30260,18 @@
         ],
         "x-speakeasy-name-override": "send",
         "x-speakeasy-stream-request-field": "stream"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/videos": {
       "post": {
@@ -29859,7 +30413,18 @@
           "Video Generation"
         ],
         "x-speakeasy-name-override": "generate"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/videos/{jobId}": {
       "get": {
@@ -29954,7 +30519,18 @@
           "Video Generation"
         ],
         "x-speakeasy-name-override": "getGeneration"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/videos/{jobId}/content": {
       "get": {
@@ -30083,7 +30659,18 @@
           "Video Generation"
         ],
         "x-speakeasy-name-override": "getVideoContent"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/videos/models": {
       "get": {
@@ -30169,7 +30756,18 @@
         "tags": [
           "Video Generation"
         ]
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/workspaces": {
       "get": {
@@ -30414,7 +31012,18 @@
           "Workspaces"
         ],
         "x-speakeasy-name-override": "create"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/workspaces/{id}": {
       "delete": {
@@ -30784,7 +31393,18 @@
           "Workspaces"
         ],
         "x-speakeasy-name-override": "update"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/workspaces/{id}/members/add": {
       "post": {
@@ -30929,7 +31549,18 @@
           "Workspaces"
         ],
         "x-speakeasy-name-override": "bulkAddMembers"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/workspaces/{id}/members/remove": {
       "post": {
@@ -31065,7 +31696,18 @@
           "Workspaces"
         ],
         "x-speakeasy-name-override": "bulkRemoveMembers"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     }
   },
   "security": [
@@ -31138,6 +31780,10 @@
       "name": "Rerank"
     },
     {
+      "description": "Speech-to-text endpoints",
+      "name": "STT"
+    },
+    {
       "description": "Text-to-speech endpoints",
       "name": "TTS"
     },
@@ -31181,6 +31827,9 @@
       },
       {
         "$ref": "#/components/parameters/AppDisplayName"
+      },
+      {
+        "$ref": "#/components/parameters/AppCategories"
       }
     ]
   }

@@ -18,10 +18,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Provider-specific options keyed by provider slug. The options for the matched provider are spread into the upstream request body.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequest_provider_options? Options { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions? Options { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequest_provider_options Options { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions Options { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequest_provider"/> and sets the default values.
@@ -48,7 +48,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "options", n => { Options = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequest_provider_options>(global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequest_provider_options.CreateFromDiscriminatorValue); } },
+                { "options", n => { Options = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -58,7 +58,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequest_provider_options>("options", Options);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions>("options", Options);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

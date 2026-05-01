@@ -23,6 +23,16 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public string Content { get; set; }
 #endif
+        /// <summary>The error message if the fetch failed.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Error { get; set; }
+#nullable restore
+#else
+        public string Error { get; set; }
+#endif
+        /// <summary>The HTTP status code returned by the upstream URL fetch.</summary>
+        public int? HttpStatus { get; set; }
         /// <summary>The id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -77,6 +87,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "content", n => { Content = n.GetStringValue(); } },
+                { "error", n => { Error = n.GetStringValue(); } },
+                { "httpStatus", n => { HttpStatus = n.GetIntValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ToolCallStatus>(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
@@ -92,6 +104,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("content", Content);
+            writer.WriteStringValue("error", Error);
+            writer.WriteIntValue("httpStatus", HttpStatus);
             writer.WriteStringValue("id", Id);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ToolCallStatus>("status", Status);
             writer.WriteStringValue("title", Title);

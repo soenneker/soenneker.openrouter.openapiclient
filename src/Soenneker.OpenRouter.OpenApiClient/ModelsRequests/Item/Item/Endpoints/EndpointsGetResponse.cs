@@ -2,7 +2,6 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
-using Soenneker.OpenRouter.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
 using System;
@@ -15,13 +14,13 @@ namespace Soenneker.OpenRouter.OpenApiClient.ModelsRequests.Item.Item.Endpoints
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>List of available endpoints for a model</summary>
+        /// <summary>The data property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ListEndpointsResponse? Data { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.ModelsRequests.Item.Item.Endpoints.EndpointsGetResponse_data? Data { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ListEndpointsResponse Data { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.ModelsRequests.Item.Item.Endpoints.EndpointsGetResponse_data Data { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.ModelsRequests.Item.Item.Endpoints.EndpointsGetResponse"/> and sets the default values.
@@ -48,7 +47,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.ModelsRequests.Item.Item.Endpoints
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "data", n => { Data = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ListEndpointsResponse>(global::Soenneker.OpenRouter.OpenApiClient.Models.ListEndpointsResponse.CreateFromDiscriminatorValue); } },
+                { "data", n => { Data = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.ModelsRequests.Item.Item.Endpoints.EndpointsGetResponse_data>(global::Soenneker.OpenRouter.OpenApiClient.ModelsRequests.Item.Item.Endpoints.EndpointsGetResponse_data.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -58,7 +57,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.ModelsRequests.Item.Item.Endpoints
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ListEndpointsResponse>("data", Data);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.ModelsRequests.Item.Item.Endpoints.EndpointsGetResponse_data>("data", Data);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

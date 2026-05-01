@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.OpenRouter.OpenApiClient.Audio.Speech;
+using Soenneker.OpenRouter.OpenApiClient.Audio.Transcriptions;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -19,6 +20,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Audio
         public global::Soenneker.OpenRouter.OpenApiClient.Audio.Speech.SpeechRequestBuilder Speech
         {
             get => new global::Soenneker.OpenRouter.OpenApiClient.Audio.Speech.SpeechRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The transcriptions property</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Audio.Transcriptions.TranscriptionsRequestBuilder Transcriptions
+        {
+            get => new global::Soenneker.OpenRouter.OpenApiClient.Audio.Transcriptions.TranscriptionsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Audio.AudioRequestBuilder"/> and sets the default values.
