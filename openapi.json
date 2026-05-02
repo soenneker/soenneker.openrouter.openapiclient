@@ -10,22 +10,12 @@
         "description": "The app identifier should be your app's URL and is used as the primary identifier for rankings.\nThis is used to track API usage per application.\n"
       },
       "AppDisplayName": {
-        "name": "X-OpenRouter-Title",
+        "name": "X-Title",
         "in": "header",
-        "x-speakeasy-name-override": "appTitle",
         "schema": {
           "type": "string"
         },
         "description": "The app display name allows you to customize how your app appears in OpenRouter's dashboard.\n"
-      },
-      "AppCategories": {
-        "name": "X-OpenRouter-Categories",
-        "in": "header",
-        "x-speakeasy-name-override": "appCategories",
-        "schema": {
-          "type": "string"
-        },
-        "description": "Comma-separated list of app categories (e.g. \"cli-agent,cloud-agent\"). Used for marketplace rankings.\n"
       }
     },
     "schemas": {
@@ -3937,8 +3927,7 @@
             "type": "integer"
           },
           "error": {
-            "$ref": "#/components/schemas/ResponsesErrorField",
-            "nullable": true
+            "$ref": "#/components/schemas/ResponsesErrorField"
           },
           "frequency_penalty": {
             "format": "double",
@@ -3949,12 +3938,10 @@
             "type": "string"
           },
           "incomplete_details": {
-            "$ref": "#/components/schemas/IncompleteDetails",
-            "nullable": true
+            "$ref": "#/components/schemas/IncompleteDetails"
           },
           "instructions": {
-            "$ref": "#/components/schemas/BaseInputs",
-            "nullable": true
+            "$ref": "#/components/schemas/BaseInputs"
           },
           "max_output_tokens": {
             "nullable": true,
@@ -4035,8 +4022,7 @@
             "type": "string"
           },
           "reasoning": {
-            "$ref": "#/components/schemas/BaseReasoningConfig",
-            "nullable": true
+            "$ref": "#/components/schemas/BaseReasoningConfig"
           },
           "safety_identifier": {
             "nullable": true,
@@ -4057,8 +4043,7 @@
             "type": "number"
           },
           "text": {
-            "$ref": "#/components/schemas/TextConfig",
-            "nullable": true
+            "$ref": "#/components/schemas/TextConfig"
           },
           "tool_choice": {
             "$ref": "#/components/schemas/OpenAIResponsesToolChoice"
@@ -4147,8 +4132,7 @@
             "type": "array"
           },
           "top_logprobs": {
-            "type": "integer",
-            "nullable": true
+            "type": "integer"
           },
           "top_p": {
             "format": "double",
@@ -4156,8 +4140,7 @@
             "type": "number"
           },
           "truncation": {
-            "$ref": "#/components/schemas/Truncation",
-            "nullable": true
+            "$ref": "#/components/schemas/Truncation"
           },
           "usage": {
             "$ref": "#/components/schemas/OpenAIResponsesUsage"
@@ -12665,7 +12648,6 @@
           "description": "GPT-4 is a large multimodal model that can solve difficult problems with greater accuracy.",
           "expiration_date": null,
           "id": "openai/gpt-4",
-          "is_private": false,
           "knowledge_cutoff": null,
           "links": {
             "details": "/api/v1/models/openai/gpt-5.4/endpoints"
@@ -12734,11 +12716,6 @@
             "example": "openai/gpt-4",
             "type": "string"
           },
-          "is_private": {
-            "description": "Whether this model is only visible to explicitly granted users or organizations.",
-            "example": false,
-            "type": "boolean"
-          },
           "knowledge_cutoff": {
             "description": "The date up to which the model was trained on data. ISO 8601 date string (YYYY-MM-DD) or null if unknown.",
             "example": "2024-10-01",
@@ -12772,7 +12749,6 @@
         },
         "required": [
           "id",
-          "is_private",
           "canonical_slug",
           "name",
           "created",
@@ -15469,11 +15445,55 @@
       "OutputWebSearchServerToolItem": {
         "description": "An openrouter:web_search server tool output item",
         "example": {
+          "action": {
+            "query": "latest AI news",
+            "type": "search"
+          },
           "id": "ws_tmp_abc123",
           "status": "completed",
           "type": "openrouter:web_search"
         },
         "properties": {
+          "action": {
+            "description": "The search action performed, matching OpenAI web_search_call.action shape. Includes the query the model issued and optional source URLs returned by the search provider.",
+            "properties": {
+              "query": {
+                "type": "string"
+              },
+              "sources": {
+                "items": {
+                  "properties": {
+                    "type": {
+                      "enum": [
+                        "url"
+                      ],
+                      "type": "string"
+                    },
+                    "url": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "type",
+                    "url"
+                  ],
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "type": {
+                "enum": [
+                  "search"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "type",
+              "query"
+            ],
+            "type": "object"
+          },
           "id": {
             "type": "string"
           },
@@ -15960,62 +15980,6 @@
         },
         "required": [
           "type"
-        ],
-        "type": "object"
-      },
-      "PrivateModelEndpointsResponse": {
-        "description": "Private model endpoints available to the authenticated user",
-        "example": {
-          "data": {
-            "architecture": {
-              "input_modalities": [
-                "text"
-              ],
-              "instruct_type": "chatml",
-              "modality": "text->text",
-              "output_modalities": [
-                "text"
-              ],
-              "tokenizer": "GPT"
-            },
-            "created": 1692901234,
-            "description": "GPT-4 is a large multimodal model that can solve difficult problems with greater accuracy.",
-            "endpoints": [
-              {
-                "context_length": 8192,
-                "max_completion_tokens": 4096,
-                "max_prompt_tokens": 8192,
-                "model_name": "GPT-4",
-                "name": "OpenAI: GPT-4",
-                "pricing": {
-                  "completion": "0.00006",
-                  "image": "0",
-                  "prompt": "0.00003",
-                  "request": "0"
-                },
-                "provider_name": "OpenAI",
-                "quantization": "fp16",
-                "status": "default",
-                "supported_parameters": [
-                  "temperature",
-                  "top_p",
-                  "max_tokens"
-                ],
-                "tag": "openai",
-                "uptime_last_30m": 99.5
-              }
-            ],
-            "id": "openai/gpt-4",
-            "name": "GPT-4"
-          }
-        },
-        "properties": {
-          "data": {
-            "$ref": "#/components/schemas/ListEndpointsResponse"
-          }
-        },
-        "required": [
-          "data"
         ],
         "type": "object"
       },
@@ -21404,18 +21368,7 @@
         "tags": [
           "Analytics"
         ]
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/audio/speech": {
       "post": {
@@ -21618,18 +21571,7 @@
           "TTS"
         ],
         "x-speakeasy-name-override": "createSpeech"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/audio/transcriptions": {
       "post": {
@@ -21840,18 +21782,7 @@
           "STT"
         ],
         "x-speakeasy-name-override": "createTranscription"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/auth/keys": {
       "post": {
@@ -21993,18 +21924,7 @@
         "tags": [
           "OAuth"
         ]
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/auth/keys/code": {
       "post": {
@@ -22233,18 +22153,7 @@
           "OAuth"
         ],
         "x-speakeasy-name-override": "createAuthCode"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/chat/completions": {
       "post": {
@@ -22555,18 +22464,7 @@
         "x-speakeasy-group": "chat",
         "x-speakeasy-name-override": "send",
         "x-speakeasy-stream-request-field": "stream"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/credits": {
       "get": {
@@ -22680,18 +22578,7 @@
           "Credits"
         ],
         "x-speakeasy-name-override": "getCredits"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/credits/coinbase": {
       "post": {
@@ -22727,18 +22614,7 @@
         "x-fern-ignore": true,
         "x-speakeasy-ignore": true,
         "x-speakeasy-name-override": "createCoinbaseCharge"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/embeddings": {
       "post": {
@@ -23245,18 +23121,7 @@
           "Embeddings"
         ],
         "x-speakeasy-name-override": "generate"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/embeddings/models": {
       "get": {
@@ -23353,18 +23218,7 @@
           "Embeddings"
         ],
         "x-speakeasy-name-override": "listModels"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/endpoints/zdr": {
       "get": {
@@ -23499,18 +23353,7 @@
           "Endpoints"
         ],
         "x-speakeasy-name-override": "listZdrEndpoints"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/generation": {
       "get": {
@@ -23715,18 +23558,7 @@
         "tags": [
           "Generations"
         ]
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/generation/content": {
       "get": {
@@ -23905,18 +23737,7 @@
         "tags": [
           "Generations"
         ]
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/guardrails": {
       "get": {
@@ -24184,18 +24005,7 @@
           "Guardrails"
         ],
         "x-speakeasy-name-override": "create"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/guardrails/{id}": {
       "delete": {
@@ -24521,18 +24331,7 @@
           "Guardrails"
         ],
         "x-speakeasy-name-override": "update"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/guardrails/{id}/assignments/keys": {
       "get": {
@@ -24792,18 +24591,7 @@
           "Guardrails"
         ],
         "x-speakeasy-name-override": "bulkAssignKeys"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/guardrails/{id}/assignments/keys/remove": {
       "post": {
@@ -24922,18 +24710,7 @@
           "Guardrails"
         ],
         "x-speakeasy-name-override": "bulkUnassignKeys"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/guardrails/{id}/assignments/members": {
       "get": {
@@ -25193,18 +24970,7 @@
           "Guardrails"
         ],
         "x-speakeasy-name-override": "bulkAssignMembers"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/guardrails/{id}/assignments/members/remove": {
       "post": {
@@ -25324,18 +25090,7 @@
           "Guardrails"
         ],
         "x-speakeasy-name-override": "bulkUnassignMembers"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/guardrails/assignments/keys": {
       "get": {
@@ -25450,18 +25205,7 @@
           },
           "type": "offsetLimit"
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/guardrails/assignments/members": {
       "get": {
@@ -25575,18 +25319,7 @@
           },
           "type": "offsetLimit"
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/key": {
       "get": {
@@ -25890,18 +25623,7 @@
           "API Keys"
         ],
         "x-speakeasy-name-override": "getCurrentKeyMetadata"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/keys": {
       "get": {
@@ -26663,18 +26385,7 @@
           "API Keys"
         ],
         "x-speakeasy-name-override": "create"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/keys/{hash}": {
       "delete": {
@@ -27520,18 +27231,7 @@
           "API Keys"
         ],
         "x-speakeasy-name-override": "update"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/messages": {
       "post": {
@@ -27758,18 +27458,7 @@
         "x-speakeasy-ignore": true,
         "x-speakeasy-name-override": "create",
         "x-speakeasy-stream-request-field": "stream"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/models": {
       "get": {
@@ -27919,18 +27608,7 @@
           "Models"
         ],
         "x-speakeasy-name-override": "list"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/models/{author}/{slug}/endpoints": {
       "get": {
@@ -28046,98 +27724,7 @@
                   },
                   "properties": {
                     "data": {
-                      "allOf": [
-                        {
-                          "$ref": "#/components/schemas/ListEndpointsResponse"
-                        },
-                        {
-                          "properties": {
-                            "architecture": {
-                              "allOf": [
-                                {
-                                  "$ref": "#/components/schemas/ModelArchitecture"
-                                },
-                                {
-                                  "example": {
-                                    "instruct_type": "chatml",
-                                    "modality": "text",
-                                    "tokenizer": "GPT"
-                                  },
-                                  "properties": {
-                                    "input_modalities": {
-                                      "description": "Supported input modalities",
-                                      "items": {
-                                        "$ref": "#/components/schemas/InputModality"
-                                      },
-                                      "type": "array"
-                                    },
-                                    "instruct_type": {
-                                      "$ref": "#/components/schemas/InstructType"
-                                    },
-                                    "modality": {
-                                      "description": "Primary modality of the model",
-                                      "example": "text",
-                                      "nullable": true,
-                                      "type": "string"
-                                    },
-                                    "output_modalities": {
-                                      "description": "Supported output modalities",
-                                      "items": {
-                                        "$ref": "#/components/schemas/OutputModality"
-                                      },
-                                      "type": "array"
-                                    },
-                                    "tokenizer": {
-                                      "allOf": [
-                                        {
-                                          "$ref": "#/components/schemas/ModelGroup"
-                                        },
-                                        {
-                                          "nullable": true
-                                        }
-                                      ]
-                                    }
-                                  },
-                                  "required": [
-                                    "tokenizer",
-                                    "instruct_type",
-                                    "modality",
-                                    "input_modalities",
-                                    "output_modalities"
-                                  ]
-                                }
-                              ]
-                            },
-                            "created": {
-                              "description": "Unix timestamp of when the model was created",
-                              "example": 1692901234,
-                              "type": "integer"
-                            },
-                            "description": {
-                              "description": "Description of the model",
-                              "example": "GPT-4 is a large multimodal model that can solve difficult problems with greater accuracy.",
-                              "type": "string"
-                            },
-                            "endpoints": {
-                              "description": "List of available endpoints for this model",
-                              "items": {
-                                "$ref": "#/components/schemas/PublicEndpoint"
-                              },
-                              "type": "array"
-                            },
-                            "id": {
-                              "description": "Unique identifier for the model",
-                              "example": "openai/gpt-4",
-                              "type": "string"
-                            },
-                            "name": {
-                              "description": "Display name of the model",
-                              "example": "GPT-4",
-                              "type": "string"
-                            }
-                          }
-                        }
-                      ]
+                      "$ref": "#/components/schemas/ListEndpointsResponse"
                     }
                   },
                   "required": [
@@ -28187,18 +27774,7 @@
           "Endpoints"
         ],
         "x-speakeasy-name-override": "list"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/models/count": {
       "get": {
@@ -28270,18 +27846,7 @@
           "Models"
         ],
         "x-speakeasy-name-override": "count"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/models/user": {
       "get": {
@@ -28403,18 +27968,7 @@
           "Models"
         ],
         "x-speakeasy-name-override": "listForUser"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/organization/members": {
       "get": {
@@ -28602,326 +28156,7 @@
           },
           "type": "offsetLimit"
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
-    },
-    "/private/models/{author}/{slug}": {
-      "get": {
-        "operationId": "listPrivateModels",
-        "parameters": [
-          {
-            "description": "The author/organization of the model",
-            "in": "path",
-            "name": "author",
-            "required": true,
-            "schema": {
-              "description": "The author/organization of the model",
-              "example": "openai",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The model slug",
-            "in": "path",
-            "name": "slug",
-            "required": true,
-            "schema": {
-              "description": "The model slug",
-              "example": "gpt-4",
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "example": {
-                  "data": [
-                    {
-                      "architecture": {
-                        "input_modalities": [
-                          "text"
-                        ],
-                        "instruct_type": "chatml",
-                        "modality": "text->text",
-                        "output_modalities": [
-                          "text"
-                        ],
-                        "tokenizer": "GPT"
-                      },
-                      "canonical_slug": "openai/gpt-4",
-                      "context_length": 8192,
-                      "created": 1692901234,
-                      "default_parameters": null,
-                      "description": "GPT-4 is a large multimodal model that can solve difficult problems with greater accuracy.",
-                      "expiration_date": null,
-                      "id": "openai/gpt-4",
-                      "knowledge_cutoff": null,
-                      "links": {
-                        "details": "/api/v1/private/models/openai/gpt-4/endpoints"
-                      },
-                      "name": "GPT-4",
-                      "per_request_limits": null,
-                      "pricing": {
-                        "completion": "0.00006",
-                        "image": "0",
-                        "prompt": "0.00003",
-                        "request": "0"
-                      },
-                      "supported_parameters": [
-                        "temperature",
-                        "top_p",
-                        "max_tokens"
-                      ],
-                      "top_provider": {
-                        "context_length": 8192,
-                        "is_moderated": true,
-                        "max_completion_tokens": 4096
-                      }
-                    }
-                  ]
-                },
-                "schema": {
-                  "$ref": "#/components/schemas/ModelsListResponse"
-                }
-              }
-            },
-            "description": "Returns a private model available to the authenticated user"
-          },
-          "401": {
-            "content": {
-              "application/json": {
-                "example": {
-                  "error": {
-                    "code": 401,
-                    "message": "Missing Authentication header"
-                  }
-                },
-                "schema": {
-                  "$ref": "#/components/schemas/UnauthorizedResponse"
-                }
-              }
-            },
-            "description": "Unauthorized - Authentication required or invalid credentials"
-          },
-          "404": {
-            "content": {
-              "application/json": {
-                "example": {
-                  "error": {
-                    "code": 404,
-                    "message": "Resource not found"
-                  }
-                },
-                "schema": {
-                  "$ref": "#/components/schemas/NotFoundResponse"
-                }
-              }
-            },
-            "description": "Not Found - Resource does not exist"
-          },
-          "500": {
-            "content": {
-              "application/json": {
-                "example": {
-                  "error": {
-                    "code": 500,
-                    "message": "Internal Server Error"
-                  }
-                },
-                "schema": {
-                  "$ref": "#/components/schemas/InternalServerResponse"
-                }
-              }
-            },
-            "description": "Internal Server Error - Unexpected server error"
-          }
-        },
-        "security": [
-          {
-            "bearer": []
-          }
-        ],
-        "summary": "Get a private model",
-        "tags": [
-          "Models"
-        ]
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
-    },
-    "/private/models/{author}/{slug}/endpoints": {
-      "get": {
-        "operationId": "listPrivateModelsEndpoints",
-        "parameters": [
-          {
-            "description": "The author/organization of the model",
-            "in": "path",
-            "name": "author",
-            "required": true,
-            "schema": {
-              "description": "The author/organization of the model",
-              "example": "openai",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The model slug",
-            "in": "path",
-            "name": "slug",
-            "required": true,
-            "schema": {
-              "description": "The model slug",
-              "example": "gpt-4",
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "example": {
-                  "data": {
-                    "architecture": {
-                      "input_modalities": [
-                        "text"
-                      ],
-                      "instruct_type": "chatml",
-                      "modality": "text->text",
-                      "output_modalities": [
-                        "text"
-                      ],
-                      "tokenizer": "GPT"
-                    },
-                    "created": 1692901234,
-                    "description": "GPT-4 is a large multimodal model that can solve difficult problems with greater accuracy.",
-                    "endpoints": [
-                      {
-                        "context_length": 8192,
-                        "max_completion_tokens": 4096,
-                        "max_prompt_tokens": 8192,
-                        "model_name": "GPT-4",
-                        "name": "OpenAI: GPT-4",
-                        "pricing": {
-                          "completion": "0.00006",
-                          "image": "0",
-                          "prompt": "0.00003",
-                          "request": "0"
-                        },
-                        "provider_name": "OpenAI",
-                        "quantization": "fp16",
-                        "status": "default",
-                        "supported_parameters": [
-                          "temperature",
-                          "top_p",
-                          "max_tokens"
-                        ],
-                        "tag": "openai",
-                        "uptime_last_30m": 99.5
-                      }
-                    ],
-                    "id": "openai/gpt-4",
-                    "name": "GPT-4"
-                  }
-                },
-                "schema": {
-                  "$ref": "#/components/schemas/PrivateModelEndpointsResponse"
-                }
-              }
-            },
-            "description": "Returns private model endpoints available to the authenticated user"
-          },
-          "401": {
-            "content": {
-              "application/json": {
-                "example": {
-                  "error": {
-                    "code": 401,
-                    "message": "Missing Authentication header"
-                  }
-                },
-                "schema": {
-                  "$ref": "#/components/schemas/UnauthorizedResponse"
-                }
-              }
-            },
-            "description": "Unauthorized - Authentication required or invalid credentials"
-          },
-          "404": {
-            "content": {
-              "application/json": {
-                "example": {
-                  "error": {
-                    "code": 404,
-                    "message": "Resource not found"
-                  }
-                },
-                "schema": {
-                  "$ref": "#/components/schemas/NotFoundResponse"
-                }
-              }
-            },
-            "description": "Not Found - Resource does not exist"
-          },
-          "500": {
-            "content": {
-              "application/json": {
-                "example": {
-                  "error": {
-                    "code": 500,
-                    "message": "Internal Server Error"
-                  }
-                },
-                "schema": {
-                  "$ref": "#/components/schemas/InternalServerResponse"
-                }
-              }
-            },
-            "description": "Internal Server Error - Unexpected server error"
-          }
-        },
-        "security": [
-          {
-            "bearer": []
-          }
-        ],
-        "summary": "List endpoints for a private model",
-        "tags": [
-          "Models"
-        ]
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/providers": {
       "get": {
@@ -29572,18 +28807,7 @@
           "Providers"
         ],
         "x-speakeasy-name-override": "list"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/rerank": {
       "post": {
@@ -29959,18 +29183,7 @@
           "Rerank"
         ],
         "x-speakeasy-name-override": "rerank"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/responses": {
       "post": {
@@ -30260,18 +29473,7 @@
         ],
         "x-speakeasy-name-override": "send",
         "x-speakeasy-stream-request-field": "stream"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/videos": {
       "post": {
@@ -30413,18 +29615,7 @@
           "Video Generation"
         ],
         "x-speakeasy-name-override": "generate"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/videos/{jobId}": {
       "get": {
@@ -30519,18 +29710,7 @@
           "Video Generation"
         ],
         "x-speakeasy-name-override": "getGeneration"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/videos/{jobId}/content": {
       "get": {
@@ -30659,18 +29839,7 @@
           "Video Generation"
         ],
         "x-speakeasy-name-override": "getVideoContent"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/videos/models": {
       "get": {
@@ -30756,18 +29925,7 @@
         "tags": [
           "Video Generation"
         ]
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/workspaces": {
       "get": {
@@ -31012,18 +30170,7 @@
           "Workspaces"
         ],
         "x-speakeasy-name-override": "create"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/workspaces/{id}": {
       "delete": {
@@ -31393,18 +30540,7 @@
           "Workspaces"
         ],
         "x-speakeasy-name-override": "update"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/workspaces/{id}/members/add": {
       "post": {
@@ -31549,18 +30685,7 @@
           "Workspaces"
         ],
         "x-speakeasy-name-override": "bulkAddMembers"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/workspaces/{id}/members/remove": {
       "post": {
@@ -31696,18 +30821,7 @@
           "Workspaces"
         ],
         "x-speakeasy-name-override": "bulkRemoveMembers"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     }
   },
   "security": [
@@ -31827,9 +30941,6 @@
       },
       {
         "$ref": "#/components/parameters/AppDisplayName"
-      },
-      {
-        "$ref": "#/components/parameters/AppCategories"
       }
     ]
   }

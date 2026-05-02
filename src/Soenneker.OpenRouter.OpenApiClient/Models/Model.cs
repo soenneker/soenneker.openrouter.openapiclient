@@ -75,8 +75,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public string Id { get; set; }
 #endif
-        /// <summary>Whether this model is only visible to explicitly granted users or organizations.</summary>
-        public bool? IsPrivate { get; set; }
         /// <summary>The date up to which the model was trained on data. ISO 8601 date string (YYYY-MM-DD) or null if unknown.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -167,7 +165,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "expiration_date", n => { ExpirationDate = n.GetStringValue(); } },
                 { "hugging_face_id", n => { HuggingFaceId = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
-                { "is_private", n => { IsPrivate = n.GetBoolValue(); } },
                 { "knowledge_cutoff", n => { KnowledgeCutoff = n.GetStringValue(); } },
                 { "links", n => { Links = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ModelLinks>(global::Soenneker.OpenRouter.OpenApiClient.Models.ModelLinks.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
@@ -193,7 +190,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteStringValue("expiration_date", ExpirationDate);
             writer.WriteStringValue("hugging_face_id", HuggingFaceId);
             writer.WriteStringValue("id", Id);
-            writer.WriteBoolValue("is_private", IsPrivate);
             writer.WriteStringValue("knowledge_cutoff", KnowledgeCutoff);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ModelLinks>("links", Links);
             writer.WriteStringValue("name", Name);
