@@ -12665,6 +12665,7 @@
             "top_p",
             "max_tokens"
           ],
+          "supported_voices": null,
           "top_provider": {
             "context_length": 8192,
             "is_moderated": true,
@@ -12743,6 +12744,15 @@
             },
             "type": "array"
           },
+          "supported_voices": {
+            "description": "List of supported voice identifiers for TTS models. Null for non-TTS models.",
+            "example": null,
+            "items": {
+              "type": "string"
+            },
+            "nullable": true,
+            "type": "array"
+          },
           "top_provider": {
             "$ref": "#/components/schemas/TopProviderInfo"
           }
@@ -12759,6 +12769,7 @@
           "per_request_limits",
           "supported_parameters",
           "default_parameters",
+          "supported_voices",
           "links"
         ],
         "type": "object"
@@ -12963,6 +12974,7 @@
                 "frequency_penalty",
                 "presence_penalty"
               ],
+              "supported_voices": null,
               "top_provider": {
                 "context_length": 8192,
                 "is_moderated": true,
@@ -13020,6 +13032,7 @@
               "top_p",
               "max_tokens"
             ],
+            "supported_voices": null,
             "top_provider": {
               "context_length": 8192,
               "is_moderated": true,
@@ -23165,6 +23178,7 @@
                         "request": "0"
                       },
                       "supported_parameters": [],
+                      "supported_voices": null,
                       "top_provider": {
                         "context_length": 8192,
                         "is_moderated": false,
@@ -27555,6 +27569,7 @@
                         "top_p",
                         "max_tokens"
                       ],
+                      "supported_voices": null,
                       "top_provider": {
                         "context_length": 8192,
                         "is_moderated": true,
@@ -27894,6 +27909,7 @@
                         "top_p",
                         "max_tokens"
                       ],
+                      "supported_voices": null,
                       "top_provider": {
                         "context_length": 8192,
                         "is_moderated": true,

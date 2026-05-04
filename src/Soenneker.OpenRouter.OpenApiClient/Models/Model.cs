@@ -123,6 +123,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public List<global::Soenneker.OpenRouter.OpenApiClient.Models.Parameter?> SupportedParameters { get; set; }
 #endif
+        /// <summary>List of supported voice identifiers for TTS models. Null for non-TTS models.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? SupportedVoices { get; set; }
+#nullable restore
+#else
+        public List<string> SupportedVoices { get; set; }
+#endif
         /// <summary>Information about the top provider for this model</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -171,6 +179,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "per_request_limits", n => { PerRequestLimits = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PerRequestLimits>(global::Soenneker.OpenRouter.OpenApiClient.Models.PerRequestLimits.CreateFromDiscriminatorValue); } },
                 { "pricing", n => { Pricing = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing>(global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing.CreateFromDiscriminatorValue); } },
                 { "supported_parameters", n => { SupportedParameters = n.GetCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.Parameter>()?.AsList(); } },
+                { "supported_voices", n => { SupportedVoices = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "top_provider", n => { TopProvider = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.TopProviderInfo>(global::Soenneker.OpenRouter.OpenApiClient.Models.TopProviderInfo.CreateFromDiscriminatorValue); } },
             };
         }
@@ -196,6 +205,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PerRequestLimits>("per_request_limits", PerRequestLimits);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing>("pricing", Pricing);
             writer.WriteCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.Parameter>("supported_parameters", SupportedParameters);
+            writer.WriteCollectionOfPrimitiveValues<string>("supported_voices", SupportedVoices);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.TopProviderInfo>("top_provider", TopProvider);
             writer.WriteAdditionalData(AdditionalData);
         }
