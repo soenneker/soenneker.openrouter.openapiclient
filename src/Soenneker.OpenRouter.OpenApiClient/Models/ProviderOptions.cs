@@ -647,6 +647,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_parasail Parasail { get; set; }
 #endif
+        /// <summary>The perceptron property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_perceptron? Perceptron { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_perceptron Perceptron { get; set; }
+#endif
         /// <summary>The perplexity property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -991,6 +999,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "open-inference", n => { OpenInference = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_openInference>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_openInference.CreateFromDiscriminatorValue); } },
                 { "openai", n => { Openai = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_openai>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_openai.CreateFromDiscriminatorValue); } },
                 { "parasail", n => { Parasail = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_parasail>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_parasail.CreateFromDiscriminatorValue); } },
+                { "perceptron", n => { Perceptron = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_perceptron>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_perceptron.CreateFromDiscriminatorValue); } },
                 { "perplexity", n => { Perplexity = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_perplexity>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_perplexity.CreateFromDiscriminatorValue); } },
                 { "phala", n => { Phala = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_phala>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_phala.CreateFromDiscriminatorValue); } },
                 { "poolside", n => { Poolside = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_poolside>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_poolside.CreateFromDiscriminatorValue); } },
@@ -1109,6 +1118,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_openai>("openai", Openai);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_openInference>("open-inference", OpenInference);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_parasail>("parasail", Parasail);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_perceptron>("perceptron", Perceptron);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_perplexity>("perplexity", Perplexity);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_phala>("phala", Phala);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_poolside>("poolside", Poolside);

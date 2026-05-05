@@ -14,7 +14,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Limit search results to these domains. Supported by Exa, Parallel, and most native providers (Anthropic, OpenAI, xAI). Not supported with Firecrawl or Perplexity.</summary>
+        /// <summary>Limit search results to these domains. Supported by Exa, Firecrawl, Parallel, and most native providers (Anthropic, OpenAI, xAI). Not supported with Perplexity. Cannot be used with excluded_domains.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? AllowedDomains { get; set; }
@@ -24,7 +24,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #endif
         /// <summary>Which search engine to use. &quot;auto&quot; (default) uses native if the provider supports it, otherwise Exa. &quot;native&quot; forces the provider&apos;s built-in search. &quot;exa&quot; forces the Exa search API. &quot;firecrawl&quot; uses Firecrawl (requires BYOK). &quot;parallel&quot; uses the Parallel search API.</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchEngineEnum? Engine { get; set; }
-        /// <summary>Exclude search results from these domains. Supported by Exa, Parallel, Anthropic, and xAI. Not supported with Firecrawl, OpenAI (silently ignored), or Perplexity.</summary>
+        /// <summary>Exclude search results from these domains. Supported by Exa, Firecrawl, Parallel, Anthropic, and xAI. Not supported with OpenAI (silently ignored) or Perplexity. Cannot be used with allowed_domains.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? ExcludedDomains { get; set; }

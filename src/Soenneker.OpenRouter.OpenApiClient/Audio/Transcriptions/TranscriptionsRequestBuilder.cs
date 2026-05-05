@@ -34,7 +34,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Audio.Transcriptions
         {
         }
         /// <summary>
-        /// Transcribes audio into text
+        /// Transcribes audio into text. Accepts base64-encoded audio input and returns the transcribed text.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.STTResponse"/></returns>
         /// <param name="body">Speech-to-text request input. Accepts a JSON body with input_audio containing base64-encoded audio.</param>
@@ -77,7 +77,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Audio.Transcriptions
             return await RequestAdapter.SendAsync<global::Soenneker.OpenRouter.OpenApiClient.Models.STTResponse>(requestInfo, global::Soenneker.OpenRouter.OpenApiClient.Models.STTResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Transcribes audio into text
+        /// Transcribes audio into text. Accepts base64-encoded audio input and returns the transcribed text.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">Speech-to-text request input. Accepts a JSON body with input_audio containing base64-encoded audio.</param>

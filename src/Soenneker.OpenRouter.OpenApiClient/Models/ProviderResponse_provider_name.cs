@@ -359,6 +359,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning disable CS1591
         Poolside,
         #pragma warning restore CS1591
+        [EnumMember(Value = "Perceptron")]
+        #pragma warning disable CS1591
+        Perceptron,
+        #pragma warning restore CS1591
         [EnumMember(Value = "Perplexity")]
         #pragma warning disable CS1591
         Perplexity,

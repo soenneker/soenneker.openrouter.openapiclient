@@ -34,7 +34,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Audio.Speech
         {
         }
         /// <summary>
-        /// Synthesizes audio from the input text
+        /// Synthesizes audio from the input text. Returns a raw audio bytestream in the requested format (e.g. mp3, pcm, wav).
         /// </summary>
         /// <returns>A <see cref="Stream"/></returns>
         /// <param name="body">Text-to-speech request input</param>
@@ -77,7 +77,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Audio.Speech
             return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Synthesizes audio from the input text
+        /// Synthesizes audio from the input text. Returns a raw audio bytestream in the requested format (e.g. mp3, pcm, wav).
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">Text-to-speech request input</param>
