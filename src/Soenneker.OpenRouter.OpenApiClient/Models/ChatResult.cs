@@ -43,6 +43,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #endif
         /// <summary>The object property</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatResult_object? Object { get; set; }
+        /// <summary>The openrouter_metadata property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.OpenRouterMetadata? OpenrouterMetadata { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.OpenRouterMetadata OpenrouterMetadata { get; set; }
+#endif
         /// <summary>The service tier used by the upstream provider for this request</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -97,6 +105,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "model", n => { Model = n.GetStringValue(); } },
                 { "object", n => { Object = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatResult_object>(); } },
+                { "openrouter_metadata", n => { OpenrouterMetadata = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OpenRouterMetadata>(global::Soenneker.OpenRouter.OpenApiClient.Models.OpenRouterMetadata.CreateFromDiscriminatorValue); } },
                 { "service_tier", n => { ServiceTier = n.GetStringValue(); } },
                 { "system_fingerprint", n => { SystemFingerprint = n.GetStringValue(); } },
                 { "usage", n => { Usage = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatUsage>(global::Soenneker.OpenRouter.OpenApiClient.Models.ChatUsage.CreateFromDiscriminatorValue); } },
@@ -114,6 +123,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("model", Model);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatResult_object>("object", Object);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OpenRouterMetadata>("openrouter_metadata", OpenrouterMetadata);
             writer.WriteStringValue("service_tier", ServiceTier);
             writer.WriteStringValue("system_fingerprint", SystemFingerprint);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatUsage>("usage", Usage);

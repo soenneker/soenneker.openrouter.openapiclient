@@ -21,6 +21,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResult_context_management ContextManagement { get; set; }
 #endif
+        /// <summary>The openrouter_metadata property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.OpenRouterMetadata? OpenrouterMetadata { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.OpenRouterMetadata OpenrouterMetadata { get; set; }
+#endif
         /// <summary>The provider property</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderName? Provider { get; set; }
         /// <summary>
@@ -42,6 +50,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>(base.GetFieldDeserializers())
             {
                 { "context_management", n => { ContextManagement = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResult_context_management>(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResult_context_management.CreateFromDiscriminatorValue); } },
+                { "openrouter_metadata", n => { OpenrouterMetadata = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OpenRouterMetadata>(global::Soenneker.OpenRouter.OpenApiClient.Models.OpenRouterMetadata.CreateFromDiscriminatorValue); } },
                 { "provider", n => { Provider = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderName>(); } },
             };
         }
@@ -54,6 +63,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             base.Serialize(writer);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResult_context_management>("context_management", ContextManagement);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OpenRouterMetadata>("openrouter_metadata", OpenrouterMetadata);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderName>("provider", Provider);
         }
     }
