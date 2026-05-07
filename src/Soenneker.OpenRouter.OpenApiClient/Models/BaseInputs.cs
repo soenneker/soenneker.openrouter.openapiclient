@@ -8,11 +8,19 @@ using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BaseInputsMember1"/>, <see cref="string"/>, List&lt;global::Soenneker.OpenRouter.OpenApiClient.Models.OutputMessage&gt;
+    /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BaseInputsMember1"/>, <see cref="string"/>, List&lt;global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchCallOutputItem&gt;
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class BaseInputs : IComposedTypeWrapper, IParsable
     {
+        /// <summary>Composed type representation for type List&lt;global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchCallOutputItem&gt;</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchCallOutputItem>? ApplyPatchCallOutputItem { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchCallOutputItem> ApplyPatchCallOutputItem { get; set; }
+#endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BaseInputsMember1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -20,14 +28,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.OpenRouter.OpenApiClient.Models.BaseInputsMember1 BaseInputsMember1 { get; set; }
-#endif
-        /// <summary>Composed type representation for type List&lt;global::Soenneker.OpenRouter.OpenApiClient.Models.OutputMessage&gt;</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputMessage>? OutputMessage { get; set; }
-#nullable restore
-#else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputMessage> OutputMessage { get; set; }
 #endif
         /// <summary>Composed type representation for type <see cref="string"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -50,9 +50,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             {
                 result.String = stringValue;
             }
-            else if(parseNode.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputMessage>(global::Soenneker.OpenRouter.OpenApiClient.Models.OutputMessage.CreateFromDiscriminatorValue)?.AsList() is List<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputMessage> outputMessageValue)
+            else if(parseNode.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchCallOutputItem>(global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchCallOutputItem.CreateFromDiscriminatorValue)?.AsList() is List<global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchCallOutputItem> applyPatchCallOutputItemValue)
             {
-                result.OutputMessage = outputMessageValue;
+                result.ApplyPatchCallOutputItem = applyPatchCallOutputItemValue;
             }
             else {
                 result.BaseInputsMember1 = new global::Soenneker.OpenRouter.OpenApiClient.Models.BaseInputsMember1();
@@ -82,9 +82,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             {
                 writer.WriteStringValue(null, String);
             }
-            else if(OutputMessage != null)
+            else if(ApplyPatchCallOutputItem != null)
             {
-                writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputMessage>(null, OutputMessage);
+                writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchCallOutputItem>(null, ApplyPatchCallOutputItem);
             }
             else {
                 writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.BaseInputsMember1>(null, BaseInputsMember1);

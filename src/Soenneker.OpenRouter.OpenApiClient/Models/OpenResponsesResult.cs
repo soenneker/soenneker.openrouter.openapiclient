@@ -13,14 +13,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class OpenResponsesResult : global::Soenneker.OpenRouter.OpenApiClient.Models.BaseResponsesResult, IParsable
     {
-        /// <summary>The openrouter_metadata property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.OpenRouterMetadata? OpenrouterMetadata { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.OpenRouterMetadata OpenrouterMetadata { get; set; }
-#endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -39,7 +31,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>(base.GetFieldDeserializers())
             {
-                { "openrouter_metadata", n => { OpenrouterMetadata = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OpenRouterMetadata>(global::Soenneker.OpenRouter.OpenApiClient.Models.OpenRouterMetadata.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -50,7 +41,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             base.Serialize(writer);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OpenRouterMetadata>("openrouter_metadata", OpenrouterMetadata);
         }
     }
 }

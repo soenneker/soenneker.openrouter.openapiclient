@@ -9,47 +9,39 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class EndpointsMetadata : IAdditionalDataHolder, IParsable
+    public partial class FilePath : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The available property</summary>
+        /// <summary>The file_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.EndpointInfo>? Available { get; set; }
+        public string? FileId { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.EndpointInfo> Available { get; set; }
+        public string FileId { get; set; }
 #endif
-        /// <summary>The sort property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Sort { get; set; }
-#nullable restore
-#else
-        public string Sort { get; set; }
-#endif
-        /// <summary>The sort_value property</summary>
-        public double? SortValue { get; set; }
-        /// <summary>The total property</summary>
-        public int? Total { get; set; }
+        /// <summary>The index property</summary>
+        public int? Index { get; set; }
+        /// <summary>The type property</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.FilePath_type? Type { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.EndpointsMetadata"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.FilePath"/> and sets the default values.
         /// </summary>
-        public EndpointsMetadata()
+        public FilePath()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.EndpointsMetadata"/></returns>
+        /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.FilePath"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.OpenRouter.OpenApiClient.Models.EndpointsMetadata CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.OpenRouter.OpenApiClient.Models.FilePath CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.OpenRouter.OpenApiClient.Models.EndpointsMetadata();
+            return new global::Soenneker.OpenRouter.OpenApiClient.Models.FilePath();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -59,10 +51,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "available", n => { Available = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.EndpointInfo>(global::Soenneker.OpenRouter.OpenApiClient.Models.EndpointInfo.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "sort", n => { Sort = n.GetStringValue(); } },
-                { "sort_value", n => { SortValue = n.GetDoubleValue(); } },
-                { "total", n => { Total = n.GetIntValue(); } },
+                { "file_id", n => { FileId = n.GetStringValue(); } },
+                { "index", n => { Index = n.GetIntValue(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.FilePath_type>(); } },
             };
         }
         /// <summary>
@@ -72,10 +63,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.EndpointInfo>("available", Available);
-            writer.WriteStringValue("sort", Sort);
-            writer.WriteDoubleValue("sort_value", SortValue);
-            writer.WriteIntValue("total", Total);
+            writer.WriteStringValue("file_id", FileId);
+            writer.WriteIntValue("index", Index);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.FilePath_type>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

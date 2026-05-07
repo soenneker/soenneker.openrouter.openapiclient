@@ -9,45 +9,37 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class RouterAttempt : IAdditionalDataHolder, IParsable
+    public partial class OpenAIResponsesRefusalContent : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The model property</summary>
+        /// <summary>The refusal property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Model { get; set; }
+        public string? Refusal { get; set; }
 #nullable restore
 #else
-        public string Model { get; set; }
+        public string Refusal { get; set; }
 #endif
-        /// <summary>The provider property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Provider { get; set; }
-#nullable restore
-#else
-        public string Provider { get; set; }
-#endif
-        /// <summary>The status property</summary>
-        public int? Status { get; set; }
+        /// <summary>The type property</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAIResponsesRefusalContent_type? Type { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.RouterAttempt"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAIResponsesRefusalContent"/> and sets the default values.
         /// </summary>
-        public RouterAttempt()
+        public OpenAIResponsesRefusalContent()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.RouterAttempt"/></returns>
+        /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAIResponsesRefusalContent"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.OpenRouter.OpenApiClient.Models.RouterAttempt CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAIResponsesRefusalContent CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.OpenRouter.OpenApiClient.Models.RouterAttempt();
+            return new global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAIResponsesRefusalContent();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -57,9 +49,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "model", n => { Model = n.GetStringValue(); } },
-                { "provider", n => { Provider = n.GetStringValue(); } },
-                { "status", n => { Status = n.GetIntValue(); } },
+                { "refusal", n => { Refusal = n.GetStringValue(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAIResponsesRefusalContent_type>(); } },
             };
         }
         /// <summary>
@@ -69,9 +60,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("model", Model);
-            writer.WriteStringValue("provider", Provider);
-            writer.WriteIntValue("status", Status);
+            writer.WriteStringValue("refusal", Refusal);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAIResponsesRefusalContent_type>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

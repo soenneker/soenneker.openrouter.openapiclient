@@ -9,47 +9,45 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class RouterParams : IAdditionalDataHolder, IParsable
+    public partial class ResponseOutputText_logprobs_top_logprobs : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The quality_floor property</summary>
-        public double? QualityFloor { get; set; }
-        /// <summary>The sort property</summary>
+        /// <summary>The bytes property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Sort { get; set; }
+        public List<int?>? Bytes { get; set; }
 #nullable restore
 #else
-        public string Sort { get; set; }
+        public List<int?> Bytes { get; set; }
 #endif
-        /// <summary>The throughput_floor property</summary>
-        public double? ThroughputFloor { get; set; }
-        /// <summary>The version_group property</summary>
+        /// <summary>The logprob property</summary>
+        public double? Logprob { get; set; }
+        /// <summary>The token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? VersionGroup { get; set; }
+        public string? Token { get; set; }
 #nullable restore
 #else
-        public string VersionGroup { get; set; }
+        public string Token { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.RouterParams"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ResponseOutputText_logprobs_top_logprobs"/> and sets the default values.
         /// </summary>
-        public RouterParams()
+        public ResponseOutputText_logprobs_top_logprobs()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.RouterParams"/></returns>
+        /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ResponseOutputText_logprobs_top_logprobs"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.OpenRouter.OpenApiClient.Models.RouterParams CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.OpenRouter.OpenApiClient.Models.ResponseOutputText_logprobs_top_logprobs CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.OpenRouter.OpenApiClient.Models.RouterParams();
+            return new global::Soenneker.OpenRouter.OpenApiClient.Models.ResponseOutputText_logprobs_top_logprobs();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -59,10 +57,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "quality_floor", n => { QualityFloor = n.GetDoubleValue(); } },
-                { "sort", n => { Sort = n.GetStringValue(); } },
-                { "throughput_floor", n => { ThroughputFloor = n.GetDoubleValue(); } },
-                { "version_group", n => { VersionGroup = n.GetStringValue(); } },
+                { "bytes", n => { Bytes = n.GetCollectionOfPrimitiveValues<int?>()?.AsList(); } },
+                { "logprob", n => { Logprob = n.GetDoubleValue(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -72,10 +69,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteDoubleValue("quality_floor", QualityFloor);
-            writer.WriteStringValue("sort", Sort);
-            writer.WriteDoubleValue("throughput_floor", ThroughputFloor);
-            writer.WriteStringValue("version_group", VersionGroup);
+            writer.WriteCollectionOfPrimitiveValues<int?>("bytes", Bytes);
+            writer.WriteDoubleValue("logprob", Logprob);
+            writer.WriteStringValue("token", Token);
             writer.WriteAdditionalData(AdditionalData);
         }
     }
