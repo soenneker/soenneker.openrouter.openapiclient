@@ -9,27 +9,39 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class OutputMessage : IAdditionalDataHolder, IParsable
+    public partial class RouterParams : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>The quality_floor property</summary>
+        public double? QualityFloor { get; set; }
+        /// <summary>The throughput_floor property</summary>
+        public double? ThroughputFloor { get; set; }
+        /// <summary>The version_group property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? VersionGroup { get; set; }
+#nullable restore
+#else
+        public string VersionGroup { get; set; }
+#endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputMessage"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.RouterParams"/> and sets the default values.
         /// </summary>
-        public OutputMessage()
+        public RouterParams()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputMessage"/></returns>
+        /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.RouterParams"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.OpenRouter.OpenApiClient.Models.OutputMessage CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.OpenRouter.OpenApiClient.Models.RouterParams CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.OpenRouter.OpenApiClient.Models.OutputMessage();
+            return new global::Soenneker.OpenRouter.OpenApiClient.Models.RouterParams();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -39,6 +51,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "quality_floor", n => { QualityFloor = n.GetDoubleValue(); } },
+                { "throughput_floor", n => { ThroughputFloor = n.GetDoubleValue(); } },
+                { "version_group", n => { VersionGroup = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -48,6 +63,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteDoubleValue("quality_floor", QualityFloor);
+            writer.WriteDoubleValue("throughput_floor", ThroughputFloor);
+            writer.WriteStringValue("version_group", VersionGroup);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

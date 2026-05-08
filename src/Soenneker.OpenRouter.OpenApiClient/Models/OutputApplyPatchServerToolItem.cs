@@ -8,20 +8,20 @@ using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     /// <summary>
-    /// An openrouter:apply_patch server tool output item. The turn halts when validation succeeds so the client can apply the patch and echo an `apply_patch_call_output` on the next turn.
+    /// An openrouter:apply_patch server tool output item
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class OutputApplyPatchServerToolItem : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The call_id property</summary>
+        /// <summary>The filePath property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CallId { get; set; }
+        public string? FilePath { get; set; }
 #nullable restore
 #else
-        public string CallId { get; set; }
+        public string FilePath { get; set; }
 #endif
         /// <summary>The id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -31,13 +31,13 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public string Id { get; set; }
 #endif
-        /// <summary>The patch operation requested by an `apply_patch_call`. `create_file` and `update_file` carry a V4A diff; `delete_file` omits it.</summary>
+        /// <summary>The patch property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchCallOperation? Operation { get; set; }
+        public string? Patch { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchCallOperation Operation { get; set; }
+        public string Patch { get; set; }
 #endif
         /// <summary>The status property</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ToolCallStatus? Status { get; set; }
@@ -68,9 +68,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "call_id", n => { CallId = n.GetStringValue(); } },
+                { "filePath", n => { FilePath = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
-                { "operation", n => { Operation = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchCallOperation>(global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchCallOperation.CreateFromDiscriminatorValue); } },
+                { "patch", n => { Patch = n.GetStringValue(); } },
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ToolCallStatus>(); } },
                 { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputApplyPatchServerToolItem_type>(); } },
             };
@@ -82,9 +82,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("call_id", CallId);
+            writer.WriteStringValue("filePath", FilePath);
             writer.WriteStringValue("id", Id);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchCallOperation>("operation", Operation);
+            writer.WriteStringValue("patch", Patch);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ToolCallStatus>("status", Status);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputApplyPatchServerToolItem_type>("type", Type);
             writer.WriteAdditionalData(AdditionalData);

@@ -46,6 +46,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
+        /// <summary>Namespace qualifier for tools registered as part of a namespace tool group (e.g. an MCP server)</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Namespace { get; set; }
+#nullable restore
+#else
+        public string Namespace { get; set; }
+#endif
         /// <summary>The status property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -85,6 +93,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "call_id", n => { CallId = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
+                { "namespace", n => { Namespace = n.GetStringValue(); } },
                 { "status", n => { Status = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemFunctionCall.OutputItemFunctionCall_status>(global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemFunctionCall.OutputItemFunctionCall_status.CreateFromDiscriminatorValue); } },
                 { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemFunctionCall_type>(); } },
             };
@@ -100,6 +109,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteStringValue("call_id", CallId);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("name", Name);
+            writer.WriteStringValue("namespace", Namespace);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemFunctionCall.OutputItemFunctionCall_status>("status", Status);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemFunctionCall_type>("type", Type);
             writer.WriteAdditionalData(AdditionalData);

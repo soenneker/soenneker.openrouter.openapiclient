@@ -3,14 +3,17 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
+    /// <summary>Action taken when the pattern matches</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
-    public enum OpenAIResponsesRefusalContent_type
-    #pragma warning restore CS1591
+    public enum ContentFilterAction
     {
-        [EnumMember(Value = "refusal")]
+        [EnumMember(Value = "redact")]
         #pragma warning disable CS1591
-        Refusal,
+        Redact,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "block")]
+        #pragma warning disable CS1591
+        Block,
         #pragma warning restore CS1591
     }
 }

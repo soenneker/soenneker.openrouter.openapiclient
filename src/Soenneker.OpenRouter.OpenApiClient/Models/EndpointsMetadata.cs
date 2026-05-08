@@ -9,49 +9,37 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class URLCitation : IAdditionalDataHolder, IParsable
+    public partial class EndpointsMetadata : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The end_index property</summary>
-        public int? EndIndex { get; set; }
-        /// <summary>The start_index property</summary>
-        public int? StartIndex { get; set; }
-        /// <summary>The title property</summary>
+        /// <summary>The available property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Title { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.EndpointInfo>? Available { get; set; }
 #nullable restore
 #else
-        public string Title { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.EndpointInfo> Available { get; set; }
 #endif
-        /// <summary>The type property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.URLCitation_type? Type { get; set; }
-        /// <summary>The url property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Url { get; set; }
-#nullable restore
-#else
-        public string Url { get; set; }
-#endif
+        /// <summary>The total property</summary>
+        public int? Total { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.URLCitation"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.EndpointsMetadata"/> and sets the default values.
         /// </summary>
-        public URLCitation()
+        public EndpointsMetadata()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.URLCitation"/></returns>
+        /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.EndpointsMetadata"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.OpenRouter.OpenApiClient.Models.URLCitation CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.OpenRouter.OpenApiClient.Models.EndpointsMetadata CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.OpenRouter.OpenApiClient.Models.URLCitation();
+            return new global::Soenneker.OpenRouter.OpenApiClient.Models.EndpointsMetadata();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -61,11 +49,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "end_index", n => { EndIndex = n.GetIntValue(); } },
-                { "start_index", n => { StartIndex = n.GetIntValue(); } },
-                { "title", n => { Title = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.URLCitation_type>(); } },
-                { "url", n => { Url = n.GetStringValue(); } },
+                { "available", n => { Available = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.EndpointInfo>(global::Soenneker.OpenRouter.OpenApiClient.Models.EndpointInfo.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "total", n => { Total = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -75,11 +60,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteIntValue("end_index", EndIndex);
-            writer.WriteIntValue("start_index", StartIndex);
-            writer.WriteStringValue("title", Title);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.URLCitation_type>("type", Type);
-            writer.WriteStringValue("url", Url);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.EndpointInfo>("available", Available);
+            writer.WriteIntValue("total", Total);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -30,6 +30,22 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public List<string> AllowedProviders { get; set; }
 #endif
+        /// <summary>Builtin content filters to apply. Set to null to remove. Use slug &quot;regex-prompt-injection&quot; with action &quot;block&quot;, &quot;flag&quot;, or &quot;redact&quot; to enable heuristic prompt injection detection.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterBuiltinEntry>? ContentFilterBuiltins { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterBuiltinEntry> ContentFilterBuiltins { get; set; }
+#endif
+        /// <summary>Custom regex content filters to apply. Set to null to remove.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterEntry>? ContentFilters { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterEntry> ContentFilters { get; set; }
+#endif
         /// <summary>New description for the guardrail</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -95,6 +111,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             {
                 { "allowed_models", n => { AllowedModels = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "allowed_providers", n => { AllowedProviders = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "content_filter_builtins", n => { ContentFilterBuiltins = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterBuiltinEntry>(global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterBuiltinEntry.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "content_filters", n => { ContentFilters = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterEntry>(global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterEntry.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "enforce_zdr", n => { EnforceZdr = n.GetBoolValue(); } },
                 { "ignored_models", n => { IgnoredModels = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
@@ -113,6 +131,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<string>("allowed_models", AllowedModels);
             writer.WriteCollectionOfPrimitiveValues<string>("allowed_providers", AllowedProviders);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterBuiltinEntry>("content_filter_builtins", ContentFilterBuiltins);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterEntry>("content_filters", ContentFilters);
             writer.WriteStringValue("description", Description);
             writer.WriteBoolValue("enforce_zdr", EnforceZdr);
             writer.WriteCollectionOfPrimitiveValues<string>("ignored_models", IgnoredModels);

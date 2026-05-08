@@ -3,17 +3,21 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
-    /// <summary>Lifecycle state of an `apply_patch_call` output item.</summary>
+    /// <summary>Action taken when the builtin filter triggers</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public enum ApplyPatchCallStatus
+    public enum ContentFilterBuiltinAction
     {
-        [EnumMember(Value = "in_progress")]
+        [EnumMember(Value = "redact")]
         #pragma warning disable CS1591
-        In_progress,
+        Redact,
         #pragma warning restore CS1591
-        [EnumMember(Value = "completed")]
+        [EnumMember(Value = "block")]
         #pragma warning disable CS1591
-        Completed,
+        Block,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "flag")]
+        #pragma warning disable CS1591
+        Flag,
         #pragma warning restore CS1591
     }
 }

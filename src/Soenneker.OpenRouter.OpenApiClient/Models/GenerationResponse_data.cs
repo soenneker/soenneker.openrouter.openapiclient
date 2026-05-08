@@ -155,6 +155,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public string Router { get; set; }
 #endif
+        /// <summary>Service tier the upstream provider reported running this request on, or null if it did not report one.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ServiceTier { get; set; }
+#nullable restore
+#else
+        public string ServiceTier { get; set; }
+#endif
         /// <summary>Session identifier grouping multiple generations in the same session</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -255,6 +263,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "request_id", n => { RequestId = n.GetStringValue(); } },
                 { "response_cache_source_id", n => { ResponseCacheSourceId = n.GetStringValue(); } },
                 { "router", n => { Router = n.GetStringValue(); } },
+                { "service_tier", n => { ServiceTier = n.GetStringValue(); } },
                 { "session_id", n => { SessionId = n.GetStringValue(); } },
                 { "streamed", n => { Streamed = n.GetBoolValue(); } },
                 { "tokens_completion", n => { TokensCompletion = n.GetIntValue(); } },
@@ -305,6 +314,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteStringValue("request_id", RequestId);
             writer.WriteStringValue("response_cache_source_id", ResponseCacheSourceId);
             writer.WriteStringValue("router", Router);
+            writer.WriteStringValue("service_tier", ServiceTier);
             writer.WriteStringValue("session_id", SessionId);
             writer.WriteBoolValue("streamed", Streamed);
             writer.WriteIntValue("tokens_completion", TokensCompletion);

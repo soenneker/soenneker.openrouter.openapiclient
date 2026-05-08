@@ -10,20 +10,12 @@
         "description": "The app identifier should be your app's URL and is used as the primary identifier for rankings.\nThis is used to track API usage per application.\n"
       },
       "AppDisplayName": {
-        "name": "X-OpenRouter-Title",
+        "name": "X-Title",
         "in": "header",
         "schema": {
           "type": "string"
         },
         "description": "The app display name allows you to customize how your app appears in OpenRouter's dashboard.\n"
-      },
-      "AppCategories": {
-        "name": "X-OpenRouter-Categories",
-        "in": "header",
-        "schema": {
-          "type": "string"
-        },
-        "description": "Comma-separated list of app categories (e.g. \"cli-agent,cloud-agent\"). Used for marketplace rankings.\n"
       }
     },
     "schemas": {
@@ -2855,251 +2847,6 @@
         ],
         "type": "object"
       },
-      "ApplyPatchCallItem": {
-        "description": "A tool call emitted by the model requesting a V4A patch operation. The client applies the patch and echoes an `apply_patch_call_output` on the next turn.",
-        "example": {
-          "call_id": "call_abc123",
-          "id": "apc_abc123",
-          "operation": {
-            "diff": "@@ function main() {\n+  console.log(\"hi\");\n }",
-            "path": "/src/main.ts",
-            "type": "update_file"
-          },
-          "status": "completed",
-          "type": "apply_patch_call"
-        },
-        "properties": {
-          "call_id": {
-            "type": "string"
-          },
-          "created_by": {
-            "type": "string"
-          },
-          "id": {
-            "type": "string"
-          },
-          "operation": {
-            "$ref": "#/components/schemas/ApplyPatchCallOperation"
-          },
-          "status": {
-            "$ref": "#/components/schemas/ApplyPatchCallStatus"
-          },
-          "type": {
-            "enum": [
-              "apply_patch_call"
-            ],
-            "type": "string"
-          }
-        },
-        "required": [
-          "type",
-          "id",
-          "call_id",
-          "status",
-          "operation"
-        ],
-        "type": "object"
-      },
-      "ApplyPatchCallOperation": {
-        "description": "The patch operation requested by an `apply_patch_call`. `create_file` and `update_file` carry a V4A diff; `delete_file` omits it.",
-        "example": {
-          "diff": "@@ function main() {\n+  console.log(\"hi\");\n }",
-          "path": "/src/main.ts",
-          "type": "update_file"
-        },
-        "oneOf": [
-          {
-            "properties": {
-              "diff": {
-                "type": "string"
-              },
-              "path": {
-                "type": "string"
-              },
-              "type": {
-                "enum": [
-                  "create_file"
-                ],
-                "type": "string"
-              }
-            },
-            "required": [
-              "type",
-              "path",
-              "diff"
-            ],
-            "type": "object"
-          },
-          {
-            "properties": {
-              "diff": {
-                "type": "string"
-              },
-              "path": {
-                "type": "string"
-              },
-              "type": {
-                "enum": [
-                  "update_file"
-                ],
-                "type": "string"
-              }
-            },
-            "required": [
-              "type",
-              "path",
-              "diff"
-            ],
-            "type": "object"
-          },
-          {
-            "properties": {
-              "path": {
-                "type": "string"
-              },
-              "type": {
-                "enum": [
-                  "delete_file"
-                ],
-                "type": "string"
-              }
-            },
-            "required": [
-              "type",
-              "path"
-            ],
-            "type": "object"
-          }
-        ]
-      },
-      "ApplyPatchCallOperationDiffDeltaEvent": {
-        "description": "Incremental chunk of `operation.diff` for an `apply_patch_call`. Matches OpenAI's streaming shape.",
-        "example": {
-          "delta": "+console.log(\"hi\");\n",
-          "item_id": "apc_abc123",
-          "output_index": 0,
-          "sequence_number": 5,
-          "type": "response.apply_patch_call_operation_diff.delta"
-        },
-        "properties": {
-          "delta": {
-            "type": "string"
-          },
-          "item_id": {
-            "type": "string"
-          },
-          "output_index": {
-            "type": "integer"
-          },
-          "sequence_number": {
-            "type": "integer"
-          },
-          "type": {
-            "enum": [
-              "response.apply_patch_call_operation_diff.delta"
-            ],
-            "type": "string"
-          }
-        },
-        "required": [
-          "type",
-          "item_id",
-          "output_index",
-          "delta",
-          "sequence_number"
-        ],
-        "type": "object"
-      },
-      "ApplyPatchCallOperationDiffDoneEvent": {
-        "description": "Emitted when `operation.diff` streaming completes for an `apply_patch_call`.",
-        "example": {
-          "diff": "@@\n+console.log(\"hi\");\n",
-          "item_id": "apc_abc123",
-          "output_index": 0,
-          "sequence_number": 12,
-          "type": "response.apply_patch_call_operation_diff.done"
-        },
-        "properties": {
-          "diff": {
-            "type": "string"
-          },
-          "item_id": {
-            "type": "string"
-          },
-          "output_index": {
-            "type": "integer"
-          },
-          "sequence_number": {
-            "type": "integer"
-          },
-          "type": {
-            "enum": [
-              "response.apply_patch_call_operation_diff.done"
-            ],
-            "type": "string"
-          }
-        },
-        "required": [
-          "type",
-          "item_id",
-          "output_index",
-          "diff",
-          "sequence_number"
-        ],
-        "type": "object"
-      },
-      "ApplyPatchCallOutputItem": {
-        "description": "The client's echo of an `apply_patch_call` after applying the patch. `output` is an optional human-readable log; `status` is `completed` when the patch was applied successfully, `failed` otherwise.",
-        "example": {
-          "call_id": "call_abc123",
-          "output": "Applied patch to /src/main.ts",
-          "status": "completed",
-          "type": "apply_patch_call_output"
-        },
-        "properties": {
-          "call_id": {
-            "type": "string"
-          },
-          "id": {
-            "nullable": true,
-            "type": "string"
-          },
-          "output": {
-            "nullable": true,
-            "type": "string"
-          },
-          "status": {
-            "enum": [
-              "completed",
-              "failed"
-            ],
-            "type": "string",
-            "x-speakeasy-unknown-values": "allow"
-          },
-          "type": {
-            "enum": [
-              "apply_patch_call_output"
-            ],
-            "type": "string"
-          }
-        },
-        "required": [
-          "type",
-          "call_id",
-          "status"
-        ],
-        "type": "object"
-      },
-      "ApplyPatchCallStatus": {
-        "description": "Lifecycle state of an `apply_patch_call` output item.",
-        "enum": [
-          "in_progress",
-          "completed"
-        ],
-        "example": "completed",
-        "type": "string",
-        "x-speakeasy-unknown-values": "allow"
-      },
       "ApplyPatchServerTool": {
         "description": "Apply patch tool configuration",
         "example": {
@@ -3116,33 +2863,6 @@
         "required": [
           "type"
         ],
-        "type": "object"
-      },
-      "ApplyPatchServerTool_OpenRouter": {
-        "description": "OpenRouter built-in server tool: validates V4A diff patches for file operations (create, update, delete). Restricted to the Responses API.",
-        "example": {
-          "type": "openrouter:apply_patch"
-        },
-        "properties": {
-          "parameters": {
-            "$ref": "#/components/schemas/ApplyPatchServerToolConfig"
-          },
-          "type": {
-            "enum": [
-              "openrouter:apply_patch"
-            ],
-            "type": "string"
-          }
-        },
-        "required": [
-          "type"
-        ],
-        "type": "object"
-      },
-      "ApplyPatchServerToolConfig": {
-        "description": "Configuration for the openrouter:apply_patch server tool",
-        "example": {},
-        "properties": {},
         "type": "object"
       },
       "AutoRouterPlugin": {
@@ -3195,6 +2915,13 @@
           "error": {
             "$ref": "#/components/schemas/BadGatewayResponseErrorData"
           },
+          "openrouter_metadata": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "nullable": true,
+            "type": "object"
+          },
           "user_id": {
             "nullable": true,
             "type": "string"
@@ -3243,6 +2970,13 @@
         "properties": {
           "error": {
             "$ref": "#/components/schemas/BadRequestResponseErrorData"
+          },
+          "openrouter_metadata": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "nullable": true,
+            "type": "object"
           },
           "user_id": {
             "nullable": true,
@@ -3683,12 +3417,6 @@
                 },
                 {
                   "$ref": "#/components/schemas/OutputMessage"
-                },
-                {
-                  "$ref": "#/components/schemas/ApplyPatchCallItem"
-                },
-                {
-                  "$ref": "#/components/schemas/ApplyPatchCallOutputItem"
                 }
               ]
             },
@@ -3711,7 +3439,7 @@
           "container": null,
           "content": [
             {
-              "citations": null,
+              "citations": [],
               "text": "Hello!",
               "type": "text"
             }
@@ -6109,6 +5837,9 @@
             ],
             "type": "string"
           },
+          "openrouter_metadata": {
+            "$ref": "#/components/schemas/OpenRouterMetadata"
+          },
           "service_tier": {
             "description": "The service tier used by the upstream provider for this request",
             "example": "default",
@@ -6264,6 +5995,9 @@
             ],
             "type": "string"
           },
+          "openrouter_metadata": {
+            "$ref": "#/components/schemas/OpenRouterMetadata"
+          },
           "service_tier": {
             "description": "The service tier used by the upstream provider for this request",
             "example": "default",
@@ -6343,6 +6077,35 @@
             "type": "array"
           }
         },
+        "type": "object"
+      },
+      "ChatStreamingResponse": {
+        "example": {
+          "data": {
+            "choices": [
+              {
+                "delta": {
+                  "content": "Hello",
+                  "role": "assistant"
+                },
+                "finish_reason": null,
+                "index": 0
+              }
+            ],
+            "created": 1677652288,
+            "id": "chatcmpl-123",
+            "model": "openai/gpt-4",
+            "object": "chat.completion.chunk"
+          }
+        },
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/ChatStreamChunk"
+          }
+        },
+        "required": [
+          "data"
+        ],
         "type": "object"
       },
       "ChatStreamOptions": {
@@ -7206,6 +6969,13 @@
           "error": {
             "$ref": "#/components/schemas/ConflictResponseErrorData"
           },
+          "openrouter_metadata": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "nullable": true,
+            "type": "object"
+          },
           "user_id": {
             "nullable": true,
             "type": "string"
@@ -7240,6 +7010,101 @@
         "required": [
           "code",
           "message"
+        ],
+        "type": "object"
+      },
+      "ContentFilterAction": {
+        "description": "Action taken when the pattern matches",
+        "enum": [
+          "redact",
+          "block"
+        ],
+        "example": "block",
+        "type": "string",
+        "x-speakeasy-unknown-values": "allow"
+      },
+      "ContentFilterBuiltinAction": {
+        "description": "Action taken when the builtin filter triggers",
+        "enum": [
+          "redact",
+          "block",
+          "flag"
+        ],
+        "example": "block",
+        "type": "string",
+        "x-speakeasy-unknown-values": "allow"
+      },
+      "ContentFilterBuiltinEntry": {
+        "description": "A builtin content filter entry. Builtin filters include PII detectors and the regex-based prompt injection detector.",
+        "example": {
+          "action": "block",
+          "label": "[PROMPT_INJECTION]",
+          "slug": "regex-prompt-injection"
+        },
+        "properties": {
+          "action": {
+            "$ref": "#/components/schemas/ContentFilterBuiltinAction"
+          },
+          "label": {
+            "description": "Optional label used in redaction placeholders (e.g. \"[PROMPT_INJECTION]\")",
+            "example": "[PROMPT_INJECTION]",
+            "maxLength": 100,
+            "type": "string"
+          },
+          "slug": {
+            "$ref": "#/components/schemas/ContentFilterBuiltinSlug"
+          }
+        },
+        "required": [
+          "slug",
+          "action"
+        ],
+        "type": "object"
+      },
+      "ContentFilterBuiltinSlug": {
+        "description": "The builtin filter identifier",
+        "enum": [
+          "email",
+          "phone",
+          "ssn",
+          "credit-card",
+          "ip-address",
+          "person-name",
+          "address",
+          "regex-prompt-injection"
+        ],
+        "example": "regex-prompt-injection",
+        "type": "string",
+        "x-speakeasy-unknown-values": "allow"
+      },
+      "ContentFilterEntry": {
+        "description": "A custom regex content filter that scans request messages for matching patterns.",
+        "example": {
+          "action": "redact",
+          "label": "[API_KEY]",
+          "pattern": "\\b(sk-[a-zA-Z0-9]{48})\\b"
+        },
+        "properties": {
+          "action": {
+            "$ref": "#/components/schemas/ContentFilterAction"
+          },
+          "label": {
+            "description": "Optional label used in redaction placeholders or error messages",
+            "example": "[API_KEY]",
+            "maxLength": 100,
+            "nullable": true,
+            "type": "string"
+          },
+          "pattern": {
+            "description": "A regex pattern to match against request content",
+            "example": "\\b(sk-[a-zA-Z0-9]{48})\\b",
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "pattern",
+          "action"
         ],
         "type": "object"
       },
@@ -7467,6 +7332,13 @@
             "anthropic",
             "deepseek"
           ],
+          "content_filter_builtins": [
+            {
+              "action": "block",
+              "slug": "regex-prompt-injection"
+            }
+          ],
+          "content_filters": null,
           "description": "A guardrail for limiting API usage",
           "enforce_zdr": false,
           "ignored_models": null,
@@ -7501,6 +7373,35 @@
               "type": "string"
             },
             "minItems": 1,
+            "nullable": true,
+            "type": "array"
+          },
+          "content_filter_builtins": {
+            "description": "Builtin content filters to apply. Use slug \"regex-prompt-injection\" with action \"block\", \"flag\", or \"redact\" to enable heuristic prompt injection detection.",
+            "example": [
+              {
+                "action": "block",
+                "slug": "regex-prompt-injection"
+              }
+            ],
+            "items": {
+              "$ref": "#/components/schemas/ContentFilterBuiltinEntry"
+            },
+            "nullable": true,
+            "type": "array"
+          },
+          "content_filters": {
+            "description": "Custom regex content filters to apply to request messages",
+            "example": [
+              {
+                "action": "redact",
+                "label": "[API_KEY]",
+                "pattern": "\\b(sk-[a-zA-Z0-9]{48})\\b"
+              }
+            ],
+            "items": {
+              "$ref": "#/components/schemas/ContentFilterEntry"
+            },
             "nullable": true,
             "type": "array"
           },
@@ -7579,6 +7480,14 @@
               "anthropic",
               "google"
             ],
+            "content_filter_builtins": [
+              {
+                "action": "block",
+                "label": "[PROMPT_INJECTION]",
+                "slug": "regex-prompt-injection"
+              }
+            ],
+            "content_filters": null,
             "created_at": "2025-08-24T10:30:00Z",
             "description": "A guardrail for limiting API usage",
             "enforce_zdr": false,
@@ -8062,6 +7971,13 @@
           "error": {
             "$ref": "#/components/schemas/EdgeNetworkTimeoutResponseErrorData"
           },
+          "openrouter_metadata": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "nullable": true,
+            "type": "object"
+          },
           "user_id": {
             "nullable": true,
             "type": "string"
@@ -8096,6 +8012,58 @@
         "required": [
           "code",
           "message"
+        ],
+        "type": "object"
+      },
+      "EndpointInfo": {
+        "example": {
+          "model": "openai/gpt-4o",
+          "provider": "OpenAI",
+          "selected": true
+        },
+        "properties": {
+          "model": {
+            "type": "string"
+          },
+          "provider": {
+            "type": "string"
+          },
+          "selected": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "provider",
+          "model",
+          "selected"
+        ],
+        "type": "object"
+      },
+      "EndpointsMetadata": {
+        "example": {
+          "available": [
+            {
+              "model": "openai/gpt-4o",
+              "provider": "OpenAI",
+              "selected": true
+            }
+          ],
+          "total": 3
+        },
+        "properties": {
+          "available": {
+            "items": {
+              "$ref": "#/components/schemas/EndpointInfo"
+            },
+            "type": "array"
+          },
+          "total": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "total",
+          "available"
         ],
         "type": "object"
       },
@@ -8385,6 +8353,13 @@
         "properties": {
           "error": {
             "$ref": "#/components/schemas/ForbiddenResponseErrorData"
+          },
+          "openrouter_metadata": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "nullable": true,
+            "type": "object"
           },
           "user_id": {
             "nullable": true,
@@ -8882,6 +8857,7 @@
             "provider_responses": null,
             "request_id": "req-1727282430-aBcDeFgHiJkLmNoPqRsT",
             "router": "openrouter/auto",
+            "service_tier": "priority",
             "session_id": null,
             "streamed": true,
             "tokens_completion": 25,
@@ -9091,6 +9067,12 @@
                 "nullable": true,
                 "type": "string"
               },
+              "service_tier": {
+                "description": "Service tier the upstream provider reported running this request on, or null if it did not report one.",
+                "example": "priority",
+                "nullable": true,
+                "type": "string"
+              },
               "session_id": {
                 "description": "Session identifier grouping multiple generations in the same session",
                 "nullable": true,
@@ -9167,6 +9149,7 @@
               "moderation_latency",
               "generation_time",
               "finish_reason",
+              "service_tier",
               "tokens_prompt",
               "tokens_completion",
               "native_tokens_prompt",
@@ -9208,6 +9191,14 @@
               "anthropic",
               "google"
             ],
+            "content_filter_builtins": [
+              {
+                "action": "block",
+                "label": "[PROMPT_INJECTION]",
+                "slug": "regex-prompt-injection"
+              }
+            ],
+            "content_filters": null,
             "created_at": "2025-08-24T10:30:00Z",
             "description": "Guardrail for production environment",
             "enforce_zdr": false,
@@ -9287,6 +9278,13 @@
           "error": {
             "$ref": "#/components/schemas/GoneResponseErrorData"
           },
+          "openrouter_metadata": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "nullable": true,
+            "type": "object"
+          },
           "user_id": {
             "nullable": true,
             "type": "string"
@@ -9332,6 +9330,14 @@
             "anthropic",
             "google"
           ],
+          "content_filter_builtins": [
+            {
+              "action": "block",
+              "label": "[PROMPT_INJECTION]",
+              "slug": "regex-prompt-injection"
+            }
+          ],
+          "content_filters": null,
           "created_at": "2025-08-24T10:30:00Z",
           "description": "Guardrail for production environment",
           "enforce_zdr": false,
@@ -9367,6 +9373,36 @@
             ],
             "items": {
               "type": "string"
+            },
+            "nullable": true,
+            "type": "array"
+          },
+          "content_filter_builtins": {
+            "description": "Builtin content filters applied to requests. Includes PII detectors and the regex-based prompt injection detector.",
+            "example": [
+              {
+                "action": "block",
+                "label": "[PROMPT_INJECTION]",
+                "slug": "regex-prompt-injection"
+              }
+            ],
+            "items": {
+              "$ref": "#/components/schemas/ContentFilterBuiltinEntry"
+            },
+            "nullable": true,
+            "type": "array"
+          },
+          "content_filters": {
+            "description": "Custom regex content filters applied to request messages",
+            "example": [
+              {
+                "action": "redact",
+                "label": "[API_KEY]",
+                "pattern": "\\b(sk-[a-zA-Z0-9]{48})\\b"
+              }
+            ],
+            "items": {
+              "$ref": "#/components/schemas/ContentFilterEntry"
             },
             "nullable": true,
             "type": "array"
@@ -10073,12 +10109,6 @@
                   "$ref": "#/components/schemas/FunctionCallOutputItem"
                 },
                 {
-                  "$ref": "#/components/schemas/ApplyPatchCallItem"
-                },
-                {
-                  "$ref": "#/components/schemas/ApplyPatchCallOutputItem"
-                },
-                {
                   "allOf": [
                     {
                       "$ref": "#/components/schemas/OutputMessageItem"
@@ -10329,6 +10359,13 @@
         "properties": {
           "error": {
             "$ref": "#/components/schemas/InternalServerResponseErrorData"
+          },
+          "openrouter_metadata": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "nullable": true,
+            "type": "object"
           },
           "user_id": {
             "nullable": true,
@@ -10661,6 +10698,14 @@
                 "anthropic",
                 "google"
               ],
+              "content_filter_builtins": [
+                {
+                  "action": "block",
+                  "label": "[PROMPT_INJECTION]",
+                  "slug": "regex-prompt-injection"
+                }
+              ],
+              "content_filters": null,
               "created_at": "2025-08-24T10:30:00Z",
               "description": "Guardrail for production environment",
               "enforce_zdr": false,
@@ -12477,6 +12522,20 @@
                 },
                 {
                   "$ref": "#/components/schemas/OpenRouterWebSearchServerTool"
+                },
+                {
+                  "additionalProperties": {
+                    "nullable": true
+                  },
+                  "properties": {
+                    "type": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "type"
+                  ],
+                  "type": "object"
                 }
               ]
             },
@@ -12537,6 +12596,9 @@
                 ],
                 "type": "object"
               },
+              "openrouter_metadata": {
+                "$ref": "#/components/schemas/OpenRouterMetadata"
+              },
               "provider": {
                 "$ref": "#/components/schemas/ProviderName"
               },
@@ -12595,7 +12657,7 @@
           "container": null,
           "content": [
             {
-              "citations": null,
+              "citations": [],
               "text": "Hello! I'm doing well, thank you for asking.",
               "type": "text"
             }
@@ -12858,6 +12920,9 @@
           "type": "message_stop"
         },
         "properties": {
+          "openrouter_metadata": {
+            "$ref": "#/components/schemas/OpenRouterMetadata"
+          },
           "type": {
             "enum": [
               "message_stop"
@@ -12919,6 +12984,42 @@
             "$ref": "#/components/schemas/MessagesErrorEvent"
           }
         ]
+      },
+      "MessagesStreamingResponse": {
+        "example": {
+          "data": {
+            "delta": {
+              "text": "Hello",
+              "type": "text_delta"
+            },
+            "index": 0,
+            "type": "content_block_delta"
+          },
+          "event": "content_block_delta"
+        },
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/MessagesStreamEvents"
+          },
+          "event": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "event",
+          "data"
+        ],
+        "type": "object"
+      },
+      "MetadataLevel": {
+        "description": "Opt-in level for surfacing routing metadata on the response under `openrouter_metadata`.",
+        "enum": [
+          "disabled",
+          "enabled"
+        ],
+        "example": "enabled",
+        "type": "string",
+        "x-speakeasy-unknown-values": "allow"
       },
       "Model": {
         "description": "Information about an AI model available on OpenRouter",
@@ -13367,6 +13468,13 @@
           "error": {
             "$ref": "#/components/schemas/NotFoundResponseErrorData"
           },
+          "openrouter_metadata": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "nullable": true,
+            "type": "object"
+          },
           "user_id": {
             "nullable": true,
             "type": "string"
@@ -13424,6 +13532,10 @@
             "type": "string"
           },
           "name": {
+            "type": "string"
+          },
+          "namespace": {
+            "description": "Namespace qualifier for tools registered as part of a namespace tool group (e.g. an MCP server)",
             "type": "string"
           },
           "status": {
@@ -13881,34 +13993,6 @@
           },
           {
             "$ref": "#/components/schemas/ToolChoiceAllowed"
-          },
-          {
-            "properties": {
-              "type": {
-                "enum": [
-                  "apply_patch"
-                ],
-                "type": "string"
-              }
-            },
-            "required": [
-              "type"
-            ],
-            "type": "object"
-          },
-          {
-            "properties": {
-              "type": {
-                "enum": [
-                  "shell"
-                ],
-                "type": "string"
-              }
-            },
-            "required": [
-              "type"
-            ],
-            "type": "object"
           }
         ],
         "example": "auto"
@@ -14164,6 +14248,9 @@
           },
           {
             "properties": {
+              "openrouter_metadata": {
+                "$ref": "#/components/schemas/OpenRouterMetadata"
+              },
               "output": {
                 "items": {
                   "$ref": "#/components/schemas/OutputItems"
@@ -14250,6 +14337,75 @@
             "type": "string"
           }
         },
+        "type": "object"
+      },
+      "OpenRouterMetadata": {
+        "example": {
+          "attempt": 1,
+          "endpoints": {
+            "available": [
+              {
+                "model": "openai/gpt-4o",
+                "provider": "OpenAI",
+                "selected": true
+              }
+            ],
+            "total": 1
+          },
+          "is_byok": false,
+          "region": "iad",
+          "requested": "openai/gpt-4o",
+          "strategy": "direct",
+          "summary": "available=1, selected=OpenAI"
+        },
+        "properties": {
+          "attempt": {
+            "type": "integer"
+          },
+          "attempts": {
+            "items": {
+              "$ref": "#/components/schemas/RouterAttempt"
+            },
+            "type": "array"
+          },
+          "endpoints": {
+            "$ref": "#/components/schemas/EndpointsMetadata"
+          },
+          "is_byok": {
+            "type": "boolean"
+          },
+          "params": {
+            "$ref": "#/components/schemas/RouterParams"
+          },
+          "pipeline": {
+            "items": {
+              "$ref": "#/components/schemas/PipelineStage"
+            },
+            "type": "array"
+          },
+          "region": {
+            "nullable": true,
+            "type": "string"
+          },
+          "requested": {
+            "type": "string"
+          },
+          "strategy": {
+            "$ref": "#/components/schemas/RoutingStrategy"
+          },
+          "summary": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "requested",
+          "strategy",
+          "region",
+          "summary",
+          "attempt",
+          "is_byok",
+          "endpoints"
+        ],
         "type": "object"
       },
       "OpenRouterWebSearchServerTool": {
@@ -14358,70 +14514,23 @@
         "type": "string",
         "x-speakeasy-unknown-values": "allow"
       },
-      "OutputApplyPatchCallItem": {
-        "description": "A native `apply_patch_call` output item matching OpenAI's Responses API shape. Emitted when the client requested the `apply_patch` shorthand.",
-        "example": {
-          "call_id": "call_abc123",
-          "id": "apc_abc123",
-          "operation": {
-            "diff": "@@ function main() {\n+  console.log(\"hi\");\n }",
-            "path": "/src/main.ts",
-            "type": "update_file"
-          },
-          "status": "completed",
-          "type": "apply_patch_call"
-        },
-        "properties": {
-          "call_id": {
-            "type": "string"
-          },
-          "id": {
-            "type": "string"
-          },
-          "operation": {
-            "$ref": "#/components/schemas/ApplyPatchCallOperation"
-          },
-          "status": {
-            "$ref": "#/components/schemas/ApplyPatchCallStatus"
-          },
-          "type": {
-            "enum": [
-              "apply_patch_call"
-            ],
-            "type": "string"
-          }
-        },
-        "required": [
-          "type",
-          "id",
-          "call_id",
-          "status",
-          "operation"
-        ],
-        "type": "object"
-      },
       "OutputApplyPatchServerToolItem": {
-        "description": "An openrouter:apply_patch server tool output item. The turn halts when validation succeeds so the client can apply the patch and echo an `apply_patch_call_output` on the next turn.",
+        "description": "An openrouter:apply_patch server tool output item",
         "example": {
-          "call_id": "call_abc123",
-          "id": "apc_abc123",
-          "operation": {
-            "diff": "@@ function main() {\n+  console.log(\"hi\");\n }",
-            "path": "/src/main.ts",
-            "type": "update_file"
-          },
+          "filePath": "/src/main.ts",
+          "id": "ap_tmp_abc123",
           "status": "completed",
           "type": "openrouter:apply_patch"
         },
         "properties": {
-          "call_id": {
+          "filePath": {
             "type": "string"
           },
           "id": {
             "type": "string"
           },
-          "operation": {
-            "$ref": "#/components/schemas/ApplyPatchCallOperation"
+          "patch": {
+            "type": "string"
           },
           "status": {
             "$ref": "#/components/schemas/ToolCallStatus"
@@ -15029,6 +15138,10 @@
           "name": {
             "type": "string"
           },
+          "namespace": {
+            "description": "Namespace qualifier for tools registered as part of a namespace tool group (e.g. an MCP server)",
+            "type": "string"
+          },
           "status": {
             "anyOf": [
               {
@@ -15170,7 +15283,6 @@
         "description": "An output item from the response",
         "discriminator": {
           "mapping": {
-            "apply_patch_call": "#/components/schemas/OutputApplyPatchCallItem",
             "code_interpreter_call": "#/components/schemas/OutputCodeInterpreterCallItem",
             "computer_call": "#/components/schemas/OutputComputerCallItem",
             "file_search_call": "#/components/schemas/OutputFileSearchCallItem",
@@ -15259,9 +15371,6 @@
           },
           {
             "$ref": "#/components/schemas/OutputApplyPatchServerToolItem"
-          },
-          {
-            "$ref": "#/components/schemas/OutputApplyPatchCallItem"
           },
           {
             "$ref": "#/components/schemas/OutputWebFetchServerToolItem"
@@ -15973,6 +16082,13 @@
           "error": {
             "$ref": "#/components/schemas/PayloadTooLargeResponseErrorData"
           },
+          "openrouter_metadata": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "nullable": true,
+            "type": "object"
+          },
           "user_id": {
             "nullable": true,
             "type": "string"
@@ -16021,6 +16137,13 @@
         "properties": {
           "error": {
             "$ref": "#/components/schemas/PaymentRequiredResponseErrorData"
+          },
+          "openrouter_metadata": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "nullable": true,
+            "type": "object"
           },
           "user_id": {
             "nullable": true,
@@ -16227,6 +16350,70 @@
           "completion_tokens"
         ],
         "type": "object"
+      },
+      "PipelineStage": {
+        "example": {
+          "data": {
+            "action": "redacted",
+            "engines": [
+              "presidio"
+            ],
+            "flagged": true,
+            "matched_entity_types": [
+              "EMAIL",
+              "PHONE"
+            ]
+          },
+          "name": "content-filter",
+          "summary": "PII redacted via Presidio (EMAIL, PHONE)",
+          "type": "guardrail"
+        },
+        "properties": {
+          "cost_usd": {
+            "format": "double",
+            "nullable": true,
+            "type": "number"
+          },
+          "data": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "guardrail_id": {
+            "type": "string"
+          },
+          "guardrail_scope": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "summary": {
+            "type": "string"
+          },
+          "type": {
+            "$ref": "#/components/schemas/PipelineStageType"
+          }
+        },
+        "required": [
+          "type",
+          "name"
+        ],
+        "type": "object"
+      },
+      "PipelineStageType": {
+        "description": "Categorical kind of a pipeline stage. Multiple plugins can share a type (e.g. all guardrail-level plugins emit `guardrail`); the `name` field disambiguates which plugin emitted it.",
+        "enum": [
+          "guardrail",
+          "plugin",
+          "server_tools",
+          "response_healing",
+          "context_compression"
+        ],
+        "example": "guardrail",
+        "type": "string",
+        "x-speakeasy-unknown-values": "allow"
       },
       "PreferredMaxLatency": {
         "anyOf": [
@@ -17139,6 +17326,13 @@
         "properties": {
           "error": {
             "$ref": "#/components/schemas/ProviderOverloadedResponseErrorData"
+          },
+          "openrouter_metadata": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "nullable": true,
+            "type": "object"
           },
           "user_id": {
             "nullable": true,
@@ -18493,6 +18687,13 @@
           "error": {
             "$ref": "#/components/schemas/RequestTimeoutResponseErrorData"
           },
+          "openrouter_metadata": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "nullable": true,
+            "type": "object"
+          },
           "user_id": {
             "nullable": true,
             "type": "string"
@@ -18989,9 +19190,6 @@
                 },
                 {
                   "$ref": "#/components/schemas/WebSearchServerTool_OpenRouter"
-                },
-                {
-                  "$ref": "#/components/schemas/ApplyPatchServerTool_OpenRouter"
                 }
               ]
             },
@@ -19022,6 +19220,84 @@
           }
         },
         "type": "object"
+      },
+      "ResponsesStreamingResponse": {
+        "example": {
+          "data": {
+            "delta": "Hello",
+            "type": "response.output_text.delta"
+          }
+        },
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/StreamEvents"
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "type": "object"
+      },
+      "RouterAttempt": {
+        "example": {
+          "model": "openai/gpt-4o",
+          "provider": "OpenAI",
+          "status": 200
+        },
+        "properties": {
+          "model": {
+            "type": "string"
+          },
+          "provider": {
+            "type": "string"
+          },
+          "status": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "provider",
+          "model",
+          "status"
+        ],
+        "type": "object"
+      },
+      "RouterParams": {
+        "additionalProperties": {
+          "nullable": true
+        },
+        "example": {
+          "version_group": "anthropic/claude-sonnet-4"
+        },
+        "properties": {
+          "quality_floor": {
+            "format": "double",
+            "type": "number"
+          },
+          "throughput_floor": {
+            "format": "double",
+            "type": "number"
+          },
+          "version_group": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "RoutingStrategy": {
+        "enum": [
+          "direct",
+          "auto",
+          "free",
+          "latest",
+          "alias",
+          "fallback",
+          "pareto",
+          "bodybuilder"
+        ],
+        "example": "direct",
+        "type": "string",
+        "x-speakeasy-unknown-values": "allow"
       },
       "SearchContextSizeEnum": {
         "description": "Size of the search context for web search tools",
@@ -19084,6 +19360,13 @@
         "properties": {
           "error": {
             "$ref": "#/components/schemas/ServiceUnavailableResponseErrorData"
+          },
+          "openrouter_metadata": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "nullable": true,
+            "type": "object"
           },
           "user_id": {
             "nullable": true,
@@ -19242,8 +19525,6 @@
         "discriminator": {
           "mapping": {
             "error": "#/components/schemas/ErrorEvent",
-            "response.apply_patch_call_operation_diff.delta": "#/components/schemas/ApplyPatchCallOperationDiffDeltaEvent",
-            "response.apply_patch_call_operation_diff.done": "#/components/schemas/ApplyPatchCallOperationDiffDoneEvent",
             "response.completed": "#/components/schemas/StreamEventsResponseCompleted",
             "response.content_part.added": "#/components/schemas/ContentPartAddedEvent",
             "response.content_part.done": "#/components/schemas/ContentPartDoneEvent",
@@ -19388,12 +19669,6 @@
           },
           {
             "$ref": "#/components/schemas/WebSearchCallCompletedEvent"
-          },
-          {
-            "$ref": "#/components/schemas/ApplyPatchCallOperationDiffDeltaEvent"
-          },
-          {
-            "$ref": "#/components/schemas/ApplyPatchCallOperationDiffDoneEvent"
           }
         ]
       },
@@ -19949,6 +20224,13 @@
           "error": {
             "$ref": "#/components/schemas/TooManyRequestsResponseErrorData"
           },
+          "openrouter_metadata": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "nullable": true,
+            "type": "object"
+          },
           "user_id": {
             "nullable": true,
             "type": "string"
@@ -20068,6 +20350,13 @@
           "error": {
             "$ref": "#/components/schemas/UnauthorizedResponseErrorData"
           },
+          "openrouter_metadata": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "nullable": true,
+            "type": "object"
+          },
           "user_id": {
             "nullable": true,
             "type": "string"
@@ -20116,6 +20405,13 @@
         "properties": {
           "error": {
             "$ref": "#/components/schemas/UnprocessableEntityResponseErrorData"
+          },
+          "openrouter_metadata": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "nullable": true,
+            "type": "object"
           },
           "user_id": {
             "nullable": true,
@@ -20188,6 +20484,29 @@
             "nullable": true,
             "type": "array"
           },
+          "content_filter_builtins": {
+            "description": "Builtin content filters to apply. Set to null to remove. Use slug \"regex-prompt-injection\" with action \"block\", \"flag\", or \"redact\" to enable heuristic prompt injection detection.",
+            "example": [
+              {
+                "action": "block",
+                "slug": "regex-prompt-injection"
+              }
+            ],
+            "items": {
+              "$ref": "#/components/schemas/ContentFilterBuiltinEntry"
+            },
+            "nullable": true,
+            "type": "array"
+          },
+          "content_filters": {
+            "description": "Custom regex content filters to apply. Set to null to remove.",
+            "example": null,
+            "items": {
+              "$ref": "#/components/schemas/ContentFilterEntry"
+            },
+            "nullable": true,
+            "type": "array"
+          },
           "description": {
             "description": "New description for the guardrail",
             "example": "Updated description",
@@ -20252,6 +20571,14 @@
             "allowed_providers": [
               "openai"
             ],
+            "content_filter_builtins": [
+              {
+                "action": "block",
+                "label": "[PROMPT_INJECTION]",
+                "slug": "regex-prompt-injection"
+              }
+            ],
+            "content_filters": null,
             "created_at": "2025-08-24T10:30:00Z",
             "description": "Updated description",
             "enforce_zdr": true,
@@ -21803,18 +22130,7 @@
         "tags": [
           "Analytics"
         ]
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/audio/speech": {
       "post": {
@@ -22018,18 +22334,7 @@
         ],
         "x-speakeasy-max-method-params": 1,
         "x-speakeasy-name-override": "createSpeech"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/audio/transcriptions": {
       "post": {
@@ -22241,18 +22546,7 @@
         ],
         "x-speakeasy-max-method-params": 1,
         "x-speakeasy-name-override": "createTranscription"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/auth/keys": {
       "post": {
@@ -22394,18 +22688,7 @@
         "tags": [
           "OAuth"
         ]
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/auth/keys/code": {
       "post": {
@@ -22634,23 +22917,24 @@
           "OAuth"
         ],
         "x-speakeasy-name-override": "createAuthCode"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/chat/completions": {
       "post": {
         "description": "Sends a request for a model response for the given chat conversation. Supports both streaming and non-streaming modes.",
         "operationId": "sendChatCompletionRequest",
+        "parameters": [
+          {
+            "description": "Opt-in to surface routing metadata on the response under `openrouter_metadata`. Defaults to `disabled`.",
+            "example": "enabled",
+            "in": "header",
+            "name": "X-OpenRouter-Experimental-Metadata",
+            "required": false,
+            "schema": {
+              "$ref": "#/components/schemas/MetadataLevel"
+            }
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -22725,15 +23009,7 @@
                   }
                 },
                 "schema": {
-                  "properties": {
-                    "data": {
-                      "$ref": "#/components/schemas/ChatStreamChunk"
-                    }
-                  },
-                  "required": [
-                    "data"
-                  ],
-                  "type": "object"
+                  "$ref": "#/components/schemas/ChatStreamingResponse"
                 },
                 "x-speakeasy-sse-sentinel": "[DONE]"
               }
@@ -22787,6 +23063,22 @@
               }
             },
             "description": "Payment Required - Insufficient credits or quota to complete request"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": {
+                    "code": 403,
+                    "message": "Only management keys can perform this operation"
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ForbiddenResponse"
+                }
+              }
+            },
+            "description": "Forbidden - Authentication successful but insufficient permissions"
           },
           "404": {
             "content": {
@@ -22956,18 +23248,7 @@
         "x-speakeasy-group": "chat",
         "x-speakeasy-name-override": "send",
         "x-speakeasy-stream-request-field": "stream"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/credits": {
       "get": {
@@ -23081,18 +23362,7 @@
           "Credits"
         ],
         "x-speakeasy-name-override": "getCredits"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/credits/coinbase": {
       "post": {
@@ -23128,18 +23398,7 @@
         "x-fern-ignore": true,
         "x-speakeasy-ignore": true,
         "x-speakeasy-name-override": "createCoinbaseCharge"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/embeddings": {
       "post": {
@@ -23646,18 +23905,7 @@
           "Embeddings"
         ],
         "x-speakeasy-name-override": "generate"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/embeddings/models": {
       "get": {
@@ -23755,18 +24003,7 @@
           "Embeddings"
         ],
         "x-speakeasy-name-override": "listModels"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/endpoints/zdr": {
       "get": {
@@ -23901,18 +24138,7 @@
           "Endpoints"
         ],
         "x-speakeasy-name-override": "listZdrEndpoints"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/generation": {
       "get": {
@@ -24117,18 +24343,7 @@
         "tags": [
           "Generations"
         ]
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/generation/content": {
       "get": {
@@ -24307,18 +24522,7 @@
         "tags": [
           "Generations"
         ]
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/guardrails": {
       "get": {
@@ -24334,7 +24538,7 @@
               "description": "Number of records to skip for pagination",
               "example": 0,
               "minimum": 0,
-              "nullable": false,
+              "nullable": true,
               "type": "integer"
             }
           },
@@ -24586,18 +24790,7 @@
           "Guardrails"
         ],
         "x-speakeasy-name-override": "create"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/guardrails/{id}": {
       "delete": {
@@ -24923,18 +25116,7 @@
           "Guardrails"
         ],
         "x-speakeasy-name-override": "update"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/guardrails/{id}/assignments/keys": {
       "get": {
@@ -24962,7 +25144,7 @@
               "description": "Number of records to skip for pagination",
               "example": 0,
               "minimum": 0,
-              "nullable": false,
+              "nullable": true,
               "type": "integer"
             }
           },
@@ -25194,18 +25376,7 @@
           "Guardrails"
         ],
         "x-speakeasy-name-override": "bulkAssignKeys"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/guardrails/{id}/assignments/keys/remove": {
       "post": {
@@ -25324,18 +25495,7 @@
           "Guardrails"
         ],
         "x-speakeasy-name-override": "bulkUnassignKeys"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/guardrails/{id}/assignments/members": {
       "get": {
@@ -25363,7 +25523,7 @@
               "description": "Number of records to skip for pagination",
               "example": 0,
               "minimum": 0,
-              "nullable": false,
+              "nullable": true,
               "type": "integer"
             }
           },
@@ -25595,18 +25755,7 @@
           "Guardrails"
         ],
         "x-speakeasy-name-override": "bulkAssignMembers"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/guardrails/{id}/assignments/members/remove": {
       "post": {
@@ -25726,18 +25875,7 @@
           "Guardrails"
         ],
         "x-speakeasy-name-override": "bulkUnassignMembers"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/guardrails/assignments/keys": {
       "get": {
@@ -25753,7 +25891,7 @@
               "description": "Number of records to skip for pagination",
               "example": 0,
               "minimum": 0,
-              "nullable": false,
+              "nullable": true,
               "type": "integer"
             }
           },
@@ -25852,18 +25990,7 @@
           },
           "type": "offsetLimit"
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/guardrails/assignments/members": {
       "get": {
@@ -25879,7 +26006,7 @@
               "description": "Number of records to skip for pagination",
               "example": 0,
               "minimum": 0,
-              "nullable": false,
+              "nullable": true,
               "type": "integer"
             }
           },
@@ -25977,18 +26104,7 @@
           },
           "type": "offsetLimit"
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/key": {
       "get": {
@@ -26292,18 +26408,7 @@
           "API Keys"
         ],
         "x-speakeasy-name-override": "getCurrentKeyMetadata"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/keys": {
       "get": {
@@ -26331,7 +26436,7 @@
               "description": "Number of API keys to skip for pagination",
               "example": 0,
               "minimum": 0,
-              "nullable": false,
+              "nullable": true,
               "type": "integer"
             }
           },
@@ -27065,18 +27170,7 @@
           "API Keys"
         ],
         "x-speakeasy-name-override": "create"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/keys/{hash}": {
       "delete": {
@@ -27922,23 +28016,24 @@
           "API Keys"
         ],
         "x-speakeasy-name-override": "update"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/messages": {
       "post": {
         "description": "Creates a message using the Anthropic Messages API format. Supports text, images, PDFs, tools, and extended thinking.",
         "operationId": "createMessages",
+        "parameters": [
+          {
+            "description": "Opt-in to surface routing metadata on the response under `openrouter_metadata`. Defaults to `disabled`.",
+            "example": "enabled",
+            "in": "header",
+            "name": "X-OpenRouter-Experimental-Metadata",
+            "required": false,
+            "schema": {
+              "$ref": "#/components/schemas/MetadataLevel"
+            }
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -27997,19 +28092,7 @@
                   "event": "content_block_delta"
                 },
                 "schema": {
-                  "properties": {
-                    "data": {
-                      "$ref": "#/components/schemas/MessagesStreamEvents"
-                    },
-                    "event": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "event",
-                    "data"
-                  ],
-                  "type": "object"
+                  "$ref": "#/components/schemas/MessagesStreamingResponse"
                 },
                 "x-speakeasy-sse-sentinel": "[DONE]"
               }
@@ -28160,18 +28243,7 @@
         "x-speakeasy-ignore": true,
         "x-speakeasy-name-override": "create",
         "x-speakeasy-stream-request-field": "stream"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/models": {
       "get": {
@@ -28322,18 +28394,7 @@
           "Models"
         ],
         "x-speakeasy-name-override": "list"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/models/{author}/{slug}/endpoints": {
       "get": {
@@ -28499,18 +28560,7 @@
           "Endpoints"
         ],
         "x-speakeasy-name-override": "list"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/models/count": {
       "get": {
@@ -28582,18 +28632,7 @@
           "Models"
         ],
         "x-speakeasy-name-override": "count"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/models/user": {
       "get": {
@@ -28716,18 +28755,7 @@
           "Models"
         ],
         "x-speakeasy-name-override": "listForUser"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/organization/members": {
       "get": {
@@ -28743,7 +28771,7 @@
               "description": "Number of records to skip for pagination",
               "example": 0,
               "minimum": 0,
-              "nullable": false,
+              "nullable": true,
               "type": "integer"
             }
           },
@@ -28915,18 +28943,7 @@
           },
           "type": "offsetLimit"
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/providers": {
       "get": {
@@ -29577,18 +29594,7 @@
           "Providers"
         ],
         "x-speakeasy-name-override": "list"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/rerank": {
       "post": {
@@ -29964,23 +29970,24 @@
           "Rerank"
         ],
         "x-speakeasy-name-override": "rerank"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/responses": {
       "post": {
         "description": "Creates a streaming or non-streaming response using OpenResponses API format",
         "operationId": "createResponses",
+        "parameters": [
+          {
+            "description": "Opt-in to surface routing metadata on the response under `openrouter_metadata`. Defaults to `disabled`.",
+            "example": "enabled",
+            "in": "header",
+            "name": "X-OpenRouter-Experimental-Metadata",
+            "required": false,
+            "schema": {
+              "$ref": "#/components/schemas/MetadataLevel"
+            }
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -30035,15 +30042,7 @@
                   }
                 },
                 "schema": {
-                  "properties": {
-                    "data": {
-                      "$ref": "#/components/schemas/StreamEvents"
-                    }
-                  },
-                  "required": [
-                    "data"
-                  ],
-                  "type": "object"
+                  "$ref": "#/components/schemas/ResponsesStreamingResponse"
                 },
                 "x-speakeasy-sse-sentinel": "[DONE]"
               }
@@ -30265,18 +30264,7 @@
         ],
         "x-speakeasy-name-override": "send",
         "x-speakeasy-stream-request-field": "stream"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/videos": {
       "post": {
@@ -30418,18 +30406,7 @@
           "Video Generation"
         ],
         "x-speakeasy-name-override": "generate"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/videos/{jobId}": {
       "get": {
@@ -30524,18 +30501,7 @@
           "Video Generation"
         ],
         "x-speakeasy-name-override": "getGeneration"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/videos/{jobId}/content": {
       "get": {
@@ -30664,18 +30630,7 @@
           "Video Generation"
         ],
         "x-speakeasy-name-override": "getVideoContent"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/videos/models": {
       "get": {
@@ -30761,18 +30716,7 @@
         "tags": [
           "Video Generation"
         ]
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/workspaces": {
       "get": {
@@ -30788,7 +30732,7 @@
               "description": "Number of records to skip for pagination",
               "example": 0,
               "minimum": 0,
-              "nullable": false,
+              "nullable": true,
               "type": "integer"
             }
           },
@@ -31017,18 +30961,7 @@
           "Workspaces"
         ],
         "x-speakeasy-name-override": "create"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/workspaces/{id}": {
       "delete": {
@@ -31398,18 +31331,7 @@
           "Workspaces"
         ],
         "x-speakeasy-name-override": "update"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/workspaces/{id}/members/add": {
       "post": {
@@ -31554,18 +31476,7 @@
           "Workspaces"
         ],
         "x-speakeasy-name-override": "bulkAddMembers"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/workspaces/{id}/members/remove": {
       "post": {
@@ -31701,18 +31612,7 @@
           "Workspaces"
         ],
         "x-speakeasy-name-override": "bulkRemoveMembers"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     }
   },
   "security": [
@@ -31833,9 +31733,6 @@
       },
       {
         "$ref": "#/components/parameters/AppDisplayName"
-      },
-      {
-        "$ref": "#/components/parameters/AppCategories"
       }
     ]
   }
