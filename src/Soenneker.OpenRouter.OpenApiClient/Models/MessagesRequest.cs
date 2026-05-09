@@ -93,7 +93,13 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         [Obsolete("")]
         public global::Soenneker.OpenRouter.OpenApiClient.Models.DeprecatedRoute? Route { get; set; }
         /// <summary>The service_tier property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_service_tier? ServiceTier { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ServiceTier { get; set; }
+#nullable restore
+#else
+        public string ServiceTier { get; set; }
+#endif
         /// <summary>A unique identifier for grouping related requests (e.g., a conversation or agent workflow) for observability. If provided in both the request body and the x-session-id header, the body value takes precedence. Maximum of 256 characters.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -204,7 +210,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "plugins", n => { Plugins = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest.MessagesRequest_plugins>(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest.MessagesRequest_plugins.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "provider", n => { Provider = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferences>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferences.CreateFromDiscriminatorValue); } },
                 { "route", n => { Route = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.DeprecatedRoute>(); } },
-                { "service_tier", n => { ServiceTier = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_service_tier>(); } },
+                { "service_tier", n => { ServiceTier = n.GetStringValue(); } },
                 { "session_id", n => { SessionId = n.GetStringValue(); } },
                 { "speed", n => { Speed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicSpeed>(); } },
                 { "stop_sequences", n => { StopSequences = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
@@ -238,7 +244,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest.MessagesRequest_plugins>("plugins", Plugins);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferences>("provider", Provider);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.DeprecatedRoute>("route", Route);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_service_tier>("service_tier", ServiceTier);
+            writer.WriteStringValue("service_tier", ServiceTier);
             writer.WriteStringValue("session_id", SessionId);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicSpeed>("speed", Speed);
             writer.WriteCollectionOfPrimitiveValues<string>("stop_sequences", StopSequences);

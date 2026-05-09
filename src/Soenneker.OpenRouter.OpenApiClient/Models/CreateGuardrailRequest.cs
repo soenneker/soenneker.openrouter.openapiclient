@@ -30,7 +30,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public List<string> AllowedProviders { get; set; }
 #endif
-        /// <summary>Builtin content filters to apply. Use slug &quot;regex-prompt-injection&quot; with action &quot;block&quot;, &quot;flag&quot;, or &quot;redact&quot; to enable heuristic prompt injection detection.</summary>
+        /// <summary>Builtin content filters to apply. The &quot;flag&quot; action is only supported for &quot;regex-prompt-injection&quot;; PII slugs (email, phone, ssn, credit-card, ip-address, person-name, address) accept &quot;block&quot; or &quot;redact&quot; only.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterBuiltinEntry>? ContentFilterBuiltins { get; set; }
@@ -54,8 +54,17 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public string Description { get; set; }
 #endif
-        /// <summary>Whether to enforce zero data retention</summary>
+        /// <summary>Deprecated. Use enforce_zdr_anthropic, enforce_zdr_openai, enforce_zdr_google, and enforce_zdr_other instead. When provided, its value is copied into any of those per-provider fields that are not explicitly specified on the request.</summary>
+        [Obsolete("")]
         public bool? EnforceZdr { get; set; }
+        /// <summary>Whether to enforce zero data retention for Anthropic models. Falls back to enforce_zdr when not provided.</summary>
+        public bool? EnforceZdrAnthropic { get; set; }
+        /// <summary>Whether to enforce zero data retention for Google models. Falls back to enforce_zdr when not provided.</summary>
+        public bool? EnforceZdrGoogle { get; set; }
+        /// <summary>Whether to enforce zero data retention for OpenAI models. Falls back to enforce_zdr when not provided.</summary>
+        public bool? EnforceZdrOpenai { get; set; }
+        /// <summary>Whether to enforce zero data retention for models that are not from Anthropic, OpenAI, or Google. Falls back to enforce_zdr when not provided.</summary>
+        public bool? EnforceZdrOther { get; set; }
         /// <summary>Array of model identifiers to exclude from routing (slug or canonical_slug accepted)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -117,6 +126,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "content_filters", n => { ContentFilters = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterEntry>(global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterEntry.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "enforce_zdr", n => { EnforceZdr = n.GetBoolValue(); } },
+                { "enforce_zdr_anthropic", n => { EnforceZdrAnthropic = n.GetBoolValue(); } },
+                { "enforce_zdr_google", n => { EnforceZdrGoogle = n.GetBoolValue(); } },
+                { "enforce_zdr_openai", n => { EnforceZdrOpenai = n.GetBoolValue(); } },
+                { "enforce_zdr_other", n => { EnforceZdrOther = n.GetBoolValue(); } },
                 { "ignored_models", n => { IgnoredModels = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "ignored_providers", n => { IgnoredProviders = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "limit_usd", n => { LimitUsd = n.GetDoubleValue(); } },
@@ -138,6 +151,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterEntry>("content_filters", ContentFilters);
             writer.WriteStringValue("description", Description);
             writer.WriteBoolValue("enforce_zdr", EnforceZdr);
+            writer.WriteBoolValue("enforce_zdr_anthropic", EnforceZdrAnthropic);
+            writer.WriteBoolValue("enforce_zdr_google", EnforceZdrGoogle);
+            writer.WriteBoolValue("enforce_zdr_openai", EnforceZdrOpenai);
+            writer.WriteBoolValue("enforce_zdr_other", EnforceZdrOther);
             writer.WriteCollectionOfPrimitiveValues<string>("ignored_models", IgnoredModels);
             writer.WriteCollectionOfPrimitiveValues<string>("ignored_providers", IgnoredProviders);
             writer.WriteDoubleValue("limit_usd", LimitUsd);

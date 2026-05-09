@@ -5,16 +5,12 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public enum MessagesRequest_service_tier
+    public enum OpenAIResponsesRefusalContent_type
     #pragma warning restore CS1591
     {
-        [EnumMember(Value = "auto")]
+        [EnumMember(Value = "refusal")]
         #pragma warning disable CS1591
-        Auto,
-        #pragma warning restore CS1591
-        [EnumMember(Value = "standard_only")]
-        #pragma warning disable CS1591
-        Standard_only,
+        Refusal,
         #pragma warning restore CS1591
     }
 }

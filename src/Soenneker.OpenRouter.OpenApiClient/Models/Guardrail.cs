@@ -62,8 +62,17 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public string Description { get; set; }
 #endif
-        /// <summary>Whether to enforce zero data retention</summary>
+        /// <summary>Deprecated. Use enforce_zdr_anthropic, enforce_zdr_openai, enforce_zdr_google, and enforce_zdr_other instead. When provided, its value is copied into any of those per-provider fields that are not explicitly specified on the request.</summary>
+        [Obsolete("")]
         public bool? EnforceZdr { get; set; }
+        /// <summary>Whether to enforce zero data retention for Anthropic models. Falls back to enforce_zdr when not provided.</summary>
+        public bool? EnforceZdrAnthropic { get; set; }
+        /// <summary>Whether to enforce zero data retention for Google models. Falls back to enforce_zdr when not provided.</summary>
+        public bool? EnforceZdrGoogle { get; set; }
+        /// <summary>Whether to enforce zero data retention for OpenAI models. Falls back to enforce_zdr when not provided.</summary>
+        public bool? EnforceZdrOpenai { get; set; }
+        /// <summary>Whether to enforce zero data retention for models that are not from Anthropic, OpenAI, or Google. Falls back to enforce_zdr when not provided.</summary>
+        public bool? EnforceZdrOther { get; set; }
         /// <summary>Unique identifier for the guardrail</summary>
         public Guid? Id { get; set; }
         /// <summary>Array of model canonical_slugs to exclude from routing</summary>
@@ -142,6 +151,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "created_at", n => { CreatedAt = n.GetStringValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "enforce_zdr", n => { EnforceZdr = n.GetBoolValue(); } },
+                { "enforce_zdr_anthropic", n => { EnforceZdrAnthropic = n.GetBoolValue(); } },
+                { "enforce_zdr_google", n => { EnforceZdrGoogle = n.GetBoolValue(); } },
+                { "enforce_zdr_openai", n => { EnforceZdrOpenai = n.GetBoolValue(); } },
+                { "enforce_zdr_other", n => { EnforceZdrOther = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "ignored_models", n => { IgnoredModels = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "ignored_providers", n => { IgnoredProviders = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
@@ -166,6 +179,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteStringValue("created_at", CreatedAt);
             writer.WriteStringValue("description", Description);
             writer.WriteBoolValue("enforce_zdr", EnforceZdr);
+            writer.WriteBoolValue("enforce_zdr_anthropic", EnforceZdrAnthropic);
+            writer.WriteBoolValue("enforce_zdr_google", EnforceZdrGoogle);
+            writer.WriteBoolValue("enforce_zdr_openai", EnforceZdrOpenai);
+            writer.WriteBoolValue("enforce_zdr_other", EnforceZdrOther);
             writer.WriteGuidValue("id", Id);
             writer.WriteCollectionOfPrimitiveValues<string>("ignored_models", IgnoredModels);
             writer.WriteCollectionOfPrimitiveValues<string>("ignored_providers", IgnoredProviders);
