@@ -70,7 +70,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>URL-friendly slug (lowercase alphanumeric and hyphens only)</summary>
+        /// <summary>URL-friendly slug (lowercase alphanumeric segments separated by single hyphens, no leading/trailing hyphens)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Slug { get; set; }

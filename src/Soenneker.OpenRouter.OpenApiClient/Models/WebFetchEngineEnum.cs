@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
-    /// <summary>Which fetch engine to use. &quot;auto&quot; (default) uses native if the provider supports it, otherwise Exa. &quot;native&quot; forces the provider&apos;s built-in fetch. &quot;exa&quot; uses Exa Contents API (supports BYOK). &quot;openrouter&quot; uses direct HTTP fetch. &quot;firecrawl&quot; uses Firecrawl scrape (requires BYOK).</summary>
+    /// <summary>Which fetch engine to use. &quot;auto&quot; (default) uses native if the provider supports it, otherwise Exa. &quot;native&quot; forces the provider&apos;s built-in fetch. &quot;exa&quot; uses Exa Contents API. &quot;openrouter&quot; uses direct HTTP fetch. &quot;firecrawl&quot; uses Firecrawl scrape (requires BYOK).</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum WebFetchEngineEnum
     {
