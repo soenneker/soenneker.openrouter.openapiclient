@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputApplyPatchServerToolItem"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputBashServerToolItem"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputBrowserUseServerToolItem"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputCodeInterpreterCallItem"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputCodeInterpreterServerToolItem"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputComputerCallItem"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputCustomToolCallItem"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputDatetimeItem"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputFileSearchCallItem"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputFileSearchServerToolItem"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputFunctionCallItem"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputImageGenerationCallItem"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputImageGenerationServerToolItem"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputMcpServerToolItem"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputMemoryServerToolItem"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputMessageItem"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputReasoningItem"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputSearchModelsServerToolItem"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputTextEditorServerToolItem"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputToolSearchServerToolItem"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputWebFetchServerToolItem"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputWebSearchCallItem"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputWebSearchServerToolItem"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputApplyPatchServerToolItem"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputBashServerToolItem"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputBrowserUseServerToolItem"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputCodeInterpreterCallItem"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputCodeInterpreterServerToolItem"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputComputerCallItem"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputCustomToolCallItem"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputDatetimeItem"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputFileSearchCallItem"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputFileSearchServerToolItem"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputFunctionCallItem"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputFusionServerToolItem"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputImageGenerationCallItem"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputImageGenerationServerToolItem"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputMcpServerToolItem"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputMemoryServerToolItem"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputMessageItem"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputReasoningItem"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputSearchModelsServerToolItem"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputTextEditorServerToolItem"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputToolSearchServerToolItem"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputWebFetchServerToolItem"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputWebSearchCallItem"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputWebSearchServerToolItem"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class OutputItems : IComposedTypeWrapper, IParsable
@@ -100,6 +100,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.OpenRouter.OpenApiClient.Models.OutputFunctionCallItem OutputFunctionCallItem { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputFusionServerToolItem"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.OutputFusionServerToolItem? OutputFusionServerToolItem { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.OutputFusionServerToolItem OutputFusionServerToolItem { get; set; }
 #endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputImageGenerationCallItem"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -251,6 +259,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             {
                 result.OutputFunctionCallItem = new global::Soenneker.OpenRouter.OpenApiClient.Models.OutputFunctionCallItem();
             }
+            else if("openrouter:fusion".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                result.OutputFusionServerToolItem = new global::Soenneker.OpenRouter.OpenApiClient.Models.OutputFusionServerToolItem();
+            }
             else if("image_generation_call".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.OutputImageGenerationCallItem = new global::Soenneker.OpenRouter.OpenApiClient.Models.OutputImageGenerationCallItem();
@@ -350,6 +362,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             else if(OutputFunctionCallItem != null)
             {
                 return OutputFunctionCallItem.GetFieldDeserializers();
+            }
+            else if(OutputFusionServerToolItem != null)
+            {
+                return OutputFusionServerToolItem.GetFieldDeserializers();
             }
             else if(OutputImageGenerationCallItem != null)
             {
@@ -451,6 +467,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             else if(OutputFunctionCallItem != null)
             {
                 writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputFunctionCallItem>(null, OutputFunctionCallItem);
+            }
+            else if(OutputFusionServerToolItem != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputFusionServerToolItem>(null, OutputFusionServerToolItem);
             }
             else if(OutputImageGenerationCallItem != null)
             {

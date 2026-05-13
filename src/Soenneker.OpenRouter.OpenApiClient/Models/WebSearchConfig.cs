@@ -36,7 +36,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public int? MaxResults { get; set; }
         /// <summary>Maximum total number of search results across all search calls in a single request. Once this limit is reached, the tool will stop returning new results. Useful for controlling cost and context size in agentic loops.</summary>
         public int? MaxTotalResults { get; set; }
-        /// <summary>How much context to retrieve per result. Defaults to medium (15000 chars). Applies to Exa and Parallel engines; ignored with native provider search and Firecrawl.</summary>
+        /// <summary>How much context to retrieve per result. Applies to Exa and Parallel engines; ignored with native provider search and Firecrawl. For Exa, pins a fixed per-result character cap (low=5,000, medium=15,000, high=30,000); when omitted, Exa picks an adaptive size per query and document (typically ~2,000–4,000 characters per result). For Parallel, controls the total characters across all results; when omitted, Parallel uses its own default size.</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.SearchQualityLevel? SearchContextSize { get; set; }
         /// <summary>Approximate user location for location-biased results.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

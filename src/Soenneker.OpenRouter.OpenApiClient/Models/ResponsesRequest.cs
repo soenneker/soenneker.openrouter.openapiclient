@@ -324,7 +324,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteAdditionalData(AdditionalData);
         }
         /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AutoRouterPlugin"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ContextCompressionPlugin"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.FileParserPlugin"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ModerationPlugin"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ParetoRouterPlugin"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ResponseHealingPlugin"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchPlugin"/>
+        /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AutoRouterPlugin"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ContextCompressionPlugin"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.FileParserPlugin"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.FusionPlugin"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ModerationPlugin"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ParetoRouterPlugin"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ResponseHealingPlugin"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchPlugin"/>
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class ResponsesRequest_plugins : IComposedTypeWrapper, IParsable
@@ -352,6 +352,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #nullable restore
 #else
             public global::Soenneker.OpenRouter.OpenApiClient.Models.FileParserPlugin FileParserPlugin { get; set; }
+#endif
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.FusionPlugin"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.FusionPlugin? FusionPlugin { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.FusionPlugin FusionPlugin { get; set; }
 #endif
             /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ModerationPlugin"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -407,6 +415,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 {
                     result.FileParserPlugin = new global::Soenneker.OpenRouter.OpenApiClient.Models.FileParserPlugin();
                 }
+                else if("fusion".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+                {
+                    result.FusionPlugin = new global::Soenneker.OpenRouter.OpenApiClient.Models.FusionPlugin();
+                }
                 else if("moderation".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
                 {
                     result.ModerationPlugin = new global::Soenneker.OpenRouter.OpenApiClient.Models.ModerationPlugin();
@@ -442,6 +454,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 else if(FileParserPlugin != null)
                 {
                     return FileParserPlugin.GetFieldDeserializers();
+                }
+                else if(FusionPlugin != null)
+                {
+                    return FusionPlugin.GetFieldDeserializers();
                 }
                 else if(ModerationPlugin != null)
                 {
@@ -479,6 +495,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 else if(FileParserPlugin != null)
                 {
                     writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.FileParserPlugin>(null, FileParserPlugin);
+                }
+                else if(FusionPlugin != null)
+                {
+                    writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.FusionPlugin>(null, FusionPlugin);
                 }
                 else if(ModerationPlugin != null)
                 {

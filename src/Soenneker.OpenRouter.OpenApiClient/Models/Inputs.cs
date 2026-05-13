@@ -8,18 +8,18 @@ using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="string"/>, List&lt;global::Soenneker.OpenRouter.OpenApiClient.Models.CustomToolCallOutputItem&gt;
+    /// Composed type wrapper for classes <see cref="string"/>, List&lt;global::Soenneker.OpenRouter.OpenApiClient.Models.ItemReferenceItem&gt;
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Inputs : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Composed type representation for type List&lt;global::Soenneker.OpenRouter.OpenApiClient.Models.CustomToolCallOutputItem&gt;</summary>
+        /// <summary>Composed type representation for type List&lt;global::Soenneker.OpenRouter.OpenApiClient.Models.ItemReferenceItem&gt;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.CustomToolCallOutputItem>? CustomToolCallOutputItem { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ItemReferenceItem>? ItemReferenceItem { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.CustomToolCallOutputItem> CustomToolCallOutputItem { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ItemReferenceItem> ItemReferenceItem { get; set; }
 #endif
         /// <summary>Composed type representation for type <see cref="string"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -42,9 +42,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             {
                 result.String = stringValue;
             }
-            else if(parseNode.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.CustomToolCallOutputItem>(global::Soenneker.OpenRouter.OpenApiClient.Models.CustomToolCallOutputItem.CreateFromDiscriminatorValue)?.AsList() is List<global::Soenneker.OpenRouter.OpenApiClient.Models.CustomToolCallOutputItem> customToolCallOutputItemValue)
+            else if(parseNode.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ItemReferenceItem>(global::Soenneker.OpenRouter.OpenApiClient.Models.ItemReferenceItem.CreateFromDiscriminatorValue)?.AsList() is List<global::Soenneker.OpenRouter.OpenApiClient.Models.ItemReferenceItem> itemReferenceItemValue)
             {
-                result.CustomToolCallOutputItem = customToolCallOutputItemValue;
+                result.ItemReferenceItem = itemReferenceItemValue;
             }
             return result;
         }
@@ -67,9 +67,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             {
                 writer.WriteStringValue(null, String);
             }
-            else if(CustomToolCallOutputItem != null)
+            else if(ItemReferenceItem != null)
             {
-                writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.CustomToolCallOutputItem>(null, CustomToolCallOutputItem);
+                writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ItemReferenceItem>(null, ItemReferenceItem);
             }
         }
     }

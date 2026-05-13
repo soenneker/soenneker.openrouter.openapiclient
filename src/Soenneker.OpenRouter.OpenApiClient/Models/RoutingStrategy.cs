@@ -40,5 +40,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning disable CS1591
         Bodybuilder,
         #pragma warning restore CS1591
+        [EnumMember(Value = "fusion")]
+        #pragma warning disable CS1591
+        Fusion,
+        #pragma warning restore CS1591
     }
 }

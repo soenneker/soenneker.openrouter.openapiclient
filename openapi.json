@@ -2847,6 +2847,172 @@
         ],
         "type": "object"
       },
+      "ApplyPatchCallItem": {
+        "description": "A file create/update/delete via diff patch",
+        "example": {
+          "call_id": "call-abc123",
+          "operation": {
+            "diff": "--- a\n+++ b\n",
+            "path": "src/main.ts",
+            "type": "update_file"
+          },
+          "status": "completed",
+          "type": "apply_patch_call"
+        },
+        "properties": {
+          "call_id": {
+            "type": "string"
+          },
+          "id": {
+            "nullable": true,
+            "type": "string"
+          },
+          "operation": {
+            "oneOf": [
+              {
+                "properties": {
+                  "diff": {
+                    "type": "string"
+                  },
+                  "path": {
+                    "type": "string"
+                  },
+                  "type": {
+                    "enum": [
+                      "create_file"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "type",
+                  "path",
+                  "diff"
+                ],
+                "type": "object"
+              },
+              {
+                "properties": {
+                  "path": {
+                    "type": "string"
+                  },
+                  "type": {
+                    "enum": [
+                      "delete_file"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "type",
+                  "path"
+                ],
+                "type": "object"
+              },
+              {
+                "properties": {
+                  "diff": {
+                    "type": "string"
+                  },
+                  "path": {
+                    "type": "string"
+                  },
+                  "type": {
+                    "enum": [
+                      "update_file"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "type",
+                  "path",
+                  "diff"
+                ],
+                "type": "object"
+              }
+            ]
+          },
+          "status": {
+            "anyOf": [
+              {
+                "enum": [
+                  "in_progress"
+                ],
+                "type": "string"
+              },
+              {
+                "enum": [
+                  "completed"
+                ],
+                "type": "string"
+              }
+            ]
+          },
+          "type": {
+            "enum": [
+              "apply_patch_call"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "call_id",
+          "operation",
+          "status"
+        ],
+        "type": "object"
+      },
+      "ApplyPatchCallOutputItem": {
+        "description": "Output from an apply patch operation",
+        "example": {
+          "call_id": "call-abc123",
+          "status": "completed",
+          "type": "apply_patch_call_output"
+        },
+        "properties": {
+          "call_id": {
+            "type": "string"
+          },
+          "id": {
+            "nullable": true,
+            "type": "string"
+          },
+          "output": {
+            "nullable": true,
+            "type": "string"
+          },
+          "status": {
+            "anyOf": [
+              {
+                "enum": [
+                  "completed"
+                ],
+                "type": "string"
+              },
+              {
+                "enum": [
+                  "failed"
+                ],
+                "type": "string"
+              }
+            ]
+          },
+          "type": {
+            "enum": [
+              "apply_patch_call_output"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "call_id",
+          "status"
+        ],
+        "type": "object"
+      },
       "ApplyPatchServerTool": {
         "description": "Apply patch tool configuration",
         "example": {
@@ -5654,6 +5820,7 @@
                   "auto-router": "#/components/schemas/AutoRouterPlugin",
                   "context-compression": "#/components/schemas/ContextCompressionPlugin",
                   "file-parser": "#/components/schemas/FileParserPlugin",
+                  "fusion": "#/components/schemas/FusionPlugin",
                   "moderation": "#/components/schemas/ModerationPlugin",
                   "pareto-router": "#/components/schemas/ParetoRouterPlugin",
                   "response-healing": "#/components/schemas/ResponseHealingPlugin",
@@ -5682,6 +5849,9 @@
                 },
                 {
                   "$ref": "#/components/schemas/ParetoRouterPlugin"
+                },
+                {
+                  "$ref": "#/components/schemas/FusionPlugin"
                 }
               ]
             },
@@ -6903,6 +7073,33 @@
         },
         "required": [
           "type"
+        ],
+        "type": "object"
+      },
+      "CompactionItem": {
+        "description": "A context compaction marker with encrypted summary",
+        "example": {
+          "encrypted_content": "enc_abc123...",
+          "type": "compaction"
+        },
+        "properties": {
+          "encrypted_content": {
+            "type": "string"
+          },
+          "id": {
+            "nullable": true,
+            "type": "string"
+          },
+          "type": {
+            "enum": [
+              "compaction"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "encrypted_content"
         ],
         "type": "object"
       },
@@ -8966,6 +9163,51 @@
         ],
         "type": "object"
       },
+      "FusionPlugin": {
+        "example": {
+          "analysis_models": [
+            "~anthropic/claude-opus-latest",
+            "~openai/gpt-latest"
+          ],
+          "enabled": true,
+          "id": "fusion",
+          "model": "~anthropic/claude-opus-latest"
+        },
+        "properties": {
+          "analysis_models": {
+            "description": "Slugs of models to run in parallel as the \"expert panel\" the judge analyzes. Each model receives the same user prompt with web_search + web_fetch enabled. Capped at 8 models to bound cost amplification. When omitted, defaults to the Quality preset from the /labs/fusion UI (~anthropic/claude-opus-latest, ~openai/gpt-latest).",
+            "example": [
+              "~anthropic/claude-opus-latest",
+              "~openai/gpt-latest"
+            ],
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 8,
+            "minItems": 1,
+            "type": "array"
+          },
+          "enabled": {
+            "description": "Set to false to disable the fusion plugin for this request. Defaults to true.",
+            "type": "boolean"
+          },
+          "id": {
+            "enum": [
+              "fusion"
+            ],
+            "type": "string"
+          },
+          "model": {
+            "description": "Slug of the model that performs both the judge step (with web_search + web_fetch) and the final synthesis. When omitted, defaults to the first model in the Quality preset.",
+            "example": "~anthropic/claude-opus-latest",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "type": "object"
+      },
       "GenerationContentData": {
         "description": "Stored prompt and completion content",
         "example": {
@@ -10546,10 +10788,46 @@
                   "$ref": "#/components/schemas/OutputSearchModelsServerToolItem"
                 },
                 {
+                  "$ref": "#/components/schemas/LocalShellCallItem"
+                },
+                {
+                  "$ref": "#/components/schemas/LocalShellCallOutputItem"
+                },
+                {
+                  "$ref": "#/components/schemas/ShellCallItem"
+                },
+                {
+                  "$ref": "#/components/schemas/ShellCallOutputItem"
+                },
+                {
+                  "$ref": "#/components/schemas/ApplyPatchCallItem"
+                },
+                {
+                  "$ref": "#/components/schemas/ApplyPatchCallOutputItem"
+                },
+                {
+                  "$ref": "#/components/schemas/McpListToolsItem"
+                },
+                {
+                  "$ref": "#/components/schemas/McpApprovalRequestItem"
+                },
+                {
+                  "$ref": "#/components/schemas/McpApprovalResponseItem"
+                },
+                {
+                  "$ref": "#/components/schemas/McpCallItem"
+                },
+                {
                   "$ref": "#/components/schemas/CustomToolCallItem"
                 },
                 {
                   "$ref": "#/components/schemas/CustomToolCallOutputItem"
+                },
+                {
+                  "$ref": "#/components/schemas/CompactionItem"
+                },
+                {
+                  "$ref": "#/components/schemas/ItemReferenceItem"
                 }
               ]
             },
@@ -10696,6 +10974,29 @@
         "required": [
           "code",
           "message"
+        ],
+        "type": "object"
+      },
+      "ItemReferenceItem": {
+        "description": "A reference to a previous response item by ID",
+        "example": {
+          "id": "msg-abc123",
+          "type": "item_reference"
+        },
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "type": {
+            "enum": [
+              "item_reference"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "id"
         ],
         "type": "object"
       },
@@ -11149,6 +11450,327 @@
         "required": [
           "data",
           "total_count"
+        ],
+        "type": "object"
+      },
+      "LocalShellCallItem": {
+        "description": "A local shell command execution call",
+        "example": {
+          "action": {
+            "command": [
+              "ls",
+              "-la"
+            ],
+            "env": {
+              "PATH": "/usr/bin"
+            },
+            "timeout_ms": 5000,
+            "type": "exec"
+          },
+          "call_id": "call-abc123",
+          "id": "shell-abc123",
+          "status": "completed",
+          "type": "local_shell_call"
+        },
+        "properties": {
+          "action": {
+            "properties": {
+              "command": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "env": {
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "type": "object"
+              },
+              "timeout_ms": {
+                "nullable": true,
+                "type": "integer"
+              },
+              "type": {
+                "enum": [
+                  "exec"
+                ],
+                "type": "string"
+              },
+              "user": {
+                "nullable": true,
+                "type": "string"
+              },
+              "working_directory": {
+                "nullable": true,
+                "type": "string"
+              }
+            },
+            "required": [
+              "type",
+              "command",
+              "env"
+            ],
+            "type": "object"
+          },
+          "call_id": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "status": {
+            "$ref": "#/components/schemas/ToolCallStatus"
+          },
+          "type": {
+            "enum": [
+              "local_shell_call"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "id",
+          "call_id",
+          "action",
+          "status"
+        ],
+        "type": "object"
+      },
+      "LocalShellCallOutputItem": {
+        "description": "Output from a local shell command execution",
+        "example": {
+          "id": "output-abc123",
+          "output": "total 24\ndrwxr-xr-x  5 user  staff  160 Jan  1 12:00 .",
+          "status": "completed",
+          "type": "local_shell_call_output"
+        },
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "output": {
+            "type": "string"
+          },
+          "status": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ToolCallStatus"
+              },
+              {
+                "nullable": true
+              }
+            ]
+          },
+          "type": {
+            "enum": [
+              "local_shell_call_output"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "id",
+          "output"
+        ],
+        "type": "object"
+      },
+      "McpApprovalRequestItem": {
+        "description": "Request for approval to execute an MCP tool",
+        "example": {
+          "arguments": "{\"id\":\"123\"}",
+          "id": "approval-abc123",
+          "name": "delete_record",
+          "server_label": "database-server",
+          "type": "mcp_approval_request"
+        },
+        "properties": {
+          "arguments": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "server_label": {
+            "type": "string"
+          },
+          "type": {
+            "enum": [
+              "mcp_approval_request"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "id",
+          "name",
+          "arguments",
+          "server_label"
+        ],
+        "type": "object"
+      },
+      "McpApprovalResponseItem": {
+        "description": "User response to an MCP tool approval request",
+        "example": {
+          "approval_request_id": "approval-abc123",
+          "approve": true,
+          "reason": "Approved for execution",
+          "type": "mcp_approval_response"
+        },
+        "properties": {
+          "approval_request_id": {
+            "type": "string"
+          },
+          "approve": {
+            "type": "boolean"
+          },
+          "id": {
+            "nullable": true,
+            "type": "string"
+          },
+          "reason": {
+            "nullable": true,
+            "type": "string"
+          },
+          "type": {
+            "enum": [
+              "mcp_approval_response"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "approval_request_id",
+          "approve"
+        ],
+        "type": "object"
+      },
+      "McpCallItem": {
+        "description": "An MCP tool call with its output or error",
+        "example": {
+          "arguments": "{\"query\":\"SELECT * FROM users\"}",
+          "id": "mcp-call-abc123",
+          "name": "query_database",
+          "output": "[{\"id\":1,\"name\":\"Alice\"}]",
+          "server_label": "database-server",
+          "type": "mcp_call"
+        },
+        "properties": {
+          "arguments": {
+            "type": "string"
+          },
+          "error": {
+            "nullable": true,
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "output": {
+            "nullable": true,
+            "type": "string"
+          },
+          "server_label": {
+            "type": "string"
+          },
+          "type": {
+            "enum": [
+              "mcp_call"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "id",
+          "name",
+          "arguments",
+          "server_label"
+        ],
+        "type": "object"
+      },
+      "McpListToolsItem": {
+        "description": "List of available MCP tools from a server",
+        "example": {
+          "id": "mcp-list-abc123",
+          "server_label": "database-server",
+          "tools": [
+            {
+              "description": "Execute a database query",
+              "input_schema": {
+                "properties": {
+                  "query": {
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              "name": "query_database"
+            }
+          ],
+          "type": "mcp_list_tools"
+        },
+        "properties": {
+          "error": {
+            "nullable": true,
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "server_label": {
+            "type": "string"
+          },
+          "tools": {
+            "items": {
+              "properties": {
+                "annotations": {
+                  "nullable": true
+                },
+                "description": {
+                  "nullable": true,
+                  "type": "string"
+                },
+                "input_schema": {
+                  "additionalProperties": {
+                    "nullable": true
+                  },
+                  "type": "object"
+                },
+                "name": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "name",
+                "input_schema"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "type": {
+            "enum": [
+              "mcp_list_tools"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "id",
+          "server_label",
+          "tools"
         ],
         "type": "object"
       },
@@ -12390,6 +13012,7 @@
                   "auto-router": "#/components/schemas/AutoRouterPlugin",
                   "context-compression": "#/components/schemas/ContextCompressionPlugin",
                   "file-parser": "#/components/schemas/FileParserPlugin",
+                  "fusion": "#/components/schemas/FusionPlugin",
                   "moderation": "#/components/schemas/ModerationPlugin",
                   "pareto-router": "#/components/schemas/ParetoRouterPlugin",
                   "response-healing": "#/components/schemas/ResponseHealingPlugin",
@@ -12418,6 +13041,9 @@
                 },
                 {
                   "$ref": "#/components/schemas/ParetoRouterPlugin"
+                },
+                {
+                  "$ref": "#/components/schemas/FusionPlugin"
                 }
               ]
             },
@@ -15308,6 +15934,149 @@
           "type": "function_call"
         }
       },
+      "OutputFusionServerToolItem": {
+        "description": "An openrouter:fusion server tool output item",
+        "example": {
+          "id": "st_tmp_abc123",
+          "status": "completed",
+          "type": "openrouter:fusion"
+        },
+        "properties": {
+          "analysis": {
+            "description": "Structured analysis produced by the fusion judge model.",
+            "properties": {
+              "blind_spots": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "consensus": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "contradictions": {
+                "items": {
+                  "properties": {
+                    "stances": {
+                      "items": {
+                        "properties": {
+                          "model": {
+                            "type": "string"
+                          },
+                          "stance": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "model",
+                          "stance"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "topic": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "topic",
+                    "stances"
+                  ],
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "partial_coverage": {
+                "items": {
+                  "properties": {
+                    "models": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "point": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "models",
+                    "point"
+                  ],
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "unique_insights": {
+                "items": {
+                  "properties": {
+                    "insight": {
+                      "type": "string"
+                    },
+                    "model": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "model",
+                    "insight"
+                  ],
+                  "type": "object"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "consensus",
+              "contradictions",
+              "partial_coverage",
+              "unique_insights",
+              "blind_spots"
+            ],
+            "type": "object"
+          },
+          "error": {
+            "description": "Error message when the fusion run did not produce an analysis result.",
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "responses": {
+            "description": "Slugs of the analysis models that produced a response in this fusion run.",
+            "items": {
+              "properties": {
+                "model": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "model"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "status": {
+            "$ref": "#/components/schemas/ToolCallStatus"
+          },
+          "type": {
+            "enum": [
+              "openrouter:fusion"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "status",
+          "type"
+        ],
+        "type": "object"
+      },
       "OutputImageGenerationCallItem": {
         "allOf": [
           {
@@ -15778,6 +16547,7 @@
             "openrouter:datetime": "#/components/schemas/OutputDatetimeItem",
             "openrouter:experimental__search_models": "#/components/schemas/OutputSearchModelsServerToolItem",
             "openrouter:file_search": "#/components/schemas/OutputFileSearchServerToolItem",
+            "openrouter:fusion": "#/components/schemas/OutputFusionServerToolItem",
             "openrouter:image_generation": "#/components/schemas/OutputImageGenerationServerToolItem",
             "openrouter:mcp": "#/components/schemas/OutputMcpServerToolItem",
             "openrouter:memory": "#/components/schemas/OutputMemoryServerToolItem",
@@ -15868,6 +16638,9 @@
           },
           {
             "$ref": "#/components/schemas/OutputSearchModelsServerToolItem"
+          },
+          {
+            "$ref": "#/components/schemas/OutputFusionServerToolItem"
           },
           {
             "$ref": "#/components/schemas/OutputCustomToolCallItem"
@@ -19481,6 +20254,7 @@
                   "auto-router": "#/components/schemas/AutoRouterPlugin",
                   "context-compression": "#/components/schemas/ContextCompressionPlugin",
                   "file-parser": "#/components/schemas/FileParserPlugin",
+                  "fusion": "#/components/schemas/FusionPlugin",
                   "moderation": "#/components/schemas/ModerationPlugin",
                   "pareto-router": "#/components/schemas/ParetoRouterPlugin",
                   "response-healing": "#/components/schemas/ResponseHealingPlugin",
@@ -19509,6 +20283,9 @@
                 },
                 {
                   "$ref": "#/components/schemas/ParetoRouterPlugin"
+                },
+                {
+                  "$ref": "#/components/schemas/FusionPlugin"
                 }
               ]
             },
@@ -19778,7 +20555,8 @@
           "alias",
           "fallback",
           "pareto",
-          "bodybuilder"
+          "bodybuilder",
+          "fusion"
         ],
         "example": "direct",
         "type": "string",
@@ -19810,7 +20588,7 @@
         "type": "object"
       },
       "SearchQualityLevel": {
-        "description": "How much context to retrieve per result. Defaults to medium (15000 chars). Applies to Exa and Parallel engines; ignored with native provider search and Firecrawl.",
+        "description": "How much context to retrieve per result. Applies to Exa and Parallel engines; ignored with native provider search and Firecrawl. For Exa, pins a fixed per-result character cap (low=5,000, medium=15,000, high=30,000); when omitted, Exa picks an adaptive size per query and document (typically ~2,000–4,000 characters per result). For Parallel, controls the total characters across all results; when omitted, Parallel uses its own default size.",
         "enum": [
           "low",
           "medium",
@@ -19887,6 +20665,151 @@
         "required": [
           "code",
           "message"
+        ],
+        "type": "object"
+      },
+      "ShellCallItem": {
+        "description": "A shell command execution call (newer variant)",
+        "example": {
+          "action": {
+            "commands": [
+              "ls",
+              "-la"
+            ],
+            "max_output_length": 10000
+          },
+          "call_id": "call-abc123",
+          "status": "completed",
+          "type": "shell_call"
+        },
+        "properties": {
+          "action": {
+            "properties": {
+              "commands": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "max_output_length": {
+                "nullable": true,
+                "type": "integer"
+              },
+              "timeout_ms": {
+                "nullable": true,
+                "type": "integer"
+              }
+            },
+            "required": [
+              "commands"
+            ],
+            "type": "object"
+          },
+          "call_id": {
+            "type": "string"
+          },
+          "environment": {
+            "nullable": true
+          },
+          "id": {
+            "nullable": true,
+            "type": "string"
+          },
+          "status": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ToolCallStatus"
+              },
+              {
+                "nullable": true
+              }
+            ]
+          },
+          "type": {
+            "enum": [
+              "shell_call"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "call_id",
+          "action"
+        ],
+        "type": "object"
+      },
+      "ShellCallOutputItem": {
+        "description": "Output from a shell command execution (newer variant)",
+        "example": {
+          "call_id": "call-abc123",
+          "output": [
+            {
+              "content": "total 0\n",
+              "type": "stdout"
+            }
+          ],
+          "status": "completed",
+          "type": "shell_call_output"
+        },
+        "properties": {
+          "call_id": {
+            "type": "string"
+          },
+          "id": {
+            "nullable": true,
+            "type": "string"
+          },
+          "max_output_length": {
+            "nullable": true,
+            "type": "integer"
+          },
+          "output": {
+            "items": {
+              "additionalProperties": {
+                "nullable": true
+              },
+              "properties": {
+                "content": {
+                  "nullable": true,
+                  "type": "string"
+                },
+                "exit_code": {
+                  "nullable": true,
+                  "type": "integer"
+                },
+                "type": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "type"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "status": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ToolCallStatus"
+              },
+              {
+                "nullable": true
+              }
+            ]
+          },
+          "type": {
+            "enum": [
+              "shell_call_output"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "call_id",
+          "output"
         ],
         "type": "object"
       },
@@ -21364,6 +22287,8 @@
               "1:1",
               "4:3",
               "3:4",
+              "3:2",
+              "2:3",
               "21:9",
               "9:21"
             ],
@@ -21625,6 +22550,8 @@
                 "1:1",
                 "4:3",
                 "3:4",
+                "3:2",
+                "2:3",
                 "21:9",
                 "9:21"
               ],
@@ -21678,30 +22605,38 @@
               "enum": [
                 "480x480",
                 "480x640",
+                "480x720",
                 "480x854",
                 "480x1120",
                 "640x480",
+                "720x480",
                 "720x720",
                 "720x960",
+                "720x1080",
                 "720x1280",
                 "720x1680",
                 "854x480",
                 "960x720",
+                "1080x720",
                 "1080x1080",
                 "1080x1440",
+                "1080x1620",
                 "1080x1920",
                 "1080x2520",
                 "1120x480",
                 "1280x720",
                 "1440x1080",
+                "1620x1080",
                 "1680x720",
                 "1920x1080",
                 "2160x2160",
                 "2160x2880",
+                "2160x3240",
                 "2160x3840",
                 "2160x5040",
                 "2520x1080",
                 "2880x2160",
+                "3240x2160",
                 "3840x2160",
                 "5040x2160"
               ],
@@ -30965,7 +31900,7 @@
                   "generation_id": "gen-xyz789",
                   "id": "job-abc123",
                   "polling_url": "/api/v1/videos/job-abc123",
-                  "status": "complete",
+                  "status": "completed",
                   "unsigned_urls": [
                     "https://storage.example.com/video.mp4"
                   ],

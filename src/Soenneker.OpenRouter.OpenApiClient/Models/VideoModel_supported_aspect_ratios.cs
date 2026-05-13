@@ -28,6 +28,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning disable CS1591
         ThreeFour,
         #pragma warning restore CS1591
+        [EnumMember(Value = "3:2")]
+        #pragma warning disable CS1591
+        ThreeTwo,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "2:3")]
+        #pragma warning disable CS1591
+        TwoThree,
+        #pragma warning restore CS1591
         [EnumMember(Value = "21:9")]
         #pragma warning disable CS1591
         TwoOneNine,

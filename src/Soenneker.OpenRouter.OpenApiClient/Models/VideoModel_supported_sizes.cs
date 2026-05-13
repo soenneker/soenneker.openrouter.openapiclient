@@ -16,6 +16,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning disable CS1591
         FourEightZerox640,
         #pragma warning restore CS1591
+        [EnumMember(Value = "480x720")]
+        #pragma warning disable CS1591
+        FourEightZerox720,
+        #pragma warning restore CS1591
         [EnumMember(Value = "480x854")]
         #pragma warning disable CS1591
         FourEightZerox854,
@@ -28,6 +32,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning disable CS1591
         SixFourZerox480,
         #pragma warning restore CS1591
+        [EnumMember(Value = "720x480")]
+        #pragma warning disable CS1591
+        SevenTwoZerox480,
+        #pragma warning restore CS1591
         [EnumMember(Value = "720x720")]
         #pragma warning disable CS1591
         SevenTwoZerox720,
@@ -35,6 +43,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         [EnumMember(Value = "720x960")]
         #pragma warning disable CS1591
         SevenTwoZerox960,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "720x1080")]
+        #pragma warning disable CS1591
+        SevenTwoZerox1080,
         #pragma warning restore CS1591
         [EnumMember(Value = "720x1280")]
         #pragma warning disable CS1591
@@ -52,6 +64,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning disable CS1591
         NineSixZerox720,
         #pragma warning restore CS1591
+        [EnumMember(Value = "1080x720")]
+        #pragma warning disable CS1591
+        OneZeroEightZerox720,
+        #pragma warning restore CS1591
         [EnumMember(Value = "1080x1080")]
         #pragma warning disable CS1591
         OneZeroEightZerox1080,
@@ -59,6 +75,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         [EnumMember(Value = "1080x1440")]
         #pragma warning disable CS1591
         OneZeroEightZerox1440,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "1080x1620")]
+        #pragma warning disable CS1591
+        OneZeroEightZerox1620,
         #pragma warning restore CS1591
         [EnumMember(Value = "1080x1920")]
         #pragma warning disable CS1591
@@ -80,6 +100,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning disable CS1591
         OneFourFourZerox1080,
         #pragma warning restore CS1591
+        [EnumMember(Value = "1620x1080")]
+        #pragma warning disable CS1591
+        OneSixTwoZerox1080,
+        #pragma warning restore CS1591
         [EnumMember(Value = "1680x720")]
         #pragma warning disable CS1591
         OneSixEightZerox720,
@@ -96,6 +120,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning disable CS1591
         TwoOneSixZerox2880,
         #pragma warning restore CS1591
+        [EnumMember(Value = "2160x3240")]
+        #pragma warning disable CS1591
+        TwoOneSixZerox3240,
+        #pragma warning restore CS1591
         [EnumMember(Value = "2160x3840")]
         #pragma warning disable CS1591
         TwoOneSixZerox3840,
@@ -111,6 +139,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         [EnumMember(Value = "2880x2160")]
         #pragma warning disable CS1591
         TwoEightEightZerox2160,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "3240x2160")]
+        #pragma warning disable CS1591
+        ThreeTwoFourZerox2160,
         #pragma warning restore CS1591
         [EnumMember(Value = "3840x2160")]
         #pragma warning disable CS1591
