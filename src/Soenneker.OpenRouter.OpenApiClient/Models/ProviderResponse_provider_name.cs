@@ -207,6 +207,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning disable CS1591
         Cohere,
         #pragma warning restore CS1591
+        [EnumMember(Value = "Crucible")]
+        #pragma warning disable CS1591
+        Crucible,
+        #pragma warning restore CS1591
         [EnumMember(Value = "Crusoe")]
         #pragma warning disable CS1591
         Crusoe,

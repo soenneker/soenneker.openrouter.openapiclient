@@ -8,11 +8,19 @@ using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCompactionUsageIteration"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicMessageUsageIteration"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicUnknownUsageIteration"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicAdvisorMessageUsageIteration"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCompactionUsageIteration"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicMessageUsageIteration"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicUnknownUsageIteration"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class AnthropicUsageIteration : IComposedTypeWrapper, IParsable
     {
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicAdvisorMessageUsageIteration"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicAdvisorMessageUsageIteration? AnthropicAdvisorMessageUsageIteration { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicAdvisorMessageUsageIteration AnthropicAdvisorMessageUsageIteration { get; set; }
+#endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCompactionUsageIteration"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -46,6 +54,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var result = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicUsageIteration();
+            result.AnthropicAdvisorMessageUsageIteration = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicAdvisorMessageUsageIteration();
             result.AnthropicCompactionUsageIteration = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCompactionUsageIteration();
             result.AnthropicMessageUsageIteration = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicMessageUsageIteration();
             result.AnthropicUnknownUsageIteration = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicUnknownUsageIteration();
@@ -57,9 +66,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(AnthropicCompactionUsageIteration != null || AnthropicMessageUsageIteration != null || AnthropicUnknownUsageIteration != null)
+            if(AnthropicAdvisorMessageUsageIteration != null || AnthropicCompactionUsageIteration != null || AnthropicMessageUsageIteration != null || AnthropicUnknownUsageIteration != null)
             {
-                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(AnthropicCompactionUsageIteration, AnthropicMessageUsageIteration, AnthropicUnknownUsageIteration);
+                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(AnthropicAdvisorMessageUsageIteration, AnthropicCompactionUsageIteration, AnthropicMessageUsageIteration, AnthropicUnknownUsageIteration);
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -70,7 +79,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCompactionUsageIteration>(null, AnthropicCompactionUsageIteration, AnthropicMessageUsageIteration, AnthropicUnknownUsageIteration);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicAdvisorMessageUsageIteration>(null, AnthropicAdvisorMessageUsageIteration, AnthropicCompactionUsageIteration, AnthropicMessageUsageIteration, AnthropicUnknownUsageIteration);
         }
     }
 }

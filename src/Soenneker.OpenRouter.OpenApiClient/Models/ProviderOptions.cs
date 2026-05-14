@@ -223,6 +223,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_crofai Crofai { get; set; }
 #endif
+        /// <summary>The crucible property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_crucible? Crucible { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_crucible Crucible { get; set; }
+#endif
         /// <summary>The crusoe property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -946,6 +954,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "cloudflare", n => { Cloudflare = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_cloudflare>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_cloudflare.CreateFromDiscriminatorValue); } },
                 { "cohere", n => { Cohere = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_cohere>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_cohere.CreateFromDiscriminatorValue); } },
                 { "crofai", n => { Crofai = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_crofai>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_crofai.CreateFromDiscriminatorValue); } },
+                { "crucible", n => { Crucible = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_crucible>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_crucible.CreateFromDiscriminatorValue); } },
                 { "crusoe", n => { Crusoe = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_crusoe>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_crusoe.CreateFromDiscriminatorValue); } },
                 { "deepinfra", n => { Deepinfra = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_deepinfra>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_deepinfra.CreateFromDiscriminatorValue); } },
                 { "deepseek", n => { Deepseek = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_deepseek>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_deepseek.CreateFromDiscriminatorValue); } },
@@ -1065,6 +1074,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_cloudflare>("cloudflare", Cloudflare);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_cohere>("cohere", Cohere);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_crofai>("crofai", Crofai);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_crucible>("crucible", Crucible);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_crusoe>("crusoe", Crusoe);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_deepinfra>("deepinfra", Deepinfra);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_deepseek>("deepseek", Deepseek);

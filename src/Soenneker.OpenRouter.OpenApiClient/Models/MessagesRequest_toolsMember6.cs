@@ -14,14 +14,46 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The type property</summary>
+        /// <summary>The allowed_callers property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Type { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.Messages?>? AllowedCallers { get; set; }
 #nullable restore
 #else
-        public string Type { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.Messages?> AllowedCallers { get; set; }
 #endif
+        /// <summary>Enable automatic prompt caching. When set at the top level, the system automatically applies cache breakpoints to the last cacheable block in the request. Currently supported for Anthropic Claude models.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective? CacheControl { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective CacheControl { get; set; }
+#endif
+        /// <summary>The caching property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective? Caching { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective Caching { get; set; }
+#endif
+        /// <summary>The defer_loading property</summary>
+        public bool? DeferLoading { get; set; }
+        /// <summary>The max_uses property</summary>
+        public int? MaxUses { get; set; }
+        /// <summary>The model property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Model { get; set; }
+#nullable restore
+#else
+        public string Model { get; set; }
+#endif
+        /// <summary>The name property</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember6_name? Name { get; set; }
+        /// <summary>The type property</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember6_type? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember6"/> and sets the default values.
         /// </summary>
@@ -47,7 +79,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "type", n => { Type = n.GetStringValue(); } },
+                { "allowed_callers", n => { AllowedCallers = n.GetCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.Messages>()?.AsList(); } },
+                { "cache_control", n => { CacheControl = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective>(global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective.CreateFromDiscriminatorValue); } },
+                { "caching", n => { Caching = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective>(global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective.CreateFromDiscriminatorValue); } },
+                { "defer_loading", n => { DeferLoading = n.GetBoolValue(); } },
+                { "max_uses", n => { MaxUses = n.GetIntValue(); } },
+                { "model", n => { Model = n.GetStringValue(); } },
+                { "name", n => { Name = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember6_name>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember6_type>(); } },
             };
         }
         /// <summary>
@@ -57,7 +96,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("type", Type);
+            writer.WriteCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.Messages>("allowed_callers", AllowedCallers);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective>("cache_control", CacheControl);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective>("caching", Caching);
+            writer.WriteBoolValue("defer_loading", DeferLoading);
+            writer.WriteIntValue("max_uses", MaxUses);
+            writer.WriteStringValue("model", Model);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember6_name>("name", Name);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember6_type>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

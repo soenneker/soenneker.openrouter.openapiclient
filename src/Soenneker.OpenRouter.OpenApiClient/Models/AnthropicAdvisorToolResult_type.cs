@@ -5,12 +5,12 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public enum AnthropicServerToolUseBlock_type
+    public enum AnthropicAdvisorToolResult_type
     #pragma warning restore CS1591
     {
-        [EnumMember(Value = "server_tool_use")]
+        [EnumMember(Value = "advisor_tool_result")]
         #pragma warning disable CS1591
-        Server_tool_use,
+        Advisor_tool_result,
         #pragma warning restore CS1591
     }
 }

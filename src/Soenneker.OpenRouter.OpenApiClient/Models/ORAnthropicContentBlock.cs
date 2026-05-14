@@ -8,11 +8,19 @@ using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicBashCodeExecutionToolResult"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCodeExecutionToolResult"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCompactionBlock"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicContainerUpload"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicRedactedThinkingBlock"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicServerToolUseBlock"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextBlock"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextEditorCodeExecutionToolResult"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicThinkingBlock"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicToolSearchToolResult"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicToolUseBlock"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicWebFetchToolResult"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicWebSearchToolResult"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicAdvisorToolResult"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicBashCodeExecutionToolResult"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCodeExecutionToolResult"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCompactionBlock"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicContainerUpload"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicRedactedThinkingBlock"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextBlock"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextEditorCodeExecutionToolResult"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicThinkingBlock"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicToolSearchToolResult"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicToolUseBlock"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicWebFetchToolResult"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicWebSearchToolResult"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ORAnthropicServerToolUseBlock"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ORAnthropicContentBlock : IComposedTypeWrapper, IParsable
     {
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicAdvisorToolResult"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicAdvisorToolResult? AnthropicAdvisorToolResult { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicAdvisorToolResult AnthropicAdvisorToolResult { get; set; }
+#endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicBashCodeExecutionToolResult"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -52,14 +60,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicRedactedThinkingBlock AnthropicRedactedThinkingBlock { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicServerToolUseBlock"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicServerToolUseBlock? AnthropicServerToolUseBlock { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicServerToolUseBlock AnthropicServerToolUseBlock { get; set; }
 #endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextBlock"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -117,6 +117,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicWebSearchToolResult AnthropicWebSearchToolResult { get; set; }
 #endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ORAnthropicServerToolUseBlock"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ORAnthropicServerToolUseBlock? ORAnthropicServerToolUseBlock { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ORAnthropicServerToolUseBlock ORAnthropicServerToolUseBlock { get; set; }
+#endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -127,7 +135,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
             var result = new global::Soenneker.OpenRouter.OpenApiClient.Models.ORAnthropicContentBlock();
-            if("bash_code_execution_tool_result".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("advisor_tool_result".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                result.AnthropicAdvisorToolResult = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicAdvisorToolResult();
+            }
+            else if("bash_code_execution_tool_result".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.AnthropicBashCodeExecutionToolResult = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicBashCodeExecutionToolResult();
             }
@@ -146,10 +158,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             else if("redacted_thinking".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.AnthropicRedactedThinkingBlock = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicRedactedThinkingBlock();
-            }
-            else if("server_tool_use".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.AnthropicServerToolUseBlock = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicServerToolUseBlock();
             }
             else if("text".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
@@ -179,6 +187,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             {
                 result.AnthropicWebSearchToolResult = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicWebSearchToolResult();
             }
+            else if("server_tool_use".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                result.ORAnthropicServerToolUseBlock = new global::Soenneker.OpenRouter.OpenApiClient.Models.ORAnthropicServerToolUseBlock();
+            }
             return result;
         }
         /// <summary>
@@ -187,7 +199,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(AnthropicBashCodeExecutionToolResult != null)
+            if(AnthropicAdvisorToolResult != null)
+            {
+                return AnthropicAdvisorToolResult.GetFieldDeserializers();
+            }
+            else if(AnthropicBashCodeExecutionToolResult != null)
             {
                 return AnthropicBashCodeExecutionToolResult.GetFieldDeserializers();
             }
@@ -206,10 +222,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             else if(AnthropicRedactedThinkingBlock != null)
             {
                 return AnthropicRedactedThinkingBlock.GetFieldDeserializers();
-            }
-            else if(AnthropicServerToolUseBlock != null)
-            {
-                return AnthropicServerToolUseBlock.GetFieldDeserializers();
             }
             else if(AnthropicTextBlock != null)
             {
@@ -239,6 +251,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             {
                 return AnthropicWebSearchToolResult.GetFieldDeserializers();
             }
+            else if(ORAnthropicServerToolUseBlock != null)
+            {
+                return ORAnthropicServerToolUseBlock.GetFieldDeserializers();
+            }
             return new Dictionary<string, Action<IParseNode>>();
         }
         /// <summary>
@@ -248,7 +264,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(AnthropicBashCodeExecutionToolResult != null)
+            if(AnthropicAdvisorToolResult != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicAdvisorToolResult>(null, AnthropicAdvisorToolResult);
+            }
+            else if(AnthropicBashCodeExecutionToolResult != null)
             {
                 writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicBashCodeExecutionToolResult>(null, AnthropicBashCodeExecutionToolResult);
             }
@@ -267,10 +287,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             else if(AnthropicRedactedThinkingBlock != null)
             {
                 writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicRedactedThinkingBlock>(null, AnthropicRedactedThinkingBlock);
-            }
-            else if(AnthropicServerToolUseBlock != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicServerToolUseBlock>(null, AnthropicServerToolUseBlock);
             }
             else if(AnthropicTextBlock != null)
             {
@@ -299,6 +315,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             else if(AnthropicWebSearchToolResult != null)
             {
                 writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicWebSearchToolResult>(null, AnthropicWebSearchToolResult);
+            }
+            else if(ORAnthropicServerToolUseBlock != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ORAnthropicServerToolUseBlock>(null, ORAnthropicServerToolUseBlock);
             }
         }
     }

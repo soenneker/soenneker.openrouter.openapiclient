@@ -66,18 +66,18 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteAdditionalData(AdditionalData);
         }
         /// <summary>
-        /// Composed type wrapper for classes <see cref="string"/>, List&lt;global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicSearchResultBlockParam&gt;
+        /// Composed type wrapper for classes <see cref="string"/>, List&lt;global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesAdvisorToolResultBlock&gt;
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class MessagesMessageParam_content : IComposedTypeWrapper, IParsable
         {
-            /// <summary>Composed type representation for type List&lt;global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicSearchResultBlockParam&gt;</summary>
+            /// <summary>Composed type representation for type List&lt;global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesAdvisorToolResultBlock&gt;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            public List<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicSearchResultBlockParam>? AnthropicSearchResultBlockParam { get; set; }
+            public List<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesAdvisorToolResultBlock>? MessagesAdvisorToolResultBlock { get; set; }
 #nullable restore
 #else
-            public List<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicSearchResultBlockParam> AnthropicSearchResultBlockParam { get; set; }
+            public List<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesAdvisorToolResultBlock> MessagesAdvisorToolResultBlock { get; set; }
 #endif
             /// <summary>Composed type representation for type <see cref="string"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -100,9 +100,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 {
                     result.String = stringValue;
                 }
-                else if(parseNode.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicSearchResultBlockParam>(global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicSearchResultBlockParam.CreateFromDiscriminatorValue)?.AsList() is List<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicSearchResultBlockParam> anthropicSearchResultBlockParamValue)
+                else if(parseNode.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesAdvisorToolResultBlock>(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesAdvisorToolResultBlock.CreateFromDiscriminatorValue)?.AsList() is List<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesAdvisorToolResultBlock> messagesAdvisorToolResultBlockValue)
                 {
-                    result.AnthropicSearchResultBlockParam = anthropicSearchResultBlockParamValue;
+                    result.MessagesAdvisorToolResultBlock = messagesAdvisorToolResultBlockValue;
                 }
                 return result;
             }
@@ -125,9 +125,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 {
                     writer.WriteStringValue(null, String);
                 }
-                else if(AnthropicSearchResultBlockParam != null)
+                else if(MessagesAdvisorToolResultBlock != null)
                 {
-                    writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicSearchResultBlockParam>(null, AnthropicSearchResultBlockParam);
+                    writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesAdvisorToolResultBlock>(null, MessagesAdvisorToolResultBlock);
                 }
             }
         }

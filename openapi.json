@@ -166,6 +166,88 @@
           "type": "response.output_text.annotation.added"
         }
       },
+      "AnthropicAdvisorMessageUsageIteration": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/AnthropicBaseUsageIteration"
+          },
+          {
+            "properties": {
+              "model": {
+                "type": "string"
+              },
+              "type": {
+                "enum": [
+                  "advisor_message"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "type",
+              "model"
+            ],
+            "type": "object"
+          }
+        ],
+        "example": {
+          "cache_creation": null,
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "input_tokens": 823,
+          "model": "claude-opus-4-6",
+          "output_tokens": 1612,
+          "type": "advisor_message"
+        }
+      },
+      "AnthropicAdvisorToolResult": {
+        "example": {
+          "content": {
+            "text": "Advisor response text",
+            "type": "advisor_result"
+          },
+          "tool_use_id": "srvtoolu_01abc",
+          "type": "advisor_tool_result"
+        },
+        "properties": {
+          "content": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "tool_use_id": {
+            "type": "string"
+          },
+          "type": {
+            "enum": [
+              "advisor_tool_result"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "tool_use_id",
+          "content"
+        ],
+        "type": "object"
+      },
+      "AnthropicAllowedCallers": {
+        "example": [
+          "direct"
+        ],
+        "items": {
+          "enum": [
+            "direct",
+            "code_execution_20250825",
+            "code_execution_20260120"
+          ],
+          "type": "string",
+          "x-speakeasy-unknown-values": "allow"
+        },
+        "type": "array"
+      },
       "AnthropicBase64ImageSource": {
         "example": {
           "data": "/9j/4AAQ...",
@@ -400,6 +482,7 @@
         "type": "object"
       },
       "AnthropicCacheControlDirective": {
+        "description": "Enable automatic prompt caching. When set at the top level, the system automatically applies cache breakpoints to the last cacheable block in the request. Currently supported for Anthropic Claude models.",
         "example": {
           "type": "ephemeral"
         },
@@ -1627,20 +1710,6 @@
         "type": "string",
         "x-speakeasy-unknown-values": "allow"
       },
-      "AnthropicServerToolName": {
-        "enum": [
-          "web_search",
-          "web_fetch",
-          "code_execution",
-          "bash_code_execution",
-          "text_editor_code_execution",
-          "tool_search_tool_regex",
-          "tool_search_tool_bm25"
-        ],
-        "example": "web_search",
-        "type": "string",
-        "x-speakeasy-unknown-values": "allow"
-      },
       "AnthropicServerToolUsage": {
         "example": {
           "web_fetch_requests": 0,
@@ -1658,46 +1727,6 @@
         "required": [
           "web_search_requests",
           "web_fetch_requests"
-        ],
-        "type": "object"
-      },
-      "AnthropicServerToolUseBlock": {
-        "example": {
-          "caller": {
-            "type": "direct"
-          },
-          "id": "srvtoolu_01abc",
-          "input": {
-            "query": "latest news"
-          },
-          "name": "web_search",
-          "type": "server_tool_use"
-        },
-        "properties": {
-          "caller": {
-            "$ref": "#/components/schemas/AnthropicCaller"
-          },
-          "id": {
-            "type": "string"
-          },
-          "input": {
-            "nullable": true
-          },
-          "name": {
-            "$ref": "#/components/schemas/AnthropicServerToolName"
-          },
-          "type": {
-            "enum": [
-              "server_tool_use"
-            ],
-            "type": "string"
-          }
-        },
-        "required": [
-          "type",
-          "id",
-          "caller",
-          "name"
         ],
         "type": "object"
       },
@@ -2491,6 +2520,9 @@
           },
           {
             "$ref": "#/components/schemas/AnthropicMessageUsageIteration"
+          },
+          {
+            "$ref": "#/components/schemas/AnthropicAdvisorMessageUsageIteration"
           },
           {
             "$ref": "#/components/schemas/AnthropicUnknownUsageIteration"
@@ -5706,14 +5738,7 @@
         },
         "properties": {
           "cache_control": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/AnthropicCacheControlDirective"
-              },
-              {
-                "description": "Enable automatic prompt caching. When set, the system automatically applies cache breakpoints to the last cacheable block in the request. Currently supported for Anthropic Claude models."
-              }
-            ]
+            "$ref": "#/components/schemas/AnthropicCacheControlDirective"
           },
           "debug": {
             "$ref": "#/components/schemas/ChatDebugOptions"
@@ -9167,7 +9192,8 @@
         "example": {
           "analysis_models": [
             "~anthropic/claude-opus-latest",
-            "~openai/gpt-latest"
+            "~openai/gpt-latest",
+            "~google/gemini-pro-latest"
           ],
           "enabled": true,
           "id": "fusion",
@@ -9175,10 +9201,11 @@
         },
         "properties": {
           "analysis_models": {
-            "description": "Slugs of models to run in parallel as the \"expert panel\" the judge analyzes. Each model receives the same user prompt with web_search + web_fetch enabled. Capped at 8 models to bound cost amplification. When omitted, defaults to the Quality preset from the /labs/fusion UI (~anthropic/claude-opus-latest, ~openai/gpt-latest).",
+            "description": "Slugs of models to run in parallel as the \"expert panel\" the judge analyzes. Each model receives the same user prompt with web_search + web_fetch enabled. Capped at 8 models to bound cost amplification. When omitted, defaults to the Quality preset from the /labs/fusion UI (~anthropic/claude-opus-latest, ~openai/gpt-latest, ~google/gemini-pro-latest).",
             "example": [
               "~anthropic/claude-opus-latest",
-              "~openai/gpt-latest"
+              "~openai/gpt-latest",
+              "~google/gemini-pro-latest"
             ],
             "items": {
               "type": "string"
@@ -9206,6 +9233,65 @@
         "required": [
           "id"
         ],
+        "type": "object"
+      },
+      "FusionServerTool_OpenRouter": {
+        "description": "OpenRouter built-in server tool: fans out the user prompt to a panel of analysis models, then asks a judge model to summarize their collective output as structured JSON the outer model can synthesize from.",
+        "example": {
+          "parameters": {
+            "analysis_models": [
+              "~anthropic/claude-opus-latest",
+              "~openai/gpt-latest"
+            ]
+          },
+          "type": "openrouter:fusion"
+        },
+        "properties": {
+          "parameters": {
+            "$ref": "#/components/schemas/FusionServerToolConfig"
+          },
+          "type": {
+            "enum": [
+              "openrouter:fusion"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "type"
+        ],
+        "type": "object"
+      },
+      "FusionServerToolConfig": {
+        "description": "Configuration for the openrouter:fusion server tool.",
+        "example": {
+          "analysis_models": [
+            "~anthropic/claude-opus-latest",
+            "~openai/gpt-latest",
+            "~google/gemini-pro-latest"
+          ]
+        },
+        "properties": {
+          "analysis_models": {
+            "description": "Slugs of models to run in parallel as the analysis panel. Each model receives the user prompt with openrouter:web_search and openrouter:web_fetch enabled, then a judge model summarizes the collective output into structured analysis JSON. Capped at 8 models to bound cost amplification. Defaults to the Quality preset from /labs/fusion.",
+            "example": [
+              "~anthropic/claude-opus-latest",
+              "~openai/gpt-latest",
+              "~google/gemini-pro-latest"
+            ],
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 8,
+            "minItems": 1,
+            "type": "array"
+          },
+          "model": {
+            "description": "Slug of the judge model that produces the structured analysis JSON. Defaults to the model used in the outer API request.",
+            "example": "~anthropic/claude-opus-latest",
+            "type": "string"
+          }
+        },
         "type": "object"
       },
       "GenerationContentData": {
@@ -11955,6 +12041,40 @@
         ],
         "type": "object"
       },
+      "MessagesAdvisorToolResultBlock": {
+        "description": "Advisor tool result from a prior assistant turn, replayed back to the model on the next turn. Mirrors the block Anthropic returns in assistant content when the `advisor_20260301` tool runs.",
+        "example": {
+          "content": {
+            "text": "Advisor response text",
+            "type": "advisor_result"
+          },
+          "tool_use_id": "srvtoolu_01abc",
+          "type": "advisor_tool_result"
+        },
+        "properties": {
+          "content": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "tool_use_id": {
+            "type": "string"
+          },
+          "type": {
+            "enum": [
+              "advisor_tool_result"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "tool_use_id",
+          "content"
+        ],
+        "type": "object"
+      },
       "MessagesContentBlockDeltaEvent": {
         "description": "Event sent when content is added to a content block",
         "example": {
@@ -12148,7 +12268,7 @@
                 "$ref": "#/components/schemas/AnthropicRedactedThinkingBlock"
               },
               {
-                "$ref": "#/components/schemas/AnthropicServerToolUseBlock"
+                "$ref": "#/components/schemas/ORAnthropicServerToolUseBlock"
               },
               {
                 "$ref": "#/components/schemas/AnthropicWebSearchToolResult"
@@ -12173,6 +12293,9 @@
               },
               {
                 "$ref": "#/components/schemas/AnthropicCompactionBlock"
+              },
+              {
+                "$ref": "#/components/schemas/AnthropicAdvisorToolResult"
               },
               {
                 "properties": {
@@ -12590,7 +12713,7 @@
                           "nullable": true
                         },
                         "name": {
-                          "$ref": "#/components/schemas/AnthropicServerToolName"
+                          "type": "string"
                         },
                         "type": {
                           "enum": [
@@ -12688,6 +12811,9 @@
                         "content"
                       ],
                       "type": "object"
+                    },
+                    {
+                      "$ref": "#/components/schemas/MessagesAdvisorToolResultBlock"
                     }
                   ]
                 },
@@ -13374,16 +13500,7 @@
                 {
                   "properties": {
                     "allowed_callers": {
-                      "items": {
-                        "enum": [
-                          "direct",
-                          "code_execution_20250825",
-                          "code_execution_20260120"
-                        ],
-                        "type": "string",
-                        "x-speakeasy-unknown-values": "allow"
-                      },
-                      "type": "array"
+                      "$ref": "#/components/schemas/AnthropicAllowedCallers"
                     },
                     "allowed_domains": {
                       "items": {
@@ -13425,6 +13542,53 @@
                   "required": [
                     "type",
                     "name"
+                  ],
+                  "type": "object"
+                },
+                {
+                  "properties": {
+                    "allowed_callers": {
+                      "$ref": "#/components/schemas/AnthropicAllowedCallers"
+                    },
+                    "cache_control": {
+                      "$ref": "#/components/schemas/AnthropicCacheControlDirective"
+                    },
+                    "caching": {
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/AnthropicCacheControlDirective"
+                        },
+                        {
+                          "nullable": true
+                        }
+                      ]
+                    },
+                    "defer_loading": {
+                      "type": "boolean"
+                    },
+                    "max_uses": {
+                      "type": "integer"
+                    },
+                    "model": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "enum": [
+                        "advisor"
+                      ],
+                      "type": "string"
+                    },
+                    "type": {
+                      "enum": [
+                        "advisor_20260301"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "type",
+                    "name",
+                    "model"
                   ],
                   "type": "object"
                 },
@@ -13690,6 +13854,7 @@
                   "Clarifai",
                   "Cloudflare",
                   "Cohere",
+                  "Crucible",
                   "Crusoe",
                   "DeepInfra",
                   "DeepSeek",
@@ -15453,12 +15618,13 @@
       "ORAnthropicContentBlock": {
         "discriminator": {
           "mapping": {
+            "advisor_tool_result": "#/components/schemas/AnthropicAdvisorToolResult",
             "bash_code_execution_tool_result": "#/components/schemas/AnthropicBashCodeExecutionToolResult",
             "code_execution_tool_result": "#/components/schemas/AnthropicCodeExecutionToolResult",
             "compaction": "#/components/schemas/AnthropicCompactionBlock",
             "container_upload": "#/components/schemas/AnthropicContainerUpload",
             "redacted_thinking": "#/components/schemas/AnthropicRedactedThinkingBlock",
-            "server_tool_use": "#/components/schemas/AnthropicServerToolUseBlock",
+            "server_tool_use": "#/components/schemas/ORAnthropicServerToolUseBlock",
             "text": "#/components/schemas/AnthropicTextBlock",
             "text_editor_code_execution_tool_result": "#/components/schemas/AnthropicTextEditorCodeExecutionToolResult",
             "thinking": "#/components/schemas/AnthropicThinkingBlock",
@@ -15488,7 +15654,7 @@
             "$ref": "#/components/schemas/AnthropicRedactedThinkingBlock"
           },
           {
-            "$ref": "#/components/schemas/AnthropicServerToolUseBlock"
+            "$ref": "#/components/schemas/ORAnthropicServerToolUseBlock"
           },
           {
             "$ref": "#/components/schemas/AnthropicWebSearchToolResult"
@@ -15513,8 +15679,71 @@
           },
           {
             "$ref": "#/components/schemas/AnthropicCompactionBlock"
+          },
+          {
+            "$ref": "#/components/schemas/AnthropicAdvisorToolResult"
           }
         ]
+      },
+      "ORAnthropicNullableCaller": {
+        "discriminator": {
+          "mapping": {
+            "code_execution_20250825": "#/components/schemas/AnthropicCodeExecution20250825Caller",
+            "code_execution_20260120": "#/components/schemas/AnthropicCodeExecution20260120Caller",
+            "direct": "#/components/schemas/AnthropicDirectCaller"
+          },
+          "propertyName": "type"
+        },
+        "example": null,
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/AnthropicDirectCaller"
+          },
+          {
+            "$ref": "#/components/schemas/AnthropicCodeExecution20250825Caller"
+          },
+          {
+            "$ref": "#/components/schemas/AnthropicCodeExecution20260120Caller"
+          },
+          {
+            "nullable": true
+          }
+        ]
+      },
+      "ORAnthropicServerToolUseBlock": {
+        "example": {
+          "caller": null,
+          "id": "srvtoolu_01abc",
+          "input": {},
+          "name": "advisor",
+          "type": "server_tool_use"
+        },
+        "properties": {
+          "caller": {
+            "$ref": "#/components/schemas/ORAnthropicNullableCaller"
+          },
+          "id": {
+            "type": "string"
+          },
+          "input": {
+            "nullable": true
+          },
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "enum": [
+              "server_tool_use"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "id",
+          "name"
+        ],
+        "type": "object"
       },
       "ORAnthropicStopReason": {
         "enum": [
@@ -17837,6 +18066,7 @@
           "Clarifai",
           "Cloudflare",
           "Cohere",
+          "Crucible",
           "Crusoe",
           "DeepInfra",
           "DeepSeek",
@@ -18067,6 +18297,12 @@
             "type": "object"
           },
           "crofai": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "crucible": {
             "additionalProperties": {
               "nullable": true
             },
@@ -18899,6 +19135,7 @@
               "Clarifai",
               "Cloudflare",
               "Cohere",
+              "Crucible",
               "Crusoe",
               "DeepInfra",
               "DeepSeek",
@@ -20189,6 +20426,9 @@
             "nullable": true,
             "type": "boolean"
           },
+          "cache_control": {
+            "$ref": "#/components/schemas/AnthropicCacheControlDirective"
+          },
           "frequency_penalty": {
             "format": "double",
             "nullable": true,
@@ -20440,6 +20680,9 @@
                 },
                 {
                   "$ref": "#/components/schemas/DatetimeServerTool"
+                },
+                {
+                  "$ref": "#/components/schemas/FusionServerTool_OpenRouter"
                 },
                 {
                   "$ref": "#/components/schemas/ImageGenerationServerTool_OpenRouter"
@@ -24524,10 +24767,66 @@
           "403": {
             "content": {
               "application/json": {
-                "example": {
-                  "error": {
-                    "code": 403,
-                    "message": "Only management keys can perform this operation"
+                "examples": {
+                  "guardrail-blocked": {
+                    "summary": "Guardrail blocked the request",
+                    "value": {
+                      "error": {
+                        "code": 403,
+                        "message": "Request blocked: prompt injection patterns detected",
+                        "metadata": {
+                          "patterns": [
+                            "ignore all previous instructions"
+                          ]
+                        }
+                      },
+                      "openrouter_metadata": {
+                        "attempt": 1,
+                        "endpoints": {
+                          "available": [
+                            {
+                              "model": "openai/gpt-4o",
+                              "provider": "OpenAI",
+                              "selected": false
+                            }
+                          ],
+                          "total": 1
+                        },
+                        "is_byok": false,
+                        "pipeline": [
+                          {
+                            "data": {
+                              "action": "blocked",
+                              "detected": true,
+                              "engines": [
+                                "regex"
+                              ],
+                              "patterns": [
+                                "ignore all previous instructions"
+                              ]
+                            },
+                            "guardrail_id": "grd_abc123",
+                            "guardrail_scope": "api-key",
+                            "name": "regex_pi_detection",
+                            "summary": "Blocked: prompt injection detected (1 pattern matched)",
+                            "type": "guardrail"
+                          }
+                        ],
+                        "region": "iad",
+                        "requested": "openai/gpt-4o",
+                        "strategy": "direct",
+                        "summary": "available=1"
+                      }
+                    }
+                  },
+                  "insufficient-permissions": {
+                    "summary": "Insufficient permissions",
+                    "value": {
+                      "error": {
+                        "code": 403,
+                        "message": "Only management keys can perform this operation"
+                      }
+                    }
                   }
                 },
                 "schema": {
@@ -24535,7 +24834,7 @@
                 }
               }
             },
-            "description": "Forbidden - Authentication successful but insufficient permissions"
+            "description": "Forbidden - Authentication successful but insufficient permissions, or a guardrail blocked the request. When guardrails block and the `X-OpenRouter-Experimental-Metadata: enabled` header is present, the response includes `openrouter_metadata` with full routing context and a `pipeline` array containing guardrail stage details."
           },
           "404": {
             "content": {
@@ -29604,19 +29903,74 @@
           "403": {
             "content": {
               "application/json": {
-                "example": {
-                  "error": {
-                    "message": "Permission denied",
-                    "type": "permission_error"
+                "examples": {
+                  "guardrail-blocked": {
+                    "summary": "Guardrail blocked the request",
+                    "value": {
+                      "error": {
+                        "code": 403,
+                        "message": "Request blocked: prompt injection patterns detected",
+                        "metadata": {
+                          "patterns": [
+                            "ignore all previous instructions"
+                          ]
+                        }
+                      },
+                      "openrouter_metadata": {
+                        "attempt": 1,
+                        "endpoints": {
+                          "available": [
+                            {
+                              "model": "openai/gpt-4o",
+                              "provider": "OpenAI",
+                              "selected": false
+                            }
+                          ],
+                          "total": 1
+                        },
+                        "is_byok": false,
+                        "pipeline": [
+                          {
+                            "data": {
+                              "action": "blocked",
+                              "detected": true,
+                              "engines": [
+                                "regex"
+                              ],
+                              "patterns": [
+                                "ignore all previous instructions"
+                              ]
+                            },
+                            "guardrail_id": "grd_abc123",
+                            "guardrail_scope": "api-key",
+                            "name": "regex_pi_detection",
+                            "summary": "Blocked: prompt injection detected (1 pattern matched)",
+                            "type": "guardrail"
+                          }
+                        ],
+                        "region": "iad",
+                        "requested": "openai/gpt-4o",
+                        "strategy": "direct",
+                        "summary": "available=1"
+                      }
+                    }
                   },
-                  "type": "error"
+                  "insufficient-permissions": {
+                    "summary": "Insufficient permissions",
+                    "value": {
+                      "error": {
+                        "code": 403,
+                        "message": "Only management keys can perform this operation"
+                      }
+                    }
+                  }
                 },
                 "schema": {
-                  "$ref": "#/components/schemas/MessagesErrorResponse"
+                  "$ref": "#/components/schemas/ForbiddenResponse"
                 }
               }
             },
-            "description": "Permission denied error"
+            "description": "Forbidden - Authentication successful but insufficient permissions, or a guardrail blocked the request. When guardrails block and the `X-OpenRouter-Experimental-Metadata: enabled` header is present, the response includes `openrouter_metadata` with full routing context and a `pipeline` array containing guardrail stage details."
           },
           "404": {
             "content": {
@@ -31564,6 +31918,78 @@
               }
             },
             "description": "Payment Required - Insufficient credits or quota to complete request"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "guardrail-blocked": {
+                    "summary": "Guardrail blocked the request",
+                    "value": {
+                      "error": {
+                        "code": 403,
+                        "message": "Request blocked: prompt injection patterns detected",
+                        "metadata": {
+                          "patterns": [
+                            "ignore all previous instructions"
+                          ]
+                        }
+                      },
+                      "openrouter_metadata": {
+                        "attempt": 1,
+                        "endpoints": {
+                          "available": [
+                            {
+                              "model": "openai/gpt-4o",
+                              "provider": "OpenAI",
+                              "selected": false
+                            }
+                          ],
+                          "total": 1
+                        },
+                        "is_byok": false,
+                        "pipeline": [
+                          {
+                            "data": {
+                              "action": "blocked",
+                              "detected": true,
+                              "engines": [
+                                "regex"
+                              ],
+                              "patterns": [
+                                "ignore all previous instructions"
+                              ]
+                            },
+                            "guardrail_id": "grd_abc123",
+                            "guardrail_scope": "api-key",
+                            "name": "regex_pi_detection",
+                            "summary": "Blocked: prompt injection detected (1 pattern matched)",
+                            "type": "guardrail"
+                          }
+                        ],
+                        "region": "iad",
+                        "requested": "openai/gpt-4o",
+                        "strategy": "direct",
+                        "summary": "available=1"
+                      }
+                    }
+                  },
+                  "insufficient-permissions": {
+                    "summary": "Insufficient permissions",
+                    "value": {
+                      "error": {
+                        "code": 403,
+                        "message": "Only management keys can perform this operation"
+                      }
+                    }
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ForbiddenResponse"
+                }
+              }
+            },
+            "description": "Forbidden - Authentication successful but insufficient permissions, or a guardrail blocked the request. When guardrails block and the `X-OpenRouter-Experimental-Metadata: enabled` header is present, the response includes `openrouter_metadata` with full routing context and a `pipeline` array containing guardrail stage details."
           },
           "404": {
             "content": {

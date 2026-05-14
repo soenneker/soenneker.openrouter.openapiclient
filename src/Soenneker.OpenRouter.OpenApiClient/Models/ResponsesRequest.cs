@@ -17,6 +17,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The background property</summary>
         public bool? Background { get; set; }
+        /// <summary>Enable automatic prompt caching. When set at the top level, the system automatically applies cache breakpoints to the last cacheable block in the request. Currently supported for Anthropic Claude models.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective? CacheControl { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective CacheControl { get; set; }
+#endif
         /// <summary>The frequency_penalty property</summary>
         public double? FrequencyPenalty { get; set; }
         /// <summary>Provider-specific image configuration options. Keys and values vary by model/provider. See https://openrouter.ai/docs/guides/overview/multimodal/image-generation for more details.</summary>
@@ -241,6 +249,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "background", n => { Background = n.GetBoolValue(); } },
+                { "cache_control", n => { CacheControl = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective>(global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective.CreateFromDiscriminatorValue); } },
                 { "frequency_penalty", n => { FrequencyPenalty = n.GetDoubleValue(); } },
                 { "image_config", n => { ImageConfig = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageConfig>(global::Soenneker.OpenRouter.OpenApiClient.Models.ImageConfig.CreateFromDiscriminatorValue); } },
                 { "include", n => { Include = n.GetCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ResponseIncludesEnum>()?.AsList(); } },
@@ -286,6 +295,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("background", Background);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective>("cache_control", CacheControl);
             writer.WriteDoubleValue("frequency_penalty", FrequencyPenalty);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageConfig>("image_config", ImageConfig);
             writer.WriteCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ResponseIncludesEnum>("include", Include);

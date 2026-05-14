@@ -17,10 +17,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The allowed_callers property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember5_allowed_callers?>? AllowedCallers { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.Messages?>? AllowedCallers { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember5_allowed_callers?> AllowedCallers { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.Messages?> AllowedCallers { get; set; }
 #endif
         /// <summary>The allowed_domains property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -38,7 +38,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public List<string> BlockedDomains { get; set; }
 #endif
-        /// <summary>The cache_control property</summary>
+        /// <summary>Enable automatic prompt caching. When set at the top level, the system automatically applies cache breakpoints to the last cacheable block in the request. Currently supported for Anthropic Claude models.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective? CacheControl { get; set; }
@@ -85,7 +85,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "allowed_callers", n => { AllowedCallers = n.GetCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember5_allowed_callers>()?.AsList(); } },
+                { "allowed_callers", n => { AllowedCallers = n.GetCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.Messages>()?.AsList(); } },
                 { "allowed_domains", n => { AllowedDomains = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "blocked_domains", n => { BlockedDomains = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "cache_control", n => { CacheControl = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective>(global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective.CreateFromDiscriminatorValue); } },
@@ -102,7 +102,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember5_allowed_callers>("allowed_callers", AllowedCallers);
+            writer.WriteCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.Messages>("allowed_callers", AllowedCallers);
             writer.WriteCollectionOfPrimitiveValues<string>("allowed_domains", AllowedDomains);
             writer.WriteCollectionOfPrimitiveValues<string>("blocked_domains", BlockedDomains);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective>("cache_control", CacheControl);

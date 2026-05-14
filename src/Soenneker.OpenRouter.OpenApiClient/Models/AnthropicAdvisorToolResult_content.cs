@@ -7,34 +7,29 @@ using System.IO;
 using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
-    /// <summary>
-    /// Enable automatic prompt caching. When set at the top level, the system automatically applies cache breakpoints to the last cacheable block in the request. Currently supported for Anthropic Claude models.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class AnthropicCacheControlDirective : IAdditionalDataHolder, IParsable
+    #pragma warning disable CS1591
+    public partial class AnthropicAdvisorToolResult_content : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The ttl property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlTtl? Ttl { get; set; }
-        /// <summary>The type property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective_type? Type { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicAdvisorToolResult_content"/> and sets the default values.
         /// </summary>
-        public AnthropicCacheControlDirective()
+        public AnthropicAdvisorToolResult_content()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective"/></returns>
+        /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicAdvisorToolResult_content"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicAdvisorToolResult_content CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective();
+            return new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicAdvisorToolResult_content();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -44,8 +39,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "ttl", n => { Ttl = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlTtl>(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective_type>(); } },
             };
         }
         /// <summary>
@@ -55,8 +48,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlTtl>("ttl", Ttl);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective_type>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

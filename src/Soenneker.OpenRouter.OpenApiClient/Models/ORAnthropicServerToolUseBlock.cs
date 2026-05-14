@@ -9,7 +9,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class AnthropicServerToolUseBlock : IAdditionalDataHolder, IParsable
+    public partial class ORAnthropicServerToolUseBlock : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -17,10 +17,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The caller property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCaller? Caller { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ORAnthropicNullableCaller? Caller { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCaller Caller { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ORAnthropicNullableCaller Caller { get; set; }
 #endif
         /// <summary>The id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -39,25 +39,31 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public UntypedNode Input { get; set; }
 #endif
         /// <summary>The name property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicServerToolName? Name { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Name { get; set; }
+#nullable restore
+#else
+        public string Name { get; set; }
+#endif
         /// <summary>The type property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicServerToolUseBlock_type? Type { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ORAnthropicServerToolUseBlock_type? Type { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicServerToolUseBlock"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ORAnthropicServerToolUseBlock"/> and sets the default values.
         /// </summary>
-        public AnthropicServerToolUseBlock()
+        public ORAnthropicServerToolUseBlock()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicServerToolUseBlock"/></returns>
+        /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ORAnthropicServerToolUseBlock"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicServerToolUseBlock CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.OpenRouter.OpenApiClient.Models.ORAnthropicServerToolUseBlock CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicServerToolUseBlock();
+            return new global::Soenneker.OpenRouter.OpenApiClient.Models.ORAnthropicServerToolUseBlock();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -67,11 +73,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "caller", n => { Caller = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCaller>(global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCaller.CreateFromDiscriminatorValue); } },
+                { "caller", n => { Caller = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ORAnthropicNullableCaller>(global::Soenneker.OpenRouter.OpenApiClient.Models.ORAnthropicNullableCaller.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "input", n => { Input = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
-                { "name", n => { Name = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicServerToolName>(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicServerToolUseBlock_type>(); } },
+                { "name", n => { Name = n.GetStringValue(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ORAnthropicServerToolUseBlock_type>(); } },
             };
         }
         /// <summary>
@@ -81,11 +87,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCaller>("caller", Caller);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ORAnthropicNullableCaller>("caller", Caller);
             writer.WriteStringValue("id", Id);
             writer.WriteObjectValue<UntypedNode>("input", Input);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicServerToolName>("name", Name);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicServerToolUseBlock_type>("type", Type);
+            writer.WriteStringValue("name", Name);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ORAnthropicServerToolUseBlock_type>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }
