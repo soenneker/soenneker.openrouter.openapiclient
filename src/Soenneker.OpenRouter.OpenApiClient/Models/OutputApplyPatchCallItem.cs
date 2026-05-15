@@ -8,10 +8,10 @@ using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     /// <summary>
-    /// An openrouter:apply_patch server tool output item. The turn halts when validation succeeds so the client can apply the patch and echo an `apply_patch_call_output` on the next turn.
+    /// A native `apply_patch_call` output item matching OpenAI&apos;s Responses API shape. Emitted when the client requested the `apply_patch` shorthand.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class OutputApplyPatchServerToolItem : IAdditionalDataHolder, IParsable
+    public partial class OutputApplyPatchCallItem : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -39,26 +39,26 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchCallOperation Operation { get; set; }
 #endif
-        /// <summary>The status property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ToolCallStatus? Status { get; set; }
+        /// <summary>Lifecycle state of an `apply_patch_call` output item.</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchCallStatus? Status { get; set; }
         /// <summary>The type property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.OutputApplyPatchServerToolItem_type? Type { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.OutputApplyPatchCallItem_type? Type { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputApplyPatchServerToolItem"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputApplyPatchCallItem"/> and sets the default values.
         /// </summary>
-        public OutputApplyPatchServerToolItem()
+        public OutputApplyPatchCallItem()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputApplyPatchServerToolItem"/></returns>
+        /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputApplyPatchCallItem"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.OpenRouter.OpenApiClient.Models.OutputApplyPatchServerToolItem CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.OpenRouter.OpenApiClient.Models.OutputApplyPatchCallItem CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.OpenRouter.OpenApiClient.Models.OutputApplyPatchServerToolItem();
+            return new global::Soenneker.OpenRouter.OpenApiClient.Models.OutputApplyPatchCallItem();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -71,8 +71,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "call_id", n => { CallId = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "operation", n => { Operation = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchCallOperation>(global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchCallOperation.CreateFromDiscriminatorValue); } },
-                { "status", n => { Status = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ToolCallStatus>(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputApplyPatchServerToolItem_type>(); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchCallStatus>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputApplyPatchCallItem_type>(); } },
             };
         }
         /// <summary>
@@ -85,8 +85,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteStringValue("call_id", CallId);
             writer.WriteStringValue("id", Id);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchCallOperation>("operation", Operation);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ToolCallStatus>("status", Status);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputApplyPatchServerToolItem_type>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchCallStatus>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputApplyPatchCallItem_type>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

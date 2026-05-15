@@ -26,6 +26,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public bool? Enabled { get; set; }
         /// <summary>The id property</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.FusionPlugin_id? Id { get; set; }
+        /// <summary>Maximum number of tool-calling steps each panelist (analysis model) and the judge model may take during their agentic web-research loop. Models with web_search/web_fetch enabled iterate until they produce a text response or hit this ceiling. Defaults to 8. Capped at 16.</summary>
+        public int? MaxToolCalls { get; set; }
         /// <summary>Slug of the model that performs both the judge step (with web_search + web_fetch) and the final synthesis. When omitted, defaults to the first model in the Quality preset.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -62,6 +64,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "analysis_models", n => { AnalysisModels = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.FusionPlugin_id>(); } },
+                { "max_tool_calls", n => { MaxToolCalls = n.GetIntValue(); } },
                 { "model", n => { Model = n.GetStringValue(); } },
             };
         }
@@ -75,6 +78,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("analysis_models", AnalysisModels);
             writer.WriteBoolValue("enabled", Enabled);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.FusionPlugin_id>("id", Id);
+            writer.WriteIntValue("max_tool_calls", MaxToolCalls);
             writer.WriteStringValue("model", Model);
             writer.WriteAdditionalData(AdditionalData);
         }
