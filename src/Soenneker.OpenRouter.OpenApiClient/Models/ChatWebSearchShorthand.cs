@@ -35,7 +35,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #endif
         /// <summary>Maximum number of search results to return per search call. Defaults to 5. Applies to Exa, Firecrawl, and Parallel engines; ignored with native provider search.</summary>
         public int? MaxResults { get; set; }
-        /// <summary>Maximum total number of search results across all search calls in a single request. Once this limit is reached, the tool will stop returning new results. Useful for controlling cost and context size in agentic loops.</summary>
+        /// <summary>Maximum total number of search results across all search calls in a single request. Once this limit is reached, the tool will stop returning new results. Useful for controlling cost and context size in agentic loops. Defaults to 50 when not specified.</summary>
         public int? MaxTotalResults { get; set; }
         /// <summary>The parameters property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

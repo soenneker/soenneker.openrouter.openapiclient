@@ -31,6 +31,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public string Error { get; set; }
 #endif
+        /// <summary>Models that were requested as part of the analysis panel but did not produce a response. Present when at least one requested analysis model failed. The fusion result is still usable but was produced from a degraded panel.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputFusionServerToolItem_failed_models>? FailedModels { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputFusionServerToolItem_failed_models> FailedModels { get; set; }
+#endif
         /// <summary>The id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -78,6 +86,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             {
                 { "analysis", n => { Analysis = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputFusionServerToolItem_analysis>(global::Soenneker.OpenRouter.OpenApiClient.Models.OutputFusionServerToolItem_analysis.CreateFromDiscriminatorValue); } },
                 { "error", n => { Error = n.GetStringValue(); } },
+                { "failed_models", n => { FailedModels = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputFusionServerToolItem_failed_models>(global::Soenneker.OpenRouter.OpenApiClient.Models.OutputFusionServerToolItem_failed_models.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "responses", n => { Responses = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputFusionServerToolItem_responses>(global::Soenneker.OpenRouter.OpenApiClient.Models.OutputFusionServerToolItem_responses.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ToolCallStatus>(); } },
@@ -93,6 +102,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputFusionServerToolItem_analysis>("analysis", Analysis);
             writer.WriteStringValue("error", Error);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputFusionServerToolItem_failed_models>("failed_models", FailedModels);
             writer.WriteStringValue("id", Id);
             writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputFusionServerToolItem_responses>("responses", Responses);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ToolCallStatus>("status", Status);

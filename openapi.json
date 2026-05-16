@@ -10,12 +10,20 @@
         "description": "The app identifier should be your app's URL and is used as the primary identifier for rankings.\nThis is used to track API usage per application.\n"
       },
       "AppDisplayName": {
-        "name": "X-Title",
+        "name": "X-OpenRouter-Title",
         "in": "header",
         "schema": {
           "type": "string"
         },
         "description": "The app display name allows you to customize how your app appears in OpenRouter's dashboard.\n"
+      },
+      "AppCategories": {
+        "name": "X-OpenRouter-Categories",
+        "in": "header",
+        "schema": {
+          "type": "string"
+        },
+        "description": "Comma-separated list of app categories (e.g. \"cli-agent,cloud-agent\"). Used for marketplace rankings.\n"
       }
     },
     "schemas": {
@@ -7014,8 +7022,8 @@
             "type": "integer"
           },
           "max_total_results": {
-            "description": "Maximum total number of search results across all search calls in a single request. Once this limit is reached, the tool will stop returning new results. Useful for controlling cost and context size in agentic loops.",
-            "example": 20,
+            "description": "Maximum total number of search results across all search calls in a single request. Once this limit is reached, the tool will stop returning new results. Useful for controlling cost and context size in agentic loops. Defaults to 50 when not specified.",
+            "example": 50,
             "type": "integer"
           },
           "parameters": {
@@ -7630,6 +7638,81 @@
         "required": [
           "type",
           "image_url"
+        ],
+        "type": "object"
+      },
+      "ContentPartInputAudio": {
+        "example": {
+          "input_audio": {
+            "data": "data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAA...",
+            "format": "wav"
+          },
+          "type": "input_audio"
+        },
+        "properties": {
+          "input_audio": {
+            "$ref": "#/components/schemas/MultimodalMedia"
+          },
+          "type": {
+            "enum": [
+              "input_audio"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "input_audio"
+        ],
+        "type": "object"
+      },
+      "ContentPartInputFile": {
+        "example": {
+          "input_file": {
+            "data": "data:application/pdf;base64,JVBERi0xLjQKJeLjz9MKMyAw...",
+            "format": "pdf"
+          },
+          "type": "input_file"
+        },
+        "properties": {
+          "input_file": {
+            "$ref": "#/components/schemas/MultimodalMedia"
+          },
+          "type": {
+            "enum": [
+              "input_file"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "input_file"
+        ],
+        "type": "object"
+      },
+      "ContentPartInputVideo": {
+        "example": {
+          "input_video": {
+            "data": "data:video/mp4;base64,AAAAGGZ0eXBtcDQyAAAAAGlzb21tcDQy...",
+            "format": "mp4"
+          },
+          "type": "input_video"
+        },
+        "properties": {
+          "input_video": {
+            "$ref": "#/components/schemas/MultimodalMedia"
+          },
+          "type": {
+            "enum": [
+              "input_video"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "input_video"
         ],
         "type": "object"
       },
@@ -14665,6 +14748,24 @@
         ],
         "type": "object"
       },
+      "MultimodalMedia": {
+        "example": {
+          "data": "data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAA...",
+          "format": "wav"
+        },
+        "properties": {
+          "data": {
+            "type": "string"
+          },
+          "format": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "type": "object"
+      },
       "NotFoundResponse": {
         "description": "Not Found - Resource does not exist",
         "example": {
@@ -16470,6 +16571,27 @@
           "error": {
             "description": "Error message when the fusion run did not produce an analysis result.",
             "type": "string"
+          },
+          "failed_models": {
+            "description": "Models that were requested as part of the analysis panel but did not produce a response. Present when at least one requested analysis model failed. The fusion result is still usable but was produced from a degraded panel.",
+            "items": {
+              "properties": {
+                "error": {
+                  "description": "Error message describing why the model failed.",
+                  "type": "string"
+                },
+                "model": {
+                  "description": "Slug of the analysis model that failed.",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "model",
+                "error"
+              ],
+              "type": "object"
+            },
+            "type": "array"
           },
           "id": {
             "type": "string"
@@ -23323,8 +23445,8 @@
             "type": "integer"
           },
           "max_total_results": {
-            "description": "Maximum total number of search results across all search calls in a single request. Once this limit is reached, the tool will stop returning new results. Useful for controlling cost and context size in agentic loops.",
-            "example": 20,
+            "description": "Maximum total number of search results across all search calls in a single request. Once this limit is reached, the tool will stop returning new results. Useful for controlling cost and context size in agentic loops. Defaults to 50 when not specified.",
+            "example": 50,
             "type": "integer"
           },
           "search_context_size": {
@@ -23564,8 +23686,8 @@
             "type": "integer"
           },
           "max_total_results": {
-            "description": "Maximum total number of search results across all search calls in a single request. Once this limit is reached, the tool will stop returning new results. Useful for controlling cost and context size in agentic loops.",
-            "example": 20,
+            "description": "Maximum total number of search results across all search calls in a single request. Once this limit is reached, the tool will stop returning new results. Useful for controlling cost and context size in agentic loops. Defaults to 50 when not specified.",
+            "example": 50,
             "type": "integer"
           },
           "search_context_size": {
@@ -24044,7 +24166,18 @@
         "tags": [
           "Analytics"
         ]
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/audio/speech": {
       "post": {
@@ -24248,7 +24381,18 @@
         ],
         "x-speakeasy-max-method-params": 1,
         "x-speakeasy-name-override": "createSpeech"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/audio/transcriptions": {
       "post": {
@@ -24460,7 +24604,18 @@
         ],
         "x-speakeasy-max-method-params": 1,
         "x-speakeasy-name-override": "createTranscription"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/auth/keys": {
       "post": {
@@ -24602,7 +24757,18 @@
         "tags": [
           "OAuth"
         ]
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/auth/keys/code": {
       "post": {
@@ -24831,7 +24997,18 @@
           "OAuth"
         ],
         "x-speakeasy-name-override": "createAuthCode"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/chat/completions": {
       "post": {
@@ -25218,7 +25395,18 @@
         "x-speakeasy-group": "chat",
         "x-speakeasy-name-override": "send",
         "x-speakeasy-stream-request-field": "stream"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/credits": {
       "get": {
@@ -25332,7 +25520,18 @@
           "Credits"
         ],
         "x-speakeasy-name-override": "getCredits"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/credits/coinbase": {
       "post": {
@@ -25368,7 +25567,18 @@
         "x-fern-ignore": true,
         "x-speakeasy-ignore": true,
         "x-speakeasy-name-override": "createCoinbaseCharge"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/embeddings": {
       "post": {
@@ -25476,6 +25686,15 @@
                                       "image_url"
                                     ],
                                     "type": "object"
+                                  },
+                                  {
+                                    "$ref": "#/components/schemas/ContentPartInputAudio"
+                                  },
+                                  {
+                                    "$ref": "#/components/schemas/ContentPartInputVideo"
+                                  },
+                                  {
+                                    "$ref": "#/components/schemas/ContentPartInputFile"
                                   }
                                 ]
                               },
@@ -25658,6 +25877,10 @@
                           "properties": {
                             "audio_tokens": {
                               "description": "Number of audio tokens in the input",
+                              "type": "integer"
+                            },
+                            "file_tokens": {
+                              "description": "Number of file/document tokens in the input",
                               "type": "integer"
                             },
                             "image_tokens": {
@@ -25875,7 +26098,18 @@
           "Embeddings"
         ],
         "x-speakeasy-name-override": "generate"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/embeddings/models": {
       "get": {
@@ -25973,7 +26207,18 @@
           "Embeddings"
         ],
         "x-speakeasy-name-override": "listModels"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/endpoints/zdr": {
       "get": {
@@ -26108,7 +26353,18 @@
           "Endpoints"
         ],
         "x-speakeasy-name-override": "listZdrEndpoints"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/generation": {
       "get": {
@@ -26313,7 +26569,18 @@
         "tags": [
           "Generations"
         ]
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/generation/content": {
       "get": {
@@ -26492,7 +26759,18 @@
         "tags": [
           "Generations"
         ]
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/guardrails": {
       "get": {
@@ -26508,7 +26786,7 @@
               "description": "Number of records to skip for pagination",
               "example": 0,
               "minimum": 0,
-              "nullable": true,
+              "nullable": false,
               "type": "integer"
             }
           },
@@ -26767,7 +27045,18 @@
           "Guardrails"
         ],
         "x-speakeasy-name-override": "create"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/guardrails/{id}": {
       "delete": {
@@ -27097,7 +27386,18 @@
           "Guardrails"
         ],
         "x-speakeasy-name-override": "update"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/guardrails/{id}/assignments/keys": {
       "get": {
@@ -27125,7 +27425,7 @@
               "description": "Number of records to skip for pagination",
               "example": 0,
               "minimum": 0,
-              "nullable": true,
+              "nullable": false,
               "type": "integer"
             }
           },
@@ -27357,7 +27657,18 @@
           "Guardrails"
         ],
         "x-speakeasy-name-override": "bulkAssignKeys"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/guardrails/{id}/assignments/keys/remove": {
       "post": {
@@ -27476,7 +27787,18 @@
           "Guardrails"
         ],
         "x-speakeasy-name-override": "bulkUnassignKeys"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/guardrails/{id}/assignments/members": {
       "get": {
@@ -27504,7 +27826,7 @@
               "description": "Number of records to skip for pagination",
               "example": 0,
               "minimum": 0,
-              "nullable": true,
+              "nullable": false,
               "type": "integer"
             }
           },
@@ -27736,7 +28058,18 @@
           "Guardrails"
         ],
         "x-speakeasy-name-override": "bulkAssignMembers"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/guardrails/{id}/assignments/members/remove": {
       "post": {
@@ -27856,7 +28189,18 @@
           "Guardrails"
         ],
         "x-speakeasy-name-override": "bulkUnassignMembers"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/guardrails/assignments/keys": {
       "get": {
@@ -27872,7 +28216,7 @@
               "description": "Number of records to skip for pagination",
               "example": 0,
               "minimum": 0,
-              "nullable": true,
+              "nullable": false,
               "type": "integer"
             }
           },
@@ -27971,7 +28315,18 @@
           },
           "type": "offsetLimit"
         }
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/guardrails/assignments/members": {
       "get": {
@@ -27987,7 +28342,7 @@
               "description": "Number of records to skip for pagination",
               "example": 0,
               "minimum": 0,
-              "nullable": true,
+              "nullable": false,
               "type": "integer"
             }
           },
@@ -28085,7 +28440,18 @@
           },
           "type": "offsetLimit"
         }
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/key": {
       "get": {
@@ -28389,7 +28755,18 @@
           "API Keys"
         ],
         "x-speakeasy-name-override": "getCurrentKeyMetadata"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/keys": {
       "get": {
@@ -28417,7 +28794,7 @@
               "description": "Number of API keys to skip for pagination",
               "example": 0,
               "minimum": 0,
-              "nullable": true,
+              "nullable": false,
               "type": "integer"
             }
           },
@@ -29151,7 +29528,18 @@
           "API Keys"
         ],
         "x-speakeasy-name-override": "create"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/keys/{hash}": {
       "delete": {
@@ -29997,7 +30385,18 @@
           "API Keys"
         ],
         "x-speakeasy-name-override": "update"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/messages": {
       "post": {
@@ -30279,7 +30678,18 @@
         "x-speakeasy-ignore": true,
         "x-speakeasy-name-override": "create",
         "x-speakeasy-stream-request-field": "stream"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/models": {
       "get": {
@@ -30430,7 +30840,18 @@
           "Models"
         ],
         "x-speakeasy-name-override": "list"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/models/{author}/{slug}/endpoints": {
       "get": {
@@ -30596,7 +31017,18 @@
           "Endpoints"
         ],
         "x-speakeasy-name-override": "list"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/models/count": {
       "get": {
@@ -30668,7 +31100,18 @@
           "Models"
         ],
         "x-speakeasy-name-override": "count"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/models/user": {
       "get": {
@@ -30791,7 +31234,18 @@
           "Models"
         ],
         "x-speakeasy-name-override": "listForUser"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/organization/members": {
       "get": {
@@ -30807,7 +31261,7 @@
               "description": "Number of records to skip for pagination",
               "example": 0,
               "minimum": 0,
-              "nullable": true,
+              "nullable": false,
               "type": "integer"
             }
           },
@@ -30979,7 +31433,18 @@
           },
           "type": "offsetLimit"
         }
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/providers": {
       "get": {
@@ -31630,7 +32095,18 @@
           "Providers"
         ],
         "x-speakeasy-name-override": "list"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/rerank": {
       "post": {
@@ -32006,7 +32482,18 @@
           "Rerank"
         ],
         "x-speakeasy-name-override": "rerank"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/responses": {
       "post": {
@@ -32372,7 +32859,18 @@
         ],
         "x-speakeasy-name-override": "send",
         "x-speakeasy-stream-request-field": "stream"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/videos": {
       "post": {
@@ -32514,7 +33012,18 @@
           "Video Generation"
         ],
         "x-speakeasy-name-override": "generate"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/videos/{jobId}": {
       "get": {
@@ -32609,7 +33118,18 @@
           "Video Generation"
         ],
         "x-speakeasy-name-override": "getGeneration"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/videos/{jobId}/content": {
       "get": {
@@ -32738,7 +33258,18 @@
           "Video Generation"
         ],
         "x-speakeasy-name-override": "getVideoContent"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/videos/models": {
       "get": {
@@ -32824,7 +33355,18 @@
         "tags": [
           "Video Generation"
         ]
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/workspaces": {
       "get": {
@@ -32840,7 +33382,7 @@
               "description": "Number of records to skip for pagination",
               "example": 0,
               "minimum": 0,
-              "nullable": true,
+              "nullable": false,
               "type": "integer"
             }
           },
@@ -33069,7 +33611,18 @@
           "Workspaces"
         ],
         "x-speakeasy-name-override": "create"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/workspaces/{id}": {
       "delete": {
@@ -33439,7 +33992,18 @@
           "Workspaces"
         ],
         "x-speakeasy-name-override": "update"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/workspaces/{id}/members/add": {
       "post": {
@@ -33584,7 +34148,18 @@
           "Workspaces"
         ],
         "x-speakeasy-name-override": "bulkAddMembers"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/workspaces/{id}/members/remove": {
       "post": {
@@ -33720,7 +34295,18 @@
           "Workspaces"
         ],
         "x-speakeasy-name-override": "bulkRemoveMembers"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     }
   },
   "security": [
@@ -33841,6 +34427,9 @@
       },
       {
         "$ref": "#/components/parameters/AppDisplayName"
+      },
+      {
+        "$ref": "#/components/parameters/AppCategories"
       }
     ]
   }

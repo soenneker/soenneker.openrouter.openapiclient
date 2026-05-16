@@ -17,6 +17,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Embeddings
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Number of audio tokens in the input</summary>
         public int? AudioTokens { get; set; }
+        /// <summary>Number of file/document tokens in the input</summary>
+        public int? FileTokens { get; set; }
         /// <summary>Number of image tokens in the input</summary>
         public int? ImageTokens { get; set; }
         /// <summary>Number of text tokens in the input</summary>
@@ -49,6 +51,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Embeddings
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "audio_tokens", n => { AudioTokens = n.GetIntValue(); } },
+                { "file_tokens", n => { FileTokens = n.GetIntValue(); } },
                 { "image_tokens", n => { ImageTokens = n.GetIntValue(); } },
                 { "text_tokens", n => { TextTokens = n.GetIntValue(); } },
                 { "video_tokens", n => { VideoTokens = n.GetIntValue(); } },
@@ -62,6 +65,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Embeddings
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("audio_tokens", AudioTokens);
+            writer.WriteIntValue("file_tokens", FileTokens);
             writer.WriteIntValue("image_tokens", ImageTokens);
             writer.WriteIntValue("text_tokens", TextTokens);
             writer.WriteIntValue("video_tokens", VideoTokens);
