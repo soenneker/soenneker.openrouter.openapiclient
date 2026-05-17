@@ -9,6 +9,7 @@ using Microsoft.Kiota.Serialization.Text;
 using Soenneker.OpenRouter.OpenApiClient.Activity;
 using Soenneker.OpenRouter.OpenApiClient.Audio;
 using Soenneker.OpenRouter.OpenApiClient.Auth;
+using Soenneker.OpenRouter.OpenApiClient.Byok;
 using Soenneker.OpenRouter.OpenApiClient.Chat;
 using Soenneker.OpenRouter.OpenApiClient.Credits;
 using Soenneker.OpenRouter.OpenApiClient.Embeddings;
@@ -19,6 +20,7 @@ using Soenneker.OpenRouter.OpenApiClient.Key;
 using Soenneker.OpenRouter.OpenApiClient.Keys;
 using Soenneker.OpenRouter.OpenApiClient.Messages;
 using Soenneker.OpenRouter.OpenApiClient.ModelsRequests;
+using Soenneker.OpenRouter.OpenApiClient.Observability;
 using Soenneker.OpenRouter.OpenApiClient.Organization;
 using Soenneker.OpenRouter.OpenApiClient.Providers;
 using Soenneker.OpenRouter.OpenApiClient.Rerank;
@@ -51,6 +53,11 @@ namespace Soenneker.OpenRouter.OpenApiClient
         public global::Soenneker.OpenRouter.OpenApiClient.Auth.AuthRequestBuilder Auth
         {
             get => new global::Soenneker.OpenRouter.OpenApiClient.Auth.AuthRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The byok property</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Byok.ByokRequestBuilder Byok
+        {
+            get => new global::Soenneker.OpenRouter.OpenApiClient.Byok.ByokRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The chat property</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Chat.ChatRequestBuilder Chat
@@ -101,6 +108,11 @@ namespace Soenneker.OpenRouter.OpenApiClient
         public global::Soenneker.OpenRouter.OpenApiClient.ModelsRequests.ModelsRequestBuilder Models
         {
             get => new global::Soenneker.OpenRouter.OpenApiClient.ModelsRequests.ModelsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The observability property</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Observability.ObservabilityRequestBuilder Observability
+        {
+            get => new global::Soenneker.OpenRouter.OpenApiClient.Observability.ObservabilityRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The organization property</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Organization.OrganizationRequestBuilder Organization
