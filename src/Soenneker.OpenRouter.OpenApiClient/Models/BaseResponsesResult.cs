@@ -295,11 +295,19 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteAdditionalData(AdditionalData);
         }
         /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemCustomToolCall"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemFileSearchCall"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemFunctionCall"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemImageGenerationCall"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemReasoning"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemWebSearchCall"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputMessage"/>
+        /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemApplyPatchCall"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemCustomToolCall"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemFileSearchCall"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemFunctionCall"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemImageGenerationCall"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemReasoning"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemWebSearchCall"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputMessage"/>
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class BaseResponsesResult_output : IComposedTypeWrapper, IParsable
         {
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemApplyPatchCall"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemApplyPatchCall? OutputItemApplyPatchCall { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemApplyPatchCall OutputItemApplyPatchCall { get; set; }
+#endif
             /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemCustomToolCall"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -366,7 +374,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
                 var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
                 var result = new global::Soenneker.OpenRouter.OpenApiClient.Models.BaseResponsesResult.BaseResponsesResult_output();
-                if("custom_tool_call".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+                if("apply_patch_call".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+                {
+                    result.OutputItemApplyPatchCall = new global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemApplyPatchCall();
+                }
+                else if("custom_tool_call".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
                 {
                     result.OutputItemCustomToolCall = new global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemCustomToolCall();
                 }
@@ -402,7 +414,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
             public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
             {
-                if(OutputItemCustomToolCall != null)
+                if(OutputItemApplyPatchCall != null)
+                {
+                    return OutputItemApplyPatchCall.GetFieldDeserializers();
+                }
+                else if(OutputItemCustomToolCall != null)
                 {
                     return OutputItemCustomToolCall.GetFieldDeserializers();
                 }
@@ -439,7 +455,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             public virtual void Serialize(ISerializationWriter writer)
             {
                 if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(OutputItemCustomToolCall != null)
+                if(OutputItemApplyPatchCall != null)
+                {
+                    writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemApplyPatchCall>(null, OutputItemApplyPatchCall);
+                }
+                else if(OutputItemCustomToolCall != null)
                 {
                     writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemCustomToolCall>(null, OutputItemCustomToolCall);
                 }

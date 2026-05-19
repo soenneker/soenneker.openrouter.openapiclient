@@ -154,6 +154,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest.ChatRequest_stop Stop { get; set; }
 #endif
+        /// <summary>Stop conditions for the server-tool agent loop. Any condition firing halts the loop (OR logic). When set, this overrides `max_tool_calls`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.StopServerToolsWhenCondition>? StopServerToolsWhen { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.StopServerToolsWhenCondition> StopServerToolsWhen { get; set; }
+#endif
         /// <summary>Enable streaming response</summary>
         public bool? Stream { get; set; }
         /// <summary>Streaming configuration options</summary>
@@ -251,6 +259,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "service_tier", n => { ServiceTier = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest_service_tier>(); } },
                 { "session_id", n => { SessionId = n.GetStringValue(); } },
                 { "stop", n => { Stop = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest.ChatRequest_stop>(global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest.ChatRequest_stop.CreateFromDiscriminatorValue); } },
+                { "stop_server_tools_when", n => { StopServerToolsWhen = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.StopServerToolsWhenCondition>(global::Soenneker.OpenRouter.OpenApiClient.Models.StopServerToolsWhenCondition.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "stream", n => { Stream = n.GetBoolValue(); } },
                 { "stream_options", n => { StreamOptions = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatStreamOptions>(global::Soenneker.OpenRouter.OpenApiClient.Models.ChatStreamOptions.CreateFromDiscriminatorValue); } },
                 { "temperature", n => { Temperature = n.GetDoubleValue(); } },
@@ -293,6 +302,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest_service_tier>("service_tier", ServiceTier);
             writer.WriteStringValue("session_id", SessionId);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest.ChatRequest_stop>("stop", Stop);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.StopServerToolsWhenCondition>("stop_server_tools_when", StopServerToolsWhen);
             writer.WriteBoolValue("stream", Stream);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatStreamOptions>("stream_options", StreamOptions);
             writer.WriteDoubleValue("temperature", Temperature);
@@ -305,7 +315,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteAdditionalData(AdditionalData);
         }
         /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AutoRouterPlugin"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ContextCompressionPlugin"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.FileParserPlugin"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.FusionPlugin"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ModerationPlugin"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ParetoRouterPlugin"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ResponseHealingPlugin"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchPlugin"/>
+        /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AutoRouterPlugin"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ContextCompressionPlugin"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.FileParserPlugin"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.FusionPlugin"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ModerationPlugin"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ParetoRouterPlugin"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ResponseHealingPlugin"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.WebFetchPlugin"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchPlugin"/>
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class ChatRequest_plugins : IComposedTypeWrapper, IParsable
@@ -366,6 +376,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
             public global::Soenneker.OpenRouter.OpenApiClient.Models.ResponseHealingPlugin ResponseHealingPlugin { get; set; }
 #endif
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.WebFetchPlugin"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.WebFetchPlugin? WebFetchPlugin { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.WebFetchPlugin WebFetchPlugin { get; set; }
+#endif
             /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchPlugin"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -412,6 +430,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 {
                     result.ResponseHealingPlugin = new global::Soenneker.OpenRouter.OpenApiClient.Models.ResponseHealingPlugin();
                 }
+                else if("web-fetch".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+                {
+                    result.WebFetchPlugin = new global::Soenneker.OpenRouter.OpenApiClient.Models.WebFetchPlugin();
+                }
                 else if("web".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
                 {
                     result.WebSearchPlugin = new global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchPlugin();
@@ -451,6 +473,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 else if(ResponseHealingPlugin != null)
                 {
                     return ResponseHealingPlugin.GetFieldDeserializers();
+                }
+                else if(WebFetchPlugin != null)
+                {
+                    return WebFetchPlugin.GetFieldDeserializers();
                 }
                 else if(WebSearchPlugin != null)
                 {
@@ -492,6 +518,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 else if(ResponseHealingPlugin != null)
                 {
                     writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ResponseHealingPlugin>(null, ResponseHealingPlugin);
+                }
+                else if(WebFetchPlugin != null)
+                {
+                    writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebFetchPlugin>(null, WebFetchPlugin);
                 }
                 else if(WebSearchPlugin != null)
                 {

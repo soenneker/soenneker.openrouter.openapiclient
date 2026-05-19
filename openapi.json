@@ -10,12 +10,22 @@
         "description": "The app identifier should be your app's URL and is used as the primary identifier for rankings.\nThis is used to track API usage per application.\n"
       },
       "AppDisplayName": {
-        "name": "X-Title",
+        "name": "X-OpenRouter-Title",
         "in": "header",
+        "x-speakeasy-name-override": "appTitle",
         "schema": {
           "type": "string"
         },
         "description": "The app display name allows you to customize how your app appears in OpenRouter's dashboard.\n"
+      },
+      "AppCategories": {
+        "name": "X-OpenRouter-Categories",
+        "in": "header",
+        "x-speakeasy-name-override": "appCategories",
+        "schema": {
+          "type": "string"
+        },
+        "description": "Comma-separated list of app categories (e.g. \"cli-agent,cloud-agent\"). Used for marketplace rankings.\n"
       }
     },
     "schemas": {
@@ -2923,6 +2933,14 @@
       },
       "ApplyPatchCallOperation": {
         "description": "The patch operation requested by an `apply_patch_call`. `create_file` and `update_file` carry a V4A diff; `delete_file` omits it.",
+        "discriminator": {
+          "mapping": {
+            "create_file": "#/components/schemas/ApplyPatchCreateFileOperation",
+            "delete_file": "#/components/schemas/ApplyPatchDeleteFileOperation",
+            "update_file": "#/components/schemas/ApplyPatchUpdateFileOperation"
+          },
+          "propertyName": "type"
+        },
         "example": {
           "diff": "@@ function main() {\n+  console.log(\"hi\");\n }",
           "path": "/src/main.ts",
@@ -2930,66 +2948,13 @@
         },
         "oneOf": [
           {
-            "properties": {
-              "diff": {
-                "type": "string"
-              },
-              "path": {
-                "type": "string"
-              },
-              "type": {
-                "enum": [
-                  "create_file"
-                ],
-                "type": "string"
-              }
-            },
-            "required": [
-              "type",
-              "path",
-              "diff"
-            ],
-            "type": "object"
+            "$ref": "#/components/schemas/ApplyPatchCreateFileOperation"
           },
           {
-            "properties": {
-              "diff": {
-                "type": "string"
-              },
-              "path": {
-                "type": "string"
-              },
-              "type": {
-                "enum": [
-                  "update_file"
-                ],
-                "type": "string"
-              }
-            },
-            "required": [
-              "type",
-              "path",
-              "diff"
-            ],
-            "type": "object"
+            "$ref": "#/components/schemas/ApplyPatchUpdateFileOperation"
           },
           {
-            "properties": {
-              "path": {
-                "type": "string"
-              },
-              "type": {
-                "enum": [
-                  "delete_file"
-                ],
-                "type": "string"
-              }
-            },
-            "required": [
-              "type",
-              "path"
-            ],
-            "type": "object"
+            "$ref": "#/components/schemas/ApplyPatchDeleteFileOperation"
           }
         ]
       },
@@ -3121,6 +3086,68 @@
         "type": "string",
         "x-speakeasy-unknown-values": "allow"
       },
+      "ApplyPatchCreateFileOperation": {
+        "description": "The `create_file` variant of an `apply_patch_call.operation`. Carries a V4A diff describing the new file contents.",
+        "example": {
+          "diff": "@@\n+console.log(\"hi\");\n",
+          "path": "/src/main.ts",
+          "type": "create_file"
+        },
+        "properties": {
+          "diff": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          },
+          "type": {
+            "enum": [
+              "create_file"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "path",
+          "diff"
+        ],
+        "type": "object"
+      },
+      "ApplyPatchDeleteFileOperation": {
+        "description": "The `delete_file` variant of an `apply_patch_call.operation`. Identifies the file to remove; no diff is required.",
+        "example": {
+          "path": "/src/main.ts",
+          "type": "delete_file"
+        },
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "type": {
+            "enum": [
+              "delete_file"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "path"
+        ],
+        "type": "object"
+      },
+      "ApplyPatchEngineEnum": {
+        "description": "Which apply_patch engine to use. \"auto\" (default) uses native passthrough when the endpoint advertises native apply_patch support, otherwise falls back to OpenRouter's HITL validator. \"native\" forces native passthrough — when the endpoint does not support native, the request falls back to HITL. \"openrouter\" always runs the HITL validator. Native passthrough streams the diff incrementally via `apply_patch_call_operation_diff.delta` events; HITL buffers the diff for atomic delivery as a single delta.",
+        "enum": [
+          "auto",
+          "native",
+          "openrouter"
+        ],
+        "example": "auto",
+        "type": "string",
+        "x-speakeasy-unknown-values": "allow"
+      },
       "ApplyPatchServerTool": {
         "description": "Apply patch tool configuration",
         "example": {
@@ -3162,8 +3189,42 @@
       },
       "ApplyPatchServerToolConfig": {
         "description": "Configuration for the openrouter:apply_patch server tool",
-        "example": {},
-        "properties": {},
+        "example": {
+          "engine": "auto"
+        },
+        "properties": {
+          "engine": {
+            "$ref": "#/components/schemas/ApplyPatchEngineEnum"
+          }
+        },
+        "type": "object"
+      },
+      "ApplyPatchUpdateFileOperation": {
+        "description": "The `update_file` variant of an `apply_patch_call.operation`. Carries a V4A diff describing edits to an existing file.",
+        "example": {
+          "diff": "@@ function main() {\n+  console.log(\"hi\");\n }",
+          "path": "/src/main.ts",
+          "type": "update_file"
+        },
+        "properties": {
+          "diff": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          },
+          "type": {
+            "enum": [
+              "update_file"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "path",
+          "diff"
+        ],
         "type": "object"
       },
       "AutoRouterPlugin": {
@@ -4330,7 +4391,8 @@
             "type": "integer"
           },
           "error": {
-            "$ref": "#/components/schemas/ResponsesErrorField"
+            "$ref": "#/components/schemas/ResponsesErrorField",
+            "nullable": true
           },
           "frequency_penalty": {
             "format": "double",
@@ -4341,10 +4403,12 @@
             "type": "string"
           },
           "incomplete_details": {
-            "$ref": "#/components/schemas/IncompleteDetails"
+            "$ref": "#/components/schemas/IncompleteDetails",
+            "nullable": true
           },
           "instructions": {
-            "$ref": "#/components/schemas/BaseInputs"
+            "$ref": "#/components/schemas/BaseInputs",
+            "nullable": true
           },
           "max_output_tokens": {
             "nullable": true,
@@ -4370,6 +4434,7 @@
             "items": {
               "discriminator": {
                 "mapping": {
+                  "apply_patch_call": "#/components/schemas/OutputItemApplyPatchCall",
                   "custom_tool_call": "#/components/schemas/OutputItemCustomToolCall",
                   "file_search_call": "#/components/schemas/OutputItemFileSearchCall",
                   "function_call": "#/components/schemas/OutputItemFunctionCall",
@@ -4401,6 +4466,9 @@
                 },
                 {
                   "$ref": "#/components/schemas/OutputItemImageGenerationCall"
+                },
+                {
+                  "$ref": "#/components/schemas/OutputItemApplyPatchCall"
                 }
               ]
             },
@@ -4429,7 +4497,8 @@
             "type": "string"
           },
           "reasoning": {
-            "$ref": "#/components/schemas/BaseReasoningConfig"
+            "$ref": "#/components/schemas/BaseReasoningConfig",
+            "nullable": true
           },
           "safety_identifier": {
             "nullable": true,
@@ -4450,7 +4519,8 @@
             "type": "number"
           },
           "text": {
-            "$ref": "#/components/schemas/TextConfig"
+            "$ref": "#/components/schemas/TextConfig",
+            "nullable": true
           },
           "tool_choice": {
             "$ref": "#/components/schemas/OpenAIResponsesToolChoice"
@@ -4539,7 +4609,8 @@
             "type": "array"
           },
           "top_logprobs": {
-            "type": "integer"
+            "type": "integer",
+            "nullable": true
           },
           "top_p": {
             "format": "double",
@@ -4547,7 +4618,8 @@
             "type": "number"
           },
           "truncation": {
-            "$ref": "#/components/schemas/Truncation"
+            "$ref": "#/components/schemas/Truncation",
+            "nullable": true
           },
           "usage": {
             "$ref": "#/components/schemas/OpenAIResponsesUsage"
@@ -6156,7 +6228,8 @@
                   "moderation": "#/components/schemas/ModerationPlugin",
                   "pareto-router": "#/components/schemas/ParetoRouterPlugin",
                   "response-healing": "#/components/schemas/ResponseHealingPlugin",
-                  "web": "#/components/schemas/WebSearchPlugin"
+                  "web": "#/components/schemas/WebSearchPlugin",
+                  "web-fetch": "#/components/schemas/WebFetchPlugin"
                 },
                 "propertyName": "id"
               },
@@ -6169,6 +6242,9 @@
                 },
                 {
                   "$ref": "#/components/schemas/WebSearchPlugin"
+                },
+                {
+                  "$ref": "#/components/schemas/WebFetchPlugin"
                 },
                 {
                   "$ref": "#/components/schemas/FileParserPlugin"
@@ -6310,6 +6386,9 @@
             "example": [
               ""
             ]
+          },
+          "stop_server_tools_when": {
+            "$ref": "#/components/schemas/StopServerToolsWhen"
           },
           "stream": {
             "default": false,
@@ -8476,6 +8555,46 @@
         ],
         "type": "object"
       },
+      "CreatePresetFromInferenceResponse": {
+        "description": "Response containing the created preset with its designated version.",
+        "example": {
+          "data": {
+            "created_at": "2026-04-20T10:00:00Z",
+            "creator_user_id": "user_2dHFtVWx2n56w6HkM0000000000",
+            "description": null,
+            "designated_version": {
+              "config": {
+                "model": "openai/gpt-4o",
+                "temperature": 0.7
+              },
+              "created_at": "2026-04-20T10:00:00Z",
+              "creator_id": "user_2dHFtVWx2n56w6HkM0000000000",
+              "id": "550e8400-e29b-41d4-a716-446655440000",
+              "preset_id": "650e8400-e29b-41d4-a716-446655440001",
+              "system_prompt": "You are a helpful assistant.",
+              "updated_at": "2026-04-20T10:00:00Z",
+              "version": 1
+            },
+            "designated_version_id": "550e8400-e29b-41d4-a716-446655440000",
+            "id": "650e8400-e29b-41d4-a716-446655440001",
+            "name": "my-preset",
+            "slug": "my-preset",
+            "status": "active",
+            "status_updated_at": null,
+            "updated_at": "2026-04-20T10:00:00Z",
+            "workspace_id": "750e8400-e29b-41d4-a716-446655440002"
+          }
+        },
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/PresetWithDesignatedVersion"
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "type": "object"
+      },
       "CreateWorkspaceRequest": {
         "example": {
           "default_image_model": "openai/dall-e-3",
@@ -9944,6 +10063,11 @@
             "minItems": 1,
             "type": "array"
           },
+          "max_completion_tokens": {
+            "description": "Maximum number of output tokens (including reasoning tokens) each panelist and the judge model may produce per inner call. Controls the total output budget so reasoning-heavy models like GPT-5.5 do not exhaust their token allowance before producing visible text. When omitted, the provider's default applies.",
+            "example": 16384,
+            "type": "integer"
+          },
           "max_tool_calls": {
             "description": "Maximum number of tool-calling steps each panelist (analysis model) and the judge model may take during their agentic web-research loop. Models with web_search/web_fetch enabled iterate until they produce a text response or hit this ceiling. Defaults to 8. Capped at 16.",
             "example": 12,
@@ -9955,6 +10079,35 @@
             "description": "Slug of the judge model that produces the structured analysis JSON. Defaults to the model used in the outer API request.",
             "example": "~anthropic/claude-opus-latest",
             "type": "string"
+          },
+          "reasoning": {
+            "description": "Reasoning configuration forwarded to panelist and judge inner calls. Use this to control reasoning effort and token budget for models that support extended thinking.",
+            "properties": {
+              "effort": {
+                "description": "Reasoning effort level for panelist and judge inner calls.",
+                "enum": [
+                  "xhigh",
+                  "high",
+                  "medium",
+                  "low",
+                  "minimal",
+                  "none"
+                ],
+                "type": "string",
+                "x-speakeasy-unknown-values": "allow"
+              },
+              "max_tokens": {
+                "description": "Maximum number of reasoning tokens each panelist and judge model may use. Helps bound cost when models allocate too much budget to chain-of-thought.",
+                "type": "integer"
+              }
+            },
+            "type": "object"
+          },
+          "temperature": {
+            "description": "Sampling temperature forwarded to panelist and judge inner calls. When omitted, the provider's default applies.",
+            "example": 0.7,
+            "format": "double",
+            "type": "number"
           }
         },
         "type": "object"
@@ -13964,7 +14117,8 @@
                   "moderation": "#/components/schemas/ModerationPlugin",
                   "pareto-router": "#/components/schemas/ParetoRouterPlugin",
                   "response-healing": "#/components/schemas/ResponseHealingPlugin",
-                  "web": "#/components/schemas/WebSearchPlugin"
+                  "web": "#/components/schemas/WebSearchPlugin",
+                  "web-fetch": "#/components/schemas/WebFetchPlugin"
                 },
                 "propertyName": "id"
               },
@@ -13977,6 +14131,9 @@
                 },
                 {
                   "$ref": "#/components/schemas/WebSearchPlugin"
+                },
+                {
+                  "$ref": "#/components/schemas/WebFetchPlugin"
                 },
                 {
                   "$ref": "#/components/schemas/FileParserPlugin"
@@ -14027,6 +14184,9 @@
               "type": "string"
             },
             "type": "array"
+          },
+          "stop_server_tools_when": {
+            "$ref": "#/components/schemas/StopServerToolsWhen"
           },
           "stream": {
             "type": "boolean"
@@ -19700,6 +19860,7 @@
           "item": {
             "discriminator": {
               "mapping": {
+                "apply_patch_call": "#/components/schemas/OutputItemApplyPatchCall",
                 "custom_tool_call": "#/components/schemas/OutputItemCustomToolCall",
                 "file_search_call": "#/components/schemas/OutputItemFileSearchCall",
                 "function_call": "#/components/schemas/OutputItemFunctionCall",
@@ -19731,6 +19892,9 @@
               },
               {
                 "$ref": "#/components/schemas/OutputItemImageGenerationCall"
+              },
+              {
+                "$ref": "#/components/schemas/OutputItemApplyPatchCall"
               }
             ]
           },
@@ -19752,6 +19916,73 @@
           "output_index",
           "item",
           "sequence_number"
+        ],
+        "type": "object"
+      },
+      "OutputItemApplyPatchCall": {
+        "example": {
+          "call_id": "call_abc123",
+          "id": "apc_abc123",
+          "operation": {
+            "diff": "@@ function main() {\n+  console.log(\"hi\");\n }",
+            "path": "/src/main.ts",
+            "type": "update_file"
+          },
+          "status": "completed",
+          "type": "apply_patch_call"
+        },
+        "properties": {
+          "call_id": {
+            "type": "string"
+          },
+          "created_by": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "operation": {
+            "discriminator": {
+              "mapping": {
+                "create_file": "#/components/schemas/ApplyPatchCreateFileOperation",
+                "delete_file": "#/components/schemas/ApplyPatchDeleteFileOperation",
+                "update_file": "#/components/schemas/ApplyPatchUpdateFileOperation"
+              },
+              "propertyName": "type"
+            },
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/ApplyPatchCreateFileOperation"
+              },
+              {
+                "$ref": "#/components/schemas/ApplyPatchUpdateFileOperation"
+              },
+              {
+                "$ref": "#/components/schemas/ApplyPatchDeleteFileOperation"
+              }
+            ]
+          },
+          "status": {
+            "enum": [
+              "in_progress",
+              "completed"
+            ],
+            "type": "string",
+            "x-speakeasy-unknown-values": "allow"
+          },
+          "type": {
+            "enum": [
+              "apply_patch_call"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "id",
+          "call_id",
+          "operation",
+          "status"
         ],
         "type": "object"
       },
@@ -19819,6 +20050,7 @@
           "item": {
             "discriminator": {
               "mapping": {
+                "apply_patch_call": "#/components/schemas/OutputItemApplyPatchCall",
                 "custom_tool_call": "#/components/schemas/OutputItemCustomToolCall",
                 "file_search_call": "#/components/schemas/OutputItemFileSearchCall",
                 "function_call": "#/components/schemas/OutputItemFunctionCall",
@@ -19850,6 +20082,9 @@
               },
               {
                 "$ref": "#/components/schemas/OutputItemImageGenerationCall"
+              },
+              {
+                "$ref": "#/components/schemas/OutputItemApplyPatchCall"
               }
             ]
           },
@@ -21253,6 +21488,157 @@
         ],
         "description": "Preferred minimum throughput (in tokens per second). Can be a number (applies to p50) or an object with percentile-specific cutoffs. Endpoints below the threshold(s) may still be used, but are deprioritized in routing. When using fallback models, this may cause a fallback model to be used instead of the primary model if it meets the threshold.",
         "example": 100
+      },
+      "PresetDesignatedVersion": {
+        "description": "A specific version of a preset, containing config and optional system prompt.",
+        "example": {
+          "config": {
+            "model": "openai/gpt-4o",
+            "temperature": 0.7
+          },
+          "created_at": "2026-04-20T10:00:00Z",
+          "creator_id": "user_2dHFtVWx2n56w6HkM0000000000",
+          "id": "550e8400-e29b-41d4-a716-446655440000",
+          "preset_id": "650e8400-e29b-41d4-a716-446655440001",
+          "system_prompt": "You are a helpful assistant.",
+          "updated_at": "2026-04-20T10:00:00Z",
+          "version": 1
+        },
+        "nullable": true,
+        "properties": {
+          "config": {
+            "additionalProperties": {
+              "nullable": true
+            },
+            "type": "object"
+          },
+          "created_at": {
+            "type": "string"
+          },
+          "creator_id": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "preset_id": {
+            "type": "string"
+          },
+          "system_prompt": {
+            "nullable": true,
+            "type": "string"
+          },
+          "updated_at": {
+            "type": "string"
+          },
+          "version": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "id",
+          "preset_id",
+          "creator_id",
+          "version",
+          "system_prompt",
+          "config",
+          "created_at",
+          "updated_at"
+        ],
+        "type": "object"
+      },
+      "PresetWithDesignatedVersion": {
+        "description": "A preset with its currently designated version.",
+        "example": {
+          "created_at": "2026-04-20T10:00:00Z",
+          "creator_user_id": "user_2dHFtVWx2n56w6HkM0000000000",
+          "description": null,
+          "designated_version": {
+            "config": {
+              "model": "openai/gpt-4o",
+              "temperature": 0.7
+            },
+            "created_at": "2026-04-20T10:00:00Z",
+            "creator_id": "user_2dHFtVWx2n56w6HkM0000000000",
+            "id": "550e8400-e29b-41d4-a716-446655440000",
+            "preset_id": "650e8400-e29b-41d4-a716-446655440001",
+            "system_prompt": "You are a helpful assistant.",
+            "updated_at": "2026-04-20T10:00:00Z",
+            "version": 1
+          },
+          "designated_version_id": "550e8400-e29b-41d4-a716-446655440000",
+          "id": "650e8400-e29b-41d4-a716-446655440001",
+          "name": "my-preset",
+          "slug": "my-preset",
+          "status": "active",
+          "status_updated_at": null,
+          "updated_at": "2026-04-20T10:00:00Z",
+          "workspace_id": "750e8400-e29b-41d4-a716-446655440002"
+        },
+        "properties": {
+          "created_at": {
+            "type": "string"
+          },
+          "creator_user_id": {
+            "nullable": true,
+            "type": "string"
+          },
+          "description": {
+            "nullable": true,
+            "type": "string"
+          },
+          "designated_version": {
+            "$ref": "#/components/schemas/PresetDesignatedVersion"
+          },
+          "designated_version_id": {
+            "nullable": true,
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "slug": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "active",
+              "disabled",
+              "archived"
+            ],
+            "type": "string",
+            "x-speakeasy-unknown-values": "allow"
+          },
+          "status_updated_at": {
+            "nullable": true,
+            "type": "string"
+          },
+          "updated_at": {
+            "type": "string"
+          },
+          "workspace_id": {
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "creator_user_id",
+          "workspace_id",
+          "name",
+          "slug",
+          "description",
+          "status",
+          "designated_version_id",
+          "created_at",
+          "updated_at",
+          "status_updated_at",
+          "designated_version"
+        ],
+        "type": "object"
       },
       "Preview_20250311_WebSearchServerTool": {
         "description": "Web search preview tool configuration (2025-03-11 version)",
@@ -23818,7 +24204,8 @@
                   "moderation": "#/components/schemas/ModerationPlugin",
                   "pareto-router": "#/components/schemas/ParetoRouterPlugin",
                   "response-healing": "#/components/schemas/ResponseHealingPlugin",
-                  "web": "#/components/schemas/WebSearchPlugin"
+                  "web": "#/components/schemas/WebSearchPlugin",
+                  "web-fetch": "#/components/schemas/WebFetchPlugin"
                 },
                 "propertyName": "id"
               },
@@ -23831,6 +24218,9 @@
                 },
                 {
                   "$ref": "#/components/schemas/WebSearchPlugin"
+                },
+                {
+                  "$ref": "#/components/schemas/WebFetchPlugin"
                 },
                 {
                   "$ref": "#/components/schemas/FileParserPlugin"
@@ -23898,6 +24288,9 @@
             "description": "A unique identifier for grouping related requests (e.g., a conversation or agent workflow) for observability. If provided in both the request body and the x-session-id header, the body value takes precedence. Maximum of 256 characters.",
             "maxLength": 256,
             "type": "string"
+          },
+          "stop_server_tools_when": {
+            "$ref": "#/components/schemas/StopServerToolsWhen"
           },
           "store": {
             "const": false,
@@ -24453,6 +24846,176 @@
           "model",
           "input",
           "voice"
+        ],
+        "type": "object"
+      },
+      "StopServerToolsWhen": {
+        "description": "Stop conditions for the server-tool agent loop. Any condition firing halts the loop (OR logic). When set, this overrides `max_tool_calls`.",
+        "example": [
+          {
+            "step_count": 5,
+            "type": "step_count_is"
+          },
+          {
+            "max_cost_in_dollars": 0.5,
+            "type": "max_cost"
+          }
+        ],
+        "items": {
+          "$ref": "#/components/schemas/StopServerToolsWhenCondition"
+        },
+        "minItems": 1,
+        "type": "array"
+      },
+      "StopServerToolsWhenCondition": {
+        "description": "A single condition that, when met, halts the server-tool agent loop.",
+        "discriminator": {
+          "mapping": {
+            "finish_reason_is": "#/components/schemas/StopServerToolsWhenFinishReasonIs",
+            "has_tool_call": "#/components/schemas/StopServerToolsWhenHasToolCall",
+            "max_cost": "#/components/schemas/StopServerToolsWhenMaxCost",
+            "max_tokens_used": "#/components/schemas/StopServerToolsWhenMaxTokensUsed",
+            "step_count_is": "#/components/schemas/StopServerToolsWhenStepCountIs"
+          },
+          "propertyName": "type"
+        },
+        "example": {
+          "step_count": 5,
+          "type": "step_count_is"
+        },
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/StopServerToolsWhenStepCountIs"
+          },
+          {
+            "$ref": "#/components/schemas/StopServerToolsWhenHasToolCall"
+          },
+          {
+            "$ref": "#/components/schemas/StopServerToolsWhenMaxTokensUsed"
+          },
+          {
+            "$ref": "#/components/schemas/StopServerToolsWhenMaxCost"
+          },
+          {
+            "$ref": "#/components/schemas/StopServerToolsWhenFinishReasonIs"
+          }
+        ]
+      },
+      "StopServerToolsWhenFinishReasonIs": {
+        "description": "Stop when the upstream model emits this finish reason (e.g. `length`).",
+        "example": {
+          "reason": "length",
+          "type": "finish_reason_is"
+        },
+        "properties": {
+          "reason": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "type": {
+            "enum": [
+              "finish_reason_is"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "reason"
+        ],
+        "type": "object"
+      },
+      "StopServerToolsWhenHasToolCall": {
+        "description": "Stop after a tool with this name has been called.",
+        "example": {
+          "tool_name": "finalize",
+          "type": "has_tool_call"
+        },
+        "properties": {
+          "tool_name": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "type": {
+            "enum": [
+              "has_tool_call"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "tool_name"
+        ],
+        "type": "object"
+      },
+      "StopServerToolsWhenMaxCost": {
+        "description": "Stop once cumulative cost across the loop exceeds this dollar threshold.",
+        "example": {
+          "max_cost_in_dollars": 0.5,
+          "type": "max_cost"
+        },
+        "properties": {
+          "max_cost_in_dollars": {
+            "format": "double",
+            "type": "number"
+          },
+          "type": {
+            "enum": [
+              "max_cost"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "max_cost_in_dollars"
+        ],
+        "type": "object"
+      },
+      "StopServerToolsWhenMaxTokensUsed": {
+        "description": "Stop once cumulative token usage across the loop exceeds this threshold.",
+        "example": {
+          "max_tokens": 10000,
+          "type": "max_tokens_used"
+        },
+        "properties": {
+          "max_tokens": {
+            "type": "integer"
+          },
+          "type": {
+            "enum": [
+              "max_tokens_used"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "max_tokens"
+        ],
+        "type": "object"
+      },
+      "StopServerToolsWhenStepCountIs": {
+        "description": "Stop after the agent loop has executed this many steps.",
+        "example": {
+          "step_count": 5,
+          "type": "step_count_is"
+        },
+        "properties": {
+          "step_count": {
+            "type": "integer"
+          },
+          "type": {
+            "enum": [
+              "step_count_is"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "step_count"
         ],
         "type": "object"
       },
@@ -26482,6 +27045,46 @@
         "type": "string",
         "x-speakeasy-unknown-values": "allow"
       },
+      "WebFetchPlugin": {
+        "example": {
+          "id": "web-fetch",
+          "max_uses": 10
+        },
+        "properties": {
+          "allowed_domains": {
+            "description": "Only fetch from these domains.",
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "blocked_domains": {
+            "description": "Never fetch from these domains.",
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "id": {
+            "enum": [
+              "web-fetch"
+            ],
+            "type": "string"
+          },
+          "max_content_tokens": {
+            "description": "Maximum content length in approximate tokens. Content exceeding this limit is truncated.",
+            "type": "integer"
+          },
+          "max_uses": {
+            "description": "Maximum number of web fetches per request. Once exceeded, the tool returns an error.",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "type": "object"
+      },
       "WebFetchServerTool": {
         "description": "OpenRouter built-in server tool: fetches full content from a URL (web page or PDF)",
         "example": {
@@ -27347,7 +27950,18 @@
         "tags": [
           "Analytics"
         ]
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/audio/speech": {
       "post": {
@@ -27551,7 +28165,18 @@
         ],
         "x-speakeasy-max-method-params": 1,
         "x-speakeasy-name-override": "createSpeech"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/audio/transcriptions": {
       "post": {
@@ -27763,7 +28388,18 @@
         ],
         "x-speakeasy-max-method-params": 1,
         "x-speakeasy-name-override": "createTranscription"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/auth/keys": {
       "post": {
@@ -27905,7 +28541,18 @@
         "tags": [
           "OAuth"
         ]
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/auth/keys/code": {
       "post": {
@@ -28134,7 +28781,18 @@
           "OAuth"
         ],
         "x-speakeasy-name-override": "createAuthCode"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/byok": {
       "get": {
@@ -28476,7 +29134,18 @@
           "BYOK"
         ],
         "x-speakeasy-name-override": "create"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/byok/{id}": {
       "delete": {
@@ -28792,7 +29461,18 @@
           "BYOK"
         ],
         "x-speakeasy-name-override": "update"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/chat/completions": {
       "post": {
@@ -29179,7 +29859,18 @@
         "x-speakeasy-group": "chat",
         "x-speakeasy-name-override": "send",
         "x-speakeasy-stream-request-field": "stream"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/credits": {
       "get": {
@@ -29293,7 +29984,18 @@
           "Credits"
         ],
         "x-speakeasy-name-override": "getCredits"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/credits/coinbase": {
       "post": {
@@ -29329,7 +30031,18 @@
         "x-fern-ignore": true,
         "x-speakeasy-ignore": true,
         "x-speakeasy-name-override": "createCoinbaseCharge"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/embeddings": {
       "post": {
@@ -29849,7 +30562,18 @@
           "Embeddings"
         ],
         "x-speakeasy-name-override": "generate"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/embeddings/models": {
       "get": {
@@ -29947,7 +30671,18 @@
           "Embeddings"
         ],
         "x-speakeasy-name-override": "listModels"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/endpoints/zdr": {
       "get": {
@@ -30082,7 +30817,18 @@
           "Endpoints"
         ],
         "x-speakeasy-name-override": "listZdrEndpoints"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/generation": {
       "get": {
@@ -30287,7 +31033,18 @@
         "tags": [
           "Generations"
         ]
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/generation/content": {
       "get": {
@@ -30466,7 +31223,18 @@
         "tags": [
           "Generations"
         ]
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/guardrails": {
       "get": {
@@ -30741,7 +31509,18 @@
           "Guardrails"
         ],
         "x-speakeasy-name-override": "create"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/guardrails/{id}": {
       "delete": {
@@ -31071,7 +31850,18 @@
           "Guardrails"
         ],
         "x-speakeasy-name-override": "update"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/guardrails/{id}/assignments/keys": {
       "get": {
@@ -31331,7 +32121,18 @@
           "Guardrails"
         ],
         "x-speakeasy-name-override": "bulkAssignKeys"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/guardrails/{id}/assignments/keys/remove": {
       "post": {
@@ -31450,7 +32251,18 @@
           "Guardrails"
         ],
         "x-speakeasy-name-override": "bulkUnassignKeys"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/guardrails/{id}/assignments/members": {
       "get": {
@@ -31710,7 +32522,18 @@
           "Guardrails"
         ],
         "x-speakeasy-name-override": "bulkAssignMembers"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/guardrails/{id}/assignments/members/remove": {
       "post": {
@@ -31830,7 +32653,18 @@
           "Guardrails"
         ],
         "x-speakeasy-name-override": "bulkUnassignMembers"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/guardrails/assignments/keys": {
       "get": {
@@ -31945,7 +32779,18 @@
           },
           "type": "offsetLimit"
         }
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/guardrails/assignments/members": {
       "get": {
@@ -32059,7 +32904,18 @@
           },
           "type": "offsetLimit"
         }
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/key": {
       "get": {
@@ -32363,7 +33219,18 @@
           "API Keys"
         ],
         "x-speakeasy-name-override": "getCurrentKeyMetadata"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/keys": {
       "get": {
@@ -33125,7 +33992,18 @@
           "API Keys"
         ],
         "x-speakeasy-name-override": "create"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/keys/{hash}": {
       "delete": {
@@ -33971,7 +34849,18 @@
           "API Keys"
         ],
         "x-speakeasy-name-override": "update"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/messages": {
       "post": {
@@ -34253,7 +35142,18 @@
         "x-speakeasy-ignore": true,
         "x-speakeasy-name-override": "create",
         "x-speakeasy-stream-request-field": "stream"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/models": {
       "get": {
@@ -34404,7 +35304,18 @@
           "Models"
         ],
         "x-speakeasy-name-override": "list"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/models/{author}/{slug}/endpoints": {
       "get": {
@@ -34570,7 +35481,18 @@
           "Endpoints"
         ],
         "x-speakeasy-name-override": "list"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/models/count": {
       "get": {
@@ -34642,7 +35564,18 @@
           "Models"
         ],
         "x-speakeasy-name-override": "count"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/models/user": {
       "get": {
@@ -34765,7 +35698,18 @@
           "Models"
         ],
         "x-speakeasy-name-override": "listForUser"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/observability/destinations": {
       "get": {
@@ -35041,7 +35985,18 @@
           "Observability"
         ],
         "x-speakeasy-name-override": "create"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/observability/destinations/{id}": {
       "delete": {
@@ -35381,7 +36336,18 @@
           "Observability"
         ],
         "x-speakeasy-name-override": "update"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/organization/members": {
       "get": {
@@ -35569,7 +36535,218 @@
           },
           "type": "offsetLimit"
         }
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
+    },
+    "/presets/{slug}/chat/completions": {
+      "post": {
+        "description": "Creates a preset (or a new version of an existing one) from an inference request body. Only fields that overlap with the preset config are persisted; other fields (e.g. `messages`, `stream`, `prompt`) are silently ignored.",
+        "operationId": "createPresetsChatCompletions",
+        "parameters": [
+          {
+            "description": "URL-safe slug identifying the preset. Created if it does not exist.",
+            "in": "path",
+            "name": "slug",
+            "required": true,
+            "schema": {
+              "description": "URL-safe slug identifying the preset. Created if it does not exist.",
+              "example": "my-preset",
+              "minLength": 1,
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "example": {
+                "messages": [
+                  {
+                    "content": "You are a helpful assistant.",
+                    "role": "system"
+                  },
+                  {
+                    "content": "Hello!",
+                    "role": "user"
+                  }
+                ],
+                "model": "openai/gpt-4o",
+                "temperature": 0.7
+              },
+              "schema": {
+                "$ref": "#/components/schemas/ChatRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "data": {
+                    "created_at": "2026-04-20T10:00:00Z",
+                    "creator_user_id": "user_2dHFtVWx2n56w6HkM0000000000",
+                    "description": null,
+                    "designated_version": {
+                      "config": {
+                        "model": "openai/gpt-4o",
+                        "temperature": 0.7
+                      },
+                      "created_at": "2026-04-20T10:00:00Z",
+                      "creator_id": "user_2dHFtVWx2n56w6HkM0000000000",
+                      "id": "550e8400-e29b-41d4-a716-446655440000",
+                      "preset_id": "650e8400-e29b-41d4-a716-446655440001",
+                      "system_prompt": "You are a helpful assistant.",
+                      "updated_at": "2026-04-20T10:00:00Z",
+                      "version": 1
+                    },
+                    "designated_version_id": "550e8400-e29b-41d4-a716-446655440000",
+                    "id": "650e8400-e29b-41d4-a716-446655440001",
+                    "name": "my-preset",
+                    "slug": "my-preset",
+                    "status": "active",
+                    "status_updated_at": null,
+                    "updated_at": "2026-04-20T10:00:00Z",
+                    "workspace_id": "750e8400-e29b-41d4-a716-446655440002"
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/CreatePresetFromInferenceResponse"
+                }
+              }
+            },
+            "description": "Preset created or updated successfully."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": {
+                    "code": 400,
+                    "message": "Invalid request parameters"
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestResponse"
+                }
+              }
+            },
+            "description": "Bad Request - Invalid request parameters or malformed input"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": {
+                    "code": 401,
+                    "message": "Missing Authentication header"
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponse"
+                }
+              }
+            },
+            "description": "Unauthorized - Authentication required or invalid credentials"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": {
+                    "code": 403,
+                    "message": "Only management keys can perform this operation"
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ForbiddenResponse"
+                }
+              }
+            },
+            "description": "Forbidden - Authentication successful but insufficient permissions"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": {
+                    "code": 404,
+                    "message": "Resource not found"
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/NotFoundResponse"
+                }
+              }
+            },
+            "description": "Not Found - Resource does not exist"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": {
+                    "code": 409,
+                    "message": "Resource conflict. Please try again later."
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ConflictResponse"
+                }
+              }
+            },
+            "description": "Conflict - Resource conflict or concurrent modification"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": {
+                    "code": 500,
+                    "message": "Internal Server Error"
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error - Unexpected server error"
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ],
+        "summary": "Create a preset from a chat-completions request body",
+        "tags": [
+          "Presets"
+        ]
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/providers": {
       "get": {
@@ -36220,7 +37397,18 @@
           "Providers"
         ],
         "x-speakeasy-name-override": "list"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/rerank": {
       "post": {
@@ -36596,7 +37784,18 @@
           "Rerank"
         ],
         "x-speakeasy-name-override": "rerank"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/responses": {
       "post": {
@@ -36962,7 +38161,18 @@
         ],
         "x-speakeasy-name-override": "send",
         "x-speakeasy-stream-request-field": "stream"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/videos": {
       "post": {
@@ -37104,7 +38314,18 @@
           "Video Generation"
         ],
         "x-speakeasy-name-override": "generate"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/videos/{jobId}": {
       "get": {
@@ -37199,7 +38420,18 @@
           "Video Generation"
         ],
         "x-speakeasy-name-override": "getGeneration"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/videos/{jobId}/content": {
       "get": {
@@ -37328,7 +38560,18 @@
           "Video Generation"
         ],
         "x-speakeasy-name-override": "getVideoContent"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/videos/models": {
       "get": {
@@ -37414,7 +38657,18 @@
         "tags": [
           "Video Generation"
         ]
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/workspaces": {
       "get": {
@@ -37659,7 +38913,18 @@
           "Workspaces"
         ],
         "x-speakeasy-name-override": "create"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/workspaces/{id}": {
       "delete": {
@@ -38029,7 +39294,18 @@
           "Workspaces"
         ],
         "x-speakeasy-name-override": "update"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/workspaces/{id}/members/add": {
       "post": {
@@ -38174,7 +39450,18 @@
           "Workspaces"
         ],
         "x-speakeasy-name-override": "bulkAddMembers"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/workspaces/{id}/members/remove": {
       "post": {
@@ -38310,7 +39597,18 @@
           "Workspaces"
         ],
         "x-speakeasy-name-override": "bulkRemoveMembers"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     }
   },
   "security": [
@@ -38383,6 +39681,10 @@
       "name": "Organization"
     },
     {
+      "description": "Presets endpoints",
+      "name": "Presets"
+    },
+    {
       "description": "Provider information endpoints",
       "name": "Providers"
     },
@@ -38439,6 +39741,9 @@
       },
       {
         "$ref": "#/components/parameters/AppDisplayName"
+      },
+      {
+        "$ref": "#/components/parameters/AppCategories"
       }
     ]
   }

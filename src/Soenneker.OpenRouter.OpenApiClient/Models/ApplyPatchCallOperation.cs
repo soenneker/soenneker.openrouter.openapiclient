@@ -8,34 +8,34 @@ using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchCallOperationMember1"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchCallOperationMember2"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchCallOperationMember3"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchCreateFileOperation"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchDeleteFileOperation"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchUpdateFileOperation"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ApplyPatchCallOperation : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchCallOperationMember1"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchCreateFileOperation"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchCallOperationMember1? ApplyPatchCallOperationMember1 { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchCreateFileOperation? ApplyPatchCreateFileOperation { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchCallOperationMember1 ApplyPatchCallOperationMember1 { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchCreateFileOperation ApplyPatchCreateFileOperation { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchCallOperationMember2"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchDeleteFileOperation"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchCallOperationMember2? ApplyPatchCallOperationMember2 { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchDeleteFileOperation? ApplyPatchDeleteFileOperation { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchCallOperationMember2 ApplyPatchCallOperationMember2 { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchDeleteFileOperation ApplyPatchDeleteFileOperation { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchCallOperationMember3"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchUpdateFileOperation"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchCallOperationMember3? ApplyPatchCallOperationMember3 { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchUpdateFileOperation? ApplyPatchUpdateFileOperation { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchCallOperationMember3 ApplyPatchCallOperationMember3 { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchUpdateFileOperation ApplyPatchUpdateFileOperation { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -45,19 +45,19 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public static global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchCallOperation CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
+            var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
             var result = new global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchCallOperation();
-            if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("create_file".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.ApplyPatchCallOperationMember1 = new global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchCallOperationMember1();
+                result.ApplyPatchCreateFileOperation = new global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchCreateFileOperation();
             }
-            else if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("delete_file".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.ApplyPatchCallOperationMember2 = new global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchCallOperationMember2();
+                result.ApplyPatchDeleteFileOperation = new global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchDeleteFileOperation();
             }
-            else if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("update_file".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.ApplyPatchCallOperationMember3 = new global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchCallOperationMember3();
+                result.ApplyPatchUpdateFileOperation = new global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchUpdateFileOperation();
             }
             return result;
         }
@@ -67,17 +67,17 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(ApplyPatchCallOperationMember1 != null)
+            if(ApplyPatchCreateFileOperation != null)
             {
-                return ApplyPatchCallOperationMember1.GetFieldDeserializers();
+                return ApplyPatchCreateFileOperation.GetFieldDeserializers();
             }
-            else if(ApplyPatchCallOperationMember2 != null)
+            else if(ApplyPatchDeleteFileOperation != null)
             {
-                return ApplyPatchCallOperationMember2.GetFieldDeserializers();
+                return ApplyPatchDeleteFileOperation.GetFieldDeserializers();
             }
-            else if(ApplyPatchCallOperationMember3 != null)
+            else if(ApplyPatchUpdateFileOperation != null)
             {
-                return ApplyPatchCallOperationMember3.GetFieldDeserializers();
+                return ApplyPatchUpdateFileOperation.GetFieldDeserializers();
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -88,17 +88,17 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(ApplyPatchCallOperationMember1 != null)
+            if(ApplyPatchCreateFileOperation != null)
             {
-                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchCallOperationMember1>(null, ApplyPatchCallOperationMember1);
+                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchCreateFileOperation>(null, ApplyPatchCreateFileOperation);
             }
-            else if(ApplyPatchCallOperationMember2 != null)
+            else if(ApplyPatchDeleteFileOperation != null)
             {
-                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchCallOperationMember2>(null, ApplyPatchCallOperationMember2);
+                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchDeleteFileOperation>(null, ApplyPatchDeleteFileOperation);
             }
-            else if(ApplyPatchCallOperationMember3 != null)
+            else if(ApplyPatchUpdateFileOperation != null)
             {
-                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchCallOperationMember3>(null, ApplyPatchCallOperationMember3);
+                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchUpdateFileOperation>(null, ApplyPatchUpdateFileOperation);
             }
         }
     }

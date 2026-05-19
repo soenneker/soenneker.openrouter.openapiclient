@@ -5,12 +5,12 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public enum ApplyPatchCallOperationMember1_type
+    public enum StopServerToolsWhenHasToolCall_type
     #pragma warning restore CS1591
     {
-        [EnumMember(Value = "create_file")]
+        [EnumMember(Value = "has_tool_call")]
         #pragma warning disable CS1591
-        Create_file,
+        Has_tool_call,
         #pragma warning restore CS1591
     }
 }

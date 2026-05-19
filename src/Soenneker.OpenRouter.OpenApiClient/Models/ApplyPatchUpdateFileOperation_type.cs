@@ -5,12 +5,12 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public enum ApplyPatchCallOperationMember3_type
+    public enum ApplyPatchUpdateFileOperation_type
     #pragma warning restore CS1591
     {
-        [EnumMember(Value = "delete_file")]
+        [EnumMember(Value = "update_file")]
         #pragma warning disable CS1591
-        Delete_file,
+        Update_file,
         #pragma warning restore CS1591
     }
 }
