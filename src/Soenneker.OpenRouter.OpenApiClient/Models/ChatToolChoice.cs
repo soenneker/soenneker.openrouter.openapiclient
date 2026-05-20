@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ChatNamedToolChoice"/>, <see cref="string"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ChatNamedToolChoice"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ChatServerToolChoice"/>, <see cref="string"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ChatToolChoice : IComposedTypeWrapper, IParsable
@@ -20,6 +20,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatNamedToolChoice ChatNamedToolChoice { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ChatServerToolChoice"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatServerToolChoice? ChatServerToolChoice { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatServerToolChoice ChatServerToolChoice { get; set; }
 #endif
         /// <summary>Composed type representation for type <see cref="string"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -44,6 +52,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             }
             else {
                 result.ChatNamedToolChoice = new global::Soenneker.OpenRouter.OpenApiClient.Models.ChatNamedToolChoice();
+                result.ChatServerToolChoice = new global::Soenneker.OpenRouter.OpenApiClient.Models.ChatServerToolChoice();
             }
             return result;
         }
@@ -53,9 +62,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(ChatNamedToolChoice != null)
+            if(ChatNamedToolChoice != null || ChatServerToolChoice != null)
             {
-                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(ChatNamedToolChoice);
+                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(ChatNamedToolChoice, ChatServerToolChoice);
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -71,7 +80,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 writer.WriteStringValue(null, String);
             }
             else {
-                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatNamedToolChoice>(null, ChatNamedToolChoice);
+                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatNamedToolChoice>(null, ChatNamedToolChoice, ChatServerToolChoice);
             }
         }
     }

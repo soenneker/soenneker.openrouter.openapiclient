@@ -31,7 +31,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public List<string> BlockedDomains { get; set; }
 #endif
-        /// <summary>Which fetch engine to use. &quot;auto&quot; (default) uses native if the provider supports it, otherwise Exa. &quot;native&quot; forces the provider&apos;s built-in fetch. &quot;exa&quot; uses Exa Contents API. &quot;openrouter&quot; uses direct HTTP fetch. &quot;firecrawl&quot; uses Firecrawl scrape (requires BYOK).</summary>
+        /// <summary>Which fetch engine to use. &quot;auto&quot; (default) uses native if the provider supports it, otherwise Exa. &quot;native&quot; forces the provider&apos;s built-in fetch. &quot;exa&quot; uses Exa Contents API. &quot;openrouter&quot; uses direct HTTP fetch. &quot;firecrawl&quot; uses Firecrawl scrape (requires BYOK). &quot;parallel&quot; uses the Parallel extract API.</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.WebFetchEngineEnum? Engine { get; set; }
         /// <summary>Maximum content length in approximate tokens. Content exceeding this limit is truncated.</summary>
         public int? MaxContentTokens { get; set; }
