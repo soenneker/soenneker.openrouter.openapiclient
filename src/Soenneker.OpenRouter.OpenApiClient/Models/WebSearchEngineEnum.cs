@@ -19,13 +19,13 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning disable CS1591
         Exa,
         #pragma warning restore CS1591
-        [EnumMember(Value = "firecrawl")]
-        #pragma warning disable CS1591
-        Firecrawl,
-        #pragma warning restore CS1591
         [EnumMember(Value = "parallel")]
         #pragma warning disable CS1591
         Parallel,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "firecrawl")]
+        #pragma warning disable CS1591
+        Firecrawl,
         #pragma warning restore CS1591
     }
 }
