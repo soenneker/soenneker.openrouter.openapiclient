@@ -81,6 +81,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public List<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest.MessagesRequest_plugins> Plugins { get; set; }
 #endif
+        /// <summary>A cache key for prompt caching. When provided, routes requests to the same provider to maintain prompt cache warmth and is forwarded to providers that support it. Takes priority over session_id for provider stickiness. Maximum of 256 characters.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? PromptCacheKey { get; set; }
+#nullable restore
+#else
+        public string PromptCacheKey { get; set; }
+#endif
         /// <summary>When multiple model providers are available, optionally indicate your routing preference.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -216,6 +224,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "models", n => { Models = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "output_config", n => { OutputConfig = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesOutputConfig>(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesOutputConfig.CreateFromDiscriminatorValue); } },
                 { "plugins", n => { Plugins = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest.MessagesRequest_plugins>(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest.MessagesRequest_plugins.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "prompt_cache_key", n => { PromptCacheKey = n.GetStringValue(); } },
                 { "provider", n => { Provider = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferences>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferences.CreateFromDiscriminatorValue); } },
                 { "route", n => { Route = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.DeprecatedRoute>(); } },
                 { "service_tier", n => { ServiceTier = n.GetStringValue(); } },
@@ -251,6 +260,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("models", Models);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesOutputConfig>("output_config", OutputConfig);
             writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest.MessagesRequest_plugins>("plugins", Plugins);
+            writer.WriteStringValue("prompt_cache_key", PromptCacheKey);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferences>("provider", Provider);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.DeprecatedRoute>("route", Route);
             writer.WriteStringValue("service_tier", ServiceTier);
