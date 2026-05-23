@@ -123,7 +123,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public global::Soenneker.OpenRouter.OpenApiClient.Models.StoredPromptTemplate Prompt { get; set; }
 #endif
-        /// <summary>A cache key for prompt caching. When provided, routes requests to the same provider to maintain prompt cache warmth and is forwarded to providers that support it. Takes priority over session_id for provider stickiness. Maximum of 256 characters.</summary>
+        /// <summary>The prompt_cache_key property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? PromptCacheKey { get; set; }

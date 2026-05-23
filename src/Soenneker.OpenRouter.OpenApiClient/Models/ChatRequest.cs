@@ -107,14 +107,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #endif
         /// <summary>Presence penalty (-2.0 to 2.0)</summary>
         public double? PresencePenalty { get; set; }
-        /// <summary>A cache key for prompt caching. When provided, routes requests to the same provider to maintain prompt cache warmth and is forwarded to providers that support it. Takes priority over session_id for provider stickiness. Maximum of 256 characters.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? PromptCacheKey { get; set; }
-#nullable restore
-#else
-        public string PromptCacheKey { get; set; }
-#endif
         /// <summary>When multiple model providers are available, optionally indicate your routing preference.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -259,7 +251,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "parallel_tool_calls", n => { ParallelToolCalls = n.GetBoolValue(); } },
                 { "plugins", n => { Plugins = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest.ChatRequest_plugins>(global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest.ChatRequest_plugins.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "presence_penalty", n => { PresencePenalty = n.GetDoubleValue(); } },
-                { "prompt_cache_key", n => { PromptCacheKey = n.GetStringValue(); } },
                 { "provider", n => { Provider = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferences>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferences.CreateFromDiscriminatorValue); } },
                 { "reasoning", n => { Reasoning = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest_reasoning>(global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest_reasoning.CreateFromDiscriminatorValue); } },
                 { "response_format", n => { ResponseFormat = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest.ChatRequest_response_format>(global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest.ChatRequest_response_format.CreateFromDiscriminatorValue); } },
@@ -303,7 +294,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteBoolValue("parallel_tool_calls", ParallelToolCalls);
             writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest.ChatRequest_plugins>("plugins", Plugins);
             writer.WriteDoubleValue("presence_penalty", PresencePenalty);
-            writer.WriteStringValue("prompt_cache_key", PromptCacheKey);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferences>("provider", Provider);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest_reasoning>("reasoning", Reasoning);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest.ChatRequest_response_format>("response_format", ResponseFormat);
