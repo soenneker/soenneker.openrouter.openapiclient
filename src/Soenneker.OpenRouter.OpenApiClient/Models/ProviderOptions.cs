@@ -263,6 +263,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_dekallm Dekallm { get; set; }
 #endif
+        /// <summary>The digitalocean property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_digitalocean? Digitalocean { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_digitalocean Digitalocean { get; set; }
+#endif
         /// <summary>The enfer property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -959,6 +967,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "deepinfra", n => { Deepinfra = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_deepinfra>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_deepinfra.CreateFromDiscriminatorValue); } },
                 { "deepseek", n => { Deepseek = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_deepseek>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_deepseek.CreateFromDiscriminatorValue); } },
                 { "dekallm", n => { Dekallm = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_dekallm>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_dekallm.CreateFromDiscriminatorValue); } },
+                { "digitalocean", n => { Digitalocean = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_digitalocean>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_digitalocean.CreateFromDiscriminatorValue); } },
                 { "enfer", n => { Enfer = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_enfer>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_enfer.CreateFromDiscriminatorValue); } },
                 { "fake-provider", n => { FakeProvider = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_fakeProvider>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_fakeProvider.CreateFromDiscriminatorValue); } },
                 { "featherless", n => { Featherless = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_featherless>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_featherless.CreateFromDiscriminatorValue); } },
@@ -1079,6 +1088,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_deepinfra>("deepinfra", Deepinfra);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_deepseek>("deepseek", Deepseek);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_dekallm>("dekallm", Dekallm);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_digitalocean>("digitalocean", Digitalocean);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_enfer>("enfer", Enfer);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_fakeProvider>("fake-provider", FakeProvider);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_featherless>("featherless", Featherless);

@@ -227,6 +227,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning disable CS1591
         DekaLLM,
         #pragma warning restore CS1591
+        [EnumMember(Value = "DigitalOcean")]
+        #pragma warning disable CS1591
+        DigitalOcean,
+        #pragma warning restore CS1591
         [EnumMember(Value = "Featherless")]
         #pragma warning disable CS1591
         Featherless,
