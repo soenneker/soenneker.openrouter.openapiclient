@@ -22,6 +22,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public List<string> AllowedModels { get; set; }
 #endif
+        /// <summary>Controls cost vs. quality routing tradeoff (0–10). 0 = pure quality (best model regardless of cost), 10 = maximize for cost (cheapest model wins). Intermediate values blend quality and cost signals continuously. Defaults to 7.</summary>
+        public int? CostQualityTradeoff { get; set; }
         /// <summary>Set to false to disable the auto-router plugin for this request. Defaults to true.</summary>
         public bool? Enabled { get; set; }
         /// <summary>The id property</summary>
@@ -52,6 +54,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "allowed_models", n => { AllowedModels = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "cost_quality_tradeoff", n => { CostQualityTradeoff = n.GetIntValue(); } },
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AutoRouterPlugin_id>(); } },
             };
@@ -64,6 +67,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<string>("allowed_models", AllowedModels);
+            writer.WriteIntValue("cost_quality_tradeoff", CostQualityTradeoff);
             writer.WriteBoolValue("enabled", Enabled);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AutoRouterPlugin_id>("id", Id);
             writer.WriteAdditionalData(AdditionalData);

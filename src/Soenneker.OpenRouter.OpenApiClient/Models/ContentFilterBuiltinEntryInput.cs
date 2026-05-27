@@ -8,16 +8,17 @@ using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     /// <summary>
-    /// A builtin content filter entry. Builtin filters include PII detectors and the regex-based prompt injection detector.
+    /// A builtin content filter entry for create/update requests. Labels are system-assigned and cannot be set by the caller.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class ContentFilterBuiltinEntry : IAdditionalDataHolder, IParsable
+    public partial class ContentFilterBuiltinEntryInput : IAdditionalDataHolder, IParsable
     {
         /// <summary>Action taken when the builtin filter triggers</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterBuiltinAction? Action { get; set; }
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Read-only, system-assigned redaction placeholder derived from the slug (e.g. &quot;[EMAIL]&quot;, &quot;[PHONE]&quot;). Not settable by the caller.</summary>
+        /// <summary>Deprecated: labels are system-assigned and cannot be set by the caller. Accepted for backward compatibility but silently ignored.</summary>
+        [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Label { get; set; }
@@ -28,21 +29,21 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The builtin filter identifier</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterBuiltinSlug? Slug { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterBuiltinEntry"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterBuiltinEntryInput"/> and sets the default values.
         /// </summary>
-        public ContentFilterBuiltinEntry()
+        public ContentFilterBuiltinEntryInput()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterBuiltinEntry"/></returns>
+        /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterBuiltinEntryInput"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterBuiltinEntry CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterBuiltinEntryInput CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterBuiltinEntry();
+            return new global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterBuiltinEntryInput();
         }
         /// <summary>
         /// The deserialization information for the current model

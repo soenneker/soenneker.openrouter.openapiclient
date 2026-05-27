@@ -3223,6 +3223,7 @@
             "anthropic/*",
             "openai/gpt-4o"
           ],
+          "cost_quality_tradeoff": 7,
           "enabled": true,
           "id": "auto-router"
         },
@@ -3238,6 +3239,13 @@
               "type": "string"
             },
             "type": "array"
+          },
+          "cost_quality_tradeoff": {
+            "description": "Controls cost vs. quality routing tradeoff (0–10). 0 = pure quality (best model regardless of cost), 10 = maximize for cost (cheapest model wins). Intermediate values blend quality and cost signals continuously. Defaults to 7.",
+            "example": 7,
+            "maximum": 10,
+            "minimum": 0,
+            "type": "integer"
           },
           "enabled": {
             "description": "Set to false to disable the auto-router plugin for this request. Defaults to true.",
@@ -7735,17 +7743,43 @@
       "ContentFilterBuiltinEntry": {
         "description": "A builtin content filter entry. Builtin filters include PII detectors and the regex-based prompt injection detector.",
         "example": {
-          "action": "block",
-          "label": "[PROMPT_INJECTION]",
-          "slug": "regex-prompt-injection"
+          "action": "redact",
+          "label": "[EMAIL]",
+          "slug": "email"
         },
         "properties": {
           "action": {
             "$ref": "#/components/schemas/ContentFilterBuiltinAction"
           },
           "label": {
-            "description": "Optional label used in redaction placeholders (e.g. \"[PROMPT_INJECTION]\")",
-            "example": "[PROMPT_INJECTION]",
+            "description": "Read-only, system-assigned redaction placeholder derived from the slug (e.g. \"[EMAIL]\", \"[PHONE]\"). Not settable by the caller.",
+            "example": "[EMAIL]",
+            "maxLength": 100,
+            "type": "string"
+          },
+          "slug": {
+            "$ref": "#/components/schemas/ContentFilterBuiltinSlug"
+          }
+        },
+        "required": [
+          "slug",
+          "action"
+        ],
+        "type": "object"
+      },
+      "ContentFilterBuiltinEntryInput": {
+        "description": "A builtin content filter entry for create/update requests. Labels are system-assigned and cannot be set by the caller.",
+        "example": {
+          "action": "redact",
+          "slug": "email"
+        },
+        "properties": {
+          "action": {
+            "$ref": "#/components/schemas/ContentFilterBuiltinAction"
+          },
+          "label": {
+            "deprecated": true,
+            "description": "Deprecated: labels are system-assigned and cannot be set by the caller. Accepted for backward compatibility but silently ignored.",
             "maxLength": 100,
             "type": "string"
           },
@@ -8261,7 +8295,7 @@
               }
             ],
             "items": {
-              "$ref": "#/components/schemas/ContentFilterBuiltinEntry"
+              "$ref": "#/components/schemas/ContentFilterBuiltinEntryInput"
             },
             "nullable": true,
             "type": "array"
@@ -8383,9 +8417,9 @@
             ],
             "content_filter_builtins": [
               {
-                "action": "block",
-                "label": "[PROMPT_INJECTION]",
-                "slug": "regex-prompt-injection"
+                "action": "redact",
+                "label": "[EMAIL]",
+                "slug": "email"
               }
             ],
             "content_filters": null,
@@ -10630,9 +10664,9 @@
             ],
             "content_filter_builtins": [
               {
-                "action": "block",
-                "label": "[PROMPT_INJECTION]",
-                "slug": "regex-prompt-injection"
+                "action": "redact",
+                "label": "[EMAIL]",
+                "slug": "email"
               }
             ],
             "content_filters": null,
@@ -10811,9 +10845,9 @@
           ],
           "content_filter_builtins": [
             {
-              "action": "block",
-              "label": "[PROMPT_INJECTION]",
-              "slug": "regex-prompt-injection"
+              "action": "redact",
+              "label": "[EMAIL]",
+              "slug": "email"
             }
           ],
           "content_filters": null,
@@ -10864,9 +10898,9 @@
             "description": "Builtin content filters applied to requests. Includes PII detectors and the regex-based prompt injection detector.",
             "example": [
               {
-                "action": "block",
-                "label": "[PROMPT_INJECTION]",
-                "slug": "regex-prompt-injection"
+                "action": "redact",
+                "label": "[EMAIL]",
+                "slug": "email"
               }
             ],
             "items": {
@@ -12317,9 +12351,9 @@
               ],
               "content_filter_builtins": [
                 {
-                  "action": "block",
-                  "label": "[PROMPT_INJECTION]",
-                  "slug": "regex-prompt-injection"
+                  "action": "redact",
+                  "label": "[EMAIL]",
+                  "slug": "email"
                 }
               ],
               "content_filters": null,
@@ -19743,6 +19777,10 @@
                 "model": {
                   "description": "Slug of the analysis model that failed.",
                   "type": "string"
+                },
+                "status_code": {
+                  "description": "HTTP status code from the upstream response, when available (e.g. 402, 429).",
+                  "type": "integer"
                 }
               },
               "required": [
@@ -19752,6 +19790,10 @@
               "type": "object"
             },
             "type": "array"
+          },
+          "failure_reason": {
+            "description": "Typed failure reason when the fusion run failed. Possible values include: all_panels_failed, insufficient_credits, rate_limited, judge_not_valid_json, judge_schema_mismatch, judge_upstream_error, judge_empty_completion.",
+            "type": "string"
           },
           "id": {
             "type": "string"
@@ -23431,6 +23473,114 @@
         "type": "string",
         "x-speakeasy-unknown-values": "allow"
       },
+      "RankingsDailyItem": {
+        "example": {
+          "date": "2026-05-11",
+          "model_permaslug": "openai/gpt-4o-2024-05-13",
+          "total_tokens": "12345678"
+        },
+        "properties": {
+          "date": {
+            "description": "UTC calendar date the row is aggregated over (YYYY-MM-DD).",
+            "example": "2026-05-11",
+            "type": "string"
+          },
+          "model_permaslug": {
+            "description": "Model variant permaslug (e.g. `openai/gpt-4o-2024-05-13`, `openai/gpt-4o-2024-05-13:free`). Non-default variants include a `:variant` suffix and are ranked as their own entry. The reserved value `other` denotes the aggregated row covering every model outside the daily top 50 for that date — always sorted last within its date.",
+            "example": "openai/gpt-4o-2024-05-13",
+            "type": "string"
+          },
+          "total_tokens": {
+            "description": "Sum of `prompt_tokens + completion_tokens` for the day, returned as a decimal string so 64-bit values are not truncated.",
+            "example": "12345678",
+            "type": "string"
+          }
+        },
+        "required": [
+          "date",
+          "model_permaslug",
+          "total_tokens"
+        ],
+        "type": "object"
+      },
+      "RankingsDailyMeta": {
+        "example": {
+          "as_of": "2026-05-12T02:00:00Z",
+          "end_date": "2026-05-11",
+          "start_date": "2026-04-12",
+          "version": "v1"
+        },
+        "properties": {
+          "as_of": {
+            "description": "ISO-8601 timestamp of when the response was generated. Reflects data-freshness because the underlying materialized view continuously ingests upstream events.",
+            "example": "2026-05-12T02:00:00Z",
+            "type": "string"
+          },
+          "end_date": {
+            "description": "Resolved end of the date window (UTC, inclusive).",
+            "example": "2026-05-11",
+            "type": "string"
+          },
+          "start_date": {
+            "description": "Resolved start of the date window (UTC, inclusive).",
+            "example": "2026-04-12",
+            "type": "string"
+          },
+          "version": {
+            "description": "Dataset version. Field names and grain are stable for the life of `v1`.",
+            "enum": [
+              "v1"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "as_of",
+          "version",
+          "start_date",
+          "end_date"
+        ],
+        "type": "object"
+      },
+      "RankingsDailyResponse": {
+        "example": {
+          "data": [
+            {
+              "date": "2026-05-11",
+              "model_permaslug": "openai/gpt-4o-2024-05-13",
+              "total_tokens": "12345678"
+            },
+            {
+              "date": "2026-05-11",
+              "model_permaslug": "anthropic/claude-3.5-sonnet-20241022",
+              "total_tokens": "9876543"
+            }
+          ],
+          "meta": {
+            "as_of": "2026-05-12T02:00:00Z",
+            "end_date": "2026-05-11",
+            "start_date": "2026-04-12",
+            "version": "v1"
+          }
+        },
+        "properties": {
+          "data": {
+            "description": "Up to 51 rows per day — the top 50 public models by `total_tokens` for each UTC calendar date in the window, plus one aggregated `other` row summing every model outside that top 50 (omitted when the long tail is empty). Rows are sorted by `date` ascending, then by `total_tokens` descending, with `other` pinned last within its date. Ties between real models break alphabetically on `model_permaslug` so the order is stable across requests.",
+            "items": {
+              "$ref": "#/components/schemas/RankingsDailyItem"
+            },
+            "type": "array"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/RankingsDailyMeta"
+          }
+        },
+        "required": [
+          "data",
+          "meta"
+        ],
+        "type": "object"
+      },
       "ReasoningConfig": {
         "allOf": [
           {
@@ -26145,7 +26295,7 @@
               }
             ],
             "items": {
-              "$ref": "#/components/schemas/ContentFilterBuiltinEntry"
+              "$ref": "#/components/schemas/ContentFilterBuiltinEntryInput"
             },
             "nullable": true,
             "type": "array"
@@ -26250,9 +26400,9 @@
             ],
             "content_filter_builtins": [
               {
-                "action": "block",
-                "label": "[PROMPT_INJECTION]",
-                "slug": "regex-prompt-injection"
+                "action": "redact",
+                "label": "[EMAIL]",
+                "slug": "email"
               }
             ],
             "content_filters": null,
@@ -29947,6 +30097,143 @@
         "x-fern-ignore": true,
         "x-speakeasy-ignore": true,
         "x-speakeasy-name-override": "createCoinbaseCharge"
+      }
+    },
+    "/datasets/rankings-daily": {
+      "get": {
+        "description": "Returns the top 50 public models per day by total token usage on OpenRouter, plus a\nsingle aggregated `other` row per day that sums every model outside that top 50.\nToken totals are `prompt_tokens + completion_tokens`, matching the public rankings\nchart on openrouter.ai/rankings.\n\nEach row is a distinct `(date, model_permaslug)` pair. The `other` row uses the\nreserved permaslug `other` and is always returned last within its date, so callers\ncan compute `top-50 traffic / total daily traffic` without a second request.\n\nAuthenticate with any valid OpenRouter API key (same key used for inference).\nRate-limited to 30 requests/minute per key and 500 requests/day per account.\n\nWhen republishing or quoting this dataset, OpenRouter must be cited as:\n\"Source: OpenRouter (openrouter.ai/rankings), as of {as_of}.\"\n\nToken counts come from each upstream provider's own tokenizer (Anthropic counts\nare as reported by Anthropic, OpenAI counts are as reported by OpenAI, etc.), so\na token in one row is not directly comparable to a token in another row from a\ndifferent provider.",
+        "operationId": "getRankingsDaily",
+        "parameters": [
+          {
+            "description": "Start of the date window in YYYY-MM-DD (UTC), inclusive. Defaults to 30 days before `end_date`. The dataset begins at 2025-01-01; earlier values are clamped forward to that floor and the resolved value is echoed in `meta.start_date`.",
+            "in": "query",
+            "name": "start_date",
+            "required": false,
+            "schema": {
+              "description": "Start of the date window in YYYY-MM-DD (UTC), inclusive. Defaults to 30 days before `end_date`. The dataset begins at 2025-01-01; earlier values are clamped forward to that floor and the resolved value is echoed in `meta.start_date`.",
+              "example": "2026-04-12",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "End of the date window in YYYY-MM-DD (UTC), inclusive. Defaults to the most recent completed UTC day. Must be on or after 2025-01-01; earlier values are rejected with a 400.",
+            "in": "query",
+            "name": "end_date",
+            "required": false,
+            "schema": {
+              "description": "End of the date window in YYYY-MM-DD (UTC), inclusive. Defaults to the most recent completed UTC day. Must be on or after 2025-01-01; earlier values are rejected with a 400.",
+              "example": "2026-05-11",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "data": [
+                    {
+                      "date": "2026-05-11",
+                      "model_permaslug": "openai/gpt-4o-2024-05-13",
+                      "total_tokens": "12345678"
+                    },
+                    {
+                      "date": "2026-05-11",
+                      "model_permaslug": "anthropic/claude-3.5-sonnet-20241022",
+                      "total_tokens": "9876543"
+                    },
+                    {
+                      "date": "2026-05-11",
+                      "model_permaslug": "other",
+                      "total_tokens": "4321098"
+                    }
+                  ],
+                  "meta": {
+                    "as_of": "2026-05-12T02:00:00Z",
+                    "end_date": "2026-05-11",
+                    "start_date": "2026-04-12",
+                    "version": "v1"
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/RankingsDailyResponse"
+                }
+              }
+            },
+            "description": "Up to 51 rows per day — the top 50 public models by `total_tokens` plus a single aggregated `other` row covering every model outside that top 50. Sorted by `date` ascending, then by `total_tokens` descending, with `other` pinned last within its date."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": {
+                    "code": 400,
+                    "message": "Invalid request parameters"
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestResponse"
+                }
+              }
+            },
+            "description": "Bad Request - Invalid request parameters or malformed input"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": {
+                    "code": 401,
+                    "message": "Missing Authentication header"
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponse"
+                }
+              }
+            },
+            "description": "Unauthorized - Authentication required or invalid credentials"
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": {
+                    "code": 429,
+                    "message": "Rate limit exceeded"
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/TooManyRequestsResponse"
+                }
+              }
+            },
+            "description": "Too Many Requests - Rate limit exceeded"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": {
+                    "code": 500,
+                    "message": "Internal Server Error"
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error - Unexpected server error"
+          }
+        },
+        "summary": "Daily token totals for top 50 models",
+        "tags": [
+          "Datasets"
+        ]
       }
     },
     "/embeddings": {
@@ -39156,6 +39443,10 @@
     {
       "description": "Credit management endpoints",
       "name": "Credits"
+    },
+    {
+      "description": "Datasets endpoints",
+      "name": "Datasets"
     },
     {
       "description": "Text embedding endpoints",

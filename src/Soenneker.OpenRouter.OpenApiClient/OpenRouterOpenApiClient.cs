@@ -12,6 +12,7 @@ using Soenneker.OpenRouter.OpenApiClient.Auth;
 using Soenneker.OpenRouter.OpenApiClient.Byok;
 using Soenneker.OpenRouter.OpenApiClient.Chat;
 using Soenneker.OpenRouter.OpenApiClient.Credits;
+using Soenneker.OpenRouter.OpenApiClient.Datasets;
 using Soenneker.OpenRouter.OpenApiClient.Embeddings;
 using Soenneker.OpenRouter.OpenApiClient.Endpoints;
 using Soenneker.OpenRouter.OpenApiClient.Generation;
@@ -69,6 +70,11 @@ namespace Soenneker.OpenRouter.OpenApiClient
         public global::Soenneker.OpenRouter.OpenApiClient.Credits.CreditsRequestBuilder Credits
         {
             get => new global::Soenneker.OpenRouter.OpenApiClient.Credits.CreditsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The datasets property</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Datasets.DatasetsRequestBuilder Datasets
+        {
+            get => new global::Soenneker.OpenRouter.OpenApiClient.Datasets.DatasetsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The embeddings property</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Embeddings.EmbeddingsRequestBuilder Embeddings

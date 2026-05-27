@@ -39,6 +39,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public List<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputFusionServerToolItem_failed_models> FailedModels { get; set; }
 #endif
+        /// <summary>Typed failure reason when the fusion run failed. Possible values include: all_panels_failed, insufficient_credits, rate_limited, judge_not_valid_json, judge_schema_mismatch, judge_upstream_error, judge_empty_completion.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? FailureReason { get; set; }
+#nullable restore
+#else
+        public string FailureReason { get; set; }
+#endif
         /// <summary>The id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -87,6 +95,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "analysis", n => { Analysis = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputFusionServerToolItem_analysis>(global::Soenneker.OpenRouter.OpenApiClient.Models.OutputFusionServerToolItem_analysis.CreateFromDiscriminatorValue); } },
                 { "error", n => { Error = n.GetStringValue(); } },
                 { "failed_models", n => { FailedModels = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputFusionServerToolItem_failed_models>(global::Soenneker.OpenRouter.OpenApiClient.Models.OutputFusionServerToolItem_failed_models.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "failure_reason", n => { FailureReason = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "responses", n => { Responses = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputFusionServerToolItem_responses>(global::Soenneker.OpenRouter.OpenApiClient.Models.OutputFusionServerToolItem_responses.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ToolCallStatus>(); } },
@@ -103,6 +112,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputFusionServerToolItem_analysis>("analysis", Analysis);
             writer.WriteStringValue("error", Error);
             writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputFusionServerToolItem_failed_models>("failed_models", FailedModels);
+            writer.WriteStringValue("failure_reason", FailureReason);
             writer.WriteStringValue("id", Id);
             writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputFusionServerToolItem_responses>("responses", Responses);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ToolCallStatus>("status", Status);

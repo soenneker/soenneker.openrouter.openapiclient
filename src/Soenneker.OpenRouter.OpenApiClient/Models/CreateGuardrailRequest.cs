@@ -33,10 +33,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Builtin content filters to apply. The &quot;flag&quot; action is only supported for &quot;regex-prompt-injection&quot;; PII slugs (email, phone, ssn, credit-card, ip-address, person-name, address) accept &quot;block&quot; or &quot;redact&quot; only.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterBuiltinEntry>? ContentFilterBuiltins { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterBuiltinEntryInput>? ContentFilterBuiltins { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterBuiltinEntry> ContentFilterBuiltins { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterBuiltinEntryInput> ContentFilterBuiltins { get; set; }
 #endif
         /// <summary>Custom regex content filters to apply to request messages</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -122,7 +122,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             {
                 { "allowed_models", n => { AllowedModels = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "allowed_providers", n => { AllowedProviders = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "content_filter_builtins", n => { ContentFilterBuiltins = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterBuiltinEntry>(global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterBuiltinEntry.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "content_filter_builtins", n => { ContentFilterBuiltins = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterBuiltinEntryInput>(global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterBuiltinEntryInput.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "content_filters", n => { ContentFilters = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterEntry>(global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterEntry.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "enforce_zdr", n => { EnforceZdr = n.GetBoolValue(); } },
@@ -147,7 +147,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<string>("allowed_models", AllowedModels);
             writer.WriteCollectionOfPrimitiveValues<string>("allowed_providers", AllowedProviders);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterBuiltinEntry>("content_filter_builtins", ContentFilterBuiltins);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterBuiltinEntryInput>("content_filter_builtins", ContentFilterBuiltins);
             writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterEntry>("content_filters", ContentFilters);
             writer.WriteStringValue("description", Description);
             writer.WriteBoolValue("enforce_zdr", EnforceZdr);

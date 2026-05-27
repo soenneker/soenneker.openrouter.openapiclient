@@ -9,45 +9,53 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class OutputFusionServerToolItem_failed_models : IAdditionalDataHolder, IParsable
+    public partial class RankingsDailyMeta : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Error message describing why the model failed.</summary>
+        /// <summary>ISO-8601 timestamp of when the response was generated. Reflects data-freshness because the underlying materialized view continuously ingests upstream events.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Error { get; set; }
+        public string? AsOf { get; set; }
 #nullable restore
 #else
-        public string Error { get; set; }
+        public string AsOf { get; set; }
 #endif
-        /// <summary>Slug of the analysis model that failed.</summary>
+        /// <summary>Resolved end of the date window (UTC, inclusive).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Model { get; set; }
+        public string? EndDate { get; set; }
 #nullable restore
 #else
-        public string Model { get; set; }
+        public string EndDate { get; set; }
 #endif
-        /// <summary>HTTP status code from the upstream response, when available (e.g. 402, 429).</summary>
-        public int? StatusCode { get; set; }
+        /// <summary>Resolved start of the date window (UTC, inclusive).</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? StartDate { get; set; }
+#nullable restore
+#else
+        public string StartDate { get; set; }
+#endif
+        /// <summary>Dataset version. Field names and grain are stable for the life of `v1`.</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.RankingsDailyMeta_version? Version { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputFusionServerToolItem_failed_models"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.RankingsDailyMeta"/> and sets the default values.
         /// </summary>
-        public OutputFusionServerToolItem_failed_models()
+        public RankingsDailyMeta()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputFusionServerToolItem_failed_models"/></returns>
+        /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.RankingsDailyMeta"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.OpenRouter.OpenApiClient.Models.OutputFusionServerToolItem_failed_models CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.OpenRouter.OpenApiClient.Models.RankingsDailyMeta CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.OpenRouter.OpenApiClient.Models.OutputFusionServerToolItem_failed_models();
+            return new global::Soenneker.OpenRouter.OpenApiClient.Models.RankingsDailyMeta();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -57,9 +65,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "error", n => { Error = n.GetStringValue(); } },
-                { "model", n => { Model = n.GetStringValue(); } },
-                { "status_code", n => { StatusCode = n.GetIntValue(); } },
+                { "as_of", n => { AsOf = n.GetStringValue(); } },
+                { "end_date", n => { EndDate = n.GetStringValue(); } },
+                { "start_date", n => { StartDate = n.GetStringValue(); } },
+                { "version", n => { Version = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.RankingsDailyMeta_version>(); } },
             };
         }
         /// <summary>
@@ -69,9 +78,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("error", Error);
-            writer.WriteStringValue("model", Model);
-            writer.WriteIntValue("status_code", StatusCode);
+            writer.WriteStringValue("as_of", AsOf);
+            writer.WriteStringValue("end_date", EndDate);
+            writer.WriteStringValue("start_date", StartDate);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.RankingsDailyMeta_version>("version", Version);
             writer.WriteAdditionalData(AdditionalData);
         }
     }
