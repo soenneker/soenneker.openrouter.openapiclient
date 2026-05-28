@@ -8,18 +8,26 @@ using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="string"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.PDFParserEngine_Wrapper"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.PDFParserEngine_Wrapper_2"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PDFParserEngine : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Composed type representation for type <see cref="string"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.PDFParserEngine_Wrapper"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? String { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PDFParserEngine_Wrapper? PDFParserEngineWrapper { get; set; }
 #nullable restore
 #else
-        public string String { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PDFParserEngine_Wrapper PDFParserEngineWrapper { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.PDFParserEngine_Wrapper_2"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PDFParserEngine_Wrapper_2? PDFParserEngineWrapper2 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PDFParserEngine_Wrapper_2 PDFParserEngineWrapper2 { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -30,10 +38,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var result = new global::Soenneker.OpenRouter.OpenApiClient.Models.PDFParserEngine();
-            if(parseNode.GetStringValue() is string stringValue)
-            {
-                result.String = stringValue;
-            }
+            result.PDFParserEngineWrapper = new global::Soenneker.OpenRouter.OpenApiClient.Models.PDFParserEngine_Wrapper();
+            result.PDFParserEngineWrapper2 = new global::Soenneker.OpenRouter.OpenApiClient.Models.PDFParserEngine_Wrapper_2();
             return result;
         }
         /// <summary>
@@ -42,6 +48,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
+            if(PDFParserEngineWrapper != null || PDFParserEngineWrapper2 != null)
+            {
+                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(PDFParserEngineWrapper, PDFParserEngineWrapper2);
+            }
             return new Dictionary<string, Action<IParseNode>>();
         }
         /// <summary>
@@ -51,10 +61,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(String != null)
-            {
-                writer.WriteStringValue(null, String);
-            }
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PDFParserEngine_Wrapper>(null, PDFParserEngineWrapper, PDFParserEngineWrapper2);
         }
     }
 }

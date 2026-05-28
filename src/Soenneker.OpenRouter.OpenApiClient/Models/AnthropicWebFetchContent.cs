@@ -39,11 +39,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
             var result = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicWebFetchContent();
-            if("web_fetch_result".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("AnthropicWebFetchBlock".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.AnthropicWebFetchBlock = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicWebFetchBlock();
             }
-            else if("web_fetch_tool_result_error".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("AnthropicWebFetchToolResultError".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.AnthropicWebFetchToolResultError = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicWebFetchToolResultError();
             }

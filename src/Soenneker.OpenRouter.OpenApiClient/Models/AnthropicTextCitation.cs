@@ -63,23 +63,23 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
             var result = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextCitation();
-            if("char_location".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("AnthropicCitationCharLocation".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.AnthropicCitationCharLocation = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCitationCharLocation();
             }
-            else if("content_block_location".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("AnthropicCitationContentBlockLocation".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.AnthropicCitationContentBlockLocation = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCitationContentBlockLocation();
             }
-            else if("page_location".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("AnthropicCitationPageLocation".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.AnthropicCitationPageLocation = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCitationPageLocation();
             }
-            else if("search_result_location".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("AnthropicCitationSearchResultLocation".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.AnthropicCitationSearchResultLocation = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCitationSearchResultLocation();
             }
-            else if("web_search_result_location".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("AnthropicCitationWebSearchResultLocation".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.AnthropicCitationWebSearchResultLocation = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCitationWebSearchResultLocation();
             }

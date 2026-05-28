@@ -15,7 +15,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Confirmation that the BYOK credential was deleted.</summary>
-        public bool? Deleted { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.DeleteBYOKKeyResponse_deleted? Deleted { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.DeleteBYOKKeyResponse"/> and sets the default values.
         /// </summary>
@@ -41,7 +41,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "deleted", n => { Deleted = n.GetBoolValue(); } },
+                { "deleted", n => { Deleted = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.DeleteBYOKKeyResponse_deleted>(); } },
             };
         }
         /// <summary>
@@ -51,7 +51,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteBoolValue("deleted", Deleted);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.DeleteBYOKKeyResponse_deleted>("deleted", Deleted);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

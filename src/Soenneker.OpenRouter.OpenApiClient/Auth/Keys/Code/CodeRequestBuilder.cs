@@ -36,7 +36,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Auth.Keys.Code
         /// <summary>
         /// Create an authorization code for the PKCE flow to generate a user-controlled API key
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Auth.Keys.Code.CodePostResponse"/></returns>
+        /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.CreateAuthKeysCode200"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -46,11 +46,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Auth.Keys.Code
         /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.InternalServerResponse">When receiving a 500 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.OpenRouter.OpenApiClient.Auth.Keys.Code.CodePostResponse?> PostAsync(global::Soenneker.OpenRouter.OpenApiClient.Auth.Keys.Code.CodePostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.OpenRouter.OpenApiClient.Models.CreateAuthKeysCode200?> PostAsync(global::Soenneker.OpenRouter.OpenApiClient.Models.CreateAuthKeysCode body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.OpenRouter.OpenApiClient.Auth.Keys.Code.CodePostResponse> PostAsync(global::Soenneker.OpenRouter.OpenApiClient.Auth.Keys.Code.CodePostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.OpenRouter.OpenApiClient.Models.CreateAuthKeysCode200> PostAsync(global::Soenneker.OpenRouter.OpenApiClient.Models.CreateAuthKeysCode body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -62,7 +62,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Auth.Keys.Code
                 { "409", global::Soenneker.OpenRouter.OpenApiClient.Models.ConflictResponse.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.OpenRouter.OpenApiClient.Models.InternalServerResponse.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<global::Soenneker.OpenRouter.OpenApiClient.Auth.Keys.Code.CodePostResponse>(requestInfo, global::Soenneker.OpenRouter.OpenApiClient.Auth.Keys.Code.CodePostResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.OpenRouter.OpenApiClient.Models.CreateAuthKeysCode200>(requestInfo, global::Soenneker.OpenRouter.OpenApiClient.Models.CreateAuthKeysCode200.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Create an authorization code for the PKCE flow to generate a user-controlled API key
@@ -72,11 +72,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Auth.Keys.Code
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(global::Soenneker.OpenRouter.OpenApiClient.Auth.Keys.Code.CodePostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.OpenRouter.OpenApiClient.Models.CreateAuthKeysCode body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(global::Soenneker.OpenRouter.OpenApiClient.Auth.Keys.Code.CodePostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.OpenRouter.OpenApiClient.Models.CreateAuthKeysCode body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));

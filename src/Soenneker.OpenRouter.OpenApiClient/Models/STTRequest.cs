@@ -42,10 +42,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Provider-specific passthrough configuration</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.STTRequest_provider? Provider { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.STTRequestProvider? Provider { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.STTRequest_provider Provider { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.STTRequestProvider Provider { get; set; }
 #endif
         /// <summary>Sampling temperature for transcription</summary>
         public double? Temperature { get; set; }
@@ -77,7 +77,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "input_audio", n => { InputAudio = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.STTInputAudio>(global::Soenneker.OpenRouter.OpenApiClient.Models.STTInputAudio.CreateFromDiscriminatorValue); } },
                 { "language", n => { Language = n.GetStringValue(); } },
                 { "model", n => { Model = n.GetStringValue(); } },
-                { "provider", n => { Provider = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.STTRequest_provider>(global::Soenneker.OpenRouter.OpenApiClient.Models.STTRequest_provider.CreateFromDiscriminatorValue); } },
+                { "provider", n => { Provider = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.STTRequestProvider>(global::Soenneker.OpenRouter.OpenApiClient.Models.STTRequestProvider.CreateFromDiscriminatorValue); } },
                 { "temperature", n => { Temperature = n.GetDoubleValue(); } },
             };
         }
@@ -91,7 +91,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.STTInputAudio>("input_audio", InputAudio);
             writer.WriteStringValue("language", Language);
             writer.WriteStringValue("model", Model);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.STTRequest_provider>("provider", Provider);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.STTRequestProvider>("provider", Provider);
             writer.WriteDoubleValue("temperature", Temperature);
             writer.WriteAdditionalData(AdditionalData);
         }

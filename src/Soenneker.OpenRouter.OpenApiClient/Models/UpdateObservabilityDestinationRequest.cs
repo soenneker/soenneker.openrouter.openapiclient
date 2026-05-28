@@ -35,10 +35,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The filter_rules property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityFilterRulesConfig? FilterRules { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.UpdateObservabilityDestinationRequest_filter_rules? FilterRules { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityFilterRulesConfig FilterRules { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.UpdateObservabilityDestinationRequest_filter_rules FilterRules { get; set; }
 #endif
         /// <summary>Human-readable name for the destination.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -80,7 +80,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "api_key_hashes", n => { ApiKeyHashes = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "config", n => { Config = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.UpdateObservabilityDestinationRequest_config>(global::Soenneker.OpenRouter.OpenApiClient.Models.UpdateObservabilityDestinationRequest_config.CreateFromDiscriminatorValue); } },
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
-                { "filter_rules", n => { FilterRules = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityFilterRulesConfig>(global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityFilterRulesConfig.CreateFromDiscriminatorValue); } },
+                { "filter_rules", n => { FilterRules = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.UpdateObservabilityDestinationRequest_filter_rules>(global::Soenneker.OpenRouter.OpenApiClient.Models.UpdateObservabilityDestinationRequest_filter_rules.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "privacy_mode", n => { PrivacyMode = n.GetBoolValue(); } },
                 { "sampling_rate", n => { SamplingRate = n.GetDoubleValue(); } },
@@ -96,7 +96,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("api_key_hashes", ApiKeyHashes);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.UpdateObservabilityDestinationRequest_config>("config", Config);
             writer.WriteBoolValue("enabled", Enabled);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityFilterRulesConfig>("filter_rules", FilterRules);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.UpdateObservabilityDestinationRequest_filter_rules>("filter_rules", FilterRules);
             writer.WriteStringValue("name", Name);
             writer.WriteBoolValue("privacy_mode", PrivacyMode);
             writer.WriteDoubleValue("sampling_rate", SamplingRate);

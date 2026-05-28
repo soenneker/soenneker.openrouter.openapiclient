@@ -8,13 +8,11 @@ using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="double"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.PercentileLatencyCutoffs"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.PreferredMaxLatencyMember1"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.PercentileLatencyCutoffs"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.PreferredMaxLatency_Branch1"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PreferredMaxLatency : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Composed type representation for type <see cref="double"/></summary>
-        public double? Double { get; set; }
         /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.PercentileLatencyCutoffs"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -23,13 +21,13 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public global::Soenneker.OpenRouter.OpenApiClient.Models.PercentileLatencyCutoffs PercentileLatencyCutoffs { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.PreferredMaxLatencyMember1"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.PreferredMaxLatency_Branch1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.PreferredMaxLatencyMember1? PreferredMaxLatencyMember1 { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PreferredMaxLatency_Branch1? PreferredMaxLatencyBranch1 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.PreferredMaxLatencyMember1 PreferredMaxLatencyMember1 { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PreferredMaxLatency_Branch1 PreferredMaxLatencyBranch1 { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -40,14 +38,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var result = new global::Soenneker.OpenRouter.OpenApiClient.Models.PreferredMaxLatency();
-            if(parseNode.GetDoubleValue() is double doubleValue)
-            {
-                result.Double = doubleValue;
-            }
-            else {
-                result.PercentileLatencyCutoffs = new global::Soenneker.OpenRouter.OpenApiClient.Models.PercentileLatencyCutoffs();
-                result.PreferredMaxLatencyMember1 = new global::Soenneker.OpenRouter.OpenApiClient.Models.PreferredMaxLatencyMember1();
-            }
+            result.PercentileLatencyCutoffs = new global::Soenneker.OpenRouter.OpenApiClient.Models.PercentileLatencyCutoffs();
+            result.PreferredMaxLatencyBranch1 = new global::Soenneker.OpenRouter.OpenApiClient.Models.PreferredMaxLatency_Branch1();
             return result;
         }
         /// <summary>
@@ -56,9 +48,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(PercentileLatencyCutoffs != null || PreferredMaxLatencyMember1 != null)
+            if(PercentileLatencyCutoffs != null || PreferredMaxLatencyBranch1 != null)
             {
-                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(PercentileLatencyCutoffs, PreferredMaxLatencyMember1);
+                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(PercentileLatencyCutoffs, PreferredMaxLatencyBranch1);
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -69,13 +61,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(Double != null)
-            {
-                writer.WriteDoubleValue(null, Double);
-            }
-            else {
-                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PercentileLatencyCutoffs>(null, PercentileLatencyCutoffs, PreferredMaxLatencyMember1);
-            }
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PercentileLatencyCutoffs>(null, PercentileLatencyCutoffs, PreferredMaxLatencyBranch1);
         }
     }
 }

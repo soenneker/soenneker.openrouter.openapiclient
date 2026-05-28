@@ -15,7 +15,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Deprecated: This field has no effect. Full usage details are always included.</summary>
+        /// <summary>&quot;Deprecated: This field has no effect. Full usage details are always included.&quot;</summary>
         [Obsolete("")]
         public bool? IncludeUsage { get; set; }
         /// <summary>

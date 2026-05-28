@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ChatNamedToolChoice"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ChatServerToolChoice"/>, <see cref="string"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ChatNamedToolChoice"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ChatServerToolChoice"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ChatToolChoice_Wrapper"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ChatToolChoice_Wrapper_2"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ChatToolChoice_Wrapper_3"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ChatToolChoice : IComposedTypeWrapper, IParsable
@@ -29,13 +29,29 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatServerToolChoice ChatServerToolChoice { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="string"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ChatToolChoice_Wrapper"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? String { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatToolChoice_Wrapper? ChatToolChoiceWrapper { get; set; }
 #nullable restore
 #else
-        public string String { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatToolChoice_Wrapper ChatToolChoiceWrapper { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ChatToolChoice_Wrapper_2"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatToolChoice_Wrapper_2? ChatToolChoiceWrapper2 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatToolChoice_Wrapper_2 ChatToolChoiceWrapper2 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ChatToolChoice_Wrapper_3"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatToolChoice_Wrapper_3? ChatToolChoiceWrapper3 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatToolChoice_Wrapper_3 ChatToolChoiceWrapper3 { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -46,14 +62,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var result = new global::Soenneker.OpenRouter.OpenApiClient.Models.ChatToolChoice();
-            if(parseNode.GetStringValue() is string stringValue)
-            {
-                result.String = stringValue;
-            }
-            else {
-                result.ChatNamedToolChoice = new global::Soenneker.OpenRouter.OpenApiClient.Models.ChatNamedToolChoice();
-                result.ChatServerToolChoice = new global::Soenneker.OpenRouter.OpenApiClient.Models.ChatServerToolChoice();
-            }
+            result.ChatNamedToolChoice = new global::Soenneker.OpenRouter.OpenApiClient.Models.ChatNamedToolChoice();
+            result.ChatServerToolChoice = new global::Soenneker.OpenRouter.OpenApiClient.Models.ChatServerToolChoice();
+            result.ChatToolChoiceWrapper = new global::Soenneker.OpenRouter.OpenApiClient.Models.ChatToolChoice_Wrapper();
+            result.ChatToolChoiceWrapper2 = new global::Soenneker.OpenRouter.OpenApiClient.Models.ChatToolChoice_Wrapper_2();
+            result.ChatToolChoiceWrapper3 = new global::Soenneker.OpenRouter.OpenApiClient.Models.ChatToolChoice_Wrapper_3();
             return result;
         }
         /// <summary>
@@ -62,9 +75,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(ChatNamedToolChoice != null || ChatServerToolChoice != null)
+            if(ChatNamedToolChoice != null || ChatServerToolChoice != null || ChatToolChoiceWrapper != null || ChatToolChoiceWrapper2 != null || ChatToolChoiceWrapper3 != null)
             {
-                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(ChatNamedToolChoice, ChatServerToolChoice);
+                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(ChatNamedToolChoice, ChatServerToolChoice, ChatToolChoiceWrapper, ChatToolChoiceWrapper2, ChatToolChoiceWrapper3);
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -75,13 +88,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(String != null)
-            {
-                writer.WriteStringValue(null, String);
-            }
-            else {
-                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatNamedToolChoice>(null, ChatNamedToolChoice, ChatServerToolChoice);
-            }
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatNamedToolChoice>(null, ChatNamedToolChoice, ChatServerToolChoice, ChatToolChoiceWrapper, ChatToolChoiceWrapper2, ChatToolChoiceWrapper3);
         }
     }
 }

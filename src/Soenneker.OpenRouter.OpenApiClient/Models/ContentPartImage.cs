@@ -17,10 +17,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The image_url property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ContentPartImage_image_url? ImageUrl { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ContentPartImageImageUrl? ImageUrl { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ContentPartImage_image_url ImageUrl { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ContentPartImageImageUrl ImageUrl { get; set; }
 #endif
         /// <summary>The type property</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ContentPartImage_type? Type { get; set; }
@@ -49,7 +49,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "image_url", n => { ImageUrl = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentPartImage_image_url>(global::Soenneker.OpenRouter.OpenApiClient.Models.ContentPartImage_image_url.CreateFromDiscriminatorValue); } },
+                { "image_url", n => { ImageUrl = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentPartImageImageUrl>(global::Soenneker.OpenRouter.OpenApiClient.Models.ContentPartImageImageUrl.CreateFromDiscriminatorValue); } },
                 { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentPartImage_type>(); } },
             };
         }
@@ -60,7 +60,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentPartImage_image_url>("image_url", ImageUrl);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentPartImageImageUrl>("image_url", ImageUrl);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentPartImage_type>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }

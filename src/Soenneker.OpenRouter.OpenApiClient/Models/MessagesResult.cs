@@ -11,8 +11,26 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     /// Non-streaming response from the Anthropic Messages API with OpenRouter extensions
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class MessagesResult : global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResult, IParsable
+    public partial class MessagesResult : IAdditionalDataHolder, IParsable
     {
+        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
+        public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>The container property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicContainer? Container { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicContainer Container { get; set; }
+#endif
+        /// <summary>The content property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ORAnthropicContentBlock>? Content { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ORAnthropicContentBlock> Content { get; set; }
+#endif
         /// <summary>The context_management property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -20,6 +38,22 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResult_context_management ContextManagement { get; set; }
+#endif
+        /// <summary>The id property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Id { get; set; }
+#nullable restore
+#else
+        public string Id { get; set; }
+#endif
+        /// <summary>The model property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Model { get; set; }
+#nullable restore
+#else
+        public string Model { get; set; }
 #endif
         /// <summary>The openrouter_metadata property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -31,12 +65,49 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #endif
         /// <summary>The provider property</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderName? Provider { get; set; }
+        /// <summary>The role property</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResult_role? Role { get; set; }
+        /// <summary>Structured information about a refusal</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicRefusalStopDetails? StopDetails { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicRefusalStopDetails StopDetails { get; set; }
+#endif
+        /// <summary>The stop_reason property</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ORAnthropicStopReason? StopReason { get; set; }
+        /// <summary>The stop_sequence property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? StopSequence { get; set; }
+#nullable restore
+#else
+        public string StopSequence { get; set; }
+#endif
+        /// <summary>The type property</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResult_type? Type { get; set; }
+        /// <summary>The usage property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResultUsage? Usage { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResultUsage Usage { get; set; }
+#endif
+        /// <summary>
+        /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResult"/> and sets the default values.
+        /// </summary>
+        public MessagesResult()
+        {
+            AdditionalData = new Dictionary<string, object>();
+        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResult"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResult CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResult CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             return new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResult();
@@ -45,26 +116,46 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public override IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>(base.GetFieldDeserializers())
+            return new Dictionary<string, Action<IParseNode>>
             {
+                { "container", n => { Container = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicContainer>(global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicContainer.CreateFromDiscriminatorValue); } },
+                { "content", n => { Content = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ORAnthropicContentBlock>(global::Soenneker.OpenRouter.OpenApiClient.Models.ORAnthropicContentBlock.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "context_management", n => { ContextManagement = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResult_context_management>(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResult_context_management.CreateFromDiscriminatorValue); } },
+                { "id", n => { Id = n.GetStringValue(); } },
+                { "model", n => { Model = n.GetStringValue(); } },
                 { "openrouter_metadata", n => { OpenrouterMetadata = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OpenRouterMetadata>(global::Soenneker.OpenRouter.OpenApiClient.Models.OpenRouterMetadata.CreateFromDiscriminatorValue); } },
                 { "provider", n => { Provider = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderName>(); } },
+                { "role", n => { Role = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResult_role>(); } },
+                { "stop_details", n => { StopDetails = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicRefusalStopDetails>(global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicRefusalStopDetails.CreateFromDiscriminatorValue); } },
+                { "stop_reason", n => { StopReason = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ORAnthropicStopReason>(); } },
+                { "stop_sequence", n => { StopSequence = n.GetStringValue(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResult_type>(); } },
+                { "usage", n => { Usage = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResultUsage>(global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResultUsage.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public override void Serialize(ISerializationWriter writer)
+        public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            base.Serialize(writer);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicContainer>("container", Container);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ORAnthropicContentBlock>("content", Content);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResult_context_management>("context_management", ContextManagement);
+            writer.WriteStringValue("id", Id);
+            writer.WriteStringValue("model", Model);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OpenRouterMetadata>("openrouter_metadata", OpenrouterMetadata);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderName>("provider", Provider);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResult_role>("role", Role);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicRefusalStopDetails>("stop_details", StopDetails);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ORAnthropicStopReason>("stop_reason", StopReason);
+            writer.WriteStringValue("stop_sequence", StopSequence);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResult_type>("type", Type);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.BaseMessagesResultUsage>("usage", Usage);
+            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

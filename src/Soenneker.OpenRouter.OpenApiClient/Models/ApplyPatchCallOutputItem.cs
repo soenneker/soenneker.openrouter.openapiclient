@@ -7,13 +7,42 @@ using System.IO;
 using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
+    /// <summary>
+    /// The client&apos;s echo of an `apply_patch_call` after applying the patch. `output` is an optional human-readable log; `status` is `completed` when the patch was applied successfully, `failed` otherwise.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public partial class ApplyPatchCallOutputItem : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>The call_id property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? CallId { get; set; }
+#nullable restore
+#else
+        public string CallId { get; set; }
+#endif
+        /// <summary>The id property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Id { get; set; }
+#nullable restore
+#else
+        public string Id { get; set; }
+#endif
+        /// <summary>The output property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Output { get; set; }
+#nullable restore
+#else
+        public string Output { get; set; }
+#endif
+        /// <summary>The status property</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchCallOutputItem_status? Status { get; set; }
+        /// <summary>The type property</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchCallOutputItem_type? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchCallOutputItem"/> and sets the default values.
         /// </summary>
@@ -39,6 +68,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "call_id", n => { CallId = n.GetStringValue(); } },
+                { "id", n => { Id = n.GetStringValue(); } },
+                { "output", n => { Output = n.GetStringValue(); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchCallOutputItem_status>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchCallOutputItem_type>(); } },
             };
         }
         /// <summary>
@@ -48,6 +82,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteStringValue("call_id", CallId);
+            writer.WriteStringValue("id", Id);
+            writer.WriteStringValue("output", Output);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchCallOutputItem_status>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchCallOutputItem_type>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

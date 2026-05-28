@@ -30,10 +30,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Provider-specific image configuration options. Keys and values vary by model/provider. See https://openrouter.ai/docs/guides/overview/multimodal/image-generation for more details.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageConfig? ImageConfig { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesRequest_image_config? ImageConfig { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageConfig ImageConfig { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesRequest_image_config ImageConfig { get; set; }
 #endif
         /// <summary>The include property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -66,10 +66,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Metadata key-value pairs for the request. Keys must be ≤64 characters and cannot contain brackets. Values must be ≤512 characters. Maximum 16 pairs allowed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.RequestMetadata? Metadata { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesRequest_metadata? Metadata { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.RequestMetadata Metadata { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesRequest_metadata Metadata { get; set; }
 #endif
         /// <summary>Output modalities for the response. Supported values are &quot;text&quot; and &quot;image&quot;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -147,9 +147,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningConfig Reasoning { get; set; }
 #endif
-        /// <summary>**DEPRECATED** Use providers.sort.partition instead. Backwards-compatible alias for providers.sort.partition. Accepts legacy values: &quot;fallback&quot; (maps to &quot;model&quot;), &quot;sort&quot; (maps to &quot;none&quot;).</summary>
-        [Obsolete("")]
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.DeprecatedRoute? Route { get; set; }
+        /// <summary>The route property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Route { get; set; }
+#nullable restore
+#else
+        public string Route { get; set; }
+#endif
         /// <summary>The safety_identifier property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -177,7 +182,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public List<global::Soenneker.OpenRouter.OpenApiClient.Models.StopServerToolsWhenCondition> StopServerToolsWhen { get; set; }
 #endif
         /// <summary>The store property</summary>
-        public bool? Store { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesRequest_store? Store { get; set; }
         /// <summary>The stream property</summary>
         public bool? Stream { get; set; }
         /// <summary>The temperature property</summary>
@@ -201,10 +206,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The tools property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Tools { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesRequest.ResponsesRequest_tools>? Tools { get; set; }
 #nullable restore
 #else
-        public UntypedNode Tools { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesRequest.ResponsesRequest_tools> Tools { get; set; }
 #endif
         /// <summary>The top_k property</summary>
         public int? TopK { get; set; }
@@ -259,13 +264,13 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "background", n => { Background = n.GetBoolValue(); } },
                 { "cache_control", n => { CacheControl = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective>(global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective.CreateFromDiscriminatorValue); } },
                 { "frequency_penalty", n => { FrequencyPenalty = n.GetDoubleValue(); } },
-                { "image_config", n => { ImageConfig = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageConfig>(global::Soenneker.OpenRouter.OpenApiClient.Models.ImageConfig.CreateFromDiscriminatorValue); } },
+                { "image_config", n => { ImageConfig = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesRequest_image_config>(global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesRequest_image_config.CreateFromDiscriminatorValue); } },
                 { "include", n => { Include = n.GetCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ResponseIncludesEnum>()?.AsList(); } },
                 { "input", n => { Input = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.Inputs>(global::Soenneker.OpenRouter.OpenApiClient.Models.Inputs.CreateFromDiscriminatorValue); } },
                 { "instructions", n => { Instructions = n.GetStringValue(); } },
                 { "max_output_tokens", n => { MaxOutputTokens = n.GetIntValue(); } },
                 { "max_tool_calls", n => { MaxToolCalls = n.GetIntValue(); } },
-                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.RequestMetadata>(global::Soenneker.OpenRouter.OpenApiClient.Models.RequestMetadata.CreateFromDiscriminatorValue); } },
+                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesRequest_metadata>(global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesRequest_metadata.CreateFromDiscriminatorValue); } },
                 { "modalities", n => { Modalities = n.GetCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputModalityEnum>()?.AsList(); } },
                 { "model", n => { Model = n.GetStringValue(); } },
                 { "models", n => { Models = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
@@ -277,17 +282,17 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "prompt_cache_key", n => { PromptCacheKey = n.GetStringValue(); } },
                 { "provider", n => { Provider = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferences>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferences.CreateFromDiscriminatorValue); } },
                 { "reasoning", n => { Reasoning = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningConfig>(global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningConfig.CreateFromDiscriminatorValue); } },
-                { "route", n => { Route = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.DeprecatedRoute>(); } },
+                { "route", n => { Route = n.GetStringValue(); } },
                 { "safety_identifier", n => { SafetyIdentifier = n.GetStringValue(); } },
                 { "service_tier", n => { ServiceTier = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesRequest_service_tier>(); } },
                 { "session_id", n => { SessionId = n.GetStringValue(); } },
                 { "stop_server_tools_when", n => { StopServerToolsWhen = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.StopServerToolsWhenCondition>(global::Soenneker.OpenRouter.OpenApiClient.Models.StopServerToolsWhenCondition.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "store", n => { Store = n.GetBoolValue(); } },
+                { "store", n => { Store = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesRequest_store>(); } },
                 { "stream", n => { Stream = n.GetBoolValue(); } },
                 { "temperature", n => { Temperature = n.GetDoubleValue(); } },
                 { "text", n => { Text = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.TextExtendedConfig>(global::Soenneker.OpenRouter.OpenApiClient.Models.TextExtendedConfig.CreateFromDiscriminatorValue); } },
                 { "tool_choice", n => { ToolChoice = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAIResponsesToolChoice>(global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAIResponsesToolChoice.CreateFromDiscriminatorValue); } },
-                { "tools", n => { Tools = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "tools", n => { Tools = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesRequest.ResponsesRequest_tools>(global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesRequest.ResponsesRequest_tools.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "top_k", n => { TopK = n.GetIntValue(); } },
                 { "top_logprobs", n => { TopLogprobs = n.GetIntValue(); } },
                 { "top_p", n => { TopP = n.GetDoubleValue(); } },
@@ -306,13 +311,13 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteBoolValue("background", Background);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective>("cache_control", CacheControl);
             writer.WriteDoubleValue("frequency_penalty", FrequencyPenalty);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageConfig>("image_config", ImageConfig);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesRequest_image_config>("image_config", ImageConfig);
             writer.WriteCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ResponseIncludesEnum>("include", Include);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.Inputs>("input", Input);
             writer.WriteStringValue("instructions", Instructions);
             writer.WriteIntValue("max_output_tokens", MaxOutputTokens);
             writer.WriteIntValue("max_tool_calls", MaxToolCalls);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.RequestMetadata>("metadata", Metadata);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesRequest_metadata>("metadata", Metadata);
             writer.WriteCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputModalityEnum>("modalities", Modalities);
             writer.WriteStringValue("model", Model);
             writer.WriteCollectionOfPrimitiveValues<string>("models", Models);
@@ -324,17 +329,17 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteStringValue("prompt_cache_key", PromptCacheKey);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferences>("provider", Provider);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningConfig>("reasoning", Reasoning);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.DeprecatedRoute>("route", Route);
+            writer.WriteStringValue("route", Route);
             writer.WriteStringValue("safety_identifier", SafetyIdentifier);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesRequest_service_tier>("service_tier", ServiceTier);
             writer.WriteStringValue("session_id", SessionId);
             writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.StopServerToolsWhenCondition>("stop_server_tools_when", StopServerToolsWhen);
-            writer.WriteBoolValue("store", Store);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesRequest_store>("store", Store);
             writer.WriteBoolValue("stream", Stream);
             writer.WriteDoubleValue("temperature", Temperature);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.TextExtendedConfig>("text", Text);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAIResponsesToolChoice>("tool_choice", ToolChoice);
-            writer.WriteObjectValue<UntypedNode>("tools", Tools);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesRequest.ResponsesRequest_tools>("tools", Tools);
             writer.WriteIntValue("top_k", TopK);
             writer.WriteIntValue("top_logprobs", TopLogprobs);
             writer.WriteDoubleValue("top_p", TopP);
@@ -556,6 +561,234 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 {
                     writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchPlugin>(null, WebSearchPlugin);
                 }
+            }
+        }
+        /// <summary>
+        /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchServerTool"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchServerToolOpenRouter"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ChatSearchModelsServerTool"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.CodeInterpreterServerTool"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.CodexLocalShellTool"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ComputerUseServerTool"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.CustomTool"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.DatetimeServerTool"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.FileSearchServerTool"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.FusionServerToolOpenRouter"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerTool"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerToolOpenRouter"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.LegacyWebSearchServerTool"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerTool"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.Preview20250311WebSearchServerTool"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.PreviewWebSearchServerTool"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesRequest_toolsMember1"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ShellServerTool"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.WebFetchServerTool"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchServerTool"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchServerToolOpenRouter"/>
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+        public partial class ResponsesRequest_tools : IComposedTypeWrapper, IParsable
+        {
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchServerTool"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchServerTool? ApplyPatchServerTool { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchServerTool ApplyPatchServerTool { get; set; }
+#endif
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchServerToolOpenRouter"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchServerToolOpenRouter? ApplyPatchServerToolOpenRouter { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchServerToolOpenRouter ApplyPatchServerToolOpenRouter { get; set; }
+#endif
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ChatSearchModelsServerTool"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatSearchModelsServerTool? ChatSearchModelsServerTool { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatSearchModelsServerTool ChatSearchModelsServerTool { get; set; }
+#endif
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.CodeInterpreterServerTool"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.CodeInterpreterServerTool? CodeInterpreterServerTool { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.CodeInterpreterServerTool CodeInterpreterServerTool { get; set; }
+#endif
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.CodexLocalShellTool"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.CodexLocalShellTool? CodexLocalShellTool { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.CodexLocalShellTool CodexLocalShellTool { get; set; }
+#endif
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ComputerUseServerTool"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.ComputerUseServerTool? ComputerUseServerTool { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.ComputerUseServerTool ComputerUseServerTool { get; set; }
+#endif
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.CustomTool"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.CustomTool? CustomTool { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.CustomTool CustomTool { get; set; }
+#endif
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.DatetimeServerTool"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.DatetimeServerTool? DatetimeServerTool { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.DatetimeServerTool DatetimeServerTool { get; set; }
+#endif
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.FileSearchServerTool"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.FileSearchServerTool? FileSearchServerTool { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.FileSearchServerTool FileSearchServerTool { get; set; }
+#endif
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.FusionServerToolOpenRouter"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.FusionServerToolOpenRouter? FusionServerToolOpenRouter { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.FusionServerToolOpenRouter FusionServerToolOpenRouter { get; set; }
+#endif
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerTool"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerTool? ImageGenerationServerTool { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerTool ImageGenerationServerTool { get; set; }
+#endif
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerToolOpenRouter"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerToolOpenRouter? ImageGenerationServerToolOpenRouter { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerToolOpenRouter ImageGenerationServerToolOpenRouter { get; set; }
+#endif
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.LegacyWebSearchServerTool"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.LegacyWebSearchServerTool? LegacyWebSearchServerTool { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.LegacyWebSearchServerTool LegacyWebSearchServerTool { get; set; }
+#endif
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerTool"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerTool? McpServerTool { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerTool McpServerTool { get; set; }
+#endif
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.Preview20250311WebSearchServerTool"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.Preview20250311WebSearchServerTool? Preview20250311WebSearchServerTool { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.Preview20250311WebSearchServerTool Preview20250311WebSearchServerTool { get; set; }
+#endif
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.PreviewWebSearchServerTool"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.PreviewWebSearchServerTool? PreviewWebSearchServerTool { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.PreviewWebSearchServerTool PreviewWebSearchServerTool { get; set; }
+#endif
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesRequest_toolsMember1"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesRequest_toolsMember1? ResponsesRequestToolsMember1 { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesRequest_toolsMember1 ResponsesRequestToolsMember1 { get; set; }
+#endif
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ShellServerTool"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.ShellServerTool? ShellServerTool { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.ShellServerTool ShellServerTool { get; set; }
+#endif
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.WebFetchServerTool"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.WebFetchServerTool? WebFetchServerTool { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.WebFetchServerTool WebFetchServerTool { get; set; }
+#endif
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchServerTool"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchServerTool? WebSearchServerTool { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchServerTool WebSearchServerTool { get; set; }
+#endif
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchServerToolOpenRouter"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchServerToolOpenRouter? WebSearchServerToolOpenRouter { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchServerToolOpenRouter WebSearchServerToolOpenRouter { get; set; }
+#endif
+            /// <summary>
+            /// Creates a new instance of the appropriate class based on discriminator value
+            /// </summary>
+            /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesRequest.ResponsesRequest_tools"/></returns>
+            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
+            public static global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesRequest.ResponsesRequest_tools CreateFromDiscriminatorValue(IParseNode parseNode)
+            {
+                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
+                var result = new global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesRequest.ResponsesRequest_tools();
+                result.ApplyPatchServerTool = new global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchServerTool();
+                result.ApplyPatchServerToolOpenRouter = new global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchServerToolOpenRouter();
+                result.ChatSearchModelsServerTool = new global::Soenneker.OpenRouter.OpenApiClient.Models.ChatSearchModelsServerTool();
+                result.CodeInterpreterServerTool = new global::Soenneker.OpenRouter.OpenApiClient.Models.CodeInterpreterServerTool();
+                result.CodexLocalShellTool = new global::Soenneker.OpenRouter.OpenApiClient.Models.CodexLocalShellTool();
+                result.ComputerUseServerTool = new global::Soenneker.OpenRouter.OpenApiClient.Models.ComputerUseServerTool();
+                result.CustomTool = new global::Soenneker.OpenRouter.OpenApiClient.Models.CustomTool();
+                result.DatetimeServerTool = new global::Soenneker.OpenRouter.OpenApiClient.Models.DatetimeServerTool();
+                result.FileSearchServerTool = new global::Soenneker.OpenRouter.OpenApiClient.Models.FileSearchServerTool();
+                result.FusionServerToolOpenRouter = new global::Soenneker.OpenRouter.OpenApiClient.Models.FusionServerToolOpenRouter();
+                result.ImageGenerationServerTool = new global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerTool();
+                result.ImageGenerationServerToolOpenRouter = new global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerToolOpenRouter();
+                result.LegacyWebSearchServerTool = new global::Soenneker.OpenRouter.OpenApiClient.Models.LegacyWebSearchServerTool();
+                result.McpServerTool = new global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerTool();
+                result.Preview20250311WebSearchServerTool = new global::Soenneker.OpenRouter.OpenApiClient.Models.Preview20250311WebSearchServerTool();
+                result.PreviewWebSearchServerTool = new global::Soenneker.OpenRouter.OpenApiClient.Models.PreviewWebSearchServerTool();
+                result.ResponsesRequestToolsMember1 = new global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesRequest_toolsMember1();
+                result.ShellServerTool = new global::Soenneker.OpenRouter.OpenApiClient.Models.ShellServerTool();
+                result.WebFetchServerTool = new global::Soenneker.OpenRouter.OpenApiClient.Models.WebFetchServerTool();
+                result.WebSearchServerTool = new global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchServerTool();
+                result.WebSearchServerToolOpenRouter = new global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchServerToolOpenRouter();
+                return result;
+            }
+            /// <summary>
+            /// The deserialization information for the current model
+            /// </summary>
+            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
+            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+            {
+                if(ApplyPatchServerTool != null || ApplyPatchServerToolOpenRouter != null || ChatSearchModelsServerTool != null || CodeInterpreterServerTool != null || CodexLocalShellTool != null || ComputerUseServerTool != null || CustomTool != null || DatetimeServerTool != null || FileSearchServerTool != null || FusionServerToolOpenRouter != null || ImageGenerationServerTool != null || ImageGenerationServerToolOpenRouter != null || LegacyWebSearchServerTool != null || McpServerTool != null || Preview20250311WebSearchServerTool != null || PreviewWebSearchServerTool != null || ResponsesRequestToolsMember1 != null || ShellServerTool != null || WebFetchServerTool != null || WebSearchServerTool != null || WebSearchServerToolOpenRouter != null)
+                {
+                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(ApplyPatchServerTool, ApplyPatchServerToolOpenRouter, ChatSearchModelsServerTool, CodeInterpreterServerTool, CodexLocalShellTool, ComputerUseServerTool, CustomTool, DatetimeServerTool, FileSearchServerTool, FusionServerToolOpenRouter, ImageGenerationServerTool, ImageGenerationServerToolOpenRouter, LegacyWebSearchServerTool, McpServerTool, Preview20250311WebSearchServerTool, PreviewWebSearchServerTool, ResponsesRequestToolsMember1, ShellServerTool, WebFetchServerTool, WebSearchServerTool, WebSearchServerToolOpenRouter);
+                }
+                return new Dictionary<string, Action<IParseNode>>();
+            }
+            /// <summary>
+            /// Serializes information the current object
+            /// </summary>
+            /// <param name="writer">Serialization writer to use to serialize this model</param>
+            public virtual void Serialize(ISerializationWriter writer)
+            {
+                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchServerTool>(null, ApplyPatchServerTool, ApplyPatchServerToolOpenRouter, ChatSearchModelsServerTool, CodeInterpreterServerTool, CodexLocalShellTool, ComputerUseServerTool, CustomTool, DatetimeServerTool, FileSearchServerTool, FusionServerToolOpenRouter, ImageGenerationServerTool, ImageGenerationServerToolOpenRouter, LegacyWebSearchServerTool, McpServerTool, Preview20250311WebSearchServerTool, PreviewWebSearchServerTool, ResponsesRequestToolsMember1, ShellServerTool, WebFetchServerTool, WebSearchServerTool, WebSearchServerToolOpenRouter);
             }
         }
     }

@@ -11,14 +11,59 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     /// A code interpreter execution call with outputs
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class OutputCodeInterpreterCallItem : global::Soenneker.OpenRouter.OpenApiClient.Models.CodeInterpreterCallItem, IParsable
+    public partial class OutputCodeInterpreterCallItem : IAdditionalDataHolder, IParsable
     {
+        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
+        public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>The code property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Code { get; set; }
+#nullable restore
+#else
+        public string Code { get; set; }
+#endif
+        /// <summary>The container_id property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ContainerId { get; set; }
+#nullable restore
+#else
+        public string ContainerId { get; set; }
+#endif
+        /// <summary>The id property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Id { get; set; }
+#nullable restore
+#else
+        public string Id { get; set; }
+#endif
+        /// <summary>The outputs property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputCodeInterpreterCallItem.OutputCodeInterpreterCallItem_outputs>? Outputs { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputCodeInterpreterCallItem.OutputCodeInterpreterCallItem_outputs> Outputs { get; set; }
+#endif
+        /// <summary>The status property</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ToolCallStatus? Status { get; set; }
+        /// <summary>The type property</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.OutputCodeInterpreterCallItem_type? Type { get; set; }
+        /// <summary>
+        /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputCodeInterpreterCallItem"/> and sets the default values.
+        /// </summary>
+        public OutputCodeInterpreterCallItem()
+        {
+            AdditionalData = new Dictionary<string, object>();
+        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputCodeInterpreterCallItem"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static new global::Soenneker.OpenRouter.OpenApiClient.Models.OutputCodeInterpreterCallItem CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.OpenRouter.OpenApiClient.Models.OutputCodeInterpreterCallItem CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             return new global::Soenneker.OpenRouter.OpenApiClient.Models.OutputCodeInterpreterCallItem();
@@ -27,20 +72,89 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public override IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>(base.GetFieldDeserializers())
+            return new Dictionary<string, Action<IParseNode>>
             {
+                { "code", n => { Code = n.GetStringValue(); } },
+                { "container_id", n => { ContainerId = n.GetStringValue(); } },
+                { "id", n => { Id = n.GetStringValue(); } },
+                { "outputs", n => { Outputs = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputCodeInterpreterCallItem.OutputCodeInterpreterCallItem_outputs>(global::Soenneker.OpenRouter.OpenApiClient.Models.OutputCodeInterpreterCallItem.OutputCodeInterpreterCallItem_outputs.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ToolCallStatus>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputCodeInterpreterCallItem_type>(); } },
             };
         }
         /// <summary>
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public override void Serialize(ISerializationWriter writer)
+        public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            base.Serialize(writer);
+            writer.WriteStringValue("code", Code);
+            writer.WriteStringValue("container_id", ContainerId);
+            writer.WriteStringValue("id", Id);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputCodeInterpreterCallItem.OutputCodeInterpreterCallItem_outputs>("outputs", Outputs);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ToolCallStatus>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputCodeInterpreterCallItem_type>("type", Type);
+            writer.WriteAdditionalData(AdditionalData);
+        }
+        /// <summary>
+        /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputCodeInterpreterCallItem_outputsMember1"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputCodeInterpreterCallItem_outputsMember2"/>
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+        public partial class OutputCodeInterpreterCallItem_outputs : IComposedTypeWrapper, IParsable
+        {
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputCodeInterpreterCallItem_outputsMember1"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.OutputCodeInterpreterCallItem_outputsMember1? OutputCodeInterpreterCallItemOutputsMember1 { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.OutputCodeInterpreterCallItem_outputsMember1 OutputCodeInterpreterCallItemOutputsMember1 { get; set; }
+#endif
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputCodeInterpreterCallItem_outputsMember2"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.OutputCodeInterpreterCallItem_outputsMember2? OutputCodeInterpreterCallItemOutputsMember2 { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.OutputCodeInterpreterCallItem_outputsMember2 OutputCodeInterpreterCallItemOutputsMember2 { get; set; }
+#endif
+            /// <summary>
+            /// Creates a new instance of the appropriate class based on discriminator value
+            /// </summary>
+            /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputCodeInterpreterCallItem.OutputCodeInterpreterCallItem_outputs"/></returns>
+            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
+            public static global::Soenneker.OpenRouter.OpenApiClient.Models.OutputCodeInterpreterCallItem.OutputCodeInterpreterCallItem_outputs CreateFromDiscriminatorValue(IParseNode parseNode)
+            {
+                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
+                var result = new global::Soenneker.OpenRouter.OpenApiClient.Models.OutputCodeInterpreterCallItem.OutputCodeInterpreterCallItem_outputs();
+                result.OutputCodeInterpreterCallItemOutputsMember1 = new global::Soenneker.OpenRouter.OpenApiClient.Models.OutputCodeInterpreterCallItem_outputsMember1();
+                result.OutputCodeInterpreterCallItemOutputsMember2 = new global::Soenneker.OpenRouter.OpenApiClient.Models.OutputCodeInterpreterCallItem_outputsMember2();
+                return result;
+            }
+            /// <summary>
+            /// The deserialization information for the current model
+            /// </summary>
+            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
+            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+            {
+                if(OutputCodeInterpreterCallItemOutputsMember1 != null || OutputCodeInterpreterCallItemOutputsMember2 != null)
+                {
+                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(OutputCodeInterpreterCallItemOutputsMember1, OutputCodeInterpreterCallItemOutputsMember2);
+                }
+                return new Dictionary<string, Action<IParseNode>>();
+            }
+            /// <summary>
+            /// Serializes information the current object
+            /// </summary>
+            /// <param name="writer">Serialization writer to use to serialize this model</param>
+            public virtual void Serialize(ISerializationWriter writer)
+            {
+                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputCodeInterpreterCallItem_outputsMember1>(null, OutputCodeInterpreterCallItemOutputsMember1, OutputCodeInterpreterCallItemOutputsMember2);
+            }
         }
     }
 }

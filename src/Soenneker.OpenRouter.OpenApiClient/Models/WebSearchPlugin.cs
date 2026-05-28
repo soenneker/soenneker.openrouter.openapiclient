@@ -51,10 +51,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The user_location property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchUserLocation? UserLocation { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchPlugin_user_location? UserLocation { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchUserLocation UserLocation { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchPlugin_user_location UserLocation { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchPlugin"/> and sets the default values.
@@ -89,7 +89,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "max_results", n => { MaxResults = n.GetIntValue(); } },
                 { "max_uses", n => { MaxUses = n.GetIntValue(); } },
                 { "search_prompt", n => { SearchPrompt = n.GetStringValue(); } },
-                { "user_location", n => { UserLocation = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchUserLocation>(global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchUserLocation.CreateFromDiscriminatorValue); } },
+                { "user_location", n => { UserLocation = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchPlugin_user_location>(global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchPlugin_user_location.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -107,7 +107,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteIntValue("max_results", MaxResults);
             writer.WriteIntValue("max_uses", MaxUses);
             writer.WriteStringValue("search_prompt", SearchPrompt);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchUserLocation>("user_location", UserLocation);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchPlugin_user_location>("user_location", UserLocation);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

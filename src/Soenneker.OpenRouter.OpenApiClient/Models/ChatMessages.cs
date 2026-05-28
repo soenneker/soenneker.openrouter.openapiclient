@@ -67,19 +67,19 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             {
                 result.ChatAssistantMessage = new global::Soenneker.OpenRouter.OpenApiClient.Models.ChatAssistantMessage();
             }
-            else if("developer".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("ChatDeveloperMessage".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.ChatDeveloperMessage = new global::Soenneker.OpenRouter.OpenApiClient.Models.ChatDeveloperMessage();
             }
-            else if("system".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("ChatSystemMessage".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.ChatSystemMessage = new global::Soenneker.OpenRouter.OpenApiClient.Models.ChatSystemMessage();
             }
-            else if("tool".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("ChatToolMessage".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.ChatToolMessage = new global::Soenneker.OpenRouter.OpenApiClient.Models.ChatToolMessage();
             }
-            else if("user".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("ChatUserMessage".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.ChatUserMessage = new global::Soenneker.OpenRouter.OpenApiClient.Models.ChatUserMessage();
             }

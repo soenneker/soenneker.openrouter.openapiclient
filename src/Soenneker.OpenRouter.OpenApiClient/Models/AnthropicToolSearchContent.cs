@@ -39,11 +39,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
             var result = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicToolSearchContent();
-            if("tool_search_tool_search_result".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("AnthropicToolSearchResult".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.AnthropicToolSearchResult = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicToolSearchResult();
             }
-            else if("tool_search_tool_result_error".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("AnthropicToolSearchResultError".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.AnthropicToolSearchResultError = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicToolSearchResultError();
             }

@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     /// <summary>
-    /// OpenRouter built-in server tool: fetches full content from a URL (web page or PDF)
+    /// &quot;OpenRouter built-in server tool: fetches full content from a URL (web page or PDF)&quot;
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class WebFetchServerTool : IAdditionalDataHolder, IParsable

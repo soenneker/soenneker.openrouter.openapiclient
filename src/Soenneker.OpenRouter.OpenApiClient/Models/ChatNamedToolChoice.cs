@@ -18,10 +18,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The function property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatNamedToolChoice_function? Function { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatNamedToolChoiceFunction? Function { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatNamedToolChoice_function Function { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatNamedToolChoiceFunction Function { get; set; }
 #endif
         /// <summary>The type property</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatNamedToolChoice_type? Type { get; set; }
@@ -50,7 +50,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "function", n => { Function = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatNamedToolChoice_function>(global::Soenneker.OpenRouter.OpenApiClient.Models.ChatNamedToolChoice_function.CreateFromDiscriminatorValue); } },
+                { "function", n => { Function = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatNamedToolChoiceFunction>(global::Soenneker.OpenRouter.OpenApiClient.Models.ChatNamedToolChoiceFunction.CreateFromDiscriminatorValue); } },
                 { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatNamedToolChoice_type>(); } },
             };
         }
@@ -61,7 +61,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatNamedToolChoice_function>("function", Function);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatNamedToolChoiceFunction>("function", Function);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatNamedToolChoice_type>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }

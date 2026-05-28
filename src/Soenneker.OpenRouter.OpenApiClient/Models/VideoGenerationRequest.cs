@@ -63,10 +63,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Provider-specific passthrough configuration</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider? Provider { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProvider? Provider { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider Provider { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProvider Provider { get; set; }
 #endif
         /// <summary>Resolution of the generated video</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_resolution? Resolution { get; set; }
@@ -113,7 +113,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "input_references", n => { InputReferences = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentPartImage>(global::Soenneker.OpenRouter.OpenApiClient.Models.ContentPartImage.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "model", n => { Model = n.GetStringValue(); } },
                 { "prompt", n => { Prompt = n.GetStringValue(); } },
-                { "provider", n => { Provider = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider.CreateFromDiscriminatorValue); } },
+                { "provider", n => { Provider = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProvider>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProvider.CreateFromDiscriminatorValue); } },
                 { "resolution", n => { Resolution = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_resolution>(); } },
                 { "seed", n => { Seed = n.GetIntValue(); } },
                 { "size", n => { Size = n.GetStringValue(); } },
@@ -134,7 +134,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentPartImage>("input_references", InputReferences);
             writer.WriteStringValue("model", Model);
             writer.WriteStringValue("prompt", Prompt);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_provider>("provider", Provider);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProvider>("provider", Provider);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_resolution>("resolution", Resolution);
             writer.WriteIntValue("seed", Seed);
             writer.WriteStringValue("size", Size);

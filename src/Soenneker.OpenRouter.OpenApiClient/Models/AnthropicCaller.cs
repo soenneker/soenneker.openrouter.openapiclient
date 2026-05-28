@@ -47,15 +47,15 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
             var result = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCaller();
-            if("code_execution_20250825".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("AnthropicCodeExecution20250825Caller".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.AnthropicCodeExecution20250825Caller = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCodeExecution20250825Caller();
             }
-            else if("code_execution_20260120".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("AnthropicCodeExecution20260120Caller".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.AnthropicCodeExecution20260120Caller = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCodeExecution20260120Caller();
             }
-            else if("direct".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("AnthropicDirectCaller".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.AnthropicDirectCaller = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicDirectCaller();
             }

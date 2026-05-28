@@ -39,11 +39,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
             var result = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicBashCodeExecutionContent();
-            if("bash_code_execution_result".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("AnthropicBashCodeExecutionResult".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.AnthropicBashCodeExecutionResult = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicBashCodeExecutionResult();
             }
-            else if("bash_code_execution_tool_result_error".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("AnthropicBashCodeExecutionToolResultError".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.AnthropicBashCodeExecutionToolResultError = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicBashCodeExecutionToolResultError();
             }

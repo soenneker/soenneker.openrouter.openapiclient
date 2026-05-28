@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
-    /// <summary>Partitioning strategy for sorting: &quot;model&quot; (default) groups endpoints by model before sorting (fallback models remain fallbacks), &quot;none&quot; sorts all endpoints together regardless of model.</summary>
+    /// <summary>&quot;Partitioning strategy for sorting: \&quot;model\&quot; (default) groups endpoints by model before sorting (fallback models remain fallbacks), \&quot;none\&quot; sorts all endpoints together regardless of model.&quot;</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum ProviderSortConfig_partition
     {

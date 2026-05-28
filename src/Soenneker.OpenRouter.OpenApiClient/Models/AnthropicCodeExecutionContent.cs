@@ -47,15 +47,15 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
             var result = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCodeExecutionContent();
-            if("code_execution_result".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("AnthropicCodeExecutionResult".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.AnthropicCodeExecutionResult = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCodeExecutionResult();
             }
-            else if("code_execution_tool_result_error".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("AnthropicCodeExecutionToolResultError".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.AnthropicCodeExecutionToolResultError = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCodeExecutionToolResultError();
             }
-            else if("encrypted_code_execution_result".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("AnthropicEncryptedCodeExecutionResult".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.AnthropicEncryptedCodeExecutionResult = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicEncryptedCodeExecutionResult();
             }

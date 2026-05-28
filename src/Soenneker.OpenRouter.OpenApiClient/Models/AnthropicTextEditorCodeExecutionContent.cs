@@ -55,19 +55,19 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
             var result = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextEditorCodeExecutionContent();
-            if("text_editor_code_execution_create_result".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("AnthropicTextEditorCodeExecutionCreateResult".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.AnthropicTextEditorCodeExecutionCreateResult = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextEditorCodeExecutionCreateResult();
             }
-            else if("text_editor_code_execution_str_replace_result".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("AnthropicTextEditorCodeExecutionStrReplaceResult".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.AnthropicTextEditorCodeExecutionStrReplaceResult = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextEditorCodeExecutionStrReplaceResult();
             }
-            else if("text_editor_code_execution_tool_result_error".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("AnthropicTextEditorCodeExecutionToolResultError".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.AnthropicTextEditorCodeExecutionToolResultError = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextEditorCodeExecutionToolResultError();
             }
-            else if("text_editor_code_execution_view_result".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("AnthropicTextEditorCodeExecutionViewResult".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.AnthropicTextEditorCodeExecutionViewResult = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextEditorCodeExecutionViewResult();
             }

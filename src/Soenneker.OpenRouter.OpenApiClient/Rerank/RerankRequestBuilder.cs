@@ -36,7 +36,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Rerank
         /// <summary>
         /// Submits a rerank request to the rerank router
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Rerank.RerankPostResponse"/></returns>
+        /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.CreateRerank200"/></returns>
         /// <param name="body">Rerank request input</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -52,11 +52,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Rerank
         /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOverloadedResponse">When receiving a 529 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.OpenRouter.OpenApiClient.Rerank.RerankPostResponse?> PostAsync(global::Soenneker.OpenRouter.OpenApiClient.Rerank.RerankPostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.OpenRouter.OpenApiClient.Models.CreateRerank200?> PostAsync(global::Soenneker.OpenRouter.OpenApiClient.Models.CreateRerank body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.OpenRouter.OpenApiClient.Rerank.RerankPostResponse> PostAsync(global::Soenneker.OpenRouter.OpenApiClient.Rerank.RerankPostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.OpenRouter.OpenApiClient.Models.CreateRerank200> PostAsync(global::Soenneker.OpenRouter.OpenApiClient.Models.CreateRerank body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -74,7 +74,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Rerank
                 { "524", global::Soenneker.OpenRouter.OpenApiClient.Models.EdgeNetworkTimeoutResponse.CreateFromDiscriminatorValue },
                 { "529", global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOverloadedResponse.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<global::Soenneker.OpenRouter.OpenApiClient.Rerank.RerankPostResponse>(requestInfo, global::Soenneker.OpenRouter.OpenApiClient.Rerank.RerankPostResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.OpenRouter.OpenApiClient.Models.CreateRerank200>(requestInfo, global::Soenneker.OpenRouter.OpenApiClient.Models.CreateRerank200.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Submits a rerank request to the rerank router
@@ -84,11 +84,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Rerank
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(global::Soenneker.OpenRouter.OpenApiClient.Rerank.RerankPostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.OpenRouter.OpenApiClient.Models.CreateRerank body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(global::Soenneker.OpenRouter.OpenApiClient.Rerank.RerankPostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.OpenRouter.OpenApiClient.Models.CreateRerank body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));

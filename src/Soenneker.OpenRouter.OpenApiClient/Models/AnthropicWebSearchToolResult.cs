@@ -85,19 +85,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteAdditionalData(AdditionalData);
         }
         /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicWebSearchToolResultError"/>, List&lt;global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicWebSearchResult&gt;
+        /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicWebSearchToolResultError"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.UnionBranch"/>
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class AnthropicWebSearchToolResult_content : IComposedTypeWrapper, IParsable
         {
-            /// <summary>Composed type representation for type List&lt;global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicWebSearchResult&gt;</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public List<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicWebSearchResult>? AnthropicWebSearchResult { get; set; }
-#nullable restore
-#else
-            public List<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicWebSearchResult> AnthropicWebSearchResult { get; set; }
-#endif
             /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicWebSearchToolResultError"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -105,6 +97,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #nullable restore
 #else
             public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicWebSearchToolResultError AnthropicWebSearchToolResultError { get; set; }
+#endif
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.UnionBranch"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.UnionBranch? UnionBranch { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.UnionBranch UnionBranch { get; set; }
 #endif
             /// <summary>
             /// Creates a new instance of the appropriate class based on discriminator value
@@ -115,13 +115,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             {
                 if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
                 var result = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicWebSearchToolResult.AnthropicWebSearchToolResult_content();
-                if(parseNode.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicWebSearchResult>(global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicWebSearchResult.CreateFromDiscriminatorValue)?.AsList() is List<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicWebSearchResult> anthropicWebSearchResultValue)
-                {
-                    result.AnthropicWebSearchResult = anthropicWebSearchResultValue;
-                }
-                else {
-                    result.AnthropicWebSearchToolResultError = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicWebSearchToolResultError();
-                }
+                result.AnthropicWebSearchToolResultError = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicWebSearchToolResultError();
+                result.UnionBranch = new global::Soenneker.OpenRouter.OpenApiClient.Models.UnionBranch();
                 return result;
             }
             /// <summary>
@@ -130,9 +125,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
             public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
             {
-                if(AnthropicWebSearchToolResultError != null)
+                if(AnthropicWebSearchToolResultError != null || UnionBranch != null)
                 {
-                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(AnthropicWebSearchToolResultError);
+                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(AnthropicWebSearchToolResultError, UnionBranch);
                 }
                 return new Dictionary<string, Action<IParseNode>>();
             }
@@ -143,13 +138,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             public virtual void Serialize(ISerializationWriter writer)
             {
                 if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(AnthropicWebSearchResult != null)
-                {
-                    writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicWebSearchResult>(null, AnthropicWebSearchResult);
-                }
-                else {
-                    writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicWebSearchToolResultError>(null, AnthropicWebSearchToolResultError);
-                }
+                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicWebSearchToolResultError>(null, AnthropicWebSearchToolResultError, UnionBranch);
             }
         }
     }

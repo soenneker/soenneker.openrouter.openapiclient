@@ -25,10 +25,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The config property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityLangsmithDestination_config? Config { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityLangsmithDestinationConfig? Config { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityLangsmithDestination_config Config { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityLangsmithDestinationConfig Config { get; set; }
 #endif
         /// <summary>ISO timestamp of when the destination was created.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -100,7 +100,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "api_key_hashes", n => { ApiKeyHashes = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "config", n => { Config = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityLangsmithDestination_config>(global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityLangsmithDestination_config.CreateFromDiscriminatorValue); } },
+                { "config", n => { Config = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityLangsmithDestinationConfig>(global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityLangsmithDestinationConfig.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetStringValue(); } },
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
                 { "filter_rules", n => { FilterRules = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityFilterRulesConfig>(global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityFilterRulesConfig.CreateFromDiscriminatorValue); } },
@@ -121,7 +121,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<string>("api_key_hashes", ApiKeyHashes);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityLangsmithDestination_config>("config", Config);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityLangsmithDestinationConfig>("config", Config);
             writer.WriteStringValue("created_at", CreatedAt);
             writer.WriteBoolValue("enabled", Enabled);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityFilterRulesConfig>("filter_rules", FilterRules);

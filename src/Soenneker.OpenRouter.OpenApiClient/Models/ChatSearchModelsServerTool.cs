@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     /// <summary>
-    /// OpenRouter built-in server tool: searches and filters AI models available on OpenRouter
+    /// &quot;OpenRouter built-in server tool: searches and filters AI models available on OpenRouter&quot;
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ChatSearchModelsServerTool : IAdditionalDataHolder, IParsable

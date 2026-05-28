@@ -56,10 +56,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The pricing property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpoint_pricing? Pricing { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPricing? Pricing { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpoint_pricing Pricing { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPricing Pricing { get; set; }
 #endif
         /// <summary>The provider_name property</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderName? ProviderName { get; set; }
@@ -88,10 +88,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The throughput_last_30m property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.PercentileStats? ThroughputLast30m { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpoint_throughput_last_30m? ThroughputLast30m { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.PercentileStats ThroughputLast30m { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpoint_throughput_last_30m ThroughputLast30m { get; set; }
 #endif
         /// <summary>Uptime percentage over the last 1 day, calculated as successful requests / (successful + error requests) * 100. Rate-limited requests are excluded. Returns null if insufficient data.</summary>
         public double? UptimeLast1d { get; set; }
@@ -131,14 +131,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "model_id", n => { ModelId = n.GetStringValue(); } },
                 { "model_name", n => { ModelName = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "pricing", n => { Pricing = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpoint_pricing>(global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpoint_pricing.CreateFromDiscriminatorValue); } },
+                { "pricing", n => { Pricing = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPricing>(global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPricing.CreateFromDiscriminatorValue); } },
                 { "provider_name", n => { ProviderName = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderName>(); } },
                 { "quantization", n => { Quantization = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.Quantization>(); } },
                 { "status", n => { Status = n.GetIntValue(); } },
                 { "supported_parameters", n => { SupportedParameters = n.GetCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.Parameter>()?.AsList(); } },
                 { "supports_implicit_caching", n => { SupportsImplicitCaching = n.GetBoolValue(); } },
                 { "tag", n => { Tag = n.GetStringValue(); } },
-                { "throughput_last_30m", n => { ThroughputLast30m = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PercentileStats>(global::Soenneker.OpenRouter.OpenApiClient.Models.PercentileStats.CreateFromDiscriminatorValue); } },
+                { "throughput_last_30m", n => { ThroughputLast30m = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpoint_throughput_last_30m>(global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpoint_throughput_last_30m.CreateFromDiscriminatorValue); } },
                 { "uptime_last_1d", n => { UptimeLast1d = n.GetDoubleValue(); } },
                 { "uptime_last_30m", n => { UptimeLast30m = n.GetDoubleValue(); } },
                 { "uptime_last_5m", n => { UptimeLast5m = n.GetDoubleValue(); } },
@@ -158,14 +158,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteStringValue("model_id", ModelId);
             writer.WriteStringValue("model_name", ModelName);
             writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpoint_pricing>("pricing", Pricing);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPricing>("pricing", Pricing);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderName>("provider_name", ProviderName);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.Quantization>("quantization", Quantization);
             writer.WriteIntValue("status", Status);
             writer.WriteCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.Parameter>("supported_parameters", SupportedParameters);
             writer.WriteBoolValue("supports_implicit_caching", SupportsImplicitCaching);
             writer.WriteStringValue("tag", Tag);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PercentileStats>("throughput_last_30m", ThroughputLast30m);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpoint_throughput_last_30m>("throughput_last_30m", ThroughputLast30m);
             writer.WriteDoubleValue("uptime_last_1d", UptimeLast1d);
             writer.WriteDoubleValue("uptime_last_30m", UptimeLast30m);
             writer.WriteDoubleValue("uptime_last_5m", UptimeLast5m);

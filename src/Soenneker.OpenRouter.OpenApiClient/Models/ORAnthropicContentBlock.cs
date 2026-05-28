@@ -139,55 +139,55 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             {
                 result.AnthropicAdvisorToolResult = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicAdvisorToolResult();
             }
-            else if("bash_code_execution_tool_result".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("AnthropicBashCodeExecutionToolResult".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.AnthropicBashCodeExecutionToolResult = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicBashCodeExecutionToolResult();
             }
-            else if("code_execution_tool_result".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("AnthropicCodeExecutionToolResult".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.AnthropicCodeExecutionToolResult = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCodeExecutionToolResult();
             }
-            else if("compaction".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("AnthropicCompactionBlock".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.AnthropicCompactionBlock = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCompactionBlock();
             }
-            else if("container_upload".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("AnthropicContainerUpload".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.AnthropicContainerUpload = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicContainerUpload();
             }
-            else if("redacted_thinking".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("AnthropicRedactedThinkingBlock".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.AnthropicRedactedThinkingBlock = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicRedactedThinkingBlock();
             }
-            else if("text".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("AnthropicTextBlock".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.AnthropicTextBlock = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextBlock();
             }
-            else if("text_editor_code_execution_tool_result".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("AnthropicTextEditorCodeExecutionToolResult".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.AnthropicTextEditorCodeExecutionToolResult = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextEditorCodeExecutionToolResult();
             }
-            else if("thinking".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("AnthropicThinkingBlock".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.AnthropicThinkingBlock = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicThinkingBlock();
             }
-            else if("tool_search_tool_result".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("AnthropicToolSearchToolResult".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.AnthropicToolSearchToolResult = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicToolSearchToolResult();
             }
-            else if("tool_use".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("AnthropicToolUseBlock".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.AnthropicToolUseBlock = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicToolUseBlock();
             }
-            else if("web_fetch_tool_result".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("AnthropicWebFetchToolResult".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.AnthropicWebFetchToolResult = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicWebFetchToolResult();
             }
-            else if("web_search_tool_result".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("AnthropicWebSearchToolResult".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.AnthropicWebSearchToolResult = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicWebSearchToolResult();
             }
-            else if("server_tool_use".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("ORAnthropicServerToolUseBlock".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.ORAnthropicServerToolUseBlock = new global::Soenneker.OpenRouter.OpenApiClient.Models.ORAnthropicServerToolUseBlock();
             }

@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCodeExecution20250825Caller"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCodeExecution20260120Caller"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicDirectCaller"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ORAnthropicNullableCallerMember1"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCodeExecution20250825Caller"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCodeExecution20260120Caller"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicDirectCaller"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ORAnthropicNullableCaller : IComposedTypeWrapper, IParsable
@@ -37,14 +37,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicDirectCaller AnthropicDirectCaller { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ORAnthropicNullableCallerMember1"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ORAnthropicNullableCallerMember1? ORAnthropicNullableCallerMember1 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ORAnthropicNullableCallerMember1 ORAnthropicNullableCallerMember1 { get; set; }
-#endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -55,21 +47,17 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
             var result = new global::Soenneker.OpenRouter.OpenApiClient.Models.ORAnthropicNullableCaller();
-            if("code_execution_20250825".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("AnthropicCodeExecution20250825Caller".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.AnthropicCodeExecution20250825Caller = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCodeExecution20250825Caller();
             }
-            else if("code_execution_20260120".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("AnthropicCodeExecution20260120Caller".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.AnthropicCodeExecution20260120Caller = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCodeExecution20260120Caller();
             }
-            else if("direct".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("AnthropicDirectCaller".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.AnthropicDirectCaller = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicDirectCaller();
-            }
-            else if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.ORAnthropicNullableCallerMember1 = new global::Soenneker.OpenRouter.OpenApiClient.Models.ORAnthropicNullableCallerMember1();
             }
             return result;
         }
@@ -91,10 +79,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             {
                 return AnthropicDirectCaller.GetFieldDeserializers();
             }
-            else if(ORAnthropicNullableCallerMember1 != null)
-            {
-                return ORAnthropicNullableCallerMember1.GetFieldDeserializers();
-            }
             return new Dictionary<string, Action<IParseNode>>();
         }
         /// <summary>
@@ -115,10 +99,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             else if(AnthropicDirectCaller != null)
             {
                 writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicDirectCaller>(null, AnthropicDirectCaller);
-            }
-            else if(ORAnthropicNullableCallerMember1 != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ORAnthropicNullableCallerMember1>(null, ORAnthropicNullableCallerMember1);
             }
         }
     }

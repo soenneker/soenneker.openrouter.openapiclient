@@ -239,6 +239,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_crusoe Crusoe { get; set; }
 #endif
+        /// <summary>The darkbloom property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_darkbloom? Darkbloom { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_darkbloom Darkbloom { get; set; }
+#endif
         /// <summary>The deepinfra property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -964,6 +972,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "crofai", n => { Crofai = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_crofai>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_crofai.CreateFromDiscriminatorValue); } },
                 { "crucible", n => { Crucible = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_crucible>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_crucible.CreateFromDiscriminatorValue); } },
                 { "crusoe", n => { Crusoe = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_crusoe>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_crusoe.CreateFromDiscriminatorValue); } },
+                { "darkbloom", n => { Darkbloom = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_darkbloom>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_darkbloom.CreateFromDiscriminatorValue); } },
                 { "deepinfra", n => { Deepinfra = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_deepinfra>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_deepinfra.CreateFromDiscriminatorValue); } },
                 { "deepseek", n => { Deepseek = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_deepseek>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_deepseek.CreateFromDiscriminatorValue); } },
                 { "dekallm", n => { Dekallm = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_dekallm>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_dekallm.CreateFromDiscriminatorValue); } },
@@ -1085,6 +1094,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_crofai>("crofai", Crofai);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_crucible>("crucible", Crucible);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_crusoe>("crusoe", Crusoe);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_darkbloom>("darkbloom", Darkbloom);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_deepinfra>("deepinfra", Deepinfra);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_deepseek>("deepseek", Deepseek);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_dekallm>("dekallm", Dekallm);

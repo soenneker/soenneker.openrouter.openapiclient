@@ -19,20 +19,20 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The input_tokens_details property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAIResponsesUsage_input_tokens_details? InputTokensDetails { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAIResponsesUsageInputTokensDetails? InputTokensDetails { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAIResponsesUsage_input_tokens_details InputTokensDetails { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAIResponsesUsageInputTokensDetails InputTokensDetails { get; set; }
 #endif
         /// <summary>The output_tokens property</summary>
         public int? OutputTokens { get; set; }
         /// <summary>The output_tokens_details property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAIResponsesUsage_output_tokens_details? OutputTokensDetails { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAIResponsesUsageOutputTokensDetails? OutputTokensDetails { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAIResponsesUsage_output_tokens_details OutputTokensDetails { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAIResponsesUsageOutputTokensDetails OutputTokensDetails { get; set; }
 #endif
         /// <summary>The total_tokens property</summary>
         public int? TotalTokens { get; set; }
@@ -62,9 +62,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "input_tokens", n => { InputTokens = n.GetIntValue(); } },
-                { "input_tokens_details", n => { InputTokensDetails = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAIResponsesUsage_input_tokens_details>(global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAIResponsesUsage_input_tokens_details.CreateFromDiscriminatorValue); } },
+                { "input_tokens_details", n => { InputTokensDetails = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAIResponsesUsageInputTokensDetails>(global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAIResponsesUsageInputTokensDetails.CreateFromDiscriminatorValue); } },
                 { "output_tokens", n => { OutputTokens = n.GetIntValue(); } },
-                { "output_tokens_details", n => { OutputTokensDetails = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAIResponsesUsage_output_tokens_details>(global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAIResponsesUsage_output_tokens_details.CreateFromDiscriminatorValue); } },
+                { "output_tokens_details", n => { OutputTokensDetails = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAIResponsesUsageOutputTokensDetails>(global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAIResponsesUsageOutputTokensDetails.CreateFromDiscriminatorValue); } },
                 { "total_tokens", n => { TotalTokens = n.GetIntValue(); } },
             };
         }
@@ -76,9 +76,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("input_tokens", InputTokens);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAIResponsesUsage_input_tokens_details>("input_tokens_details", InputTokensDetails);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAIResponsesUsageInputTokensDetails>("input_tokens_details", InputTokensDetails);
             writer.WriteIntValue("output_tokens", OutputTokens);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAIResponsesUsage_output_tokens_details>("output_tokens_details", OutputTokensDetails);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAIResponsesUsageOutputTokensDetails>("output_tokens_details", OutputTokensDetails);
             writer.WriteIntValue("total_tokens", TotalTokens);
             writer.WriteAdditionalData(AdditionalData);
         }

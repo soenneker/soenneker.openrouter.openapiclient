@@ -47,15 +47,15 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
             var result = new global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchCallOperation();
-            if("create_file".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("ApplyPatchCreateFileOperation".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.ApplyPatchCreateFileOperation = new global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchCreateFileOperation();
             }
-            else if("delete_file".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("ApplyPatchDeleteFileOperation".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.ApplyPatchDeleteFileOperation = new global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchDeleteFileOperation();
             }
-            else if("update_file".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("ApplyPatchUpdateFileOperation".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.ApplyPatchUpdateFileOperation = new global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchUpdateFileOperation();
             }

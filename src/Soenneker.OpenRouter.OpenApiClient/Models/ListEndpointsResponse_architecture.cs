@@ -9,15 +9,52 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class ListEndpointsResponse_architecture : global::Soenneker.OpenRouter.OpenApiClient.Models.ModelArchitecture, IParsable
+    public partial class ListEndpointsResponse_architecture : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
+        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
+        public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Supported input modalities</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.InputModality?>? InputModalities { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.InputModality?> InputModalities { get; set; }
+#endif
+        /// <summary>Instruction format type</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ListEndpointsResponse_architecture_instruct_type? InstructType { get; set; }
+        /// <summary>Primary modality of the model</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Modality { get; set; }
+#nullable restore
+#else
+        public string Modality { get; set; }
+#endif
+        /// <summary>Supported output modalities</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputModality?>? OutputModalities { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputModality?> OutputModalities { get; set; }
+#endif
+        /// <summary>Tokenizer type used by the model</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ModelGroup? Tokenizer { get; set; }
+        /// <summary>
+        /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ListEndpointsResponse_architecture"/> and sets the default values.
+        /// </summary>
+        public ListEndpointsResponse_architecture()
+        {
+            AdditionalData = new Dictionary<string, object>();
+        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ListEndpointsResponse_architecture"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static new global::Soenneker.OpenRouter.OpenApiClient.Models.ListEndpointsResponse_architecture CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.OpenRouter.OpenApiClient.Models.ListEndpointsResponse_architecture CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             return new global::Soenneker.OpenRouter.OpenApiClient.Models.ListEndpointsResponse_architecture();
@@ -26,20 +63,30 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public override IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>(base.GetFieldDeserializers())
+            return new Dictionary<string, Action<IParseNode>>
             {
+                { "input_modalities", n => { InputModalities = n.GetCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.InputModality>()?.AsList(); } },
+                { "instruct_type", n => { InstructType = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ListEndpointsResponse_architecture_instruct_type>(); } },
+                { "modality", n => { Modality = n.GetStringValue(); } },
+                { "output_modalities", n => { OutputModalities = n.GetCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputModality>()?.AsList(); } },
+                { "tokenizer", n => { Tokenizer = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ModelGroup>(); } },
             };
         }
         /// <summary>
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public override void Serialize(ISerializationWriter writer)
+        public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            base.Serialize(writer);
+            writer.WriteCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.InputModality>("input_modalities", InputModalities);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ListEndpointsResponse_architecture_instruct_type>("instruct_type", InstructType);
+            writer.WriteStringValue("modality", Modality);
+            writer.WriteCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputModality>("output_modalities", OutputModalities);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ModelGroup>("tokenizer", Tokenizer);
+            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

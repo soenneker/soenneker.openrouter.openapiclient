@@ -17,7 +17,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The provider sorting strategy (price, throughput, latency)</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderSortConfig_by? By { get; set; }
-        /// <summary>Partitioning strategy for sorting: &quot;model&quot; (default) groups endpoints by model before sorting (fallback models remain fallbacks), &quot;none&quot; sorts all endpoints together regardless of model.</summary>
+        /// <summary>&quot;Partitioning strategy for sorting: \&quot;model\&quot; (default) groups endpoints by model before sorting (fallback models remain fallbacks), \&quot;none\&quot; sorts all endpoints together regardless of model.&quot;</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderSortConfig_partition? Partition { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderSortConfig"/> and sets the default values.

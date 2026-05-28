@@ -8,6 +8,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     public enum TextExtendedConfig_verbosity
     #pragma warning restore CS1591
     {
+        [EnumMember(Value = "high")]
+        #pragma warning disable CS1591
+        High,
+        #pragma warning restore CS1591
         [EnumMember(Value = "low")]
         #pragma warning disable CS1591
         Low,
@@ -15,18 +19,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         [EnumMember(Value = "medium")]
         #pragma warning disable CS1591
         Medium,
-        #pragma warning restore CS1591
-        [EnumMember(Value = "high")]
-        #pragma warning disable CS1591
-        High,
-        #pragma warning restore CS1591
-        [EnumMember(Value = "xhigh")]
-        #pragma warning disable CS1591
-        Xhigh,
-        #pragma warning restore CS1591
-        [EnumMember(Value = "max")]
-        #pragma warning disable CS1591
-        Max,
         #pragma warning restore CS1591
     }
 }

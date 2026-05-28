@@ -8,34 +8,26 @@ using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BaseInputsMember1"/>, <see cref="string"/>, List&lt;global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchCallOutputItem&gt;
+    /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BaseInputs_Branch1"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BaseInputs_Branch2"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class BaseInputs : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Composed type representation for type List&lt;global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchCallOutputItem&gt;</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BaseInputs_Branch1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchCallOutputItem>? ApplyPatchCallOutputItem { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.BaseInputs_Branch1? BaseInputsBranch1 { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchCallOutputItem> ApplyPatchCallOutputItem { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.BaseInputs_Branch1 BaseInputsBranch1 { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BaseInputsMember1"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BaseInputs_Branch2"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.BaseInputsMember1? BaseInputsMember1 { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.BaseInputs_Branch2? BaseInputsBranch2 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.BaseInputsMember1 BaseInputsMember1 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="string"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? String { get; set; }
-#nullable restore
-#else
-        public string String { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.BaseInputs_Branch2 BaseInputsBranch2 { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -46,17 +38,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var result = new global::Soenneker.OpenRouter.OpenApiClient.Models.BaseInputs();
-            if(parseNode.GetStringValue() is string stringValue)
-            {
-                result.String = stringValue;
-            }
-            else if(parseNode.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchCallOutputItem>(global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchCallOutputItem.CreateFromDiscriminatorValue)?.AsList() is List<global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchCallOutputItem> applyPatchCallOutputItemValue)
-            {
-                result.ApplyPatchCallOutputItem = applyPatchCallOutputItemValue;
-            }
-            else {
-                result.BaseInputsMember1 = new global::Soenneker.OpenRouter.OpenApiClient.Models.BaseInputsMember1();
-            }
+            result.BaseInputsBranch1 = new global::Soenneker.OpenRouter.OpenApiClient.Models.BaseInputs_Branch1();
+            result.BaseInputsBranch2 = new global::Soenneker.OpenRouter.OpenApiClient.Models.BaseInputs_Branch2();
             return result;
         }
         /// <summary>
@@ -65,9 +48,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(BaseInputsMember1 != null)
+            if(BaseInputsBranch1 != null || BaseInputsBranch2 != null)
             {
-                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(BaseInputsMember1);
+                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(BaseInputsBranch1, BaseInputsBranch2);
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -78,17 +61,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(String != null)
-            {
-                writer.WriteStringValue(null, String);
-            }
-            else if(ApplyPatchCallOutputItem != null)
-            {
-                writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchCallOutputItem>(null, ApplyPatchCallOutputItem);
-            }
-            else {
-                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.BaseInputsMember1>(null, BaseInputsMember1);
-            }
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.BaseInputs_Branch1>(null, BaseInputsBranch1, BaseInputsBranch2);
         }
     }
 }

@@ -34,10 +34,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Provider-specific passthrough configuration</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequest_provider? Provider { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequestProvider? Provider { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequest_provider Provider { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequestProvider Provider { get; set; }
 #endif
         /// <summary>Audio output format</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequest_response_format? ResponseFormat { get; set; }
@@ -79,7 +79,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             {
                 { "input", n => { Input = n.GetStringValue(); } },
                 { "model", n => { Model = n.GetStringValue(); } },
-                { "provider", n => { Provider = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequest_provider>(global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequest_provider.CreateFromDiscriminatorValue); } },
+                { "provider", n => { Provider = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequestProvider>(global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequestProvider.CreateFromDiscriminatorValue); } },
                 { "response_format", n => { ResponseFormat = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequest_response_format>(); } },
                 { "speed", n => { Speed = n.GetDoubleValue(); } },
                 { "voice", n => { Voice = n.GetStringValue(); } },
@@ -94,7 +94,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("input", Input);
             writer.WriteStringValue("model", Model);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequest_provider>("provider", Provider);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequestProvider>("provider", Provider);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequest_response_format>("response_format", ResponseFormat);
             writer.WriteDoubleValue("speed", Speed);
             writer.WriteStringValue("voice", Voice);

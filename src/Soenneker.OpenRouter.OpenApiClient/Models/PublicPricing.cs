@@ -18,108 +18,108 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The audio property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Audio { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing_audio? Audio { get; set; }
 #nullable restore
 #else
-        public string Audio { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing_audio Audio { get; set; }
 #endif
         /// <summary>The audio_output property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AudioOutput { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing_audio_output? AudioOutput { get; set; }
 #nullable restore
 #else
-        public string AudioOutput { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing_audio_output AudioOutput { get; set; }
 #endif
         /// <summary>The completion property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Completion { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing_completion? Completion { get; set; }
 #nullable restore
 #else
-        public string Completion { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing_completion Completion { get; set; }
 #endif
         /// <summary>The discount property</summary>
         public double? Discount { get; set; }
         /// <summary>The image property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Image { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing_image? Image { get; set; }
 #nullable restore
 #else
-        public string Image { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing_image Image { get; set; }
 #endif
         /// <summary>The image_output property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ImageOutput { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing_image_output? ImageOutput { get; set; }
 #nullable restore
 #else
-        public string ImageOutput { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing_image_output ImageOutput { get; set; }
 #endif
         /// <summary>The image_token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ImageToken { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing_image_token? ImageToken { get; set; }
 #nullable restore
 #else
-        public string ImageToken { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing_image_token ImageToken { get; set; }
 #endif
         /// <summary>The input_audio_cache property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? InputAudioCache { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing_input_audio_cache? InputAudioCache { get; set; }
 #nullable restore
 #else
-        public string InputAudioCache { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing_input_audio_cache InputAudioCache { get; set; }
 #endif
         /// <summary>The input_cache_read property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? InputCacheRead { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing_input_cache_read? InputCacheRead { get; set; }
 #nullable restore
 #else
-        public string InputCacheRead { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing_input_cache_read InputCacheRead { get; set; }
 #endif
         /// <summary>The input_cache_write property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? InputCacheWrite { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing_input_cache_write? InputCacheWrite { get; set; }
 #nullable restore
 #else
-        public string InputCacheWrite { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing_input_cache_write InputCacheWrite { get; set; }
 #endif
         /// <summary>The internal_reasoning property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? InternalReasoning { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing_internal_reasoning? InternalReasoning { get; set; }
 #nullable restore
 #else
-        public string InternalReasoning { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing_internal_reasoning InternalReasoning { get; set; }
 #endif
         /// <summary>The prompt property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Prompt { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing_prompt? Prompt { get; set; }
 #nullable restore
 #else
-        public string Prompt { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing_prompt Prompt { get; set; }
 #endif
         /// <summary>The request property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Request { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing_request? Request { get; set; }
 #nullable restore
 #else
-        public string Request { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing_request Request { get; set; }
 #endif
         /// <summary>The web_search property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? WebSearch { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing_web_search? WebSearch { get; set; }
 #nullable restore
 #else
-        public string WebSearch { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing_web_search WebSearch { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing"/> and sets the default values.
@@ -146,20 +146,20 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "audio", n => { Audio = n.GetStringValue(); } },
-                { "audio_output", n => { AudioOutput = n.GetStringValue(); } },
-                { "completion", n => { Completion = n.GetStringValue(); } },
+                { "audio", n => { Audio = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing_audio>(global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing_audio.CreateFromDiscriminatorValue); } },
+                { "audio_output", n => { AudioOutput = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing_audio_output>(global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing_audio_output.CreateFromDiscriminatorValue); } },
+                { "completion", n => { Completion = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing_completion>(global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing_completion.CreateFromDiscriminatorValue); } },
                 { "discount", n => { Discount = n.GetDoubleValue(); } },
-                { "image", n => { Image = n.GetStringValue(); } },
-                { "image_output", n => { ImageOutput = n.GetStringValue(); } },
-                { "image_token", n => { ImageToken = n.GetStringValue(); } },
-                { "input_audio_cache", n => { InputAudioCache = n.GetStringValue(); } },
-                { "input_cache_read", n => { InputCacheRead = n.GetStringValue(); } },
-                { "input_cache_write", n => { InputCacheWrite = n.GetStringValue(); } },
-                { "internal_reasoning", n => { InternalReasoning = n.GetStringValue(); } },
-                { "prompt", n => { Prompt = n.GetStringValue(); } },
-                { "request", n => { Request = n.GetStringValue(); } },
-                { "web_search", n => { WebSearch = n.GetStringValue(); } },
+                { "image", n => { Image = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing_image>(global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing_image.CreateFromDiscriminatorValue); } },
+                { "image_output", n => { ImageOutput = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing_image_output>(global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing_image_output.CreateFromDiscriminatorValue); } },
+                { "image_token", n => { ImageToken = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing_image_token>(global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing_image_token.CreateFromDiscriminatorValue); } },
+                { "input_audio_cache", n => { InputAudioCache = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing_input_audio_cache>(global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing_input_audio_cache.CreateFromDiscriminatorValue); } },
+                { "input_cache_read", n => { InputCacheRead = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing_input_cache_read>(global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing_input_cache_read.CreateFromDiscriminatorValue); } },
+                { "input_cache_write", n => { InputCacheWrite = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing_input_cache_write>(global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing_input_cache_write.CreateFromDiscriminatorValue); } },
+                { "internal_reasoning", n => { InternalReasoning = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing_internal_reasoning>(global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing_internal_reasoning.CreateFromDiscriminatorValue); } },
+                { "prompt", n => { Prompt = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing_prompt>(global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing_prompt.CreateFromDiscriminatorValue); } },
+                { "request", n => { Request = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing_request>(global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing_request.CreateFromDiscriminatorValue); } },
+                { "web_search", n => { WebSearch = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing_web_search>(global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing_web_search.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -169,20 +169,20 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("audio", Audio);
-            writer.WriteStringValue("audio_output", AudioOutput);
-            writer.WriteStringValue("completion", Completion);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing_audio>("audio", Audio);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing_audio_output>("audio_output", AudioOutput);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing_completion>("completion", Completion);
             writer.WriteDoubleValue("discount", Discount);
-            writer.WriteStringValue("image", Image);
-            writer.WriteStringValue("image_output", ImageOutput);
-            writer.WriteStringValue("image_token", ImageToken);
-            writer.WriteStringValue("input_audio_cache", InputAudioCache);
-            writer.WriteStringValue("input_cache_read", InputCacheRead);
-            writer.WriteStringValue("input_cache_write", InputCacheWrite);
-            writer.WriteStringValue("internal_reasoning", InternalReasoning);
-            writer.WriteStringValue("prompt", Prompt);
-            writer.WriteStringValue("request", Request);
-            writer.WriteStringValue("web_search", WebSearch);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing_image>("image", Image);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing_image_output>("image_output", ImageOutput);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing_image_token>("image_token", ImageToken);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing_input_audio_cache>("input_audio_cache", InputAudioCache);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing_input_cache_read>("input_cache_read", InputCacheRead);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing_input_cache_write>("input_cache_write", InputCacheWrite);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing_internal_reasoning>("internal_reasoning", InternalReasoning);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing_prompt>("prompt", Prompt);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing_request>("request", Request);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing_web_search>("web_search", WebSearch);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -3,6 +3,8 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.OpenRouter.OpenApiClient.Presets.Item.Chat;
+using Soenneker.OpenRouter.OpenApiClient.Presets.Item.Messages;
+using Soenneker.OpenRouter.OpenApiClient.Presets.Item.Responses;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -19,6 +21,16 @@ namespace Soenneker.OpenRouter.OpenApiClient.Presets.Item
         public global::Soenneker.OpenRouter.OpenApiClient.Presets.Item.Chat.ChatRequestBuilder Chat
         {
             get => new global::Soenneker.OpenRouter.OpenApiClient.Presets.Item.Chat.ChatRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The messages property</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Presets.Item.Messages.MessagesRequestBuilder Messages
+        {
+            get => new global::Soenneker.OpenRouter.OpenApiClient.Presets.Item.Messages.MessagesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The responses property</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Presets.Item.Responses.ResponsesRequestBuilder Responses
+        {
+            get => new global::Soenneker.OpenRouter.OpenApiClient.Presets.Item.Responses.ResponsesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Presets.Item.WithSlugItemRequestBuilder"/> and sets the default values.

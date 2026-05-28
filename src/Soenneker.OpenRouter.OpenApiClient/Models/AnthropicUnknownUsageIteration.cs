@@ -9,9 +9,27 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class AnthropicUnknownUsageIteration : global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicBaseUsageIteration, IParsable
+    public partial class AnthropicUnknownUsageIteration : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
+        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
+        public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>The cache_creation property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicIterationCacheCreation? CacheCreation { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicIterationCacheCreation CacheCreation { get; set; }
+#endif
+        /// <summary>The cache_creation_input_tokens property</summary>
+        public int? CacheCreationInputTokens { get; set; }
+        /// <summary>The cache_read_input_tokens property</summary>
+        public int? CacheReadInputTokens { get; set; }
+        /// <summary>The input_tokens property</summary>
+        public int? InputTokens { get; set; }
+        /// <summary>The output_tokens property</summary>
+        public int? OutputTokens { get; set; }
         /// <summary>The type property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -21,11 +39,18 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public string Type { get; set; }
 #endif
         /// <summary>
+        /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicUnknownUsageIteration"/> and sets the default values.
+        /// </summary>
+        public AnthropicUnknownUsageIteration()
+        {
+            AdditionalData = new Dictionary<string, object>();
+        }
+        /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicUnknownUsageIteration"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicUnknownUsageIteration CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicUnknownUsageIteration CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             return new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicUnknownUsageIteration();
@@ -34,10 +59,15 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public override IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>(base.GetFieldDeserializers())
+            return new Dictionary<string, Action<IParseNode>>
             {
+                { "cache_creation", n => { CacheCreation = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicIterationCacheCreation>(global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicIterationCacheCreation.CreateFromDiscriminatorValue); } },
+                { "cache_creation_input_tokens", n => { CacheCreationInputTokens = n.GetIntValue(); } },
+                { "cache_read_input_tokens", n => { CacheReadInputTokens = n.GetIntValue(); } },
+                { "input_tokens", n => { InputTokens = n.GetIntValue(); } },
+                { "output_tokens", n => { OutputTokens = n.GetIntValue(); } },
                 { "type", n => { Type = n.GetStringValue(); } },
             };
         }
@@ -45,11 +75,16 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public override void Serialize(ISerializationWriter writer)
+        public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            base.Serialize(writer);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicIterationCacheCreation>("cache_creation", CacheCreation);
+            writer.WriteIntValue("cache_creation_input_tokens", CacheCreationInputTokens);
+            writer.WriteIntValue("cache_read_input_tokens", CacheReadInputTokens);
+            writer.WriteIntValue("input_tokens", InputTokens);
+            writer.WriteIntValue("output_tokens", OutputTokens);
             writer.WriteStringValue("type", Type);
+            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

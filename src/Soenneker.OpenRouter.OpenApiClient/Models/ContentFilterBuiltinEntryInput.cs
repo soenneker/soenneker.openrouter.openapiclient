@@ -17,7 +17,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterBuiltinAction? Action { get; set; }
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Deprecated: labels are system-assigned and cannot be set by the caller. Accepted for backward compatibility but silently ignored.</summary>
+        /// <summary>&quot;Deprecated: labels are system-assigned and cannot be set by the caller. Accepted for backward compatibility but silently ignored.&quot;</summary>
         [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

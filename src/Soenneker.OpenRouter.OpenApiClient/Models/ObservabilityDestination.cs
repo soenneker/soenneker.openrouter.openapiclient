@@ -7,12 +7,57 @@ using System.IO;
 using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
-    /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityArizeDestination"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityBraintrustDestination"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityClickhouseDestination"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityDatadogDestination"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityGrafanaDestination"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityLangfuseDestination"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityLangsmithDestination"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityNewrelicDestination"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityOpikDestination"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityOtelCollectorDestination"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityPosthogDestination"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityRampDestination"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityS3Destination"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilitySentryDestination"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilitySnowflakeDestination"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityWeaveDestination"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityWebhookDestination"/>
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class ObservabilityDestination : IComposedTypeWrapper, IParsable
+    #pragma warning disable CS1591
+    public partial class ObservabilityDestination : IAdditionalDataHolder, IComposedTypeWrapper, IParsable
+    #pragma warning restore CS1591
     {
+        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
+        public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Optional allowlist of OpenRouter API key hashes (`api_keys.hash`) whose traffic is forwarded to this destination. `null` means all keys.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? ApiKeyHashes { get; set; }
+#nullable restore
+#else
+        public List<string> ApiKeyHashes { get; set; }
+#endif
+        /// <summary>The config property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityArizeDestinationConfig? Config { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityArizeDestinationConfig Config { get; set; }
+#endif
+        /// <summary>ISO timestamp of when the destination was created.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? CreatedAt { get; set; }
+#nullable restore
+#else
+        public string CreatedAt { get; set; }
+#endif
+        /// <summary>Whether this destination is currently enabled.</summary>
+        public bool? Enabled { get; set; }
+        /// <summary>Optional structured filter rules controlling which events are forwarded.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityFilterRulesConfig? FilterRules { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityFilterRulesConfig FilterRules { get; set; }
+#endif
+        /// <summary>Stable public identifier for this destination.</summary>
+        public Guid? Id { get; set; }
+        /// <summary>Human-readable name for the destination.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Name { get; set; }
+#nullable restore
+#else
+        public string Name { get; set; }
+#endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityArizeDestination"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -149,6 +194,35 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityWebhookDestination ObservabilityWebhookDestination { get; set; }
 #endif
+        /// <summary>When true, request/response bodies are not forwarded to this destination — only metadata.</summary>
+        public bool? PrivacyMode { get; set; }
+        /// <summary>Sampling rate for events sent to this destination, between 0 and 1 (1 = 100%).</summary>
+        public double? SamplingRate { get; set; }
+        /// <summary>Union discriminator</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Type { get; set; }
+#nullable restore
+#else
+        public string Type { get; set; }
+#endif
+        /// <summary>ISO timestamp of when the destination was last updated.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? UpdatedAt { get; set; }
+#nullable restore
+#else
+        public string UpdatedAt { get; set; }
+#endif
+        /// <summary>ID of the workspace this destination belongs to.</summary>
+        public Guid? WorkspaceId { get; set; }
+        /// <summary>
+        /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityDestination"/> and sets the default values.
+        /// </summary>
+        public ObservabilityDestination()
+        {
+            AdditionalData = new Dictionary<string, object>();
+        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -159,7 +233,15 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
             var result = new global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityDestination();
-            if("arize".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                result.Config = new global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityArizeDestinationConfig();
+            }
+            else if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                result.FilterRules = new global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityFilterRulesConfig();
+            }
+            else if("arize".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.ObservabilityArizeDestination = new global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityArizeDestination();
             }
@@ -191,41 +273,81 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             {
                 result.ObservabilityNewrelicDestination = new global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityNewrelicDestination();
             }
-            else if("opik".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("ObservabilityOpikDestination".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.ObservabilityOpikDestination = new global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityOpikDestination();
             }
-            else if("otel-collector".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("ObservabilityOtelCollectorDestination".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.ObservabilityOtelCollectorDestination = new global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityOtelCollectorDestination();
             }
-            else if("posthog".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("ObservabilityPosthogDestination".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.ObservabilityPosthogDestination = new global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityPosthogDestination();
             }
-            else if("ramp".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("ObservabilityRampDestination".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.ObservabilityRampDestination = new global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityRampDestination();
             }
-            else if("s3".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("ObservabilityS3Destination".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.ObservabilityS3Destination = new global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityS3Destination();
             }
-            else if("sentry".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("ObservabilitySentryDestination".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.ObservabilitySentryDestination = new global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilitySentryDestination();
             }
-            else if("snowflake".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("ObservabilitySnowflakeDestination".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.ObservabilitySnowflakeDestination = new global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilitySnowflakeDestination();
             }
-            else if("weave".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("ObservabilityWeaveDestination".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.ObservabilityWeaveDestination = new global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityWeaveDestination();
             }
-            else if("webhook".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("ObservabilityWebhookDestination".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.ObservabilityWebhookDestination = new global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityWebhookDestination();
+            }
+            else if(parseNode.GetStringValue() is string createdAtValue)
+            {
+                result.CreatedAt = createdAtValue;
+            }
+            else if(parseNode.GetBoolValue() is bool enabledValue)
+            {
+                result.Enabled = enabledValue;
+            }
+            else if(parseNode.GetGuidValue() is Guid idValue)
+            {
+                result.Id = idValue;
+            }
+            else if(parseNode.GetStringValue() is string nameValue)
+            {
+                result.Name = nameValue;
+            }
+            else if(parseNode.GetBoolValue() is bool privacyModeValue)
+            {
+                result.PrivacyMode = privacyModeValue;
+            }
+            else if(parseNode.GetDoubleValue() is double samplingRateValue)
+            {
+                result.SamplingRate = samplingRateValue;
+            }
+            else if(parseNode.GetStringValue() is string typeValue)
+            {
+                result.Type = typeValue;
+            }
+            else if(parseNode.GetStringValue() is string updatedAtValue)
+            {
+                result.UpdatedAt = updatedAtValue;
+            }
+            else if(parseNode.GetGuidValue() is Guid workspaceIdValue)
+            {
+                result.WorkspaceId = workspaceIdValue;
+            }
+            else if(parseNode.GetCollectionOfPrimitiveValues<string>()?.AsList() is List<string> apiKeyHashesValue)
+            {
+                result.ApiKeyHashes = apiKeyHashesValue;
             }
             return result;
         }
@@ -235,7 +357,15 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(ObservabilityArizeDestination != null)
+            if(Config != null)
+            {
+                return Config.GetFieldDeserializers();
+            }
+            else if(FilterRules != null)
+            {
+                return FilterRules.GetFieldDeserializers();
+            }
+            else if(ObservabilityArizeDestination != null)
             {
                 return ObservabilityArizeDestination.GetFieldDeserializers();
             }
@@ -312,7 +442,15 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(ObservabilityArizeDestination != null)
+            if(Config != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityArizeDestinationConfig>(null, Config);
+            }
+            else if(FilterRules != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityFilterRulesConfig>(null, FilterRules);
+            }
+            else if(ObservabilityArizeDestination != null)
             {
                 writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityArizeDestination>(null, ObservabilityArizeDestination);
             }
@@ -380,6 +518,47 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             {
                 writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityWebhookDestination>(null, ObservabilityWebhookDestination);
             }
+            else if(CreatedAt != null)
+            {
+                writer.WriteStringValue(null, CreatedAt);
+            }
+            else if(Enabled != null)
+            {
+                writer.WriteBoolValue(null, Enabled);
+            }
+            else if(Id != null)
+            {
+                writer.WriteGuidValue(null, Id);
+            }
+            else if(Name != null)
+            {
+                writer.WriteStringValue(null, Name);
+            }
+            else if(PrivacyMode != null)
+            {
+                writer.WriteBoolValue(null, PrivacyMode);
+            }
+            else if(SamplingRate != null)
+            {
+                writer.WriteDoubleValue(null, SamplingRate);
+            }
+            else if(Type != null)
+            {
+                writer.WriteStringValue(null, Type);
+            }
+            else if(UpdatedAt != null)
+            {
+                writer.WriteStringValue(null, UpdatedAt);
+            }
+            else if(WorkspaceId != null)
+            {
+                writer.WriteGuidValue(null, WorkspaceId);
+            }
+            else if(ApiKeyHashes != null)
+            {
+                writer.WriteCollectionOfPrimitiveValues<string>(null, ApiKeyHashes);
+            }
+            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

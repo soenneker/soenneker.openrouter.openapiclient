@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ChatFunctionToolMember1"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ChatSearchModelsServerTool"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ChatWebSearchShorthand"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.DatetimeServerTool"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerTool_OpenRouter"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OpenRouterWebSearchServerTool"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.WebFetchServerTool"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ChatFunctionToolMember1"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ChatSearchModelsServerTool"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ChatWebSearchShorthand"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.DatetimeServerTool"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerToolOpenRouter"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OpenRouterWebSearchServerTool"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.WebFetchServerTool"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ChatFunctionTool : IComposedTypeWrapper, IParsable
@@ -45,13 +45,13 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public global::Soenneker.OpenRouter.OpenApiClient.Models.DatetimeServerTool DatetimeServerTool { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerTool_OpenRouter"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerToolOpenRouter"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerTool_OpenRouter? ImageGenerationServerToolOpenRouter { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerToolOpenRouter? ImageGenerationServerToolOpenRouter { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerTool_OpenRouter ImageGenerationServerToolOpenRouter { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerToolOpenRouter ImageGenerationServerToolOpenRouter { get; set; }
 #endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OpenRouterWebSearchServerTool"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -82,7 +82,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             result.ChatSearchModelsServerTool = new global::Soenneker.OpenRouter.OpenApiClient.Models.ChatSearchModelsServerTool();
             result.ChatWebSearchShorthand = new global::Soenneker.OpenRouter.OpenApiClient.Models.ChatWebSearchShorthand();
             result.DatetimeServerTool = new global::Soenneker.OpenRouter.OpenApiClient.Models.DatetimeServerTool();
-            result.ImageGenerationServerToolOpenRouter = new global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerTool_OpenRouter();
+            result.ImageGenerationServerToolOpenRouter = new global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerToolOpenRouter();
             result.OpenRouterWebSearchServerTool = new global::Soenneker.OpenRouter.OpenApiClient.Models.OpenRouterWebSearchServerTool();
             result.WebFetchServerTool = new global::Soenneker.OpenRouter.OpenApiClient.Models.WebFetchServerTool();
             return result;

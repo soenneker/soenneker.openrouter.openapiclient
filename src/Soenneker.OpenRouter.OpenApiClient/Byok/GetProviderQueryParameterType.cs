@@ -99,6 +99,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Byok
         #pragma warning disable CS1591
         Crusoe,
         #pragma warning restore CS1591
+        [EnumMember(Value = "darkbloom")]
+        #pragma warning disable CS1591
+        Darkbloom,
+        #pragma warning restore CS1591
         [EnumMember(Value = "deepinfra")]
         #pragma warning disable CS1591
         Deepinfra,

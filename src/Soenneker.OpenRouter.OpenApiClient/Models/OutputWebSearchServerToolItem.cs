@@ -16,10 +16,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The search action performed, matching OpenAI web_search_call.action shape. Includes the query the model issued and optional source URLs returned by the search provider.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.OutputWebSearchServerToolItem_action? Action { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.OutputWebSearchServerToolItemAction? Action { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.OutputWebSearchServerToolItem_action Action { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.OutputWebSearchServerToolItemAction Action { get; set; }
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -60,7 +60,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "action", n => { Action = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputWebSearchServerToolItem_action>(global::Soenneker.OpenRouter.OpenApiClient.Models.OutputWebSearchServerToolItem_action.CreateFromDiscriminatorValue); } },
+                { "action", n => { Action = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputWebSearchServerToolItemAction>(global::Soenneker.OpenRouter.OpenApiClient.Models.OutputWebSearchServerToolItemAction.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ToolCallStatus>(); } },
                 { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputWebSearchServerToolItem_type>(); } },
@@ -73,7 +73,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputWebSearchServerToolItem_action>("action", Action);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputWebSearchServerToolItemAction>("action", Action);
             writer.WriteStringValue("id", Id);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ToolCallStatus>("status", Status);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputWebSearchServerToolItem_type>("type", Type);
