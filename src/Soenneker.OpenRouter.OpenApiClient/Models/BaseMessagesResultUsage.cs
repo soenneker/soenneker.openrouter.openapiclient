@@ -46,6 +46,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #endif
         /// <summary>The output_tokens property</summary>
         public int? OutputTokens { get; set; }
+        /// <summary>The output_tokens_details property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicOutputTokensDetails? OutputTokensDetails { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicOutputTokensDetails OutputTokensDetails { get; set; }
+#endif
         /// <summary>The server_tool_use property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -90,6 +98,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "input_tokens", n => { InputTokens = n.GetIntValue(); } },
                 { "iterations", n => { Iterations = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicUsageIteration>(global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicUsageIteration.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "output_tokens", n => { OutputTokens = n.GetIntValue(); } },
+                { "output_tokens_details", n => { OutputTokensDetails = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicOutputTokensDetails>(global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicOutputTokensDetails.CreateFromDiscriminatorValue); } },
                 { "server_tool_use", n => { ServerToolUse = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicServerToolUsage>(global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicServerToolUsage.CreateFromDiscriminatorValue); } },
                 { "service_tier", n => { ServiceTier = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicServiceTier>(); } },
                 { "speed", n => { Speed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicSpeed>(); } },
@@ -109,6 +118,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteIntValue("input_tokens", InputTokens);
             writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicUsageIteration>("iterations", Iterations);
             writer.WriteIntValue("output_tokens", OutputTokens);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicOutputTokensDetails>("output_tokens_details", OutputTokensDetails);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicServerToolUsage>("server_tool_use", ServerToolUse);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicServiceTier>("service_tier", ServiceTier);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicSpeed>("speed", Speed);

@@ -1569,6 +1569,21 @@
           "type": "message"
         }
       },
+      "AnthropicOutputTokensDetails": {
+        "example": {
+          "thinking_tokens": 0
+        },
+        "nullable": true,
+        "properties": {
+          "thinking_tokens": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "thinking_tokens"
+        ],
+        "type": "object"
+      },
       "AnthropicPlainTextSource": {
         "example": {
           "data": "Hello, world!",
@@ -2479,6 +2494,7 @@
           "inference_geo": null,
           "input_tokens": 100,
           "output_tokens": 50,
+          "output_tokens_details": null,
           "server_tool_use": null,
           "service_tier": "standard"
         },
@@ -2504,6 +2520,9 @@
           "output_tokens": {
             "type": "integer"
           },
+          "output_tokens_details": {
+            "$ref": "#/components/schemas/AnthropicOutputTokensDetails"
+          },
           "server_tool_use": {
             "$ref": "#/components/schemas/AnthropicServerToolUsage"
           },
@@ -2514,6 +2533,7 @@
         "required": [
           "input_tokens",
           "output_tokens",
+          "output_tokens_details",
           "cache_creation_input_tokens",
           "cache_read_input_tokens",
           "cache_creation",
@@ -3981,6 +4001,7 @@
               "inference_geo": null,
               "input_tokens": 100,
               "output_tokens": 50,
+              "output_tokens_details": null,
               "server_tool_use": null,
               "service_tier": "standard"
             }
@@ -6372,7 +6393,7 @@
             "x-speakeasy-unknown-values": "allow"
           },
           "session_id": {
-            "description": "A unique identifier for grouping related requests (e.g., a conversation or agent workflow) for observability. If provided in both the request body and the x-session-id header, the body value takes precedence. Maximum of 256 characters.",
+            "description": "A unique identifier for grouping related requests (e.g., a conversation or agent workflow). When provided, OpenRouter uses it as the sticky routing key, routing all requests in the session to the same provider to maximize prompt cache hits. Also used for observability grouping. If provided in both the request body and the x-session-id header, the body value takes precedence. Maximum of 256 characters.",
             "maxLength": 256,
             "type": "string"
           },
@@ -13456,6 +13477,9 @@
               "output_tokens": {
                 "type": "integer"
               },
+              "output_tokens_details": {
+                "$ref": "#/components/schemas/AnthropicOutputTokensDetails"
+              },
               "server_tool_use": {
                 "nullable": true,
                 "properties": {
@@ -13476,6 +13500,7 @@
             "required": [
               "input_tokens",
               "output_tokens",
+              "output_tokens_details",
               "cache_creation_input_tokens",
               "cache_read_input_tokens",
               "server_tool_use"
@@ -13855,7 +13880,8 @@
           "role": {
             "enum": [
               "user",
-              "assistant"
+              "assistant",
+              "system"
             ],
             "type": "string",
             "x-speakeasy-unknown-values": "allow"
@@ -14220,7 +14246,7 @@
             "type": "string"
           },
           "session_id": {
-            "description": "A unique identifier for grouping related requests (e.g., a conversation or agent workflow) for observability. If provided in both the request body and the x-session-id header, the body value takes precedence. Maximum of 256 characters.",
+            "description": "A unique identifier for grouping related requests (e.g., a conversation or agent workflow). When provided, OpenRouter uses it as the sticky routing key, routing all requests in the session to the same provider to maximize prompt cache hits. Also used for observability grouping. If provided in both the request body and the x-session-id header, the body value takes precedence. Maximum of 256 characters.",
             "maxLength": 256,
             "type": "string"
           },
@@ -24475,7 +24501,7 @@
             "x-speakeasy-unknown-values": "allow"
           },
           "session_id": {
-            "description": "A unique identifier for grouping related requests (e.g., a conversation or agent workflow) for observability. If provided in both the request body and the x-session-id header, the body value takes precedence. Maximum of 256 characters.",
+            "description": "A unique identifier for grouping related requests (e.g., a conversation or agent workflow). When provided, OpenRouter uses it as the sticky routing key, routing all requests in the session to the same provider to maximize prompt cache hits. Also used for observability grouping. If provided in both the request body and the x-session-id header, the body value takes precedence. Maximum of 256 characters.",
             "maxLength": 256,
             "type": "string"
           },

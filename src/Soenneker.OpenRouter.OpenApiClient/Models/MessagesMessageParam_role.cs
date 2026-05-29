@@ -16,5 +16,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning disable CS1591
         Assistant,
         #pragma warning restore CS1591
+        [EnumMember(Value = "system")]
+        #pragma warning disable CS1591
+        System,
+        #pragma warning restore CS1591
     }
 }
