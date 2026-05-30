@@ -5,16 +5,12 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public enum UpdateObservabilityDestinationRequest_filter_rules_groups_logic
+    public enum MessagesOutputConfig_format_type
     #pragma warning restore CS1591
     {
-        [EnumMember(Value = "and")]
+        [EnumMember(Value = "json_schema")]
         #pragma warning disable CS1591
-        And,
-        #pragma warning restore CS1591
-        [EnumMember(Value = "or")]
-        #pragma warning disable CS1591
-        Or,
+        Json_schema,
         #pragma warning restore CS1591
     }
 }

@@ -5,12 +5,12 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public enum MessagesRequestContextManagement_editsMember3_trigger_type
+    public enum MessagesOutputConfig_task_budget_type
     #pragma warning restore CS1591
     {
-        [EnumMember(Value = "input_tokens")]
+        [EnumMember(Value = "tokens")]
         #pragma warning disable CS1591
-        Input_tokens,
+        Tokens,
         #pragma warning restore CS1591
     }
 }

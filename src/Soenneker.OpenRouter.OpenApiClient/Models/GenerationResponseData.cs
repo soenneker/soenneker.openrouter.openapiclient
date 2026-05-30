@@ -115,6 +115,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public string Origin { get; set; }
 #endif
+        /// <summary>ID of the preset used for this generation, null if no preset was used</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? PresetId { get; set; }
+#nullable restore
+#else
+        public string PresetId { get; set; }
+#endif
         /// <summary>Name of the provider that served the request</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -258,6 +266,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "num_media_prompt", n => { NumMediaPrompt = n.GetIntValue(); } },
                 { "num_search_results", n => { NumSearchResults = n.GetIntValue(); } },
                 { "origin", n => { Origin = n.GetStringValue(); } },
+                { "preset_id", n => { PresetId = n.GetStringValue(); } },
                 { "provider_name", n => { ProviderName = n.GetStringValue(); } },
                 { "provider_responses", n => { ProviderResponses = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderResponse>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderResponse.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "request_id", n => { RequestId = n.GetStringValue(); } },
@@ -309,6 +318,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteIntValue("num_media_prompt", NumMediaPrompt);
             writer.WriteIntValue("num_search_results", NumSearchResults);
             writer.WriteStringValue("origin", Origin);
+            writer.WriteStringValue("preset_id", PresetId);
             writer.WriteStringValue("provider_name", ProviderName);
             writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderResponse>("provider_responses", ProviderResponses);
             writer.WriteStringValue("request_id", RequestId);

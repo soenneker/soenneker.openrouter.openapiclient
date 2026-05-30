@@ -9,7 +9,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class MessagesRequestContextManagement_editsMember2 : IAdditionalDataHolder, IParsable
+    public partial class MessagesRequest_context_management_editsMember2 : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -17,29 +17,29 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The keep property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestContextManagement_editsMember2.MessagesRequestContextManagement_editsMember2_keep? Keep { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember2.MessagesRequest_context_management_editsMember2_keep? Keep { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestContextManagement_editsMember2.MessagesRequestContextManagement_editsMember2_keep Keep { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember2.MessagesRequest_context_management_editsMember2_keep Keep { get; set; }
 #endif
         /// <summary>The type property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestContextManagement_editsMember2_type? Type { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember2_type? Type { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestContextManagement_editsMember2"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember2"/> and sets the default values.
         /// </summary>
-        public MessagesRequestContextManagement_editsMember2()
+        public MessagesRequest_context_management_editsMember2()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestContextManagement_editsMember2"/></returns>
+        /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember2"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestContextManagement_editsMember2 CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember2 CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestContextManagement_editsMember2();
+            return new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember2();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -49,8 +49,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "keep", n => { Keep = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestContextManagement_editsMember2.MessagesRequestContextManagement_editsMember2_keep>(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestContextManagement_editsMember2.MessagesRequestContextManagement_editsMember2_keep.CreateFromDiscriminatorValue); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestContextManagement_editsMember2_type>(); } },
+                { "keep", n => { Keep = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember2.MessagesRequest_context_management_editsMember2_keep>(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember2.MessagesRequest_context_management_editsMember2_keep.CreateFromDiscriminatorValue); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember2_type>(); } },
             };
         }
         /// <summary>
@@ -60,15 +60,15 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestContextManagement_editsMember2.MessagesRequestContextManagement_editsMember2_keep>("keep", Keep);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestContextManagement_editsMember2_type>("type", Type);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember2.MessagesRequest_context_management_editsMember2_keep>("keep", Keep);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember2_type>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
         /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicThinkingTurns"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestContextManagement_editsMember2_keepMember1"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.UnionBranch"/>
+        /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicThinkingTurns"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember2_keepMember1"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.UnionBranch"/>
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class MessagesRequestContextManagement_editsMember2_keep : IComposedTypeWrapper, IParsable
+        public partial class MessagesRequest_context_management_editsMember2_keep : IComposedTypeWrapper, IParsable
         {
             /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicThinkingTurns"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -78,13 +78,13 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
             public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicThinkingTurns AnthropicThinkingTurns { get; set; }
 #endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestContextManagement_editsMember2_keepMember1"/></summary>
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember2_keepMember1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestContextManagement_editsMember2_keepMember1? MessagesRequestContextManagementEditsMember2KeepMember1 { get; set; }
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember2_keepMember1? MessagesRequestContextManagementEditsMember2KeepMember1 { get; set; }
 #nullable restore
 #else
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestContextManagement_editsMember2_keepMember1 MessagesRequestContextManagementEditsMember2KeepMember1 { get; set; }
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember2_keepMember1 MessagesRequestContextManagementEditsMember2KeepMember1 { get; set; }
 #endif
             /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.UnionBranch"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -97,14 +97,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             /// <summary>
             /// Creates a new instance of the appropriate class based on discriminator value
             /// </summary>
-            /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestContextManagement_editsMember2.MessagesRequestContextManagement_editsMember2_keep"/></returns>
+            /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember2.MessagesRequest_context_management_editsMember2_keep"/></returns>
             /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestContextManagement_editsMember2.MessagesRequestContextManagement_editsMember2_keep CreateFromDiscriminatorValue(IParseNode parseNode)
+            public static global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember2.MessagesRequest_context_management_editsMember2_keep CreateFromDiscriminatorValue(IParseNode parseNode)
             {
                 if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var result = new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestContextManagement_editsMember2.MessagesRequestContextManagement_editsMember2_keep();
+                var result = new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember2.MessagesRequest_context_management_editsMember2_keep();
                 result.AnthropicThinkingTurns = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicThinkingTurns();
-                result.MessagesRequestContextManagementEditsMember2KeepMember1 = new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestContextManagement_editsMember2_keepMember1();
+                result.MessagesRequestContextManagementEditsMember2KeepMember1 = new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember2_keepMember1();
                 result.UnionBranch = new global::Soenneker.OpenRouter.OpenApiClient.Models.UnionBranch();
                 return result;
             }

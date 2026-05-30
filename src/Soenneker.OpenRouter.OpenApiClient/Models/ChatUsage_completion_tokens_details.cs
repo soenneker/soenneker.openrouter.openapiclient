@@ -8,29 +8,37 @@ using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     /// <summary>
-    /// Metadata key-value pairs for the request. Keys must be ≤64 characters and cannot contain brackets. Values must be ≤512 characters. Maximum 16 pairs allowed.
+    /// Detailed completion token usage
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class OpenResponsesResult_metadata : IAdditionalDataHolder, IParsable
+    public partial class ChatUsage_completion_tokens_details : IAdditionalDataHolder, IParsable
     {
+        /// <summary>Accepted prediction tokens</summary>
+        public int? AcceptedPredictionTokens { get; set; }
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Tokens used for audio output</summary>
+        public int? AudioTokens { get; set; }
+        /// <summary>Tokens used for reasoning</summary>
+        public int? ReasoningTokens { get; set; }
+        /// <summary>Rejected prediction tokens</summary>
+        public int? RejectedPredictionTokens { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OpenResponsesResult_metadata"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ChatUsage_completion_tokens_details"/> and sets the default values.
         /// </summary>
-        public OpenResponsesResult_metadata()
+        public ChatUsage_completion_tokens_details()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OpenResponsesResult_metadata"/></returns>
+        /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ChatUsage_completion_tokens_details"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.OpenRouter.OpenApiClient.Models.OpenResponsesResult_metadata CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.OpenRouter.OpenApiClient.Models.ChatUsage_completion_tokens_details CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.OpenRouter.OpenApiClient.Models.OpenResponsesResult_metadata();
+            return new global::Soenneker.OpenRouter.OpenApiClient.Models.ChatUsage_completion_tokens_details();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -40,6 +48,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "accepted_prediction_tokens", n => { AcceptedPredictionTokens = n.GetIntValue(); } },
+                { "audio_tokens", n => { AudioTokens = n.GetIntValue(); } },
+                { "reasoning_tokens", n => { ReasoningTokens = n.GetIntValue(); } },
+                { "rejected_prediction_tokens", n => { RejectedPredictionTokens = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -49,6 +61,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteIntValue("accepted_prediction_tokens", AcceptedPredictionTokens);
+            writer.WriteIntValue("audio_tokens", AudioTokens);
+            writer.WriteIntValue("reasoning_tokens", ReasoningTokens);
+            writer.WriteIntValue("rejected_prediction_tokens", RejectedPredictionTokens);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

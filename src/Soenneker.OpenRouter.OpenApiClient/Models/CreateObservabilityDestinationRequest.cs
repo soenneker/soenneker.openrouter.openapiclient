@@ -50,7 +50,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #endif
         /// <summary>When true, request/response bodies are not forwarded — only metadata.</summary>
         public bool? PrivacyMode { get; set; }
-        /// <summary>Sampling rate between 0 and 1 (1 = 100%).</summary>
+        /// <summary>Sampling rate between 0.0001 and 1 (1 = 100%).</summary>
         public double? SamplingRate { get; set; }
         /// <summary>The destination type. Only stable destination types are accepted.</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.CreateObservabilityDestinationRequest_type? Type { get; set; }

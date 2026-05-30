@@ -196,7 +196,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #endif
         /// <summary>When true, request/response bodies are not forwarded to this destination — only metadata.</summary>
         public bool? PrivacyMode { get; set; }
-        /// <summary>Sampling rate for events sent to this destination, between 0 and 1 (1 = 100%).</summary>
+        /// <summary>Sampling rate for events sent to this destination, between 0.0001 and 1 (1 = 100%).</summary>
         public double? SamplingRate { get; set; }
         /// <summary>Union discriminator</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

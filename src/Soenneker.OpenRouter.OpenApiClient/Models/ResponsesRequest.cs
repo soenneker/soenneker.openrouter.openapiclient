@@ -66,10 +66,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Metadata key-value pairs for the request. Keys must be ≤64 characters and cannot contain brackets. Values must be ≤512 characters. Maximum 16 pairs allowed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesRequest_metadata? Metadata { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.RequestMetadata? Metadata { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesRequest_metadata Metadata { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.RequestMetadata Metadata { get; set; }
 #endif
         /// <summary>Output modalities for the response. Supported values are &quot;text&quot; and &quot;image&quot;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -270,7 +270,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "instructions", n => { Instructions = n.GetStringValue(); } },
                 { "max_output_tokens", n => { MaxOutputTokens = n.GetIntValue(); } },
                 { "max_tool_calls", n => { MaxToolCalls = n.GetIntValue(); } },
-                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesRequest_metadata>(global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesRequest_metadata.CreateFromDiscriminatorValue); } },
+                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.RequestMetadata>(global::Soenneker.OpenRouter.OpenApiClient.Models.RequestMetadata.CreateFromDiscriminatorValue); } },
                 { "modalities", n => { Modalities = n.GetCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputModalityEnum>()?.AsList(); } },
                 { "model", n => { Model = n.GetStringValue(); } },
                 { "models", n => { Models = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
@@ -317,7 +317,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteStringValue("instructions", Instructions);
             writer.WriteIntValue("max_output_tokens", MaxOutputTokens);
             writer.WriteIntValue("max_tool_calls", MaxToolCalls);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesRequest_metadata>("metadata", Metadata);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.RequestMetadata>("metadata", Metadata);
             writer.WriteCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputModalityEnum>("modalities", Modalities);
             writer.WriteStringValue("model", Model);
             writer.WriteCollectionOfPrimitiveValues<string>("models", Models);

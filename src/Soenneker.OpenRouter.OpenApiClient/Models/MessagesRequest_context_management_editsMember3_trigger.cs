@@ -7,38 +7,33 @@ using System.IO;
 using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
-    /// <summary>
-    /// Detailed prompt token usage
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class ChatUsagePromptTokensDetails : IAdditionalDataHolder, IParsable
+    #pragma warning disable CS1591
+    public partial class MessagesRequest_context_management_editsMember3_trigger : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Audio input tokens</summary>
-        public int? AudioTokens { get; set; }
-        /// <summary>Cached prompt tokens</summary>
-        public int? CachedTokens { get; set; }
-        /// <summary>Tokens written to cache. Only returned for models with explicit caching and cache write pricing.</summary>
-        public int? CacheWriteTokens { get; set; }
-        /// <summary>Video input tokens</summary>
-        public int? VideoTokens { get; set; }
+        /// <summary>The type property</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember3_trigger_type? Type { get; set; }
+        /// <summary>The value property</summary>
+        public int? Value { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ChatUsagePromptTokensDetails"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember3_trigger"/> and sets the default values.
         /// </summary>
-        public ChatUsagePromptTokensDetails()
+        public MessagesRequest_context_management_editsMember3_trigger()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ChatUsagePromptTokensDetails"/></returns>
+        /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember3_trigger"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.OpenRouter.OpenApiClient.Models.ChatUsagePromptTokensDetails CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember3_trigger CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.OpenRouter.OpenApiClient.Models.ChatUsagePromptTokensDetails();
+            return new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember3_trigger();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -48,10 +43,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "audio_tokens", n => { AudioTokens = n.GetIntValue(); } },
-                { "cache_write_tokens", n => { CacheWriteTokens = n.GetIntValue(); } },
-                { "cached_tokens", n => { CachedTokens = n.GetIntValue(); } },
-                { "video_tokens", n => { VideoTokens = n.GetIntValue(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember3_trigger_type>(); } },
+                { "value", n => { Value = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -61,10 +54,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteIntValue("audio_tokens", AudioTokens);
-            writer.WriteIntValue("cached_tokens", CachedTokens);
-            writer.WriteIntValue("cache_write_tokens", CacheWriteTokens);
-            writer.WriteIntValue("video_tokens", VideoTokens);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management_editsMember3_trigger_type>("type", Type);
+            writer.WriteIntValue("value", Value);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

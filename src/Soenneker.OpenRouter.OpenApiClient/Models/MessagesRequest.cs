@@ -26,10 +26,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The context_management property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestContextManagement? ContextManagement { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management? ContextManagement { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestContextManagement ContextManagement { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management ContextManagement { get; set; }
 #endif
         /// <summary>The max_tokens property</summary>
         public int? MaxTokens { get; set; }
@@ -114,7 +114,13 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public string SessionId { get; set; }
 #endif
         /// <summary>The speed property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicSpeed? Speed { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_speed? Speed { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_speed Speed { get; set; }
+#endif
         /// <summary>The stop_sequences property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -213,7 +219,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "cache_control", n => { CacheControl = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective>(global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective.CreateFromDiscriminatorValue); } },
-                { "context_management", n => { ContextManagement = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestContextManagement>(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestContextManagement.CreateFromDiscriminatorValue); } },
+                { "context_management", n => { ContextManagement = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management>(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management.CreateFromDiscriminatorValue); } },
                 { "max_tokens", n => { MaxTokens = n.GetIntValue(); } },
                 { "messages", n => { Messages = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesMessageParam>(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesMessageParam.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestMetadata>(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestMetadata.CreateFromDiscriminatorValue); } },
@@ -225,7 +231,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "route", n => { Route = n.GetStringValue(); } },
                 { "service_tier", n => { ServiceTier = n.GetStringValue(); } },
                 { "session_id", n => { SessionId = n.GetStringValue(); } },
-                { "speed", n => { Speed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicSpeed>(); } },
+                { "speed", n => { Speed = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_speed>(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_speed.CreateFromDiscriminatorValue); } },
                 { "stop_sequences", n => { StopSequences = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "stop_server_tools_when", n => { StopServerToolsWhen = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.StopServerToolsWhenCondition>(global::Soenneker.OpenRouter.OpenApiClient.Models.StopServerToolsWhenCondition.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "stream", n => { Stream = n.GetBoolValue(); } },
@@ -248,7 +254,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective>("cache_control", CacheControl);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestContextManagement>("context_management", ContextManagement);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management>("context_management", ContextManagement);
             writer.WriteIntValue("max_tokens", MaxTokens);
             writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesMessageParam>("messages", Messages);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestMetadata>("metadata", Metadata);
@@ -260,7 +266,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteStringValue("route", Route);
             writer.WriteStringValue("service_tier", ServiceTier);
             writer.WriteStringValue("session_id", SessionId);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicSpeed>("speed", Speed);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_speed>("speed", Speed);
             writer.WriteCollectionOfPrimitiveValues<string>("stop_sequences", StopSequences);
             writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.StopServerToolsWhenCondition>("stop_server_tools_when", StopServerToolsWhen);
             writer.WriteBoolValue("stream", Stream);
