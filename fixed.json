@@ -11688,6 +11688,7 @@
         ],
         "properties": {
           "type": {
+            "title": "type",
             "type": "string",
             "description": "Union discriminator"
           }
@@ -12975,17 +12976,14 @@
         ],
         "properties": {
           "type": {
+            "title": "type",
             "type": "string",
             "description": "Union discriminator"
           }
         },
         "nullable": true,
         "discriminator": {
-          "propertyName": "type",
-          "mapping": {
-            "BaseInputs_1": "#/components/schemas/BaseInputs_Branch1",
-            "BaseInputs_2": "#/components/schemas/BaseInputs_Branch2"
-          }
+          "propertyName": "type"
         }
       },
       "BaseMessagesResult": {
@@ -14350,7 +14348,13 @@
             "type": "object",
             "anyOf": [
               {
-                "$ref": "#/components/schemas/UnionBranch"
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ChatContentItems"
+                }
               }
             ],
             "description": "Assistant message content",
@@ -14723,7 +14727,13 @@
             "type": "object",
             "anyOf": [
               {
-                "$ref": "#/components/schemas/UnionBranch"
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ChatContentText"
+                }
               }
             ],
             "description": "Developer message content",
@@ -15200,7 +15210,17 @@
               "type": "object",
               "anyOf": [
                 {
-                  "$ref": "#/components/schemas/UnionBranch"
+                  "type": "string"
+                },
+                {
+                  "type": "number",
+                  "format": "double"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "nullable": true
+                  }
                 }
               ]
             },
@@ -15438,7 +15458,14 @@
             "type": "object",
             "anyOf": [
               {
-                "$ref": "#/components/schemas/UnionBranch"
+                "type": "string"
+              },
+              {
+                "maxItems": 4,
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
               }
             ],
             "description": "Stop sequences (up to 4)",
@@ -15934,7 +15961,13 @@
             "type": "object",
             "anyOf": [
               {
-                "$ref": "#/components/schemas/UnionBranch"
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ChatContentText"
+                }
               }
             ],
             "description": "System message content",
@@ -16149,7 +16182,13 @@
             "type": "object",
             "anyOf": [
               {
-                "$ref": "#/components/schemas/UnionBranch"
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ChatContentItems"
+                }
               }
             ],
             "description": "Tool response content",
@@ -16290,7 +16329,13 @@
             "type": "object",
             "anyOf": [
               {
-                "$ref": "#/components/schemas/UnionBranch"
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ChatContentItems"
+                }
               }
             ],
             "description": "User message content",
@@ -18282,7 +18327,40 @@
             "type": "object",
             "anyOf": [
               {
-                "$ref": "#/components/schemas/UnionBranch"
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "required": [
+                    "type"
+                  ],
+                  "type": "object",
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/InputText"
+                    },
+                    {
+                      "$ref": "#/components/schemas/InputImage"
+                    },
+                    {
+                      "$ref": "#/components/schemas/InputFile"
+                    }
+                  ],
+                  "properties": {
+                    "type": {
+                      "type": "string"
+                    }
+                  },
+                  "discriminator": {
+                    "propertyName": "type",
+                    "mapping": {
+                      "input_file": "#/components/schemas/InputFile",
+                      "input_image": "#/components/schemas/InputImage",
+                      "input_text": "#/components/schemas/InputText"
+                    }
+                  }
+                }
               }
             ]
           },
@@ -18477,7 +18555,69 @@
             "type": "object",
             "anyOf": [
               {
-                "$ref": "#/components/schemas/UnionBranch"
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/InputText"
+                    },
+                    {
+                      "required": [
+                        "type",
+                        "detail"
+                      ],
+                      "type": "object",
+                      "allOf": [
+                        {
+                          "type": "object"
+                        }
+                      ],
+                      "properties": {
+                        "detail": {
+                          "enum": [
+                            "auto",
+                            "high",
+                            "low",
+                            "original"
+                          ],
+                          "type": "string",
+                          "additionalProperties": false,
+                          "x-speakeasy-unknown-values": "allow"
+                        },
+                        "image_url": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "type": {
+                          "enum": [
+                            "input_image"
+                          ],
+                          "type": "string",
+                          "additionalProperties": false
+                        }
+                      },
+                      "description": "Image input content item",
+                      "example": {
+                        "detail": "auto",
+                        "image_url": "https://example.com/image.jpg",
+                        "type": "input_image"
+                      }
+                    },
+                    {
+                      "$ref": "#/components/schemas/InputFile"
+                    },
+                    {
+                      "$ref": "#/components/schemas/InputAudio"
+                    },
+                    {
+                      "$ref": "#/components/schemas/InputVideo"
+                    }
+                  ]
+                }
+              },
+              {
+                "type": "string"
               }
             ],
             "nullable": true
@@ -18486,7 +18626,18 @@
             "type": "object",
             "anyOf": [
               {
-                "$ref": "#/components/schemas/UnionBranch"
+                "enum": [
+                  "commentary"
+                ],
+                "type": "string",
+                "additionalProperties": false
+              },
+              {
+                "enum": [
+                  "final_answer"
+                ],
+                "type": "string",
+                "additionalProperties": false
               }
             ],
             "description": "The phase of an assistant message. Use `commentary` for an intermediate assistant message and `final_answer` for the final assistant message. For follow-up requests with models like `gpt-5.3-codex` and later, preserve and resend phase on all assistant messages. Omitting it can degrade performance. Not used for user messages.",
@@ -18497,7 +18648,32 @@
             "type": "object",
             "anyOf": [
               {
-                "$ref": "#/components/schemas/UnionBranch"
+                "enum": [
+                  "user"
+                ],
+                "type": "string",
+                "additionalProperties": false
+              },
+              {
+                "enum": [
+                  "system"
+                ],
+                "type": "string",
+                "additionalProperties": false
+              },
+              {
+                "enum": [
+                  "assistant"
+                ],
+                "type": "string",
+                "additionalProperties": false
+              },
+              {
+                "enum": [
+                  "developer"
+                ],
+                "type": "string",
+                "additionalProperties": false
               }
             ]
           },
@@ -19241,7 +19417,40 @@
             "type": "object",
             "anyOf": [
               {
-                "$ref": "#/components/schemas/UnionBranch"
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "required": [
+                    "type"
+                  ],
+                  "type": "object",
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/InputText"
+                    },
+                    {
+                      "$ref": "#/components/schemas/InputImage"
+                    },
+                    {
+                      "$ref": "#/components/schemas/InputFile"
+                    }
+                  ],
+                  "properties": {
+                    "type": {
+                      "type": "string"
+                    }
+                  },
+                  "discriminator": {
+                    "propertyName": "type",
+                    "mapping": {
+                      "input_file": "#/components/schemas/InputFile",
+                      "input_image": "#/components/schemas/InputImage",
+                      "input_text": "#/components/schemas/InputText"
+                    }
+                  }
+                }
               }
             ]
           },
@@ -20289,7 +20498,17 @@
           "type": "object",
           "anyOf": [
             {
-              "$ref": "#/components/schemas/UnionBranch"
+              "type": "string"
+            },
+            {
+              "type": "number",
+              "format": "double"
+            },
+            {
+              "type": "array",
+              "items": {
+                "nullable": true
+              }
             }
           ]
         },
@@ -20604,7 +20823,17 @@
           "type": "object",
           "anyOf": [
             {
-              "$ref": "#/components/schemas/UnionBranch"
+              "type": "string"
+            },
+            {
+              "type": "number",
+              "format": "double"
+            },
+            {
+              "type": "array",
+              "items": {
+                "nullable": true
+              }
             }
           ]
         },
@@ -20911,7 +21140,25 @@
             "type": "object",
             "anyOf": [
               {
-                "$ref": "#/components/schemas/UnionBranch"
+                "enum": [
+                  "user"
+                ],
+                "type": "string",
+                "additionalProperties": false
+              },
+              {
+                "enum": [
+                  "system"
+                ],
+                "type": "string",
+                "additionalProperties": false
+              },
+              {
+                "enum": [
+                  "developer"
+                ],
+                "type": "string",
+                "additionalProperties": false
               }
             ]
           },
@@ -20963,17 +21210,14 @@
         ],
         "properties": {
           "type": {
+            "title": "type",
             "type": "string",
             "description": "Union discriminator"
           }
         },
         "description": "Input for a response request - can be a string or array of items",
         "discriminator": {
-          "propertyName": "type",
-          "mapping": {
-            "Inputs_1": "#/components/schemas/Inputs_Branch1",
-            "Inputs_2": "#/components/schemas/Inputs_Branch2"
-          }
+          "propertyName": "type"
         }
       },
       "InputText": {
@@ -22311,7 +22555,284 @@
             "type": "object",
             "anyOf": [
               {
-                "$ref": "#/components/schemas/UnionBranch"
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/AnthropicTextBlockParam"
+                    },
+                    {
+                      "$ref": "#/components/schemas/AnthropicImageBlockParam"
+                    },
+                    {
+                      "$ref": "#/components/schemas/AnthropicDocumentBlockParam"
+                    },
+                    {
+                      "required": [
+                        "type",
+                        "id",
+                        "name"
+                      ],
+                      "type": "object",
+                      "properties": {
+                        "cache_control": {
+                          "$ref": "#/components/schemas/AnthropicCacheControlDirective"
+                        },
+                        "id": {
+                          "type": "string"
+                        },
+                        "input": {
+                          "nullable": true
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "type": {
+                          "enum": [
+                            "tool_use"
+                          ],
+                          "type": "string",
+                          "additionalProperties": false
+                        }
+                      }
+                    },
+                    {
+                      "required": [
+                        "type",
+                        "tool_use_id"
+                      ],
+                      "type": "object",
+                      "properties": {
+                        "cache_control": {
+                          "$ref": "#/components/schemas/AnthropicCacheControlDirective"
+                        },
+                        "content": {
+                          "type": "object",
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "anyOf": [
+                                  {
+                                    "$ref": "#/components/schemas/AnthropicTextBlockParam"
+                                  },
+                                  {
+                                    "$ref": "#/components/schemas/AnthropicImageBlockParam"
+                                  },
+                                  {
+                                    "required": [
+                                      "type",
+                                      "tool_name"
+                                    ],
+                                    "type": "object",
+                                    "properties": {
+                                      "tool_name": {
+                                        "type": "string"
+                                      },
+                                      "type": {
+                                        "enum": [
+                                          "tool_reference"
+                                        ],
+                                        "type": "string",
+                                        "additionalProperties": false
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "$ref": "#/components/schemas/AnthropicSearchResultBlockParam"
+                                  },
+                                  {
+                                    "$ref": "#/components/schemas/AnthropicDocumentBlockParam"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        },
+                        "is_error": {
+                          "type": "boolean"
+                        },
+                        "tool_use_id": {
+                          "type": "string"
+                        },
+                        "type": {
+                          "enum": [
+                            "tool_result"
+                          ],
+                          "type": "string",
+                          "additionalProperties": false
+                        }
+                      }
+                    },
+                    {
+                      "required": [
+                        "type",
+                        "thinking",
+                        "signature"
+                      ],
+                      "type": "object",
+                      "properties": {
+                        "signature": {
+                          "type": "string"
+                        },
+                        "thinking": {
+                          "type": "string"
+                        },
+                        "type": {
+                          "enum": [
+                            "thinking"
+                          ],
+                          "type": "string",
+                          "additionalProperties": false
+                        }
+                      }
+                    },
+                    {
+                      "required": [
+                        "type",
+                        "data"
+                      ],
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "type": "string"
+                        },
+                        "type": {
+                          "enum": [
+                            "redacted_thinking"
+                          ],
+                          "type": "string",
+                          "additionalProperties": false
+                        }
+                      }
+                    },
+                    {
+                      "required": [
+                        "type",
+                        "id",
+                        "name"
+                      ],
+                      "type": "object",
+                      "properties": {
+                        "cache_control": {
+                          "$ref": "#/components/schemas/AnthropicCacheControlDirective"
+                        },
+                        "id": {
+                          "type": "string"
+                        },
+                        "input": {
+                          "nullable": true
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "type": {
+                          "enum": [
+                            "server_tool_use"
+                          ],
+                          "type": "string",
+                          "additionalProperties": false
+                        }
+                      }
+                    },
+                    {
+                      "required": [
+                        "type",
+                        "tool_use_id",
+                        "content"
+                      ],
+                      "type": "object",
+                      "properties": {
+                        "cache_control": {
+                          "$ref": "#/components/schemas/AnthropicCacheControlDirective"
+                        },
+                        "content": {
+                          "type": "object",
+                          "anyOf": [
+                            {
+                              "$ref": "#/components/schemas/UnionBranch"
+                            },
+                            {
+                              "required": [
+                                "type",
+                                "error_code"
+                              ],
+                              "type": "object",
+                              "properties": {
+                                "error_code": {
+                                  "enum": [
+                                    "invalid_tool_input",
+                                    "unavailable",
+                                    "max_uses_exceeded",
+                                    "too_many_requests",
+                                    "query_too_long"
+                                  ],
+                                  "type": "string",
+                                  "additionalProperties": false,
+                                  "x-speakeasy-unknown-values": "allow"
+                                },
+                                "type": {
+                                  "enum": [
+                                    "web_search_tool_result_error"
+                                  ],
+                                  "type": "string",
+                                  "additionalProperties": false
+                                }
+                              }
+                            }
+                          ]
+                        },
+                        "tool_use_id": {
+                          "type": "string"
+                        },
+                        "type": {
+                          "enum": [
+                            "web_search_tool_result"
+                          ],
+                          "type": "string",
+                          "additionalProperties": false
+                        }
+                      }
+                    },
+                    {
+                      "$ref": "#/components/schemas/AnthropicSearchResultBlockParam"
+                    },
+                    {
+                      "required": [
+                        "type",
+                        "content"
+                      ],
+                      "type": "object",
+                      "properties": {
+                        "cache_control": {
+                          "$ref": "#/components/schemas/AnthropicCacheControlDirective"
+                        },
+                        "content": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "type": {
+                          "enum": [
+                            "compaction"
+                          ],
+                          "type": "string",
+                          "additionalProperties": false
+                        }
+                      }
+                    },
+                    {
+                      "$ref": "#/components/schemas/MessagesAdvisorToolResultBlock"
+                    }
+                  ]
+                }
               }
             ]
           },
@@ -22461,7 +22982,13 @@
                           "type": "object",
                           "anyOf": [
                             {
-                              "$ref": "#/components/schemas/UnionBranch"
+                              "type": "boolean"
+                            },
+                            {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
                             }
                           ],
                           "nullable": true
@@ -22745,7 +23272,13 @@
             "type": "object",
             "anyOf": [
               {
-                "$ref": "#/components/schemas/UnionBranch"
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/AnthropicTextBlockParam"
+                }
               }
             ]
           },
@@ -23680,7 +24213,36 @@
                 "type": "object",
                 "anyOf": [
                   {
-                    "$ref": "#/components/schemas/UnionBranch"
+                    "type": "string"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "required": [
+                        "type"
+                      ],
+                      "type": "object",
+                      "oneOf": [
+                        {
+                          "$ref": "#/components/schemas/AnthropicTextBlockParam"
+                        },
+                        {
+                          "$ref": "#/components/schemas/AnthropicImageBlockParam"
+                        }
+                      ],
+                      "properties": {
+                        "type": {
+                          "type": "string"
+                        }
+                      },
+                      "discriminator": {
+                        "propertyName": "type",
+                        "mapping": {
+                          "image": "#/components/schemas/AnthropicImageBlockParam",
+                          "text": "#/components/schemas/AnthropicTextBlockParam"
+                        }
+                      }
+                    }
                   }
                 ]
               },
@@ -24511,7 +25073,10 @@
                         "type": "object",
                         "anyOf": [
                           {
-                            "$ref": "#/components/schemas/UnionBranch"
+                            "type": "string"
+                          },
+                          {
+                            "type": "number"
                           }
                         ]
                       }
@@ -25915,7 +26480,40 @@
             "type": "object",
             "anyOf": [
               {
-                "$ref": "#/components/schemas/UnionBranch"
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "required": [
+                    "type"
+                  ],
+                  "type": "object",
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/InputText"
+                    },
+                    {
+                      "$ref": "#/components/schemas/InputImage"
+                    },
+                    {
+                      "$ref": "#/components/schemas/InputFile"
+                    }
+                  ],
+                  "properties": {
+                    "type": {
+                      "type": "string"
+                    }
+                  },
+                  "discriminator": {
+                    "propertyName": "type",
+                    "mapping": {
+                      "input_file": "#/components/schemas/InputFile",
+                      "input_image": "#/components/schemas/InputImage",
+                      "input_text": "#/components/schemas/InputText"
+                    }
+                  }
+                }
               }
             ]
           },
@@ -25997,7 +26595,40 @@
             "type": "object",
             "anyOf": [
               {
-                "$ref": "#/components/schemas/UnionBranch"
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "required": [
+                    "type"
+                  ],
+                  "type": "object",
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/InputText"
+                    },
+                    {
+                      "$ref": "#/components/schemas/InputImage"
+                    },
+                    {
+                      "$ref": "#/components/schemas/InputFile"
+                    }
+                  ],
+                  "properties": {
+                    "type": {
+                      "type": "string"
+                    }
+                  },
+                  "discriminator": {
+                    "propertyName": "type",
+                    "mapping": {
+                      "input_file": "#/components/schemas/InputFile",
+                      "input_image": "#/components/schemas/InputImage",
+                      "input_text": "#/components/schemas/InputText"
+                    }
+                  }
+                }
               }
             ]
           },
@@ -26070,7 +26701,25 @@
             "type": "object",
             "anyOf": [
               {
-                "$ref": "#/components/schemas/UnionBranch"
+                "enum": [
+                  "user"
+                ],
+                "type": "string",
+                "additionalProperties": false
+              },
+              {
+                "enum": [
+                  "system"
+                ],
+                "type": "string",
+                "additionalProperties": false
+              },
+              {
+                "enum": [
+                  "developer"
+                ],
+                "type": "string",
+                "additionalProperties": false
               }
             ]
           },
@@ -26387,7 +27036,18 @@
                 "type": "object",
                 "anyOf": [
                   {
-                    "$ref": "#/components/schemas/UnionBranch"
+                    "enum": [
+                      "web_search_preview_2025_03_11"
+                    ],
+                    "type": "string",
+                    "additionalProperties": false
+                  },
+                  {
+                    "enum": [
+                      "web_search_preview"
+                    ],
+                    "type": "string",
+                    "additionalProperties": false
                   }
                 ]
               }
@@ -27914,7 +28574,25 @@
             "type": "object",
             "anyOf": [
               {
-                "$ref": "#/components/schemas/UnionBranch"
+                "enum": [
+                  "completed"
+                ],
+                "type": "string",
+                "additionalProperties": false
+              },
+              {
+                "enum": [
+                  "incomplete"
+                ],
+                "type": "string",
+                "additionalProperties": false
+              },
+              {
+                "enum": [
+                  "in_progress"
+                ],
+                "type": "string",
+                "additionalProperties": false
               }
             ]
           },
@@ -28464,7 +29142,25 @@
             "type": "object",
             "anyOf": [
               {
-                "$ref": "#/components/schemas/UnionBranch"
+                "enum": [
+                  "completed"
+                ],
+                "type": "string",
+                "additionalProperties": false
+              },
+              {
+                "enum": [
+                  "incomplete"
+                ],
+                "type": "string",
+                "additionalProperties": false
+              },
+              {
+                "enum": [
+                  "in_progress"
+                ],
+                "type": "string",
+                "additionalProperties": false
               }
             ]
           },
@@ -28543,7 +29239,25 @@
             "type": "object",
             "anyOf": [
               {
-                "$ref": "#/components/schemas/UnionBranch"
+                "enum": [
+                  "completed"
+                ],
+                "type": "string",
+                "additionalProperties": false
+              },
+              {
+                "enum": [
+                  "incomplete"
+                ],
+                "type": "string",
+                "additionalProperties": false
+              },
+              {
+                "enum": [
+                  "in_progress"
+                ],
+                "type": "string",
+                "additionalProperties": false
               }
             ]
           },
@@ -28878,7 +29592,18 @@
             "type": "object",
             "anyOf": [
               {
-                "$ref": "#/components/schemas/UnionBranch"
+                "enum": [
+                  "commentary"
+                ],
+                "type": "string",
+                "additionalProperties": false
+              },
+              {
+                "enum": [
+                  "final_answer"
+                ],
+                "type": "string",
+                "additionalProperties": false
               }
             ],
             "description": "The phase of an assistant message. Use `commentary` for an intermediate assistant message and `final_answer` for the final assistant message. For follow-up requests with models like `gpt-5.3-codex` and later, preserve and resend phase on all assistant messages. Omitting it can degrade performance. Not used for user messages.",
@@ -28895,7 +29620,25 @@
             "type": "object",
             "anyOf": [
               {
-                "$ref": "#/components/schemas/UnionBranch"
+                "enum": [
+                  "completed"
+                ],
+                "type": "string",
+                "additionalProperties": false
+              },
+              {
+                "enum": [
+                  "incomplete"
+                ],
+                "type": "string",
+                "additionalProperties": false
+              },
+              {
+                "enum": [
+                  "in_progress"
+                ],
+                "type": "string",
+                "additionalProperties": false
               }
             ]
           },
@@ -28955,7 +29698,18 @@
             "type": "object",
             "anyOf": [
               {
-                "$ref": "#/components/schemas/UnionBranch"
+                "enum": [
+                  "commentary"
+                ],
+                "type": "string",
+                "additionalProperties": false
+              },
+              {
+                "enum": [
+                  "final_answer"
+                ],
+                "type": "string",
+                "additionalProperties": false
               }
             ],
             "description": "The phase of an assistant message. Use `commentary` for an intermediate assistant message and `final_answer` for the final assistant message. For follow-up requests with models like `gpt-5.3-codex` and later, preserve and resend phase on all assistant messages. Omitting it can degrade performance. Not used for user messages.",
@@ -28972,7 +29726,25 @@
             "type": "object",
             "anyOf": [
               {
-                "$ref": "#/components/schemas/UnionBranch"
+                "enum": [
+                  "completed"
+                ],
+                "type": "string",
+                "additionalProperties": false
+              },
+              {
+                "enum": [
+                  "incomplete"
+                ],
+                "type": "string",
+                "additionalProperties": false
+              },
+              {
+                "enum": [
+                  "in_progress"
+                ],
+                "type": "string",
+                "additionalProperties": false
               }
             ]
           },
@@ -29050,7 +29822,25 @@
             "type": "object",
             "anyOf": [
               {
-                "$ref": "#/components/schemas/UnionBranch"
+                "enum": [
+                  "completed"
+                ],
+                "type": "string",
+                "additionalProperties": false
+              },
+              {
+                "enum": [
+                  "incomplete"
+                ],
+                "type": "string",
+                "additionalProperties": false
+              },
+              {
+                "enum": [
+                  "in_progress"
+                ],
+                "type": "string",
+                "additionalProperties": false
               }
             ]
           },
@@ -29523,6 +30313,7 @@
         ],
         "properties": {
           "type": {
+            "title": "type",
             "type": "string",
             "description": "Union discriminator"
           }
@@ -30939,10 +31730,10 @@
               "type": "object",
               "anyOf": [
                 {
-                  "$ref": "#/components/schemas/ProviderName_Wrapper"
+                  "$ref": "#/components/schemas/ProviderName"
                 },
                 {
-                  "$ref": "#/components/schemas/UnionBranch"
+                  "type": "string"
                 }
               ]
             },
@@ -30958,10 +31749,10 @@
               "type": "object",
               "anyOf": [
                 {
-                  "$ref": "#/components/schemas/ProviderName_Wrapper"
+                  "$ref": "#/components/schemas/ProviderName"
                 },
                 {
-                  "$ref": "#/components/schemas/UnionBranch"
+                  "type": "string"
                 }
               ]
             },
@@ -30974,10 +31765,10 @@
               "type": "object",
               "anyOf": [
                 {
-                  "$ref": "#/components/schemas/ProviderName_Wrapper"
+                  "$ref": "#/components/schemas/ProviderName"
                 },
                 {
-                  "$ref": "#/components/schemas/UnionBranch"
+                  "type": "string"
                 }
               ]
             },
@@ -32034,7 +32825,25 @@
             "type": "object",
             "anyOf": [
               {
-                "$ref": "#/components/schemas/UnionBranch"
+                "enum": [
+                  "completed"
+                ],
+                "type": "string",
+                "additionalProperties": false
+              },
+              {
+                "enum": [
+                  "incomplete"
+                ],
+                "type": "string",
+                "additionalProperties": false
+              },
+              {
+                "enum": [
+                  "in_progress"
+                ],
+                "type": "string",
+                "additionalProperties": false
               }
             ]
           },
@@ -32689,7 +33498,17 @@
               "type": "object",
               "anyOf": [
                 {
-                  "$ref": "#/components/schemas/UnionBranch"
+                  "type": "string"
+                },
+                {
+                  "type": "number",
+                  "format": "double"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "nullable": true
+                  }
                 }
               ]
             },
@@ -34572,7 +35391,18 @@
             "type": "object",
             "anyOf": [
               {
-                "$ref": "#/components/schemas/UnionBranch"
+                "enum": [
+                  "auto"
+                ],
+                "type": "string",
+                "additionalProperties": false
+              },
+              {
+                "enum": [
+                  "required"
+                ],
+                "type": "string",
+                "additionalProperties": false
               }
             ]
           },
@@ -37412,7 +38242,29 @@
                 "type": "object",
                 "anyOf": [
                   {
-                    "$ref": "#/components/schemas/UnionBranch"
+                    "type": "string"
+                  },
+                  {
+                    "type": "number",
+                    "format": "double"
+                  },
+                  {
+                    "type": "boolean"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "number",
+                          "format": "double"
+                        }
+                      ]
+                    }
                   }
                 ]
               }
@@ -41672,7 +42524,102 @@
             "type": "object",
             "anyOf": [
               {
-                "$ref": "#/components/schemas/UnionBranch"
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                }
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  }
+                }
+              },
+              {
+                "type": "array",
+                "items": {
+                  "required": [
+                    "content"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "content": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "oneOf": [
+                          {
+                            "required": [
+                              "type",
+                              "text"
+                            ],
+                            "type": "object",
+                            "properties": {
+                              "text": {
+                                "type": "string"
+                              },
+                              "type": {
+                                "enum": [
+                                  "text"
+                                ],
+                                "type": "string",
+                                "additionalProperties": false
+                              }
+                            }
+                          },
+                          {
+                            "required": [
+                              "type",
+                              "image_url"
+                            ],
+                            "type": "object",
+                            "properties": {
+                              "image_url": {
+                                "required": [
+                                  "url"
+                                ],
+                                "type": "object",
+                                "properties": {
+                                  "url": {
+                                    "type": "string"
+                                  }
+                                }
+                              },
+                              "type": {
+                                "enum": [
+                                  "image_url"
+                                ],
+                                "type": "string",
+                                "additionalProperties": false
+                              }
+                            }
+                          },
+                          {
+                            "$ref": "#/components/schemas/ContentPartInputAudio"
+                          },
+                          {
+                            "$ref": "#/components/schemas/ContentPartInputVideo"
+                          },
+                          {
+                            "$ref": "#/components/schemas/ContentPartInputFile"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
               }
             ],
             "description": "Text, token, or multimodal input(s) to embed",
@@ -41734,7 +42681,13 @@
                   "type": "object",
                   "anyOf": [
                     {
-                      "$ref": "#/components/schemas/UnionBranch"
+                      "type": "array",
+                      "items": {
+                        "type": "number"
+                      }
+                    },
+                    {
+                      "type": "string"
                     }
                   ],
                   "description": "Embedding vector as an array of floats or a base64 string"
@@ -44105,7 +45058,44 @@
                       "type": "object",
                       "anyOf": [
                         {
-                          "$ref": "#/components/schemas/UnionBranch"
+                          "type": "array",
+                          "items": {
+                            "required": [
+                              "type"
+                            ],
+                            "type": "object",
+                            "oneOf": [
+                              {
+                                "$ref": "#/components/schemas/InputText"
+                              },
+                              {
+                                "$ref": "#/components/schemas/InputImage"
+                              },
+                              {
+                                "$ref": "#/components/schemas/InputFile"
+                              },
+                              {
+                                "$ref": "#/components/schemas/InputAudio"
+                              }
+                            ],
+                            "properties": {
+                              "type": {
+                                "type": "string"
+                              }
+                            },
+                            "discriminator": {
+                              "propertyName": "type",
+                              "mapping": {
+                                "input_audio": "#/components/schemas/InputAudio",
+                                "input_file": "#/components/schemas/InputFile",
+                                "input_image": "#/components/schemas/InputImage",
+                                "input_text": "#/components/schemas/InputText"
+                              }
+                            }
+                          }
+                        },
+                        {
+                          "type": "string"
                         }
                       ]
                     },
@@ -44113,7 +45103,18 @@
                       "type": "object",
                       "anyOf": [
                         {
-                          "$ref": "#/components/schemas/UnionBranch"
+                          "enum": [
+                            "commentary"
+                          ],
+                          "type": "string",
+                          "additionalProperties": false
+                        },
+                        {
+                          "enum": [
+                            "final_answer"
+                          ],
+                          "type": "string",
+                          "additionalProperties": false
                         }
                       ],
                       "nullable": true
@@ -44122,7 +45123,32 @@
                       "type": "object",
                       "anyOf": [
                         {
-                          "$ref": "#/components/schemas/UnionBranch"
+                          "enum": [
+                            "user"
+                          ],
+                          "type": "string",
+                          "additionalProperties": false
+                        },
+                        {
+                          "enum": [
+                            "system"
+                          ],
+                          "type": "string",
+                          "additionalProperties": false
+                        },
+                        {
+                          "enum": [
+                            "assistant"
+                          ],
+                          "type": "string",
+                          "additionalProperties": false
+                        },
+                        {
+                          "enum": [
+                            "developer"
+                          ],
+                          "type": "string",
+                          "additionalProperties": false
                         }
                       ]
                     },
@@ -44240,7 +45266,18 @@
                       "type": "object",
                       "anyOf": [
                         {
-                          "$ref": "#/components/schemas/UnionBranch"
+                          "enum": [
+                            "commentary"
+                          ],
+                          "type": "string",
+                          "additionalProperties": false
+                        },
+                        {
+                          "enum": [
+                            "final_answer"
+                          ],
+                          "type": "string",
+                          "additionalProperties": false
                         }
                       ],
                       "description": "The phase of an assistant message. Use `commentary` for an intermediate assistant message and `final_answer` for the final assistant message. For follow-up requests with models like `gpt-5.3-codex` and later, preserve and resend phase on all assistant messages. Omitting it can degrade performance. Not used for user messages.",
@@ -44257,7 +45294,25 @@
                       "type": "object",
                       "anyOf": [
                         {
-                          "$ref": "#/components/schemas/UnionBranch"
+                          "enum": [
+                            "completed"
+                          ],
+                          "type": "string",
+                          "additionalProperties": false
+                        },
+                        {
+                          "enum": [
+                            "incomplete"
+                          ],
+                          "type": "string",
+                          "additionalProperties": false
+                        },
+                        {
+                          "enum": [
+                            "in_progress"
+                          ],
+                          "type": "string",
+                          "additionalProperties": false
                         }
                       ]
                     },
@@ -44309,7 +45364,25 @@
                       "type": "object",
                       "anyOf": [
                         {
-                          "$ref": "#/components/schemas/UnionBranch"
+                          "enum": [
+                            "completed"
+                          ],
+                          "type": "string",
+                          "additionalProperties": false
+                        },
+                        {
+                          "enum": [
+                            "incomplete"
+                          ],
+                          "type": "string",
+                          "additionalProperties": false
+                        },
+                        {
+                          "enum": [
+                            "in_progress"
+                          ],
+                          "type": "string",
+                          "additionalProperties": false
                         }
                       ]
                     },
@@ -44528,17 +45601,6 @@
           }
         }
       },
-      "ModelGroup_Wrapper": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "$ref": "#/components/schemas/ModelGroup"
-          }
-        }
-      },
       "AnthropicSpeed_Wrapper": {
         "required": [
           "value"
@@ -44547,17 +45609,6 @@
         "properties": {
           "value": {
             "$ref": "#/components/schemas/AnthropicSpeed"
-          }
-        }
-      },
-      "ProviderName_Wrapper": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "$ref": "#/components/schemas/ProviderName"
           }
         }
       },

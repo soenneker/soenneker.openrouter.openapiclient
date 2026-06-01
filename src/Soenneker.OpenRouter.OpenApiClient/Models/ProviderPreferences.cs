@@ -22,10 +22,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>List of provider slugs to ignore. If provided, this list is merged with your account-wide ignored provider settings for this request.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferences.ProviderPreferences_ignore>? Ignore { get; set; }
+        public List<string>? Ignore { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferences.ProviderPreferences_ignore> Ignore { get; set; }
+        public List<string> Ignore { get; set; }
 #endif
         /// <summary>The object specifying the maximum price you want to pay for this request. USD price per million tokens, for prompt and completion.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -38,18 +38,18 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>List of provider slugs to allow. If provided, this list is merged with your account-wide allowed provider settings for this request.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferences.ProviderPreferences_only>? Only { get; set; }
+        public List<string>? Only { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferences.ProviderPreferences_only> Only { get; set; }
+        public List<string> Only { get; set; }
 #endif
         /// <summary>An ordered list of provider slugs. The router will attempt to use the first provider in the subset of this list that supports your requested model, and fall back to the next if it is unavailable. If no providers are available, the request will fail with an error message.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferences.ProviderPreferences_order>? Order { get; set; }
+        public List<string>? Order { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferences.ProviderPreferences_order> Order { get; set; }
+        public List<string> Order { get; set; }
 #endif
         /// <summary>Preferred maximum latency (in seconds). Can be a number (applies to p50) or an object with percentile-specific cutoffs. Endpoints above the threshold(s) may still be used, but are deprioritized in routing. When using fallback models, this may cause a fallback model to be used instead of the primary model if it meets the threshold.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -108,10 +108,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "allow_fallbacks", n => { AllowFallbacks = n.GetBoolValue(); } },
                 { "data_collection", n => { DataCollection = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferences_data_collection>(); } },
                 { "enforce_distillable_text", n => { EnforceDistillableText = n.GetBoolValue(); } },
-                { "ignore", n => { Ignore = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferences.ProviderPreferences_ignore>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferences.ProviderPreferences_ignore.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "ignore", n => { Ignore = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "max_price", n => { MaxPrice = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferencesMaxPrice>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferencesMaxPrice.CreateFromDiscriminatorValue); } },
-                { "only", n => { Only = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferences.ProviderPreferences_only>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferences.ProviderPreferences_only.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "order", n => { Order = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferences.ProviderPreferences_order>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferences.ProviderPreferences_order.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "only", n => { Only = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "order", n => { Order = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "preferred_max_latency", n => { PreferredMaxLatency = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PreferredMaxLatency>(global::Soenneker.OpenRouter.OpenApiClient.Models.PreferredMaxLatency.CreateFromDiscriminatorValue); } },
                 { "preferred_min_throughput", n => { PreferredMinThroughput = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PreferredMinThroughput>(global::Soenneker.OpenRouter.OpenApiClient.Models.PreferredMinThroughput.CreateFromDiscriminatorValue); } },
                 { "quantizations", n => { Quantizations = n.GetCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.Quantization>()?.AsList(); } },
@@ -130,187 +130,16 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteBoolValue("allow_fallbacks", AllowFallbacks);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferences_data_collection>("data_collection", DataCollection);
             writer.WriteBoolValue("enforce_distillable_text", EnforceDistillableText);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferences.ProviderPreferences_ignore>("ignore", Ignore);
+            writer.WriteCollectionOfPrimitiveValues<string>("ignore", Ignore);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferencesMaxPrice>("max_price", MaxPrice);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferences.ProviderPreferences_only>("only", Only);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferences.ProviderPreferences_order>("order", Order);
+            writer.WriteCollectionOfPrimitiveValues<string>("only", Only);
+            writer.WriteCollectionOfPrimitiveValues<string>("order", Order);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PreferredMaxLatency>("preferred_max_latency", PreferredMaxLatency);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PreferredMinThroughput>("preferred_min_throughput", PreferredMinThroughput);
             writer.WriteCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.Quantization>("quantizations", Quantizations);
             writer.WriteBoolValue("require_parameters", RequireParameters);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferences.ProviderPreferences_sort>("sort", Sort);
             writer.WriteBoolValue("zdr", Zdr);
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderName_Wrapper"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.UnionBranch"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class ProviderPreferences_ignore : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderName_Wrapper"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderName_Wrapper? ProviderNameWrapper { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderName_Wrapper ProviderNameWrapper { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.UnionBranch"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.UnionBranch? UnionBranch { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.UnionBranch UnionBranch { get; set; }
-#endif
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferences.ProviderPreferences_ignore"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferences.ProviderPreferences_ignore CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var result = new global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferences.ProviderPreferences_ignore();
-                result.ProviderNameWrapper = new global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderName_Wrapper();
-                result.UnionBranch = new global::Soenneker.OpenRouter.OpenApiClient.Models.UnionBranch();
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(ProviderNameWrapper != null || UnionBranch != null)
-                {
-                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(ProviderNameWrapper, UnionBranch);
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderName_Wrapper>(null, ProviderNameWrapper, UnionBranch);
-            }
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderName_Wrapper"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.UnionBranch"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class ProviderPreferences_only : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderName_Wrapper"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderName_Wrapper? ProviderNameWrapper { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderName_Wrapper ProviderNameWrapper { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.UnionBranch"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.UnionBranch? UnionBranch { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.UnionBranch UnionBranch { get; set; }
-#endif
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferences.ProviderPreferences_only"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferences.ProviderPreferences_only CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var result = new global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferences.ProviderPreferences_only();
-                result.ProviderNameWrapper = new global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderName_Wrapper();
-                result.UnionBranch = new global::Soenneker.OpenRouter.OpenApiClient.Models.UnionBranch();
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(ProviderNameWrapper != null || UnionBranch != null)
-                {
-                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(ProviderNameWrapper, UnionBranch);
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderName_Wrapper>(null, ProviderNameWrapper, UnionBranch);
-            }
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderName_Wrapper"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.UnionBranch"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class ProviderPreferences_order : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderName_Wrapper"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderName_Wrapper? ProviderNameWrapper { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderName_Wrapper ProviderNameWrapper { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.UnionBranch"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.UnionBranch? UnionBranch { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.UnionBranch UnionBranch { get; set; }
-#endif
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferences.ProviderPreferences_order"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferences.ProviderPreferences_order CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var result = new global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferences.ProviderPreferences_order();
-                result.ProviderNameWrapper = new global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderName_Wrapper();
-                result.UnionBranch = new global::Soenneker.OpenRouter.OpenApiClient.Models.UnionBranch();
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(ProviderNameWrapper != null || UnionBranch != null)
-                {
-                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(ProviderNameWrapper, UnionBranch);
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderName_Wrapper>(null, ProviderNameWrapper, UnionBranch);
-            }
         }
         /// <summary>
         /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderSortConfig"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderSort_Wrapper"/>

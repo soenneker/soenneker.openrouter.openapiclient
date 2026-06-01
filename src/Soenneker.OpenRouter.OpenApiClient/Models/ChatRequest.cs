@@ -154,10 +154,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Stop sequences (up to 4)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.UnionBranch? Stop { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest.ChatRequest_stop? Stop { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.UnionBranch Stop { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest.ChatRequest_stop Stop { get; set; }
 #endif
         /// <summary>Stop conditions for the server-tool agent loop. Any condition firing halts the loop (OR logic). When set, this overrides `max_tool_calls`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -263,7 +263,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "seed", n => { Seed = n.GetIntValue(); } },
                 { "service_tier", n => { ServiceTier = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest_service_tier>(); } },
                 { "session_id", n => { SessionId = n.GetStringValue(); } },
-                { "stop", n => { Stop = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.UnionBranch>(global::Soenneker.OpenRouter.OpenApiClient.Models.UnionBranch.CreateFromDiscriminatorValue); } },
+                { "stop", n => { Stop = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest.ChatRequest_stop>(global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest.ChatRequest_stop.CreateFromDiscriminatorValue); } },
                 { "stop_server_tools_when", n => { StopServerToolsWhen = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.StopServerToolsWhenCondition>(global::Soenneker.OpenRouter.OpenApiClient.Models.StopServerToolsWhenCondition.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "stream", n => { Stream = n.GetBoolValue(); } },
                 { "stream_options", n => { StreamOptions = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatStreamOptions>(global::Soenneker.OpenRouter.OpenApiClient.Models.ChatStreamOptions.CreateFromDiscriminatorValue); } },
@@ -306,7 +306,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteIntValue("seed", Seed);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest_service_tier>("service_tier", ServiceTier);
             writer.WriteStringValue("session_id", SessionId);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.UnionBranch>("stop", Stop);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest.ChatRequest_stop>("stop", Stop);
             writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.StopServerToolsWhenCondition>("stop_server_tools_when", StopServerToolsWhen);
             writer.WriteBoolValue("stream", Stream);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatStreamOptions>("stream_options", StreamOptions);
@@ -666,6 +666,72 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 else if(FormatJsonObjectConfig != null)
                 {
                     writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.FormatJsonObjectConfig>(null, FormatJsonObjectConfig);
+                }
+            }
+        }
+        /// <summary>
+        /// Composed type wrapper for classes <see cref="string"/>, List&lt;string&gt;
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+        public partial class ChatRequest_stop : IComposedTypeWrapper, IParsable
+        {
+            /// <summary>Composed type representation for type <see cref="string"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public string? ChatRequestStopString { get; set; }
+#nullable restore
+#else
+            public string ChatRequestStopString { get; set; }
+#endif
+            /// <summary>Composed type representation for type List&lt;string&gt;</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public List<string>? String { get; set; }
+#nullable restore
+#else
+            public List<string> String { get; set; }
+#endif
+            /// <summary>
+            /// Creates a new instance of the appropriate class based on discriminator value
+            /// </summary>
+            /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest.ChatRequest_stop"/></returns>
+            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
+            public static global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest.ChatRequest_stop CreateFromDiscriminatorValue(IParseNode parseNode)
+            {
+                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
+                var result = new global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest.ChatRequest_stop();
+                if(parseNode.GetStringValue() is string chatRequestStopStringValue)
+                {
+                    result.ChatRequestStopString = chatRequestStopStringValue;
+                }
+                else if(parseNode.GetCollectionOfPrimitiveValues<string>()?.AsList() is List<string> stringValue)
+                {
+                    result.String = stringValue;
+                }
+                return result;
+            }
+            /// <summary>
+            /// The deserialization information for the current model
+            /// </summary>
+            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
+            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+            {
+                return new Dictionary<string, Action<IParseNode>>();
+            }
+            /// <summary>
+            /// Serializes information the current object
+            /// </summary>
+            /// <param name="writer">Serialization writer to use to serialize this model</param>
+            public virtual void Serialize(ISerializationWriter writer)
+            {
+                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+                if(ChatRequestStopString != null)
+                {
+                    writer.WriteStringValue(null, ChatRequestStopString);
+                }
+                else if(String != null)
+                {
+                    writer.WriteCollectionOfPrimitiveValues<string>(null, String);
                 }
             }
         }

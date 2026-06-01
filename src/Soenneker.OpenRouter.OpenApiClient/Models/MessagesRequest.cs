@@ -142,10 +142,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The system property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.UnionBranch? System { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest.MessagesRequest_system? System { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.UnionBranch System { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest.MessagesRequest_system System { get; set; }
 #endif
         /// <summary>The temperature property</summary>
         public double? Temperature { get; set; }
@@ -235,7 +235,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "stop_sequences", n => { StopSequences = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "stop_server_tools_when", n => { StopServerToolsWhen = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.StopServerToolsWhenCondition>(global::Soenneker.OpenRouter.OpenApiClient.Models.StopServerToolsWhenCondition.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "stream", n => { Stream = n.GetBoolValue(); } },
-                { "system", n => { System = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.UnionBranch>(global::Soenneker.OpenRouter.OpenApiClient.Models.UnionBranch.CreateFromDiscriminatorValue); } },
+                { "system", n => { System = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest.MessagesRequest_system>(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest.MessagesRequest_system.CreateFromDiscriminatorValue); } },
                 { "temperature", n => { Temperature = n.GetDoubleValue(); } },
                 { "thinking", n => { Thinking = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestThinking>(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestThinking.CreateFromDiscriminatorValue); } },
                 { "tool_choice", n => { ToolChoice = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolChoice>(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolChoice.CreateFromDiscriminatorValue); } },
@@ -270,7 +270,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("stop_sequences", StopSequences);
             writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.StopServerToolsWhenCondition>("stop_server_tools_when", StopServerToolsWhen);
             writer.WriteBoolValue("stream", Stream);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.UnionBranch>("system", System);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest.MessagesRequest_system>("system", System);
             writer.WriteDoubleValue("temperature", Temperature);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestThinking>("thinking", Thinking);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolChoice>("tool_choice", ToolChoice);
@@ -493,6 +493,72 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 else if(WebSearchPlugin != null)
                 {
                     writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchPlugin>(null, WebSearchPlugin);
+                }
+            }
+        }
+        /// <summary>
+        /// Composed type wrapper for classes <see cref="string"/>, List&lt;global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextBlockParam&gt;
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+        public partial class MessagesRequest_system : IComposedTypeWrapper, IParsable
+        {
+            /// <summary>Composed type representation for type List&lt;global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextBlockParam&gt;</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public List<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextBlockParam>? AnthropicTextBlockParam { get; set; }
+#nullable restore
+#else
+            public List<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextBlockParam> AnthropicTextBlockParam { get; set; }
+#endif
+            /// <summary>Composed type representation for type <see cref="string"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public string? String { get; set; }
+#nullable restore
+#else
+            public string String { get; set; }
+#endif
+            /// <summary>
+            /// Creates a new instance of the appropriate class based on discriminator value
+            /// </summary>
+            /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest.MessagesRequest_system"/></returns>
+            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
+            public static global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest.MessagesRequest_system CreateFromDiscriminatorValue(IParseNode parseNode)
+            {
+                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
+                var result = new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest.MessagesRequest_system();
+                if(parseNode.GetStringValue() is string stringValue)
+                {
+                    result.String = stringValue;
+                }
+                else if(parseNode.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextBlockParam>(global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextBlockParam.CreateFromDiscriminatorValue)?.AsList() is List<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextBlockParam> anthropicTextBlockParamValue)
+                {
+                    result.AnthropicTextBlockParam = anthropicTextBlockParamValue;
+                }
+                return result;
+            }
+            /// <summary>
+            /// The deserialization information for the current model
+            /// </summary>
+            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
+            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+            {
+                return new Dictionary<string, Action<IParseNode>>();
+            }
+            /// <summary>
+            /// Serializes information the current object
+            /// </summary>
+            /// <param name="writer">Serialization writer to use to serialize this model</param>
+            public virtual void Serialize(ISerializationWriter writer)
+            {
+                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+                if(String != null)
+                {
+                    writer.WriteStringValue(null, String);
+                }
+                else if(AnthropicTextBlockParam != null)
+                {
+                    writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextBlockParam>(null, AnthropicTextBlockParam);
                 }
             }
         }

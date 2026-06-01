@@ -22,10 +22,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Text, token, or multimodal input(s) to embed</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.UnionBranch? Input { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddings.CreateEmbeddings_input? Input { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.UnionBranch Input { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddings.CreateEmbeddings_input Input { get; set; }
 #endif
         /// <summary>The type of input (e.g. search_query, search_document)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -86,7 +86,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             {
                 { "dimensions", n => { Dimensions = n.GetIntValue(); } },
                 { "encoding_format", n => { EncodingFormat = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddings_encoding_format>(); } },
-                { "input", n => { Input = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.UnionBranch>(global::Soenneker.OpenRouter.OpenApiClient.Models.UnionBranch.CreateFromDiscriminatorValue); } },
+                { "input", n => { Input = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddings.CreateEmbeddings_input>(global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddings.CreateEmbeddings_input.CreateFromDiscriminatorValue); } },
                 { "input_type", n => { InputType = n.GetStringValue(); } },
                 { "model", n => { Model = n.GetStringValue(); } },
                 { "provider", n => { Provider = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddings_provider>(global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddings_provider.CreateFromDiscriminatorValue); } },
@@ -102,12 +102,126 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("dimensions", Dimensions);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddings_encoding_format>("encoding_format", EncodingFormat);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.UnionBranch>("input", Input);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddings.CreateEmbeddings_input>("input", Input);
             writer.WriteStringValue("input_type", InputType);
             writer.WriteStringValue("model", Model);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddings_provider>("provider", Provider);
             writer.WriteStringValue("user", User);
             writer.WriteAdditionalData(AdditionalData);
+        }
+        /// <summary>
+        /// Composed type wrapper for classes <see cref="string"/>, List&lt;double&gt;, List&lt;global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddings_inputMember1&gt;, List&lt;global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddings_inputMember2&gt;, List&lt;string&gt;
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+        public partial class CreateEmbeddings_input : IComposedTypeWrapper, IParsable
+        {
+            /// <summary>Composed type representation for type List&lt;global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddings_inputMember1&gt;</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public List<global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddings_inputMember1>? CreateEmbeddingsInputMember1 { get; set; }
+#nullable restore
+#else
+            public List<global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddings_inputMember1> CreateEmbeddingsInputMember1 { get; set; }
+#endif
+            /// <summary>Composed type representation for type List&lt;global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddings_inputMember2&gt;</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public List<global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddings_inputMember2>? CreateEmbeddingsInputMember2 { get; set; }
+#nullable restore
+#else
+            public List<global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddings_inputMember2> CreateEmbeddingsInputMember2 { get; set; }
+#endif
+            /// <summary>Composed type representation for type <see cref="string"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public string? CreateEmbeddingsInputString { get; set; }
+#nullable restore
+#else
+            public string CreateEmbeddingsInputString { get; set; }
+#endif
+            /// <summary>Composed type representation for type List&lt;double&gt;</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public List<double?>? Double { get; set; }
+#nullable restore
+#else
+            public List<double?> Double { get; set; }
+#endif
+            /// <summary>Composed type representation for type List&lt;string&gt;</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public List<string>? String { get; set; }
+#nullable restore
+#else
+            public List<string> String { get; set; }
+#endif
+            /// <summary>
+            /// Creates a new instance of the appropriate class based on discriminator value
+            /// </summary>
+            /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddings.CreateEmbeddings_input"/></returns>
+            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
+            public static global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddings.CreateEmbeddings_input CreateFromDiscriminatorValue(IParseNode parseNode)
+            {
+                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
+                var result = new global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddings.CreateEmbeddings_input();
+                if(parseNode.GetStringValue() is string createEmbeddingsInputStringValue)
+                {
+                    result.CreateEmbeddingsInputString = createEmbeddingsInputStringValue;
+                }
+                else if(parseNode.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddings_inputMember1>(global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddings_inputMember1.CreateFromDiscriminatorValue)?.AsList() is List<global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddings_inputMember1> createEmbeddingsInputMember1Value)
+                {
+                    result.CreateEmbeddingsInputMember1 = createEmbeddingsInputMember1Value;
+                }
+                else if(parseNode.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddings_inputMember2>(global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddings_inputMember2.CreateFromDiscriminatorValue)?.AsList() is List<global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddings_inputMember2> createEmbeddingsInputMember2Value)
+                {
+                    result.CreateEmbeddingsInputMember2 = createEmbeddingsInputMember2Value;
+                }
+                else if(parseNode.GetCollectionOfPrimitiveValues<double?>()?.AsList() is List<double?> doubleValue)
+                {
+                    result.Double = doubleValue;
+                }
+                else if(parseNode.GetCollectionOfPrimitiveValues<string>()?.AsList() is List<string> stringValue)
+                {
+                    result.String = stringValue;
+                }
+                return result;
+            }
+            /// <summary>
+            /// The deserialization information for the current model
+            /// </summary>
+            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
+            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+            {
+                return new Dictionary<string, Action<IParseNode>>();
+            }
+            /// <summary>
+            /// Serializes information the current object
+            /// </summary>
+            /// <param name="writer">Serialization writer to use to serialize this model</param>
+            public virtual void Serialize(ISerializationWriter writer)
+            {
+                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+                if(CreateEmbeddingsInputString != null)
+                {
+                    writer.WriteStringValue(null, CreateEmbeddingsInputString);
+                }
+                else if(CreateEmbeddingsInputMember1 != null)
+                {
+                    writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddings_inputMember1>(null, CreateEmbeddingsInputMember1);
+                }
+                else if(CreateEmbeddingsInputMember2 != null)
+                {
+                    writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddings_inputMember2>(null, CreateEmbeddingsInputMember2);
+                }
+                else if(Double != null)
+                {
+                    writer.WriteCollectionOfPrimitiveValues<double?>(null, Double);
+                }
+                else if(String != null)
+                {
+                    writer.WriteCollectionOfPrimitiveValues<string>(null, String);
+                }
+            }
         }
     }
 }
