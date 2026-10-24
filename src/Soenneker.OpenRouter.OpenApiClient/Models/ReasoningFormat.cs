@@ -20,9 +20,21 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning disable CS1591
         AzureOpenaiResponsesV1,
         #pragma warning restore CS1591
+        [EnumMember(Value = "bedrock-openai-responses-v1")]
+        #pragma warning disable CS1591
+        BedrockOpenaiResponsesV1,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "bedrock-xai-responses-v1")]
+        #pragma warning disable CS1591
+        BedrockXaiResponsesV1,
+        #pragma warning restore CS1591
         [EnumMember(Value = "xai-responses-v1")]
         #pragma warning disable CS1591
         XaiResponsesV1,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "meta-responses-v1")]
+        #pragma warning disable CS1591
+        MetaResponsesV1,
         #pragma warning restore CS1591
         [EnumMember(Value = "anthropic-claude-v1")]
         #pragma warning disable CS1591
@@ -31,6 +43,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         [EnumMember(Value = "google-gemini-v1")]
         #pragma warning disable CS1591
         GoogleGeminiV1,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464")]
+        #pragma warning disable CS1591
+        OpenapiJsonNullSentinelValue2BF936000FE44250987AE5DDB203E464,
         #pragma warning restore CS1591
     }
 }

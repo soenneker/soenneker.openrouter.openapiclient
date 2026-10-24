@@ -27,6 +27,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning disable CS1591
         IpAddress,
         #pragma warning restore CS1591
+        [EnumMember(Value = "secrets")]
+        #pragma warning disable CS1591
+        Secrets,
+        #pragma warning restore CS1591
         [EnumMember(Value = "person-name")]
         #pragma warning disable CS1591
         PersonName,

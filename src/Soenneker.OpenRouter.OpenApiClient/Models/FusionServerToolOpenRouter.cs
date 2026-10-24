@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;OpenRouter built-in server tool: fans out the user prompt to a panel of analysis models, then asks a judge model to summarize their collective output as structured JSON the outer model can synthesize from.&quot;
+    /// OpenRouter built-in server tool: fans out the user prompt to a panel of analysis models, then asks an analyst model to summarize their collective output as structured JSON the outer model can synthesize from.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class FusionServerToolOpenRouter : IAdditionalDataHolder, IParsable
@@ -24,7 +24,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public global::Soenneker.OpenRouter.OpenApiClient.Models.FusionServerToolConfig Parameters { get; set; }
 #endif
         /// <summary>The type property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.FusionServerToolOpenRouter_type? Type { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.OpenrouterColonFusionType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.FusionServerToolOpenRouter"/> and sets the default values.
         /// </summary>
@@ -51,7 +51,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "parameters", n => { Parameters = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.FusionServerToolConfig>(global::Soenneker.OpenRouter.OpenApiClient.Models.FusionServerToolConfig.CreateFromDiscriminatorValue); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.FusionServerToolOpenRouter_type>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OpenrouterColonFusionType>(); } },
             };
         }
         /// <summary>
@@ -62,7 +62,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.FusionServerToolConfig>("parameters", Parameters);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.FusionServerToolOpenRouter_type>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OpenrouterColonFusionType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

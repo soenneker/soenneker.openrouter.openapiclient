@@ -25,10 +25,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Custom HTTP headers to include in requests to this destination.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilitySentryDestinationConfig_headers? Headers { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilitySentryDestinationConfigHeadersProperty? Headers { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilitySentryDestinationConfig_headers Headers { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilitySentryDestinationConfigHeadersProperty Headers { get; set; }
 #endif
         /// <summary>The otlpEndpoint property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -64,7 +64,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "dsn", n => { Dsn = n.GetStringValue(); } },
-                { "headers", n => { Headers = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilitySentryDestinationConfig_headers>(global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilitySentryDestinationConfig_headers.CreateFromDiscriminatorValue); } },
+                { "headers", n => { Headers = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilitySentryDestinationConfigHeadersProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilitySentryDestinationConfigHeadersProperty.CreateFromDiscriminatorValue); } },
                 { "otlpEndpoint", n => { OtlpEndpoint = n.GetStringValue(); } },
             };
         }
@@ -76,7 +76,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("dsn", Dsn);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilitySentryDestinationConfig_headers>("headers", Headers);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilitySentryDestinationConfigHeadersProperty>("headers", Headers);
             writer.WriteStringValue("otlpEndpoint", OtlpEndpoint);
             writer.WriteAdditionalData(AdditionalData);
         }

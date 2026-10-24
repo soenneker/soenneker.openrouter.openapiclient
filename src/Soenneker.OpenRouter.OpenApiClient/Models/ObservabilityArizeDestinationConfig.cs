@@ -33,12 +33,12 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Custom HTTP headers to include in requests to this destination.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityArizeDestinationConfig_headers? Headers { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityArizeDestinationConfigHeadersProperty? Headers { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityArizeDestinationConfig_headers Headers { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityArizeDestinationConfigHeadersProperty Headers { get; set; }
 #endif
-        /// <summary>The modelId property</summary>
+        /// <summary>The name of the tracing project in Arize AX</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ModelId { get; set; }
@@ -82,7 +82,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             {
                 { "apiKey", n => { ApiKey = n.GetStringValue(); } },
                 { "baseUrl", n => { BaseUrl = n.GetStringValue(); } },
-                { "headers", n => { Headers = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityArizeDestinationConfig_headers>(global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityArizeDestinationConfig_headers.CreateFromDiscriminatorValue); } },
+                { "headers", n => { Headers = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityArizeDestinationConfigHeadersProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityArizeDestinationConfigHeadersProperty.CreateFromDiscriminatorValue); } },
                 { "modelId", n => { ModelId = n.GetStringValue(); } },
                 { "spaceKey", n => { SpaceKey = n.GetStringValue(); } },
             };
@@ -96,7 +96,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("apiKey", ApiKey);
             writer.WriteStringValue("baseUrl", BaseUrl);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityArizeDestinationConfig_headers>("headers", Headers);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityArizeDestinationConfigHeadersProperty>("headers", Headers);
             writer.WriteStringValue("modelId", ModelId);
             writer.WriteStringValue("spaceKey", SpaceKey);
             writer.WriteAdditionalData(AdditionalData);

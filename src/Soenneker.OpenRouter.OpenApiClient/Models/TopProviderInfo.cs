@@ -19,7 +19,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public int? ContextLength { get; set; }
         /// <summary>Whether the top provider moderates content</summary>
         public bool? IsModerated { get; set; }
-        /// <summary>Maximum completion tokens from the top provider</summary>
+        /// <summary>Maximum completion tokens from the top provider. Input and output tokens share the context window, so the effective maximum output for a request is further limited by the context remaining after input tokens.</summary>
         public int? MaxCompletionTokens { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.TopProviderInfo"/> and sets the default values.

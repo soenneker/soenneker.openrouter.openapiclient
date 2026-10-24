@@ -21,7 +21,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "GPT")]
         #pragma warning disable CS1591
-        GPT,
+        Gpt,
         #pragma warning restore CS1591
         [EnumMember(Value = "Claude")]
         #pragma warning disable CS1591
@@ -77,11 +77,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "PaLM")]
         #pragma warning disable CS1591
-        PaLM,
+        PaLm,
         #pragma warning restore CS1591
         [EnumMember(Value = "RWKV")]
         #pragma warning disable CS1591
-        RWKV,
+        Rwkv,
         #pragma warning restore CS1591
         [EnumMember(Value = "Qwen3")]
         #pragma warning disable CS1591

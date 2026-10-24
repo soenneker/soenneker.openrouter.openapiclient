@@ -15,7 +15,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Which search engine to use. &quot;auto&quot; (default) uses native if the provider supports it, otherwise Exa. &quot;native&quot; forces the provider&apos;s built-in search. &quot;exa&quot; forces the Exa search API. &quot;firecrawl&quot; uses Firecrawl (requires BYOK). &quot;parallel&quot; uses the Parallel search API.</summary>
+        /// <summary>Which search engine to use. &quot;auto&quot; (default) uses native if the provider supports it, otherwise Exa. &quot;native&quot; forces the provider&apos;s built-in search. &quot;exa&quot; forces the Exa search API. &quot;firecrawl&quot; uses the Firecrawl search API. &quot;parallel&quot; uses the Parallel search API. &quot;perplexity&quot; uses the Perplexity Search API (raw ranked results).</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchEngineEnum? Engine { get; set; }
         /// <summary>The filters property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -25,12 +25,16 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchDomainFilter Filters { get; set; }
 #endif
-        /// <summary>Maximum number of search results to return per search call. Defaults to 5. Applies to Exa, Firecrawl, and Parallel engines; ignored with native provider search.</summary>
+        /// <summary>Maximum number of search results to return per search call. Defaults to 5. Applies to Exa, Firecrawl, Parallel, and Perplexity engines; ignored with native provider search. Perplexity supports a maximum of 20; values above 20 are clamped.</summary>
         public int? MaxResults { get; set; }
+        /// <summary>Maximum number of web searches the model may perform in a single request. Once reached, further search calls return an error result instead of executing. Applies to the Exa, Firecrawl, Parallel, and Perplexity engines. With native provider search, forwarded only to Anthropic (as `max_uses`); other native search providers have no equivalent parameter and ignore it.</summary>
+        public int? MaxUses { get; set; }
+        /// <summary>Engine-native search mode. Exa supports instant, fast, auto (default), deep-lite, deep, and deep-reasoning. Parallel supports turbo, fast, basic (default), and advanced. Modes unsupported by the selected engine are ignored.</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchMode? Mode { get; set; }
         /// <summary>Size of the search context for web search tools</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.SearchContextSizeEnum? SearchContextSize { get; set; }
         /// <summary>The type property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.Preview20250311WebSearchServerTool_type? Type { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchPreview20250311Type? Type { get; set; }
         /// <summary>The user_location property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -38,6 +42,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.OpenRouter.OpenApiClient.Models.PreviewWebSearchUserLocation UserLocation { get; set; }
+#endif
+        /// <summary>Enable SpaceXAI X (Twitter) search alongside native web search, with optional filters. Only applies to SpaceXAI endpoints with native search; omit to search the web only. X search is billed separately by SpaceXAI, per post and per user profile fetched.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.XSearchOptions? XSearch { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.XSearchOptions XSearch { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.Preview20250311WebSearchServerTool"/> and sets the default values.
@@ -67,9 +79,12 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "engine", n => { Engine = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchEngineEnum>(); } },
                 { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchDomainFilter>(global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchDomainFilter.CreateFromDiscriminatorValue); } },
                 { "max_results", n => { MaxResults = n.GetIntValue(); } },
+                { "max_uses", n => { MaxUses = n.GetIntValue(); } },
+                { "mode", n => { Mode = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchMode>(); } },
                 { "search_context_size", n => { SearchContextSize = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SearchContextSizeEnum>(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.Preview20250311WebSearchServerTool_type>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchPreview20250311Type>(); } },
                 { "user_location", n => { UserLocation = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PreviewWebSearchUserLocation>(global::Soenneker.OpenRouter.OpenApiClient.Models.PreviewWebSearchUserLocation.CreateFromDiscriminatorValue); } },
+                { "x_search", n => { XSearch = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.XSearchOptions>(global::Soenneker.OpenRouter.OpenApiClient.Models.XSearchOptions.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -82,9 +97,12 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchEngineEnum>("engine", Engine);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchDomainFilter>("filters", Filters);
             writer.WriteIntValue("max_results", MaxResults);
+            writer.WriteIntValue("max_uses", MaxUses);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchMode>("mode", Mode);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SearchContextSizeEnum>("search_context_size", SearchContextSize);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.Preview20250311WebSearchServerTool_type>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchPreview20250311Type>("type", Type);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PreviewWebSearchUserLocation>("user_location", UserLocation);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.XSearchOptions>("x_search", XSearch);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

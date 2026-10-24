@@ -31,7 +31,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public string RetrievedAt { get; set; }
 #endif
         /// <summary>The type property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicWebFetchBlock_type? Type { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.WebFetchResultType? Type { get; set; }
         /// <summary>The url property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -67,7 +67,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             {
                 { "content", n => { Content = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicDocumentBlock>(global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicDocumentBlock.CreateFromDiscriminatorValue); } },
                 { "retrieved_at", n => { RetrievedAt = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicWebFetchBlock_type>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebFetchResultType>(); } },
                 { "url", n => { Url = n.GetStringValue(); } },
             };
         }
@@ -80,7 +80,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicDocumentBlock>("content", Content);
             writer.WriteStringValue("retrieved_at", RetrievedAt);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicWebFetchBlock_type>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebFetchResultType>("type", Type);
             writer.WriteStringValue("url", Url);
             writer.WriteAdditionalData(AdditionalData);
         }

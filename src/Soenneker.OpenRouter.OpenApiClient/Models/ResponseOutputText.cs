@@ -17,18 +17,18 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The annotations property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAIResponsesAnnotation>? Annotations { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAiResponsesAnnotation>? Annotations { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAIResponsesAnnotation> Annotations { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAiResponsesAnnotation> Annotations { get; set; }
 #endif
         /// <summary>The logprobs property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ResponseOutputText_logprobs>? Logprobs { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ResponseOutputTextLogprobsItem>? Logprobs { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ResponseOutputText_logprobs> Logprobs { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ResponseOutputTextLogprobsItem> Logprobs { get; set; }
 #endif
         /// <summary>The text property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -39,7 +39,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public string Text { get; set; }
 #endif
         /// <summary>The type property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ResponseOutputText_type? Type { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.OutputTextType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ResponseOutputText"/> and sets the default values.
         /// </summary>
@@ -65,10 +65,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "annotations", n => { Annotations = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAIResponsesAnnotation>(global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAIResponsesAnnotation.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "logprobs", n => { Logprobs = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ResponseOutputText_logprobs>(global::Soenneker.OpenRouter.OpenApiClient.Models.ResponseOutputText_logprobs.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "annotations", n => { Annotations = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAiResponsesAnnotation>(global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAiResponsesAnnotation.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "logprobs", n => { Logprobs = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ResponseOutputTextLogprobsItem>(global::Soenneker.OpenRouter.OpenApiClient.Models.ResponseOutputTextLogprobsItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "text", n => { Text = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ResponseOutputText_type>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputTextType>(); } },
             };
         }
         /// <summary>
@@ -78,10 +78,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAIResponsesAnnotation>("annotations", Annotations);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ResponseOutputText_logprobs>("logprobs", Logprobs);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAiResponsesAnnotation>("annotations", Annotations);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ResponseOutputTextLogprobsItem>("logprobs", Logprobs);
             writer.WriteStringValue("text", Text);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ResponseOutputText_type>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputTextType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

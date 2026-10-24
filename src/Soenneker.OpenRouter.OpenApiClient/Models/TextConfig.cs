@@ -24,7 +24,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public global::Soenneker.OpenRouter.OpenApiClient.Models.Formats Format { get; set; }
 #endif
         /// <summary>The verbosity property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.TextConfig_verbosity? Verbosity { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.TextConfigVerbosity? Verbosity { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.TextConfig"/> and sets the default values.
         /// </summary>
@@ -51,7 +51,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "format", n => { Format = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.Formats>(global::Soenneker.OpenRouter.OpenApiClient.Models.Formats.CreateFromDiscriminatorValue); } },
-                { "verbosity", n => { Verbosity = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.TextConfig_verbosity>(); } },
+                { "verbosity", n => { Verbosity = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.TextConfigVerbosity>(); } },
             };
         }
         /// <summary>
@@ -62,7 +62,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.Formats>("format", Format);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.TextConfig_verbosity>("verbosity", Verbosity);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.TextConfigVerbosity>("verbosity", Verbosity);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -34,11 +34,12 @@ namespace Soenneker.OpenRouter.OpenApiClient.Generation.Content
         {
         }
         /// <summary>
-        /// Get stored prompt and completion content for a generation
+        /// Get stored prompt, completion, and error content for a generation
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.GenerationContentResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BadRequestResponse">When receiving a 400 status code</exception>
         /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.UnauthorizedResponse">When receiving a 401 status code</exception>
         /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ForbiddenResponse">When receiving a 403 status code</exception>
         /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.NotFoundResponse">When receiving a 404 status code</exception>
@@ -59,6 +60,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Generation.Content
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
+                { "400", global::Soenneker.OpenRouter.OpenApiClient.Models.BadRequestResponse.CreateFromDiscriminatorValue },
                 { "401", global::Soenneker.OpenRouter.OpenApiClient.Models.UnauthorizedResponse.CreateFromDiscriminatorValue },
                 { "403", global::Soenneker.OpenRouter.OpenApiClient.Models.ForbiddenResponse.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.OpenRouter.OpenApiClient.Models.NotFoundResponse.CreateFromDiscriminatorValue },
@@ -71,7 +73,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Generation.Content
             return await RequestAdapter.SendAsync<global::Soenneker.OpenRouter.OpenApiClient.Models.GenerationContentResponse>(requestInfo, global::Soenneker.OpenRouter.OpenApiClient.Models.GenerationContentResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Get stored prompt and completion content for a generation
+        /// Get stored prompt, completion, and error content for a generation
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -99,7 +101,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Generation.Content
             return new global::Soenneker.OpenRouter.OpenApiClient.Generation.Content.ContentRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Get stored prompt and completion content for a generation
+        /// Get stored prompt, completion, and error content for a generation
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class ContentRequestBuilderGetQueryParameters 

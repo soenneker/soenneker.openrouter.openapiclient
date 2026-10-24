@@ -8,42 +8,42 @@ using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolChoiceMember1"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolChoiceMember2"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolChoiceMember3"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolChoiceMember4"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolChoiceOneOf1"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolChoiceOneOf2"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolChoiceOneOf3"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolChoiceOneOf4"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class MessagesRequestToolChoice : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolChoiceMember1"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolChoiceOneOf1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolChoiceMember1? MessagesRequestToolChoiceMember1 { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolChoiceOneOf1? MessagesRequestToolChoiceOneOf1 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolChoiceMember1 MessagesRequestToolChoiceMember1 { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolChoiceOneOf1 MessagesRequestToolChoiceOneOf1 { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolChoiceMember2"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolChoiceOneOf2"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolChoiceMember2? MessagesRequestToolChoiceMember2 { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolChoiceOneOf2? MessagesRequestToolChoiceOneOf2 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolChoiceMember2 MessagesRequestToolChoiceMember2 { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolChoiceOneOf2 MessagesRequestToolChoiceOneOf2 { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolChoiceMember3"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolChoiceOneOf3"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolChoiceMember3? MessagesRequestToolChoiceMember3 { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolChoiceOneOf3? MessagesRequestToolChoiceOneOf3 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolChoiceMember3 MessagesRequestToolChoiceMember3 { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolChoiceOneOf3 MessagesRequestToolChoiceOneOf3 { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolChoiceMember4"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolChoiceOneOf4"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolChoiceMember4? MessagesRequestToolChoiceMember4 { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolChoiceOneOf4? MessagesRequestToolChoiceOneOf4 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolChoiceMember4 MessagesRequestToolChoiceMember4 { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolChoiceOneOf4 MessagesRequestToolChoiceOneOf4 { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -55,21 +55,21 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
             var result = new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolChoice();
-            if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("auto".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.MessagesRequestToolChoiceMember1 = new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolChoiceMember1();
+                result.MessagesRequestToolChoiceOneOf1 = new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolChoiceOneOf1();
             }
-            else if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("any".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.MessagesRequestToolChoiceMember2 = new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolChoiceMember2();
+                result.MessagesRequestToolChoiceOneOf2 = new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolChoiceOneOf2();
             }
-            else if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("none".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.MessagesRequestToolChoiceMember3 = new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolChoiceMember3();
+                result.MessagesRequestToolChoiceOneOf3 = new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolChoiceOneOf3();
             }
-            else if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("tool".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.MessagesRequestToolChoiceMember4 = new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolChoiceMember4();
+                result.MessagesRequestToolChoiceOneOf4 = new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolChoiceOneOf4();
             }
             return result;
         }
@@ -79,21 +79,21 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(MessagesRequestToolChoiceMember1 != null)
+            if(MessagesRequestToolChoiceOneOf1 != null)
             {
-                return MessagesRequestToolChoiceMember1.GetFieldDeserializers();
+                return MessagesRequestToolChoiceOneOf1.GetFieldDeserializers();
             }
-            else if(MessagesRequestToolChoiceMember2 != null)
+            else if(MessagesRequestToolChoiceOneOf2 != null)
             {
-                return MessagesRequestToolChoiceMember2.GetFieldDeserializers();
+                return MessagesRequestToolChoiceOneOf2.GetFieldDeserializers();
             }
-            else if(MessagesRequestToolChoiceMember3 != null)
+            else if(MessagesRequestToolChoiceOneOf3 != null)
             {
-                return MessagesRequestToolChoiceMember3.GetFieldDeserializers();
+                return MessagesRequestToolChoiceOneOf3.GetFieldDeserializers();
             }
-            else if(MessagesRequestToolChoiceMember4 != null)
+            else if(MessagesRequestToolChoiceOneOf4 != null)
             {
-                return MessagesRequestToolChoiceMember4.GetFieldDeserializers();
+                return MessagesRequestToolChoiceOneOf4.GetFieldDeserializers();
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -104,21 +104,21 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(MessagesRequestToolChoiceMember1 != null)
+            if(MessagesRequestToolChoiceOneOf1 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolChoiceMember1>(null, MessagesRequestToolChoiceMember1);
+                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolChoiceOneOf1>(null, MessagesRequestToolChoiceOneOf1);
             }
-            else if(MessagesRequestToolChoiceMember2 != null)
+            else if(MessagesRequestToolChoiceOneOf2 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolChoiceMember2>(null, MessagesRequestToolChoiceMember2);
+                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolChoiceOneOf2>(null, MessagesRequestToolChoiceOneOf2);
             }
-            else if(MessagesRequestToolChoiceMember3 != null)
+            else if(MessagesRequestToolChoiceOneOf3 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolChoiceMember3>(null, MessagesRequestToolChoiceMember3);
+                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolChoiceOneOf3>(null, MessagesRequestToolChoiceOneOf3);
             }
-            else if(MessagesRequestToolChoiceMember4 != null)
+            else if(MessagesRequestToolChoiceOneOf4 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolChoiceMember4>(null, MessagesRequestToolChoiceMember4);
+                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolChoiceOneOf4>(null, MessagesRequestToolChoiceOneOf4);
             }
         }
     }

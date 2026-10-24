@@ -17,10 +17,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Custom HTTP headers to include in requests to this destination.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityNewrelicDestinationConfig_headers? Headers { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityNewrelicDestinationConfigHeadersProperty? Headers { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityNewrelicDestinationConfig_headers Headers { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityNewrelicDestinationConfigHeadersProperty Headers { get; set; }
 #endif
         /// <summary>The licenseKey property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -31,14 +31,13 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public string LicenseKey { get; set; }
 #endif
         /// <summary>The region property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityNewrelicDestinationConfig_region? Region { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityNewrelicDestinationConfigRegion? Region { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityNewrelicDestinationConfig"/> and sets the default values.
         /// </summary>
         public ObservabilityNewrelicDestinationConfig()
         {
             AdditionalData = new Dictionary<string, object>();
-            Region = global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityNewrelicDestinationConfig_region.Us;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -58,9 +57,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "headers", n => { Headers = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityNewrelicDestinationConfig_headers>(global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityNewrelicDestinationConfig_headers.CreateFromDiscriminatorValue); } },
+                { "headers", n => { Headers = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityNewrelicDestinationConfigHeadersProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityNewrelicDestinationConfigHeadersProperty.CreateFromDiscriminatorValue); } },
                 { "licenseKey", n => { LicenseKey = n.GetStringValue(); } },
-                { "region", n => { Region = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityNewrelicDestinationConfig_region>(); } },
+                { "region", n => { Region = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityNewrelicDestinationConfigRegion>(); } },
             };
         }
         /// <summary>
@@ -70,9 +69,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityNewrelicDestinationConfig_headers>("headers", Headers);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityNewrelicDestinationConfigHeadersProperty>("headers", Headers);
             writer.WriteStringValue("licenseKey", LicenseKey);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityNewrelicDestinationConfig_region>("region", Region);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityNewrelicDestinationConfigRegion>("region", Region);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

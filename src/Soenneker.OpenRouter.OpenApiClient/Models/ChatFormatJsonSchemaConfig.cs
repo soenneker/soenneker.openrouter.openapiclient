@@ -24,7 +24,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatJsonSchemaConfig JsonSchema { get; set; }
 #endif
         /// <summary>The type property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatFormatJsonSchemaConfig_type? Type { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.JsonSchemaType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ChatFormatJsonSchemaConfig"/> and sets the default values.
         /// </summary>
@@ -51,7 +51,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "json_schema", n => { JsonSchema = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatJsonSchemaConfig>(global::Soenneker.OpenRouter.OpenApiClient.Models.ChatJsonSchemaConfig.CreateFromDiscriminatorValue); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatFormatJsonSchemaConfig_type>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.JsonSchemaType>(); } },
             };
         }
         /// <summary>
@@ -62,7 +62,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatJsonSchemaConfig>("json_schema", JsonSchema);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatFormatJsonSchemaConfig_type>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.JsonSchemaType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -31,7 +31,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The output_tokens property</summary>
         public int? OutputTokens { get; set; }
         /// <summary>The type property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCompactionUsageIteration_type? Type { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.CompactionType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCompactionUsageIteration"/> and sets the default values.
         /// </summary>
@@ -62,7 +62,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "cache_read_input_tokens", n => { CacheReadInputTokens = n.GetIntValue(); } },
                 { "input_tokens", n => { InputTokens = n.GetIntValue(); } },
                 { "output_tokens", n => { OutputTokens = n.GetIntValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCompactionUsageIteration_type>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.CompactionType>(); } },
             };
         }
         /// <summary>
@@ -77,7 +77,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteIntValue("cache_read_input_tokens", CacheReadInputTokens);
             writer.WriteIntValue("input_tokens", InputTokens);
             writer.WriteIntValue("output_tokens", OutputTokens);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCompactionUsageIteration_type>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.CompactionType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

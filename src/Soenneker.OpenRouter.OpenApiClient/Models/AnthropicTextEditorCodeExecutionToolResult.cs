@@ -31,7 +31,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public string ToolUseId { get; set; }
 #endif
         /// <summary>The type property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextEditorCodeExecutionToolResult_type? Type { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.TextEditorCodeExecutionToolResultType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextEditorCodeExecutionToolResult"/> and sets the default values.
         /// </summary>
@@ -59,7 +59,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             {
                 { "content", n => { Content = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextEditorCodeExecutionContent>(global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextEditorCodeExecutionContent.CreateFromDiscriminatorValue); } },
                 { "tool_use_id", n => { ToolUseId = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextEditorCodeExecutionToolResult_type>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.TextEditorCodeExecutionToolResultType>(); } },
             };
         }
         /// <summary>
@@ -71,7 +71,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextEditorCodeExecutionContent>("content", Content);
             writer.WriteStringValue("tool_use_id", ToolUseId);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextEditorCodeExecutionToolResult_type>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.TextEditorCodeExecutionToolResultType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -10,11 +10,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     {
         [EnumMember(Value = "5m")]
         #pragma warning disable CS1591
-        Fivem,
+        Value5M,
         #pragma warning restore CS1591
         [EnumMember(Value = "1h")]
         #pragma warning disable CS1591
-        Oneh,
+        Value1H,
         #pragma warning restore CS1591
     }
 }

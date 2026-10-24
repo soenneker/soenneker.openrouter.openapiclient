@@ -8,16 +8,16 @@ using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     /// <summary>
-    /// Reasoning configuration forwarded to panelist and judge inner calls. Use this to control reasoning effort and token budget for models that support extended thinking.
+    /// Reasoning configuration forwarded to panelist and analyst inner calls. Use this to control reasoning effort and token budget for models that support extended thinking.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class FusionServerToolConfigReasoning : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Reasoning effort level for panelist and judge inner calls.</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.FusionServerToolConfigReasoning_effort? Effort { get; set; }
-        /// <summary>Maximum number of reasoning tokens each panelist and judge model may use. Helps bound cost when models allocate too much budget to chain-of-thought.</summary>
+        /// <summary>Reasoning effort level for panelist and analyst inner calls.</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.FusionServerToolConfigReasoningEffort? Effort { get; set; }
+        /// <summary>Maximum number of reasoning tokens each panelist and analyst model may use. Helps bound cost when models allocate too much budget to chain-of-thought.</summary>
         public int? MaxTokens { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.FusionServerToolConfigReasoning"/> and sets the default values.
@@ -44,7 +44,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "effort", n => { Effort = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.FusionServerToolConfigReasoning_effort>(); } },
+                { "effort", n => { Effort = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.FusionServerToolConfigReasoningEffort>(); } },
                 { "max_tokens", n => { MaxTokens = n.GetIntValue(); } },
             };
         }
@@ -55,7 +55,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.FusionServerToolConfigReasoning_effort>("effort", Effort);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.FusionServerToolConfigReasoningEffort>("effort", Effort);
             writer.WriteIntValue("max_tokens", MaxTokens);
             writer.WriteAdditionalData(AdditionalData);
         }

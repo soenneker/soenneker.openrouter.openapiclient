@@ -16,7 +16,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The category property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicRefusalStopDetails_category? Category { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicRefusalStopDetailsCategory? Category { get; set; }
         /// <summary>The explanation property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -26,7 +26,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public string Explanation { get; set; }
 #endif
         /// <summary>The type property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicRefusalStopDetails_type? Type { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.RefusalType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicRefusalStopDetails"/> and sets the default values.
         /// </summary>
@@ -52,9 +52,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "category", n => { Category = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicRefusalStopDetails_category>(); } },
+                { "category", n => { Category = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicRefusalStopDetailsCategory>(); } },
                 { "explanation", n => { Explanation = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicRefusalStopDetails_type>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.RefusalType>(); } },
             };
         }
         /// <summary>
@@ -64,9 +64,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicRefusalStopDetails_category>("category", Category);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicRefusalStopDetailsCategory>("category", Category);
             writer.WriteStringValue("explanation", Explanation);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicRefusalStopDetails_type>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.RefusalType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

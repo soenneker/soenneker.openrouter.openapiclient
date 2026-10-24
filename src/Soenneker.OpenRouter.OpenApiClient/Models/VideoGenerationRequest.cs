@@ -15,7 +15,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Aspect ratio of the generated video</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_aspect_ratio? AspectRatio { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestAspectRatio? AspectRatio { get; set; }
         /// <summary>URL to receive a webhook notification when the video generation job completes. Overrides the workspace-level default callback URL if set. Must be HTTPS.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -24,6 +24,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public string CallbackUrl { get; set; }
 #endif
+        /// <summary>Creativity level for video upscaling models only. This parameter is not supported by video generation models.</summary>
+        public int? Creativity { get; set; }
         /// <summary>Duration of the generated video in seconds</summary>
         public int? Duration { get; set; }
         /// <summary>Images to use as the first and/or last frame of the generated video. Each image must specify a frame_type of first_frame or last_frame.</summary>
@@ -36,13 +38,13 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #endif
         /// <summary>Whether to generate audio alongside the video. Defaults to the endpoint&apos;s generate_audio capability flag, false if not set.</summary>
         public bool? GenerateAudio { get; set; }
-        /// <summary>Reference images to guide video generation</summary>
+        /// <summary>Reference assets to guide video generation. Accepts image, audio, and video references. Audio and video references are only honored by providers that support them (including BytePlus Seedance generation 2 and newer); other providers use image references and ignore the rest.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentPartImage>? InputReferences { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.InputReference>? InputReferences { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentPartImage> InputReferences { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.InputReference> InputReferences { get; set; }
 #endif
         /// <summary>The model property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -52,7 +54,15 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public string Model { get; set; }
 #endif
-        /// <summary>The prompt property</summary>
+        /// <summary>ID of a completed video job to edit or extend, as returned by the submit response. The new job runs on the same model and endpoint that produced the previous one. Only models that support continuation accept this field.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? PreviousJobId { get; set; }
+#nullable restore
+#else
+        public string PreviousJobId { get; set; }
+#endif
+        /// <summary>Text prompt describing the video to generate. Optional for models that support generating a video from image input alone; required by all other models.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Prompt { get; set; }
@@ -69,9 +79,17 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProvider Provider { get; set; }
 #endif
         /// <summary>Resolution of the generated video</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_resolution? Resolution { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestResolution? Resolution { get; set; }
         /// <summary>If specified, the generation will sample deterministically, such that repeated requests with the same seed and parameters should return the same result. Determinism is not guaranteed for all providers.</summary>
         public int? Seed { get; set; }
+        /// <summary>A unique identifier for grouping related requests (e.g., a conversation or agent workflow). Used for observability grouping in Broadcast and private logging; never sent to the provider. If provided in both the request body and the x-session-id header, the body value takes precedence. Maximum of 256 characters.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SessionId { get; set; }
+#nullable restore
+#else
+        public string SessionId { get; set; }
+#endif
         /// <summary>Exact pixel dimensions of the generated video in &quot;WIDTHxHEIGHT&quot; format (e.g. &quot;1280x720&quot;). Interchangeable with resolution + aspect_ratio.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -79,6 +97,24 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #nullable restore
 #else
         public string Size { get; set; }
+#endif
+        /// <summary>Metadata for observability and tracing. Known keys (trace_id, trace_name, span_name, generation_name, parent_span_id) have special handling. Additional keys are passed through as custom metadata to configured broadcast destinations.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.TraceConfig? Trace { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.TraceConfig Trace { get; set; }
+#endif
+        /// <summary>Upscale factor for video upscaling models only. This parameter is not supported by video generation models.</summary>
+        public double? UpscaleFactor { get; set; }
+        /// <summary>A unique identifier representing your end-user. Forwarded to Broadcast and private logging as the end-user id; never sent to the provider.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? User { get; set; }
+#nullable restore
+#else
+        public string User { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest"/> and sets the default values.
@@ -105,18 +141,24 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "aspect_ratio", n => { AspectRatio = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_aspect_ratio>(); } },
+                { "aspect_ratio", n => { AspectRatio = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestAspectRatio>(); } },
                 { "callback_url", n => { CallbackUrl = n.GetStringValue(); } },
+                { "creativity", n => { Creativity = n.GetIntValue(); } },
                 { "duration", n => { Duration = n.GetIntValue(); } },
                 { "frame_images", n => { FrameImages = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.FrameImage>(global::Soenneker.OpenRouter.OpenApiClient.Models.FrameImage.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "generate_audio", n => { GenerateAudio = n.GetBoolValue(); } },
-                { "input_references", n => { InputReferences = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentPartImage>(global::Soenneker.OpenRouter.OpenApiClient.Models.ContentPartImage.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "input_references", n => { InputReferences = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.InputReference>(global::Soenneker.OpenRouter.OpenApiClient.Models.InputReference.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "model", n => { Model = n.GetStringValue(); } },
+                { "previous_job_id", n => { PreviousJobId = n.GetStringValue(); } },
                 { "prompt", n => { Prompt = n.GetStringValue(); } },
                 { "provider", n => { Provider = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProvider>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProvider.CreateFromDiscriminatorValue); } },
-                { "resolution", n => { Resolution = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_resolution>(); } },
+                { "resolution", n => { Resolution = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestResolution>(); } },
                 { "seed", n => { Seed = n.GetIntValue(); } },
+                { "session_id", n => { SessionId = n.GetStringValue(); } },
                 { "size", n => { Size = n.GetStringValue(); } },
+                { "trace", n => { Trace = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.TraceConfig>(global::Soenneker.OpenRouter.OpenApiClient.Models.TraceConfig.CreateFromDiscriminatorValue); } },
+                { "upscale_factor", n => { UpscaleFactor = n.GetDoubleValue(); } },
+                { "user", n => { User = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -126,18 +168,24 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_aspect_ratio>("aspect_ratio", AspectRatio);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestAspectRatio>("aspect_ratio", AspectRatio);
             writer.WriteStringValue("callback_url", CallbackUrl);
+            writer.WriteIntValue("creativity", Creativity);
             writer.WriteIntValue("duration", Duration);
             writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.FrameImage>("frame_images", FrameImages);
             writer.WriteBoolValue("generate_audio", GenerateAudio);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentPartImage>("input_references", InputReferences);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.InputReference>("input_references", InputReferences);
             writer.WriteStringValue("model", Model);
+            writer.WriteStringValue("previous_job_id", PreviousJobId);
             writer.WriteStringValue("prompt", Prompt);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProvider>("provider", Provider);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequest_resolution>("resolution", Resolution);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestResolution>("resolution", Resolution);
             writer.WriteIntValue("seed", Seed);
+            writer.WriteStringValue("session_id", SessionId);
             writer.WriteStringValue("size", Size);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.TraceConfig>("trace", Trace);
+            writer.WriteDoubleValue("upscale_factor", UpscaleFactor);
+            writer.WriteStringValue("user", User);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

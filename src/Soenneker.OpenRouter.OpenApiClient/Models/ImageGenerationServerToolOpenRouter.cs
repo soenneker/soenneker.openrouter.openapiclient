@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;OpenRouter built-in server tool: generates images from text prompts using an image generation model&quot;
+    /// OpenRouter built-in server tool: generates images from text prompts using an image generation model
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ImageGenerationServerToolOpenRouter : IAdditionalDataHolder, IParsable
@@ -24,7 +24,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerToolConfig Parameters { get; set; }
 #endif
         /// <summary>The type property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerToolOpenRouter_type? Type { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.OpenrouterColonImageGenerationType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerToolOpenRouter"/> and sets the default values.
         /// </summary>
@@ -51,7 +51,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "parameters", n => { Parameters = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerToolConfig>(global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerToolConfig.CreateFromDiscriminatorValue); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerToolOpenRouter_type>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OpenrouterColonImageGenerationType>(); } },
             };
         }
         /// <summary>
@@ -62,7 +62,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerToolConfig>("parameters", Parameters);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerToolOpenRouter_type>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OpenrouterColonImageGenerationType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

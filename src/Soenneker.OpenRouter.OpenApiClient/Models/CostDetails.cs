@@ -15,6 +15,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Metered server-tool execution cost (for example, shell sandbox time) billed for this request, in USD. Matches the billed checkpoint and settlement amounts exactly. 0 when a metered server tool ran but settled at zero dollars; absent when no metered server tool ran.</summary>
+        public double? ServerToolCost { get; set; }
         /// <summary>The upstream_inference_completions_cost property</summary>
         public double? UpstreamInferenceCompletionsCost { get; set; }
         /// <summary>The upstream_inference_cost property</summary>
@@ -46,6 +48,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "server_tool_cost", n => { ServerToolCost = n.GetDoubleValue(); } },
                 { "upstream_inference_completions_cost", n => { UpstreamInferenceCompletionsCost = n.GetDoubleValue(); } },
                 { "upstream_inference_cost", n => { UpstreamInferenceCost = n.GetDoubleValue(); } },
                 { "upstream_inference_prompt_cost", n => { UpstreamInferencePromptCost = n.GetDoubleValue(); } },
@@ -58,6 +61,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteDoubleValue("server_tool_cost", ServerToolCost);
             writer.WriteDoubleValue("upstream_inference_completions_cost", UpstreamInferenceCompletionsCost);
             writer.WriteDoubleValue("upstream_inference_cost", UpstreamInferenceCost);
             writer.WriteDoubleValue("upstream_inference_prompt_cost", UpstreamInferencePromptCost);

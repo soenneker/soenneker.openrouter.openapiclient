@@ -24,7 +24,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public global::Soenneker.OpenRouter.OpenApiClient.Models.CodeInterpreterServerToolContainer Container { get; set; }
 #endif
         /// <summary>The type property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.CodeInterpreterServerTool_type? Type { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.CodeInterpreterType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.CodeInterpreterServerTool"/> and sets the default values.
         /// </summary>
@@ -51,7 +51,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "container", n => { Container = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.CodeInterpreterServerToolContainer>(global::Soenneker.OpenRouter.OpenApiClient.Models.CodeInterpreterServerToolContainer.CreateFromDiscriminatorValue); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.CodeInterpreterServerTool_type>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.CodeInterpreterType>(); } },
             };
         }
         /// <summary>
@@ -62,7 +62,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.CodeInterpreterServerToolContainer>("container", Container);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.CodeInterpreterServerTool_type>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.CodeInterpreterType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

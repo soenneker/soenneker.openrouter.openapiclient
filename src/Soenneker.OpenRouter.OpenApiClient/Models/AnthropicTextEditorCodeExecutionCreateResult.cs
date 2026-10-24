@@ -17,7 +17,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The is_file_update property</summary>
         public bool? IsFileUpdate { get; set; }
         /// <summary>The type property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextEditorCodeExecutionCreateResult_type? Type { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.TextEditorCodeExecutionCreateResultType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextEditorCodeExecutionCreateResult"/> and sets the default values.
         /// </summary>
@@ -44,7 +44,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "is_file_update", n => { IsFileUpdate = n.GetBoolValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextEditorCodeExecutionCreateResult_type>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.TextEditorCodeExecutionCreateResultType>(); } },
             };
         }
         /// <summary>
@@ -55,7 +55,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("is_file_update", IsFileUpdate);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextEditorCodeExecutionCreateResult_type>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.TextEditorCodeExecutionCreateResultType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

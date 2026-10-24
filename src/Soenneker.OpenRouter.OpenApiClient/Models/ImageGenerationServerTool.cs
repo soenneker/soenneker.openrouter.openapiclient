@@ -16,9 +16,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The background property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerTool_background? Background { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerToolBackground? Background { get; set; }
         /// <summary>The input_fidelity property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerTool_input_fidelity? InputFidelity { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerToolInputFidelity? InputFidelity { get; set; }
         /// <summary>The input_image_mask property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -28,21 +28,33 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerToolInputImageMask InputImageMask { get; set; }
 #endif
         /// <summary>The model property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerTool_model? Model { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Model { get; set; }
+#nullable restore
+#else
+        public string Model { get; set; }
+#endif
         /// <summary>The moderation property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerTool_moderation? Moderation { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerToolModeration? Moderation { get; set; }
         /// <summary>The output_compression property</summary>
         public int? OutputCompression { get; set; }
         /// <summary>The output_format property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerTool_output_format? OutputFormat { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerToolOutputFormat? OutputFormat { get; set; }
         /// <summary>The partial_images property</summary>
         public int? PartialImages { get; set; }
         /// <summary>The quality property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerTool_quality? Quality { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerToolQuality? Quality { get; set; }
         /// <summary>The size property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerTool_size? Size { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Size { get; set; }
+#nullable restore
+#else
+        public string Size { get; set; }
+#endif
         /// <summary>The type property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerTool_type? Type { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerTool"/> and sets the default values.
         /// </summary>
@@ -68,17 +80,17 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "background", n => { Background = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerTool_background>(); } },
-                { "input_fidelity", n => { InputFidelity = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerTool_input_fidelity>(); } },
+                { "background", n => { Background = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerToolBackground>(); } },
+                { "input_fidelity", n => { InputFidelity = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerToolInputFidelity>(); } },
                 { "input_image_mask", n => { InputImageMask = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerToolInputImageMask>(global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerToolInputImageMask.CreateFromDiscriminatorValue); } },
-                { "model", n => { Model = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerTool_model>(); } },
-                { "moderation", n => { Moderation = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerTool_moderation>(); } },
+                { "model", n => { Model = n.GetStringValue(); } },
+                { "moderation", n => { Moderation = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerToolModeration>(); } },
                 { "output_compression", n => { OutputCompression = n.GetIntValue(); } },
-                { "output_format", n => { OutputFormat = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerTool_output_format>(); } },
+                { "output_format", n => { OutputFormat = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerToolOutputFormat>(); } },
                 { "partial_images", n => { PartialImages = n.GetIntValue(); } },
-                { "quality", n => { Quality = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerTool_quality>(); } },
-                { "size", n => { Size = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerTool_size>(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerTool_type>(); } },
+                { "quality", n => { Quality = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerToolQuality>(); } },
+                { "size", n => { Size = n.GetStringValue(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationType>(); } },
             };
         }
         /// <summary>
@@ -88,17 +100,17 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerTool_background>("background", Background);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerTool_input_fidelity>("input_fidelity", InputFidelity);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerToolBackground>("background", Background);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerToolInputFidelity>("input_fidelity", InputFidelity);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerToolInputImageMask>("input_image_mask", InputImageMask);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerTool_model>("model", Model);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerTool_moderation>("moderation", Moderation);
+            writer.WriteStringValue("model", Model);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerToolModeration>("moderation", Moderation);
             writer.WriteIntValue("output_compression", OutputCompression);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerTool_output_format>("output_format", OutputFormat);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerToolOutputFormat>("output_format", OutputFormat);
             writer.WriteIntValue("partial_images", PartialImages);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerTool_quality>("quality", Quality);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerTool_size>("size", Size);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerTool_type>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerToolQuality>("quality", Quality);
+            writer.WriteStringValue("size", Size);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

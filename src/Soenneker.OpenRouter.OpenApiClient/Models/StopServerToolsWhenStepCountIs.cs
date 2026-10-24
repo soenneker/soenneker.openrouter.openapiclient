@@ -18,7 +18,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The step_count property</summary>
         public int? StepCount { get; set; }
         /// <summary>The type property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.StopServerToolsWhenStepCountIs_type? Type { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.StepCountIsType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.StopServerToolsWhenStepCountIs"/> and sets the default values.
         /// </summary>
@@ -45,7 +45,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "step_count", n => { StepCount = n.GetIntValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.StopServerToolsWhenStepCountIs_type>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.StepCountIsType>(); } },
             };
         }
         /// <summary>
@@ -56,7 +56,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("step_count", StepCount);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.StopServerToolsWhenStepCountIs_type>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.StepCountIsType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

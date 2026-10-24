@@ -41,12 +41,12 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Custom HTTP headers to include in requests to this destination.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityS3DestinationConfig_headers? Headers { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityS3DestinationConfigHeadersProperty? Headers { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityS3DestinationConfig_headers Headers { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityS3DestinationConfigHeadersProperty Headers { get; set; }
 #endif
-        /// <summary>&quot;Template for S3 object path. The filename ({traceId}-{timestamp}.json) is automatically appended. Available variables: {prefix}, {date}, {year}, {month}, {day}, {apiKeyName}&quot;</summary>
+        /// <summary>Template for S3 object path. The filename ({traceId}-{timestamp}.json) is automatically appended. Available variables: {prefix}, {date}, {year}, {month}, {day}, {apiKeyName}</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? PathTemplate { get; set; }
@@ -116,7 +116,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "accessKeyId", n => { AccessKeyId = n.GetStringValue(); } },
                 { "bucketName", n => { BucketName = n.GetStringValue(); } },
                 { "endpoint", n => { Endpoint = n.GetStringValue(); } },
-                { "headers", n => { Headers = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityS3DestinationConfig_headers>(global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityS3DestinationConfig_headers.CreateFromDiscriminatorValue); } },
+                { "headers", n => { Headers = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityS3DestinationConfigHeadersProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityS3DestinationConfigHeadersProperty.CreateFromDiscriminatorValue); } },
                 { "pathTemplate", n => { PathTemplate = n.GetStringValue(); } },
                 { "prefix", n => { Prefix = n.GetStringValue(); } },
                 { "region", n => { Region = n.GetStringValue(); } },
@@ -134,7 +134,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteStringValue("accessKeyId", AccessKeyId);
             writer.WriteStringValue("bucketName", BucketName);
             writer.WriteStringValue("endpoint", Endpoint);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityS3DestinationConfig_headers>("headers", Headers);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityS3DestinationConfigHeadersProperty>("headers", Headers);
             writer.WriteStringValue("pathTemplate", PathTemplate);
             writer.WriteStringValue("prefix", Prefix);
             writer.WriteStringValue("region", Region);

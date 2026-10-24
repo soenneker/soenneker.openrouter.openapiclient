@@ -34,7 +34,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public global::Soenneker.OpenRouter.OpenApiClient.Models.FileSearchServerToolRankingOptions RankingOptions { get; set; }
 #endif
         /// <summary>The type property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.FileSearchServerTool_type? Type { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.FileSearchType? Type { get; set; }
         /// <summary>The vector_store_ids property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -71,7 +71,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.FileSearchServerToolFilters>(global::Soenneker.OpenRouter.OpenApiClient.Models.FileSearchServerToolFilters.CreateFromDiscriminatorValue); } },
                 { "max_num_results", n => { MaxNumResults = n.GetIntValue(); } },
                 { "ranking_options", n => { RankingOptions = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.FileSearchServerToolRankingOptions>(global::Soenneker.OpenRouter.OpenApiClient.Models.FileSearchServerToolRankingOptions.CreateFromDiscriminatorValue); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.FileSearchServerTool_type>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.FileSearchType>(); } },
                 { "vector_store_ids", n => { VectorStoreIds = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };
         }
@@ -85,7 +85,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.FileSearchServerToolFilters>("filters", Filters);
             writer.WriteIntValue("max_num_results", MaxNumResults);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.FileSearchServerToolRankingOptions>("ranking_options", RankingOptions);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.FileSearchServerTool_type>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.FileSearchType>("type", Type);
             writer.WriteCollectionOfPrimitiveValues<string>("vector_store_ids", VectorStoreIds);
             writer.WriteAdditionalData(AdditionalData);
         }

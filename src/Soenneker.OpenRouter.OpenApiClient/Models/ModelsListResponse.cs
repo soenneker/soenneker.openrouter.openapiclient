@@ -18,11 +18,21 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>List of available models</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.Model>? Data { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ModelValue>? Data { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.Model> Data { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ModelValue> Data { get; set; }
 #endif
+        /// <summary>Pagination links</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ModelsListResponseLinks? Links { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ModelsListResponseLinks Links { get; set; }
+#endif
+        /// <summary>Total number of models matching the query</summary>
+        public int? TotalCount { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ModelsListResponse"/> and sets the default values.
         /// </summary>
@@ -48,7 +58,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "data", n => { Data = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.Model>(global::Soenneker.OpenRouter.OpenApiClient.Models.Model.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "data", n => { Data = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ModelValue>(global::Soenneker.OpenRouter.OpenApiClient.Models.ModelValue.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "links", n => { Links = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ModelsListResponseLinks>(global::Soenneker.OpenRouter.OpenApiClient.Models.ModelsListResponseLinks.CreateFromDiscriminatorValue); } },
+                { "total_count", n => { TotalCount = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -58,7 +70,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.Model>("data", Data);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ModelValue>("data", Data);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ModelsListResponseLinks>("links", Links);
+            writer.WriteIntValue("total_count", TotalCount);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

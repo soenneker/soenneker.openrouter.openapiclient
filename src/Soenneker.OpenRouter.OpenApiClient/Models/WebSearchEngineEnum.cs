@@ -3,14 +3,10 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
-    /// <summary>Which search engine to use. &quot;auto&quot; (default) uses native if the provider supports it, otherwise Exa. &quot;native&quot; forces the provider&apos;s built-in search. &quot;exa&quot; forces the Exa search API. &quot;firecrawl&quot; uses Firecrawl (requires BYOK). &quot;parallel&quot; uses the Parallel search API.</summary>
+    /// <summary>Which search engine to use. &quot;auto&quot; (default) uses native if the provider supports it, otherwise Exa. &quot;native&quot; forces the provider&apos;s built-in search. &quot;exa&quot; forces the Exa search API. &quot;firecrawl&quot; uses the Firecrawl search API. &quot;parallel&quot; uses the Parallel search API. &quot;perplexity&quot; uses the Perplexity Search API (raw ranked results).</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum WebSearchEngineEnum
     {
-        [EnumMember(Value = "auto")]
-        #pragma warning disable CS1591
-        Auto,
-        #pragma warning restore CS1591
         [EnumMember(Value = "native")]
         #pragma warning disable CS1591
         Native,
@@ -26,6 +22,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         [EnumMember(Value = "firecrawl")]
         #pragma warning disable CS1591
         Firecrawl,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "perplexity")]
+        #pragma warning disable CS1591
+        Perplexity,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "auto")]
+        #pragma warning disable CS1591
+        Auto,
         #pragma warning restore CS1591
     }
 }

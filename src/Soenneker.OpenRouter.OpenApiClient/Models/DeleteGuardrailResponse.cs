@@ -15,13 +15,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Confirmation that the guardrail was deleted</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.DeleteGuardrailResponse_deleted? Deleted { get; set; }
+        public bool? Deleted { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.DeleteGuardrailResponse"/> and sets the default values.
         /// </summary>
         public DeleteGuardrailResponse()
         {
             AdditionalData = new Dictionary<string, object>();
+            Deleted = true;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -41,7 +42,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "deleted", n => { Deleted = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.DeleteGuardrailResponse_deleted>(); } },
+                { "deleted", n => { Deleted = n.GetBoolValue(); } },
             };
         }
         /// <summary>
@@ -51,7 +52,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.DeleteGuardrailResponse_deleted>("deleted", Deleted);
+            writer.WriteBoolValue("deleted", Deleted);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

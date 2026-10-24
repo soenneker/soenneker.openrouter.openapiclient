@@ -16,9 +16,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The provider sorting strategy (price, throughput, latency)</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderSortConfig_by? By { get; set; }
-        /// <summary>&quot;Partitioning strategy for sorting: \&quot;model\&quot; (default) groups endpoints by model before sorting (fallback models remain fallbacks), \&quot;none\&quot; sorts all endpoints together regardless of model.&quot;</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderSortConfig_partition? Partition { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderSortConfigBy? By { get; set; }
+        /// <summary>Partitioning strategy for sorting: &quot;model&quot; (default) groups endpoints by model before sorting (fallback models remain fallbacks), &quot;none&quot; sorts all endpoints together regardless of model.</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderSortConfigPartition? Partition { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderSortConfig"/> and sets the default values.
         /// </summary>
@@ -44,8 +44,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "by", n => { By = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderSortConfig_by>(); } },
-                { "partition", n => { Partition = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderSortConfig_partition>(); } },
+                { "by", n => { By = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderSortConfigBy>(); } },
+                { "partition", n => { Partition = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderSortConfigPartition>(); } },
             };
         }
         /// <summary>
@@ -55,8 +55,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderSortConfig_by>("by", By);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderSortConfig_partition>("partition", Partition);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderSortConfigBy>("by", By);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderSortConfigPartition>("partition", Partition);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

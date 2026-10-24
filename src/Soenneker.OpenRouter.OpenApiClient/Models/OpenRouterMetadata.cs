@@ -32,6 +32,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public global::Soenneker.OpenRouter.OpenApiClient.Models.EndpointsMetadata Endpoints { get; set; }
 #endif
+        /// <summary>Milliseconds measured for the generation, from dispatching the upstream request until its response body ended. Divide the completion token count by this for throughput. Absent when no upstream request was dispatched.</summary>
+        public int? GenerationTime { get; set; }
         /// <summary>The is_byok property</summary>
         public bool? IsByok { get; set; }
         /// <summary>The params property</summary>
@@ -104,6 +106,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "attempt", n => { Attempt = n.GetIntValue(); } },
                 { "attempts", n => { Attempts = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.RouterAttempt>(global::Soenneker.OpenRouter.OpenApiClient.Models.RouterAttempt.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "endpoints", n => { Endpoints = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.EndpointsMetadata>(global::Soenneker.OpenRouter.OpenApiClient.Models.EndpointsMetadata.CreateFromDiscriminatorValue); } },
+                { "generation_time", n => { GenerationTime = n.GetIntValue(); } },
                 { "is_byok", n => { IsByok = n.GetBoolValue(); } },
                 { "params", n => { Params = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.RouterParams>(global::Soenneker.OpenRouter.OpenApiClient.Models.RouterParams.CreateFromDiscriminatorValue); } },
                 { "pipeline", n => { Pipeline = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.PipelineStage>(global::Soenneker.OpenRouter.OpenApiClient.Models.PipelineStage.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -123,6 +126,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteIntValue("attempt", Attempt);
             writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.RouterAttempt>("attempts", Attempts);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.EndpointsMetadata>("endpoints", Endpoints);
+            writer.WriteIntValue("generation_time", GenerationTime);
             writer.WriteBoolValue("is_byok", IsByok);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.RouterParams>("params", Params);
             writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.PipelineStage>("pipeline", Pipeline);

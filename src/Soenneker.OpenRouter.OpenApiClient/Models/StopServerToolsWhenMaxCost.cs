@@ -18,7 +18,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The max_cost_in_dollars property</summary>
         public double? MaxCostInDollars { get; set; }
         /// <summary>The type property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.StopServerToolsWhenMaxCost_type? Type { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.MaxCostType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.StopServerToolsWhenMaxCost"/> and sets the default values.
         /// </summary>
@@ -45,7 +45,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "max_cost_in_dollars", n => { MaxCostInDollars = n.GetDoubleValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.StopServerToolsWhenMaxCost_type>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MaxCostType>(); } },
             };
         }
         /// <summary>
@@ -56,7 +56,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDoubleValue("max_cost_in_dollars", MaxCostInDollars);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.StopServerToolsWhenMaxCost_type>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MaxCostType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

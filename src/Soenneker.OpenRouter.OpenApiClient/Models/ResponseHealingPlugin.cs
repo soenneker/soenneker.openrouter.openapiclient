@@ -17,7 +17,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Set to false to disable the response-healing plugin for this request. Defaults to true.</summary>
         public bool? Enabled { get; set; }
         /// <summary>The id property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ResponseHealingPlugin_id? Id { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ResponseHealingId? Id { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ResponseHealingPlugin"/> and sets the default values.
         /// </summary>
@@ -44,7 +44,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
-                { "id", n => { Id = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ResponseHealingPlugin_id>(); } },
+                { "id", n => { Id = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ResponseHealingId>(); } },
             };
         }
         /// <summary>
@@ -55,7 +55,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("enabled", Enabled);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ResponseHealingPlugin_id>("id", Id);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ResponseHealingId>("id", Id);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

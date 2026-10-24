@@ -22,6 +22,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public List<string> AllowedDomains { get; set; }
 #endif
+        /// <summary>The blocked_domains property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? BlockedDomains { get; set; }
+#nullable restore
+#else
+        public List<string> BlockedDomains { get; set; }
+#endif
         /// <summary>The excluded_domains property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -56,6 +64,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "allowed_domains", n => { AllowedDomains = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "blocked_domains", n => { BlockedDomains = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "excluded_domains", n => { ExcludedDomains = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };
         }
@@ -67,6 +76,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<string>("allowed_domains", AllowedDomains);
+            writer.WriteCollectionOfPrimitiveValues<string>("blocked_domains", BlockedDomains);
             writer.WriteCollectionOfPrimitiveValues<string>("excluded_domains", ExcludedDomains);
             writer.WriteAdditionalData(AdditionalData);
         }

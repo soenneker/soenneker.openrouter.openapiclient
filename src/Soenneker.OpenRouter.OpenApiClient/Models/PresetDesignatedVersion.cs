@@ -18,10 +18,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The config property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.PresetDesignatedVersion_config? Config { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PresetDesignatedVersionConfigProperty? Config { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.PresetDesignatedVersion_config Config { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PresetDesignatedVersionConfigProperty Config { get; set; }
 #endif
         /// <summary>The created_at property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -98,7 +98,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "config", n => { Config = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PresetDesignatedVersion_config>(global::Soenneker.OpenRouter.OpenApiClient.Models.PresetDesignatedVersion_config.CreateFromDiscriminatorValue); } },
+                { "config", n => { Config = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PresetDesignatedVersionConfigProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.PresetDesignatedVersionConfigProperty.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetStringValue(); } },
                 { "creator_id", n => { CreatorId = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
@@ -115,7 +115,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PresetDesignatedVersion_config>("config", Config);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PresetDesignatedVersionConfigProperty>("config", Config);
             writer.WriteStringValue("created_at", CreatedAt);
             writer.WriteStringValue("creator_id", CreatorId);
             writer.WriteStringValue("id", Id);

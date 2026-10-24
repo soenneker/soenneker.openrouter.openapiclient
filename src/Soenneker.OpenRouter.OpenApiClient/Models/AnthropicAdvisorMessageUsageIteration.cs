@@ -39,7 +39,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The output_tokens property</summary>
         public int? OutputTokens { get; set; }
         /// <summary>The type property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicAdvisorMessageUsageIteration_type? Type { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AdvisorMessageType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicAdvisorMessageUsageIteration"/> and sets the default values.
         /// </summary>
@@ -71,7 +71,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "input_tokens", n => { InputTokens = n.GetIntValue(); } },
                 { "model", n => { Model = n.GetStringValue(); } },
                 { "output_tokens", n => { OutputTokens = n.GetIntValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicAdvisorMessageUsageIteration_type>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AdvisorMessageType>(); } },
             };
         }
         /// <summary>
@@ -87,7 +87,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteIntValue("input_tokens", InputTokens);
             writer.WriteStringValue("model", Model);
             writer.WriteIntValue("output_tokens", OutputTokens);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicAdvisorMessageUsageIteration_type>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AdvisorMessageType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

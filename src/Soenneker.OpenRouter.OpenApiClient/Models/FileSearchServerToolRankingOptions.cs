@@ -15,7 +15,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The ranker property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.FileSearchServerToolRankingOptions_ranker? Ranker { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.FileSearchServerToolRankingOptionsRanker? Ranker { get; set; }
         /// <summary>The score_threshold property</summary>
         public double? ScoreThreshold { get; set; }
         /// <summary>
@@ -43,7 +43,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "ranker", n => { Ranker = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.FileSearchServerToolRankingOptions_ranker>(); } },
+                { "ranker", n => { Ranker = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.FileSearchServerToolRankingOptionsRanker>(); } },
                 { "score_threshold", n => { ScoreThreshold = n.GetDoubleValue(); } },
             };
         }
@@ -54,7 +54,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.FileSearchServerToolRankingOptions_ranker>("ranker", Ranker);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.FileSearchServerToolRankingOptionsRanker>("ranker", Ranker);
             writer.WriteDoubleValue("score_threshold", ScoreThreshold);
             writer.WriteAdditionalData(AdditionalData);
         }

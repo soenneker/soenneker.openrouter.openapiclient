@@ -10,7 +10,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     {
         [EnumMember(Value = "tool_calls")]
         #pragma warning disable CS1591
-        Tool_calls,
+        ToolCalls,
         #pragma warning restore CS1591
         [EnumMember(Value = "stop")]
         #pragma warning disable CS1591
@@ -22,11 +22,15 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "content_filter")]
         #pragma warning disable CS1591
-        Content_filter,
+        ContentFilter,
         #pragma warning restore CS1591
         [EnumMember(Value = "error")]
         #pragma warning disable CS1591
         Error,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464")]
+        #pragma warning disable CS1591
+        OpenapiJsonNullSentinelValue2BF936000FE44250987AE5DDB203E464,
         #pragma warning restore CS1591
     }
 }

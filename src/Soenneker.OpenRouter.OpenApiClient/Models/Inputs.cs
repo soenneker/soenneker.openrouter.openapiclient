@@ -8,26 +8,26 @@ using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.Inputs_Branch1"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.Inputs_Branch2"/>
+    /// Composed type wrapper for classes <see cref="string"/>, List&lt;global::Soenneker.OpenRouter.OpenApiClient.Models.InputsAnyOf2Item&gt;
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Inputs : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.Inputs_Branch1"/></summary>
+        /// <summary>Composed type representation for type List&lt;global::Soenneker.OpenRouter.OpenApiClient.Models.InputsAnyOf2Item&gt;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.Inputs_Branch1? InputsBranch1 { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.InputsAnyOf2Item>? InputsAnyOf2Item { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.Inputs_Branch1 InputsBranch1 { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.InputsAnyOf2Item> InputsAnyOf2Item { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.Inputs_Branch2"/></summary>
+        /// <summary>Composed type representation for type <see cref="string"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.Inputs_Branch2? InputsBranch2 { get; set; }
+        public string? String { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.Inputs_Branch2 InputsBranch2 { get; set; }
+        public string String { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -38,8 +38,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var result = new global::Soenneker.OpenRouter.OpenApiClient.Models.Inputs();
-            result.InputsBranch1 = new global::Soenneker.OpenRouter.OpenApiClient.Models.Inputs_Branch1();
-            result.InputsBranch2 = new global::Soenneker.OpenRouter.OpenApiClient.Models.Inputs_Branch2();
+            if(parseNode.GetStringValue() is string stringValue)
+            {
+                result.String = stringValue;
+            }
+            else if(parseNode.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.InputsAnyOf2Item>(global::Soenneker.OpenRouter.OpenApiClient.Models.InputsAnyOf2Item.CreateFromDiscriminatorValue)?.AsList() is List<global::Soenneker.OpenRouter.OpenApiClient.Models.InputsAnyOf2Item> inputsAnyOf2ItemValue)
+            {
+                result.InputsAnyOf2Item = inputsAnyOf2ItemValue;
+            }
             return result;
         }
         /// <summary>
@@ -48,10 +54,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(InputsBranch1 != null || InputsBranch2 != null)
-            {
-                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(InputsBranch1, InputsBranch2);
-            }
             return new Dictionary<string, Action<IParseNode>>();
         }
         /// <summary>
@@ -61,7 +63,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.Inputs_Branch1>(null, InputsBranch1, InputsBranch2);
+            if(String != null)
+            {
+                writer.WriteStringValue(null, String);
+            }
+            else if(InputsAnyOf2Item != null)
+            {
+                writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.InputsAnyOf2Item>(null, InputsAnyOf2Item);
+            }
         }
     }
 }

@@ -8,13 +8,21 @@ using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     /// <summary>
-    /// Stored prompt and completion content
+    /// Stored prompt and completion content, plus the failure error when one was stored
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class GenerationContentData : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>The stored failure for this generation, or null when it succeeded</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.GenerationContentError? Error { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.GenerationContentError Error { get; set; }
+#endif
         /// <summary>The input to the generation — either a prompt string or an array of messages</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -56,6 +64,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "error", n => { Error = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.GenerationContentError>(global::Soenneker.OpenRouter.OpenApiClient.Models.GenerationContentError.CreateFromDiscriminatorValue); } },
                 { "input", n => { Input = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.GenerationContentDataInput>(global::Soenneker.OpenRouter.OpenApiClient.Models.GenerationContentDataInput.CreateFromDiscriminatorValue); } },
                 { "output", n => { Output = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.GenerationContentDataOutput>(global::Soenneker.OpenRouter.OpenApiClient.Models.GenerationContentDataOutput.CreateFromDiscriminatorValue); } },
             };
@@ -67,6 +76,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.GenerationContentError>("error", Error);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.GenerationContentDataInput>("input", Input);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.GenerationContentDataOutput>("output", Output);
             writer.WriteAdditionalData(AdditionalData);

@@ -16,22 +16,22 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>How much effort the model should put into its response. Higher effort levels may result in more thorough analysis but take longer. Valid values are `low`, `medium`, `high`, `xhigh`, or `max`.</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesOutputConfig_effort? Effort { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesOutputConfigEffort? Effort { get; set; }
         /// <summary>A schema to specify Claude&apos;s output format in responses. See [structured outputs](https://platform.claude.com/docs/en/build-with-claude/structured-outputs).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesOutputConfig_format? Format { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesOutputConfigFormat? Format { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesOutputConfig_format Format { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesOutputConfigFormat Format { get; set; }
 #endif
         /// <summary>Task budget for an agentic turn. The model sees a countdown of remaining tokens and uses it to prioritize work and wind down gracefully. Advisory — does not enforce a hard cap.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesOutputConfig_task_budget? TaskBudget { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesOutputConfigTaskBudget? TaskBudget { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesOutputConfig_task_budget TaskBudget { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesOutputConfigTaskBudget TaskBudget { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesOutputConfig"/> and sets the default values.
@@ -58,9 +58,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "effort", n => { Effort = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesOutputConfig_effort>(); } },
-                { "format", n => { Format = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesOutputConfig_format>(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesOutputConfig_format.CreateFromDiscriminatorValue); } },
-                { "task_budget", n => { TaskBudget = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesOutputConfig_task_budget>(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesOutputConfig_task_budget.CreateFromDiscriminatorValue); } },
+                { "effort", n => { Effort = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesOutputConfigEffort>(); } },
+                { "format", n => { Format = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesOutputConfigFormat>(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesOutputConfigFormat.CreateFromDiscriminatorValue); } },
+                { "task_budget", n => { TaskBudget = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesOutputConfigTaskBudget>(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesOutputConfigTaskBudget.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -70,9 +70,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesOutputConfig_effort>("effort", Effort);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesOutputConfig_format>("format", Format);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesOutputConfig_task_budget>("task_budget", TaskBudget);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesOutputConfigEffort>("effort", Effort);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesOutputConfigFormat>("format", Format);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesOutputConfigTaskBudget>("task_budget", TaskBudget);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

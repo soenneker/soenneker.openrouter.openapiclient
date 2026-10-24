@@ -45,10 +45,20 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public static global::Soenneker.OpenRouter.OpenApiClient.Models.Formats CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
+            var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
             var result = new global::Soenneker.OpenRouter.OpenApiClient.Models.Formats();
-            result.FormatJsonObjectConfig = new global::Soenneker.OpenRouter.OpenApiClient.Models.FormatJsonObjectConfig();
-            result.FormatJsonSchemaConfig = new global::Soenneker.OpenRouter.OpenApiClient.Models.FormatJsonSchemaConfig();
-            result.FormatTextConfig = new global::Soenneker.OpenRouter.OpenApiClient.Models.FormatTextConfig();
+            if("json_object".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                result.FormatJsonObjectConfig = new global::Soenneker.OpenRouter.OpenApiClient.Models.FormatJsonObjectConfig();
+            }
+            else if("json_schema".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                result.FormatJsonSchemaConfig = new global::Soenneker.OpenRouter.OpenApiClient.Models.FormatJsonSchemaConfig();
+            }
+            else if("text".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                result.FormatTextConfig = new global::Soenneker.OpenRouter.OpenApiClient.Models.FormatTextConfig();
+            }
             return result;
         }
         /// <summary>
@@ -57,9 +67,17 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(FormatJsonObjectConfig != null || FormatJsonSchemaConfig != null || FormatTextConfig != null)
+            if(FormatJsonObjectConfig != null)
             {
-                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(FormatJsonObjectConfig, FormatJsonSchemaConfig, FormatTextConfig);
+                return FormatJsonObjectConfig.GetFieldDeserializers();
+            }
+            else if(FormatJsonSchemaConfig != null)
+            {
+                return FormatJsonSchemaConfig.GetFieldDeserializers();
+            }
+            else if(FormatTextConfig != null)
+            {
+                return FormatTextConfig.GetFieldDeserializers();
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -70,7 +88,18 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.FormatJsonObjectConfig>(null, FormatJsonObjectConfig, FormatJsonSchemaConfig, FormatTextConfig);
+            if(FormatJsonObjectConfig != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.FormatJsonObjectConfig>(null, FormatJsonObjectConfig);
+            }
+            else if(FormatJsonSchemaConfig != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.FormatJsonSchemaConfig>(null, FormatJsonSchemaConfig);
+            }
+            else if(FormatTextConfig != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.FormatTextConfig>(null, FormatTextConfig);
+            }
         }
     }
 }

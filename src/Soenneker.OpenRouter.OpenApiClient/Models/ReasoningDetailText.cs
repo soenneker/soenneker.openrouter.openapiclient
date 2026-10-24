@@ -44,7 +44,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public string Text { get; set; }
 #endif
         /// <summary>The type property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningDetailText_type? Type { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningTextType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningDetailText"/> and sets the default values.
         /// </summary>
@@ -75,7 +75,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "index", n => { Index = n.GetIntValue(); } },
                 { "signature", n => { Signature = n.GetStringValue(); } },
                 { "text", n => { Text = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningDetailText_type>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningTextType>(); } },
             };
         }
         /// <summary>
@@ -90,7 +90,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteIntValue("index", Index);
             writer.WriteStringValue("signature", Signature);
             writer.WriteStringValue("text", Text);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningDetailText_type>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningTextType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

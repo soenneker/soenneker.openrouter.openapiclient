@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningDetailEncrypted"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningDetailSummary"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningDetailText"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningDetailEncrypted"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningDetailServerToolCall"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningDetailSummary"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningDetailText"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ReasoningDetailUnion : IComposedTypeWrapper, IParsable
@@ -20,6 +20,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningDetailEncrypted ReasoningDetailEncrypted { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningDetailServerToolCall"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningDetailServerToolCall? ReasoningDetailServerToolCall { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningDetailServerToolCall ReasoningDetailServerToolCall { get; set; }
 #endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningDetailSummary"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -51,6 +59,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             {
                 result.ReasoningDetailEncrypted = new global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningDetailEncrypted();
             }
+            else if("reasoning.server_tool_call".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                result.ReasoningDetailServerToolCall = new global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningDetailServerToolCall();
+            }
             else if("reasoning.summary".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.ReasoningDetailSummary = new global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningDetailSummary();
@@ -70,6 +82,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             if(ReasoningDetailEncrypted != null)
             {
                 return ReasoningDetailEncrypted.GetFieldDeserializers();
+            }
+            else if(ReasoningDetailServerToolCall != null)
+            {
+                return ReasoningDetailServerToolCall.GetFieldDeserializers();
             }
             else if(ReasoningDetailSummary != null)
             {
@@ -91,6 +107,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             if(ReasoningDetailEncrypted != null)
             {
                 writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningDetailEncrypted>(null, ReasoningDetailEncrypted);
+            }
+            else if(ReasoningDetailServerToolCall != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningDetailServerToolCall>(null, ReasoningDetailServerToolCall);
             }
             else if(ReasoningDetailSummary != null)
             {

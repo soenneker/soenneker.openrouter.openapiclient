@@ -8,11 +8,23 @@ using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolRequireApprovalMember1"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolRequireApproval_Wrapper"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolRequireApproval_Wrapper_2"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolRequireApprovalAnyOf1"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolRequireApprovalAnyOf2"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolRequireApprovalAnyOf3"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolRequireApprovalMember1"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class McpServerToolRequireApproval : IComposedTypeWrapper, IParsable
     {
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolRequireApprovalAnyOf1"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolRequireApprovalAnyOf1? McpServerToolRequireApprovalAnyOf1 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolRequireApprovalAnyOf1 McpServerToolRequireApprovalAnyOf1 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolRequireApprovalAnyOf2"/></summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolRequireApprovalAnyOf2? McpServerToolRequireApprovalAnyOf2 { get; set; }
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolRequireApprovalAnyOf3"/></summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolRequireApprovalAnyOf3? McpServerToolRequireApprovalAnyOf3 { get; set; }
         /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolRequireApprovalMember1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -20,22 +32,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolRequireApprovalMember1 McpServerToolRequireApprovalMember1 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolRequireApproval_Wrapper"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolRequireApproval_Wrapper? McpServerToolRequireApprovalWrapper { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolRequireApproval_Wrapper McpServerToolRequireApprovalWrapper { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolRequireApproval_Wrapper_2"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolRequireApproval_Wrapper_2? McpServerToolRequireApprovalWrapper2 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolRequireApproval_Wrapper_2 McpServerToolRequireApprovalWrapper2 { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -46,9 +42,18 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var result = new global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolRequireApproval();
-            result.McpServerToolRequireApprovalMember1 = new global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolRequireApprovalMember1();
-            result.McpServerToolRequireApprovalWrapper = new global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolRequireApproval_Wrapper();
-            result.McpServerToolRequireApprovalWrapper2 = new global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolRequireApproval_Wrapper_2();
+            if(parseNode.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolRequireApprovalAnyOf2>() is global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolRequireApprovalAnyOf2 mcpServerToolRequireApprovalAnyOf2Value)
+            {
+                result.McpServerToolRequireApprovalAnyOf2 = mcpServerToolRequireApprovalAnyOf2Value;
+            }
+            else if(parseNode.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolRequireApprovalAnyOf3>() is global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolRequireApprovalAnyOf3 mcpServerToolRequireApprovalAnyOf3Value)
+            {
+                result.McpServerToolRequireApprovalAnyOf3 = mcpServerToolRequireApprovalAnyOf3Value;
+            }
+            else {
+                result.McpServerToolRequireApprovalAnyOf1 = new global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolRequireApprovalAnyOf1();
+                result.McpServerToolRequireApprovalMember1 = new global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolRequireApprovalMember1();
+            }
             return result;
         }
         /// <summary>
@@ -57,9 +62,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(McpServerToolRequireApprovalMember1 != null || McpServerToolRequireApprovalWrapper != null || McpServerToolRequireApprovalWrapper2 != null)
+            if(McpServerToolRequireApprovalAnyOf1 != null || McpServerToolRequireApprovalMember1 != null)
             {
-                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(McpServerToolRequireApprovalMember1, McpServerToolRequireApprovalWrapper, McpServerToolRequireApprovalWrapper2);
+                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(McpServerToolRequireApprovalAnyOf1, McpServerToolRequireApprovalMember1);
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -70,7 +75,17 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolRequireApprovalMember1>(null, McpServerToolRequireApprovalMember1, McpServerToolRequireApprovalWrapper, McpServerToolRequireApprovalWrapper2);
+            if(McpServerToolRequireApprovalAnyOf2 != null)
+            {
+                writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolRequireApprovalAnyOf2>(null, McpServerToolRequireApprovalAnyOf2);
+            }
+            else if(McpServerToolRequireApprovalAnyOf3 != null)
+            {
+                writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolRequireApprovalAnyOf3>(null, McpServerToolRequireApprovalAnyOf3);
+            }
+            else {
+                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolRequireApprovalAnyOf1>(null, McpServerToolRequireApprovalAnyOf1, McpServerToolRequireApprovalMember1);
+            }
         }
     }
 }

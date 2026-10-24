@@ -27,7 +27,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public List<string> ExcludeDomains { get; set; }
 #endif
         /// <summary>The id property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchPlugin_id? Id { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.WebId? Id { get; set; }
         /// <summary>A list of domains to restrict web search results to. Supports wildcards (e.g. &quot;*.substack.com&quot;) and path filtering (e.g. &quot;openai.com/blog&quot;).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -40,6 +40,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public int? MaxResults { get; set; }
         /// <summary>Maximum number of times the model can invoke web search in a single turn. Passed through to native providers that support it (e.g. Anthropic).</summary>
         public int? MaxUses { get; set; }
+        /// <summary>Engine-native search mode. Exa supports instant, fast, auto (default), deep-lite, deep, and deep-reasoning. Parallel supports turbo, fast, basic (default), and advanced. Modes unsupported by the selected engine are ignored.</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchMode? Mode { get; set; }
         /// <summary>The search_prompt property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -48,13 +50,21 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public string SearchPrompt { get; set; }
 #endif
-        /// <summary>The user_location property</summary>
+        /// <summary>Approximate user location for location-biased search results. Passed through to native providers that support it (e.g. Anthropic).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchPlugin_user_location? UserLocation { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchPluginUserLocation? UserLocation { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchPlugin_user_location UserLocation { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchPluginUserLocation UserLocation { get; set; }
+#endif
+        /// <summary>Enable SpaceXAI X (Twitter) search alongside native web search, with optional filters. Only applies to SpaceXAI endpoints with native search; omit to search the web only. X search is billed separately by SpaceXAI, per post and per user profile fetched.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.XSearchOptions? XSearch { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.XSearchOptions XSearch { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchPlugin"/> and sets the default values.
@@ -84,12 +94,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
                 { "engine", n => { Engine = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchEngine>(); } },
                 { "exclude_domains", n => { ExcludeDomains = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "id", n => { Id = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchPlugin_id>(); } },
+                { "id", n => { Id = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebId>(); } },
                 { "include_domains", n => { IncludeDomains = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "max_results", n => { MaxResults = n.GetIntValue(); } },
                 { "max_uses", n => { MaxUses = n.GetIntValue(); } },
+                { "mode", n => { Mode = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchMode>(); } },
                 { "search_prompt", n => { SearchPrompt = n.GetStringValue(); } },
-                { "user_location", n => { UserLocation = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchPlugin_user_location>(global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchPlugin_user_location.CreateFromDiscriminatorValue); } },
+                { "user_location", n => { UserLocation = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchPluginUserLocation>(global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchPluginUserLocation.CreateFromDiscriminatorValue); } },
+                { "x_search", n => { XSearch = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.XSearchOptions>(global::Soenneker.OpenRouter.OpenApiClient.Models.XSearchOptions.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -102,12 +114,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteBoolValue("enabled", Enabled);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchEngine>("engine", Engine);
             writer.WriteCollectionOfPrimitiveValues<string>("exclude_domains", ExcludeDomains);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchPlugin_id>("id", Id);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebId>("id", Id);
             writer.WriteCollectionOfPrimitiveValues<string>("include_domains", IncludeDomains);
             writer.WriteIntValue("max_results", MaxResults);
             writer.WriteIntValue("max_uses", MaxUses);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchMode>("mode", Mode);
             writer.WriteStringValue("search_prompt", SearchPrompt);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchPlugin_user_location>("user_location", UserLocation);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchPluginUserLocation>("user_location", UserLocation);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.XSearchOptions>("x_search", XSearch);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

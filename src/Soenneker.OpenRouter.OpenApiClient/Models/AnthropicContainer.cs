@@ -30,6 +30,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public string Id { get; set; }
 #endif
+        /// <summary>The skills property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicContainerSkill>? Skills { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicContainerSkill> Skills { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicContainer"/> and sets the default values.
         /// </summary>
@@ -57,6 +65,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             {
                 { "expires_at", n => { ExpiresAt = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
+                { "skills", n => { Skills = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicContainerSkill>(global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicContainerSkill.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -68,6 +77,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("expires_at", ExpiresAt);
             writer.WriteStringValue("id", Id);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicContainerSkill>("skills", Skills);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

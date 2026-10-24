@@ -8,26 +8,26 @@ using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.GenerationContentDataInputMember1"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.GenerationContentDataInputMember2"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.GenerationContentDataInputAnyOf1"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.GenerationContentDataInputAnyOf2"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class GenerationContentDataInput : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.GenerationContentDataInputMember1"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.GenerationContentDataInputAnyOf1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.GenerationContentDataInputMember1? GenerationContentDataInputMember1 { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.GenerationContentDataInputAnyOf1? GenerationContentDataInputAnyOf1 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.GenerationContentDataInputMember1 GenerationContentDataInputMember1 { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.GenerationContentDataInputAnyOf1 GenerationContentDataInputAnyOf1 { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.GenerationContentDataInputMember2"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.GenerationContentDataInputAnyOf2"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.GenerationContentDataInputMember2? GenerationContentDataInputMember2 { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.GenerationContentDataInputAnyOf2? GenerationContentDataInputAnyOf2 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.GenerationContentDataInputMember2 GenerationContentDataInputMember2 { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.GenerationContentDataInputAnyOf2 GenerationContentDataInputAnyOf2 { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -38,8 +38,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var result = new global::Soenneker.OpenRouter.OpenApiClient.Models.GenerationContentDataInput();
-            result.GenerationContentDataInputMember1 = new global::Soenneker.OpenRouter.OpenApiClient.Models.GenerationContentDataInputMember1();
-            result.GenerationContentDataInputMember2 = new global::Soenneker.OpenRouter.OpenApiClient.Models.GenerationContentDataInputMember2();
+            result.GenerationContentDataInputAnyOf1 = new global::Soenneker.OpenRouter.OpenApiClient.Models.GenerationContentDataInputAnyOf1();
+            result.GenerationContentDataInputAnyOf2 = new global::Soenneker.OpenRouter.OpenApiClient.Models.GenerationContentDataInputAnyOf2();
             return result;
         }
         /// <summary>
@@ -48,9 +48,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(GenerationContentDataInputMember1 != null || GenerationContentDataInputMember2 != null)
+            if(GenerationContentDataInputAnyOf1 != null || GenerationContentDataInputAnyOf2 != null)
             {
-                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(GenerationContentDataInputMember1, GenerationContentDataInputMember2);
+                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(GenerationContentDataInputAnyOf1, GenerationContentDataInputAnyOf2);
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -61,7 +61,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.GenerationContentDataInputMember1>(null, GenerationContentDataInputMember1, GenerationContentDataInputMember2);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.GenerationContentDataInputAnyOf1>(null, GenerationContentDataInputAnyOf1, GenerationContentDataInputAnyOf2);
         }
     }
 }

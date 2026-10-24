@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     /// <summary>
-    /// A builtin content filter entry. Builtin filters include PII detectors and the regex-based prompt injection detector.
+    /// A builtin content filter entry. Builtin filters include PII detectors, API-key and secret detectors, and the regex-based prompt injection detector.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ContentFilterBuiltinEntry : IAdditionalDataHolder, IParsable
@@ -25,6 +25,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public string Label { get; set; }
 #endif
+        /// <summary>Which message roles to scan for prompt injection. Only applies to the regex-prompt-injection builtin. Defaults to all_messages.</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PromptInjectionScanScope? ScanScope { get; set; }
         /// <summary>The builtin filter identifier</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterBuiltinSlug? Slug { get; set; }
         /// <summary>
@@ -54,6 +56,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             {
                 { "action", n => { Action = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterBuiltinAction>(); } },
                 { "label", n => { Label = n.GetStringValue(); } },
+                { "scan_scope", n => { ScanScope = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PromptInjectionScanScope>(); } },
                 { "slug", n => { Slug = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterBuiltinSlug>(); } },
             };
         }
@@ -66,6 +69,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterBuiltinAction>("action", Action);
             writer.WriteStringValue("label", Label);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PromptInjectionScanScope>("scan_scope", ScanScope);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterBuiltinSlug>("slug", Slug);
             writer.WriteAdditionalData(AdditionalData);
         }

@@ -18,13 +18,13 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The filters property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.CompoundFilter_filters>? Filters { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.CompoundFilterFiltersItemProperty>? Filters { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.CompoundFilter_filters> Filters { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.CompoundFilterFiltersItemProperty> Filters { get; set; }
 #endif
         /// <summary>The type property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.CompoundFilter_type? Type { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.CompoundFilterType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.CompoundFilter"/> and sets the default values.
         /// </summary>
@@ -50,8 +50,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "filters", n => { Filters = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.CompoundFilter_filters>(global::Soenneker.OpenRouter.OpenApiClient.Models.CompoundFilter_filters.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.CompoundFilter_type>(); } },
+                { "filters", n => { Filters = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.CompoundFilterFiltersItemProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.CompoundFilterFiltersItemProperty.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.CompoundFilterType>(); } },
             };
         }
         /// <summary>
@@ -61,8 +61,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.CompoundFilter_filters>("filters", Filters);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.CompoundFilter_type>("type", Type);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.CompoundFilterFiltersItemProperty>("filters", Filters);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.CompoundFilterType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

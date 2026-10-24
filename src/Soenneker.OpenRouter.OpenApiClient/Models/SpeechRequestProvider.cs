@@ -8,14 +8,16 @@ using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     /// <summary>
-    /// Provider-specific passthrough configuration
+    /// Provider configuration: data policy routing preferences (`zdr`, `data_collection`) and provider-specific passthrough options
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SpeechRequestProvider : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Provider-specific options keyed by provider slug. The options for the matched provider are spread into the upstream request body.</summary>
+        /// <summary>Data collection setting. If no available model provider meets the requirement, your request will return an error.- allow: (default) allow providers which store user data non-transiently and may train on it- deny: use only providers which do not collect user data.</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequestProviderDataCollection? DataCollection { get; set; }
+        /// <summary>Provider-specific options keyed by provider slug. Only options for the matched provider are forwarded; the rest are ignored. Unrecognized keys are silently dropped.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions? Options { get; set; }
@@ -23,6 +25,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions Options { get; set; }
 #endif
+        /// <summary>Whether to restrict routing to only ZDR (Zero Data Retention) endpoints. When true, only endpoints that do not retain prompts will be used.</summary>
+        public bool? Zdr { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequestProvider"/> and sets the default values.
         /// </summary>
@@ -48,7 +52,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "data_collection", n => { DataCollection = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequestProviderDataCollection>(); } },
                 { "options", n => { Options = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions.CreateFromDiscriminatorValue); } },
+                { "zdr", n => { Zdr = n.GetBoolValue(); } },
             };
         }
         /// <summary>
@@ -58,7 +64,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequestProviderDataCollection>("data_collection", DataCollection);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions>("options", Options);
+            writer.WriteBoolValue("zdr", Zdr);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

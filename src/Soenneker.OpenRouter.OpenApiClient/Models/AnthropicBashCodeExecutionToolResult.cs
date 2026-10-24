@@ -31,7 +31,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public string ToolUseId { get; set; }
 #endif
         /// <summary>The type property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicBashCodeExecutionToolResult_type? Type { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.BashCodeExecutionToolResultType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicBashCodeExecutionToolResult"/> and sets the default values.
         /// </summary>
@@ -59,7 +59,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             {
                 { "content", n => { Content = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicBashCodeExecutionContent>(global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicBashCodeExecutionContent.CreateFromDiscriminatorValue); } },
                 { "tool_use_id", n => { ToolUseId = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicBashCodeExecutionToolResult_type>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.BashCodeExecutionToolResultType>(); } },
             };
         }
         /// <summary>
@@ -71,7 +71,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicBashCodeExecutionContent>("content", Content);
             writer.WriteStringValue("tool_use_id", ToolUseId);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicBashCodeExecutionToolResult_type>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.BashCodeExecutionToolResultType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

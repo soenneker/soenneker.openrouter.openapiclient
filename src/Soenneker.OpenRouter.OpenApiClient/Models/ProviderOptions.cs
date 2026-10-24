@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     /// <summary>
-    /// Provider-specific options keyed by provider slug. The options for the matched provider are spread into the upstream request body.
+    /// Provider-specific options keyed by provider slug. Only options for the matched provider are forwarded; the rest are ignored. Unrecognized keys are silently dropped.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ProviderOptions : IAdditionalDataHolder, IParsable
@@ -18,906 +18,1186 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The ai21 property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_ai21? Ai21 { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAi21Property? Ai21 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_ai21 Ai21 { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAi21Property Ai21 { get; set; }
 #endif
         /// <summary>The aionLabs property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_aionLabs? AionLabs { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAionLabsProperty? AionLabs { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_aionLabs AionLabs { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAionLabsProperty AionLabs { get; set; }
 #endif
         /// <summary>The akashml property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_akashml? Akashml { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAkashmlProperty? Akashml { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_akashml Akashml { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAkashmlProperty Akashml { get; set; }
 #endif
         /// <summary>The alibaba property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_alibaba? Alibaba { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAlibabaProperty? Alibaba { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_alibaba Alibaba { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAlibabaProperty Alibaba { get; set; }
 #endif
         /// <summary>The amazonBedrock property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_amazonBedrock? AmazonBedrock { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAmazonBedrockProperty? AmazonBedrock { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_amazonBedrock AmazonBedrock { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAmazonBedrockProperty AmazonBedrock { get; set; }
+#endif
+        /// <summary>The amazonBedrockClaudeOnAws property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAmazonBedrockClaudeOnAwsProperty? AmazonBedrockClaudeOnAws { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAmazonBedrockClaudeOnAwsProperty AmazonBedrockClaudeOnAws { get; set; }
 #endif
         /// <summary>The amazonNova property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_amazonNova? AmazonNova { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAmazonNovaProperty? AmazonNova { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_amazonNova AmazonNova { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAmazonNovaProperty AmazonNova { get; set; }
 #endif
         /// <summary>The ambient property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_ambient? Ambient { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAmbientProperty? Ambient { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_ambient Ambient { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAmbientProperty Ambient { get; set; }
 #endif
         /// <summary>The anthropic property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_anthropic? Anthropic { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAnthropicProperty? Anthropic { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_anthropic Anthropic { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAnthropicProperty Anthropic { get; set; }
+#endif
+        /// <summary>The anthropic2 property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAnthropic2Property? Anthropic2 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAnthropic2Property Anthropic2 { get; set; }
 #endif
         /// <summary>The anyscale property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_anyscale? Anyscale { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAnyscaleProperty? Anyscale { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_anyscale Anyscale { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAnyscaleProperty Anyscale { get; set; }
 #endif
         /// <summary>The arceeAi property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_arceeAi? ArceeAi { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsArceeAiProperty? ArceeAi { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_arceeAi ArceeAi { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsArceeAiProperty ArceeAi { get; set; }
+#endif
+        /// <summary>The assemblyai property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAssemblyaiProperty? Assemblyai { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAssemblyaiProperty Assemblyai { get; set; }
 #endif
         /// <summary>The atlasCloud property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_atlasCloud? AtlasCloud { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAtlasCloudProperty? AtlasCloud { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_atlasCloud AtlasCloud { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAtlasCloudProperty AtlasCloud { get; set; }
 #endif
         /// <summary>The atoma property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_atoma? Atoma { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAtomaProperty? Atoma { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_atoma Atoma { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAtomaProperty Atoma { get; set; }
 #endif
         /// <summary>The avian property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_avian? Avian { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAvianProperty? Avian { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_avian Avian { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAvianProperty Avian { get; set; }
 #endif
         /// <summary>The azure property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_azure? Azure { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAzureProperty? Azure { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_azure Azure { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAzureProperty Azure { get; set; }
 #endif
         /// <summary>The baidu property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_baidu? Baidu { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsBaiduProperty? Baidu { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_baidu Baidu { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsBaiduProperty Baidu { get; set; }
 #endif
         /// <summary>The baseten property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_baseten? Baseten { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsBasetenProperty? Baseten { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_baseten Baseten { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsBasetenProperty Baseten { get; set; }
 #endif
         /// <summary>The blackForestLabs property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_blackForestLabs? BlackForestLabs { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsBlackForestLabsProperty? BlackForestLabs { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_blackForestLabs BlackForestLabs { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsBlackForestLabsProperty BlackForestLabs { get; set; }
 #endif
         /// <summary>The byteplus property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_byteplus? Byteplus { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsByteplusProperty? Byteplus { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_byteplus Byteplus { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsByteplusProperty Byteplus { get; set; }
 #endif
         /// <summary>The centml property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_centml? Centml { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsCentmlProperty? Centml { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_centml Centml { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsCentmlProperty Centml { get; set; }
 #endif
         /// <summary>The cerebras property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_cerebras? Cerebras { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsCerebrasProperty? Cerebras { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_cerebras Cerebras { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsCerebrasProperty Cerebras { get; set; }
 #endif
         /// <summary>The chutes property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_chutes? Chutes { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsChutesProperty? Chutes { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_chutes Chutes { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsChutesProperty Chutes { get; set; }
 #endif
         /// <summary>The cirrascale property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_cirrascale? Cirrascale { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsCirrascaleProperty? Cirrascale { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_cirrascale Cirrascale { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsCirrascaleProperty Cirrascale { get; set; }
 #endif
         /// <summary>The clarifai property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_clarifai? Clarifai { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsClarifaiProperty? Clarifai { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_clarifai Clarifai { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsClarifaiProperty Clarifai { get; set; }
+#endif
+        /// <summary>The claudeOnAws property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsClaudeOnAwsProperty? ClaudeOnAws { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsClaudeOnAwsProperty ClaudeOnAws { get; set; }
 #endif
         /// <summary>The cloudflare property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_cloudflare? Cloudflare { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsCloudflareProperty? Cloudflare { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_cloudflare Cloudflare { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsCloudflareProperty Cloudflare { get; set; }
 #endif
         /// <summary>The cohere property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_cohere? Cohere { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsCohereProperty? Cohere { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_cohere Cohere { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsCohereProperty Cohere { get; set; }
+#endif
+        /// <summary>The coreweave property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsCoreweaveProperty? Coreweave { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsCoreweaveProperty Coreweave { get; set; }
+#endif
+        /// <summary>The cosine property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsCosineProperty? Cosine { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsCosineProperty Cosine { get; set; }
 #endif
         /// <summary>The crofai property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_crofai? Crofai { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsCrofaiProperty? Crofai { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_crofai Crofai { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsCrofaiProperty Crofai { get; set; }
 #endif
         /// <summary>The crucible property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_crucible? Crucible { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsCrucibleProperty? Crucible { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_crucible Crucible { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsCrucibleProperty Crucible { get; set; }
 #endif
         /// <summary>The crusoe property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_crusoe? Crusoe { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsCrusoeProperty? Crusoe { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_crusoe Crusoe { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsCrusoeProperty Crusoe { get; set; }
 #endif
         /// <summary>The darkbloom property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_darkbloom? Darkbloom { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsDarkbloomProperty? Darkbloom { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_darkbloom Darkbloom { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsDarkbloomProperty Darkbloom { get; set; }
+#endif
+        /// <summary>The databricks property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsDatabricksProperty? Databricks { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsDatabricksProperty Databricks { get; set; }
+#endif
+        /// <summary>The decart property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsDecartProperty? Decart { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsDecartProperty Decart { get; set; }
+#endif
+        /// <summary>The deepgram property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsDeepgramProperty? Deepgram { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsDeepgramProperty Deepgram { get; set; }
 #endif
         /// <summary>The deepinfra property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_deepinfra? Deepinfra { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsDeepinfraProperty? Deepinfra { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_deepinfra Deepinfra { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsDeepinfraProperty Deepinfra { get; set; }
 #endif
         /// <summary>The deepseek property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_deepseek? Deepseek { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsDeepseekProperty? Deepseek { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_deepseek Deepseek { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsDeepseekProperty Deepseek { get; set; }
 #endif
         /// <summary>The dekallm property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_dekallm? Dekallm { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsDekallmProperty? Dekallm { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_dekallm Dekallm { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsDekallmProperty Dekallm { get; set; }
 #endif
         /// <summary>The digitalocean property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_digitalocean? Digitalocean { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsDigitaloceanProperty? Digitalocean { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_digitalocean Digitalocean { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsDigitaloceanProperty Digitalocean { get; set; }
+#endif
+        /// <summary>The elevenlabs property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsElevenlabsProperty? Elevenlabs { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsElevenlabsProperty Elevenlabs { get; set; }
 #endif
         /// <summary>The enfer property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_enfer? Enfer { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsEnferProperty? Enfer { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_enfer Enfer { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsEnferProperty Enfer { get; set; }
 #endif
         /// <summary>The fakeProvider property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_fakeProvider? FakeProvider { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsFakeProviderProperty? FakeProvider { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_fakeProvider FakeProvider { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsFakeProviderProperty FakeProvider { get; set; }
 #endif
         /// <summary>The featherless property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_featherless? Featherless { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsFeatherlessProperty? Featherless { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_featherless Featherless { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsFeatherlessProperty Featherless { get; set; }
 #endif
         /// <summary>The fireworks property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_fireworks? Fireworks { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsFireworksProperty? Fireworks { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_fireworks Fireworks { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsFireworksProperty Fireworks { get; set; }
+#endif
+        /// <summary>The fishAudio property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsFishAudioProperty? FishAudio { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsFishAudioProperty FishAudio { get; set; }
 #endif
         /// <summary>The friendli property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_friendli? Friendli { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsFriendliProperty? Friendli { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_friendli Friendli { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsFriendliProperty Friendli { get; set; }
 #endif
         /// <summary>The gmicloud property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_gmicloud? Gmicloud { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsGmicloudProperty? Gmicloud { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_gmicloud Gmicloud { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsGmicloudProperty Gmicloud { get; set; }
 #endif
         /// <summary>The googleAiStudio property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_googleAiStudio? GoogleAiStudio { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsGoogleAiStudioProperty? GoogleAiStudio { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_googleAiStudio GoogleAiStudio { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsGoogleAiStudioProperty GoogleAiStudio { get; set; }
 #endif
         /// <summary>The googleVertex property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_googleVertex? GoogleVertex { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsGoogleVertexProperty? GoogleVertex { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_googleVertex GoogleVertex { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsGoogleVertexProperty GoogleVertex { get; set; }
 #endif
         /// <summary>The gopomelo property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_gopomelo? Gopomelo { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsGopomeloProperty? Gopomelo { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_gopomelo Gopomelo { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsGopomeloProperty Gopomelo { get; set; }
 #endif
         /// <summary>The groq property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_groq? Groq { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsGroqProperty? Groq { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_groq Groq { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsGroqProperty Groq { get; set; }
+#endif
+        /// <summary>The heygen property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsHeygenProperty? Heygen { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsHeygenProperty Heygen { get; set; }
 #endif
         /// <summary>The huggingface property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_huggingface? Huggingface { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsHuggingfaceProperty? Huggingface { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_huggingface Huggingface { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsHuggingfaceProperty Huggingface { get; set; }
 #endif
         /// <summary>The hyperbolic property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_hyperbolic? Hyperbolic { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsHyperbolicProperty? Hyperbolic { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_hyperbolic Hyperbolic { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsHyperbolicProperty Hyperbolic { get; set; }
 #endif
         /// <summary>The hyperbolicQuantized property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_hyperbolicQuantized? HyperbolicQuantized { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsHyperbolicQuantizedProperty? HyperbolicQuantized { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_hyperbolicQuantized HyperbolicQuantized { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsHyperbolicQuantizedProperty HyperbolicQuantized { get; set; }
 #endif
         /// <summary>The inception property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_inception? Inception { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsInceptionProperty? Inception { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_inception Inception { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsInceptionProperty Inception { get; set; }
 #endif
         /// <summary>The inceptron property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_inceptron? Inceptron { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsInceptronProperty? Inceptron { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_inceptron Inceptron { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsInceptronProperty Inceptron { get; set; }
+#endif
+        /// <summary>The inferactVllm property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsInferactVllmProperty? InferactVllm { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsInferactVllmProperty InferactVllm { get; set; }
 #endif
         /// <summary>The inferenceNet property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_inferenceNet? InferenceNet { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsInferenceNetProperty? InferenceNet { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_inferenceNet InferenceNet { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsInferenceNetProperty InferenceNet { get; set; }
 #endif
         /// <summary>The infermatic property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_infermatic? Infermatic { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsInfermaticProperty? Infermatic { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_infermatic Infermatic { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsInfermaticProperty Infermatic { get; set; }
 #endif
         /// <summary>The inflection property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_inflection? Inflection { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsInflectionProperty? Inflection { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_inflection Inflection { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsInflectionProperty Inflection { get; set; }
 #endif
         /// <summary>The inocloud property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_inocloud? Inocloud { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsInocloudProperty? Inocloud { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_inocloud Inocloud { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsInocloudProperty Inocloud { get; set; }
 #endif
         /// <summary>The ioNet property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_ioNet? IoNet { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsIoNetProperty? IoNet { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_ioNet IoNet { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsIoNetProperty IoNet { get; set; }
 #endif
         /// <summary>The ionstream property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_ionstream? Ionstream { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsIonstreamProperty? Ionstream { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_ionstream Ionstream { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsIonstreamProperty Ionstream { get; set; }
 #endif
         /// <summary>The klusterai property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_klusterai? Klusterai { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsKlusteraiProperty? Klusterai { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_klusterai Klusterai { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsKlusteraiProperty Klusterai { get; set; }
+#endif
+        /// <summary>The krea property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsKreaProperty? Krea { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsKreaProperty Krea { get; set; }
 #endif
         /// <summary>The lambda property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_lambda? Lambda { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsLambdaProperty? Lambda { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_lambda Lambda { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsLambdaProperty Lambda { get; set; }
 #endif
         /// <summary>The lepton property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_lepton? Lepton { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsLeptonProperty? Lepton { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_lepton Lepton { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsLeptonProperty Lepton { get; set; }
 #endif
         /// <summary>The liquid property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_liquid? Liquid { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsLiquidProperty? Liquid { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_liquid Liquid { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsLiquidProperty Liquid { get; set; }
 #endif
         /// <summary>The lynn property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_lynn? Lynn { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsLynnProperty? Lynn { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_lynn Lynn { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsLynnProperty Lynn { get; set; }
 #endif
         /// <summary>The lynnPrivate property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_lynnPrivate? LynnPrivate { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsLynnPrivateProperty? LynnPrivate { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_lynnPrivate LynnPrivate { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsLynnPrivateProperty LynnPrivate { get; set; }
+#endif
+        /// <summary>The makora property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsMakoraProperty? Makora { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsMakoraProperty Makora { get; set; }
 #endif
         /// <summary>The mancer property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_mancer? Mancer { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsMancerProperty? Mancer { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_mancer Mancer { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsMancerProperty Mancer { get; set; }
 #endif
         /// <summary>The mancerOld property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_mancerOld? MancerOld { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsMancerOldProperty? MancerOld { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_mancerOld MancerOld { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsMancerOldProperty MancerOld { get; set; }
 #endif
         /// <summary>The mara property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_mara? Mara { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsMaraProperty? Mara { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_mara Mara { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsMaraProperty Mara { get; set; }
 #endif
         /// <summary>The meta property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_meta? Meta { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsMetaProperty? Meta { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_meta Meta { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsMetaProperty Meta { get; set; }
 #endif
         /// <summary>The minimax property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_minimax? Minimax { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsMinimaxProperty? Minimax { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_minimax Minimax { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsMinimaxProperty Minimax { get; set; }
 #endif
         /// <summary>The mistral property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_mistral? Mistral { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsMistralProperty? Mistral { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_mistral Mistral { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsMistralProperty Mistral { get; set; }
 #endif
         /// <summary>The modal property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_modal? Modal { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsModalProperty? Modal { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_modal Modal { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsModalProperty Modal { get; set; }
 #endif
         /// <summary>The modelrun property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_modelrun? Modelrun { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsModelrunProperty? Modelrun { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_modelrun Modelrun { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsModelrunProperty Modelrun { get; set; }
 #endif
         /// <summary>The modular property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_modular? Modular { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsModularProperty? Modular { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_modular Modular { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsModularProperty Modular { get; set; }
 #endif
         /// <summary>The moonshotai property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_moonshotai? Moonshotai { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsMoonshotaiProperty? Moonshotai { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_moonshotai Moonshotai { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsMoonshotaiProperty Moonshotai { get; set; }
 #endif
         /// <summary>The morph property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_morph? Morph { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsMorphProperty? Morph { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_morph Morph { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsMorphProperty Morph { get; set; }
 #endif
         /// <summary>The ncompass property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_ncompass? Ncompass { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsNcompassProperty? Ncompass { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_ncompass Ncompass { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsNcompassProperty Ncompass { get; set; }
+#endif
+        /// <summary>The nearAi property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsNearAiProperty? NearAi { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsNearAiProperty NearAi { get; set; }
 #endif
         /// <summary>The nebius property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_nebius? Nebius { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsNebiusProperty? Nebius { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_nebius Nebius { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsNebiusProperty Nebius { get; set; }
 #endif
         /// <summary>The nexAgi property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_nexAgi? NexAgi { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsNexAgiProperty? NexAgi { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_nexAgi NexAgi { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsNexAgiProperty NexAgi { get; set; }
 #endif
         /// <summary>The nextbit property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_nextbit? Nextbit { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsNextbitProperty? Nextbit { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_nextbit Nextbit { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsNextbitProperty Nextbit { get; set; }
 #endif
         /// <summary>The nineteen property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_nineteen? Nineteen { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsNineteenProperty? Nineteen { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_nineteen Nineteen { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsNineteenProperty Nineteen { get; set; }
 #endif
         /// <summary>The novita property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_novita? Novita { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsNovitaProperty? Novita { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_novita Novita { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsNovitaProperty Novita { get; set; }
 #endif
         /// <summary>The nvidia property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_nvidia? Nvidia { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsNvidiaProperty? Nvidia { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_nvidia Nvidia { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsNvidiaProperty Nvidia { get; set; }
 #endif
         /// <summary>The octoai property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_octoai? Octoai { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsOctoaiProperty? Octoai { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_octoai Octoai { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsOctoaiProperty Octoai { get; set; }
+#endif
+        /// <summary>The ollama property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsOllamaProperty? Ollama { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsOllamaProperty Ollama { get; set; }
 #endif
         /// <summary>The openai property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_openai? Openai { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsOpenaiProperty? Openai { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_openai Openai { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsOpenaiProperty Openai { get; set; }
 #endif
         /// <summary>The openInference property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_openInference? OpenInference { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsOpenInferenceProperty? OpenInference { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_openInference OpenInference { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsOpenInferenceProperty OpenInference { get; set; }
 #endif
         /// <summary>The parasail property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_parasail? Parasail { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsParasailProperty? Parasail { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_parasail Parasail { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsParasailProperty Parasail { get; set; }
+#endif
+        /// <summary>The paretoAlpha property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsParetoAlphaProperty? ParetoAlpha { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsParetoAlphaProperty ParetoAlpha { get; set; }
 #endif
         /// <summary>The perceptron property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_perceptron? Perceptron { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsPerceptronProperty? Perceptron { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_perceptron Perceptron { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsPerceptronProperty Perceptron { get; set; }
 #endif
         /// <summary>The perplexity property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_perplexity? Perplexity { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsPerplexityProperty? Perplexity { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_perplexity Perplexity { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsPerplexityProperty Perplexity { get; set; }
 #endif
         /// <summary>The phala property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_phala? Phala { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsPhalaProperty? Phala { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_phala Phala { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsPhalaProperty Phala { get; set; }
 #endif
         /// <summary>The poolside property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_poolside? Poolside { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsPoolsideProperty? Poolside { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_poolside Poolside { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsPoolsideProperty Poolside { get; set; }
+#endif
+        /// <summary>The primeintellect property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsPrimeintellectProperty? Primeintellect { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsPrimeintellectProperty Primeintellect { get; set; }
+#endif
+        /// <summary>The quiver property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsQuiverProperty? Quiver { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsQuiverProperty Quiver { get; set; }
 #endif
         /// <summary>The recraft property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_recraft? Recraft { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsRecraftProperty? Recraft { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_recraft Recraft { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsRecraftProperty Recraft { get; set; }
 #endif
         /// <summary>The recursal property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_recursal? Recursal { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsRecursalProperty? Recursal { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_recursal Recursal { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsRecursalProperty Recursal { get; set; }
+#endif
+        /// <summary>The recursive property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsRecursiveProperty? Recursive { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsRecursiveProperty Recursive { get; set; }
 #endif
         /// <summary>The reflection property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_reflection? Reflection { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsReflectionProperty? Reflection { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_reflection Reflection { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsReflectionProperty Reflection { get; set; }
 #endif
         /// <summary>The reka property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_reka? Reka { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsRekaProperty? Reka { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_reka Reka { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsRekaProperty Reka { get; set; }
 #endif
         /// <summary>The relace property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_relace? Relace { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsRelaceProperty? Relace { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_relace Relace { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsRelaceProperty Relace { get; set; }
 #endif
         /// <summary>The replicate property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_replicate? Replicate { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsReplicateProperty? Replicate { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_replicate Replicate { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsReplicateProperty Replicate { get; set; }
+#endif
+        /// <summary>The respan property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsRespanProperty? Respan { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsRespanProperty Respan { get; set; }
+#endif
+        /// <summary>The runway property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsRunwayProperty? Runway { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsRunwayProperty Runway { get; set; }
+#endif
+        /// <summary>The sailResearch property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsSailResearchProperty? SailResearch { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsSailResearchProperty SailResearch { get; set; }
+#endif
+        /// <summary>The sakana property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsSakanaProperty? Sakana { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsSakanaProperty Sakana { get; set; }
+#endif
+        /// <summary>The sakanaAi property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsSakanaAiProperty? SakanaAi { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsSakanaAiProperty SakanaAi { get; set; }
 #endif
         /// <summary>The sambanova property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_sambanova? Sambanova { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsSambanovaProperty? Sambanova { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_sambanova Sambanova { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsSambanovaProperty Sambanova { get; set; }
 #endif
         /// <summary>The sambanovaCloaked property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_sambanovaCloaked? SambanovaCloaked { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsSambanovaCloakedProperty? SambanovaCloaked { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_sambanovaCloaked SambanovaCloaked { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsSambanovaCloakedProperty SambanovaCloaked { get; set; }
+#endif
+        /// <summary>The scaledown property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsScaledownProperty? Scaledown { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsScaledownProperty Scaledown { get; set; }
 #endif
         /// <summary>The seed property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_seed? Seed { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsSeedProperty? Seed { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_seed Seed { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsSeedProperty Seed { get; set; }
 #endif
         /// <summary>The sfCompute property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_sfCompute? SfCompute { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsSfComputeProperty? SfCompute { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_sfCompute SfCompute { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsSfComputeProperty SfCompute { get; set; }
 #endif
         /// <summary>The siliconflow property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_siliconflow? Siliconflow { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsSiliconflowProperty? Siliconflow { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_siliconflow Siliconflow { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsSiliconflowProperty Siliconflow { get; set; }
 #endif
         /// <summary>The sourceful property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_sourceful? Sourceful { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsSourcefulProperty? Sourceful { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_sourceful Sourceful { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsSourcefulProperty Sourceful { get; set; }
 #endif
         /// <summary>The stealth property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_stealth? Stealth { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsStealthProperty? Stealth { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_stealth Stealth { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsStealthProperty Stealth { get; set; }
 #endif
         /// <summary>The stepfun property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_stepfun? Stepfun { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsStepfunProperty? Stepfun { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_stepfun Stepfun { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsStepfunProperty Stepfun { get; set; }
 #endif
         /// <summary>The streamlake property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_streamlake? Streamlake { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsStreamlakeProperty? Streamlake { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_streamlake Streamlake { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsStreamlakeProperty Streamlake { get; set; }
 #endif
         /// <summary>The switchpoint property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_switchpoint? Switchpoint { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsSwitchpointProperty? Switchpoint { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_switchpoint Switchpoint { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsSwitchpointProperty Switchpoint { get; set; }
 #endif
         /// <summary>The targon property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_targon? Targon { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsTargonProperty? Targon { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_targon Targon { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsTargonProperty Targon { get; set; }
+#endif
+        /// <summary>The tencent property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsTencentProperty? Tencent { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsTencentProperty Tencent { get; set; }
+#endif
+        /// <summary>The tenstorrent property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsTenstorrentProperty? Tenstorrent { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsTenstorrentProperty Tenstorrent { get; set; }
+#endif
+        /// <summary>The thinkingmachines property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsThinkingmachinesProperty? Thinkingmachines { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsThinkingmachinesProperty Thinkingmachines { get; set; }
 #endif
         /// <summary>The together property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_together? Together { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsTogetherProperty? Together { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_together Together { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsTogetherProperty Together { get; set; }
 #endif
         /// <summary>The togetherLite property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_togetherLite? TogetherLite { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsTogetherLiteProperty? TogetherLite { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_togetherLite TogetherLite { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsTogetherLiteProperty TogetherLite { get; set; }
+#endif
+        /// <summary>The typesafe property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsTypesafeProperty? Typesafe { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsTypesafeProperty Typesafe { get; set; }
 #endif
         /// <summary>The ubicloud property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_ubicloud? Ubicloud { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsUbicloudProperty? Ubicloud { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_ubicloud Ubicloud { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsUbicloudProperty Ubicloud { get; set; }
+#endif
+        /// <summary>The unbiased property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsUnbiasedProperty? Unbiased { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsUnbiasedProperty Unbiased { get; set; }
 #endif
         /// <summary>The upstage property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_upstage? Upstage { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsUpstageProperty? Upstage { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_upstage Upstage { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsUpstageProperty Upstage { get; set; }
 #endif
         /// <summary>The venice property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_venice? Venice { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsVeniceProperty? Venice { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_venice Venice { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsVeniceProperty Venice { get; set; }
+#endif
+        /// <summary>The voyageai property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsVoyageaiProperty? Voyageai { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsVoyageaiProperty Voyageai { get; set; }
+#endif
+        /// <summary>The wafer property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsWaferProperty? Wafer { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsWaferProperty Wafer { get; set; }
 #endif
         /// <summary>The wandb property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_wandb? Wandb { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsWandbProperty? Wandb { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_wandb Wandb { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsWandbProperty Wandb { get; set; }
+#endif
+        /// <summary>The wandbLegacy property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsWandbLegacyProperty? WandbLegacy { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsWandbLegacyProperty WandbLegacy { get; set; }
 #endif
         /// <summary>The xai property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_xai? Xai { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsXaiProperty? Xai { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_xai Xai { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsXaiProperty Xai { get; set; }
 #endif
         /// <summary>The xiaomi property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_xiaomi? Xiaomi { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsXiaomiProperty? Xiaomi { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_xiaomi Xiaomi { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsXiaomiProperty Xiaomi { get; set; }
 #endif
         /// <summary>The zAi property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_zAi? ZAi { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsZAiProperty? ZAi { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_zAi ZAi { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsZAiProperty ZAi { get; set; }
 #endif
         /// <summary>The ZeroOneai property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_ZeroOneai? ZeroOneai { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions01AiProperty? ZeroOneai { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_ZeroOneai ZeroOneai { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions01AiProperty ZeroOneai { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions"/> and sets the default values.
@@ -944,119 +1224,154 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "ai21", n => { Ai21 = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_ai21>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_ai21.CreateFromDiscriminatorValue); } },
-                { "aion-labs", n => { AionLabs = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_aionLabs>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_aionLabs.CreateFromDiscriminatorValue); } },
-                { "akashml", n => { Akashml = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_akashml>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_akashml.CreateFromDiscriminatorValue); } },
-                { "alibaba", n => { Alibaba = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_alibaba>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_alibaba.CreateFromDiscriminatorValue); } },
-                { "amazon-bedrock", n => { AmazonBedrock = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_amazonBedrock>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_amazonBedrock.CreateFromDiscriminatorValue); } },
-                { "amazon-nova", n => { AmazonNova = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_amazonNova>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_amazonNova.CreateFromDiscriminatorValue); } },
-                { "ambient", n => { Ambient = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_ambient>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_ambient.CreateFromDiscriminatorValue); } },
-                { "anthropic", n => { Anthropic = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_anthropic>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_anthropic.CreateFromDiscriminatorValue); } },
-                { "anyscale", n => { Anyscale = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_anyscale>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_anyscale.CreateFromDiscriminatorValue); } },
-                { "arcee-ai", n => { ArceeAi = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_arceeAi>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_arceeAi.CreateFromDiscriminatorValue); } },
-                { "atlas-cloud", n => { AtlasCloud = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_atlasCloud>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_atlasCloud.CreateFromDiscriminatorValue); } },
-                { "atoma", n => { Atoma = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_atoma>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_atoma.CreateFromDiscriminatorValue); } },
-                { "avian", n => { Avian = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_avian>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_avian.CreateFromDiscriminatorValue); } },
-                { "azure", n => { Azure = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_azure>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_azure.CreateFromDiscriminatorValue); } },
-                { "baidu", n => { Baidu = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_baidu>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_baidu.CreateFromDiscriminatorValue); } },
-                { "baseten", n => { Baseten = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_baseten>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_baseten.CreateFromDiscriminatorValue); } },
-                { "black-forest-labs", n => { BlackForestLabs = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_blackForestLabs>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_blackForestLabs.CreateFromDiscriminatorValue); } },
-                { "byteplus", n => { Byteplus = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_byteplus>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_byteplus.CreateFromDiscriminatorValue); } },
-                { "centml", n => { Centml = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_centml>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_centml.CreateFromDiscriminatorValue); } },
-                { "cerebras", n => { Cerebras = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_cerebras>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_cerebras.CreateFromDiscriminatorValue); } },
-                { "chutes", n => { Chutes = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_chutes>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_chutes.CreateFromDiscriminatorValue); } },
-                { "cirrascale", n => { Cirrascale = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_cirrascale>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_cirrascale.CreateFromDiscriminatorValue); } },
-                { "clarifai", n => { Clarifai = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_clarifai>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_clarifai.CreateFromDiscriminatorValue); } },
-                { "cloudflare", n => { Cloudflare = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_cloudflare>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_cloudflare.CreateFromDiscriminatorValue); } },
-                { "cohere", n => { Cohere = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_cohere>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_cohere.CreateFromDiscriminatorValue); } },
-                { "crofai", n => { Crofai = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_crofai>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_crofai.CreateFromDiscriminatorValue); } },
-                { "crucible", n => { Crucible = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_crucible>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_crucible.CreateFromDiscriminatorValue); } },
-                { "crusoe", n => { Crusoe = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_crusoe>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_crusoe.CreateFromDiscriminatorValue); } },
-                { "darkbloom", n => { Darkbloom = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_darkbloom>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_darkbloom.CreateFromDiscriminatorValue); } },
-                { "deepinfra", n => { Deepinfra = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_deepinfra>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_deepinfra.CreateFromDiscriminatorValue); } },
-                { "deepseek", n => { Deepseek = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_deepseek>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_deepseek.CreateFromDiscriminatorValue); } },
-                { "dekallm", n => { Dekallm = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_dekallm>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_dekallm.CreateFromDiscriminatorValue); } },
-                { "digitalocean", n => { Digitalocean = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_digitalocean>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_digitalocean.CreateFromDiscriminatorValue); } },
-                { "enfer", n => { Enfer = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_enfer>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_enfer.CreateFromDiscriminatorValue); } },
-                { "fake-provider", n => { FakeProvider = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_fakeProvider>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_fakeProvider.CreateFromDiscriminatorValue); } },
-                { "featherless", n => { Featherless = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_featherless>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_featherless.CreateFromDiscriminatorValue); } },
-                { "fireworks", n => { Fireworks = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_fireworks>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_fireworks.CreateFromDiscriminatorValue); } },
-                { "friendli", n => { Friendli = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_friendli>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_friendli.CreateFromDiscriminatorValue); } },
-                { "gmicloud", n => { Gmicloud = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_gmicloud>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_gmicloud.CreateFromDiscriminatorValue); } },
-                { "google-ai-studio", n => { GoogleAiStudio = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_googleAiStudio>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_googleAiStudio.CreateFromDiscriminatorValue); } },
-                { "google-vertex", n => { GoogleVertex = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_googleVertex>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_googleVertex.CreateFromDiscriminatorValue); } },
-                { "gopomelo", n => { Gopomelo = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_gopomelo>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_gopomelo.CreateFromDiscriminatorValue); } },
-                { "groq", n => { Groq = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_groq>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_groq.CreateFromDiscriminatorValue); } },
-                { "huggingface", n => { Huggingface = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_huggingface>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_huggingface.CreateFromDiscriminatorValue); } },
-                { "hyperbolic", n => { Hyperbolic = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_hyperbolic>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_hyperbolic.CreateFromDiscriminatorValue); } },
-                { "hyperbolic-quantized", n => { HyperbolicQuantized = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_hyperbolicQuantized>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_hyperbolicQuantized.CreateFromDiscriminatorValue); } },
-                { "inception", n => { Inception = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_inception>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_inception.CreateFromDiscriminatorValue); } },
-                { "inceptron", n => { Inceptron = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_inceptron>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_inceptron.CreateFromDiscriminatorValue); } },
-                { "inference-net", n => { InferenceNet = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_inferenceNet>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_inferenceNet.CreateFromDiscriminatorValue); } },
-                { "infermatic", n => { Infermatic = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_infermatic>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_infermatic.CreateFromDiscriminatorValue); } },
-                { "inflection", n => { Inflection = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_inflection>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_inflection.CreateFromDiscriminatorValue); } },
-                { "inocloud", n => { Inocloud = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_inocloud>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_inocloud.CreateFromDiscriminatorValue); } },
-                { "io-net", n => { IoNet = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_ioNet>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_ioNet.CreateFromDiscriminatorValue); } },
-                { "ionstream", n => { Ionstream = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_ionstream>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_ionstream.CreateFromDiscriminatorValue); } },
-                { "klusterai", n => { Klusterai = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_klusterai>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_klusterai.CreateFromDiscriminatorValue); } },
-                { "lambda", n => { Lambda = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_lambda>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_lambda.CreateFromDiscriminatorValue); } },
-                { "lepton", n => { Lepton = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_lepton>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_lepton.CreateFromDiscriminatorValue); } },
-                { "liquid", n => { Liquid = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_liquid>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_liquid.CreateFromDiscriminatorValue); } },
-                { "lynn", n => { Lynn = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_lynn>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_lynn.CreateFromDiscriminatorValue); } },
-                { "lynn-private", n => { LynnPrivate = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_lynnPrivate>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_lynnPrivate.CreateFromDiscriminatorValue); } },
-                { "mancer", n => { Mancer = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_mancer>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_mancer.CreateFromDiscriminatorValue); } },
-                { "mancer-old", n => { MancerOld = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_mancerOld>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_mancerOld.CreateFromDiscriminatorValue); } },
-                { "mara", n => { Mara = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_mara>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_mara.CreateFromDiscriminatorValue); } },
-                { "meta", n => { Meta = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_meta>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_meta.CreateFromDiscriminatorValue); } },
-                { "minimax", n => { Minimax = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_minimax>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_minimax.CreateFromDiscriminatorValue); } },
-                { "mistral", n => { Mistral = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_mistral>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_mistral.CreateFromDiscriminatorValue); } },
-                { "modal", n => { Modal = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_modal>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_modal.CreateFromDiscriminatorValue); } },
-                { "modelrun", n => { Modelrun = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_modelrun>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_modelrun.CreateFromDiscriminatorValue); } },
-                { "modular", n => { Modular = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_modular>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_modular.CreateFromDiscriminatorValue); } },
-                { "moonshotai", n => { Moonshotai = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_moonshotai>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_moonshotai.CreateFromDiscriminatorValue); } },
-                { "morph", n => { Morph = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_morph>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_morph.CreateFromDiscriminatorValue); } },
-                { "ncompass", n => { Ncompass = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_ncompass>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_ncompass.CreateFromDiscriminatorValue); } },
-                { "nebius", n => { Nebius = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_nebius>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_nebius.CreateFromDiscriminatorValue); } },
-                { "nex-agi", n => { NexAgi = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_nexAgi>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_nexAgi.CreateFromDiscriminatorValue); } },
-                { "nextbit", n => { Nextbit = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_nextbit>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_nextbit.CreateFromDiscriminatorValue); } },
-                { "nineteen", n => { Nineteen = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_nineteen>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_nineteen.CreateFromDiscriminatorValue); } },
-                { "novita", n => { Novita = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_novita>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_novita.CreateFromDiscriminatorValue); } },
-                { "nvidia", n => { Nvidia = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_nvidia>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_nvidia.CreateFromDiscriminatorValue); } },
-                { "octoai", n => { Octoai = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_octoai>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_octoai.CreateFromDiscriminatorValue); } },
-                { "open-inference", n => { OpenInference = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_openInference>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_openInference.CreateFromDiscriminatorValue); } },
-                { "openai", n => { Openai = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_openai>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_openai.CreateFromDiscriminatorValue); } },
-                { "parasail", n => { Parasail = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_parasail>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_parasail.CreateFromDiscriminatorValue); } },
-                { "perceptron", n => { Perceptron = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_perceptron>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_perceptron.CreateFromDiscriminatorValue); } },
-                { "perplexity", n => { Perplexity = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_perplexity>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_perplexity.CreateFromDiscriminatorValue); } },
-                { "phala", n => { Phala = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_phala>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_phala.CreateFromDiscriminatorValue); } },
-                { "poolside", n => { Poolside = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_poolside>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_poolside.CreateFromDiscriminatorValue); } },
-                { "recraft", n => { Recraft = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_recraft>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_recraft.CreateFromDiscriminatorValue); } },
-                { "recursal", n => { Recursal = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_recursal>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_recursal.CreateFromDiscriminatorValue); } },
-                { "reflection", n => { Reflection = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_reflection>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_reflection.CreateFromDiscriminatorValue); } },
-                { "reka", n => { Reka = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_reka>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_reka.CreateFromDiscriminatorValue); } },
-                { "relace", n => { Relace = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_relace>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_relace.CreateFromDiscriminatorValue); } },
-                { "replicate", n => { Replicate = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_replicate>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_replicate.CreateFromDiscriminatorValue); } },
-                { "sambanova", n => { Sambanova = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_sambanova>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_sambanova.CreateFromDiscriminatorValue); } },
-                { "sambanova-cloaked", n => { SambanovaCloaked = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_sambanovaCloaked>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_sambanovaCloaked.CreateFromDiscriminatorValue); } },
-                { "seed", n => { Seed = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_seed>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_seed.CreateFromDiscriminatorValue); } },
-                { "sf-compute", n => { SfCompute = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_sfCompute>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_sfCompute.CreateFromDiscriminatorValue); } },
-                { "siliconflow", n => { Siliconflow = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_siliconflow>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_siliconflow.CreateFromDiscriminatorValue); } },
-                { "sourceful", n => { Sourceful = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_sourceful>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_sourceful.CreateFromDiscriminatorValue); } },
-                { "stealth", n => { Stealth = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_stealth>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_stealth.CreateFromDiscriminatorValue); } },
-                { "stepfun", n => { Stepfun = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_stepfun>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_stepfun.CreateFromDiscriminatorValue); } },
-                { "streamlake", n => { Streamlake = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_streamlake>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_streamlake.CreateFromDiscriminatorValue); } },
-                { "switchpoint", n => { Switchpoint = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_switchpoint>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_switchpoint.CreateFromDiscriminatorValue); } },
-                { "targon", n => { Targon = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_targon>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_targon.CreateFromDiscriminatorValue); } },
-                { "together", n => { Together = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_together>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_together.CreateFromDiscriminatorValue); } },
-                { "together-lite", n => { TogetherLite = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_togetherLite>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_togetherLite.CreateFromDiscriminatorValue); } },
-                { "ubicloud", n => { Ubicloud = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_ubicloud>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_ubicloud.CreateFromDiscriminatorValue); } },
-                { "upstage", n => { Upstage = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_upstage>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_upstage.CreateFromDiscriminatorValue); } },
-                { "venice", n => { Venice = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_venice>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_venice.CreateFromDiscriminatorValue); } },
-                { "wandb", n => { Wandb = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_wandb>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_wandb.CreateFromDiscriminatorValue); } },
-                { "xai", n => { Xai = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_xai>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_xai.CreateFromDiscriminatorValue); } },
-                { "xiaomi", n => { Xiaomi = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_xiaomi>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_xiaomi.CreateFromDiscriminatorValue); } },
-                { "z-ai", n => { ZAi = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_zAi>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_zAi.CreateFromDiscriminatorValue); } },
-                { "01ai", n => { ZeroOneai = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_ZeroOneai>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_ZeroOneai.CreateFromDiscriminatorValue); } },
+                { "ai21", n => { Ai21 = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAi21Property>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAi21Property.CreateFromDiscriminatorValue); } },
+                { "aion-labs", n => { AionLabs = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAionLabsProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAionLabsProperty.CreateFromDiscriminatorValue); } },
+                { "akashml", n => { Akashml = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAkashmlProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAkashmlProperty.CreateFromDiscriminatorValue); } },
+                { "alibaba", n => { Alibaba = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAlibabaProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAlibabaProperty.CreateFromDiscriminatorValue); } },
+                { "amazon-bedrock", n => { AmazonBedrock = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAmazonBedrockProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAmazonBedrockProperty.CreateFromDiscriminatorValue); } },
+                { "amazon-bedrock/claude-on-aws", n => { AmazonBedrockClaudeOnAws = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAmazonBedrockClaudeOnAwsProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAmazonBedrockClaudeOnAwsProperty.CreateFromDiscriminatorValue); } },
+                { "amazon-nova", n => { AmazonNova = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAmazonNovaProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAmazonNovaProperty.CreateFromDiscriminatorValue); } },
+                { "ambient", n => { Ambient = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAmbientProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAmbientProperty.CreateFromDiscriminatorValue); } },
+                { "anthropic", n => { Anthropic = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAnthropicProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAnthropicProperty.CreateFromDiscriminatorValue); } },
+                { "anthropic/2", n => { Anthropic2 = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAnthropic2Property>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAnthropic2Property.CreateFromDiscriminatorValue); } },
+                { "anyscale", n => { Anyscale = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAnyscaleProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAnyscaleProperty.CreateFromDiscriminatorValue); } },
+                { "arcee-ai", n => { ArceeAi = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsArceeAiProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsArceeAiProperty.CreateFromDiscriminatorValue); } },
+                { "assemblyai", n => { Assemblyai = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAssemblyaiProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAssemblyaiProperty.CreateFromDiscriminatorValue); } },
+                { "atlas-cloud", n => { AtlasCloud = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAtlasCloudProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAtlasCloudProperty.CreateFromDiscriminatorValue); } },
+                { "atoma", n => { Atoma = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAtomaProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAtomaProperty.CreateFromDiscriminatorValue); } },
+                { "avian", n => { Avian = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAvianProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAvianProperty.CreateFromDiscriminatorValue); } },
+                { "azure", n => { Azure = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAzureProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAzureProperty.CreateFromDiscriminatorValue); } },
+                { "baidu", n => { Baidu = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsBaiduProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsBaiduProperty.CreateFromDiscriminatorValue); } },
+                { "baseten", n => { Baseten = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsBasetenProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsBasetenProperty.CreateFromDiscriminatorValue); } },
+                { "black-forest-labs", n => { BlackForestLabs = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsBlackForestLabsProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsBlackForestLabsProperty.CreateFromDiscriminatorValue); } },
+                { "byteplus", n => { Byteplus = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsByteplusProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsByteplusProperty.CreateFromDiscriminatorValue); } },
+                { "centml", n => { Centml = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsCentmlProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsCentmlProperty.CreateFromDiscriminatorValue); } },
+                { "cerebras", n => { Cerebras = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsCerebrasProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsCerebrasProperty.CreateFromDiscriminatorValue); } },
+                { "chutes", n => { Chutes = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsChutesProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsChutesProperty.CreateFromDiscriminatorValue); } },
+                { "cirrascale", n => { Cirrascale = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsCirrascaleProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsCirrascaleProperty.CreateFromDiscriminatorValue); } },
+                { "clarifai", n => { Clarifai = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsClarifaiProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsClarifaiProperty.CreateFromDiscriminatorValue); } },
+                { "claude-on-aws", n => { ClaudeOnAws = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsClaudeOnAwsProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsClaudeOnAwsProperty.CreateFromDiscriminatorValue); } },
+                { "cloudflare", n => { Cloudflare = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsCloudflareProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsCloudflareProperty.CreateFromDiscriminatorValue); } },
+                { "cohere", n => { Cohere = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsCohereProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsCohereProperty.CreateFromDiscriminatorValue); } },
+                { "coreweave", n => { Coreweave = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsCoreweaveProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsCoreweaveProperty.CreateFromDiscriminatorValue); } },
+                { "cosine", n => { Cosine = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsCosineProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsCosineProperty.CreateFromDiscriminatorValue); } },
+                { "crofai", n => { Crofai = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsCrofaiProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsCrofaiProperty.CreateFromDiscriminatorValue); } },
+                { "crucible", n => { Crucible = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsCrucibleProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsCrucibleProperty.CreateFromDiscriminatorValue); } },
+                { "crusoe", n => { Crusoe = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsCrusoeProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsCrusoeProperty.CreateFromDiscriminatorValue); } },
+                { "darkbloom", n => { Darkbloom = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsDarkbloomProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsDarkbloomProperty.CreateFromDiscriminatorValue); } },
+                { "databricks", n => { Databricks = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsDatabricksProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsDatabricksProperty.CreateFromDiscriminatorValue); } },
+                { "decart", n => { Decart = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsDecartProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsDecartProperty.CreateFromDiscriminatorValue); } },
+                { "deepgram", n => { Deepgram = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsDeepgramProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsDeepgramProperty.CreateFromDiscriminatorValue); } },
+                { "deepinfra", n => { Deepinfra = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsDeepinfraProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsDeepinfraProperty.CreateFromDiscriminatorValue); } },
+                { "deepseek", n => { Deepseek = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsDeepseekProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsDeepseekProperty.CreateFromDiscriminatorValue); } },
+                { "dekallm", n => { Dekallm = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsDekallmProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsDekallmProperty.CreateFromDiscriminatorValue); } },
+                { "digitalocean", n => { Digitalocean = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsDigitaloceanProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsDigitaloceanProperty.CreateFromDiscriminatorValue); } },
+                { "elevenlabs", n => { Elevenlabs = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsElevenlabsProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsElevenlabsProperty.CreateFromDiscriminatorValue); } },
+                { "enfer", n => { Enfer = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsEnferProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsEnferProperty.CreateFromDiscriminatorValue); } },
+                { "fake-provider", n => { FakeProvider = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsFakeProviderProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsFakeProviderProperty.CreateFromDiscriminatorValue); } },
+                { "featherless", n => { Featherless = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsFeatherlessProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsFeatherlessProperty.CreateFromDiscriminatorValue); } },
+                { "fireworks", n => { Fireworks = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsFireworksProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsFireworksProperty.CreateFromDiscriminatorValue); } },
+                { "fish-audio", n => { FishAudio = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsFishAudioProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsFishAudioProperty.CreateFromDiscriminatorValue); } },
+                { "friendli", n => { Friendli = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsFriendliProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsFriendliProperty.CreateFromDiscriminatorValue); } },
+                { "gmicloud", n => { Gmicloud = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsGmicloudProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsGmicloudProperty.CreateFromDiscriminatorValue); } },
+                { "google-ai-studio", n => { GoogleAiStudio = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsGoogleAiStudioProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsGoogleAiStudioProperty.CreateFromDiscriminatorValue); } },
+                { "google-vertex", n => { GoogleVertex = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsGoogleVertexProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsGoogleVertexProperty.CreateFromDiscriminatorValue); } },
+                { "gopomelo", n => { Gopomelo = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsGopomeloProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsGopomeloProperty.CreateFromDiscriminatorValue); } },
+                { "groq", n => { Groq = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsGroqProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsGroqProperty.CreateFromDiscriminatorValue); } },
+                { "heygen", n => { Heygen = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsHeygenProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsHeygenProperty.CreateFromDiscriminatorValue); } },
+                { "huggingface", n => { Huggingface = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsHuggingfaceProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsHuggingfaceProperty.CreateFromDiscriminatorValue); } },
+                { "hyperbolic", n => { Hyperbolic = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsHyperbolicProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsHyperbolicProperty.CreateFromDiscriminatorValue); } },
+                { "hyperbolic-quantized", n => { HyperbolicQuantized = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsHyperbolicQuantizedProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsHyperbolicQuantizedProperty.CreateFromDiscriminatorValue); } },
+                { "inception", n => { Inception = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsInceptionProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsInceptionProperty.CreateFromDiscriminatorValue); } },
+                { "inceptron", n => { Inceptron = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsInceptronProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsInceptronProperty.CreateFromDiscriminatorValue); } },
+                { "inferact-vllm", n => { InferactVllm = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsInferactVllmProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsInferactVllmProperty.CreateFromDiscriminatorValue); } },
+                { "inference-net", n => { InferenceNet = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsInferenceNetProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsInferenceNetProperty.CreateFromDiscriminatorValue); } },
+                { "infermatic", n => { Infermatic = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsInfermaticProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsInfermaticProperty.CreateFromDiscriminatorValue); } },
+                { "inflection", n => { Inflection = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsInflectionProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsInflectionProperty.CreateFromDiscriminatorValue); } },
+                { "inocloud", n => { Inocloud = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsInocloudProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsInocloudProperty.CreateFromDiscriminatorValue); } },
+                { "io-net", n => { IoNet = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsIoNetProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsIoNetProperty.CreateFromDiscriminatorValue); } },
+                { "ionstream", n => { Ionstream = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsIonstreamProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsIonstreamProperty.CreateFromDiscriminatorValue); } },
+                { "klusterai", n => { Klusterai = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsKlusteraiProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsKlusteraiProperty.CreateFromDiscriminatorValue); } },
+                { "krea", n => { Krea = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsKreaProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsKreaProperty.CreateFromDiscriminatorValue); } },
+                { "lambda", n => { Lambda = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsLambdaProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsLambdaProperty.CreateFromDiscriminatorValue); } },
+                { "lepton", n => { Lepton = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsLeptonProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsLeptonProperty.CreateFromDiscriminatorValue); } },
+                { "liquid", n => { Liquid = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsLiquidProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsLiquidProperty.CreateFromDiscriminatorValue); } },
+                { "lynn", n => { Lynn = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsLynnProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsLynnProperty.CreateFromDiscriminatorValue); } },
+                { "lynn-private", n => { LynnPrivate = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsLynnPrivateProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsLynnPrivateProperty.CreateFromDiscriminatorValue); } },
+                { "makora", n => { Makora = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsMakoraProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsMakoraProperty.CreateFromDiscriminatorValue); } },
+                { "mancer", n => { Mancer = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsMancerProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsMancerProperty.CreateFromDiscriminatorValue); } },
+                { "mancer-old", n => { MancerOld = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsMancerOldProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsMancerOldProperty.CreateFromDiscriminatorValue); } },
+                { "mara", n => { Mara = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsMaraProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsMaraProperty.CreateFromDiscriminatorValue); } },
+                { "meta", n => { Meta = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsMetaProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsMetaProperty.CreateFromDiscriminatorValue); } },
+                { "minimax", n => { Minimax = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsMinimaxProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsMinimaxProperty.CreateFromDiscriminatorValue); } },
+                { "mistral", n => { Mistral = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsMistralProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsMistralProperty.CreateFromDiscriminatorValue); } },
+                { "modal", n => { Modal = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsModalProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsModalProperty.CreateFromDiscriminatorValue); } },
+                { "modelrun", n => { Modelrun = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsModelrunProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsModelrunProperty.CreateFromDiscriminatorValue); } },
+                { "modular", n => { Modular = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsModularProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsModularProperty.CreateFromDiscriminatorValue); } },
+                { "moonshotai", n => { Moonshotai = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsMoonshotaiProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsMoonshotaiProperty.CreateFromDiscriminatorValue); } },
+                { "morph", n => { Morph = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsMorphProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsMorphProperty.CreateFromDiscriminatorValue); } },
+                { "ncompass", n => { Ncompass = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsNcompassProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsNcompassProperty.CreateFromDiscriminatorValue); } },
+                { "near-ai", n => { NearAi = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsNearAiProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsNearAiProperty.CreateFromDiscriminatorValue); } },
+                { "nebius", n => { Nebius = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsNebiusProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsNebiusProperty.CreateFromDiscriminatorValue); } },
+                { "nex-agi", n => { NexAgi = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsNexAgiProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsNexAgiProperty.CreateFromDiscriminatorValue); } },
+                { "nextbit", n => { Nextbit = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsNextbitProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsNextbitProperty.CreateFromDiscriminatorValue); } },
+                { "nineteen", n => { Nineteen = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsNineteenProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsNineteenProperty.CreateFromDiscriminatorValue); } },
+                { "novita", n => { Novita = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsNovitaProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsNovitaProperty.CreateFromDiscriminatorValue); } },
+                { "nvidia", n => { Nvidia = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsNvidiaProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsNvidiaProperty.CreateFromDiscriminatorValue); } },
+                { "octoai", n => { Octoai = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsOctoaiProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsOctoaiProperty.CreateFromDiscriminatorValue); } },
+                { "ollama", n => { Ollama = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsOllamaProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsOllamaProperty.CreateFromDiscriminatorValue); } },
+                { "open-inference", n => { OpenInference = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsOpenInferenceProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsOpenInferenceProperty.CreateFromDiscriminatorValue); } },
+                { "openai", n => { Openai = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsOpenaiProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsOpenaiProperty.CreateFromDiscriminatorValue); } },
+                { "parasail", n => { Parasail = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsParasailProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsParasailProperty.CreateFromDiscriminatorValue); } },
+                { "pareto-alpha", n => { ParetoAlpha = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsParetoAlphaProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsParetoAlphaProperty.CreateFromDiscriminatorValue); } },
+                { "perceptron", n => { Perceptron = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsPerceptronProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsPerceptronProperty.CreateFromDiscriminatorValue); } },
+                { "perplexity", n => { Perplexity = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsPerplexityProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsPerplexityProperty.CreateFromDiscriminatorValue); } },
+                { "phala", n => { Phala = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsPhalaProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsPhalaProperty.CreateFromDiscriminatorValue); } },
+                { "poolside", n => { Poolside = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsPoolsideProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsPoolsideProperty.CreateFromDiscriminatorValue); } },
+                { "primeintellect", n => { Primeintellect = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsPrimeintellectProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsPrimeintellectProperty.CreateFromDiscriminatorValue); } },
+                { "quiver", n => { Quiver = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsQuiverProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsQuiverProperty.CreateFromDiscriminatorValue); } },
+                { "recraft", n => { Recraft = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsRecraftProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsRecraftProperty.CreateFromDiscriminatorValue); } },
+                { "recursal", n => { Recursal = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsRecursalProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsRecursalProperty.CreateFromDiscriminatorValue); } },
+                { "recursive", n => { Recursive = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsRecursiveProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsRecursiveProperty.CreateFromDiscriminatorValue); } },
+                { "reflection", n => { Reflection = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsReflectionProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsReflectionProperty.CreateFromDiscriminatorValue); } },
+                { "reka", n => { Reka = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsRekaProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsRekaProperty.CreateFromDiscriminatorValue); } },
+                { "relace", n => { Relace = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsRelaceProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsRelaceProperty.CreateFromDiscriminatorValue); } },
+                { "replicate", n => { Replicate = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsReplicateProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsReplicateProperty.CreateFromDiscriminatorValue); } },
+                { "respan", n => { Respan = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsRespanProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsRespanProperty.CreateFromDiscriminatorValue); } },
+                { "runway", n => { Runway = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsRunwayProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsRunwayProperty.CreateFromDiscriminatorValue); } },
+                { "sail-research", n => { SailResearch = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsSailResearchProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsSailResearchProperty.CreateFromDiscriminatorValue); } },
+                { "sakana", n => { Sakana = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsSakanaProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsSakanaProperty.CreateFromDiscriminatorValue); } },
+                { "sakana-ai", n => { SakanaAi = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsSakanaAiProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsSakanaAiProperty.CreateFromDiscriminatorValue); } },
+                { "sambanova", n => { Sambanova = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsSambanovaProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsSambanovaProperty.CreateFromDiscriminatorValue); } },
+                { "sambanova-cloaked", n => { SambanovaCloaked = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsSambanovaCloakedProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsSambanovaCloakedProperty.CreateFromDiscriminatorValue); } },
+                { "scaledown", n => { Scaledown = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsScaledownProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsScaledownProperty.CreateFromDiscriminatorValue); } },
+                { "seed", n => { Seed = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsSeedProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsSeedProperty.CreateFromDiscriminatorValue); } },
+                { "sf-compute", n => { SfCompute = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsSfComputeProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsSfComputeProperty.CreateFromDiscriminatorValue); } },
+                { "siliconflow", n => { Siliconflow = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsSiliconflowProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsSiliconflowProperty.CreateFromDiscriminatorValue); } },
+                { "sourceful", n => { Sourceful = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsSourcefulProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsSourcefulProperty.CreateFromDiscriminatorValue); } },
+                { "stealth", n => { Stealth = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsStealthProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsStealthProperty.CreateFromDiscriminatorValue); } },
+                { "stepfun", n => { Stepfun = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsStepfunProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsStepfunProperty.CreateFromDiscriminatorValue); } },
+                { "streamlake", n => { Streamlake = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsStreamlakeProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsStreamlakeProperty.CreateFromDiscriminatorValue); } },
+                { "switchpoint", n => { Switchpoint = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsSwitchpointProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsSwitchpointProperty.CreateFromDiscriminatorValue); } },
+                { "targon", n => { Targon = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsTargonProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsTargonProperty.CreateFromDiscriminatorValue); } },
+                { "tencent", n => { Tencent = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsTencentProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsTencentProperty.CreateFromDiscriminatorValue); } },
+                { "tenstorrent", n => { Tenstorrent = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsTenstorrentProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsTenstorrentProperty.CreateFromDiscriminatorValue); } },
+                { "thinkingmachines", n => { Thinkingmachines = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsThinkingmachinesProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsThinkingmachinesProperty.CreateFromDiscriminatorValue); } },
+                { "together", n => { Together = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsTogetherProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsTogetherProperty.CreateFromDiscriminatorValue); } },
+                { "together-lite", n => { TogetherLite = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsTogetherLiteProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsTogetherLiteProperty.CreateFromDiscriminatorValue); } },
+                { "typesafe", n => { Typesafe = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsTypesafeProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsTypesafeProperty.CreateFromDiscriminatorValue); } },
+                { "ubicloud", n => { Ubicloud = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsUbicloudProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsUbicloudProperty.CreateFromDiscriminatorValue); } },
+                { "unbiased", n => { Unbiased = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsUnbiasedProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsUnbiasedProperty.CreateFromDiscriminatorValue); } },
+                { "upstage", n => { Upstage = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsUpstageProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsUpstageProperty.CreateFromDiscriminatorValue); } },
+                { "venice", n => { Venice = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsVeniceProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsVeniceProperty.CreateFromDiscriminatorValue); } },
+                { "voyageai", n => { Voyageai = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsVoyageaiProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsVoyageaiProperty.CreateFromDiscriminatorValue); } },
+                { "wafer", n => { Wafer = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsWaferProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsWaferProperty.CreateFromDiscriminatorValue); } },
+                { "wandb", n => { Wandb = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsWandbProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsWandbProperty.CreateFromDiscriminatorValue); } },
+                { "wandb-legacy", n => { WandbLegacy = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsWandbLegacyProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsWandbLegacyProperty.CreateFromDiscriminatorValue); } },
+                { "xai", n => { Xai = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsXaiProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsXaiProperty.CreateFromDiscriminatorValue); } },
+                { "xiaomi", n => { Xiaomi = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsXiaomiProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsXiaomiProperty.CreateFromDiscriminatorValue); } },
+                { "z-ai", n => { ZAi = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsZAiProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsZAiProperty.CreateFromDiscriminatorValue); } },
+                { "01ai", n => { ZeroOneai = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions01AiProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions01AiProperty.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -1066,119 +1381,154 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_ai21>("ai21", Ai21);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_aionLabs>("aion-labs", AionLabs);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_akashml>("akashml", Akashml);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_alibaba>("alibaba", Alibaba);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_amazonBedrock>("amazon-bedrock", AmazonBedrock);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_amazonNova>("amazon-nova", AmazonNova);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_ambient>("ambient", Ambient);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_anthropic>("anthropic", Anthropic);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_anyscale>("anyscale", Anyscale);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_arceeAi>("arcee-ai", ArceeAi);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_atlasCloud>("atlas-cloud", AtlasCloud);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_atoma>("atoma", Atoma);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_avian>("avian", Avian);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_azure>("azure", Azure);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_baidu>("baidu", Baidu);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_baseten>("baseten", Baseten);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_blackForestLabs>("black-forest-labs", BlackForestLabs);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_byteplus>("byteplus", Byteplus);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_centml>("centml", Centml);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_cerebras>("cerebras", Cerebras);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_chutes>("chutes", Chutes);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_cirrascale>("cirrascale", Cirrascale);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_clarifai>("clarifai", Clarifai);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_cloudflare>("cloudflare", Cloudflare);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_cohere>("cohere", Cohere);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_crofai>("crofai", Crofai);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_crucible>("crucible", Crucible);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_crusoe>("crusoe", Crusoe);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_darkbloom>("darkbloom", Darkbloom);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_deepinfra>("deepinfra", Deepinfra);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_deepseek>("deepseek", Deepseek);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_dekallm>("dekallm", Dekallm);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_digitalocean>("digitalocean", Digitalocean);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_enfer>("enfer", Enfer);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_fakeProvider>("fake-provider", FakeProvider);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_featherless>("featherless", Featherless);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_fireworks>("fireworks", Fireworks);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_friendli>("friendli", Friendli);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_gmicloud>("gmicloud", Gmicloud);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_googleAiStudio>("google-ai-studio", GoogleAiStudio);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_googleVertex>("google-vertex", GoogleVertex);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_gopomelo>("gopomelo", Gopomelo);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_groq>("groq", Groq);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_huggingface>("huggingface", Huggingface);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_hyperbolic>("hyperbolic", Hyperbolic);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_hyperbolicQuantized>("hyperbolic-quantized", HyperbolicQuantized);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_inception>("inception", Inception);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_inceptron>("inceptron", Inceptron);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_inferenceNet>("inference-net", InferenceNet);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_infermatic>("infermatic", Infermatic);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_inflection>("inflection", Inflection);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_inocloud>("inocloud", Inocloud);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_ioNet>("io-net", IoNet);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_ionstream>("ionstream", Ionstream);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_klusterai>("klusterai", Klusterai);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_lambda>("lambda", Lambda);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_lepton>("lepton", Lepton);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_liquid>("liquid", Liquid);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_lynn>("lynn", Lynn);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_lynnPrivate>("lynn-private", LynnPrivate);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_mancer>("mancer", Mancer);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_mancerOld>("mancer-old", MancerOld);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_mara>("mara", Mara);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_meta>("meta", Meta);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_minimax>("minimax", Minimax);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_mistral>("mistral", Mistral);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_modal>("modal", Modal);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_modelrun>("modelrun", Modelrun);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_modular>("modular", Modular);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_moonshotai>("moonshotai", Moonshotai);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_morph>("morph", Morph);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_ncompass>("ncompass", Ncompass);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_nebius>("nebius", Nebius);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_nexAgi>("nex-agi", NexAgi);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_nextbit>("nextbit", Nextbit);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_nineteen>("nineteen", Nineteen);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_novita>("novita", Novita);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_nvidia>("nvidia", Nvidia);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_octoai>("octoai", Octoai);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_openai>("openai", Openai);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_openInference>("open-inference", OpenInference);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_parasail>("parasail", Parasail);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_perceptron>("perceptron", Perceptron);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_perplexity>("perplexity", Perplexity);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_phala>("phala", Phala);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_poolside>("poolside", Poolside);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_recraft>("recraft", Recraft);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_recursal>("recursal", Recursal);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_reflection>("reflection", Reflection);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_reka>("reka", Reka);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_relace>("relace", Relace);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_replicate>("replicate", Replicate);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_sambanova>("sambanova", Sambanova);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_sambanovaCloaked>("sambanova-cloaked", SambanovaCloaked);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_seed>("seed", Seed);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_sfCompute>("sf-compute", SfCompute);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_siliconflow>("siliconflow", Siliconflow);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_sourceful>("sourceful", Sourceful);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_stealth>("stealth", Stealth);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_stepfun>("stepfun", Stepfun);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_streamlake>("streamlake", Streamlake);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_switchpoint>("switchpoint", Switchpoint);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_targon>("targon", Targon);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_together>("together", Together);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_togetherLite>("together-lite", TogetherLite);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_ubicloud>("ubicloud", Ubicloud);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_upstage>("upstage", Upstage);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_venice>("venice", Venice);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_wandb>("wandb", Wandb);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_xai>("xai", Xai);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_xiaomi>("xiaomi", Xiaomi);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_zAi>("z-ai", ZAi);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions_ZeroOneai>("01ai", ZeroOneai);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAi21Property>("ai21", Ai21);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAionLabsProperty>("aion-labs", AionLabs);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAkashmlProperty>("akashml", Akashml);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAlibabaProperty>("alibaba", Alibaba);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAmazonBedrockProperty>("amazon-bedrock", AmazonBedrock);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAmazonBedrockClaudeOnAwsProperty>("amazon-bedrock/claude-on-aws", AmazonBedrockClaudeOnAws);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAmazonNovaProperty>("amazon-nova", AmazonNova);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAmbientProperty>("ambient", Ambient);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAnthropicProperty>("anthropic", Anthropic);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAnthropic2Property>("anthropic/2", Anthropic2);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAnyscaleProperty>("anyscale", Anyscale);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsArceeAiProperty>("arcee-ai", ArceeAi);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAssemblyaiProperty>("assemblyai", Assemblyai);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAtlasCloudProperty>("atlas-cloud", AtlasCloud);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAtomaProperty>("atoma", Atoma);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAvianProperty>("avian", Avian);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsAzureProperty>("azure", Azure);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsBaiduProperty>("baidu", Baidu);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsBasetenProperty>("baseten", Baseten);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsBlackForestLabsProperty>("black-forest-labs", BlackForestLabs);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsByteplusProperty>("byteplus", Byteplus);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsCentmlProperty>("centml", Centml);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsCerebrasProperty>("cerebras", Cerebras);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsChutesProperty>("chutes", Chutes);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsCirrascaleProperty>("cirrascale", Cirrascale);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsClarifaiProperty>("clarifai", Clarifai);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsClaudeOnAwsProperty>("claude-on-aws", ClaudeOnAws);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsCloudflareProperty>("cloudflare", Cloudflare);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsCohereProperty>("cohere", Cohere);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsCoreweaveProperty>("coreweave", Coreweave);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsCosineProperty>("cosine", Cosine);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsCrofaiProperty>("crofai", Crofai);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsCrucibleProperty>("crucible", Crucible);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsCrusoeProperty>("crusoe", Crusoe);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsDarkbloomProperty>("darkbloom", Darkbloom);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsDatabricksProperty>("databricks", Databricks);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsDecartProperty>("decart", Decart);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsDeepgramProperty>("deepgram", Deepgram);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsDeepinfraProperty>("deepinfra", Deepinfra);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsDeepseekProperty>("deepseek", Deepseek);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsDekallmProperty>("dekallm", Dekallm);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsDigitaloceanProperty>("digitalocean", Digitalocean);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsElevenlabsProperty>("elevenlabs", Elevenlabs);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsEnferProperty>("enfer", Enfer);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsFakeProviderProperty>("fake-provider", FakeProvider);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsFeatherlessProperty>("featherless", Featherless);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsFireworksProperty>("fireworks", Fireworks);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsFishAudioProperty>("fish-audio", FishAudio);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsFriendliProperty>("friendli", Friendli);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsGmicloudProperty>("gmicloud", Gmicloud);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsGoogleAiStudioProperty>("google-ai-studio", GoogleAiStudio);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsGoogleVertexProperty>("google-vertex", GoogleVertex);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsGopomeloProperty>("gopomelo", Gopomelo);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsGroqProperty>("groq", Groq);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsHeygenProperty>("heygen", Heygen);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsHuggingfaceProperty>("huggingface", Huggingface);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsHyperbolicProperty>("hyperbolic", Hyperbolic);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsHyperbolicQuantizedProperty>("hyperbolic-quantized", HyperbolicQuantized);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsInceptionProperty>("inception", Inception);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsInceptronProperty>("inceptron", Inceptron);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsInferactVllmProperty>("inferact-vllm", InferactVllm);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsInferenceNetProperty>("inference-net", InferenceNet);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsInfermaticProperty>("infermatic", Infermatic);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsInflectionProperty>("inflection", Inflection);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsInocloudProperty>("inocloud", Inocloud);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsIoNetProperty>("io-net", IoNet);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsIonstreamProperty>("ionstream", Ionstream);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsKlusteraiProperty>("klusterai", Klusterai);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsKreaProperty>("krea", Krea);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsLambdaProperty>("lambda", Lambda);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsLeptonProperty>("lepton", Lepton);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsLiquidProperty>("liquid", Liquid);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsLynnProperty>("lynn", Lynn);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsLynnPrivateProperty>("lynn-private", LynnPrivate);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsMakoraProperty>("makora", Makora);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsMancerProperty>("mancer", Mancer);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsMancerOldProperty>("mancer-old", MancerOld);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsMaraProperty>("mara", Mara);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsMetaProperty>("meta", Meta);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsMinimaxProperty>("minimax", Minimax);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsMistralProperty>("mistral", Mistral);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsModalProperty>("modal", Modal);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsModelrunProperty>("modelrun", Modelrun);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsModularProperty>("modular", Modular);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsMoonshotaiProperty>("moonshotai", Moonshotai);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsMorphProperty>("morph", Morph);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsNcompassProperty>("ncompass", Ncompass);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsNearAiProperty>("near-ai", NearAi);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsNebiusProperty>("nebius", Nebius);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsNexAgiProperty>("nex-agi", NexAgi);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsNextbitProperty>("nextbit", Nextbit);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsNineteenProperty>("nineteen", Nineteen);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsNovitaProperty>("novita", Novita);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsNvidiaProperty>("nvidia", Nvidia);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsOctoaiProperty>("octoai", Octoai);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsOllamaProperty>("ollama", Ollama);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsOpenaiProperty>("openai", Openai);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsOpenInferenceProperty>("open-inference", OpenInference);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsParasailProperty>("parasail", Parasail);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsParetoAlphaProperty>("pareto-alpha", ParetoAlpha);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsPerceptronProperty>("perceptron", Perceptron);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsPerplexityProperty>("perplexity", Perplexity);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsPhalaProperty>("phala", Phala);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsPoolsideProperty>("poolside", Poolside);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsPrimeintellectProperty>("primeintellect", Primeintellect);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsQuiverProperty>("quiver", Quiver);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsRecraftProperty>("recraft", Recraft);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsRecursalProperty>("recursal", Recursal);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsRecursiveProperty>("recursive", Recursive);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsReflectionProperty>("reflection", Reflection);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsRekaProperty>("reka", Reka);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsRelaceProperty>("relace", Relace);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsReplicateProperty>("replicate", Replicate);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsRespanProperty>("respan", Respan);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsRunwayProperty>("runway", Runway);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsSailResearchProperty>("sail-research", SailResearch);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsSakanaProperty>("sakana", Sakana);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsSakanaAiProperty>("sakana-ai", SakanaAi);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsSambanovaProperty>("sambanova", Sambanova);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsSambanovaCloakedProperty>("sambanova-cloaked", SambanovaCloaked);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsScaledownProperty>("scaledown", Scaledown);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsSeedProperty>("seed", Seed);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsSfComputeProperty>("sf-compute", SfCompute);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsSiliconflowProperty>("siliconflow", Siliconflow);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsSourcefulProperty>("sourceful", Sourceful);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsStealthProperty>("stealth", Stealth);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsStepfunProperty>("stepfun", Stepfun);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsStreamlakeProperty>("streamlake", Streamlake);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsSwitchpointProperty>("switchpoint", Switchpoint);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsTargonProperty>("targon", Targon);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsTencentProperty>("tencent", Tencent);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsTenstorrentProperty>("tenstorrent", Tenstorrent);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsThinkingmachinesProperty>("thinkingmachines", Thinkingmachines);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsTogetherProperty>("together", Together);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsTogetherLiteProperty>("together-lite", TogetherLite);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsTypesafeProperty>("typesafe", Typesafe);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsUbicloudProperty>("ubicloud", Ubicloud);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsUnbiasedProperty>("unbiased", Unbiased);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsUpstageProperty>("upstage", Upstage);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsVeniceProperty>("venice", Venice);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsVoyageaiProperty>("voyageai", Voyageai);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsWaferProperty>("wafer", Wafer);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsWandbProperty>("wandb", Wandb);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsWandbLegacyProperty>("wandb-legacy", WandbLegacy);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsXaiProperty>("xai", Xai);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsXiaomiProperty>("xiaomi", Xiaomi);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsZAiProperty>("z-ai", ZAi);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions01AiProperty>("01ai", ZeroOneai);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

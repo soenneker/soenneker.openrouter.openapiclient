@@ -45,7 +45,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The start_block_index property</summary>
         public int? StartBlockIndex { get; set; }
         /// <summary>The type property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCitationContentBlockLocation_type? Type { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ContentBlockLocationType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCitationContentBlockLocation"/> and sets the default values.
         /// </summary>
@@ -77,7 +77,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "end_block_index", n => { EndBlockIndex = n.GetIntValue(); } },
                 { "file_id", n => { FileId = n.GetStringValue(); } },
                 { "start_block_index", n => { StartBlockIndex = n.GetIntValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCitationContentBlockLocation_type>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentBlockLocationType>(); } },
             };
         }
         /// <summary>
@@ -93,7 +93,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteIntValue("end_block_index", EndBlockIndex);
             writer.WriteStringValue("file_id", FileId);
             writer.WriteIntValue("start_block_index", StartBlockIndex);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCitationContentBlockLocation_type>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentBlockLocationType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

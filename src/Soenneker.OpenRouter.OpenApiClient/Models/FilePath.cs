@@ -25,7 +25,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The index property</summary>
         public int? Index { get; set; }
         /// <summary>The type property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.FilePath_type? Type { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.FilePathType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.FilePath"/> and sets the default values.
         /// </summary>
@@ -53,7 +53,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             {
                 { "file_id", n => { FileId = n.GetStringValue(); } },
                 { "index", n => { Index = n.GetIntValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.FilePath_type>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.FilePathType>(); } },
             };
         }
         /// <summary>
@@ -65,7 +65,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("file_id", FileId);
             writer.WriteIntValue("index", Index);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.FilePath_type>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.FilePathType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

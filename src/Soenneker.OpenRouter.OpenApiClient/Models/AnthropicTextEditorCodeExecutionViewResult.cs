@@ -23,7 +23,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public string Content { get; set; }
 #endif
         /// <summary>The file_type property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextEditorCodeExecutionViewResult_file_type? FileType { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextEditorCodeExecutionViewResultFileType? FileType { get; set; }
         /// <summary>The num_lines property</summary>
         public int? NumLines { get; set; }
         /// <summary>The start_line property</summary>
@@ -31,7 +31,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The total_lines property</summary>
         public int? TotalLines { get; set; }
         /// <summary>The type property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextEditorCodeExecutionViewResult_type? Type { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.TextEditorCodeExecutionViewResultType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextEditorCodeExecutionViewResult"/> and sets the default values.
         /// </summary>
@@ -58,11 +58,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "content", n => { Content = n.GetStringValue(); } },
-                { "file_type", n => { FileType = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextEditorCodeExecutionViewResult_file_type>(); } },
+                { "file_type", n => { FileType = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextEditorCodeExecutionViewResultFileType>(); } },
                 { "num_lines", n => { NumLines = n.GetIntValue(); } },
                 { "start_line", n => { StartLine = n.GetIntValue(); } },
                 { "total_lines", n => { TotalLines = n.GetIntValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextEditorCodeExecutionViewResult_type>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.TextEditorCodeExecutionViewResultType>(); } },
             };
         }
         /// <summary>
@@ -73,11 +73,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("content", Content);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextEditorCodeExecutionViewResult_file_type>("file_type", FileType);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextEditorCodeExecutionViewResultFileType>("file_type", FileType);
             writer.WriteIntValue("num_lines", NumLines);
             writer.WriteIntValue("start_line", StartLine);
             writer.WriteIntValue("total_lines", TotalLines);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextEditorCodeExecutionViewResult_type>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.TextEditorCodeExecutionViewResultType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

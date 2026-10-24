@@ -33,7 +33,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The status property</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchStatus? Status { get; set; }
         /// <summary>The type property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemWebSearchCall_type? Type { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchCallType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemWebSearchCall"/> and sets the default values.
         /// </summary>
@@ -62,7 +62,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "action", n => { Action = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemWebSearchCallAction>(global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemWebSearchCallAction.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchStatus>(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemWebSearchCall_type>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchCallType>(); } },
             };
         }
         /// <summary>
@@ -75,7 +75,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemWebSearchCallAction>("action", Action);
             writer.WriteStringValue("id", Id);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchStatus>("status", Status);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemWebSearchCall_type>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchCallType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

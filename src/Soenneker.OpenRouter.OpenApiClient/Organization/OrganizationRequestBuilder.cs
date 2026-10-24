@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.OpenRouter.OpenApiClient.Organization.Members;
+using Soenneker.OpenRouter.OpenApiClient.Organization.Settings;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -19,6 +20,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Organization
         public global::Soenneker.OpenRouter.OpenApiClient.Organization.Members.MembersRequestBuilder Members
         {
             get => new global::Soenneker.OpenRouter.OpenApiClient.Organization.Members.MembersRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The settings property</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Organization.Settings.SettingsRequestBuilder Settings
+        {
+            get => new global::Soenneker.OpenRouter.OpenApiClient.Organization.Settings.SettingsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Organization.OrganizationRequestBuilder"/> and sets the default values.

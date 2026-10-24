@@ -8,26 +8,26 @@ using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.CustomToolFormatMember1"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.CustomToolFormatMember2"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.CustomToolFormatAnyOf1"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.CustomToolFormatAnyOf2"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CustomToolFormat : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.CustomToolFormatMember1"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.CustomToolFormatAnyOf1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.CustomToolFormatMember1? CustomToolFormatMember1 { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.CustomToolFormatAnyOf1? CustomToolFormatAnyOf1 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.CustomToolFormatMember1 CustomToolFormatMember1 { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.CustomToolFormatAnyOf1 CustomToolFormatAnyOf1 { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.CustomToolFormatMember2"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.CustomToolFormatAnyOf2"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.CustomToolFormatMember2? CustomToolFormatMember2 { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.CustomToolFormatAnyOf2? CustomToolFormatAnyOf2 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.CustomToolFormatMember2 CustomToolFormatMember2 { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.CustomToolFormatAnyOf2 CustomToolFormatAnyOf2 { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -37,9 +37,16 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public static global::Soenneker.OpenRouter.OpenApiClient.Models.CustomToolFormat CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
+            var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
             var result = new global::Soenneker.OpenRouter.OpenApiClient.Models.CustomToolFormat();
-            result.CustomToolFormatMember1 = new global::Soenneker.OpenRouter.OpenApiClient.Models.CustomToolFormatMember1();
-            result.CustomToolFormatMember2 = new global::Soenneker.OpenRouter.OpenApiClient.Models.CustomToolFormatMember2();
+            if("text".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                result.CustomToolFormatAnyOf1 = new global::Soenneker.OpenRouter.OpenApiClient.Models.CustomToolFormatAnyOf1();
+            }
+            else if("grammar".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                result.CustomToolFormatAnyOf2 = new global::Soenneker.OpenRouter.OpenApiClient.Models.CustomToolFormatAnyOf2();
+            }
             return result;
         }
         /// <summary>
@@ -48,9 +55,13 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(CustomToolFormatMember1 != null || CustomToolFormatMember2 != null)
+            if(CustomToolFormatAnyOf1 != null)
             {
-                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(CustomToolFormatMember1, CustomToolFormatMember2);
+                return CustomToolFormatAnyOf1.GetFieldDeserializers();
+            }
+            else if(CustomToolFormatAnyOf2 != null)
+            {
+                return CustomToolFormatAnyOf2.GetFieldDeserializers();
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -61,7 +72,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.CustomToolFormatMember1>(null, CustomToolFormatMember1, CustomToolFormatMember2);
+            if(CustomToolFormatAnyOf1 != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.CustomToolFormatAnyOf1>(null, CustomToolFormatAnyOf1);
+            }
+            else if(CustomToolFormatAnyOf2 != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.CustomToolFormatAnyOf2>(null, CustomToolFormatAnyOf2);
+            }
         }
     }
 }

@@ -8,18 +8,18 @@ using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolAllowedToolsMember1"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolAllowedTools_Branch1"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolAllowedToolsAnyOf2"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolAllowedToolsMember1"/>, List&lt;string&gt;
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class McpServerToolAllowedTools : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolAllowedTools_Branch1"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolAllowedToolsAnyOf2"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolAllowedTools_Branch1? McpServerToolAllowedToolsBranch1 { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolAllowedToolsAnyOf2? McpServerToolAllowedToolsAnyOf2 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolAllowedTools_Branch1 McpServerToolAllowedToolsBranch1 { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolAllowedToolsAnyOf2 McpServerToolAllowedToolsAnyOf2 { get; set; }
 #endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolAllowedToolsMember1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -28,6 +28,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolAllowedToolsMember1 McpServerToolAllowedToolsMember1 { get; set; }
+#endif
+        /// <summary>Composed type representation for type List&lt;string&gt;</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? String { get; set; }
+#nullable restore
+#else
+        public List<string> String { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -38,8 +46,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var result = new global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolAllowedTools();
-            result.McpServerToolAllowedToolsBranch1 = new global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolAllowedTools_Branch1();
-            result.McpServerToolAllowedToolsMember1 = new global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolAllowedToolsMember1();
+            if(parseNode.GetCollectionOfPrimitiveValues<string>()?.AsList() is List<string> stringValue)
+            {
+                result.String = stringValue;
+            }
+            else {
+                result.McpServerToolAllowedToolsAnyOf2 = new global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolAllowedToolsAnyOf2();
+                result.McpServerToolAllowedToolsMember1 = new global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolAllowedToolsMember1();
+            }
             return result;
         }
         /// <summary>
@@ -48,9 +62,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(McpServerToolAllowedToolsBranch1 != null || McpServerToolAllowedToolsMember1 != null)
+            if(McpServerToolAllowedToolsAnyOf2 != null || McpServerToolAllowedToolsMember1 != null)
             {
-                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(McpServerToolAllowedToolsBranch1, McpServerToolAllowedToolsMember1);
+                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(McpServerToolAllowedToolsAnyOf2, McpServerToolAllowedToolsMember1);
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -61,7 +75,13 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolAllowedTools_Branch1>(null, McpServerToolAllowedToolsBranch1, McpServerToolAllowedToolsMember1);
+            if(String != null)
+            {
+                writer.WriteCollectionOfPrimitiveValues<string>(null, String);
+            }
+            else {
+                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolAllowedToolsAnyOf2>(null, McpServerToolAllowedToolsAnyOf2, McpServerToolAllowedToolsMember1);
+            }
         }
     }
 }

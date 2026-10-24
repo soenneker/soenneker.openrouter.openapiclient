@@ -39,7 +39,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public string ToolUseId { get; set; }
 #endif
         /// <summary>The type property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicWebFetchToolResult_type? Type { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.WebFetchToolResultType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicWebFetchToolResult"/> and sets the default values.
         /// </summary>
@@ -68,7 +68,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "caller", n => { Caller = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCaller>(global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCaller.CreateFromDiscriminatorValue); } },
                 { "content", n => { Content = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicWebFetchContent>(global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicWebFetchContent.CreateFromDiscriminatorValue); } },
                 { "tool_use_id", n => { ToolUseId = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicWebFetchToolResult_type>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebFetchToolResultType>(); } },
             };
         }
         /// <summary>
@@ -81,7 +81,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCaller>("caller", Caller);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicWebFetchContent>("content", Content);
             writer.WriteStringValue("tool_use_id", ToolUseId);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicWebFetchToolResult_type>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebFetchToolResultType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -22,23 +22,31 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public List<string> ApiKeyHashes { get; set; }
 #endif
+        /// <summary>Whether to include cost and billing generation metadata.</summary>
+        public bool? BroadcastGenerationCost { get; set; }
+        /// <summary>Beta. When true, include openrouter_cost_allocation: per-token-kind usage and cost, sent only when they reconcile with the billed cost.</summary>
+        public bool? BroadcastGenerationCostAllocation { get; set; }
+        /// <summary>Whether to include identity generation metadata.</summary>
+        public bool? BroadcastGenerationIdentity { get; set; }
+        /// <summary>Whether to include request-context generation metadata.</summary>
+        public bool? BroadcastGenerationRequestContext { get; set; }
         /// <summary>Provider-specific configuration fields to update. Masked values are ignored; unset fields keep their current value.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.UpdateObservabilityDestinationRequest_config? Config { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.UpdateObservabilityDestinationRequestConfigProperty? Config { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.UpdateObservabilityDestinationRequest_config Config { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.UpdateObservabilityDestinationRequestConfigProperty Config { get; set; }
 #endif
         /// <summary>Whether the destination is enabled.</summary>
         public bool? Enabled { get; set; }
-        /// <summary>The filter_rules property</summary>
+        /// <summary>Optional structured filter rules. `null` clears the rules. Omitting keeps the current value.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.UpdateObservabilityDestinationRequest_filter_rules? FilterRules { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.UpdateObservabilityDestinationRequestFilterRules? FilterRules { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.UpdateObservabilityDestinationRequest_filter_rules FilterRules { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.UpdateObservabilityDestinationRequestFilterRules FilterRules { get; set; }
 #endif
         /// <summary>Human-readable name for the destination.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -50,6 +58,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #endif
         /// <summary>When true, request/response bodies are not forwarded — only metadata.</summary>
         public bool? PrivacyMode { get; set; }
+        /// <summary>Data regions this destination applies to. `eu` is accepted as an alias for `europe` and normalizes to `europe`. Omitting this field keeps the current value; it cannot be cleared.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityDataRegionInput?>? Regions { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityDataRegionInput?> Regions { get; set; }
+#endif
         /// <summary>Sampling rate between 0.0001 and 1 (1 = 100%).</summary>
         public double? SamplingRate { get; set; }
         /// <summary>
@@ -78,11 +94,16 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "api_key_hashes", n => { ApiKeyHashes = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "config", n => { Config = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.UpdateObservabilityDestinationRequest_config>(global::Soenneker.OpenRouter.OpenApiClient.Models.UpdateObservabilityDestinationRequest_config.CreateFromDiscriminatorValue); } },
+                { "broadcast_generation_cost", n => { BroadcastGenerationCost = n.GetBoolValue(); } },
+                { "broadcast_generation_cost_allocation", n => { BroadcastGenerationCostAllocation = n.GetBoolValue(); } },
+                { "broadcast_generation_identity", n => { BroadcastGenerationIdentity = n.GetBoolValue(); } },
+                { "broadcast_generation_request_context", n => { BroadcastGenerationRequestContext = n.GetBoolValue(); } },
+                { "config", n => { Config = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.UpdateObservabilityDestinationRequestConfigProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.UpdateObservabilityDestinationRequestConfigProperty.CreateFromDiscriminatorValue); } },
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
-                { "filter_rules", n => { FilterRules = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.UpdateObservabilityDestinationRequest_filter_rules>(global::Soenneker.OpenRouter.OpenApiClient.Models.UpdateObservabilityDestinationRequest_filter_rules.CreateFromDiscriminatorValue); } },
+                { "filter_rules", n => { FilterRules = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.UpdateObservabilityDestinationRequestFilterRules>(global::Soenneker.OpenRouter.OpenApiClient.Models.UpdateObservabilityDestinationRequestFilterRules.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "privacy_mode", n => { PrivacyMode = n.GetBoolValue(); } },
+                { "regions", n => { Regions = n.GetCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityDataRegionInput>()?.AsList(); } },
                 { "sampling_rate", n => { SamplingRate = n.GetDoubleValue(); } },
             };
         }
@@ -94,11 +115,16 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<string>("api_key_hashes", ApiKeyHashes);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.UpdateObservabilityDestinationRequest_config>("config", Config);
+            writer.WriteBoolValue("broadcast_generation_cost", BroadcastGenerationCost);
+            writer.WriteBoolValue("broadcast_generation_cost_allocation", BroadcastGenerationCostAllocation);
+            writer.WriteBoolValue("broadcast_generation_identity", BroadcastGenerationIdentity);
+            writer.WriteBoolValue("broadcast_generation_request_context", BroadcastGenerationRequestContext);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.UpdateObservabilityDestinationRequestConfigProperty>("config", Config);
             writer.WriteBoolValue("enabled", Enabled);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.UpdateObservabilityDestinationRequest_filter_rules>("filter_rules", FilterRules);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.UpdateObservabilityDestinationRequestFilterRules>("filter_rules", FilterRules);
             writer.WriteStringValue("name", Name);
             writer.WriteBoolValue("privacy_mode", PrivacyMode);
+            writer.WriteCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityDataRegionInput>("regions", Regions);
             writer.WriteDoubleValue("sampling_rate", SamplingRate);
             writer.WriteAdditionalData(AdditionalData);
         }

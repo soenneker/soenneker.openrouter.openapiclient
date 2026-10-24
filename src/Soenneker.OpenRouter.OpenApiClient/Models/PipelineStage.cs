@@ -19,10 +19,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The data property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.PipelineStage_data? Data { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PipelineStageDataProperty? Data { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.PipelineStage_data Data { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PipelineStageDataProperty Data { get; set; }
 #endif
         /// <summary>The guardrail_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -84,7 +84,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "cost_usd", n => { CostUsd = n.GetDoubleValue(); } },
-                { "data", n => { Data = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PipelineStage_data>(global::Soenneker.OpenRouter.OpenApiClient.Models.PipelineStage_data.CreateFromDiscriminatorValue); } },
+                { "data", n => { Data = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PipelineStageDataProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.PipelineStageDataProperty.CreateFromDiscriminatorValue); } },
                 { "guardrail_id", n => { GuardrailId = n.GetStringValue(); } },
                 { "guardrail_scope", n => { GuardrailScope = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
@@ -100,7 +100,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDoubleValue("cost_usd", CostUsd);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PipelineStage_data>("data", Data);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PipelineStageDataProperty>("data", Data);
             writer.WriteStringValue("guardrail_id", GuardrailId);
             writer.WriteStringValue("guardrail_scope", GuardrailScope);
             writer.WriteStringValue("name", Name);

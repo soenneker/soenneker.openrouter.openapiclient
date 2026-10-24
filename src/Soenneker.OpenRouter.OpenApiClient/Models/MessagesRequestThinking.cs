@@ -8,34 +8,42 @@ using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestThinkingMember1"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestThinkingMember2"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestThinkingMember3"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestThinkingOneOf1"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestThinkingOneOf2"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestThinkingOneOf3"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestThinkingOneOf4"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class MessagesRequestThinking : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestThinkingMember1"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestThinkingOneOf1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestThinkingMember1? MessagesRequestThinkingMember1 { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestThinkingOneOf1? MessagesRequestThinkingOneOf1 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestThinkingMember1 MessagesRequestThinkingMember1 { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestThinkingOneOf1 MessagesRequestThinkingOneOf1 { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestThinkingMember2"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestThinkingOneOf2"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestThinkingMember2? MessagesRequestThinkingMember2 { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestThinkingOneOf2? MessagesRequestThinkingOneOf2 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestThinkingMember2 MessagesRequestThinkingMember2 { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestThinkingOneOf2 MessagesRequestThinkingOneOf2 { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestThinkingMember3"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestThinkingOneOf3"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestThinkingMember3? MessagesRequestThinkingMember3 { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestThinkingOneOf3? MessagesRequestThinkingOneOf3 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestThinkingMember3 MessagesRequestThinkingMember3 { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestThinkingOneOf3 MessagesRequestThinkingOneOf3 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestThinkingOneOf4"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestThinkingOneOf4? MessagesRequestThinkingOneOf4 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestThinkingOneOf4 MessagesRequestThinkingOneOf4 { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -47,17 +55,21 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
             var result = new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestThinking();
-            if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("enabled".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.MessagesRequestThinkingMember1 = new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestThinkingMember1();
+                result.MessagesRequestThinkingOneOf1 = new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestThinkingOneOf1();
             }
-            else if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("disabled".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.MessagesRequestThinkingMember2 = new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestThinkingMember2();
+                result.MessagesRequestThinkingOneOf2 = new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestThinkingOneOf2();
             }
-            else if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("adaptive".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.MessagesRequestThinkingMember3 = new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestThinkingMember3();
+                result.MessagesRequestThinkingOneOf3 = new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestThinkingOneOf3();
+            }
+            else if("between_tools".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                result.MessagesRequestThinkingOneOf4 = new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestThinkingOneOf4();
             }
             return result;
         }
@@ -67,17 +79,21 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(MessagesRequestThinkingMember1 != null)
+            if(MessagesRequestThinkingOneOf1 != null)
             {
-                return MessagesRequestThinkingMember1.GetFieldDeserializers();
+                return MessagesRequestThinkingOneOf1.GetFieldDeserializers();
             }
-            else if(MessagesRequestThinkingMember2 != null)
+            else if(MessagesRequestThinkingOneOf2 != null)
             {
-                return MessagesRequestThinkingMember2.GetFieldDeserializers();
+                return MessagesRequestThinkingOneOf2.GetFieldDeserializers();
             }
-            else if(MessagesRequestThinkingMember3 != null)
+            else if(MessagesRequestThinkingOneOf3 != null)
             {
-                return MessagesRequestThinkingMember3.GetFieldDeserializers();
+                return MessagesRequestThinkingOneOf3.GetFieldDeserializers();
+            }
+            else if(MessagesRequestThinkingOneOf4 != null)
+            {
+                return MessagesRequestThinkingOneOf4.GetFieldDeserializers();
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -88,17 +104,21 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(MessagesRequestThinkingMember1 != null)
+            if(MessagesRequestThinkingOneOf1 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestThinkingMember1>(null, MessagesRequestThinkingMember1);
+                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestThinkingOneOf1>(null, MessagesRequestThinkingOneOf1);
             }
-            else if(MessagesRequestThinkingMember2 != null)
+            else if(MessagesRequestThinkingOneOf2 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestThinkingMember2>(null, MessagesRequestThinkingMember2);
+                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestThinkingOneOf2>(null, MessagesRequestThinkingOneOf2);
             }
-            else if(MessagesRequestThinkingMember3 != null)
+            else if(MessagesRequestThinkingOneOf3 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestThinkingMember3>(null, MessagesRequestThinkingMember3);
+                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestThinkingOneOf3>(null, MessagesRequestThinkingOneOf3);
+            }
+            else if(MessagesRequestThinkingOneOf4 != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestThinkingOneOf4>(null, MessagesRequestThinkingOneOf4);
             }
         }
     }

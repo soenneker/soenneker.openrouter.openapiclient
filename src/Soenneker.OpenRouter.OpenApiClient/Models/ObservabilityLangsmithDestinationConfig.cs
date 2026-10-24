@@ -33,10 +33,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Custom HTTP headers to include in requests to this destination.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityLangsmithDestinationConfig_headers? Headers { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityLangsmithDestinationConfigHeadersProperty? Headers { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityLangsmithDestinationConfig_headers Headers { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityLangsmithDestinationConfigHeadersProperty Headers { get; set; }
 #endif
         /// <summary>The name for this project, such as pr-openrouter-demo. Defaults to &quot;main&quot; if not set.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -83,7 +83,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             {
                 { "apiKey", n => { ApiKey = n.GetStringValue(); } },
                 { "endpoint", n => { Endpoint = n.GetStringValue(); } },
-                { "headers", n => { Headers = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityLangsmithDestinationConfig_headers>(global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityLangsmithDestinationConfig_headers.CreateFromDiscriminatorValue); } },
+                { "headers", n => { Headers = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityLangsmithDestinationConfigHeadersProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityLangsmithDestinationConfigHeadersProperty.CreateFromDiscriminatorValue); } },
                 { "project", n => { Project = n.GetStringValue(); } },
                 { "workspaceId", n => { WorkspaceId = n.GetStringValue(); } },
             };
@@ -97,7 +97,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("apiKey", ApiKey);
             writer.WriteStringValue("endpoint", Endpoint);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityLangsmithDestinationConfig_headers>("headers", Headers);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityLangsmithDestinationConfigHeadersProperty>("headers", Headers);
             writer.WriteStringValue("project", Project);
             writer.WriteStringValue("workspaceId", WorkspaceId);
             writer.WriteAdditionalData(AdditionalData);

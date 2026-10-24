@@ -33,7 +33,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The status property</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationStatus? Status { get; set; }
         /// <summary>The type property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemImageGenerationCall_type? Type { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationCallType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemImageGenerationCall"/> and sets the default values.
         /// </summary>
@@ -62,7 +62,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "result", n => { Result = n.GetStringValue(); } },
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationStatus>(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemImageGenerationCall_type>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationCallType>(); } },
             };
         }
         /// <summary>
@@ -75,7 +75,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("result", Result);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationStatus>("status", Status);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemImageGenerationCall_type>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationCallType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

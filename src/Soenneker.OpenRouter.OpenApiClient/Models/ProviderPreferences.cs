@@ -13,10 +13,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ProviderPreferences : IParsable
     {
-        /// <summary>&quot;Whether to allow backup providers to serve requests- true: (default) when the primary provider (or your custom providers in \&quot;order\&quot;) is unavailable, use the next best provider.- false: use only the primary/custom provider, and return the upstream error if it&apos;s unavailable.&quot;</summary>
+        /// <summary>Whether to allow backup providers to serve requests- true: (default) when the primary provider (or your custom providers in &quot;order&quot;) is unavailable, use the next best provider.- false: use only the primary/custom provider, and return the upstream error if it&apos;s unavailable.</summary>
         public bool? AllowFallbacks { get; set; }
-        /// <summary>&quot;Data collection setting. If no available model provider meets the requirement, your request will return an error.- allow: (default) allow providers which store user data non-transiently and may train on it- deny: use only providers which do not collect user data.&quot;</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferences_data_collection? DataCollection { get; set; }
+        /// <summary>Data collection setting. If no available model provider meets the requirement, your request will return an error.- allow: (default) allow providers which store user data non-transiently and may train on it- deny: use only providers which do not collect user data.</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferencesDataCollection? DataCollection { get; set; }
         /// <summary>Whether to restrict routing to only models that allow text distillation. When true, only models where the author has allowed distillation will be used.</summary>
         public bool? EnforceDistillableText { get; set; }
         /// <summary>List of provider slugs to ignore. If provided, this list is merged with your account-wide ignored provider settings for this request.</summary>
@@ -42,6 +42,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #nullable restore
 #else
         public List<string> Only { get; set; }
+#endif
+        /// <summary>Provider-specific options keyed by provider slug. Only options for the matched provider are forwarded; the rest are ignored. Unrecognized keys are silently dropped.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions? Options { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions Options { get; set; }
 #endif
         /// <summary>An ordered list of provider slugs. The router will attempt to use the first provider in the subset of this list that supports your requested model, and fall back to the next if it is unavailable. If no providers are available, the request will fail with an error message.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -80,10 +88,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The sorting strategy to use for this request, if &quot;order&quot; is not specified. When set, no load balancing is performed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferences.ProviderPreferences_sort? Sort { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferencesSort? Sort { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferences.ProviderPreferences_sort Sort { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferencesSort Sort { get; set; }
 #endif
         /// <summary>Whether to restrict routing to only ZDR (Zero Data Retention) endpoints. When true, only endpoints that do not retain prompts will be used.</summary>
         public bool? Zdr { get; set; }
@@ -106,17 +114,18 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "allow_fallbacks", n => { AllowFallbacks = n.GetBoolValue(); } },
-                { "data_collection", n => { DataCollection = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferences_data_collection>(); } },
+                { "data_collection", n => { DataCollection = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferencesDataCollection>(); } },
                 { "enforce_distillable_text", n => { EnforceDistillableText = n.GetBoolValue(); } },
                 { "ignore", n => { Ignore = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "max_price", n => { MaxPrice = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferencesMaxPrice>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferencesMaxPrice.CreateFromDiscriminatorValue); } },
                 { "only", n => { Only = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "options", n => { Options = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions.CreateFromDiscriminatorValue); } },
                 { "order", n => { Order = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "preferred_max_latency", n => { PreferredMaxLatency = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PreferredMaxLatency>(global::Soenneker.OpenRouter.OpenApiClient.Models.PreferredMaxLatency.CreateFromDiscriminatorValue); } },
                 { "preferred_min_throughput", n => { PreferredMinThroughput = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PreferredMinThroughput>(global::Soenneker.OpenRouter.OpenApiClient.Models.PreferredMinThroughput.CreateFromDiscriminatorValue); } },
                 { "quantizations", n => { Quantizations = n.GetCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.Quantization>()?.AsList(); } },
                 { "require_parameters", n => { RequireParameters = n.GetBoolValue(); } },
-                { "sort", n => { Sort = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferences.ProviderPreferences_sort>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferences.ProviderPreferences_sort.CreateFromDiscriminatorValue); } },
+                { "sort", n => { Sort = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferencesSort>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferencesSort.CreateFromDiscriminatorValue); } },
                 { "zdr", n => { Zdr = n.GetBoolValue(); } },
             };
         }
@@ -128,75 +137,19 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("allow_fallbacks", AllowFallbacks);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferences_data_collection>("data_collection", DataCollection);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferencesDataCollection>("data_collection", DataCollection);
             writer.WriteBoolValue("enforce_distillable_text", EnforceDistillableText);
             writer.WriteCollectionOfPrimitiveValues<string>("ignore", Ignore);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferencesMaxPrice>("max_price", MaxPrice);
             writer.WriteCollectionOfPrimitiveValues<string>("only", Only);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions>("options", Options);
             writer.WriteCollectionOfPrimitiveValues<string>("order", Order);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PreferredMaxLatency>("preferred_max_latency", PreferredMaxLatency);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PreferredMinThroughput>("preferred_min_throughput", PreferredMinThroughput);
             writer.WriteCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.Quantization>("quantizations", Quantizations);
             writer.WriteBoolValue("require_parameters", RequireParameters);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferences.ProviderPreferences_sort>("sort", Sort);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferencesSort>("sort", Sort);
             writer.WriteBoolValue("zdr", Zdr);
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderSortConfig"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderSort_Wrapper"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class ProviderPreferences_sort : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderSortConfig"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderSortConfig? ProviderSortConfig { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderSortConfig ProviderSortConfig { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderSort_Wrapper"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderSort_Wrapper? ProviderSortWrapper { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderSort_Wrapper ProviderSortWrapper { get; set; }
-#endif
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferences.ProviderPreferences_sort"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferences.ProviderPreferences_sort CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var result = new global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferences.ProviderPreferences_sort();
-                result.ProviderSortConfig = new global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderSortConfig();
-                result.ProviderSortWrapper = new global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderSort_Wrapper();
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(ProviderSortConfig != null || ProviderSortWrapper != null)
-                {
-                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(ProviderSortConfig, ProviderSortWrapper);
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderSortConfig>(null, ProviderSortConfig, ProviderSortWrapper);
-            }
         }
     }
 }

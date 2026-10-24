@@ -14,13 +14,13 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The data property</summary>
+        /// <summary>The updated guardrail</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.UpdateGuardrailResponse_data? Data { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.UpdateGuardrailResponseData? Data { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.UpdateGuardrailResponse_data Data { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.UpdateGuardrailResponseData Data { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.UpdateGuardrailResponse"/> and sets the default values.
@@ -47,7 +47,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "data", n => { Data = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.UpdateGuardrailResponse_data>(global::Soenneker.OpenRouter.OpenApiClient.Models.UpdateGuardrailResponse_data.CreateFromDiscriminatorValue); } },
+                { "data", n => { Data = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.UpdateGuardrailResponseData>(global::Soenneker.OpenRouter.OpenApiClient.Models.UpdateGuardrailResponseData.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -57,7 +57,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.UpdateGuardrailResponse_data>("data", Data);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.UpdateGuardrailResponseData>("data", Data);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

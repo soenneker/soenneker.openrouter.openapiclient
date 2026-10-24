@@ -36,7 +36,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The index property</summary>
         public int? Index { get; set; }
         /// <summary>The type property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningDetailEncrypted_type? Type { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningEncryptedType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningDetailEncrypted"/> and sets the default values.
         /// </summary>
@@ -66,7 +66,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "format", n => { Format = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningFormat>(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "index", n => { Index = n.GetIntValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningDetailEncrypted_type>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningEncryptedType>(); } },
             };
         }
         /// <summary>
@@ -80,7 +80,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningFormat>("format", Format);
             writer.WriteStringValue("id", Id);
             writer.WriteIntValue("index", Index);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningDetailEncrypted_type>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningEncryptedType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

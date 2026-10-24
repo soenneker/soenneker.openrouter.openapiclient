@@ -8,26 +8,26 @@ using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.CodeInterpreterServerToolContainerMember1"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.CodeInterpreterServerToolContainer_Branch1"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.CodeInterpreterServerToolContainerAnyOf2"/>, <see cref="string"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CodeInterpreterServerToolContainer : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.CodeInterpreterServerToolContainer_Branch1"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.CodeInterpreterServerToolContainerAnyOf2"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.CodeInterpreterServerToolContainer_Branch1? CodeInterpreterServerToolContainerBranch1 { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.CodeInterpreterServerToolContainerAnyOf2? CodeInterpreterServerToolContainerAnyOf2 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.CodeInterpreterServerToolContainer_Branch1 CodeInterpreterServerToolContainerBranch1 { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.CodeInterpreterServerToolContainerAnyOf2 CodeInterpreterServerToolContainerAnyOf2 { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.CodeInterpreterServerToolContainerMember1"/></summary>
+        /// <summary>Composed type representation for type <see cref="string"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.CodeInterpreterServerToolContainerMember1? CodeInterpreterServerToolContainerMember1 { get; set; }
+        public string? String { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.CodeInterpreterServerToolContainerMember1 CodeInterpreterServerToolContainerMember1 { get; set; }
+        public string String { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -38,8 +38,13 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var result = new global::Soenneker.OpenRouter.OpenApiClient.Models.CodeInterpreterServerToolContainer();
-            result.CodeInterpreterServerToolContainerBranch1 = new global::Soenneker.OpenRouter.OpenApiClient.Models.CodeInterpreterServerToolContainer_Branch1();
-            result.CodeInterpreterServerToolContainerMember1 = new global::Soenneker.OpenRouter.OpenApiClient.Models.CodeInterpreterServerToolContainerMember1();
+            if(parseNode.GetStringValue() is string stringValue)
+            {
+                result.String = stringValue;
+            }
+            else {
+                result.CodeInterpreterServerToolContainerAnyOf2 = new global::Soenneker.OpenRouter.OpenApiClient.Models.CodeInterpreterServerToolContainerAnyOf2();
+            }
             return result;
         }
         /// <summary>
@@ -48,9 +53,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(CodeInterpreterServerToolContainerBranch1 != null || CodeInterpreterServerToolContainerMember1 != null)
+            if(CodeInterpreterServerToolContainerAnyOf2 != null)
             {
-                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(CodeInterpreterServerToolContainerBranch1, CodeInterpreterServerToolContainerMember1);
+                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(CodeInterpreterServerToolContainerAnyOf2);
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -61,7 +66,13 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.CodeInterpreterServerToolContainer_Branch1>(null, CodeInterpreterServerToolContainerBranch1, CodeInterpreterServerToolContainerMember1);
+            if(String != null)
+            {
+                writer.WriteStringValue(null, String);
+            }
+            else {
+                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.CodeInterpreterServerToolContainerAnyOf2>(null, CodeInterpreterServerToolContainerAnyOf2);
+            }
         }
     }
 }

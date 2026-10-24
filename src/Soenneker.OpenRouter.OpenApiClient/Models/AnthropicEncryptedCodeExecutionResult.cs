@@ -41,7 +41,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public string Stderr { get; set; }
 #endif
         /// <summary>The type property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicEncryptedCodeExecutionResult_type? Type { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.EncryptedCodeExecutionResultType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicEncryptedCodeExecutionResult"/> and sets the default values.
         /// </summary>
@@ -71,7 +71,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "encrypted_stdout", n => { EncryptedStdout = n.GetStringValue(); } },
                 { "return_code", n => { ReturnCode = n.GetIntValue(); } },
                 { "stderr", n => { Stderr = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicEncryptedCodeExecutionResult_type>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.EncryptedCodeExecutionResultType>(); } },
             };
         }
         /// <summary>
@@ -85,7 +85,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteStringValue("encrypted_stdout", EncryptedStdout);
             writer.WriteIntValue("return_code", ReturnCode);
             writer.WriteStringValue("stderr", Stderr);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicEncryptedCodeExecutionResult_type>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.EncryptedCodeExecutionResultType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

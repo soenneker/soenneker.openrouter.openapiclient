@@ -48,7 +48,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public string Timezone { get; set; }
 #endif
         /// <summary>The type property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchUserLocation_type? Type { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ApproximateType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchUserLocation"/> and sets the default values.
         /// </summary>
@@ -78,7 +78,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "country", n => { Country = n.GetStringValue(); } },
                 { "region", n => { Region = n.GetStringValue(); } },
                 { "timezone", n => { Timezone = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchUserLocation_type>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ApproximateType>(); } },
             };
         }
         /// <summary>
@@ -92,7 +92,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteStringValue("country", Country);
             writer.WriteStringValue("region", Region);
             writer.WriteStringValue("timezone", Timezone);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchUserLocation_type>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ApproximateType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

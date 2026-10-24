@@ -34,15 +34,15 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The schema property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.FormatJsonSchemaConfig_schema? Schema { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.FormatJsonSchemaConfigSchemaProperty? Schema { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.FormatJsonSchemaConfig_schema Schema { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.FormatJsonSchemaConfigSchemaProperty Schema { get; set; }
 #endif
         /// <summary>The strict property</summary>
         public bool? Strict { get; set; }
         /// <summary>The type property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.FormatJsonSchemaConfig_type? Type { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.JsonSchemaType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.FormatJsonSchemaConfig"/> and sets the default values.
         /// </summary>
@@ -70,9 +70,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             {
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "schema", n => { Schema = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.FormatJsonSchemaConfig_schema>(global::Soenneker.OpenRouter.OpenApiClient.Models.FormatJsonSchemaConfig_schema.CreateFromDiscriminatorValue); } },
+                { "schema", n => { Schema = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.FormatJsonSchemaConfigSchemaProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.FormatJsonSchemaConfigSchemaProperty.CreateFromDiscriminatorValue); } },
                 { "strict", n => { Strict = n.GetBoolValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.FormatJsonSchemaConfig_type>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.JsonSchemaType>(); } },
             };
         }
         /// <summary>
@@ -84,9 +84,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("description", Description);
             writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.FormatJsonSchemaConfig_schema>("schema", Schema);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.FormatJsonSchemaConfigSchemaProperty>("schema", Schema);
             writer.WriteBoolValue("strict", Strict);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.FormatJsonSchemaConfig_type>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.JsonSchemaType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

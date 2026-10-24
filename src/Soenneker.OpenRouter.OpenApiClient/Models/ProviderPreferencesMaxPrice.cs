@@ -15,31 +15,31 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The audio property</summary>
+        /// <summary>Maximum price in USD per audio unit</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferencesMaxPrice_audio? Audio { get; set; }
+        public string? Audio { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferencesMaxPrice_audio Audio { get; set; }
+        public string Audio { get; set; }
 #endif
-        /// <summary>The completion property</summary>
+        /// <summary>Maximum price in USD per million completion tokens</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferencesMaxPrice_completion? Completion { get; set; }
+        public string? Completion { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferencesMaxPrice_completion Completion { get; set; }
+        public string Completion { get; set; }
 #endif
-        /// <summary>The image property</summary>
+        /// <summary>Maximum price in USD per image</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferencesMaxPrice_image? Image { get; set; }
+        public string? Image { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferencesMaxPrice_image Image { get; set; }
+        public string Image { get; set; }
 #endif
-        /// <summary>Price per million prompt tokens</summary>
+        /// <summary>Maximum price in USD per million prompt tokens</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Prompt { get; set; }
@@ -47,13 +47,13 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public string Prompt { get; set; }
 #endif
-        /// <summary>The request property</summary>
+        /// <summary>Maximum price in USD per request</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferencesMaxPrice_request? Request { get; set; }
+        public string? Request { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferencesMaxPrice_request Request { get; set; }
+        public string Request { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferencesMaxPrice"/> and sets the default values.
@@ -80,11 +80,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "audio", n => { Audio = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferencesMaxPrice_audio>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferencesMaxPrice_audio.CreateFromDiscriminatorValue); } },
-                { "completion", n => { Completion = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferencesMaxPrice_completion>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferencesMaxPrice_completion.CreateFromDiscriminatorValue); } },
-                { "image", n => { Image = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferencesMaxPrice_image>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferencesMaxPrice_image.CreateFromDiscriminatorValue); } },
+                { "audio", n => { Audio = n.GetStringValue(); } },
+                { "completion", n => { Completion = n.GetStringValue(); } },
+                { "image", n => { Image = n.GetStringValue(); } },
                 { "prompt", n => { Prompt = n.GetStringValue(); } },
-                { "request", n => { Request = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferencesMaxPrice_request>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferencesMaxPrice_request.CreateFromDiscriminatorValue); } },
+                { "request", n => { Request = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -94,11 +94,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferencesMaxPrice_audio>("audio", Audio);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferencesMaxPrice_completion>("completion", Completion);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferencesMaxPrice_image>("image", Image);
+            writer.WriteStringValue("audio", Audio);
+            writer.WriteStringValue("completion", Completion);
+            writer.WriteStringValue("image", Image);
             writer.WriteStringValue("prompt", Prompt);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferencesMaxPrice_request>("request", Request);
+            writer.WriteStringValue("request", Request);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

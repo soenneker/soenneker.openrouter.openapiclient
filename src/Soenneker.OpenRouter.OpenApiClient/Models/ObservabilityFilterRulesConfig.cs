@@ -20,10 +20,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The groups property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityFilterRulesConfig_groups>? Groups { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityFilterRuleGroup>? Groups { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityFilterRulesConfig_groups> Groups { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityFilterRuleGroup> Groups { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityFilterRulesConfig"/> and sets the default values.
@@ -31,6 +31,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public ObservabilityFilterRulesConfig()
         {
             AdditionalData = new Dictionary<string, object>();
+            Enabled = true;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -51,7 +52,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
-                { "groups", n => { Groups = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityFilterRulesConfig_groups>(global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityFilterRulesConfig_groups.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "groups", n => { Groups = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityFilterRuleGroup>(global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityFilterRuleGroup.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -62,7 +63,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("enabled", Enabled);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityFilterRulesConfig_groups>("groups", Groups);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityFilterRuleGroup>("groups", Groups);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

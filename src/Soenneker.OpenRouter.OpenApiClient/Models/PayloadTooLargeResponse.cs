@@ -29,10 +29,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The openrouter_metadata property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.PayloadTooLargeResponse_openrouter_metadata? OpenrouterMetadata { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PayloadTooLargeResponseOpenrouterMetadataProperty? OpenrouterMetadata { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.PayloadTooLargeResponse_openrouter_metadata OpenrouterMetadata { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PayloadTooLargeResponseOpenrouterMetadataProperty OpenrouterMetadata { get; set; }
 #endif
         /// <summary>The user_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -68,7 +68,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "error", n => { Error = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PayloadTooLargeResponseErrorData>(global::Soenneker.OpenRouter.OpenApiClient.Models.PayloadTooLargeResponseErrorData.CreateFromDiscriminatorValue); } },
-                { "openrouter_metadata", n => { OpenrouterMetadata = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PayloadTooLargeResponse_openrouter_metadata>(global::Soenneker.OpenRouter.OpenApiClient.Models.PayloadTooLargeResponse_openrouter_metadata.CreateFromDiscriminatorValue); } },
+                { "openrouter_metadata", n => { OpenrouterMetadata = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PayloadTooLargeResponseOpenrouterMetadataProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.PayloadTooLargeResponseOpenrouterMetadataProperty.CreateFromDiscriminatorValue); } },
                 { "user_id", n => { UserId = n.GetStringValue(); } },
             };
         }
@@ -80,7 +80,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PayloadTooLargeResponseErrorData>("error", Error);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PayloadTooLargeResponse_openrouter_metadata>("openrouter_metadata", OpenrouterMetadata);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PayloadTooLargeResponseOpenrouterMetadataProperty>("openrouter_metadata", OpenrouterMetadata);
             writer.WriteStringValue("user_id", UserId);
             writer.WriteAdditionalData(AdditionalData);
         }

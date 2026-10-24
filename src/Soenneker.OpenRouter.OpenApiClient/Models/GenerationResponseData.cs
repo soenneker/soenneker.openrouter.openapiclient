@@ -16,7 +16,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Type of API used for the generation</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.GenerationResponseData_api_type? ApiType { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.GenerationResponseDataApiType? ApiType { get; set; }
         /// <summary>ID of the app that made the request</summary>
         public int? AppId { get; set; }
         /// <summary>Discount applied due to caching</summary>
@@ -31,6 +31,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public string CreatedAt { get; set; }
 #endif
+        /// <summary>The data region this generation was routed through: &apos;global&apos;, &apos;europe&apos;, or &apos;us&apos;.</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.GenerationResponseDataDataRegion? DataRegion { get; set; }
         /// <summary>External user identifier</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -215,6 +217,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public string WebSearchEngine { get; set; }
 #endif
+        /// <summary>ID of the workspace this generation is attributed to. Null for accounts without workspaces. Generations created before workspace resolution existed are attributed to the account default workspace.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? WorkspaceId { get; set; }
+#nullable restore
+#else
+        public string WorkspaceId { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.GenerationResponseData"/> and sets the default values.
         /// </summary>
@@ -240,11 +250,12 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "api_type", n => { ApiType = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.GenerationResponseData_api_type>(); } },
+                { "api_type", n => { ApiType = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.GenerationResponseDataApiType>(); } },
                 { "app_id", n => { AppId = n.GetIntValue(); } },
                 { "cache_discount", n => { CacheDiscount = n.GetDoubleValue(); } },
                 { "cancelled", n => { Cancelled = n.GetBoolValue(); } },
                 { "created_at", n => { CreatedAt = n.GetStringValue(); } },
+                { "data_region", n => { DataRegion = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.GenerationResponseDataDataRegion>(); } },
                 { "external_user", n => { ExternalUser = n.GetStringValue(); } },
                 { "finish_reason", n => { FinishReason = n.GetStringValue(); } },
                 { "generation_time", n => { GenerationTime = n.GetDoubleValue(); } },
@@ -283,6 +294,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "usage", n => { Usage = n.GetDoubleValue(); } },
                 { "user_agent", n => { UserAgent = n.GetStringValue(); } },
                 { "web_search_engine", n => { WebSearchEngine = n.GetStringValue(); } },
+                { "workspace_id", n => { WorkspaceId = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -292,11 +304,12 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.GenerationResponseData_api_type>("api_type", ApiType);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.GenerationResponseDataApiType>("api_type", ApiType);
             writer.WriteIntValue("app_id", AppId);
             writer.WriteDoubleValue("cache_discount", CacheDiscount);
             writer.WriteBoolValue("cancelled", Cancelled);
             writer.WriteStringValue("created_at", CreatedAt);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.GenerationResponseDataDataRegion>("data_region", DataRegion);
             writer.WriteStringValue("external_user", ExternalUser);
             writer.WriteStringValue("finish_reason", FinishReason);
             writer.WriteDoubleValue("generation_time", GenerationTime);
@@ -335,6 +348,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteDoubleValue("usage", Usage);
             writer.WriteStringValue("user_agent", UserAgent);
             writer.WriteStringValue("web_search_engine", WebSearchEngine);
+            writer.WriteStringValue("workspace_id", WorkspaceId);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

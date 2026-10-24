@@ -45,7 +45,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public string Title { get; set; }
 #endif
         /// <summary>The type property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCitationSearchResultLocation_type? Type { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.SearchResultLocationType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCitationSearchResultLocation"/> and sets the default values.
         /// </summary>
@@ -77,7 +77,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "source", n => { Source = n.GetStringValue(); } },
                 { "start_block_index", n => { StartBlockIndex = n.GetIntValue(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCitationSearchResultLocation_type>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SearchResultLocationType>(); } },
             };
         }
         /// <summary>
@@ -93,7 +93,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteStringValue("source", Source);
             writer.WriteIntValue("start_block_index", StartBlockIndex);
             writer.WriteStringValue("title", Title);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCitationSearchResultLocation_type>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SearchResultLocationType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

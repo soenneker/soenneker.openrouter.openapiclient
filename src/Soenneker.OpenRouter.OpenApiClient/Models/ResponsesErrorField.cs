@@ -16,7 +16,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The code property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesErrorField_code? Code { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesErrorFieldCode? Code { get; set; }
         /// <summary>The message property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -50,7 +50,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "code", n => { Code = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesErrorField_code>(); } },
+                { "code", n => { Code = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesErrorFieldCode>(); } },
                 { "message", n => { Message = n.GetStringValue(); } },
             };
         }
@@ -61,7 +61,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesErrorField_code>("code", Code);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesErrorFieldCode>("code", Code);
             writer.WriteStringValue("message", Message);
             writer.WriteAdditionalData(AdditionalData);
         }

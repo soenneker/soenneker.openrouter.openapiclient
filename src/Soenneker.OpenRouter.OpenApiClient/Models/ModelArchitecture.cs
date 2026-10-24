@@ -24,7 +24,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public List<global::Soenneker.OpenRouter.OpenApiClient.Models.InputModality?> InputModalities { get; set; }
 #endif
         /// <summary>Instruction format type</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ModelArchitecture_instruct_type? InstructType { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.InstructType? InstructType { get; set; }
         /// <summary>Primary modality of the model</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -69,7 +69,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "input_modalities", n => { InputModalities = n.GetCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.InputModality>()?.AsList(); } },
-                { "instruct_type", n => { InstructType = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ModelArchitecture_instruct_type>(); } },
+                { "instruct_type", n => { InstructType = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.InstructType>(); } },
                 { "modality", n => { Modality = n.GetStringValue(); } },
                 { "output_modalities", n => { OutputModalities = n.GetCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputModality>()?.AsList(); } },
                 { "tokenizer", n => { Tokenizer = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ModelGroup>(); } },
@@ -83,7 +83,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.InputModality>("input_modalities", InputModalities);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ModelArchitecture_instruct_type>("instruct_type", InstructType);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.InstructType>("instruct_type", InstructType);
             writer.WriteStringValue("modality", Modality);
             writer.WriteCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputModality>("output_modalities", OutputModalities);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ModelGroup>("tokenizer", Tokenizer);

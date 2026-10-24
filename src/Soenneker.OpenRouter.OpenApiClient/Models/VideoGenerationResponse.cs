@@ -22,6 +22,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public string Error { get; set; }
 #endif
+        /// <summary>Unix timestamp in seconds when OpenRouter&apos;s stored copy of the outputs stops being available. Present only when that copy exists.</summary>
+        public int? ExpiresAt { get; set; }
         /// <summary>The generation ID associated with this video generation job. Available once the job has been processed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -30,7 +32,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public string GenerationId { get; set; }
 #endif
-        /// <summary>The id property</summary>
+        /// <summary>The video job ID, in the `gen-vid-&lt;timestamp&gt;-&lt;20 alphanumerics&gt;` generation ID format. Pass it as `previous_job_id` to continue the generation.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Id { get; set; }
@@ -47,14 +49,22 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public string PollingUrl { get; set; }
 #endif
         /// <summary>The status property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationResponse_status? Status { get; set; }
-        /// <summary>The unsigned_urls property</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationResponseStatus? Status { get; set; }
+        /// <summary>OpenRouter content URLs for each output. They need your API key in the `Authorization` header and keep working for as long as the output is available.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? UnsignedUrls { get; set; }
 #nullable restore
 #else
         public List<string> UnsignedUrls { get; set; }
+#endif
+        /// <summary>Signed download URLs for OpenRouter&apos;s stored copy of each output, usable without an API key until `expires_at`. Anyone holding a URL can download that output until it expires, so treat it like a secret. Present only when the stored copy exists.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? Urls { get; set; }
+#nullable restore
+#else
+        public List<string> Urls { get; set; }
 #endif
         /// <summary>Usage and cost information for the video generation. Available once the job has completed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -90,11 +100,13 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "error", n => { Error = n.GetStringValue(); } },
+                { "expires_at", n => { ExpiresAt = n.GetIntValue(); } },
                 { "generation_id", n => { GenerationId = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "polling_url", n => { PollingUrl = n.GetStringValue(); } },
-                { "status", n => { Status = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationResponse_status>(); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationResponseStatus>(); } },
                 { "unsigned_urls", n => { UnsignedUrls = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "urls", n => { Urls = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "usage", n => { Usage = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationUsage>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationUsage.CreateFromDiscriminatorValue); } },
             };
         }
@@ -106,11 +118,13 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("error", Error);
+            writer.WriteIntValue("expires_at", ExpiresAt);
             writer.WriteStringValue("generation_id", GenerationId);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("polling_url", PollingUrl);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationResponse_status>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationResponseStatus>("status", Status);
             writer.WriteCollectionOfPrimitiveValues<string>("unsigned_urls", UnsignedUrls);
+            writer.WriteCollectionOfPrimitiveValues<string>("urls", Urls);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationUsage>("usage", Usage);
             writer.WriteAdditionalData(AdditionalData);
         }

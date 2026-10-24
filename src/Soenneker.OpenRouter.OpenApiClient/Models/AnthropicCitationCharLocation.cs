@@ -45,7 +45,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The start_char_index property</summary>
         public int? StartCharIndex { get; set; }
         /// <summary>The type property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCitationCharLocation_type? Type { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.CharLocationType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCitationCharLocation"/> and sets the default values.
         /// </summary>
@@ -77,7 +77,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "end_char_index", n => { EndCharIndex = n.GetIntValue(); } },
                 { "file_id", n => { FileId = n.GetStringValue(); } },
                 { "start_char_index", n => { StartCharIndex = n.GetIntValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCitationCharLocation_type>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.CharLocationType>(); } },
             };
         }
         /// <summary>
@@ -93,7 +93,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteIntValue("end_char_index", EndCharIndex);
             writer.WriteStringValue("file_id", FileId);
             writer.WriteIntValue("start_char_index", StartCharIndex);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCitationCharLocation_type>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.CharLocationType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

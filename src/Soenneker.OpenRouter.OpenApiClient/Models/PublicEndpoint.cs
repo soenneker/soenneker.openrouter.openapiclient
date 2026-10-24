@@ -25,7 +25,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public global::Soenneker.OpenRouter.OpenApiClient.Models.PercentileStats LatencyLast30m { get; set; }
 #endif
-        /// <summary>The max_completion_tokens property</summary>
+        /// <summary>Maximum completion tokens for this endpoint. Input and output tokens share the context window, so the effective maximum output for a request is further limited by the context remaining after input tokens.</summary>
         public int? MaxCompletionTokens { get; set; }
         /// <summary>The max_prompt_tokens property</summary>
         public int? MaxPromptTokens { get; set; }
@@ -53,6 +53,22 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
+        /// <summary>The server tools this endpoint accepts as the provider&apos;s own built-in tool (`engine: &quot;native&quot;`) instead of an OpenRouter engine, keyed by canonical `openrouter:*` name. Each value names the provider tool type the request is translated to. Where that tool runs (provider-side, or returned to the client as with Anthropic bash) is documented per tool. Empty when the provider has none.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointNativeToolsProperty? NativeTools { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointNativeToolsProperty NativeTools { get; set; }
+#endif
+        /// <summary>Endpoint performance over the last 30 minutes, keyed by the kind of request served (e.g. `text_generation`, `image_generation`). Additive to the legacy singular latency and throughput fields; image and video generation report end-to-end latency. Only visible when authenticated with an API key or cookie.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkload? PerfLast30mByWorkload { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkload PerfLast30mByWorkload { get; set; }
+#endif
         /// <summary>The pricing property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -65,6 +81,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderName? ProviderName { get; set; }
         /// <summary>The quantization property</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.Quantization? Quantization { get; set; }
+        /// <summary>The service tier this endpoint sells, or null for a standard endpoint. The same value whether the provider selects the tier with a request parameter or with a dedicated model id. Always the canonical tier: priority covers the fast request alias and the turbo, highspeed, and prime provider model-id spellings, none of which this field reports.</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicServiceTier? ServiceTier { get; set; }
         /// <summary>The status property</summary>
         public int? Status { get; set; }
         /// <summary>The supported_parameters property</summary>
@@ -75,8 +93,24 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public List<global::Soenneker.OpenRouter.OpenApiClient.Models.Parameter?> SupportedParameters { get; set; }
 #endif
+        /// <summary>Whether this STT endpoint can label each transcript segment with a speaker (speaker diarization). False when the endpoint has not declared support.</summary>
+        public bool? SupportsDiarization { get; set; }
+        /// <summary>Whether this TTS endpoint accepts an `image_url` reference describing the desired voice. Requests carrying an image reference are only routed to endpoints where this is true.</summary>
+        public bool? SupportsImageReference { get; set; }
         /// <summary>The supports_implicit_caching property</summary>
         public bool? SupportsImplicitCaching { get; set; }
+        /// <summary>Whether this TTS endpoint accepts more than one `input_audio` reference clip per request. Requests carrying several clips are only routed to endpoints where this is true.</summary>
+        public bool? SupportsMultipleAudioReferences { get; set; }
+        /// <summary>Per-variant `tool_choice` support. `tool_choice` in `supported_parameters` only says the parameter is accepted; these flags say which of its values passed testing.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ToolChoiceSupport? SupportsToolChoice { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ToolChoiceSupport SupportsToolChoice { get; set; }
+#endif
+        /// <summary>Whether this TTS endpoint accepts inline reference audio (`input_references`) for stateless voice cloning. Requests carrying reference audio are only routed to endpoints where this is true.</summary>
+        public bool? SupportsVoiceCloning { get; set; }
         /// <summary>The tag property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -85,19 +119,19 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public string Tag { get; set; }
 #endif
-        /// <summary>The throughput_last_30m property</summary>
+        /// <summary>Throughput percentiles in tokens per second over the last 30 minutes. Throughput measures output token generation speed; pN is the speed that N% of requests reached or exceeded, so p90 is lower than p50. Only visible when authenticated with an API key or cookie; returns null for unauthenticated requests.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpoint_throughput_last_30m? ThroughputLast30m { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointThroughputLast30M? ThroughputLast30m { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpoint_throughput_last_30m ThroughputLast30m { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointThroughputLast30M ThroughputLast30m { get; set; }
 #endif
-        /// <summary>Uptime percentage over the last 1 day, calculated as successful requests / (successful + error requests) * 100. Rate-limited requests are excluded. Returns null if insufficient data.</summary>
+        /// <summary>Uptime percentage over the last day: the share of minutes in which at least 80% of provider attempts succeeded, counting only minutes with 10 or more attempts. Rate-limited and caller-caused failures are excluded. Null when no minute had enough traffic.</summary>
         public double? UptimeLast1d { get; set; }
         /// <summary>The uptime_last_30m property</summary>
         public double? UptimeLast30m { get; set; }
-        /// <summary>Uptime percentage over the last 5 minutes, calculated as successful requests / (successful + error requests) * 100. Rate-limited requests are excluded. Returns null if insufficient data.</summary>
+        /// <summary>Uptime percentage over the last 5 minutes: the share of minutes in which at least 80% of provider attempts succeeded, counting only minutes with 10 or more attempts. Rate-limited and caller-caused failures are excluded. Null when no minute had enough traffic.</summary>
         public double? UptimeLast5m { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpoint"/> and sets the default values.
@@ -105,6 +139,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public PublicEndpoint()
         {
             AdditionalData = new Dictionary<string, object>();
+            SupportsImageReference = false;
+            SupportsMultipleAudioReferences = false;
+            SupportsVoiceCloning = false;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -131,14 +168,22 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "model_id", n => { ModelId = n.GetStringValue(); } },
                 { "model_name", n => { ModelName = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
+                { "native_tools", n => { NativeTools = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointNativeToolsProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointNativeToolsProperty.CreateFromDiscriminatorValue); } },
+                { "perf_last_30m_by_workload", n => { PerfLast30mByWorkload = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkload>(global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkload.CreateFromDiscriminatorValue); } },
                 { "pricing", n => { Pricing = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPricing>(global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPricing.CreateFromDiscriminatorValue); } },
                 { "provider_name", n => { ProviderName = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderName>(); } },
                 { "quantization", n => { Quantization = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.Quantization>(); } },
+                { "service_tier", n => { ServiceTier = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicServiceTier>(); } },
                 { "status", n => { Status = n.GetIntValue(); } },
                 { "supported_parameters", n => { SupportedParameters = n.GetCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.Parameter>()?.AsList(); } },
+                { "supports_diarization", n => { SupportsDiarization = n.GetBoolValue(); } },
+                { "supports_image_reference", n => { SupportsImageReference = n.GetBoolValue(); } },
                 { "supports_implicit_caching", n => { SupportsImplicitCaching = n.GetBoolValue(); } },
+                { "supports_multiple_audio_references", n => { SupportsMultipleAudioReferences = n.GetBoolValue(); } },
+                { "supports_tool_choice", n => { SupportsToolChoice = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ToolChoiceSupport>(global::Soenneker.OpenRouter.OpenApiClient.Models.ToolChoiceSupport.CreateFromDiscriminatorValue); } },
+                { "supports_voice_cloning", n => { SupportsVoiceCloning = n.GetBoolValue(); } },
                 { "tag", n => { Tag = n.GetStringValue(); } },
-                { "throughput_last_30m", n => { ThroughputLast30m = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpoint_throughput_last_30m>(global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpoint_throughput_last_30m.CreateFromDiscriminatorValue); } },
+                { "throughput_last_30m", n => { ThroughputLast30m = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointThroughputLast30M>(global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointThroughputLast30M.CreateFromDiscriminatorValue); } },
                 { "uptime_last_1d", n => { UptimeLast1d = n.GetDoubleValue(); } },
                 { "uptime_last_30m", n => { UptimeLast30m = n.GetDoubleValue(); } },
                 { "uptime_last_5m", n => { UptimeLast5m = n.GetDoubleValue(); } },
@@ -158,14 +203,22 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteStringValue("model_id", ModelId);
             writer.WriteStringValue("model_name", ModelName);
             writer.WriteStringValue("name", Name);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointNativeToolsProperty>("native_tools", NativeTools);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkload>("perf_last_30m_by_workload", PerfLast30mByWorkload);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPricing>("pricing", Pricing);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderName>("provider_name", ProviderName);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.Quantization>("quantization", Quantization);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicServiceTier>("service_tier", ServiceTier);
             writer.WriteIntValue("status", Status);
             writer.WriteCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.Parameter>("supported_parameters", SupportedParameters);
+            writer.WriteBoolValue("supports_diarization", SupportsDiarization);
+            writer.WriteBoolValue("supports_image_reference", SupportsImageReference);
             writer.WriteBoolValue("supports_implicit_caching", SupportsImplicitCaching);
+            writer.WriteBoolValue("supports_multiple_audio_references", SupportsMultipleAudioReferences);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ToolChoiceSupport>("supports_tool_choice", SupportsToolChoice);
+            writer.WriteBoolValue("supports_voice_cloning", SupportsVoiceCloning);
             writer.WriteStringValue("tag", Tag);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpoint_throughput_last_30m>("throughput_last_30m", ThroughputLast30m);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointThroughputLast30M>("throughput_last_30m", ThroughputLast30m);
             writer.WriteDoubleValue("uptime_last_1d", UptimeLast1d);
             writer.WriteDoubleValue("uptime_last_30m", UptimeLast30m);
             writer.WriteDoubleValue("uptime_last_5m", UptimeLast5m);

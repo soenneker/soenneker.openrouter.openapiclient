@@ -34,10 +34,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>JSON Schema object</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatJsonSchemaConfig_schema? Schema { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatJsonSchemaConfigSchemaProperty? Schema { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatJsonSchemaConfig_schema Schema { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatJsonSchemaConfigSchemaProperty Schema { get; set; }
 #endif
         /// <summary>Enable strict schema adherence</summary>
         public bool? Strict { get; set; }
@@ -68,7 +68,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             {
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "schema", n => { Schema = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatJsonSchemaConfig_schema>(global::Soenneker.OpenRouter.OpenApiClient.Models.ChatJsonSchemaConfig_schema.CreateFromDiscriminatorValue); } },
+                { "schema", n => { Schema = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatJsonSchemaConfigSchemaProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ChatJsonSchemaConfigSchemaProperty.CreateFromDiscriminatorValue); } },
                 { "strict", n => { Strict = n.GetBoolValue(); } },
             };
         }
@@ -81,7 +81,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("description", Description);
             writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatJsonSchemaConfig_schema>("schema", Schema);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatJsonSchemaConfigSchemaProperty>("schema", Schema);
             writer.WriteBoolValue("strict", Strict);
             writer.WriteAdditionalData(AdditionalData);
         }

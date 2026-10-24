@@ -14,43 +14,43 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "top_p")]
         #pragma warning disable CS1591
-        Top_p,
+        TopP,
         #pragma warning restore CS1591
         [EnumMember(Value = "top_k")]
         #pragma warning disable CS1591
-        Top_k,
+        TopK,
         #pragma warning restore CS1591
         [EnumMember(Value = "min_p")]
         #pragma warning disable CS1591
-        Min_p,
+        MinP,
         #pragma warning restore CS1591
         [EnumMember(Value = "top_a")]
         #pragma warning disable CS1591
-        Top_a,
+        TopA,
         #pragma warning restore CS1591
         [EnumMember(Value = "frequency_penalty")]
         #pragma warning disable CS1591
-        Frequency_penalty,
+        FrequencyPenalty,
         #pragma warning restore CS1591
         [EnumMember(Value = "presence_penalty")]
         #pragma warning disable CS1591
-        Presence_penalty,
+        PresencePenalty,
         #pragma warning restore CS1591
         [EnumMember(Value = "repetition_penalty")]
         #pragma warning disable CS1591
-        Repetition_penalty,
+        RepetitionPenalty,
         #pragma warning restore CS1591
         [EnumMember(Value = "max_tokens")]
         #pragma warning disable CS1591
-        Max_tokens,
+        MaxTokens,
         #pragma warning restore CS1591
         [EnumMember(Value = "max_completion_tokens")]
         #pragma warning disable CS1591
-        Max_completion_tokens,
+        MaxCompletionTokens,
         #pragma warning restore CS1591
         [EnumMember(Value = "logit_bias")]
         #pragma warning disable CS1591
-        Logit_bias,
+        LogitBias,
         #pragma warning restore CS1591
         [EnumMember(Value = "logprobs")]
         #pragma warning disable CS1591
@@ -58,7 +58,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "top_logprobs")]
         #pragma warning disable CS1591
-        Top_logprobs,
+        TopLogprobs,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "prediction")]
+        #pragma warning disable CS1591
+        Prediction,
         #pragma warning restore CS1591
         [EnumMember(Value = "seed")]
         #pragma warning disable CS1591
@@ -66,11 +70,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "response_format")]
         #pragma warning disable CS1591
-        Response_format,
+        ResponseFormat,
         #pragma warning restore CS1591
         [EnumMember(Value = "structured_outputs")]
         #pragma warning disable CS1591
-        Structured_outputs,
+        StructuredOutputs,
         #pragma warning restore CS1591
         [EnumMember(Value = "stop")]
         #pragma warning disable CS1591
@@ -82,15 +86,15 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "tool_choice")]
         #pragma warning disable CS1591
-        Tool_choice,
+        ToolChoice,
         #pragma warning restore CS1591
         [EnumMember(Value = "parallel_tool_calls")]
         #pragma warning disable CS1591
-        Parallel_tool_calls,
+        ParallelToolCalls,
         #pragma warning restore CS1591
         [EnumMember(Value = "include_reasoning")]
         #pragma warning disable CS1591
-        Include_reasoning,
+        IncludeReasoning,
         #pragma warning restore CS1591
         [EnumMember(Value = "reasoning")]
         #pragma warning disable CS1591
@@ -98,11 +102,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "reasoning_effort")]
         #pragma warning disable CS1591
-        Reasoning_effort,
+        ReasoningEffort,
         #pragma warning restore CS1591
         [EnumMember(Value = "web_search_options")]
         #pragma warning disable CS1591
-        Web_search_options,
+        WebSearchOptions,
         #pragma warning restore CS1591
         [EnumMember(Value = "verbosity")]
         #pragma warning disable CS1591

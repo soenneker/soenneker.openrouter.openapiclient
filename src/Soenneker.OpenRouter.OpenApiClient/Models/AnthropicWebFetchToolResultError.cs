@@ -15,9 +15,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The error_code property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicWebFetchToolResultError_error_code? ErrorCode { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicWebFetchToolResultErrorErrorCode? ErrorCode { get; set; }
         /// <summary>The type property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicWebFetchToolResultError_type? Type { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.WebFetchToolResultErrorType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicWebFetchToolResultError"/> and sets the default values.
         /// </summary>
@@ -43,8 +43,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "error_code", n => { ErrorCode = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicWebFetchToolResultError_error_code>(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicWebFetchToolResultError_type>(); } },
+                { "error_code", n => { ErrorCode = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicWebFetchToolResultErrorErrorCode>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebFetchToolResultErrorType>(); } },
             };
         }
         /// <summary>
@@ -54,8 +54,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicWebFetchToolResultError_error_code>("error_code", ErrorCode);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicWebFetchToolResultError_type>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicWebFetchToolResultErrorErrorCode>("error_code", ErrorCode);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebFetchToolResultErrorType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

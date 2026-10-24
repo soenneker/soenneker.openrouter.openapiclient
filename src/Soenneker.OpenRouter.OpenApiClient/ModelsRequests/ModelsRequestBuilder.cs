@@ -47,7 +47,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.ModelsRequests
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ModelsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/models{?category*,output_modalities*,supported_parameters*}", pathParameters)
+        public ModelsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/models{?arch*,category*,context*,distillable*,input_modalities*,limit*,max_age_days*,max_agentic_index*,max_coding_index*,max_intelligence_index*,max_output_price*,max_price*,max_tool_success_rate*,min_age_days*,min_agentic_index*,min_coding_index*,min_intelligence_index*,min_output_price*,min_price*,min_tool_success_rate*,model_authors*,offset*,output_modalities*,providers*,q*,region*,sort*,supported_parameters*,zdr*}", pathParameters)
         {
         }
         /// <summary>
@@ -55,7 +55,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.ModelsRequests
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ModelsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/models{?category*,output_modalities*,supported_parameters*}", rawUrl)
+        public ModelsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/models{?arch*,category*,context*,distillable*,input_modalities*,limit*,max_age_days*,max_agentic_index*,max_coding_index*,max_intelligence_index*,max_output_price*,max_price*,max_tool_success_rate*,min_age_days*,min_agentic_index*,min_coding_index*,min_intelligence_index*,min_output_price*,min_price*,min_tool_success_rate*,model_authors*,offset*,output_modalities*,providers*,q*,region*,sort*,supported_parameters*,zdr*}", rawUrl)
         {
         }
         /// <summary>
@@ -65,6 +65,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.ModelsRequests
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BadRequestResponse">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ForbiddenResponse">When receiving a 403 status code</exception>
         /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.InternalServerResponse">When receiving a 500 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -79,6 +80,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.ModelsRequests
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "400", global::Soenneker.OpenRouter.OpenApiClient.Models.BadRequestResponse.CreateFromDiscriminatorValue },
+                { "403", global::Soenneker.OpenRouter.OpenApiClient.Models.ForbiddenResponse.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.OpenRouter.OpenApiClient.Models.InternalServerResponse.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.OpenRouter.OpenApiClient.Models.ModelsListResponse>(requestInfo, global::Soenneker.OpenRouter.OpenApiClient.Models.ModelsListResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
@@ -117,10 +119,94 @@ namespace Soenneker.OpenRouter.OpenApiClient.ModelsRequests
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class ModelsRequestBuilderGetQueryParameters 
         {
+            /// <summary>Filter models by architecture/model family (e.g. GPT, Claude, Gemini, Llama).</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("arch")]
+            public string? Arch { get; set; }
+#nullable restore
+#else
+            [QueryParameter("arch")]
+            public string Arch { get; set; }
+#endif
             /// <summary>Filter models by use case category</summary>
             [QueryParameter("category")]
-            public global::Soenneker.OpenRouter.OpenApiClient.ModelsRequests.GetCategoryQueryParameterType? Category { get; set; }
-            /// <summary>Filter models by output modality. Accepts a comma-separated list of modalities (text, image, audio, embeddings) or &quot;all&quot; to include all models. Defaults to &quot;text&quot;.</summary>
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.GetModelsCategoryParameter? Category { get; set; }
+            /// <summary>Minimum context length (tokens). Models with smaller context are excluded.</summary>
+            [QueryParameter("context")]
+            public int? Context { get; set; }
+            /// <summary>Filter by distillation capability. &quot;true&quot; returns only distillable models, &quot;false&quot; excludes them.</summary>
+            [QueryParameter("distillable")]
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.GetModelsDistillableParameter? Distillable { get; set; }
+            /// <summary>Filter models by input modality. Comma-separated list of: text, image, audio, file.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("input_modalities")]
+            public string? InputModalities { get; set; }
+#nullable restore
+#else
+            [QueryParameter("input_modalities")]
+            public string InputModalities { get; set; }
+#endif
+            /// <summary>Maximum number of records to return (max 1000). When both offset and limit are omitted, the full list is returned</summary>
+            [QueryParameter("limit")]
+            public int? Limit { get; set; }
+            /// <summary>Maximum model age in days since its creation date.</summary>
+            [QueryParameter("max_age_days")]
+            public int? MaxAgeDays { get; set; }
+            /// <summary>Maximum Artificial Analysis agentic index.</summary>
+            [QueryParameter("max_agentic_index")]
+            public double? MaxAgenticIndex { get; set; }
+            /// <summary>Maximum Artificial Analysis coding index.</summary>
+            [QueryParameter("max_coding_index")]
+            public double? MaxCodingIndex { get; set; }
+            /// <summary>Maximum Artificial Analysis intelligence index.</summary>
+            [QueryParameter("max_intelligence_index")]
+            public double? MaxIntelligenceIndex { get; set; }
+            /// <summary>Maximum completion (output) price in $/M tokens.</summary>
+            [QueryParameter("max_output_price")]
+            public double? MaxOutputPrice { get; set; }
+            /// <summary>Maximum prompt price in $/M tokens.</summary>
+            [QueryParameter("max_price")]
+            public double? MaxPrice { get; set; }
+            /// <summary>Maximum tool-calling success rate, as a fraction in [0, 1].</summary>
+            [QueryParameter("max_tool_success_rate")]
+            public double? MaxToolSuccessRate { get; set; }
+            /// <summary>Minimum model age in days since its creation date.</summary>
+            [QueryParameter("min_age_days")]
+            public int? MinAgeDays { get; set; }
+            /// <summary>Minimum Artificial Analysis agentic index.</summary>
+            [QueryParameter("min_agentic_index")]
+            public double? MinAgenticIndex { get; set; }
+            /// <summary>Minimum Artificial Analysis coding index.</summary>
+            [QueryParameter("min_coding_index")]
+            public double? MinCodingIndex { get; set; }
+            /// <summary>Minimum Artificial Analysis intelligence index.</summary>
+            [QueryParameter("min_intelligence_index")]
+            public double? MinIntelligenceIndex { get; set; }
+            /// <summary>Minimum completion (output) price in $/M tokens.</summary>
+            [QueryParameter("min_output_price")]
+            public double? MinOutputPrice { get; set; }
+            /// <summary>Minimum prompt price in $/M tokens.</summary>
+            [QueryParameter("min_price")]
+            public double? MinPrice { get; set; }
+            /// <summary>Minimum tool-calling success rate, as a fraction in [0, 1] (e.g. 0.9 = 90% of requests finishing with a tool_calls finish reason).</summary>
+            [QueryParameter("min_tool_success_rate")]
+            public double? MinToolSuccessRate { get; set; }
+            /// <summary>Filter models by the organization that created the model. Comma-separated list of author slugs.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("model_authors")]
+            public string? ModelAuthors { get; set; }
+#nullable restore
+#else
+            [QueryParameter("model_authors")]
+            public string ModelAuthors { get; set; }
+#endif
+            /// <summary>Number of records to skip for pagination. When both offset and limit are omitted, the full list is returned</summary>
+            [QueryParameter("offset")]
+            public int? Offset { get; set; }
+            /// <summary>Filter models by output modality. Accepts a comma-separated list of modalities (text, image, embeddings, audio, video, rerank, decisions, speech, transcription) or &quot;all&quot; to include all models. Defaults to &quot;text&quot;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("output_modalities")]
@@ -130,6 +216,32 @@ namespace Soenneker.OpenRouter.OpenApiClient.ModelsRequests
             [QueryParameter("output_modalities")]
             public string OutputModalities { get; set; }
 #endif
+            /// <summary>Filter models by hosting provider. Comma-separated list of provider names.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("providers")]
+            public string? Providers { get; set; }
+#nullable restore
+#else
+            [QueryParameter("providers")]
+            public string Providers { get; set; }
+#endif
+            /// <summary>Free-text search by model name or slug.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("q")]
+            public string? Q { get; set; }
+#nullable restore
+#else
+            [QueryParameter("q")]
+            public string Q { get; set; }
+#endif
+            /// <summary>Filter to models with endpoints in the given data region (&quot;eu&quot; or &quot;us&quot;).</summary>
+            [QueryParameter("region")]
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.GetModelsRegionParameter? Region { get; set; }
+            /// <summary>Sort the returned models server-side. Prefer this over fetching the full list and sorting client-side. Options: pricing-low-to-high, pricing-high-to-low (average prompt/completion price), context-high-to-low (context length), throughput-high-to-low, latency-low-to-high (recent median performance), most-popular, top-weekly (tokens processed in the last week), newest (creation date), intelligence-high-to-low, coding-high-to-low, agentic-high-to-low (Artificial Analysis indices), design-arena-elo-high-to-low (best Design Arena ELO across arenas). Models without a score for the chosen benchmark are placed last. When omitted, the existing default ordering is preserved.</summary>
+            [QueryParameter("sort")]
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.GetModelsSortParameter? Sort { get; set; }
             /// <summary>Filter models by supported parameter (comma-separated)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -140,6 +252,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.ModelsRequests
             [QueryParameter("supported_parameters")]
             public string SupportedParameters { get; set; }
 #endif
+            /// <summary>When set to &quot;true&quot;, return only models with zero data retention endpoints.</summary>
+            [QueryParameter("zdr")]
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.TrueValueZdr? Zdr { get; set; }
         }
     }
 }

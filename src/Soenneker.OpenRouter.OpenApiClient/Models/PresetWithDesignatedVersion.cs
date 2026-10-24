@@ -79,8 +79,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public string Slug { get; set; }
 #endif
-        /// <summary>The status property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.PresetWithDesignatedVersion_status? Status { get; set; }
+        /// <summary>The status of a preset.</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PresetStatus? Status { get; set; }
         /// <summary>The status_updated_at property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -138,7 +138,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "slug", n => { Slug = n.GetStringValue(); } },
-                { "status", n => { Status = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PresetWithDesignatedVersion_status>(); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PresetStatus>(); } },
                 { "status_updated_at", n => { StatusUpdatedAt = n.GetStringValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetStringValue(); } },
                 { "workspace_id", n => { WorkspaceId = n.GetStringValue(); } },
@@ -159,7 +159,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("slug", Slug);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PresetWithDesignatedVersion_status>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PresetStatus>("status", Status);
             writer.WriteStringValue("status_updated_at", StatusUpdatedAt);
             writer.WriteStringValue("updated_at", UpdatedAt);
             writer.WriteStringValue("workspace_id", WorkspaceId);

@@ -28,10 +28,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The metadata property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOverloadedResponseErrorData_metadata? Metadata { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOverloadedResponseErrorDataMetadataProperty? Metadata { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOverloadedResponseErrorData_metadata Metadata { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOverloadedResponseErrorDataMetadataProperty Metadata { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOverloadedResponseErrorData"/> and sets the default values.
@@ -60,7 +60,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             {
                 { "code", n => { Code = n.GetIntValue(); } },
                 { "message", n => { Message = n.GetStringValue(); } },
-                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOverloadedResponseErrorData_metadata>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOverloadedResponseErrorData_metadata.CreateFromDiscriminatorValue); } },
+                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOverloadedResponseErrorDataMetadataProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOverloadedResponseErrorDataMetadataProperty.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -72,7 +72,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("code", Code);
             writer.WriteStringValue("message", Message);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOverloadedResponseErrorData_metadata>("metadata", Metadata);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOverloadedResponseErrorDataMetadataProperty>("metadata", Metadata);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

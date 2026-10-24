@@ -10,7 +10,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     {
         [EnumMember(Value = "invalid_tool_input")]
         #pragma warning disable CS1591
-        Invalid_tool_input,
+        InvalidToolInput,
         #pragma warning restore CS1591
         [EnumMember(Value = "unavailable")]
         #pragma warning disable CS1591
@@ -18,11 +18,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "too_many_requests")]
         #pragma warning disable CS1591
-        Too_many_requests,
+        TooManyRequests,
         #pragma warning restore CS1591
         [EnumMember(Value = "execution_time_exceeded")]
         #pragma warning disable CS1591
-        Execution_time_exceeded,
+        ExecutionTimeExceeded,
         #pragma warning restore CS1591
     }
 }

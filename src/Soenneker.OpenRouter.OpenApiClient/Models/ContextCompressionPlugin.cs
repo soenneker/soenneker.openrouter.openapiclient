@@ -19,7 +19,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The compression engine to use. Defaults to &quot;middle-out&quot;.</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ContextCompressionEngine? Engine { get; set; }
         /// <summary>The id property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ContextCompressionPlugin_id? Id { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ContextCompressionId? Id { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ContextCompressionPlugin"/> and sets the default values.
         /// </summary>
@@ -47,7 +47,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             {
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
                 { "engine", n => { Engine = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ContextCompressionEngine>(); } },
-                { "id", n => { Id = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ContextCompressionPlugin_id>(); } },
+                { "id", n => { Id = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ContextCompressionId>(); } },
             };
         }
         /// <summary>
@@ -59,7 +59,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("enabled", Enabled);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ContextCompressionEngine>("engine", Engine);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ContextCompressionPlugin_id>("id", Id);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ContextCompressionId>("id", Id);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -44,9 +44,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public string ModelPermaslug { get; set; }
 #endif
         /// <summary>Name of the provider</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderResponse_provider_name? ProviderName { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderResponseProviderName? ProviderName { get; set; }
+        /// <summary>The service tier this request was routed to (e.g. flex, priority). The tier actually applied and billed is determined by the provider response and may differ.</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderResponseRoutedServiceTier? RoutedServiceTier { get; set; }
         /// <summary>HTTP status code from the provider</summary>
-        public double? Status { get; set; }
+        public int? Status { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderResponse"/> and sets the default values.
         /// </summary>
@@ -77,8 +79,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "is_byok", n => { IsByok = n.GetBoolValue(); } },
                 { "latency", n => { Latency = n.GetDoubleValue(); } },
                 { "model_permaslug", n => { ModelPermaslug = n.GetStringValue(); } },
-                { "provider_name", n => { ProviderName = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderResponse_provider_name>(); } },
-                { "status", n => { Status = n.GetDoubleValue(); } },
+                { "provider_name", n => { ProviderName = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderResponseProviderName>(); } },
+                { "routed_service_tier", n => { RoutedServiceTier = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderResponseRoutedServiceTier>(); } },
+                { "status", n => { Status = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -93,8 +96,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteBoolValue("is_byok", IsByok);
             writer.WriteDoubleValue("latency", Latency);
             writer.WriteStringValue("model_permaslug", ModelPermaslug);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderResponse_provider_name>("provider_name", ProviderName);
-            writer.WriteDoubleValue("status", Status);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderResponseProviderName>("provider_name", ProviderName);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderResponseRoutedServiceTier>("routed_service_tier", RoutedServiceTier);
+            writer.WriteIntValue("status", Status);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

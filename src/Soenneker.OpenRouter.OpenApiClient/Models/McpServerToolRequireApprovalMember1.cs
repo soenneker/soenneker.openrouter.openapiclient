@@ -14,22 +14,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The always property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolRequireApprovalMember1_always? Always { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolRequireApprovalMember1_always Always { get; set; }
-#endif
-        /// <summary>The never property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolRequireApprovalMember1_never? Never { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolRequireApprovalMember1_never Never { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolRequireApprovalMember1"/> and sets the default values.
         /// </summary>
@@ -55,8 +39,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "always", n => { Always = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolRequireApprovalMember1_always>(global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolRequireApprovalMember1_always.CreateFromDiscriminatorValue); } },
-                { "never", n => { Never = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolRequireApprovalMember1_never>(global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolRequireApprovalMember1_never.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -66,8 +48,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolRequireApprovalMember1_always>("always", Always);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolRequireApprovalMember1_never>("never", Never);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

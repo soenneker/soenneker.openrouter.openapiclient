@@ -15,7 +15,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Enable automatic prompt caching. When set at the top level, the system automatically applies cache breakpoints to the last cacheable block in the request. Currently supported for Anthropic Claude models.</summary>
+        /// <summary>Enable automatic prompt caching. When set at the top level, the system automatically applies cache breakpoints to the last cacheable block in the request. When set on an individual content block, it marks an explicit cache breakpoint; block-level markers also work on OpenAI models that support explicit prompt caching — OpenRouter converts them to the provider&apos;s native format.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective? CacheControl { get; set; }
@@ -26,10 +26,26 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The context_management property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management? ContextManagement { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestContextManagement? ContextManagement { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management ContextManagement { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestContextManagement ContextManagement { get; set; }
+#endif
+        /// <summary>Opt-in versioned router-level deferred-tool protocol. Replay assistant reasoning unchanged on continuation; keep the catalog unchanged.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.DeferredToolsControl? DeferredTools { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.DeferredToolsControl DeferredTools { get; set; }
+#endif
+        /// <summary>Fallback models to try if the primary model fails or refuses, in order. Handled by OpenRouter multi-model routing rather than Anthropic server-side fallbacks; cannot be combined with `models`. Each entry accepts only `model`. Maximum of 3 entries.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesFallbackParam>? Fallbacks { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesFallbackParam> Fallbacks { get; set; }
 #endif
         /// <summary>The max_tokens property</summary>
         public int? MaxTokens { get; set; }
@@ -76,10 +92,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Plugins you want to enable for this request, including their settings.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest.MessagesRequest_plugins>? Plugins { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestPluginsItem>? Plugins { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest.MessagesRequest_plugins> Plugins { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestPluginsItem> Plugins { get; set; }
 #endif
         /// <summary>When multiple model providers are available, optionally indicate your routing preference.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -89,13 +105,16 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferences Provider { get; set; }
 #endif
-        /// <summary>The route property</summary>
+        /// <summary>**DEPRECATED** Use providers.sort.partition instead. Backwards-compatible alias for providers.sort.partition. Accepts legacy values: &quot;fallback&quot; (maps to &quot;model&quot;), &quot;sort&quot; (maps to &quot;none&quot;).</summary>
+        [Obsolete("")]
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.DeprecatedRoute? Route { get; set; }
+        /// <summary>The safeguards property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Route { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicSafeguard>? Safeguards { get; set; }
 #nullable restore
 #else
-        public string Route { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicSafeguard> Safeguards { get; set; }
 #endif
         /// <summary>The service_tier property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -113,14 +132,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public string SessionId { get; set; }
 #endif
-        /// <summary>The speed property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_speed? Speed { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_speed Speed { get; set; }
-#endif
+        /// <summary>Controls output generation speed. When set to `fast`, uses a higher-speed inference configuration at premium pricing. Defaults to `standard` when omitted.</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestSpeed? Speed { get; set; }
         /// <summary>The stop_sequences property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -129,7 +142,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public List<string> StopSequences { get; set; }
 #endif
-        /// <summary>Stop conditions for the server-tool agent loop. Any condition firing halts the loop (OR logic). When set, this overrides `max_tool_calls`.</summary>
+        /// <summary>Stop conditions for the server-tool agent loop. Any condition firing halts the loop (OR logic). When set, this overrides `max_tool_calls`. When a condition fires while the model is still emitting tool calls, the pending tool calls are executed and one final turn is made with tool calls disabled so the response ends with a natural-language answer instead of an unfinished tool call.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.OpenRouter.OpenApiClient.Models.StopServerToolsWhenCondition>? StopServerToolsWhen { get; set; }
@@ -142,10 +155,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The system property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest.MessagesRequest_system? System { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestSystem? System { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest.MessagesRequest_system System { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestSystem System { get; set; }
 #endif
         /// <summary>The temperature property</summary>
         public double? Temperature { get; set; }
@@ -168,10 +181,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The tools property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest.MessagesRequest_tools>? Tools { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolsItem>? Tools { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest.MessagesRequest_tools> Tools { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolsItem> Tools { get; set; }
 #endif
         /// <summary>The top_k property</summary>
         public int? TopK { get; set; }
@@ -219,27 +232,30 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "cache_control", n => { CacheControl = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective>(global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective.CreateFromDiscriminatorValue); } },
-                { "context_management", n => { ContextManagement = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management>(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management.CreateFromDiscriminatorValue); } },
+                { "context_management", n => { ContextManagement = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestContextManagement>(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestContextManagement.CreateFromDiscriminatorValue); } },
+                { "deferred_tools", n => { DeferredTools = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.DeferredToolsControl>(global::Soenneker.OpenRouter.OpenApiClient.Models.DeferredToolsControl.CreateFromDiscriminatorValue); } },
+                { "fallbacks", n => { Fallbacks = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesFallbackParam>(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesFallbackParam.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "max_tokens", n => { MaxTokens = n.GetIntValue(); } },
                 { "messages", n => { Messages = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesMessageParam>(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesMessageParam.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestMetadata>(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestMetadata.CreateFromDiscriminatorValue); } },
                 { "model", n => { Model = n.GetStringValue(); } },
                 { "models", n => { Models = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "output_config", n => { OutputConfig = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesOutputConfig>(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesOutputConfig.CreateFromDiscriminatorValue); } },
-                { "plugins", n => { Plugins = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest.MessagesRequest_plugins>(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest.MessagesRequest_plugins.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "plugins", n => { Plugins = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestPluginsItem>(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestPluginsItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "provider", n => { Provider = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferences>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferences.CreateFromDiscriminatorValue); } },
-                { "route", n => { Route = n.GetStringValue(); } },
+                { "route", n => { Route = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.DeprecatedRoute>(); } },
+                { "safeguards", n => { Safeguards = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicSafeguard>(global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicSafeguard.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "service_tier", n => { ServiceTier = n.GetStringValue(); } },
                 { "session_id", n => { SessionId = n.GetStringValue(); } },
-                { "speed", n => { Speed = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_speed>(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_speed.CreateFromDiscriminatorValue); } },
+                { "speed", n => { Speed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestSpeed>(); } },
                 { "stop_sequences", n => { StopSequences = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "stop_server_tools_when", n => { StopServerToolsWhen = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.StopServerToolsWhenCondition>(global::Soenneker.OpenRouter.OpenApiClient.Models.StopServerToolsWhenCondition.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "stream", n => { Stream = n.GetBoolValue(); } },
-                { "system", n => { System = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest.MessagesRequest_system>(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest.MessagesRequest_system.CreateFromDiscriminatorValue); } },
+                { "system", n => { System = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestSystem>(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestSystem.CreateFromDiscriminatorValue); } },
                 { "temperature", n => { Temperature = n.GetDoubleValue(); } },
                 { "thinking", n => { Thinking = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestThinking>(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestThinking.CreateFromDiscriminatorValue); } },
                 { "tool_choice", n => { ToolChoice = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolChoice>(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolChoice.CreateFromDiscriminatorValue); } },
-                { "tools", n => { Tools = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest.MessagesRequest_tools>(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest.MessagesRequest_tools.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "tools", n => { Tools = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolsItem>(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolsItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "top_k", n => { TopK = n.GetIntValue(); } },
                 { "top_p", n => { TopP = n.GetDoubleValue(); } },
                 { "trace", n => { Trace = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.TraceConfig>(global::Soenneker.OpenRouter.OpenApiClient.Models.TraceConfig.CreateFromDiscriminatorValue); } },
@@ -254,460 +270,35 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective>("cache_control", CacheControl);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_context_management>("context_management", ContextManagement);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestContextManagement>("context_management", ContextManagement);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.DeferredToolsControl>("deferred_tools", DeferredTools);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesFallbackParam>("fallbacks", Fallbacks);
             writer.WriteIntValue("max_tokens", MaxTokens);
             writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesMessageParam>("messages", Messages);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestMetadata>("metadata", Metadata);
             writer.WriteStringValue("model", Model);
             writer.WriteCollectionOfPrimitiveValues<string>("models", Models);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesOutputConfig>("output_config", OutputConfig);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest.MessagesRequest_plugins>("plugins", Plugins);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestPluginsItem>("plugins", Plugins);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferences>("provider", Provider);
-            writer.WriteStringValue("route", Route);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.DeprecatedRoute>("route", Route);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicSafeguard>("safeguards", Safeguards);
             writer.WriteStringValue("service_tier", ServiceTier);
             writer.WriteStringValue("session_id", SessionId);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_speed>("speed", Speed);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestSpeed>("speed", Speed);
             writer.WriteCollectionOfPrimitiveValues<string>("stop_sequences", StopSequences);
             writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.StopServerToolsWhenCondition>("stop_server_tools_when", StopServerToolsWhen);
             writer.WriteBoolValue("stream", Stream);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest.MessagesRequest_system>("system", System);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestSystem>("system", System);
             writer.WriteDoubleValue("temperature", Temperature);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestThinking>("thinking", Thinking);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolChoice>("tool_choice", ToolChoice);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest.MessagesRequest_tools>("tools", Tools);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolsItem>("tools", Tools);
             writer.WriteIntValue("top_k", TopK);
             writer.WriteDoubleValue("top_p", TopP);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.TraceConfig>("trace", Trace);
             writer.WriteStringValue("user", User);
             writer.WriteAdditionalData(AdditionalData);
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AutoRouterPlugin"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ContextCompressionPlugin"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.FileParserPlugin"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.FusionPlugin"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ModerationPlugin"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ParetoRouterPlugin"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ResponseHealingPlugin"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.WebFetchPlugin"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchPlugin"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class MessagesRequest_plugins : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AutoRouterPlugin"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.AutoRouterPlugin? AutoRouterPlugin { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.AutoRouterPlugin AutoRouterPlugin { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ContextCompressionPlugin"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.ContextCompressionPlugin? ContextCompressionPlugin { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.ContextCompressionPlugin ContextCompressionPlugin { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.FileParserPlugin"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.FileParserPlugin? FileParserPlugin { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.FileParserPlugin FileParserPlugin { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.FusionPlugin"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.FusionPlugin? FusionPlugin { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.FusionPlugin FusionPlugin { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ModerationPlugin"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.ModerationPlugin? ModerationPlugin { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.ModerationPlugin ModerationPlugin { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ParetoRouterPlugin"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.ParetoRouterPlugin? ParetoRouterPlugin { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.ParetoRouterPlugin ParetoRouterPlugin { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ResponseHealingPlugin"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.ResponseHealingPlugin? ResponseHealingPlugin { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.ResponseHealingPlugin ResponseHealingPlugin { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.WebFetchPlugin"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.WebFetchPlugin? WebFetchPlugin { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.WebFetchPlugin WebFetchPlugin { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchPlugin"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchPlugin? WebSearchPlugin { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchPlugin WebSearchPlugin { get; set; }
-#endif
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest.MessagesRequest_plugins"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest.MessagesRequest_plugins CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var mappingValue = parseNode.GetChildNode("id")?.GetStringValue();
-                var result = new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest.MessagesRequest_plugins();
-                if("auto-router".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.AutoRouterPlugin = new global::Soenneker.OpenRouter.OpenApiClient.Models.AutoRouterPlugin();
-                }
-                else if("context-compression".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.ContextCompressionPlugin = new global::Soenneker.OpenRouter.OpenApiClient.Models.ContextCompressionPlugin();
-                }
-                else if("file-parser".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.FileParserPlugin = new global::Soenneker.OpenRouter.OpenApiClient.Models.FileParserPlugin();
-                }
-                else if("fusion".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.FusionPlugin = new global::Soenneker.OpenRouter.OpenApiClient.Models.FusionPlugin();
-                }
-                else if("moderation".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.ModerationPlugin = new global::Soenneker.OpenRouter.OpenApiClient.Models.ModerationPlugin();
-                }
-                else if("pareto-router".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.ParetoRouterPlugin = new global::Soenneker.OpenRouter.OpenApiClient.Models.ParetoRouterPlugin();
-                }
-                else if("response-healing".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.ResponseHealingPlugin = new global::Soenneker.OpenRouter.OpenApiClient.Models.ResponseHealingPlugin();
-                }
-                else if("web-fetch".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.WebFetchPlugin = new global::Soenneker.OpenRouter.OpenApiClient.Models.WebFetchPlugin();
-                }
-                else if("web".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.WebSearchPlugin = new global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchPlugin();
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(AutoRouterPlugin != null)
-                {
-                    return AutoRouterPlugin.GetFieldDeserializers();
-                }
-                else if(ContextCompressionPlugin != null)
-                {
-                    return ContextCompressionPlugin.GetFieldDeserializers();
-                }
-                else if(FileParserPlugin != null)
-                {
-                    return FileParserPlugin.GetFieldDeserializers();
-                }
-                else if(FusionPlugin != null)
-                {
-                    return FusionPlugin.GetFieldDeserializers();
-                }
-                else if(ModerationPlugin != null)
-                {
-                    return ModerationPlugin.GetFieldDeserializers();
-                }
-                else if(ParetoRouterPlugin != null)
-                {
-                    return ParetoRouterPlugin.GetFieldDeserializers();
-                }
-                else if(ResponseHealingPlugin != null)
-                {
-                    return ResponseHealingPlugin.GetFieldDeserializers();
-                }
-                else if(WebFetchPlugin != null)
-                {
-                    return WebFetchPlugin.GetFieldDeserializers();
-                }
-                else if(WebSearchPlugin != null)
-                {
-                    return WebSearchPlugin.GetFieldDeserializers();
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(AutoRouterPlugin != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AutoRouterPlugin>(null, AutoRouterPlugin);
-                }
-                else if(ContextCompressionPlugin != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ContextCompressionPlugin>(null, ContextCompressionPlugin);
-                }
-                else if(FileParserPlugin != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.FileParserPlugin>(null, FileParserPlugin);
-                }
-                else if(FusionPlugin != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.FusionPlugin>(null, FusionPlugin);
-                }
-                else if(ModerationPlugin != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ModerationPlugin>(null, ModerationPlugin);
-                }
-                else if(ParetoRouterPlugin != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ParetoRouterPlugin>(null, ParetoRouterPlugin);
-                }
-                else if(ResponseHealingPlugin != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ResponseHealingPlugin>(null, ResponseHealingPlugin);
-                }
-                else if(WebFetchPlugin != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebFetchPlugin>(null, WebFetchPlugin);
-                }
-                else if(WebSearchPlugin != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchPlugin>(null, WebSearchPlugin);
-                }
-            }
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="string"/>, List&lt;global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextBlockParam&gt;
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class MessagesRequest_system : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type List&lt;global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextBlockParam&gt;</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public List<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextBlockParam>? AnthropicTextBlockParam { get; set; }
-#nullable restore
-#else
-            public List<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextBlockParam> AnthropicTextBlockParam { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="string"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public string? String { get; set; }
-#nullable restore
-#else
-            public string String { get; set; }
-#endif
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest.MessagesRequest_system"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest.MessagesRequest_system CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var result = new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest.MessagesRequest_system();
-                if(parseNode.GetStringValue() is string stringValue)
-                {
-                    result.String = stringValue;
-                }
-                else if(parseNode.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextBlockParam>(global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextBlockParam.CreateFromDiscriminatorValue)?.AsList() is List<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextBlockParam> anthropicTextBlockParamValue)
-                {
-                    result.AnthropicTextBlockParam = anthropicTextBlockParamValue;
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(String != null)
-                {
-                    writer.WriteStringValue(null, String);
-                }
-                else if(AnthropicTextBlockParam != null)
-                {
-                    writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextBlockParam>(null, AnthropicTextBlockParam);
-                }
-            }
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ChatSearchModelsServerTool"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.DatetimeServerTool"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerToolOpenRouter"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember1"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember2"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember3"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember4"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember5"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember6"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember7"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OpenRouterWebSearchServerTool"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.WebFetchServerTool"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class MessagesRequest_tools : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ChatSearchModelsServerTool"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatSearchModelsServerTool? ChatSearchModelsServerTool { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatSearchModelsServerTool ChatSearchModelsServerTool { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.DatetimeServerTool"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.DatetimeServerTool? DatetimeServerTool { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.DatetimeServerTool DatetimeServerTool { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerToolOpenRouter"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerToolOpenRouter? ImageGenerationServerToolOpenRouter { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerToolOpenRouter ImageGenerationServerToolOpenRouter { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember1"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember1? MessagesRequestToolsMember1 { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember1 MessagesRequestToolsMember1 { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember2"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember2? MessagesRequestToolsMember2 { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember2 MessagesRequestToolsMember2 { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember3"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember3? MessagesRequestToolsMember3 { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember3 MessagesRequestToolsMember3 { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember4"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember4? MessagesRequestToolsMember4 { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember4 MessagesRequestToolsMember4 { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember5"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember5? MessagesRequestToolsMember5 { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember5 MessagesRequestToolsMember5 { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember6"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember6? MessagesRequestToolsMember6 { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember6 MessagesRequestToolsMember6 { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember7"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember7? MessagesRequestToolsMember7 { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember7 MessagesRequestToolsMember7 { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OpenRouterWebSearchServerTool"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.OpenRouterWebSearchServerTool? OpenRouterWebSearchServerTool { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.OpenRouterWebSearchServerTool OpenRouterWebSearchServerTool { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.WebFetchServerTool"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.WebFetchServerTool? WebFetchServerTool { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.OpenRouter.OpenApiClient.Models.WebFetchServerTool WebFetchServerTool { get; set; }
-#endif
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest.MessagesRequest_tools"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest.MessagesRequest_tools CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var result = new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest.MessagesRequest_tools();
-                result.ChatSearchModelsServerTool = new global::Soenneker.OpenRouter.OpenApiClient.Models.ChatSearchModelsServerTool();
-                result.DatetimeServerTool = new global::Soenneker.OpenRouter.OpenApiClient.Models.DatetimeServerTool();
-                result.ImageGenerationServerToolOpenRouter = new global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerToolOpenRouter();
-                result.MessagesRequestToolsMember1 = new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember1();
-                result.MessagesRequestToolsMember2 = new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember2();
-                result.MessagesRequestToolsMember3 = new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember3();
-                result.MessagesRequestToolsMember4 = new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember4();
-                result.MessagesRequestToolsMember5 = new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember5();
-                result.MessagesRequestToolsMember6 = new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember6();
-                result.MessagesRequestToolsMember7 = new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest_toolsMember7();
-                result.OpenRouterWebSearchServerTool = new global::Soenneker.OpenRouter.OpenApiClient.Models.OpenRouterWebSearchServerTool();
-                result.WebFetchServerTool = new global::Soenneker.OpenRouter.OpenApiClient.Models.WebFetchServerTool();
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(ChatSearchModelsServerTool != null || DatetimeServerTool != null || ImageGenerationServerToolOpenRouter != null || MessagesRequestToolsMember1 != null || MessagesRequestToolsMember2 != null || MessagesRequestToolsMember3 != null || MessagesRequestToolsMember4 != null || MessagesRequestToolsMember5 != null || MessagesRequestToolsMember6 != null || MessagesRequestToolsMember7 != null || OpenRouterWebSearchServerTool != null || WebFetchServerTool != null)
-                {
-                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(ChatSearchModelsServerTool, DatetimeServerTool, ImageGenerationServerToolOpenRouter, MessagesRequestToolsMember1, MessagesRequestToolsMember2, MessagesRequestToolsMember3, MessagesRequestToolsMember4, MessagesRequestToolsMember5, MessagesRequestToolsMember6, MessagesRequestToolsMember7, OpenRouterWebSearchServerTool, WebFetchServerTool);
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatSearchModelsServerTool>(null, ChatSearchModelsServerTool, DatetimeServerTool, ImageGenerationServerToolOpenRouter, MessagesRequestToolsMember1, MessagesRequestToolsMember2, MessagesRequestToolsMember3, MessagesRequestToolsMember4, MessagesRequestToolsMember5, MessagesRequestToolsMember6, MessagesRequestToolsMember7, OpenRouterWebSearchServerTool, WebFetchServerTool);
-            }
         }
     }
 }

@@ -28,10 +28,18 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public int? CacheReadInputTokens { get; set; }
         /// <summary>The input_tokens property</summary>
         public int? InputTokens { get; set; }
+        /// <summary>The model property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Model { get; set; }
+#nullable restore
+#else
+        public string Model { get; set; }
+#endif
         /// <summary>The output_tokens property</summary>
         public int? OutputTokens { get; set; }
         /// <summary>The type property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicMessageUsageIteration_type? Type { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessageType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicMessageUsageIteration"/> and sets the default values.
         /// </summary>
@@ -61,8 +69,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "cache_creation_input_tokens", n => { CacheCreationInputTokens = n.GetIntValue(); } },
                 { "cache_read_input_tokens", n => { CacheReadInputTokens = n.GetIntValue(); } },
                 { "input_tokens", n => { InputTokens = n.GetIntValue(); } },
+                { "model", n => { Model = n.GetStringValue(); } },
                 { "output_tokens", n => { OutputTokens = n.GetIntValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicMessageUsageIteration_type>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessageType>(); } },
             };
         }
         /// <summary>
@@ -76,8 +85,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteIntValue("cache_creation_input_tokens", CacheCreationInputTokens);
             writer.WriteIntValue("cache_read_input_tokens", CacheReadInputTokens);
             writer.WriteIntValue("input_tokens", InputTokens);
+            writer.WriteStringValue("model", Model);
             writer.WriteIntValue("output_tokens", OutputTokens);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicMessageUsageIteration_type>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessageType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -25,7 +25,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Unique identifier for the workspace membership</summary>
         public Guid? Id { get; set; }
         /// <summary>Role of the member in the workspace</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.WorkspaceMember_role? Role { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.WorkspaceMemberRole? Role { get; set; }
         /// <summary>Clerk user ID of the member</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -63,7 +63,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             {
                 { "created_at", n => { CreatedAt = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
-                { "role", n => { Role = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WorkspaceMember_role>(); } },
+                { "role", n => { Role = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WorkspaceMemberRole>(); } },
                 { "user_id", n => { UserId = n.GetStringValue(); } },
                 { "workspace_id", n => { WorkspaceId = n.GetGuidValue(); } },
             };
@@ -77,7 +77,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("created_at", CreatedAt);
             writer.WriteGuidValue("id", Id);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WorkspaceMember_role>("role", Role);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WorkspaceMemberRole>("role", Role);
             writer.WriteStringValue("user_id", UserId);
             writer.WriteGuidValue("workspace_id", WorkspaceId);
             writer.WriteAdditionalData(AdditionalData);

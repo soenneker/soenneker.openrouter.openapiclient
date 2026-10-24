@@ -23,9 +23,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public string Data { get; set; }
 #endif
         /// <summary>The media_type property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicBase64PdfSource_media_type? MediaType { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ApplicationPdfMediaType? MediaType { get; set; }
         /// <summary>The type property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicBase64PdfSource_type? Type { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.Base64Type? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicBase64PdfSource"/> and sets the default values.
         /// </summary>
@@ -52,8 +52,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "data", n => { Data = n.GetStringValue(); } },
-                { "media_type", n => { MediaType = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicBase64PdfSource_media_type>(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicBase64PdfSource_type>(); } },
+                { "media_type", n => { MediaType = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ApplicationPdfMediaType>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.Base64Type>(); } },
             };
         }
         /// <summary>
@@ -64,8 +64,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("data", Data);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicBase64PdfSource_media_type>("media_type", MediaType);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicBase64PdfSource_type>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ApplicationPdfMediaType>("media_type", MediaType);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.Base64Type>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -17,7 +17,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterBuiltinAction? Action { get; set; }
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>&quot;Deprecated: labels are system-assigned and cannot be set by the caller. Accepted for backward compatibility but silently ignored.&quot;</summary>
+        /// <summary>Deprecated: labels are system-assigned and cannot be set by the caller. Accepted for backward compatibility but silently ignored.</summary>
         [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -26,6 +26,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public string Label { get; set; }
 #endif
+        /// <summary>Which message roles to scan for prompt injection. Only applies to the regex-prompt-injection builtin. Defaults to all_messages.</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PromptInjectionScanScope? ScanScope { get; set; }
         /// <summary>The builtin filter identifier</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterBuiltinSlug? Slug { get; set; }
         /// <summary>
@@ -55,6 +57,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             {
                 { "action", n => { Action = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterBuiltinAction>(); } },
                 { "label", n => { Label = n.GetStringValue(); } },
+                { "scan_scope", n => { ScanScope = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PromptInjectionScanScope>(); } },
                 { "slug", n => { Slug = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterBuiltinSlug>(); } },
             };
         }
@@ -67,6 +70,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterBuiltinAction>("action", Action);
             writer.WriteStringValue("label", Label);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PromptInjectionScanScope>("scan_scope", ScanScope);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterBuiltinSlug>("slug", Slug);
             writer.WriteAdditionalData(AdditionalData);
         }

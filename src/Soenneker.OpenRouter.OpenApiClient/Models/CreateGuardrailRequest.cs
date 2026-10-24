@@ -14,6 +14,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Data regions through which requests governed by this guardrail must arrive. `global` is https://openrouter.ai, `europe` is https://eu.openrouter.ai, and `us` is https://us.openrouter.ai. Requests arriving through any other region are rejected. `null` leaves the ingress region unrestricted. When several guardrails apply (workspace default, member, API key), the effective regions are the intersection of every non-null value. An empty array is rejected.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.GuardrailDataRegion?>? AllowedDataRegions { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.GuardrailDataRegion?> AllowedDataRegions { get; set; }
+#endif
         /// <summary>Array of model identifiers (slug or canonical_slug accepted)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -30,7 +38,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public List<string> AllowedProviders { get; set; }
 #endif
-        /// <summary>Builtin content filters to apply. The &quot;flag&quot; action is only supported for &quot;regex-prompt-injection&quot;; PII slugs (email, phone, ssn, credit-card, ip-address, person-name, address) accept &quot;block&quot; or &quot;redact&quot; only.</summary>
+        /// <summary>Whether ZDR-only requests to google/* models may use endpoints that may retain prompts for safety monitoring. false allows only zero-retention endpoints. A guardrail can only be more restrictive than the account setting. Inherits the account setting when not provided.</summary>
+        public bool? AllowSafetyRetentionGoogle { get; set; }
+        /// <summary>Whether ZDR-only requests to models outside the named providers (for example open-weight models on Vertex) may use endpoints that may retain prompts for safety monitoring. false allows only zero-retention endpoints. A guardrail can only be more restrictive than the account setting. Inherits the account setting when not provided.</summary>
+        public bool? AllowSafetyRetentionOther { get; set; }
+        /// <summary>Builtin content filters to apply. Every builtin slug supports &quot;block&quot;, &quot;redact&quot;, and the detect-only &quot;flag&quot; action.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterBuiltinEntryInput>? ContentFilterBuiltins { get; set; }
@@ -54,7 +66,13 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public string Description { get; set; }
 #endif
-        /// <summary>Deprecated. Use enforce_zdr_anthropic, enforce_zdr_openai, enforce_zdr_google, and enforce_zdr_other instead. When provided, its value is copied into any of those per-provider fields that are not explicitly specified on the request.</summary>
+        /// <summary>Whether this guardrail allows free endpoints that publish prompts.</summary>
+        public bool? EnableFreeModelPublication { get; set; }
+        /// <summary>Whether this guardrail allows free endpoints that train on request data.</summary>
+        public bool? EnableFreeModelTraining { get; set; }
+        /// <summary>Whether this guardrail allows paid endpoints that train on request data.</summary>
+        public bool? EnablePaidModelTraining { get; set; }
+        /// <summary>Deprecated. Use enforce_zdr_anthropic, enforce_zdr_openai, enforce_zdr_google, enforce_zdr_xai, and enforce_zdr_other instead. When provided, its value is copied into any of those per-provider fields that are not explicitly specified on the request.</summary>
         [Obsolete("")]
         public bool? EnforceZdr { get; set; }
         /// <summary>Whether to enforce zero data retention for Anthropic models. Falls back to enforce_zdr when not provided.</summary>
@@ -63,8 +81,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public bool? EnforceZdrGoogle { get; set; }
         /// <summary>Whether to enforce zero data retention for OpenAI models. Falls back to enforce_zdr when not provided.</summary>
         public bool? EnforceZdrOpenai { get; set; }
-        /// <summary>Whether to enforce zero data retention for models that are not from Anthropic, OpenAI, or Google. Falls back to enforce_zdr when not provided.</summary>
+        /// <summary>Whether to enforce zero data retention for models that are not from Anthropic, OpenAI, Google, or xAI. Falls back to enforce_zdr when not provided.</summary>
         public bool? EnforceZdrOther { get; set; }
+        /// <summary>Whether to enforce zero data retention for xAI models. Falls back to enforce_zdr when not provided.</summary>
+        public bool? EnforceZdrXai { get; set; }
         /// <summary>Array of model identifiers to exclude from routing (slug or canonical_slug accepted)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -81,7 +101,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public List<string> IgnoredProviders { get; set; }
 #endif
-        /// <summary>Spending limit in USD</summary>
+        /// <summary>Whether BYOK (bring-your-own-key) inference spend counts toward this guardrail&apos;s limit_usd, in addition to OpenRouter credit spend. Defaults to false.</summary>
+        public bool? IncludeByokInBudgets { get; set; }
+        /// <summary>Spending limit in USD. Must be provided together with `reset_interval`: a request that sets only one of the two is rejected with a 400.</summary>
         public double? LimitUsd { get; set; }
         /// <summary>Name for the new guardrail</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -93,7 +115,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #endif
         /// <summary>Interval at which the limit resets (daily, weekly, monthly)</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.GuardrailInterval? ResetInterval { get; set; }
-        /// <summary>The workspace to create the guardrail in. Defaults to the default workspace if not provided.</summary>
+        /// <summary>The workspace to create the guardrail in. When omitted, the guardrail is created in the default workspace; if that default has been deleted, the request returns a 400 and you must pass `workspace_id` explicitly. This only places the guardrail in the workspace; the created guardrail enforces nothing for that workspace&apos;s traffic until it is assigned to API keys or members. To restrict all traffic in a workspace, update the workspace&apos;s default guardrail instead.</summary>
         public Guid? WorkspaceId { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.CreateGuardrailRequest"/> and sets the default values.
@@ -120,18 +142,26 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "allow_safety_retention_google", n => { AllowSafetyRetentionGoogle = n.GetBoolValue(); } },
+                { "allow_safety_retention_other", n => { AllowSafetyRetentionOther = n.GetBoolValue(); } },
+                { "allowed_data_regions", n => { AllowedDataRegions = n.GetCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.GuardrailDataRegion>()?.AsList(); } },
                 { "allowed_models", n => { AllowedModels = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "allowed_providers", n => { AllowedProviders = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "content_filter_builtins", n => { ContentFilterBuiltins = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterBuiltinEntryInput>(global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterBuiltinEntryInput.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "content_filters", n => { ContentFilters = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterEntry>(global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterEntry.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
+                { "enable_free_model_publication", n => { EnableFreeModelPublication = n.GetBoolValue(); } },
+                { "enable_free_model_training", n => { EnableFreeModelTraining = n.GetBoolValue(); } },
+                { "enable_paid_model_training", n => { EnablePaidModelTraining = n.GetBoolValue(); } },
                 { "enforce_zdr", n => { EnforceZdr = n.GetBoolValue(); } },
                 { "enforce_zdr_anthropic", n => { EnforceZdrAnthropic = n.GetBoolValue(); } },
                 { "enforce_zdr_google", n => { EnforceZdrGoogle = n.GetBoolValue(); } },
                 { "enforce_zdr_openai", n => { EnforceZdrOpenai = n.GetBoolValue(); } },
                 { "enforce_zdr_other", n => { EnforceZdrOther = n.GetBoolValue(); } },
+                { "enforce_zdr_xai", n => { EnforceZdrXai = n.GetBoolValue(); } },
                 { "ignored_models", n => { IgnoredModels = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "ignored_providers", n => { IgnoredProviders = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "include_byok_in_budgets", n => { IncludeByokInBudgets = n.GetBoolValue(); } },
                 { "limit_usd", n => { LimitUsd = n.GetDoubleValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "reset_interval", n => { ResetInterval = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.GuardrailInterval>(); } },
@@ -145,18 +175,26 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.GuardrailDataRegion>("allowed_data_regions", AllowedDataRegions);
             writer.WriteCollectionOfPrimitiveValues<string>("allowed_models", AllowedModels);
             writer.WriteCollectionOfPrimitiveValues<string>("allowed_providers", AllowedProviders);
+            writer.WriteBoolValue("allow_safety_retention_google", AllowSafetyRetentionGoogle);
+            writer.WriteBoolValue("allow_safety_retention_other", AllowSafetyRetentionOther);
             writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterBuiltinEntryInput>("content_filter_builtins", ContentFilterBuiltins);
             writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterEntry>("content_filters", ContentFilters);
             writer.WriteStringValue("description", Description);
+            writer.WriteBoolValue("enable_free_model_publication", EnableFreeModelPublication);
+            writer.WriteBoolValue("enable_free_model_training", EnableFreeModelTraining);
+            writer.WriteBoolValue("enable_paid_model_training", EnablePaidModelTraining);
             writer.WriteBoolValue("enforce_zdr", EnforceZdr);
             writer.WriteBoolValue("enforce_zdr_anthropic", EnforceZdrAnthropic);
             writer.WriteBoolValue("enforce_zdr_google", EnforceZdrGoogle);
             writer.WriteBoolValue("enforce_zdr_openai", EnforceZdrOpenai);
             writer.WriteBoolValue("enforce_zdr_other", EnforceZdrOther);
+            writer.WriteBoolValue("enforce_zdr_xai", EnforceZdrXai);
             writer.WriteCollectionOfPrimitiveValues<string>("ignored_models", IgnoredModels);
             writer.WriteCollectionOfPrimitiveValues<string>("ignored_providers", IgnoredProviders);
+            writer.WriteBoolValue("include_byok_in_budgets", IncludeByokInBudgets);
             writer.WriteDoubleValue("limit_usd", LimitUsd);
             writer.WriteStringValue("name", Name);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.GuardrailInterval>("reset_interval", ResetInterval);

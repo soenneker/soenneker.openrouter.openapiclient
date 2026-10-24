@@ -45,7 +45,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The start_page_number property</summary>
         public int? StartPageNumber { get; set; }
         /// <summary>The type property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCitationPageLocation_type? Type { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PageLocationType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCitationPageLocation"/> and sets the default values.
         /// </summary>
@@ -77,7 +77,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "end_page_number", n => { EndPageNumber = n.GetIntValue(); } },
                 { "file_id", n => { FileId = n.GetStringValue(); } },
                 { "start_page_number", n => { StartPageNumber = n.GetIntValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCitationPageLocation_type>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PageLocationType>(); } },
             };
         }
         /// <summary>
@@ -93,7 +93,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteIntValue("end_page_number", EndPageNumber);
             writer.WriteStringValue("file_id", FileId);
             writer.WriteIntValue("start_page_number", StartPageNumber);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCitationPageLocation_type>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PageLocationType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

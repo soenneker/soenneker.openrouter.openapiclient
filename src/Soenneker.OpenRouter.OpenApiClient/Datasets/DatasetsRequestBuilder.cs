@@ -2,7 +2,9 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.OpenRouter.OpenApiClient.Datasets.AppRankings;
 using Soenneker.OpenRouter.OpenApiClient.Datasets.RankingsDaily;
+using Soenneker.OpenRouter.OpenApiClient.Datasets.SessionCost;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -15,10 +17,20 @@ namespace Soenneker.OpenRouter.OpenApiClient.Datasets
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DatasetsRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The appRankings property</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Datasets.AppRankings.AppRankingsRequestBuilder AppRankings
+        {
+            get => new global::Soenneker.OpenRouter.OpenApiClient.Datasets.AppRankings.AppRankingsRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The rankingsDaily property</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Datasets.RankingsDaily.RankingsDailyRequestBuilder RankingsDaily
         {
             get => new global::Soenneker.OpenRouter.OpenApiClient.Datasets.RankingsDaily.RankingsDailyRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The sessionCost property</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Datasets.SessionCost.SessionCostRequestBuilder SessionCost
+        {
+            get => new global::Soenneker.OpenRouter.OpenApiClient.Datasets.SessionCost.SessionCostRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Datasets.DatasetsRequestBuilder"/> and sets the default values.

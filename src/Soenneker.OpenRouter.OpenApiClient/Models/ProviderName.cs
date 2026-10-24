@@ -8,13 +8,17 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     public enum ProviderName
     #pragma warning restore CS1591
     {
+        [EnumMember(Value = "Modal")]
+        #pragma warning disable CS1591
+        Modal,
+        #pragma warning restore CS1591
         [EnumMember(Value = "AkashML")]
         #pragma warning disable CS1591
-        AkashML,
+        AkashMl,
         #pragma warning restore CS1591
         [EnumMember(Value = "AI21")]
         #pragma warning disable CS1591
-        AI21,
+        Ai21,
         #pragma warning restore CS1591
         [EnumMember(Value = "AionLabs")]
         #pragma warning disable CS1591
@@ -46,7 +50,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "Arcee AI")]
         #pragma warning disable CS1591
-        ArceeAI,
+        ArceeAi,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AssemblyAI")]
+        #pragma warning disable CS1591
+        AssemblyAi,
         #pragma warning restore CS1591
         [EnumMember(Value = "AtlasCloud")]
         #pragma warning disable CS1591
@@ -84,6 +92,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning disable CS1591
         Cirrascale,
         #pragma warning restore CS1591
+        [EnumMember(Value = "Claude Platform on AWS")]
+        #pragma warning disable CS1591
+        ClaudePlatformOnAws,
+        #pragma warning restore CS1591
         [EnumMember(Value = "Clarifai")]
         #pragma warning disable CS1591
         Clarifai,
@@ -95,6 +107,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         [EnumMember(Value = "Cohere")]
         #pragma warning disable CS1591
         Cohere,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "CoreWeave")]
+        #pragma warning disable CS1591
+        CoreWeave,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Cosine")]
+        #pragma warning disable CS1591
+        Cosine,
         #pragma warning restore CS1591
         [EnumMember(Value = "Crucible")]
         #pragma warning disable CS1591
@@ -108,6 +128,18 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning disable CS1591
         Darkbloom,
         #pragma warning restore CS1591
+        [EnumMember(Value = "Databricks")]
+        #pragma warning disable CS1591
+        Databricks,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Decart")]
+        #pragma warning disable CS1591
+        Decart,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Deepgram")]
+        #pragma warning disable CS1591
+        Deepgram,
+        #pragma warning restore CS1591
         [EnumMember(Value = "DeepInfra")]
         #pragma warning disable CS1591
         DeepInfra,
@@ -118,11 +150,15 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "DekaLLM")]
         #pragma warning disable CS1591
-        DekaLLM,
+        DekaLlm,
         #pragma warning restore CS1591
         [EnumMember(Value = "DigitalOcean")]
         #pragma warning disable CS1591
         DigitalOcean,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "ElevenLabs")]
+        #pragma warning disable CS1591
+        ElevenLabs,
         #pragma warning restore CS1591
         [EnumMember(Value = "Featherless")]
         #pragma warning disable CS1591
@@ -132,13 +168,17 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning disable CS1591
         Fireworks,
         #pragma warning restore CS1591
+        [EnumMember(Value = "Fish Audio")]
+        #pragma warning disable CS1591
+        FishAudio,
+        #pragma warning restore CS1591
         [EnumMember(Value = "Friendli")]
         #pragma warning disable CS1591
         Friendli,
         #pragma warning restore CS1591
         [EnumMember(Value = "GMICloud")]
         #pragma warning disable CS1591
-        GMICloud,
+        GmiCloud,
         #pragma warning restore CS1591
         [EnumMember(Value = "Google")]
         #pragma warning disable CS1591
@@ -146,15 +186,15 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "Google AI Studio")]
         #pragma warning disable CS1591
-        GoogleAIStudio,
+        GoogleAiStudio,
         #pragma warning restore CS1591
         [EnumMember(Value = "Groq")]
         #pragma warning disable CS1591
         Groq,
         #pragma warning restore CS1591
-        [EnumMember(Value = "Hyperbolic")]
+        [EnumMember(Value = "HeyGen")]
         #pragma warning disable CS1591
-        Hyperbolic,
+        HeyGen,
         #pragma warning restore CS1591
         [EnumMember(Value = "Inception")]
         #pragma warning disable CS1591
@@ -180,6 +220,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning disable CS1591
         IoNet,
         #pragma warning restore CS1591
+        [EnumMember(Value = "Inferact vLLM")]
+        #pragma warning disable CS1591
+        InferactVLlm,
+        #pragma warning restore CS1591
         [EnumMember(Value = "Inflection")]
         #pragma warning disable CS1591
         Inflection,
@@ -188,6 +232,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning disable CS1591
         Liquid,
         #pragma warning restore CS1591
+        [EnumMember(Value = "Makora")]
+        #pragma warning disable CS1591
+        Makora,
+        #pragma warning restore CS1591
         [EnumMember(Value = "Mara")]
         #pragma warning disable CS1591
         Mara,
@@ -195,6 +243,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         [EnumMember(Value = "Mancer 2")]
         #pragma warning disable CS1591
         Mancer2,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Meta")]
+        #pragma warning disable CS1591
+        Meta,
         #pragma warning restore CS1591
         [EnumMember(Value = "Minimax")]
         #pragma warning disable CS1591
@@ -214,15 +266,23 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "Moonshot AI")]
         #pragma warning disable CS1591
-        MoonshotAI,
+        MoonshotAi,
         #pragma warning restore CS1591
         [EnumMember(Value = "Morph")]
         #pragma warning disable CS1591
         Morph,
         #pragma warning restore CS1591
-        [EnumMember(Value = "NCompass")]
+        [EnumMember(Value = "VoyageAI by MongoDB")]
         #pragma warning disable CS1591
-        NCompass,
+        VoyageAiByMongoDb,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "TypeSafe")]
+        #pragma warning disable CS1591
+        TypeSafe,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Near AI")]
+        #pragma warning disable CS1591
+        NearAi,
         #pragma warning restore CS1591
         [EnumMember(Value = "Nebius")]
         #pragma warning disable CS1591
@@ -230,7 +290,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "Nex AGI")]
         #pragma warning disable CS1591
-        NexAGI,
+        NexAgi,
         #pragma warning restore CS1591
         [EnumMember(Value = "NextBit")]
         #pragma warning disable CS1591
@@ -244,9 +304,13 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning disable CS1591
         Nvidia,
         #pragma warning restore CS1591
+        [EnumMember(Value = "Ollama")]
+        #pragma warning disable CS1591
+        Ollama,
+        #pragma warning restore CS1591
         [EnumMember(Value = "OpenAI")]
         #pragma warning disable CS1591
-        OpenAI,
+        OpenAi,
         #pragma warning restore CS1591
         [EnumMember(Value = "OpenInference")]
         #pragma warning disable CS1591
@@ -256,9 +320,17 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning disable CS1591
         Parasail,
         #pragma warning restore CS1591
+        [EnumMember(Value = "ParetoAlpha")]
+        #pragma warning disable CS1591
+        ParetoAlpha,
+        #pragma warning restore CS1591
         [EnumMember(Value = "Poolside")]
         #pragma warning disable CS1591
         Poolside,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "PrimeIntellect")]
+        #pragma warning disable CS1591
+        PrimeIntellect,
         #pragma warning restore CS1591
         [EnumMember(Value = "Perceptron")]
         #pragma warning disable CS1591
@@ -276,6 +348,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning disable CS1591
         Recraft,
         #pragma warning restore CS1591
+        [EnumMember(Value = "Recursive")]
+        #pragma warning disable CS1591
+        Recursive,
+        #pragma warning restore CS1591
         [EnumMember(Value = "Reka")]
         #pragma warning disable CS1591
         Reka,
@@ -284,9 +360,25 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning disable CS1591
         Relace,
         #pragma warning restore CS1591
+        [EnumMember(Value = "Respan")]
+        #pragma warning disable CS1591
+        Respan,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Sail Research")]
+        #pragma warning disable CS1591
+        SailResearch,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Sakana AI")]
+        #pragma warning disable CS1591
+        SakanaAi,
+        #pragma warning restore CS1591
         [EnumMember(Value = "SambaNova")]
         #pragma warning disable CS1591
         SambaNova,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "ScaleDown")]
+        #pragma warning disable CS1591
+        ScaleDown,
         #pragma warning restore CS1591
         [EnumMember(Value = "Seed")]
         #pragma warning disable CS1591
@@ -316,9 +408,25 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning disable CS1591
         Switchpoint,
         #pragma warning restore CS1591
+        [EnumMember(Value = "Tencent")]
+        #pragma warning disable CS1591
+        Tencent,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Tenstorrent")]
+        #pragma warning disable CS1591
+        Tenstorrent,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Thinking Machines")]
+        #pragma warning disable CS1591
+        ThinkingMachines,
+        #pragma warning restore CS1591
         [EnumMember(Value = "Together")]
         #pragma warning disable CS1591
         Together,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Unbiased")]
+        #pragma warning disable CS1591
+        Unbiased,
         #pragma warning restore CS1591
         [EnumMember(Value = "Upstage")]
         #pragma warning disable CS1591
@@ -328,9 +436,25 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning disable CS1591
         Venice,
         #pragma warning restore CS1591
+        [EnumMember(Value = "Wafer")]
+        #pragma warning disable CS1591
+        Wafer,
+        #pragma warning restore CS1591
         [EnumMember(Value = "WandB")]
         #pragma warning disable CS1591
         WandB,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Quiver")]
+        #pragma warning disable CS1591
+        Quiver,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Krea")]
+        #pragma warning disable CS1591
+        Krea,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Runway")]
+        #pragma warning disable CS1591
+        Runway,
         #pragma warning restore CS1591
         [EnumMember(Value = "Xiaomi")]
         #pragma warning disable CS1591
@@ -338,11 +462,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "xAI")]
         #pragma warning disable CS1591
-        XAI,
+        XAi,
         #pragma warning restore CS1591
         [EnumMember(Value = "Z.AI")]
         #pragma warning disable CS1591
-        ZAI,
+        ZAi,
         #pragma warning restore CS1591
         [EnumMember(Value = "FakeProvider")]
         #pragma warning disable CS1591

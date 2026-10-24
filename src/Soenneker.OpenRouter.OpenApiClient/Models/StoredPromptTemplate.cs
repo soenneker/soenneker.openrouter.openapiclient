@@ -25,10 +25,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The variables property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.StoredPromptTemplate_variables? Variables { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.StoredPromptTemplateVariablesProperty? Variables { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.StoredPromptTemplate_variables Variables { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.StoredPromptTemplateVariablesProperty Variables { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.StoredPromptTemplate"/> and sets the default values.
@@ -56,7 +56,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "id", n => { Id = n.GetStringValue(); } },
-                { "variables", n => { Variables = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.StoredPromptTemplate_variables>(global::Soenneker.OpenRouter.OpenApiClient.Models.StoredPromptTemplate_variables.CreateFromDiscriminatorValue); } },
+                { "variables", n => { Variables = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.StoredPromptTemplateVariablesProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.StoredPromptTemplateVariablesProperty.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -67,7 +67,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("id", Id);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.StoredPromptTemplate_variables>("variables", Variables);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.StoredPromptTemplateVariablesProperty>("variables", Variables);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

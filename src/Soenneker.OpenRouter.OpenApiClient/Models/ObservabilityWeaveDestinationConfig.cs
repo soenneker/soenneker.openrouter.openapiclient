@@ -41,10 +41,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Custom HTTP headers to include in requests to this destination.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityWeaveDestinationConfig_headers? Headers { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityWeaveDestinationConfigHeadersProperty? Headers { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityWeaveDestinationConfig_headers Headers { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityWeaveDestinationConfigHeadersProperty Headers { get; set; }
 #endif
         /// <summary>The project property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -83,7 +83,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "apiKey", n => { ApiKey = n.GetStringValue(); } },
                 { "baseUrl", n => { BaseUrl = n.GetStringValue(); } },
                 { "entity", n => { Entity = n.GetStringValue(); } },
-                { "headers", n => { Headers = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityWeaveDestinationConfig_headers>(global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityWeaveDestinationConfig_headers.CreateFromDiscriminatorValue); } },
+                { "headers", n => { Headers = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityWeaveDestinationConfigHeadersProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityWeaveDestinationConfigHeadersProperty.CreateFromDiscriminatorValue); } },
                 { "project", n => { Project = n.GetStringValue(); } },
             };
         }
@@ -97,7 +97,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteStringValue("apiKey", ApiKey);
             writer.WriteStringValue("baseUrl", BaseUrl);
             writer.WriteStringValue("entity", Entity);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityWeaveDestinationConfig_headers>("headers", Headers);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityWeaveDestinationConfigHeadersProperty>("headers", Headers);
             writer.WriteStringValue("project", Project);
             writer.WriteAdditionalData(AdditionalData);
         }

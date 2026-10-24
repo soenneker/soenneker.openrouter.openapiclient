@@ -17,14 +17,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Set to false to disable the file-parser plugin for this request. Defaults to true.</summary>
         public bool? Enabled { get; set; }
         /// <summary>The id property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.FileParserPlugin_id? Id { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.FileParserId? Id { get; set; }
         /// <summary>Options for PDF parsing.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.PDFParserOptions? Pdf { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PdfParserOptions? Pdf { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.PDFParserOptions Pdf { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PdfParserOptions Pdf { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.FileParserPlugin"/> and sets the default values.
@@ -52,8 +52,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
-                { "id", n => { Id = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.FileParserPlugin_id>(); } },
-                { "pdf", n => { Pdf = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PDFParserOptions>(global::Soenneker.OpenRouter.OpenApiClient.Models.PDFParserOptions.CreateFromDiscriminatorValue); } },
+                { "id", n => { Id = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.FileParserId>(); } },
+                { "pdf", n => { Pdf = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PdfParserOptions>(global::Soenneker.OpenRouter.OpenApiClient.Models.PdfParserOptions.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -64,8 +64,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("enabled", Enabled);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.FileParserPlugin_id>("id", Id);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PDFParserOptions>("pdf", Pdf);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.FileParserId>("id", Id);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PdfParserOptions>("pdf", Pdf);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

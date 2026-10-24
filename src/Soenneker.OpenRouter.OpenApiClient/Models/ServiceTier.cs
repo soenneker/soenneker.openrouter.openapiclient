@@ -14,7 +14,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "default")]
         #pragma warning disable CS1591
-        Default,
+        DefaultValue,
         #pragma warning restore CS1591
         [EnumMember(Value = "flex")]
         #pragma warning disable CS1591
@@ -27,6 +27,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         [EnumMember(Value = "scale")]
         #pragma warning disable CS1591
         Scale,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "ultrafast")]
+        #pragma warning disable CS1591
+        Ultrafast,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464")]
+        #pragma warning disable CS1591
+        OpenapiJsonNullSentinelValue2BF936000FE44250987AE5DDB203E464,
         #pragma warning restore CS1591
     }
 }

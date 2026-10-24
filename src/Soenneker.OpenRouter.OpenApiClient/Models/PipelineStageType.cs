@@ -17,15 +17,15 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "server_tools")]
         #pragma warning disable CS1591
-        Server_tools,
+        ServerTools,
         #pragma warning restore CS1591
         [EnumMember(Value = "response_healing")]
         #pragma warning disable CS1591
-        Response_healing,
+        ResponseHealing,
         #pragma warning restore CS1591
         [EnumMember(Value = "context_compression")]
         #pragma warning disable CS1591
-        Context_compression,
+        ContextCompression,
         #pragma warning restore CS1591
     }
 }

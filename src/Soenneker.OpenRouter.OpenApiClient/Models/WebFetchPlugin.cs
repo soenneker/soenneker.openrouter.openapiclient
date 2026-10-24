@@ -31,7 +31,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public List<string> BlockedDomains { get; set; }
 #endif
         /// <summary>The id property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.WebFetchPlugin_id? Id { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.WebFetchId? Id { get; set; }
         /// <summary>Maximum content length in approximate tokens. Content exceeding this limit is truncated.</summary>
         public int? MaxContentTokens { get; set; }
         /// <summary>Maximum number of web fetches per request. Once exceeded, the tool returns an error.</summary>
@@ -63,7 +63,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             {
                 { "allowed_domains", n => { AllowedDomains = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "blocked_domains", n => { BlockedDomains = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "id", n => { Id = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebFetchPlugin_id>(); } },
+                { "id", n => { Id = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebFetchId>(); } },
                 { "max_content_tokens", n => { MaxContentTokens = n.GetIntValue(); } },
                 { "max_uses", n => { MaxUses = n.GetIntValue(); } },
             };
@@ -77,7 +77,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<string>("allowed_domains", AllowedDomains);
             writer.WriteCollectionOfPrimitiveValues<string>("blocked_domains", BlockedDomains);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebFetchPlugin_id>("id", Id);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebFetchId>("id", Id);
             writer.WriteIntValue("max_content_tokens", MaxContentTokens);
             writer.WriteIntValue("max_uses", MaxUses);
             writer.WriteAdditionalData(AdditionalData);

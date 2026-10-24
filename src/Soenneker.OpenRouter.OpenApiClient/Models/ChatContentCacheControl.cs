@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     /// <summary>
-    /// Cache control for the content part
+    /// Anthropic-style cache breakpoint for the content part. Interchangeable with the OpenAI-style `prompt_cache_breakpoint` marker: OpenRouter converts between the two based on the provider serving the request.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ChatContentCacheControl : IAdditionalDataHolder, IParsable
@@ -18,7 +18,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The ttl property</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlTtl? Ttl { get; set; }
         /// <summary>The type property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatContentCacheControl_type? Type { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.EphemeralType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ChatContentCacheControl"/> and sets the default values.
         /// </summary>
@@ -45,7 +45,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "ttl", n => { Ttl = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlTtl>(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatContentCacheControl_type>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.EphemeralType>(); } },
             };
         }
         /// <summary>
@@ -56,7 +56,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlTtl>("ttl", Ttl);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatContentCacheControl_type>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.EphemeralType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

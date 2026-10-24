@@ -17,10 +17,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The content property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicAdvisorToolResult_content? Content { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicAdvisorToolResultContentProperty? Content { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicAdvisorToolResult_content Content { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicAdvisorToolResultContentProperty Content { get; set; }
 #endif
         /// <summary>The tool_use_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -31,7 +31,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public string ToolUseId { get; set; }
 #endif
         /// <summary>The type property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicAdvisorToolResult_type? Type { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AdvisorToolResultType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicAdvisorToolResult"/> and sets the default values.
         /// </summary>
@@ -57,9 +57,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "content", n => { Content = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicAdvisorToolResult_content>(global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicAdvisorToolResult_content.CreateFromDiscriminatorValue); } },
+                { "content", n => { Content = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicAdvisorToolResultContentProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicAdvisorToolResultContentProperty.CreateFromDiscriminatorValue); } },
                 { "tool_use_id", n => { ToolUseId = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicAdvisorToolResult_type>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AdvisorToolResultType>(); } },
             };
         }
         /// <summary>
@@ -69,9 +69,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicAdvisorToolResult_content>("content", Content);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicAdvisorToolResultContentProperty>("content", Content);
             writer.WriteStringValue("tool_use_id", ToolUseId);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicAdvisorToolResult_type>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AdvisorToolResultType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

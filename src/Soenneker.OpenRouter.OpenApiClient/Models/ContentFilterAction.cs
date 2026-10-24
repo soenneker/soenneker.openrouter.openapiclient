@@ -15,5 +15,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning disable CS1591
         Block,
         #pragma warning restore CS1591
+        [EnumMember(Value = "flag")]
+        #pragma warning disable CS1591
+        Flag,
+        #pragma warning restore CS1591
     }
 }

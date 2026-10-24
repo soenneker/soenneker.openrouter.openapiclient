@@ -40,14 +40,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Messages
         /// <param name="body">Request schema for Anthropic Messages API endpoint</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesErrorResponse">When receiving a 400 status code</exception>
-        /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesErrorResponse">When receiving a 401 status code</exception>
-        /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ForbiddenResponse">When receiving a 403 status code</exception>
-        /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesErrorResponse">When receiving a 404 status code</exception>
-        /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesErrorResponse">When receiving a 429 status code</exception>
-        /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesErrorResponse">When receiving a 500 status code</exception>
-        /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesErrorResponse">When receiving a 503 status code</exception>
-        /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesErrorResponse">When receiving a 529 status code</exception>
+        /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicMessagesErrorResponse">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicMessagesErrorResponse">When receiving a 401 status code</exception>
+        /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicMessagesErrorResponse">When receiving a 403 status code</exception>
+        /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicMessagesErrorResponse">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicMessagesErrorResponse">When receiving a 429 status code</exception>
+        /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicMessagesErrorResponse">When receiving a 500 status code</exception>
+        /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicMessagesErrorResponse">When receiving a 503 status code</exception>
+        /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicMessagesErrorResponse">When receiving a 529 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResult?> PostAsync(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -61,14 +61,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Messages
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "400", global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesErrorResponse.CreateFromDiscriminatorValue },
-                { "401", global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesErrorResponse.CreateFromDiscriminatorValue },
-                { "403", global::Soenneker.OpenRouter.OpenApiClient.Models.ForbiddenResponse.CreateFromDiscriminatorValue },
-                { "404", global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesErrorResponse.CreateFromDiscriminatorValue },
-                { "429", global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesErrorResponse.CreateFromDiscriminatorValue },
-                { "500", global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesErrorResponse.CreateFromDiscriminatorValue },
-                { "503", global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesErrorResponse.CreateFromDiscriminatorValue },
-                { "529", global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesErrorResponse.CreateFromDiscriminatorValue },
+                { "400", global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicMessagesErrorResponse.CreateFromDiscriminatorValue },
+                { "401", global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicMessagesErrorResponse.CreateFromDiscriminatorValue },
+                { "403", global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicMessagesErrorResponse.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicMessagesErrorResponse.CreateFromDiscriminatorValue },
+                { "429", global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicMessagesErrorResponse.CreateFromDiscriminatorValue },
+                { "500", global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicMessagesErrorResponse.CreateFromDiscriminatorValue },
+                { "503", global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicMessagesErrorResponse.CreateFromDiscriminatorValue },
+                { "529", global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicMessagesErrorResponse.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResult>(requestInfo, global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResult.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

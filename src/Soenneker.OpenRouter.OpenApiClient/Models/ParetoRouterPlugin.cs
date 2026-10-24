@@ -17,9 +17,13 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Set to false to disable the pareto-router plugin for this request. Defaults to true.</summary>
         public bool? Enabled { get; set; }
         /// <summary>The id property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ParetoRouterPlugin_id? Id { get; set; }
-        /// <summary>Minimum desired coding score between 0 and 1, where 1 is best. Higher values select from stronger coding models (sourced from Artificial Analysis coding percentiles). Maps internally to one of three tiers (low, medium, high). Omit to use the router default tier.</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ParetoRouterId? Id { get; set; }
+        /// <summary>Maximum input price in USD per million tokens. When set, quality-tier selection (min_coding_score) is bypassed: the router computes the Pareto frontier over the top coding models and routes to the best-scoring frontier model priced at or below this cap, falling back through cheaper frontier models, then non-frontier models. Enforced against the price source given by price_source. Returns 404 when no candidate satisfies the cap.</summary>
+        public double? MaxPrice { get; set; }
+        /// <summary>Minimum coding quality score between 0 and 1. Maps to internal quality tiers: &gt;= 0.66 → high (top coding models), &gt;= 0.33 → medium (strong modern flagships), &lt; 0.33 → low (capable coders above the median). Omit to default to the highest tier (equivalent to &gt;= 0.66). Not used when max_price is set (price-based selection takes over).</summary>
         public double? MinCodingScore { get; set; }
+        /// <summary>Price source for the Pareto frontier cost axis and for enforcing max_price. &quot;prompt&quot; uses catalog list price (endpoint.pricing.prompt). &quot;weighted_avg&quot; uses traffic-weighted effective input price from ClickHouse, falling back to prompt price for models without traffic data. Defaults to &quot;prompt&quot;.</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ParetoRouterPluginPriceSource? PriceSource { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ParetoRouterPlugin"/> and sets the default values.
         /// </summary>
@@ -46,8 +50,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
-                { "id", n => { Id = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ParetoRouterPlugin_id>(); } },
+                { "id", n => { Id = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ParetoRouterId>(); } },
+                { "max_price", n => { MaxPrice = n.GetDoubleValue(); } },
                 { "min_coding_score", n => { MinCodingScore = n.GetDoubleValue(); } },
+                { "price_source", n => { PriceSource = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ParetoRouterPluginPriceSource>(); } },
             };
         }
         /// <summary>
@@ -58,8 +64,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("enabled", Enabled);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ParetoRouterPlugin_id>("id", Id);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ParetoRouterId>("id", Id);
+            writer.WriteDoubleValue("max_price", MaxPrice);
             writer.WriteDoubleValue("min_coding_score", MinCodingScore);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ParetoRouterPluginPriceSource>("price_source", PriceSource);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

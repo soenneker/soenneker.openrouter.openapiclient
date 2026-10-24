@@ -14,8 +14,12 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Controls which reasoning is available to the model. `auto` uses the model default (same as omitting); `all_turns` includes reasoning from earlier turns passed in input; `current_turn` limits to the current turn only. Only supported by OpenAI GPT-5.6 and newer.</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningContext? Context { get; set; }
         /// <summary>The effort property</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningEffort? Effort { get; set; }
+        /// <summary>Selects the reasoning mode. `standard` is the default; `pro` engages deeper reasoning on models that support it, billed at standard token rates. Only supported by OpenAI GPT-5.6 and newer.</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningMode? Mode { get; set; }
         /// <summary>The summary property</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningSummaryVerbosity? Summary { get; set; }
         /// <summary>
@@ -43,7 +47,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "context", n => { Context = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningContext>(); } },
                 { "effort", n => { Effort = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningEffort>(); } },
+                { "mode", n => { Mode = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningMode>(); } },
                 { "summary", n => { Summary = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningSummaryVerbosity>(); } },
             };
         }
@@ -54,7 +60,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningContext>("context", Context);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningEffort>("effort", Effort);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningMode>("mode", Mode);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningSummaryVerbosity>("summary", Summary);
             writer.WriteAdditionalData(AdditionalData);
         }

@@ -25,10 +25,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Custom HTTP headers to include in requests to this destination.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityClickhouseDestinationConfig_headers? Headers { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityClickhouseDestinationConfigHeadersProperty? Headers { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityClickhouseDestinationConfig_headers Headers { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityClickhouseDestinationConfigHeadersProperty Headers { get; set; }
 #endif
         /// <summary>The host property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -46,6 +46,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public string Password { get; set; }
 #endif
+        /// <summary>Send the cache_write_tokens column (schema v2). Turn this on after the table has that column.</summary>
+        public bool? ShouldIncludeCacheWriteTokens { get; set; }
         /// <summary>The table property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -68,6 +70,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public ObservabilityClickhouseDestinationConfig()
         {
             AdditionalData = new Dictionary<string, object>();
+            ShouldIncludeCacheWriteTokens = false;
             Table = "OPENROUTER_TRACES";
         }
         /// <summary>
@@ -89,9 +92,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "database", n => { Database = n.GetStringValue(); } },
-                { "headers", n => { Headers = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityClickhouseDestinationConfig_headers>(global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityClickhouseDestinationConfig_headers.CreateFromDiscriminatorValue); } },
+                { "headers", n => { Headers = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityClickhouseDestinationConfigHeadersProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityClickhouseDestinationConfigHeadersProperty.CreateFromDiscriminatorValue); } },
                 { "host", n => { Host = n.GetStringValue(); } },
                 { "password", n => { Password = n.GetStringValue(); } },
+                { "shouldIncludeCacheWriteTokens", n => { ShouldIncludeCacheWriteTokens = n.GetBoolValue(); } },
                 { "table", n => { Table = n.GetStringValue(); } },
                 { "username", n => { Username = n.GetStringValue(); } },
             };
@@ -104,9 +108,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("database", Database);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityClickhouseDestinationConfig_headers>("headers", Headers);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityClickhouseDestinationConfigHeadersProperty>("headers", Headers);
             writer.WriteStringValue("host", Host);
             writer.WriteStringValue("password", Password);
+            writer.WriteBoolValue("shouldIncludeCacheWriteTokens", ShouldIncludeCacheWriteTokens);
             writer.WriteStringValue("table", Table);
             writer.WriteStringValue("username", Username);
             writer.WriteAdditionalData(AdditionalData);

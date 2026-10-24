@@ -15,6 +15,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Beta. The result of the alignment plugin for this request; the shape may change.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.Alignment? Alignment { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.Alignment Alignment { get; set; }
+#endif
         /// <summary>List of completion choices</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -42,7 +50,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public string Model { get; set; }
 #endif
         /// <summary>The object property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatResult_object? Object { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatCompletionObject? Object { get; set; }
         /// <summary>The openrouter_metadata property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -50,6 +58,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.OpenRouter.OpenApiClient.Models.OpenRouterMetadata OpenrouterMetadata { get; set; }
+#endif
+        /// <summary>OpenRouter Armor&apos;s verdict for each client tool call of this response, present whenever Armor evaluated the response (even when nothing was flagged). Independent of the `openrouter_metadata` opt-in.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ArmorSafeguardResult>? SafeguardResults { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ArmorSafeguardResult> SafeguardResults { get; set; }
 #endif
         /// <summary>The service tier used by the upstream provider for this request</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -100,12 +116,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "alignment", n => { Alignment = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.Alignment>(global::Soenneker.OpenRouter.OpenApiClient.Models.Alignment.CreateFromDiscriminatorValue); } },
                 { "choices", n => { Choices = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatChoice>(global::Soenneker.OpenRouter.OpenApiClient.Models.ChatChoice.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "created", n => { Created = n.GetIntValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "model", n => { Model = n.GetStringValue(); } },
-                { "object", n => { Object = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatResult_object>(); } },
+                { "object", n => { Object = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatCompletionObject>(); } },
                 { "openrouter_metadata", n => { OpenrouterMetadata = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OpenRouterMetadata>(global::Soenneker.OpenRouter.OpenApiClient.Models.OpenRouterMetadata.CreateFromDiscriminatorValue); } },
+                { "safeguard_results", n => { SafeguardResults = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ArmorSafeguardResult>(global::Soenneker.OpenRouter.OpenApiClient.Models.ArmorSafeguardResult.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "service_tier", n => { ServiceTier = n.GetStringValue(); } },
                 { "system_fingerprint", n => { SystemFingerprint = n.GetStringValue(); } },
                 { "usage", n => { Usage = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatUsage>(global::Soenneker.OpenRouter.OpenApiClient.Models.ChatUsage.CreateFromDiscriminatorValue); } },
@@ -118,12 +136,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.Alignment>("alignment", Alignment);
             writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatChoice>("choices", Choices);
             writer.WriteIntValue("created", Created);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("model", Model);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatResult_object>("object", Object);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatCompletionObject>("object", Object);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OpenRouterMetadata>("openrouter_metadata", OpenrouterMetadata);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ArmorSafeguardResult>("safeguard_results", SafeguardResults);
             writer.WriteStringValue("service_tier", ServiceTier);
             writer.WriteStringValue("system_fingerprint", SystemFingerprint);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatUsage>("usage", Usage);

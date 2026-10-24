@@ -22,6 +22,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public List<string> ApiKeyHashes { get; set; }
 #endif
+        /// <summary>When true, include cost and billing generation metadata.</summary>
+        public bool? BroadcastGenerationCost { get; set; }
+        /// <summary>Beta. When true, include openrouter_cost_allocation: per-token-kind usage and cost, sent only when they reconcile with the billed cost.</summary>
+        public bool? BroadcastGenerationCostAllocation { get; set; }
+        /// <summary>When true, include identity generation metadata.</summary>
+        public bool? BroadcastGenerationIdentity { get; set; }
+        /// <summary>When true, include request-context generation metadata.</summary>
+        public bool? BroadcastGenerationRequestContext { get; set; }
         /// <summary>The config property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -60,10 +68,18 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #endif
         /// <summary>When true, request/response bodies are not forwarded to this destination — only metadata.</summary>
         public bool? PrivacyMode { get; set; }
+        /// <summary>Data regions this destination applies to. Requests served in a region only fan out to destinations that include that region.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityDataRegion?>? Regions { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityDataRegion?> Regions { get; set; }
+#endif
         /// <summary>Sampling rate for events sent to this destination, between 0.0001 and 1 (1 = 100%).</summary>
         public double? SamplingRate { get; set; }
         /// <summary>The type property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityWeaveDestination_type? Type { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.WeaveType? Type { get; set; }
         /// <summary>ISO timestamp of when the destination was last updated.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -100,6 +116,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "api_key_hashes", n => { ApiKeyHashes = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "broadcast_generation_cost", n => { BroadcastGenerationCost = n.GetBoolValue(); } },
+                { "broadcast_generation_cost_allocation", n => { BroadcastGenerationCostAllocation = n.GetBoolValue(); } },
+                { "broadcast_generation_identity", n => { BroadcastGenerationIdentity = n.GetBoolValue(); } },
+                { "broadcast_generation_request_context", n => { BroadcastGenerationRequestContext = n.GetBoolValue(); } },
                 { "config", n => { Config = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityWeaveDestinationConfig>(global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityWeaveDestinationConfig.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetStringValue(); } },
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
@@ -107,8 +127,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "privacy_mode", n => { PrivacyMode = n.GetBoolValue(); } },
+                { "regions", n => { Regions = n.GetCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityDataRegion>()?.AsList(); } },
                 { "sampling_rate", n => { SamplingRate = n.GetDoubleValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityWeaveDestination_type>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WeaveType>(); } },
                 { "updated_at", n => { UpdatedAt = n.GetStringValue(); } },
                 { "workspace_id", n => { WorkspaceId = n.GetGuidValue(); } },
             };
@@ -121,6 +142,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<string>("api_key_hashes", ApiKeyHashes);
+            writer.WriteBoolValue("broadcast_generation_cost", BroadcastGenerationCost);
+            writer.WriteBoolValue("broadcast_generation_cost_allocation", BroadcastGenerationCostAllocation);
+            writer.WriteBoolValue("broadcast_generation_identity", BroadcastGenerationIdentity);
+            writer.WriteBoolValue("broadcast_generation_request_context", BroadcastGenerationRequestContext);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityWeaveDestinationConfig>("config", Config);
             writer.WriteStringValue("created_at", CreatedAt);
             writer.WriteBoolValue("enabled", Enabled);
@@ -128,8 +153,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteGuidValue("id", Id);
             writer.WriteStringValue("name", Name);
             writer.WriteBoolValue("privacy_mode", PrivacyMode);
+            writer.WriteCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityDataRegion>("regions", Regions);
             writer.WriteDoubleValue("sampling_rate", SamplingRate);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityWeaveDestination_type>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WeaveType>("type", Type);
             writer.WriteStringValue("updated_at", UpdatedAt);
             writer.WriteGuidValue("workspace_id", WorkspaceId);
             writer.WriteAdditionalData(AdditionalData);

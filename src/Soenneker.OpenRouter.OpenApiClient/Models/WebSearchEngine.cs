@@ -23,5 +23,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning disable CS1591
         Parallel,
         #pragma warning restore CS1591
+        [EnumMember(Value = "perplexity")]
+        #pragma warning disable CS1591
+        Perplexity,
+        #pragma warning restore CS1591
     }
 }

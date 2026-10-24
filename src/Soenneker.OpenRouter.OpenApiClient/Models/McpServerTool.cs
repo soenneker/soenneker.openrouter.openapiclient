@@ -32,14 +32,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public string Authorization { get; set; }
 #endif
         /// <summary>The connector_id property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerTool_connector_id? ConnectorId { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolConnectorId? ConnectorId { get; set; }
         /// <summary>The headers property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerTool_headers? Headers { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolHeadersProperty? Headers { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerTool_headers Headers { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolHeadersProperty Headers { get; set; }
 #endif
         /// <summary>The require_approval property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -74,7 +74,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public string ServerUrl { get; set; }
 #endif
         /// <summary>The type property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerTool_type? Type { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.McpType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerTool"/> and sets the default values.
         /// </summary>
@@ -102,13 +102,13 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             {
                 { "allowed_tools", n => { AllowedTools = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolAllowedTools>(global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolAllowedTools.CreateFromDiscriminatorValue); } },
                 { "authorization", n => { Authorization = n.GetStringValue(); } },
-                { "connector_id", n => { ConnectorId = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerTool_connector_id>(); } },
-                { "headers", n => { Headers = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerTool_headers>(global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerTool_headers.CreateFromDiscriminatorValue); } },
+                { "connector_id", n => { ConnectorId = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolConnectorId>(); } },
+                { "headers", n => { Headers = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolHeadersProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolHeadersProperty.CreateFromDiscriminatorValue); } },
                 { "require_approval", n => { RequireApproval = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolRequireApproval>(global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolRequireApproval.CreateFromDiscriminatorValue); } },
                 { "server_description", n => { ServerDescription = n.GetStringValue(); } },
                 { "server_label", n => { ServerLabel = n.GetStringValue(); } },
                 { "server_url", n => { ServerUrl = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerTool_type>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.McpType>(); } },
             };
         }
         /// <summary>
@@ -120,13 +120,13 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolAllowedTools>("allowed_tools", AllowedTools);
             writer.WriteStringValue("authorization", Authorization);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerTool_connector_id>("connector_id", ConnectorId);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerTool_headers>("headers", Headers);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolConnectorId>("connector_id", ConnectorId);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolHeadersProperty>("headers", Headers);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolRequireApproval>("require_approval", RequireApproval);
             writer.WriteStringValue("server_description", ServerDescription);
             writer.WriteStringValue("server_label", ServerLabel);
             writer.WriteStringValue("server_url", ServerUrl);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerTool_type>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.McpType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

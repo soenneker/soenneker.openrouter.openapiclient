@@ -20,6 +20,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning disable CS1591
         Fp4,
         #pragma warning restore CS1591
+        [EnumMember(Value = "mxfp4")]
+        #pragma warning disable CS1591
+        Mxfp4,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "nvfp4")]
+        #pragma warning disable CS1591
+        Nvfp4,
+        #pragma warning restore CS1591
         [EnumMember(Value = "fp6")]
         #pragma warning disable CS1591
         Fp6,
@@ -27,6 +35,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         [EnumMember(Value = "fp8")]
         #pragma warning disable CS1591
         Fp8,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "mxfp8")]
+        #pragma warning disable CS1591
+        Mxfp8,
         #pragma warning restore CS1591
         [EnumMember(Value = "fp16")]
         #pragma warning disable CS1591

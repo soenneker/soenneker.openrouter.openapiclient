@@ -39,7 +39,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public string Title { get; set; }
 #endif
         /// <summary>The type property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCitationWebSearchResultLocation_type? Type { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchResultLocationType? Type { get; set; }
         /// <summary>The url property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -76,7 +76,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "cited_text", n => { CitedText = n.GetStringValue(); } },
                 { "encrypted_index", n => { EncryptedIndex = n.GetStringValue(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCitationWebSearchResultLocation_type>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchResultLocationType>(); } },
                 { "url", n => { Url = n.GetStringValue(); } },
             };
         }
@@ -90,7 +90,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteStringValue("cited_text", CitedText);
             writer.WriteStringValue("encrypted_index", EncryptedIndex);
             writer.WriteStringValue("title", Title);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCitationWebSearchResultLocation_type>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchResultLocationType>("type", Type);
             writer.WriteStringValue("url", Url);
             writer.WriteAdditionalData(AdditionalData);
         }

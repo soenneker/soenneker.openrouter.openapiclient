@@ -32,7 +32,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public string Path { get; set; }
 #endif
         /// <summary>The type property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchUpdateFileOperation_type? Type { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.UpdateFileType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchUpdateFileOperation"/> and sets the default values.
         /// </summary>
@@ -60,7 +60,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             {
                 { "diff", n => { Diff = n.GetStringValue(); } },
                 { "path", n => { Path = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchUpdateFileOperation_type>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.UpdateFileType>(); } },
             };
         }
         /// <summary>
@@ -72,7 +72,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("diff", Diff);
             writer.WriteStringValue("path", Path);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ApplyPatchUpdateFileOperation_type>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.UpdateFileType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -36,10 +36,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Top alternative tokens with probabilities</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatTokenLogprob_top_logprobs>? TopLogprobs { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatTokenLogprobTopLogprobsItem>? TopLogprobs { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatTokenLogprob_top_logprobs> TopLogprobs { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatTokenLogprobTopLogprobsItem> TopLogprobs { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ChatTokenLogprob"/> and sets the default values.
@@ -69,7 +69,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "bytes", n => { Bytes = n.GetCollectionOfPrimitiveValues<int?>()?.AsList(); } },
                 { "logprob", n => { Logprob = n.GetDoubleValue(); } },
                 { "token", n => { Token = n.GetStringValue(); } },
-                { "top_logprobs", n => { TopLogprobs = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatTokenLogprob_top_logprobs>(global::Soenneker.OpenRouter.OpenApiClient.Models.ChatTokenLogprob_top_logprobs.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "top_logprobs", n => { TopLogprobs = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatTokenLogprobTopLogprobsItem>(global::Soenneker.OpenRouter.OpenApiClient.Models.ChatTokenLogprobTopLogprobsItem.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -82,7 +82,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<int?>("bytes", Bytes);
             writer.WriteDoubleValue("logprob", Logprob);
             writer.WriteStringValue("token", Token);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatTokenLogprob_top_logprobs>("top_logprobs", TopLogprobs);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatTokenLogprobTopLogprobsItem>("top_logprobs", TopLogprobs);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

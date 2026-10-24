@@ -14,7 +14,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Slugs of models to run in parallel as the &quot;expert panel&quot; the judge analyzes. Each model receives the same user prompt with web_search + web_fetch enabled. Capped at 8 models to bound cost amplification. When omitted, defaults to the Quality preset from the /labs/fusion UI (~anthropic/claude-opus-latest, ~openai/gpt-latest, ~google/gemini-pro-latest).</summary>
+        /// <summary>For a Fusion run started by the `openrouter/fusion` model slug or `openrouter:fusion` server tool, slugs of models to run in parallel as the &quot;expert panel&quot; the analyst analyzes. Each model receives the same user prompt with web_search + web_fetch enabled. Capped at 8 models to bound cost amplification. When omitted, defaults to the Quality preset from the /labs/fusion UI (~anthropic/claude-opus-latest, ~openai/gpt-sol-latest, ~google/gemini-pro-latest).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? AnalysisModels { get; set; }
@@ -22,19 +22,29 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public List<string> AnalysisModels { get; set; }
 #endif
-        /// <summary>Set to false to disable the fusion plugin for this request. Defaults to true.</summary>
+        /// <summary>Set to false to disable Fusion configuration for a run started by the `openrouter/fusion` model slug or `openrouter:fusion` server tool. Defaults to true.</summary>
         public bool? Enabled { get; set; }
         /// <summary>The id property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.FusionPlugin_id? Id { get; set; }
-        /// <summary>Maximum number of tool-calling steps each panelist (analysis model) and the judge model may take during their agentic web-research loop. Models with web_search/web_fetch enabled iterate until they produce a text response or hit this ceiling. Defaults to 8. Capped at 16.</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.FusionId? Id { get; set; }
+        /// <summary>For a Fusion run started by the `openrouter/fusion` model slug or `openrouter:fusion` server tool, the maximum number of tool-calling steps each panelist (analysis model) and the analyst model may take during their agentic web-research loop. Models with web_search/web_fetch enabled iterate until they produce a text response or hit this ceiling. Defaults to 4. Capped at 16.</summary>
         public int? MaxToolCalls { get; set; }
-        /// <summary>Slug of the model that performs both the judge step (with web_search + web_fetch) and the final synthesis. When omitted, defaults to the first model in the Quality preset.</summary>
+        /// <summary>For a Fusion run started by the `openrouter/fusion` model slug or `openrouter:fusion` server tool, the slug of the model that performs both the analyst step (with web_search + web_fetch) and the final synthesis. When omitted, defaults to the first model in the Quality preset.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Model { get; set; }
 #nullable restore
 #else
         public string Model { get; set; }
+#endif
+        /// <summary>Configuration for a Fusion run started by the `openrouter/fusion` model slug or `openrouter:fusion` server tool. A curated OpenRouter preset (slugs follow `&lt;task&gt;-&lt;tier&gt;`, e.g. `general-high`). Expands server-side into the preset&apos;s analysis_models panel and analyst model, so callers never name individual models. Explicitly provided `analysis_models` / `model` take precedence.</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.FusionPluginPreset? Preset { get; set; }
+        /// <summary>For a Fusion run started by the `openrouter/fusion` model slug or `openrouter:fusion` server tool, server tools available to panelist and analyst inner calls. Each entry uses the same `{ type, parameters? }` shorthand as the outer Chat Completions request. When omitted, defaults to `[{ type: &quot;openrouter:web_search&quot; }, { type: &quot;openrouter:web_fetch&quot; }]`. Pass an empty array to disable tools entirely (panelists answer from parametric knowledge only).</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.FusionPluginToolsItem>? Tools { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.FusionPluginToolsItem> Tools { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.FusionPlugin"/> and sets the default values.
@@ -63,9 +73,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             {
                 { "analysis_models", n => { AnalysisModels = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
-                { "id", n => { Id = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.FusionPlugin_id>(); } },
+                { "id", n => { Id = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.FusionId>(); } },
                 { "max_tool_calls", n => { MaxToolCalls = n.GetIntValue(); } },
                 { "model", n => { Model = n.GetStringValue(); } },
+                { "preset", n => { Preset = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.FusionPluginPreset>(); } },
+                { "tools", n => { Tools = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.FusionPluginToolsItem>(global::Soenneker.OpenRouter.OpenApiClient.Models.FusionPluginToolsItem.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -77,9 +89,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<string>("analysis_models", AnalysisModels);
             writer.WriteBoolValue("enabled", Enabled);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.FusionPlugin_id>("id", Id);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.FusionId>("id", Id);
             writer.WriteIntValue("max_tool_calls", MaxToolCalls);
             writer.WriteStringValue("model", Model);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.FusionPluginPreset>("preset", Preset);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.FusionPluginToolsItem>("tools", Tools);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

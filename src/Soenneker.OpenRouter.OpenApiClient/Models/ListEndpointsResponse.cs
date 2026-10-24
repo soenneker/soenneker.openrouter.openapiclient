@@ -18,10 +18,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The architecture property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ListEndpointsResponse_architecture? Architecture { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ListEndpointsResponseArchitecture? Architecture { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ListEndpointsResponse_architecture Architecture { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ListEndpointsResponseArchitecture Architecture { get; set; }
 #endif
         /// <summary>Unix timestamp of when the model was created</summary>
         public int? Created { get; set; }
@@ -82,7 +82,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "architecture", n => { Architecture = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ListEndpointsResponse_architecture>(global::Soenneker.OpenRouter.OpenApiClient.Models.ListEndpointsResponse_architecture.CreateFromDiscriminatorValue); } },
+                { "architecture", n => { Architecture = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ListEndpointsResponseArchitecture>(global::Soenneker.OpenRouter.OpenApiClient.Models.ListEndpointsResponseArchitecture.CreateFromDiscriminatorValue); } },
                 { "created", n => { Created = n.GetIntValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "endpoints", n => { Endpoints = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpoint>(global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpoint.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -97,7 +97,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ListEndpointsResponse_architecture>("architecture", Architecture);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ListEndpointsResponseArchitecture>("architecture", Architecture);
             writer.WriteIntValue("created", Created);
             writer.WriteStringValue("description", Description);
             writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpoint>("endpoints", Endpoints);

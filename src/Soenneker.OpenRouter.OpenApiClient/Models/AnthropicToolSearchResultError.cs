@@ -25,7 +25,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public string ErrorMessage { get; set; }
 #endif
         /// <summary>The type property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicToolSearchResultError_type? Type { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ToolSearchToolResultErrorType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicToolSearchResultError"/> and sets the default values.
         /// </summary>
@@ -53,7 +53,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             {
                 { "error_code", n => { ErrorCode = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicServerToolErrorCode>(); } },
                 { "error_message", n => { ErrorMessage = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicToolSearchResultError_type>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ToolSearchToolResultErrorType>(); } },
             };
         }
         /// <summary>
@@ -65,7 +65,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicServerToolErrorCode>("error_code", ErrorCode);
             writer.WriteStringValue("error_message", ErrorMessage);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicToolSearchResultError_type>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ToolSearchToolResultErrorType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

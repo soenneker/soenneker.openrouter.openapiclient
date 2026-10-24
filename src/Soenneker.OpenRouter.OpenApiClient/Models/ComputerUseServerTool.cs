@@ -20,9 +20,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The display_width property</summary>
         public int? DisplayWidth { get; set; }
         /// <summary>The environment property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ComputerUseServerTool_environment? Environment { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ComputerUseServerToolEnvironment? Environment { get; set; }
         /// <summary>The type property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ComputerUseServerTool_type? Type { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ComputerUsePreviewType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ComputerUseServerTool"/> and sets the default values.
         /// </summary>
@@ -50,8 +50,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             {
                 { "display_height", n => { DisplayHeight = n.GetIntValue(); } },
                 { "display_width", n => { DisplayWidth = n.GetIntValue(); } },
-                { "environment", n => { Environment = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ComputerUseServerTool_environment>(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ComputerUseServerTool_type>(); } },
+                { "environment", n => { Environment = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ComputerUseServerToolEnvironment>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ComputerUsePreviewType>(); } },
             };
         }
         /// <summary>
@@ -63,8 +63,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("display_height", DisplayHeight);
             writer.WriteIntValue("display_width", DisplayWidth);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ComputerUseServerTool_environment>("environment", Environment);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ComputerUseServerTool_type>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ComputerUseServerToolEnvironment>("environment", Environment);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ComputerUsePreviewType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

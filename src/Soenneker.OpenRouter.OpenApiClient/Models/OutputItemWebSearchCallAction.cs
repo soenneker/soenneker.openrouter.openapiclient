@@ -8,34 +8,34 @@ using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemWebSearchCallActionMember1"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemWebSearchCallActionMember2"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemWebSearchCallActionMember3"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemWebSearchCallActionOneOf1"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemWebSearchCallActionOneOf2"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemWebSearchCallActionOneOf3"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class OutputItemWebSearchCallAction : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemWebSearchCallActionMember1"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemWebSearchCallActionOneOf1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemWebSearchCallActionMember1? OutputItemWebSearchCallActionMember1 { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemWebSearchCallActionOneOf1? OutputItemWebSearchCallActionOneOf1 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemWebSearchCallActionMember1 OutputItemWebSearchCallActionMember1 { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemWebSearchCallActionOneOf1 OutputItemWebSearchCallActionOneOf1 { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemWebSearchCallActionMember2"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemWebSearchCallActionOneOf2"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemWebSearchCallActionMember2? OutputItemWebSearchCallActionMember2 { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemWebSearchCallActionOneOf2? OutputItemWebSearchCallActionOneOf2 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemWebSearchCallActionMember2 OutputItemWebSearchCallActionMember2 { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemWebSearchCallActionOneOf2 OutputItemWebSearchCallActionOneOf2 { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemWebSearchCallActionMember3"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemWebSearchCallActionOneOf3"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemWebSearchCallActionMember3? OutputItemWebSearchCallActionMember3 { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemWebSearchCallActionOneOf3? OutputItemWebSearchCallActionOneOf3 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemWebSearchCallActionMember3 OutputItemWebSearchCallActionMember3 { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemWebSearchCallActionOneOf3 OutputItemWebSearchCallActionOneOf3 { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -47,17 +47,17 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
             var result = new global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemWebSearchCallAction();
-            if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("search".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.OutputItemWebSearchCallActionMember1 = new global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemWebSearchCallActionMember1();
+                result.OutputItemWebSearchCallActionOneOf1 = new global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemWebSearchCallActionOneOf1();
             }
-            else if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("open_page".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.OutputItemWebSearchCallActionMember2 = new global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemWebSearchCallActionMember2();
+                result.OutputItemWebSearchCallActionOneOf2 = new global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemWebSearchCallActionOneOf2();
             }
-            else if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("find_in_page".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.OutputItemWebSearchCallActionMember3 = new global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemWebSearchCallActionMember3();
+                result.OutputItemWebSearchCallActionOneOf3 = new global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemWebSearchCallActionOneOf3();
             }
             return result;
         }
@@ -67,17 +67,17 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(OutputItemWebSearchCallActionMember1 != null)
+            if(OutputItemWebSearchCallActionOneOf1 != null)
             {
-                return OutputItemWebSearchCallActionMember1.GetFieldDeserializers();
+                return OutputItemWebSearchCallActionOneOf1.GetFieldDeserializers();
             }
-            else if(OutputItemWebSearchCallActionMember2 != null)
+            else if(OutputItemWebSearchCallActionOneOf2 != null)
             {
-                return OutputItemWebSearchCallActionMember2.GetFieldDeserializers();
+                return OutputItemWebSearchCallActionOneOf2.GetFieldDeserializers();
             }
-            else if(OutputItemWebSearchCallActionMember3 != null)
+            else if(OutputItemWebSearchCallActionOneOf3 != null)
             {
-                return OutputItemWebSearchCallActionMember3.GetFieldDeserializers();
+                return OutputItemWebSearchCallActionOneOf3.GetFieldDeserializers();
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -88,17 +88,17 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(OutputItemWebSearchCallActionMember1 != null)
+            if(OutputItemWebSearchCallActionOneOf1 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemWebSearchCallActionMember1>(null, OutputItemWebSearchCallActionMember1);
+                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemWebSearchCallActionOneOf1>(null, OutputItemWebSearchCallActionOneOf1);
             }
-            else if(OutputItemWebSearchCallActionMember2 != null)
+            else if(OutputItemWebSearchCallActionOneOf2 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemWebSearchCallActionMember2>(null, OutputItemWebSearchCallActionMember2);
+                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemWebSearchCallActionOneOf2>(null, OutputItemWebSearchCallActionOneOf2);
             }
-            else if(OutputItemWebSearchCallActionMember3 != null)
+            else if(OutputItemWebSearchCallActionOneOf3 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemWebSearchCallActionMember3>(null, OutputItemWebSearchCallActionMember3);
+                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemWebSearchCallActionOneOf3>(null, OutputItemWebSearchCallActionOneOf3);
             }
         }
     }

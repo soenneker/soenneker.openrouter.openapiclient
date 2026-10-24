@@ -33,10 +33,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Custom HTTP headers to include in requests to this destination.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilitySnowflakeDestinationConfig_headers? Headers { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilitySnowflakeDestinationConfigHeadersProperty? Headers { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilitySnowflakeDestinationConfig_headers Headers { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilitySnowflakeDestinationConfigHeadersProperty Headers { get; set; }
 #endif
         /// <summary>The schema property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -46,6 +46,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public string Schema { get; set; }
 #endif
+        /// <summary>Send the cache_write_tokens column (schema v2). Turn this on after the table has that column.</summary>
+        public bool? ShouldIncludeCacheWriteTokens { get; set; }
         /// <summary>The table property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -78,6 +80,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             AdditionalData = new Dictionary<string, object>();
             Database = "SNOWFLAKE_LEARNING_DB";
             Schema = "PUBLIC";
+            ShouldIncludeCacheWriteTokens = false;
             Table = "OPENROUTER_TRACES";
             Warehouse = "COMPUTE_WH";
         }
@@ -101,8 +104,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             {
                 { "account", n => { Account = n.GetStringValue(); } },
                 { "database", n => { Database = n.GetStringValue(); } },
-                { "headers", n => { Headers = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilitySnowflakeDestinationConfig_headers>(global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilitySnowflakeDestinationConfig_headers.CreateFromDiscriminatorValue); } },
+                { "headers", n => { Headers = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilitySnowflakeDestinationConfigHeadersProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilitySnowflakeDestinationConfigHeadersProperty.CreateFromDiscriminatorValue); } },
                 { "schema", n => { Schema = n.GetStringValue(); } },
+                { "shouldIncludeCacheWriteTokens", n => { ShouldIncludeCacheWriteTokens = n.GetBoolValue(); } },
                 { "table", n => { Table = n.GetStringValue(); } },
                 { "token", n => { Token = n.GetStringValue(); } },
                 { "warehouse", n => { Warehouse = n.GetStringValue(); } },
@@ -117,8 +121,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("account", Account);
             writer.WriteStringValue("database", Database);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilitySnowflakeDestinationConfig_headers>("headers", Headers);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilitySnowflakeDestinationConfigHeadersProperty>("headers", Headers);
             writer.WriteStringValue("schema", Schema);
+            writer.WriteBoolValue("shouldIncludeCacheWriteTokens", ShouldIncludeCacheWriteTokens);
             writer.WriteStringValue("table", Table);
             writer.WriteStringValue("token", Token);
             writer.WriteStringValue("warehouse", Warehouse);

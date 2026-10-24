@@ -32,6 +32,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #endif
         /// <summary>Unix timestamp of when the model was created</summary>
         public int? Created { get; set; }
+        /// <summary>Supported creativity levels for video upscaling models</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<int?>? Creativity { get; set; }
+#nullable restore
+#else
+        public List<int?> Creativity { get; set; }
+#endif
         /// <summary>Description of the model</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -69,20 +77,20 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Pricing SKUs with provider prefix stripped, values as strings</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModel_pricing_skus? PricingSkus { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModelPricingSkusProperty? PricingSkus { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModel_pricing_skus PricingSkus { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModelPricingSkusProperty PricingSkus { get; set; }
 #endif
         /// <summary>Whether the model supports deterministic generation via seed parameter</summary>
         public bool? Seed { get; set; }
         /// <summary>Supported output aspect ratios</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModel_supported_aspect_ratios?>? SupportedAspectRatios { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModelSupportedAspectRatiosItem?>? SupportedAspectRatios { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModel_supported_aspect_ratios?> SupportedAspectRatios { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModelSupportedAspectRatiosItem?> SupportedAspectRatios { get; set; }
 #endif
         /// <summary>Supported video durations in seconds</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -95,26 +103,34 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Supported frame image types (e.g. first_frame, last_frame)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModel_supported_frame_images?>? SupportedFrameImages { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModelSupportedFrameImagesItem?>? SupportedFrameImages { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModel_supported_frame_images?> SupportedFrameImages { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModelSupportedFrameImagesItem?> SupportedFrameImages { get; set; }
 #endif
         /// <summary>Supported output resolutions</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModel_supported_resolutions?>? SupportedResolutions { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModelSupportedResolutionsItem?>? SupportedResolutions { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModel_supported_resolutions?> SupportedResolutions { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModelSupportedResolutionsItem?> SupportedResolutions { get; set; }
 #endif
         /// <summary>Supported output sizes (width x height)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModel_supported_sizes?>? SupportedSizes { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModelSupportedSizesItem?>? SupportedSizes { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModel_supported_sizes?> SupportedSizes { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModelSupportedSizesItem?> SupportedSizes { get; set; }
+#endif
+        /// <summary>Supported upscale factor range for video upscaling models</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModelUpscaleFactor? UpscaleFactor { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModelUpscaleFactor UpscaleFactor { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModel"/> and sets the default values.
@@ -144,18 +160,20 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "allowed_passthrough_parameters", n => { AllowedPassthroughParameters = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "canonical_slug", n => { CanonicalSlug = n.GetStringValue(); } },
                 { "created", n => { Created = n.GetIntValue(); } },
+                { "creativity", n => { Creativity = n.GetCollectionOfPrimitiveValues<int?>()?.AsList(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "generate_audio", n => { GenerateAudio = n.GetBoolValue(); } },
                 { "hugging_face_id", n => { HuggingFaceId = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "pricing_skus", n => { PricingSkus = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModel_pricing_skus>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModel_pricing_skus.CreateFromDiscriminatorValue); } },
+                { "pricing_skus", n => { PricingSkus = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModelPricingSkusProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModelPricingSkusProperty.CreateFromDiscriminatorValue); } },
                 { "seed", n => { Seed = n.GetBoolValue(); } },
-                { "supported_aspect_ratios", n => { SupportedAspectRatios = n.GetCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModel_supported_aspect_ratios>()?.AsList(); } },
+                { "supported_aspect_ratios", n => { SupportedAspectRatios = n.GetCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModelSupportedAspectRatiosItem>()?.AsList(); } },
                 { "supported_durations", n => { SupportedDurations = n.GetCollectionOfPrimitiveValues<int?>()?.AsList(); } },
-                { "supported_frame_images", n => { SupportedFrameImages = n.GetCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModel_supported_frame_images>()?.AsList(); } },
-                { "supported_resolutions", n => { SupportedResolutions = n.GetCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModel_supported_resolutions>()?.AsList(); } },
-                { "supported_sizes", n => { SupportedSizes = n.GetCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModel_supported_sizes>()?.AsList(); } },
+                { "supported_frame_images", n => { SupportedFrameImages = n.GetCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModelSupportedFrameImagesItem>()?.AsList(); } },
+                { "supported_resolutions", n => { SupportedResolutions = n.GetCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModelSupportedResolutionsItem>()?.AsList(); } },
+                { "supported_sizes", n => { SupportedSizes = n.GetCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModelSupportedSizesItem>()?.AsList(); } },
+                { "upscale_factor", n => { UpscaleFactor = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModelUpscaleFactor>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModelUpscaleFactor.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -168,18 +186,20 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("allowed_passthrough_parameters", AllowedPassthroughParameters);
             writer.WriteStringValue("canonical_slug", CanonicalSlug);
             writer.WriteIntValue("created", Created);
+            writer.WriteCollectionOfPrimitiveValues<int?>("creativity", Creativity);
             writer.WriteStringValue("description", Description);
             writer.WriteBoolValue("generate_audio", GenerateAudio);
             writer.WriteStringValue("hugging_face_id", HuggingFaceId);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModel_pricing_skus>("pricing_skus", PricingSkus);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModelPricingSkusProperty>("pricing_skus", PricingSkus);
             writer.WriteBoolValue("seed", Seed);
-            writer.WriteCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModel_supported_aspect_ratios>("supported_aspect_ratios", SupportedAspectRatios);
+            writer.WriteCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModelSupportedAspectRatiosItem>("supported_aspect_ratios", SupportedAspectRatios);
             writer.WriteCollectionOfPrimitiveValues<int?>("supported_durations", SupportedDurations);
-            writer.WriteCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModel_supported_frame_images>("supported_frame_images", SupportedFrameImages);
-            writer.WriteCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModel_supported_resolutions>("supported_resolutions", SupportedResolutions);
-            writer.WriteCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModel_supported_sizes>("supported_sizes", SupportedSizes);
+            writer.WriteCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModelSupportedFrameImagesItem>("supported_frame_images", SupportedFrameImages);
+            writer.WriteCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModelSupportedResolutionsItem>("supported_resolutions", SupportedResolutions);
+            writer.WriteCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModelSupportedSizesItem>("supported_sizes", SupportedSizes);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModelUpscaleFactor>("upscale_factor", UpscaleFactor);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

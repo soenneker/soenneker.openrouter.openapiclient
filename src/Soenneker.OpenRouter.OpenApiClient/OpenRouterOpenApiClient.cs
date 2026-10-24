@@ -7,26 +7,42 @@ using Microsoft.Kiota.Serialization.Json;
 using Microsoft.Kiota.Serialization.Multipart;
 using Microsoft.Kiota.Serialization.Text;
 using Soenneker.OpenRouter.OpenApiClient.Activity;
+using Soenneker.OpenRouter.OpenApiClient.Analytics;
+using Soenneker.OpenRouter.OpenApiClient.Api;
 using Soenneker.OpenRouter.OpenApiClient.Audio;
 using Soenneker.OpenRouter.OpenApiClient.Auth;
+using Soenneker.OpenRouter.OpenApiClient.Batches;
+using Soenneker.OpenRouter.OpenApiClient.Benchmarks;
 using Soenneker.OpenRouter.OpenApiClient.Byok;
 using Soenneker.OpenRouter.OpenApiClient.Chat;
+using Soenneker.OpenRouter.OpenApiClient.Classifications;
+using Soenneker.OpenRouter.OpenApiClient.Containers;
 using Soenneker.OpenRouter.OpenApiClient.Credits;
 using Soenneker.OpenRouter.OpenApiClient.Datasets;
 using Soenneker.OpenRouter.OpenApiClient.Embeddings;
 using Soenneker.OpenRouter.OpenApiClient.Endpoints;
+using Soenneker.OpenRouter.OpenApiClient.ExternalUsers;
+using Soenneker.OpenRouter.OpenApiClient.Files;
 using Soenneker.OpenRouter.OpenApiClient.Generation;
 using Soenneker.OpenRouter.OpenApiClient.Guardrails;
+using Soenneker.OpenRouter.OpenApiClient.Images;
 using Soenneker.OpenRouter.OpenApiClient.Key;
 using Soenneker.OpenRouter.OpenApiClient.Keys;
 using Soenneker.OpenRouter.OpenApiClient.Messages;
+using Soenneker.OpenRouter.OpenApiClient.Model;
 using Soenneker.OpenRouter.OpenApiClient.ModelsRequests;
+using Soenneker.OpenRouter.OpenApiClient.Oauth;
 using Soenneker.OpenRouter.OpenApiClient.Observability;
 using Soenneker.OpenRouter.OpenApiClient.Organization;
 using Soenneker.OpenRouter.OpenApiClient.Presets;
+using Soenneker.OpenRouter.OpenApiClient.PrivateEndpoints;
 using Soenneker.OpenRouter.OpenApiClient.Providers;
 using Soenneker.OpenRouter.OpenApiClient.Rerank;
 using Soenneker.OpenRouter.OpenApiClient.Responses;
+using Soenneker.OpenRouter.OpenApiClient.Scim;
+using Soenneker.OpenRouter.OpenApiClient.Systemone;
+using Soenneker.OpenRouter.OpenApiClient.Tools;
+using Soenneker.OpenRouter.OpenApiClient.Vault;
 using Soenneker.OpenRouter.OpenApiClient.Videos;
 using Soenneker.OpenRouter.OpenApiClient.Workspaces;
 using System.Collections.Generic;
@@ -46,6 +62,16 @@ namespace Soenneker.OpenRouter.OpenApiClient
         {
             get => new global::Soenneker.OpenRouter.OpenApiClient.Activity.ActivityRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The analytics property</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Analytics.AnalyticsRequestBuilder Analytics
+        {
+            get => new global::Soenneker.OpenRouter.OpenApiClient.Analytics.AnalyticsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The api property</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Api.ApiRequestBuilder Api
+        {
+            get => new global::Soenneker.OpenRouter.OpenApiClient.Api.ApiRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The audio property</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Audio.AudioRequestBuilder Audio
         {
@@ -56,6 +82,16 @@ namespace Soenneker.OpenRouter.OpenApiClient
         {
             get => new global::Soenneker.OpenRouter.OpenApiClient.Auth.AuthRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The batches property</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Batches.BatchesRequestBuilder Batches
+        {
+            get => new global::Soenneker.OpenRouter.OpenApiClient.Batches.BatchesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The benchmarks property</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Benchmarks.BenchmarksRequestBuilder Benchmarks
+        {
+            get => new global::Soenneker.OpenRouter.OpenApiClient.Benchmarks.BenchmarksRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The byok property</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Byok.ByokRequestBuilder Byok
         {
@@ -65,6 +101,16 @@ namespace Soenneker.OpenRouter.OpenApiClient
         public global::Soenneker.OpenRouter.OpenApiClient.Chat.ChatRequestBuilder Chat
         {
             get => new global::Soenneker.OpenRouter.OpenApiClient.Chat.ChatRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The classifications property</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Classifications.ClassificationsRequestBuilder Classifications
+        {
+            get => new global::Soenneker.OpenRouter.OpenApiClient.Classifications.ClassificationsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The containers property</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Containers.ContainersRequestBuilder Containers
+        {
+            get => new global::Soenneker.OpenRouter.OpenApiClient.Containers.ContainersRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The credits property</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Credits.CreditsRequestBuilder Credits
@@ -86,6 +132,16 @@ namespace Soenneker.OpenRouter.OpenApiClient
         {
             get => new global::Soenneker.OpenRouter.OpenApiClient.Endpoints.EndpointsRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The externalUsers property</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.ExternalUsers.ExternalUsersRequestBuilder ExternalUsers
+        {
+            get => new global::Soenneker.OpenRouter.OpenApiClient.ExternalUsers.ExternalUsersRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The files property</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Files.FilesRequestBuilder Files
+        {
+            get => new global::Soenneker.OpenRouter.OpenApiClient.Files.FilesRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The generation property</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Generation.GenerationRequestBuilder Generation
         {
@@ -95,6 +151,11 @@ namespace Soenneker.OpenRouter.OpenApiClient
         public global::Soenneker.OpenRouter.OpenApiClient.Guardrails.GuardrailsRequestBuilder Guardrails
         {
             get => new global::Soenneker.OpenRouter.OpenApiClient.Guardrails.GuardrailsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The images property</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Images.ImagesRequestBuilder Images
+        {
+            get => new global::Soenneker.OpenRouter.OpenApiClient.Images.ImagesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The key property</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Key.KeyRequestBuilder Key
@@ -111,10 +172,20 @@ namespace Soenneker.OpenRouter.OpenApiClient
         {
             get => new global::Soenneker.OpenRouter.OpenApiClient.Messages.MessagesRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The model property</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Model.ModelRequestBuilder Model
+        {
+            get => new global::Soenneker.OpenRouter.OpenApiClient.Model.ModelRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The models property</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.ModelsRequests.ModelsRequestBuilder Models
         {
             get => new global::Soenneker.OpenRouter.OpenApiClient.ModelsRequests.ModelsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The oauth property</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Oauth.OauthRequestBuilder Oauth
+        {
+            get => new global::Soenneker.OpenRouter.OpenApiClient.Oauth.OauthRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The observability property</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Observability.ObservabilityRequestBuilder Observability
@@ -131,6 +202,11 @@ namespace Soenneker.OpenRouter.OpenApiClient
         {
             get => new global::Soenneker.OpenRouter.OpenApiClient.Presets.PresetsRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The privateEndpoints property</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.PrivateEndpoints.PrivateEndpointsRequestBuilder PrivateEndpoints
+        {
+            get => new global::Soenneker.OpenRouter.OpenApiClient.PrivateEndpoints.PrivateEndpointsRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The providers property</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Providers.ProvidersRequestBuilder Providers
         {
@@ -145,6 +221,26 @@ namespace Soenneker.OpenRouter.OpenApiClient
         public global::Soenneker.OpenRouter.OpenApiClient.Responses.ResponsesRequestBuilder Responses
         {
             get => new global::Soenneker.OpenRouter.OpenApiClient.Responses.ResponsesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The scim property</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Scim.ScimRequestBuilder Scim
+        {
+            get => new global::Soenneker.OpenRouter.OpenApiClient.Scim.ScimRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The systemone property</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Systemone.SystemoneRequestBuilder Systemone
+        {
+            get => new global::Soenneker.OpenRouter.OpenApiClient.Systemone.SystemoneRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The tools property</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Tools.ToolsRequestBuilder Tools
+        {
+            get => new global::Soenneker.OpenRouter.OpenApiClient.Tools.ToolsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The vault property</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Vault.VaultRequestBuilder Vault
+        {
+            get => new global::Soenneker.OpenRouter.OpenApiClient.Vault.VaultRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The videos property</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Videos.VideosRequestBuilder Videos

@@ -15,13 +15,29 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Text to synthesize</summary>
+        /// <summary>Text to synthesize, or a list of turns for multi-speaker input. Each turn has its own text, voice, and instructions. Multi-speaker input is supported by Gemini TTS models and by Fish Audio models other than S1.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Input { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechInput? Input { get; set; }
 #nullable restore
 #else
-        public string Input { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechInput Input { get; set; }
+#endif
+        /// <summary>Reference content for stateless voice cloning or voice design. Audio mode: one to three `input_audio` parts, each optionally paired with a `text` part carrying its transcript (a single clip accepts its transcript before or after it; with multiple clips each transcript immediately follows its clip), plus at most one `image_url` part as a scene image on providers that condition the cloned voice on its setting; only routed to endpoints that support voice cloning (and multiple references or image references when those parts are sent). Image mode: exactly one `image_url` part; only routed to endpoints that support image references. An empty array is treated as no reference.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechInputReference>? InputReferences { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechInputReference> InputReferences { get; set; }
+#endif
+        /// <summary>Delivery instructions for the whole request, such as tone, pacing, or emotion. Supported by OpenAI gpt-4o-mini-tts, Gemini TTS, and Fish Audio models. Ignored by other providers.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Instructions { get; set; }
+#nullable restore
+#else
+        public string Instructions { get; set; }
 #endif
         /// <summary>TTS model identifier</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -31,7 +47,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public string Model { get; set; }
 #endif
-        /// <summary>Provider-specific passthrough configuration</summary>
+        /// <summary>Provider configuration: data policy routing preferences (`zdr`, `data_collection`) and provider-specific passthrough options</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequestProvider? Provider { get; set; }
@@ -40,9 +56,33 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequestProvider Provider { get; set; }
 #endif
         /// <summary>Audio output format</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequest_response_format? ResponseFormat { get; set; }
-        /// <summary>Playback speed multiplier. Only used by models that support it (e.g. OpenAI TTS). Ignored by other providers.</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequestResponseFormat? ResponseFormat { get; set; }
+        /// <summary>A unique identifier for grouping related requests (e.g., a conversation or agent workflow). Used for observability grouping in Broadcast and private logging; never sent to the provider. If provided in both the request body and the x-session-id header, the body value takes precedence. Maximum of 256 characters.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SessionId { get; set; }
+#nullable restore
+#else
+        public string SessionId { get; set; }
+#endif
+        /// <summary>Playback speed multiplier. Honored by models that support it (e.g. OpenAI TTS). Other providers either ignore it or return a 400 for a non-default value when the model has no speed control.</summary>
         public double? Speed { get; set; }
+        /// <summary>Metadata for observability and tracing. Known keys (trace_id, trace_name, span_name, generation_name, parent_span_id) have special handling. Additional keys are passed through as custom metadata to configured broadcast destinations.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.TraceConfig? Trace { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.TraceConfig Trace { get; set; }
+#endif
+        /// <summary>A unique identifier representing your end-user. Forwarded to Broadcast and private logging as the end-user id; never sent to the provider.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? User { get; set; }
+#nullable restore
+#else
+        public string User { get; set; }
+#endif
         /// <summary>Voice identifier (provider-specific).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -57,7 +97,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public SpeechRequest()
         {
             AdditionalData = new Dictionary<string, object>();
-            ResponseFormat = global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequest_response_format.Pcm;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -77,11 +116,16 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "input", n => { Input = n.GetStringValue(); } },
+                { "input", n => { Input = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechInput>(global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechInput.CreateFromDiscriminatorValue); } },
+                { "input_references", n => { InputReferences = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechInputReference>(global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechInputReference.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "instructions", n => { Instructions = n.GetStringValue(); } },
                 { "model", n => { Model = n.GetStringValue(); } },
                 { "provider", n => { Provider = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequestProvider>(global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequestProvider.CreateFromDiscriminatorValue); } },
-                { "response_format", n => { ResponseFormat = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequest_response_format>(); } },
+                { "response_format", n => { ResponseFormat = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequestResponseFormat>(); } },
+                { "session_id", n => { SessionId = n.GetStringValue(); } },
                 { "speed", n => { Speed = n.GetDoubleValue(); } },
+                { "trace", n => { Trace = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.TraceConfig>(global::Soenneker.OpenRouter.OpenApiClient.Models.TraceConfig.CreateFromDiscriminatorValue); } },
+                { "user", n => { User = n.GetStringValue(); } },
                 { "voice", n => { Voice = n.GetStringValue(); } },
             };
         }
@@ -92,11 +136,16 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("input", Input);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechInput>("input", Input);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechInputReference>("input_references", InputReferences);
+            writer.WriteStringValue("instructions", Instructions);
             writer.WriteStringValue("model", Model);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequestProvider>("provider", Provider);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequest_response_format>("response_format", ResponseFormat);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequestResponseFormat>("response_format", ResponseFormat);
+            writer.WriteStringValue("session_id", SessionId);
             writer.WriteDoubleValue("speed", Speed);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.TraceConfig>("trace", Trace);
+            writer.WriteStringValue("user", User);
             writer.WriteStringValue("voice", Voice);
             writer.WriteAdditionalData(AdditionalData);
         }

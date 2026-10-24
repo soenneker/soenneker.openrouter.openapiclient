@@ -17,13 +17,13 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The headers property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityWebhookDestinationConfig_headers? Headers { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityWebhookDestinationConfigHeadersProperty? Headers { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityWebhookDestinationConfig_headers Headers { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityWebhookDestinationConfigHeadersProperty Headers { get; set; }
 #endif
         /// <summary>The method property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityWebhookDestinationConfig_method? Method { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityWebhookDestinationConfigMethod? Method { get; set; }
         /// <summary>The url property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -38,7 +38,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public ObservabilityWebhookDestinationConfig()
         {
             AdditionalData = new Dictionary<string, object>();
-            Method = global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityWebhookDestinationConfig_method.POST;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -58,8 +57,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "headers", n => { Headers = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityWebhookDestinationConfig_headers>(global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityWebhookDestinationConfig_headers.CreateFromDiscriminatorValue); } },
-                { "method", n => { Method = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityWebhookDestinationConfig_method>(); } },
+                { "headers", n => { Headers = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityWebhookDestinationConfigHeadersProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityWebhookDestinationConfigHeadersProperty.CreateFromDiscriminatorValue); } },
+                { "method", n => { Method = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityWebhookDestinationConfigMethod>(); } },
                 { "url", n => { Url = n.GetStringValue(); } },
             };
         }
@@ -70,8 +69,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityWebhookDestinationConfig_headers>("headers", Headers);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityWebhookDestinationConfig_method>("method", Method);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityWebhookDestinationConfigHeadersProperty>("headers", Headers);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityWebhookDestinationConfigMethod>("method", Method);
             writer.WriteStringValue("url", Url);
             writer.WriteAdditionalData(AdditionalData);
         }

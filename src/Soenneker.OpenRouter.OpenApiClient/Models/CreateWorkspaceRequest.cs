@@ -46,6 +46,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public string Description { get; set; }
 #endif
+        /// <summary>OpenRouter server tools that requests in this workspace may not invoke. Requests naming a disabled tool are rejected with 403. An empty array or null clears the list.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.CreateWorkspaceRequestDisabledServerToolsItem?>? DisabledServerTools { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.CreateWorkspaceRequestDisabledServerToolsItem?> DisabledServerTools { get; set; }
+#endif
         /// <summary>Optional array of API key IDs to filter I/O logging</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -107,6 +115,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "default_provider_sort", n => { DefaultProviderSort = n.GetStringValue(); } },
                 { "default_text_model", n => { DefaultTextModel = n.GetStringValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
+                { "disabled_server_tools", n => { DisabledServerTools = n.GetCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.CreateWorkspaceRequestDisabledServerToolsItem>()?.AsList(); } },
                 { "io_logging_api_key_ids", n => { IoLoggingApiKeyIds = n.GetCollectionOfPrimitiveValues<int?>()?.AsList(); } },
                 { "io_logging_sampling_rate", n => { IoLoggingSamplingRate = n.GetDoubleValue(); } },
                 { "is_data_discount_logging_enabled", n => { IsDataDiscountLoggingEnabled = n.GetBoolValue(); } },
@@ -127,6 +136,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteStringValue("default_provider_sort", DefaultProviderSort);
             writer.WriteStringValue("default_text_model", DefaultTextModel);
             writer.WriteStringValue("description", Description);
+            writer.WriteCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.CreateWorkspaceRequestDisabledServerToolsItem>("disabled_server_tools", DisabledServerTools);
             writer.WriteCollectionOfPrimitiveValues<int?>("io_logging_api_key_ids", IoLoggingApiKeyIds);
             writer.WriteDoubleValue("io_logging_sampling_rate", IoLoggingSamplingRate);
             writer.WriteBoolValue("is_data_discount_logging_enabled", IsDataDiscountLoggingEnabled);

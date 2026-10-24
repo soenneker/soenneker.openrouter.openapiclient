@@ -16,6 +16,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>BYOK inference cost in USD (external credits spent)</summary>
         public double? ByokUsageInference { get; set; }
+        /// <summary>Total prompt tokens read from the provider prompt cache (cache hits). Generally a subset of `prompt_tokens`; for replayed response-cache hits the provider may report the two counters over disjoint token sets, so `cached_tokens` can exceed `prompt_tokens`.</summary>
+        public int? CachedTokens { get; set; }
         /// <summary>Total completion tokens generated</summary>
         public int? CompletionTokens { get; set; }
         /// <summary>Date of the activity (YYYY-MM-DD format)</summary>
@@ -66,6 +68,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public int? Requests { get; set; }
         /// <summary>Total cost in USD (OpenRouter credits spent)</summary>
         public double? Usage { get; set; }
+        /// <summary>ID of the workspace this activity is attributed to. Only present when `group_by=workspace` is passed; the response is then split per workspace. Activity recorded before workspace resolution existed is attributed to the account default workspace.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? WorkspaceId { get; set; }
+#nullable restore
+#else
+        public string WorkspaceId { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ActivityItem"/> and sets the default values.
         /// </summary>
@@ -92,6 +102,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "byok_usage_inference", n => { ByokUsageInference = n.GetDoubleValue(); } },
+                { "cached_tokens", n => { CachedTokens = n.GetIntValue(); } },
                 { "completion_tokens", n => { CompletionTokens = n.GetIntValue(); } },
                 { "date", n => { Date = n.GetStringValue(); } },
                 { "endpoint_id", n => { EndpointId = n.GetStringValue(); } },
@@ -102,6 +113,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "reasoning_tokens", n => { ReasoningTokens = n.GetIntValue(); } },
                 { "requests", n => { Requests = n.GetIntValue(); } },
                 { "usage", n => { Usage = n.GetDoubleValue(); } },
+                { "workspace_id", n => { WorkspaceId = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -112,6 +124,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDoubleValue("byok_usage_inference", ByokUsageInference);
+            writer.WriteIntValue("cached_tokens", CachedTokens);
             writer.WriteIntValue("completion_tokens", CompletionTokens);
             writer.WriteStringValue("date", Date);
             writer.WriteStringValue("endpoint_id", EndpointId);
@@ -122,6 +135,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteIntValue("reasoning_tokens", ReasoningTokens);
             writer.WriteIntValue("requests", Requests);
             writer.WriteDoubleValue("usage", Usage);
+            writer.WriteStringValue("workspace_id", WorkspaceId);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

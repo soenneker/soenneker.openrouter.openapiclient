@@ -14,7 +14,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>List of model patterns to filter which models the auto-router can route between. Supports wildcards (e.g., &quot;anthropic/*&quot; matches all Anthropic models). When not specified, uses the default supported models list.</summary>
+        /// <summary>List of model patterns to filter which models the auto-router can route between. Supports wildcards (e.g., &quot;anthropic/*&quot; matches all Anthropic models). Up to 1024 patterns, each at most 1024 characters, with 65536 total characters across all patterns. When not specified, every model ranked for the classified task type is a candidate, falling back to a default model set when rankings are unavailable.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? AllowedModels { get; set; }
@@ -22,12 +22,25 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public List<string> AllowedModels { get; set; }
 #endif
-        /// <summary>Controls cost vs. quality routing tradeoff (0–10). 0 = pure quality (best model regardless of cost), 10 = maximize for cost (cheapest model wins). Intermediate values blend quality and cost signals continuously. Defaults to 7.</summary>
+        /// <summary>Deprecated: Use cost_tier instead. Balances routing between cost and quality on a 0-10 scale. The auto-router ranks models for the classified task type by community spend share, then filters candidates by their average cost per generation for that task. Higher values favor cheaper models: 10 keeps only models around the cheapest 10th percentile, while 0 permits models up to the 90th percentile for cost. Defaults to 9 when no cost setting is provided. It remains supported and retains ceiling behavior, but cost_tier takes precedence when both are provided.</summary>
+        [Obsolete("")]
         public int? CostQualityTradeoff { get; set; }
+        /// <summary>Named cost/quality setting. Tiers select cost-percentile bands: low = [0, 20), medium = [20, 40), high = [40, 60), xhigh = [60, 80), and max = [80, 100]. Takes precedence over the deprecated numeric cost_quality_tradeoff when both are provided.</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AutoRouterPluginCostTier? CostTier { get; set; }
         /// <summary>Set to false to disable the auto-router plugin for this request. Defaults to true.</summary>
         public bool? Enabled { get; set; }
+        /// <summary>List of model patterns to exclude from auto-router selection. Supports wildcards (e.g., &quot;meta-llama/*&quot; excludes all Llama models). Up to 1024 patterns, each at most 1024 characters, with 65536 total characters across all patterns. Applied after allowed_models, so an excluded pattern always wins over an allowed one.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? ExcludedModels { get; set; }
+#nullable restore
+#else
+        public List<string> ExcludedModels { get; set; }
+#endif
         /// <summary>The id property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.AutoRouterPlugin_id? Id { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AutoRouterId? Id { get; set; }
+        /// <summary>When true, reuses the model from the most recent assistant message&apos;s `model` attribute for subsequent turns. Defaults to false.</summary>
+        public bool? PinModel { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AutoRouterPlugin"/> and sets the default values.
         /// </summary>
@@ -55,8 +68,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             {
                 { "allowed_models", n => { AllowedModels = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "cost_quality_tradeoff", n => { CostQualityTradeoff = n.GetIntValue(); } },
+                { "cost_tier", n => { CostTier = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AutoRouterPluginCostTier>(); } },
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
-                { "id", n => { Id = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AutoRouterPlugin_id>(); } },
+                { "excluded_models", n => { ExcludedModels = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "id", n => { Id = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AutoRouterId>(); } },
+                { "pin_model", n => { PinModel = n.GetBoolValue(); } },
             };
         }
         /// <summary>
@@ -68,8 +84,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<string>("allowed_models", AllowedModels);
             writer.WriteIntValue("cost_quality_tradeoff", CostQualityTradeoff);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AutoRouterPluginCostTier>("cost_tier", CostTier);
             writer.WriteBoolValue("enabled", Enabled);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AutoRouterPlugin_id>("id", Id);
+            writer.WriteCollectionOfPrimitiveValues<string>("excluded_models", ExcludedModels);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AutoRouterId>("id", Id);
+            writer.WriteBoolValue("pin_model", PinModel);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

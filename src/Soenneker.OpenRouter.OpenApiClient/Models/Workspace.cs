@@ -30,6 +30,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public string CreatedBy { get; set; }
 #endif
+        /// <summary>Deterministic ID derived from the workspace ID. The default guardrail is materialized when its configuration is first written.</summary>
+        public Guid? DefaultGuardrailId { get; set; }
         /// <summary>Default image model for this workspace</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -62,8 +64,18 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public string Description { get; set; }
 #endif
+        /// <summary>OpenRouter server tools (e.g. openrouter:web_search) that requests in this workspace may not invoke. Null means no tools are disabled.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? DisabledServerTools { get; set; }
+#nullable restore
+#else
+        public List<string> DisabledServerTools { get; set; }
+#endif
         /// <summary>Unique identifier for the workspace</summary>
         public Guid? Id { get; set; }
+        /// <summary>Whether BYOK (bring-your-own-key) spend counts toward this workspace&apos;s budgets. Set it via the workspace budget endpoints.</summary>
+        public bool? IncludeByokInBudgets { get; set; }
         /// <summary>Optional array of API key IDs to filter I/O logging. Null means all keys are logged.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -131,11 +143,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             {
                 { "created_at", n => { CreatedAt = n.GetStringValue(); } },
                 { "created_by", n => { CreatedBy = n.GetStringValue(); } },
+                { "default_guardrail_id", n => { DefaultGuardrailId = n.GetGuidValue(); } },
                 { "default_image_model", n => { DefaultImageModel = n.GetStringValue(); } },
                 { "default_provider_sort", n => { DefaultProviderSort = n.GetStringValue(); } },
                 { "default_text_model", n => { DefaultTextModel = n.GetStringValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
+                { "disabled_server_tools", n => { DisabledServerTools = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
+                { "include_byok_in_budgets", n => { IncludeByokInBudgets = n.GetBoolValue(); } },
                 { "io_logging_api_key_ids", n => { IoLoggingApiKeyIds = n.GetCollectionOfPrimitiveValues<int?>()?.AsList(); } },
                 { "io_logging_sampling_rate", n => { IoLoggingSamplingRate = n.GetDoubleValue(); } },
                 { "is_data_discount_logging_enabled", n => { IsDataDiscountLoggingEnabled = n.GetBoolValue(); } },
@@ -155,11 +170,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("created_at", CreatedAt);
             writer.WriteStringValue("created_by", CreatedBy);
+            writer.WriteGuidValue("default_guardrail_id", DefaultGuardrailId);
             writer.WriteStringValue("default_image_model", DefaultImageModel);
             writer.WriteStringValue("default_provider_sort", DefaultProviderSort);
             writer.WriteStringValue("default_text_model", DefaultTextModel);
             writer.WriteStringValue("description", Description);
+            writer.WriteCollectionOfPrimitiveValues<string>("disabled_server_tools", DisabledServerTools);
             writer.WriteGuidValue("id", Id);
+            writer.WriteBoolValue("include_byok_in_budgets", IncludeByokInBudgets);
             writer.WriteCollectionOfPrimitiveValues<int?>("io_logging_api_key_ids", IoLoggingApiKeyIds);
             writer.WriteDoubleValue("io_logging_sampling_rate", IoLoggingSamplingRate);
             writer.WriteBoolValue("is_data_discount_logging_enabled", IsDataDiscountLoggingEnabled);

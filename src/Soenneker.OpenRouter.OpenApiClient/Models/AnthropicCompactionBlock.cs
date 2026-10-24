@@ -22,8 +22,16 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public string Content { get; set; }
 #endif
+        /// <summary>The encrypted_content property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? EncryptedContent { get; set; }
+#nullable restore
+#else
+        public string EncryptedContent { get; set; }
+#endif
         /// <summary>The type property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCompactionBlock_type? Type { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.CompactionType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCompactionBlock"/> and sets the default values.
         /// </summary>
@@ -50,7 +58,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "content", n => { Content = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCompactionBlock_type>(); } },
+                { "encrypted_content", n => { EncryptedContent = n.GetStringValue(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.CompactionType>(); } },
             };
         }
         /// <summary>
@@ -61,7 +70,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("content", Content);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCompactionBlock_type>("type", Type);
+            writer.WriteStringValue("encrypted_content", EncryptedContent);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.CompactionType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

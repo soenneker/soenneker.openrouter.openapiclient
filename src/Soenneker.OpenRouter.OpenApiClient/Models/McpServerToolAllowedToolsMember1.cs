@@ -14,16 +14,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The read_only property</summary>
-        public bool? ReadOnly { get; set; }
-        /// <summary>The tool_names property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public List<string>? ToolNames { get; set; }
-#nullable restore
-#else
-        public List<string> ToolNames { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolAllowedToolsMember1"/> and sets the default values.
         /// </summary>
@@ -49,8 +39,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "read_only", n => { ReadOnly = n.GetBoolValue(); } },
-                { "tool_names", n => { ToolNames = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };
         }
         /// <summary>
@@ -60,8 +48,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteBoolValue("read_only", ReadOnly);
-            writer.WriteCollectionOfPrimitiveValues<string>("tool_names", ToolNames);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

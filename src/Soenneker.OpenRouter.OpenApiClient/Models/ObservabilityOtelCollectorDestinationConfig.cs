@@ -22,13 +22,13 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public string Endpoint { get; set; }
 #endif
-        /// <summary>&quot;Custom HTTP headers as a JSON object. For Axiom, use {\&quot;Authorization\&quot;: \&quot;Bearer xaat-xxx\&quot;, \&quot;X-Axiom-Dataset\&quot;: \&quot;your-dataset\&quot;}&quot;</summary>
+        /// <summary>Custom HTTP headers as a JSON object. For Axiom, use {&quot;Authorization&quot;: &quot;Bearer xaat-xxx&quot;, &quot;X-Axiom-Dataset&quot;: &quot;your-dataset&quot;}</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityOtelCollectorDestinationConfig_headers? Headers { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityOtelCollectorDestinationConfigHeadersProperty? Headers { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityOtelCollectorDestinationConfig_headers Headers { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityOtelCollectorDestinationConfigHeadersProperty Headers { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityOtelCollectorDestinationConfig"/> and sets the default values.
@@ -56,7 +56,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "endpoint", n => { Endpoint = n.GetStringValue(); } },
-                { "headers", n => { Headers = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityOtelCollectorDestinationConfig_headers>(global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityOtelCollectorDestinationConfig_headers.CreateFromDiscriminatorValue); } },
+                { "headers", n => { Headers = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityOtelCollectorDestinationConfigHeadersProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityOtelCollectorDestinationConfigHeadersProperty.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -67,7 +67,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("endpoint", Endpoint);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityOtelCollectorDestinationConfig_headers>("headers", Headers);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityOtelCollectorDestinationConfigHeadersProperty>("headers", Headers);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -39,7 +39,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public string StartDate { get; set; }
 #endif
         /// <summary>Dataset version. Field names and grain are stable for the life of `v1`.</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.RankingsDailyMeta_version? Version { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.V1Version? Version { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.RankingsDailyMeta"/> and sets the default values.
         /// </summary>
@@ -68,7 +68,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "as_of", n => { AsOf = n.GetStringValue(); } },
                 { "end_date", n => { EndDate = n.GetStringValue(); } },
                 { "start_date", n => { StartDate = n.GetStringValue(); } },
-                { "version", n => { Version = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.RankingsDailyMeta_version>(); } },
+                { "version", n => { Version = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.V1Version>(); } },
             };
         }
         /// <summary>
@@ -81,7 +81,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteStringValue("as_of", AsOf);
             writer.WriteStringValue("end_date", EndDate);
             writer.WriteStringValue("start_date", StartDate);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.RankingsDailyMeta_version>("version", Version);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.V1Version>("version", Version);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

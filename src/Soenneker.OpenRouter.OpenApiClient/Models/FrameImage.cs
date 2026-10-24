@@ -15,7 +15,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether this image represents the first or last frame of the video</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.FrameImage_frame_type? FrameType { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.FrameImageFrameType? FrameType { get; set; }
         /// <summary>The image_url property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -25,7 +25,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ContentPartImageImageUrl ImageUrl { get; set; }
 #endif
         /// <summary>The type property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.FrameImage_type? Type { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageUrlType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.FrameImage"/> and sets the default values.
         /// </summary>
@@ -51,9 +51,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "frame_type", n => { FrameType = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.FrameImage_frame_type>(); } },
+                { "frame_type", n => { FrameType = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.FrameImageFrameType>(); } },
                 { "image_url", n => { ImageUrl = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentPartImageImageUrl>(global::Soenneker.OpenRouter.OpenApiClient.Models.ContentPartImageImageUrl.CreateFromDiscriminatorValue); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.FrameImage_type>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageUrlType>(); } },
             };
         }
         /// <summary>
@@ -63,9 +63,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.FrameImage_frame_type>("frame_type", FrameType);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.FrameImageFrameType>("frame_type", FrameType);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentPartImageImageUrl>("image_url", ImageUrl);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.FrameImage_type>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageUrlType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }
