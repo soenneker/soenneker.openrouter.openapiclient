@@ -35,7 +35,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Keys
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public KeysRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/keys{?include_disabled*,include_expired*,limit*,offset*,workspace_id*}", pathParameters)
+        public KeysRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/keys{?include_disabled*,include_expired*,offset*,workspace_id*}", pathParameters)
         {
         }
         /// <summary>
@@ -43,7 +43,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Keys
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public KeysRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/keys{?include_disabled*,include_expired*,limit*,offset*,workspace_id*}", rawUrl)
+        public KeysRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/keys{?include_disabled*,include_expired*,offset*,workspace_id*}", rawUrl)
         {
         }
         /// <summary>
@@ -172,10 +172,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Keys
             /// <summary>Whether to include expired API keys in the response. Expired keys are excluded by default and returned only when this is true.</summary>
             [QueryParameter("include_expired")]
             public bool? IncludeExpired { get; set; }
-            /// <summary>Maximum number of records to return (max 100)</summary>
-            [QueryParameter("limit")]
-            public int? Limit { get; set; }
-            /// <summary>Number of records to skip for pagination</summary>
+            /// <summary>Number of API keys to skip for pagination</summary>
             [QueryParameter("offset")]
             public int? Offset { get; set; }
             /// <summary>Filter API keys by workspace ID. By default, keys in the default workspace are returned.</summary>
