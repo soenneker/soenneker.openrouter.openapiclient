@@ -9,12 +9,12 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class QueryAnalyticsRequestClassifierFiltersFiltersItem : IAdditionalDataHolder, IParsable
+    public partial class SetFilter : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Classifier dimension name to filter on (snake_case identifier, e.g. &quot;department&quot;, &quot;work_type&quot;).</summary>
+        /// <summary>Dimension to filter on. Use the /meta endpoint for available dimensions.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Field { get; set; }
@@ -22,38 +22,34 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public string Field { get; set; }
 #endif
-        /// <summary>Filter operator. Only equality/set operators are supported (eq, neq, in, not_in) — ordered comparisons are not available because classification values are strings.</summary>
+        /// <summary>Include rows where the dimension has no value. Applies only to dimensions that have an unset bucket.</summary>
+        public bool? IncludeUnset { get; set; }
+        /// <summary>Set-membership operator taking an array filter value.</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.SetFilterOperator? Operator { get; set; }
+        /// <summary>The value property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Operator { get; set; }
+        public List<string>? Value { get; set; }
 #nullable restore
 #else
-        public string Operator { get; set; }
-#endif
-        /// <summary>Filter value. Use a scalar (string or number) for eq/neq, or an array for in/not_in.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestClassifierFiltersFiltersItemValue? Value { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestClassifierFiltersFiltersItemValue Value { get; set; }
+        public List<string> Value { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestClassifierFiltersFiltersItem"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.SetFilter"/> and sets the default values.
         /// </summary>
-        public QueryAnalyticsRequestClassifierFiltersFiltersItem()
+        public SetFilter()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestClassifierFiltersFiltersItem"/></returns>
+        /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.SetFilter"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestClassifierFiltersFiltersItem CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.OpenRouter.OpenApiClient.Models.SetFilter CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestClassifierFiltersFiltersItem();
+            return new global::Soenneker.OpenRouter.OpenApiClient.Models.SetFilter();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -64,8 +60,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "field", n => { Field = n.GetStringValue(); } },
-                { "operator", n => { Operator = n.GetStringValue(); } },
-                { "value", n => { Value = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestClassifierFiltersFiltersItemValue>(global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestClassifierFiltersFiltersItemValue.CreateFromDiscriminatorValue); } },
+                { "include_unset", n => { IncludeUnset = n.GetBoolValue(); } },
+                { "operator", n => { Operator = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SetFilterOperator>(); } },
+                { "value", n => { Value = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };
         }
         /// <summary>
@@ -76,8 +73,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("field", Field);
-            writer.WriteStringValue("operator", Operator);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestClassifierFiltersFiltersItemValue>("value", Value);
+            writer.WriteBoolValue("include_unset", IncludeUnset);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SetFilterOperator>("operator", Operator);
+            writer.WriteCollectionOfPrimitiveValues<string>("value", Value);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

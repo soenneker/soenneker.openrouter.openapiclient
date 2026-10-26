@@ -3,17 +3,17 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
-    /// <summary>Whether the operator expects a single value or an array</summary>
+    /// <summary>Set-membership operator taking an array filter value.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public enum GetAnalyticsMeta200ResponseDataOperatorsItemValueType
+    public enum SetFilterOperator
     {
-        [EnumMember(Value = "scalar")]
+        [EnumMember(Value = "in")]
         #pragma warning disable CS1591
-        Scalar,
+        InValue,
         #pragma warning restore CS1591
-        [EnumMember(Value = "array")]
+        [EnumMember(Value = "not_in")]
         #pragma warning disable CS1591
-        Array,
+        NotIn,
         #pragma warning restore CS1591
     }
 }

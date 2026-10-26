@@ -8,21 +8,13 @@ using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="double"/>, <see cref="string"/>, List&lt;global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestFiltersItemValueAnyOf3Item&gt;
+    /// Composed type wrapper for classes <see cref="double"/>, <see cref="string"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class QueryAnalyticsRequestFiltersItemValue : IComposedTypeWrapper, IParsable
+    public partial class ScalarFilterValue : IComposedTypeWrapper, IParsable
     {
         /// <summary>Composed type representation for type <see cref="double"/></summary>
         public double? Double { get; set; }
-        /// <summary>Composed type representation for type List&lt;global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestFiltersItemValueAnyOf3Item&gt;</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestFiltersItemValueAnyOf3Item>? QueryAnalyticsRequestFiltersItemValueAnyOf3Item { get; set; }
-#nullable restore
-#else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestFiltersItemValueAnyOf3Item> QueryAnalyticsRequestFiltersItemValueAnyOf3Item { get; set; }
-#endif
         /// <summary>Composed type representation for type <see cref="string"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -34,12 +26,12 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestFiltersItemValue"/></returns>
+        /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ScalarFilterValue"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestFiltersItemValue CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.OpenRouter.OpenApiClient.Models.ScalarFilterValue CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            var result = new global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestFiltersItemValue();
+            var result = new global::Soenneker.OpenRouter.OpenApiClient.Models.ScalarFilterValue();
             if(parseNode.GetDoubleValue() is double doubleValue)
             {
                 result.Double = doubleValue;
@@ -47,10 +39,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             else if(parseNode.GetStringValue() is string stringValue)
             {
                 result.String = stringValue;
-            }
-            else if(parseNode.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestFiltersItemValueAnyOf3Item>(global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestFiltersItemValueAnyOf3Item.CreateFromDiscriminatorValue)?.AsList() is List<global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestFiltersItemValueAnyOf3Item> queryAnalyticsRequestFiltersItemValueAnyOf3ItemValue)
-            {
-                result.QueryAnalyticsRequestFiltersItemValueAnyOf3Item = queryAnalyticsRequestFiltersItemValueAnyOf3ItemValue;
             }
             return result;
         }
@@ -76,10 +64,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             else if(String != null)
             {
                 writer.WriteStringValue(null, String);
-            }
-            else if(QueryAnalyticsRequestFiltersItemValueAnyOf3Item != null)
-            {
-                writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestFiltersItemValueAnyOf3Item>(null, QueryAnalyticsRequestFiltersItemValueAnyOf3Item);
             }
         }
     }

@@ -5863,7 +5863,7 @@
             "schema": {
               "maxLength": 512,
               "minLength": 1,
-              "pattern": "^[^\\u0000]\u002B$",
+              "pattern": "^(?!\\s)(?![\\s\\S]*\\s$)[^\\u0000]\u002B$",
               "type": "string",
               "description": "Immutable case-sensitive tracking string supplied as user on inference requests or as external.user on API keys: 1 to 512 characters, well-formed Unicode, no NUL, no surrounding whitespace. URL-encode it in resource paths; an ID of \u0060.\u0060 or \u0060..\u0060 cannot be addressed by path, so look it up with the list filter.",
               "example": "employee_123"
@@ -6157,7 +6157,7 @@
             "schema": {
               "maxLength": 512,
               "minLength": 1,
-              "pattern": "^[^\\u0000]\u002B$",
+              "pattern": "^(?!\\s)(?![\\s\\S]*\\s$)[^\\u0000]\u002B$",
               "type": "string",
               "description": "Immutable case-sensitive tracking string supplied as user on inference requests or as external.user on API keys: 1 to 512 characters, well-formed Unicode, no NUL, no surrounding whitespace. URL-encode it in resource paths; an ID of \u0060.\u0060 or \u0060..\u0060 cannot be addressed by path, so look it up with the list filter.",
               "example": "employee_123"
@@ -6252,7 +6252,7 @@
             "schema": {
               "maxLength": 512,
               "minLength": 1,
-              "pattern": "^[^\\u0000]\u002B$",
+              "pattern": "^(?!\\s)(?![\\s\\S]*\\s$)[^\\u0000]\u002B$",
               "type": "string",
               "description": "Immutable case-sensitive tracking string supplied as user on inference requests or as external.user on API keys: 1 to 512 characters, well-formed Unicode, no NUL, no surrounding whitespace. URL-encode it in resource paths; an ID of \u0060.\u0060 or \u0060..\u0060 cannot be addressed by path, so look it up with the list filter.",
               "example": "employee_123"
@@ -6378,7 +6378,7 @@
             "schema": {
               "maxLength": 512,
               "minLength": 1,
-              "pattern": "^[^\\u0000]\u002B$",
+              "pattern": "^(?!\\s)(?![\\s\\S]*\\s$)[^\\u0000]\u002B$",
               "type": "string",
               "description": "Immutable case-sensitive tracking string supplied as user on inference requests or as external.user on API keys: 1 to 512 characters, well-formed Unicode, no NUL, no surrounding whitespace. URL-encode it in resource paths; an ID of \u0060.\u0060 or \u0060..\u0060 cannot be addressed by path, so look it up with the list filter.",
               "example": "employee_123"
@@ -20451,14 +20451,13 @@
           {
             "name": "name",
             "in": "path",
-            "description": "Secret name. Lowercase letters, digits and single underscores, starting with a letter and not ending with an underscore, 1 to 255 characters.",
+            "description": "Existing secret name. Accepts legacy names stored before the 255-character write bound; new writes still require the documented name format.",
             "required": true,
             "schema": {
-              "maxLength": 255,
               "minLength": 1,
               "pattern": "^(?!.*__)[a-z]([a-z0-9_]*[a-z0-9])?$",
               "type": "string",
-              "description": "Secret name. Lowercase letters, digits and single underscores, starting with a letter and not ending with an underscore, 1 to 255 characters.",
+              "description": "Existing secret name. Accepts legacy names stored before the 255-character write bound; new writes still require the documented name format.",
               "example": "github_token"
             }
           }
@@ -20958,7 +20957,7 @@
             }
           },
           "413": {
-            "description": "Payload Too Large - The JSON body exceeds 425000 bytes.",
+            "description": "Payload Too Large - The JSON body exceeds 6074326 bytes.",
             "content": {
               "application/json": {
                 "schema": {
@@ -21325,7 +21324,7 @@
             }
           },
           "413": {
-            "description": "Payload Too Large - The JSON body exceeds 425000 bytes.",
+            "description": "Payload Too Large - The JSON body exceeds 6074326 bytes.",
             "content": {
               "application/json": {
                 "schema": {
@@ -21830,14 +21829,13 @@
           {
             "name": "name",
             "in": "path",
-            "description": "Secret name. Lowercase letters, digits and single underscores, starting with a letter and not ending with an underscore, 1 to 255 characters.",
+            "description": "Existing secret name. Accepts legacy names stored before the 255-character write bound; new writes still require the documented name format.",
             "required": true,
             "schema": {
-              "maxLength": 255,
               "minLength": 1,
               "pattern": "^(?!.*__)[a-z]([a-z0-9_]*[a-z0-9])?$",
               "type": "string",
-              "description": "Secret name. Lowercase letters, digits and single underscores, starting with a letter and not ending with an underscore, 1 to 255 characters.",
+              "description": "Existing secret name. Accepts legacy names stored before the 255-character write bound; new writes still require the documented name format.",
               "example": "github_token"
             }
           }
@@ -22325,7 +22323,7 @@
             }
           },
           "413": {
-            "description": "Payload Too Large - The JSON body exceeds 425000 bytes.",
+            "description": "Payload Too Large - The JSON body exceeds 6074326 bytes.",
             "content": {
               "application/json": {
                 "schema": {
@@ -34577,6 +34575,118 @@
           "type": "web_search_preview"
         }
       },
+      "ClassifierFiltersFilter": {
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/ClassifierScalarFilter"
+          },
+          {
+            "$ref": "#/components/schemas/ClassifierSetFilter"
+          }
+        ]
+      },
+      "ClassifierScalarFilter": {
+        "required": [
+          "field",
+          "operator",
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "field": {
+            "pattern": "^[a-zA-Z_][a-zA-Z0-9_]{0,63}$",
+            "type": "string",
+            "description": "Classifier dimension name to filter on (snake_case identifier, e.g. \u0022department\u0022, \u0022work_type\u0022).",
+            "example": "department"
+          },
+          "operator": {
+            "description": "Equality operator taking a scalar filter value. Ordered comparisons are not available because classification values are strings.",
+            "$ref": "#/components/schemas/ClassifierScalarFilterOperator"
+          },
+          "value": {
+            "$ref": "#/components/schemas/ClassifierScalarFilterValue"
+          }
+        }
+      },
+      "ClassifierScalarFilterOperator": {
+        "enum": [
+          "eq",
+          "neq"
+        ],
+        "type": "string",
+        "description": "Equality operator taking a scalar filter value. Ordered comparisons are not available because classification values are strings.",
+        "example": "eq",
+        "x-speakeasy-unknown-values": "allow",
+        "x-ms-enum": {
+          "name": "ClassifierScalarFilterOperator",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "eq",
+              "name": "Eq"
+            },
+            {
+              "value": "neq",
+              "name": "Neq"
+            }
+          ]
+        }
+      },
+      "ClassifierSetFilter": {
+        "required": [
+          "field",
+          "operator",
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "field": {
+            "pattern": "^[a-zA-Z_][a-zA-Z0-9_]{0,63}$",
+            "type": "string",
+            "description": "Classifier dimension name to filter on (snake_case identifier, e.g. \u0022department\u0022, \u0022work_type\u0022).",
+            "example": "department"
+          },
+          "operator": {
+            "description": "Set-membership operator taking an array filter value.",
+            "$ref": "#/components/schemas/ClassifierSetFilterOperator"
+          },
+          "value": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ClassifierSetFilterValueItem"
+            },
+            "description": "Array of scalar filter values.",
+            "example": [
+              "Engineering",
+              "Support"
+            ]
+          }
+        }
+      },
+      "ClassifierSetFilterOperator": {
+        "enum": [
+          "in",
+          "not_in"
+        ],
+        "type": "string",
+        "description": "Set-membership operator taking an array filter value.",
+        "example": "in",
+        "x-speakeasy-unknown-values": "allow",
+        "x-ms-enum": {
+          "name": "ClassifierSetFilterOperator",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "in",
+              "name": "InValue"
+            },
+            {
+              "value": "not_in",
+              "name": "NotIn"
+            }
+          ]
+        }
+      },
       "ClientClosedRequestResponse": {
         "required": [
           "error"
@@ -36110,7 +36220,7 @@
           "user": {
             "maxLength": 512,
             "minLength": 1,
-            "pattern": "^[^\\u0000]\u002B$",
+            "pattern": "^(?!\\s)(?![\\s\\S]*\\s$)[^\\u0000]\u002B$",
             "type": "string",
             "description": "Immutable case-sensitive tracking string supplied as user on inference requests or as external.user on API keys: 1 to 512 characters, well-formed Unicode, no NUL, no surrounding whitespace. URL-encode it in resource paths; an ID of \u0060.\u0060 or \u0060..\u0060 cannot be addressed by path, so look it up with the list filter.",
             "example": "employee_123"
@@ -37943,7 +38053,7 @@
           "user": {
             "maxLength": 512,
             "minLength": 1,
-            "pattern": "^[^\\u0000]\u002B$",
+            "pattern": "^(?!\\s)(?![\\s\\S]*\\s$)[^\\u0000]\u002B$",
             "type": "string",
             "description": "Immutable case-sensitive tracking string supplied as user on inference requests or as external.user on API keys: 1 to 512 characters, well-formed Unicode, no NUL, no surrounding whitespace. URL-encode it in resource paths; an ID of \u0060.\u0060 or \u0060..\u0060 cannot be addressed by path, so look it up with the list filter.",
             "example": "employee_123"
@@ -38325,6 +38435,16 @@
       "FilesServerToolConfig": {
         "type": "object",
         "description": "Configuration for the openrouter:files server tool"
+      },
+      "Filter": {
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/ScalarFilter"
+          },
+          {
+            "$ref": "#/components/schemas/SetFilter"
+          }
+        ]
       },
       "FinishReason": {
         "enum": [
@@ -49522,6 +49642,21 @@
           "type": "openrouter:web_search"
         }
       },
+      "OperatorType": {
+        "required": [
+          "name",
+          "value_type"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "$ref": "#/components/schemas/OperatorTypeName"
+          },
+          "value_type": {
+            "$ref": "#/components/schemas/OperatorTypeValueType"
+          }
+        }
+      },
       "OrAnthropicBashToolResult": {
         "required": [
           "type",
@@ -56698,6 +56833,72 @@
           ]
         }
       },
+      "ScalarFilter": {
+        "required": [
+          "field",
+          "operator",
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "field": {
+            "type": "string",
+            "description": "Dimension to filter on. Use the /meta endpoint for available dimensions.",
+            "example": "model"
+          },
+          "operator": {
+            "description": "Comparison operator taking a scalar filter value.",
+            "$ref": "#/components/schemas/ScalarFilterOperator"
+          },
+          "value": {
+            "$ref": "#/components/schemas/ScalarFilterValue"
+          }
+        }
+      },
+      "ScalarFilterOperator": {
+        "enum": [
+          "eq",
+          "neq",
+          "gt",
+          "gte",
+          "lt",
+          "lte"
+        ],
+        "type": "string",
+        "description": "Comparison operator taking a scalar filter value.",
+        "example": "eq",
+        "x-speakeasy-unknown-values": "allow",
+        "x-ms-enum": {
+          "name": "ScalarFilterOperator",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "eq",
+              "name": "Eq"
+            },
+            {
+              "value": "neq",
+              "name": "Neq"
+            },
+            {
+              "value": "gt",
+              "name": "Gt"
+            },
+            {
+              "value": "gte",
+              "name": "Gte"
+            },
+            {
+              "value": "lt",
+              "name": "Lt"
+            },
+            {
+              "value": "lte",
+              "name": "Lte"
+            }
+          ]
+        }
+      },
       "ScimGroup": {
         "required": [
           "id",
@@ -57578,6 +57779,59 @@
           "meta": {
             "$ref": "#/components/schemas/SessionCostMeta"
           }
+        }
+      },
+      "SetFilter": {
+        "required": [
+          "field",
+          "operator",
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "field": {
+            "type": "string",
+            "description": "Dimension to filter on. Use the /meta endpoint for available dimensions.",
+            "example": "model"
+          },
+          "include_unset": {
+            "type": "boolean",
+            "description": "Include rows where the dimension has no value. Applies only to dimensions that have an unset bucket."
+          },
+          "operator": {
+            "description": "Set-membership operator taking an array filter value.",
+            "$ref": "#/components/schemas/SetFilterOperator"
+          },
+          "value": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SetFilterValueItem"
+            }
+          }
+        }
+      },
+      "SetFilterOperator": {
+        "enum": [
+          "in",
+          "not_in"
+        ],
+        "type": "string",
+        "description": "Set-membership operator taking an array filter value.",
+        "example": "in",
+        "x-speakeasy-unknown-values": "allow",
+        "x-ms-enum": {
+          "name": "SetFilterOperator",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "in",
+              "name": "InValue"
+            },
+            {
+              "value": "not_in",
+              "name": "NotIn"
+            }
+          ]
         }
       },
       "ShellCallItem": {
@@ -62105,10 +62359,10 @@
             "description": "Exact DNS hostnames the secret may be sent to, 1 to 100 entries. Each entry is lowercased and a trailing dot is removed, so \u0060API.Example.com.\u0060 is stored as \u0060api.example.com\u0060. Schemes, ports, paths, wildcards and empty values are rejected. Duplicates after normalization are collapsed. Matching is exact: a secret bound to \u0060api.example.com\u0060 is never released to \u0060example.com\u0060 or any other hostname."
           },
           "value": {
-            "maxLength": 65536,
+            "maxLength": 985721,
             "minLength": 1,
             "type": "string",
-            "description": "Secret value, 1 to 65536 characters. It is encrypted at rest and never returned."
+            "description": "Secret value, 1 to 985721 characters. It is encrypted at rest and never returned."
           }
         },
         "additionalProperties": false,
@@ -63710,8 +63964,10 @@
             "format": "binary"
           },
           "keyterms[]": {
+            "maxItems": 1000,
             "type": "array",
             "items": {
+              "maxLength": 100,
               "type": "string"
             },
             "description": "Domain terms, names, or phrases to bias recognition toward; repeat the part once per term (keyterms=... is also accepted). Only supported by some providers; 400 when the selected model cannot use keyterms."
@@ -63737,11 +63993,14 @@
             "description": "A unique identifier for grouping related requests (e.g., a conversation or agent workflow). Used for observability grouping in Broadcast and private logging; never sent to the provider. If provided in both the request body and the x-session-id header, the body value takes precedence."
           },
           "source_url": {
+            "maxLength": 8000,
             "type": "string",
             "description": "Publicly reachable http(s) URL of the audio file, downloaded by the provider directly (no size limit on our side). The format is derived from the URL path extension. Only supported by some providers; exactly one of file or source_url is required.",
             "format": "uri"
           },
           "temperature": {
+            "maximum": 1,
+            "minimum": 0,
             "type": "number",
             "description": "The sampling temperature."
           },
@@ -64824,6 +65083,30 @@
         ],
         "description": "User message content",
         "example": "What is the capital of France?"
+      },
+      "ClassifierScalarFilterValue": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "number",
+            "format": "double"
+          }
+        ],
+        "description": "Scalar (string or number) filter value.",
+        "example": "Engineering"
+      },
+      "ClassifierSetFilterValueItem": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "number",
+            "format": "double"
+          }
+        ]
       },
       "CodeInterpreterServerToolContainer": {
         "anyOf": [
@@ -69635,6 +69918,18 @@
           }
         }
       },
+      "ScalarFilterValue": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "number",
+            "format": "double"
+          }
+        ],
+        "description": "Several dimensions are enriched in responses (returned as human-readable labels), but filters must use the underlying ID: \u0060api_key_id\u0060 \u2014 numeric ID (from generation metadata) or key hash (64-char hex from GET /api/v1/keys, resolved server-side); \u0060user\u0060 \u2014 Clerk user ID (e.g. \u0022user_abc123\u0022), not the display name; \u0060workspace\u0060 \u2014 workspace UUID, not the workspace name (filtering or grouping by the account default workspace also covers activity recorded before workspace resolution existed, which is attributed to that default workspace); \u0060app\u0060 \u2014 numeric app ID, not the app title; \u0060model\u0060 \u2014 permaslug (e.g. \u0022openai/gpt-4o\u0022), not the display name. Other dimensions (provider, origin, country, etc.) are not enriched and accept the value as returned."
+      },
       "ServerToolDetailsAllOf2": {
         "type": "object",
         "properties": {
@@ -69642,6 +69937,18 @@
             "$ref": "#/components/schemas/ServerToolDetailsAllOf2NativeSupport"
           }
         }
+      },
+      "SetFilterValueItem": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "number",
+            "format": "double"
+          }
+        ],
+        "description": "Several dimensions are enriched in responses (returned as human-readable labels), but filters must use the underlying ID: \u0060api_key_id\u0060 \u2014 numeric ID (from generation metadata) or key hash (64-char hex from GET /api/v1/keys, resolved server-side); \u0060user\u0060 \u2014 Clerk user ID (e.g. \u0022user_abc123\u0022), not the display name; \u0060workspace\u0060 \u2014 workspace UUID, not the workspace name (filtering or grouping by the account default workspace also covers activity recorded before workspace resolution existed, which is attributed to that default workspace); \u0060app\u0060 \u2014 numeric app ID, not the app title; \u0060model\u0060 \u2014 permaslug (e.g. \u0022openai/gpt-4o\u0022), not the display name. Other dimensions (provider, origin, country, etc.) are not enriched and accept the value as returned."
       },
       "ShellCallItemStatus": {
         "anyOf": [
@@ -79870,7 +80177,7 @@
             "maxItems": 20,
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/QueryAnalyticsRequestFiltersItem"
+              "$ref": "#/components/schemas/Filter"
             }
           },
           "granularity": {
@@ -83307,43 +83614,6 @@
           "type": "input_image"
         }
       },
-      "QueryAnalyticsRequestClassifierFiltersFiltersItemValue": {
-        "anyOf": [
-          {
-            "type": "string"
-          },
-          {
-            "type": "number",
-            "format": "double"
-          },
-          {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/QueryAnalyticsRequestClassifierFiltersFiltersItemValueAnyOf3Item"
-            }
-          }
-        ],
-        "description": "Filter value. Use a scalar (string or number) for eq/neq, or an array for in/not_in.",
-        "example": "Engineering"
-      },
-      "QueryAnalyticsRequestFiltersItemValue": {
-        "anyOf": [
-          {
-            "type": "string"
-          },
-          {
-            "type": "number",
-            "format": "double"
-          },
-          {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/QueryAnalyticsRequestFiltersItemValueAnyOf3Item"
-            }
-          }
-        ],
-        "description": "Filter value (scalar or array depending on operator). Several dimensions are enriched in responses (returned as human-readable labels), but filters must use the underlying ID: \u0060api_key_id\u0060 \u2014 numeric ID (from generation metadata) or key hash (64-char hex from GET /api/v1/keys, resolved server-side); \u0060user\u0060 \u2014 Clerk user ID (e.g. \u0022user_abc123\u0022), not the display name; \u0060workspace\u0060 \u2014 workspace UUID, not the workspace name (filtering or grouping by the account default workspace also covers activity recorded before workspace resolution existed, which is attributed to that default workspace); \u0060app\u0060 \u2014 numeric app ID, not the app title; \u0060model\u0060 \u2014 permaslug (e.g. \u0022openai/gpt-4o\u0022), not the display name. Other dimensions (provider, origin, country, etc.) are not enriched and accept the value as returned."
-      },
       "CreateEmbeddingsRequestInput": {
         "anyOf": [
           {
@@ -83635,28 +83905,6 @@
             "items": {
               "$ref": "#/components/schemas/ReasoningSummaryText"
             }
-          }
-        ]
-      },
-      "QueryAnalyticsRequestClassifierFiltersFiltersItemValueAnyOf3Item": {
-        "anyOf": [
-          {
-            "type": "string"
-          },
-          {
-            "type": "number",
-            "format": "double"
-          }
-        ]
-      },
-      "QueryAnalyticsRequestFiltersItemValueAnyOf3Item": {
-        "anyOf": [
-          {
-            "type": "string"
-          },
-          {
-            "type": "number",
-            "format": "double"
           }
         ]
       },
@@ -86402,7 +86650,7 @@
           "operators": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/GetAnalyticsMeta200ResponseDataOperatorsItem"
+              "$ref": "#/components/schemas/OperatorType"
             }
           }
         }
@@ -86423,6 +86671,7 @@
             "maxItems": 2,
             "type": "array",
             "items": {
+              "pattern": "^[a-zA-Z_][a-zA-Z0-9_]{0,63}$",
               "type": "string",
               "description": "Classifier dimension name (snake_case identifier). Each name becomes its own column key in the response; providing two names cross-groups results by both dimensions. With no names, the response uses \u0060clf_dimension_name\u0060/\u0060clf_dimension_value\u0060 columns (one row per dimension/value pair).",
               "example": "department"
@@ -86453,38 +86702,11 @@
             "minItems": 1,
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/QueryAnalyticsRequestClassifierFiltersFiltersItem"
+              "$ref": "#/components/schemas/ClassifierFiltersFilter"
             }
           }
         },
         "description": "Filter results to generations with specific classifier tag values. Can be combined with classifier_dimensions (must use the same classifier_id) or used independently with standard dimensions."
-      },
-      "QueryAnalyticsRequestFiltersItem": {
-        "required": [
-          "field",
-          "operator",
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "field": {
-            "type": "string",
-            "description": "Dimension to filter on. Use the /meta endpoint for available dimensions.",
-            "example": "model"
-          },
-          "include_unset": {
-            "type": "boolean",
-            "description": "Include rows where the dimension has no value. Applies only to the \u0060in\u0060 and \u0060not_in\u0060 operators and dimensions that have an unset bucket."
-          },
-          "operator": {
-            "type": "string",
-            "description": "Filter operator",
-            "example": "eq"
-          },
-          "value": {
-            "$ref": "#/components/schemas/QueryAnalyticsRequestFiltersItemValue"
-          }
-        }
       },
       "QueryAnalyticsRequestOrderBy": {
         "required": [
@@ -88113,44 +88335,6 @@
             "type": "string",
             "description": "Metric identifier used in query requests",
             "example": "request_count"
-          }
-        }
-      },
-      "GetAnalyticsMeta200ResponseDataOperatorsItem": {
-        "required": [
-          "name",
-          "value_type"
-        ],
-        "type": "object",
-        "properties": {
-          "name": {
-            "$ref": "#/components/schemas/GetAnalyticsMeta200ResponseDataOperatorsItemName"
-          },
-          "value_type": {
-            "$ref": "#/components/schemas/GetAnalyticsMeta200ResponseDataOperatorsItemValueType"
-          }
-        }
-      },
-      "QueryAnalyticsRequestClassifierFiltersFiltersItem": {
-        "required": [
-          "field",
-          "operator",
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "field": {
-            "type": "string",
-            "description": "Classifier dimension name to filter on (snake_case identifier, e.g. \u0022department\u0022, \u0022work_type\u0022).",
-            "example": "department"
-          },
-          "operator": {
-            "type": "string",
-            "description": "Filter operator. Only equality/set operators are supported (eq, neq, in, not_in) \u2014 ordered comparisons are not available because classification values are strings.",
-            "example": "eq"
-          },
-          "value": {
-            "$ref": "#/components/schemas/QueryAnalyticsRequestClassifierFiltersFiltersItemValue"
           }
         }
       },
@@ -95022,6 +95206,83 @@
             {
               "value": "openrouter:web_search",
               "name": "OpenrouterColonWebSearch"
+            }
+          ]
+        }
+      },
+      "OperatorTypeName": {
+        "enum": [
+          "eq",
+          "neq",
+          "in",
+          "not_in",
+          "gt",
+          "gte",
+          "lt",
+          "lte"
+        ],
+        "type": "string",
+        "description": "Operator identifier used in filter definitions",
+        "example": "eq",
+        "x-speakeasy-unknown-values": "allow",
+        "x-ms-enum": {
+          "name": "OperatorTypeName",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "eq",
+              "name": "Eq"
+            },
+            {
+              "value": "neq",
+              "name": "Neq"
+            },
+            {
+              "value": "in",
+              "name": "InValue"
+            },
+            {
+              "value": "not_in",
+              "name": "NotIn"
+            },
+            {
+              "value": "gt",
+              "name": "Gt"
+            },
+            {
+              "value": "gte",
+              "name": "Gte"
+            },
+            {
+              "value": "lt",
+              "name": "Lt"
+            },
+            {
+              "value": "lte",
+              "name": "Lte"
+            }
+          ]
+        }
+      },
+      "OperatorTypeValueType": {
+        "enum": [
+          "scalar",
+          "array"
+        ],
+        "type": "string",
+        "description": "Whether the operator expects a single value or an array",
+        "x-speakeasy-unknown-values": "allow",
+        "x-ms-enum": {
+          "name": "OperatorTypeValueType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "scalar",
+              "name": "Scalar"
+            },
+            {
+              "value": "array",
+              "name": "Array"
             }
           ]
         }
@@ -104182,83 +104443,6 @@
             {
               "value": "throughput",
               "name": "Throughput"
-            }
-          ]
-        }
-      },
-      "GetAnalyticsMeta200ResponseDataOperatorsItemName": {
-        "enum": [
-          "eq",
-          "neq",
-          "in",
-          "not_in",
-          "gt",
-          "gte",
-          "lt",
-          "lte"
-        ],
-        "type": "string",
-        "description": "Operator identifier used in filter definitions",
-        "example": "eq",
-        "x-speakeasy-unknown-values": "allow",
-        "x-ms-enum": {
-          "name": "GetAnalyticsMeta200ResponseDataOperatorsItemName",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "eq",
-              "name": "Eq"
-            },
-            {
-              "value": "neq",
-              "name": "Neq"
-            },
-            {
-              "value": "in",
-              "name": "InValue"
-            },
-            {
-              "value": "not_in",
-              "name": "NotIn"
-            },
-            {
-              "value": "gt",
-              "name": "Gt"
-            },
-            {
-              "value": "gte",
-              "name": "Gte"
-            },
-            {
-              "value": "lt",
-              "name": "Lt"
-            },
-            {
-              "value": "lte",
-              "name": "Lte"
-            }
-          ]
-        }
-      },
-      "GetAnalyticsMeta200ResponseDataOperatorsItemValueType": {
-        "enum": [
-          "scalar",
-          "array"
-        ],
-        "type": "string",
-        "description": "Whether the operator expects a single value or an array",
-        "x-speakeasy-unknown-values": "allow",
-        "x-ms-enum": {
-          "name": "GetAnalyticsMeta200ResponseDataOperatorsItemValueType",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "scalar",
-              "name": "Scalar"
-            },
-            {
-              "value": "array",
-              "name": "Array"
             }
           ]
         }
