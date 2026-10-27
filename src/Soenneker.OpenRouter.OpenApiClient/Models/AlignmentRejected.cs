@@ -38,7 +38,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var result = new global::Soenneker.OpenRouter.OpenApiClient.Models.AlignmentRejected();
-            if(parseNode.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.AlignmentResponsesRejectedItem>(global::Soenneker.OpenRouter.OpenApiClient.Models.AlignmentResponsesRejectedItem.CreateFromDiscriminatorValue)?.AsList() is List<global::Soenneker.OpenRouter.OpenApiClient.Models.AlignmentResponsesRejectedItem> alignmentResponsesRejectedItemValue)
+            if(parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedArray && parseNode.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.AlignmentResponsesRejectedItem>(global::Soenneker.OpenRouter.OpenApiClient.Models.AlignmentResponsesRejectedItem.CreateFromDiscriminatorValue)?.AsList() is List<global::Soenneker.OpenRouter.OpenApiClient.Models.AlignmentResponsesRejectedItem> alignmentResponsesRejectedItemValue)
             {
                 result.AlignmentResponsesRejectedItem = alignmentResponsesRejectedItemValue;
             }

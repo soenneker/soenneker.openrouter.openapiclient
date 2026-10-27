@@ -41,10 +41,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The operators property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.OperatorType>? Operators { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.GetAnalyticsMeta200ResponseDataOperatorsItem>? Operators { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.OperatorType> Operators { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.GetAnalyticsMeta200ResponseDataOperatorsItem> Operators { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.GetAnalyticsMeta200ResponseData"/> and sets the default values.
@@ -74,7 +74,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "dimensions", n => { Dimensions = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.GetAnalyticsMeta200ResponseDataDimensionsItem>(global::Soenneker.OpenRouter.OpenApiClient.Models.GetAnalyticsMeta200ResponseDataDimensionsItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "granularities", n => { Granularities = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.GetAnalyticsMeta200ResponseDataGranularitiesItem>(global::Soenneker.OpenRouter.OpenApiClient.Models.GetAnalyticsMeta200ResponseDataGranularitiesItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "metrics", n => { Metrics = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.GetAnalyticsMeta200ResponseDataMetricsItem>(global::Soenneker.OpenRouter.OpenApiClient.Models.GetAnalyticsMeta200ResponseDataMetricsItem.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "operators", n => { Operators = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.OperatorType>(global::Soenneker.OpenRouter.OpenApiClient.Models.OperatorType.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "operators", n => { Operators = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.GetAnalyticsMeta200ResponseDataOperatorsItem>(global::Soenneker.OpenRouter.OpenApiClient.Models.GetAnalyticsMeta200ResponseDataOperatorsItem.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -87,7 +87,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.GetAnalyticsMeta200ResponseDataDimensionsItem>("dimensions", Dimensions);
             writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.GetAnalyticsMeta200ResponseDataGranularitiesItem>("granularities", Granularities);
             writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.GetAnalyticsMeta200ResponseDataMetricsItem>("metrics", Metrics);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.OperatorType>("operators", Operators);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.GetAnalyticsMeta200ResponseDataOperatorsItem>("operators", Operators);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

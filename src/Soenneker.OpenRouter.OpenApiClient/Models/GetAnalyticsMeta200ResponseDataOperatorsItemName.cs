@@ -5,7 +5,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     /// <summary>Operator identifier used in filter definitions</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public enum OperatorTypeName
+    public enum GetAnalyticsMeta200ResponseDataOperatorsItemName
     {
         [EnumMember(Value = "eq")]
         #pragma warning disable CS1591

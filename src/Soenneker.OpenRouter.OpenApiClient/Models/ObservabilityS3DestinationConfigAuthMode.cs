@@ -3,17 +3,17 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
-    /// <summary>Set-membership operator taking an array filter value.</summary>
+    /// <summary>IAM role: OpenRouter assumes a role in your AWS account with short-lived STS credentials, so you don&apos;t share long-lived keys.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public enum SetFilterOperator
+    public enum ObservabilityS3DestinationConfigAuthMode
     {
-        [EnumMember(Value = "in")]
+        [EnumMember(Value = "access_keys")]
         #pragma warning disable CS1591
-        InValue,
+        AccessKeys,
         #pragma warning restore CS1591
-        [EnumMember(Value = "not_in")]
+        [EnumMember(Value = "iam_role")]
         #pragma warning disable CS1591
-        NotIn,
+        IamRole,
         #pragma warning restore CS1591
     }
 }

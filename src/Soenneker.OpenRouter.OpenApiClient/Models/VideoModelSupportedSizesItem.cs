@@ -52,6 +52,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning disable CS1591
         Value480X1120,
         #pragma warning restore CS1591
+        [EnumMember(Value = "496x864")]
+        #pragma warning disable CS1591
+        Value496X864,
+        #pragma warning restore CS1591
         [EnumMember(Value = "540x360")]
         #pragma warning disable CS1591
         Value540X360,
@@ -131,6 +135,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         [EnumMember(Value = "854x480")]
         #pragma warning disable CS1591
         Value854X480,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "864x496")]
+        #pragma warning disable CS1591
+        Value864X496,
         #pragma warning restore CS1591
         [EnumMember(Value = "960x720")]
         #pragma warning disable CS1591

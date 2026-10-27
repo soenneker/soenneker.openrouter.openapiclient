@@ -21,7 +21,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public List<string> Hosts { get; set; }
 #endif
-        /// <summary>Secret value, 1 to 985721 characters. It is encrypted at rest and never returned.</summary>
+        /// <summary>Secret value, 1 to 65536 characters. It is encrypted at rest and never returned.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Value { get; set; }

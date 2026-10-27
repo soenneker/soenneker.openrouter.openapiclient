@@ -19,7 +19,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Vault.Secrets
     public partial class SecretsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Soenneker.OpenRouter.OpenApiClient.vault.secrets.item collection</summary>
-        /// <param name="position">Existing secret name. Accepts legacy names stored before the 255-character write bound; new writes still require the documented name format.</param>
+        /// <param name="position">Secret name. Lowercase letters, digits and single underscores, starting with a letter and not ending with an underscore, 1 to 255 characters.</param>
         /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Vault.Secrets.Item.WithNameItemRequestBuilder"/></returns>
         public global::Soenneker.OpenRouter.OpenApiClient.Vault.Secrets.Item.WithNameItemRequestBuilder this[string position]
         {

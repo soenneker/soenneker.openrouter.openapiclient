@@ -41,10 +41,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The filters property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.Filter>? Filters { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestFiltersItem>? Filters { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.Filter> Filters { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestFiltersItem> Filters { get; set; }
 #endif
         /// <summary>Time granularity</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -110,7 +110,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "classifier_dimensions", n => { ClassifierDimensions = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestClassifierDimensions>(global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestClassifierDimensions.CreateFromDiscriminatorValue); } },
                 { "classifier_filters", n => { ClassifierFilters = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestClassifierFilters>(global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestClassifierFilters.CreateFromDiscriminatorValue); } },
                 { "dimensions", n => { Dimensions = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "filters", n => { Filters = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.Filter>(global::Soenneker.OpenRouter.OpenApiClient.Models.Filter.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "filters", n => { Filters = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestFiltersItem>(global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestFiltersItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "granularity", n => { Granularity = n.GetStringValue(); } },
                 { "group_limit", n => { GroupLimit = n.GetIntValue(); } },
                 { "limit", n => { Limit = n.GetIntValue(); } },
@@ -129,7 +129,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestClassifierDimensions>("classifier_dimensions", ClassifierDimensions);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestClassifierFilters>("classifier_filters", ClassifierFilters);
             writer.WriteCollectionOfPrimitiveValues<string>("dimensions", Dimensions);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.Filter>("filters", Filters);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestFiltersItem>("filters", Filters);
             writer.WriteStringValue("granularity", Granularity);
             writer.WriteIntValue("group_limit", GroupLimit);
             writer.WriteIntValue("limit", Limit);

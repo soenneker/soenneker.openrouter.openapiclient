@@ -38,7 +38,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var result = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicWebSearchToolResultContent();
-            if(parseNode.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicWebSearchResult>(global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicWebSearchResult.CreateFromDiscriminatorValue)?.AsList() is List<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicWebSearchResult> anthropicWebSearchResultValue)
+            if(parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedArray && parseNode.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicWebSearchResult>(global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicWebSearchResult.CreateFromDiscriminatorValue)?.AsList() is List<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicWebSearchResult> anthropicWebSearchResultValue)
             {
                 result.AnthropicWebSearchResult = anthropicWebSearchResultValue;
             }

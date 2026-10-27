@@ -191,18 +191,7 @@
           }
         },
         "x-speakeasy-max-method-params": 5
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/analytics/meta": {
       "get": {
@@ -302,18 +291,7 @@
             }
           }
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/analytics/query": {
       "post": {
@@ -454,18 +432,7 @@
             }
           }
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/api/alpha/decisions": {
       "post": {
@@ -771,18 +738,7 @@
           }
         ],
         "x-speakeasy-name-override": "create"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/audio/speech": {
       "post": {
@@ -1015,18 +971,7 @@
         },
         "x-speakeasy-max-method-params": 1,
         "x-speakeasy-name-override": "createSpeech"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/audio/transcriptions": {
       "post": {
@@ -1296,18 +1241,7 @@
         },
         "x-speakeasy-max-method-params": 1,
         "x-speakeasy-name-override": "createTranscription"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/auth/keys": {
       "post": {
@@ -1396,18 +1330,7 @@
             }
           }
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/auth/keys/code": {
       "post": {
@@ -1533,18 +1456,7 @@
           }
         },
         "x-speakeasy-name-override": "createAuthCode"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/batches": {
       "get": {
@@ -2030,18 +1942,7 @@
           ],
           "strategy": "backoff"
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/batches/{id}": {
       "delete": {
@@ -2314,18 +2215,7 @@
             }
           }
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/benchmarks": {
       "get": {
@@ -2531,18 +2421,7 @@
             }
           }
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/byok": {
       "get": {
@@ -2839,18 +2718,7 @@
           }
         },
         "x-speakeasy-name-override": "create"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/byok/{id}": {
       "delete": {
@@ -3238,18 +3106,7 @@
           }
         },
         "x-speakeasy-name-override": "update"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/chat/completions": {
       "post": {
@@ -3636,18 +3493,7 @@
         "x-speakeasy-group": "chat",
         "x-speakeasy-name-override": "send",
         "x-speakeasy-stream-request-field": "stream"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/classifications/task": {
       "get": {
@@ -3775,18 +3621,7 @@
             }
           }
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/containers/{containerId}/files": {
       "get": {
@@ -3957,18 +3792,7 @@
             }
           }
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/containers/{containerId}/files/{fileId}": {
       "get": {
@@ -4135,18 +3959,7 @@
             }
           }
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/containers/{containerId}/files/{fileId}/content": {
       "get": {
@@ -4305,18 +4118,7 @@
             }
           }
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/containers/{containerId}/files/{fileId}/promote": {
       "post": {
@@ -4516,18 +4318,7 @@
             }
           }
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/credits": {
       "get": {
@@ -4604,18 +4395,7 @@
           }
         },
         "x-speakeasy-name-override": "getCredits"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/credits/coinbase": {
       "post": {
@@ -4651,18 +4431,7 @@
         "x-fern-ignore": true,
         "x-speakeasy-ignore": true,
         "x-speakeasy-name-override": "createCoinbaseCharge"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/datasets/app-rankings": {
       "get": {
@@ -4867,18 +4636,7 @@
           },
           "type": "offsetLimit"
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/datasets/rankings-daily": {
       "get": {
@@ -5053,18 +4811,7 @@
             }
           }
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/datasets/session-cost": {
       "get": {
@@ -5244,18 +4991,7 @@
           },
           "type": "offsetLimit"
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/embeddings": {
       "post": {
@@ -5535,18 +5271,7 @@
           }
         },
         "x-speakeasy-name-override": "generate"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/embeddings/models": {
       "get": {
@@ -5692,18 +5417,7 @@
           },
           "type": "offsetLimit"
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/endpoints/zdr": {
       "get": {
@@ -5805,24 +5519,12 @@
           }
         },
         "x-speakeasy-name-override": "listZdrEndpoints"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/external-users": {
       "get": {
         "tags": [
-          "External Users",
-          "End Users"
+          "External Users"
         ],
         "summary": "List registered external users",
         "description": "List registrations belonging to the authenticated organization. Inactive registrations are excluded by default. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
@@ -5863,7 +5565,7 @@
             "schema": {
               "maxLength": 512,
               "minLength": 1,
-              "pattern": "^(?!\\s)(?![\\s\\S]*\\s$)[^\\u0000]\u002B$",
+              "pattern": "^[^\\u0000]\u002B$",
               "type": "string",
               "description": "Immutable case-sensitive tracking string supplied as user on inference requests or as external.user on API keys: 1 to 512 characters, well-formed Unicode, no NUL, no surrounding whitespace. URL-encode it in resource paths; an ID of \u0060.\u0060 or \u0060..\u0060 cannot be addressed by path, so look it up with the list filter.",
               "example": "employee_123"
@@ -5984,6 +5686,7 @@
             }
           }
         },
+        "x-speakeasy-group": "externalUsers",
         "x-speakeasy-name-override": "list",
         "x-speakeasy-pagination": {
           "inputs": [
@@ -6006,8 +5709,7 @@
       },
       "post": {
         "tags": [
-          "External Users",
-          "End Users"
+          "External Users"
         ],
         "summary": "Register an external user",
         "description": "Register a caller-supplied tracking ID under the authenticated organization. No login account, policy, or credentials are created. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
@@ -6125,25 +5827,14 @@
             }
           }
         },
+        "x-speakeasy-group": "externalUsers",
         "x-speakeasy-name-override": "create"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/external-users/{user}": {
       "delete": {
         "tags": [
-          "External Users",
-          "End Users"
+          "External Users"
         ],
         "summary": "Deactivate a registered external user",
         "description": "Soft-deactivate a registration while retaining its tracking ID. Repeat deactivation succeeds. This does not block inference; reactivate through PATCH. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
@@ -6157,7 +5848,7 @@
             "schema": {
               "maxLength": 512,
               "minLength": 1,
-              "pattern": "^(?!\\s)(?![\\s\\S]*\\s$)[^\\u0000]\u002B$",
+              "pattern": "^[^\\u0000]\u002B$",
               "type": "string",
               "description": "Immutable case-sensitive tracking string supplied as user on inference requests or as external.user on API keys: 1 to 512 characters, well-formed Unicode, no NUL, no surrounding whitespace. URL-encode it in resource paths; an ID of \u0060.\u0060 or \u0060..\u0060 cannot be addressed by path, so look it up with the list filter.",
               "example": "employee_123"
@@ -6233,12 +5924,12 @@
             }
           }
         },
+        "x-speakeasy-group": "externalUsers",
         "x-speakeasy-name-override": "delete"
       },
       "get": {
         "tags": [
-          "External Users",
-          "End Users"
+          "External Users"
         ],
         "summary": "Get a registered external user",
         "description": "Retrieve an active or inactive registration by its URL-encoded, caller-supplied tracking ID. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
@@ -6252,7 +5943,7 @@
             "schema": {
               "maxLength": 512,
               "minLength": 1,
-              "pattern": "^(?!\\s)(?![\\s\\S]*\\s$)[^\\u0000]\u002B$",
+              "pattern": "^[^\\u0000]\u002B$",
               "type": "string",
               "description": "Immutable case-sensitive tracking string supplied as user on inference requests or as external.user on API keys: 1 to 512 characters, well-formed Unicode, no NUL, no surrounding whitespace. URL-encode it in resource paths; an ID of \u0060.\u0060 or \u0060..\u0060 cannot be addressed by path, so look it up with the list filter.",
               "example": "employee_123"
@@ -6359,12 +6050,12 @@
             }
           }
         },
+        "x-speakeasy-group": "externalUsers",
         "x-speakeasy-name-override": "get"
       },
       "patch": {
         "tags": [
-          "External Users",
-          "End Users"
+          "External Users"
         ],
         "summary": "Update a registered external user",
         "description": "Update registration state without changing identity. State changes do not enforce inference access. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
@@ -6378,7 +6069,7 @@
             "schema": {
               "maxLength": 512,
               "minLength": 1,
-              "pattern": "^(?!\\s)(?![\\s\\S]*\\s$)[^\\u0000]\u002B$",
+              "pattern": "^[^\\u0000]\u002B$",
               "type": "string",
               "description": "Immutable case-sensitive tracking string supplied as user on inference requests or as external.user on API keys: 1 to 512 characters, well-formed Unicode, no NUL, no surrounding whitespace. URL-encode it in resource paths; an ID of \u0060.\u0060 or \u0060..\u0060 cannot be addressed by path, so look it up with the list filter.",
               "example": "employee_123"
@@ -6482,19 +6173,9 @@
             }
           }
         },
+        "x-speakeasy-group": "externalUsers",
         "x-speakeasy-name-override": "update"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/files": {
       "get": {
@@ -6951,18 +6632,7 @@
           }
         },
         "x-speakeasy-name-override": "upload"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/files/{fileId}": {
       "delete": {
@@ -7311,18 +6981,7 @@
           }
         },
         "x-speakeasy-name-override": "retrieve"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/files/{fileId}/content": {
       "get": {
@@ -7508,18 +7167,7 @@
           }
         },
         "x-speakeasy-name-override": "download"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/generation": {
       "get": {
@@ -7762,18 +7410,7 @@
             }
           }
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/generation/content": {
       "get": {
@@ -7970,18 +7607,7 @@
             }
           }
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/generation/feedback": {
       "post": {
@@ -8120,18 +7746,7 @@
           }
         },
         "x-speakeasy-name-override": "submitFeedback"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/guardrails": {
       "get": {
@@ -8446,18 +8061,7 @@
           }
         },
         "x-speakeasy-name-override": "create"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/guardrails/{id}": {
       "delete": {
@@ -8854,18 +8458,7 @@
           }
         },
         "x-speakeasy-name-override": "update"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/guardrails/{id}/assignments/keys": {
       "get": {
@@ -9159,18 +8752,7 @@
           }
         },
         "x-speakeasy-name-override": "bulkAssignKeys"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/guardrails/{id}/assignments/keys/remove": {
       "post": {
@@ -9305,18 +8887,7 @@
           }
         },
         "x-speakeasy-name-override": "bulkUnassignKeys"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/guardrails/{id}/assignments/members": {
       "get": {
@@ -9610,18 +9181,7 @@
           }
         },
         "x-speakeasy-name-override": "bulkAssignMembers"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/guardrails/{id}/assignments/members/remove": {
       "post": {
@@ -9757,18 +9317,7 @@
           }
         },
         "x-speakeasy-name-override": "bulkUnassignMembers"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/guardrails/assignments/keys": {
       "get": {
@@ -9933,18 +9482,7 @@
           },
           "type": "offsetLimit"
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/guardrails/assignments/members": {
       "get": {
@@ -10108,18 +9646,7 @@
           },
           "type": "offsetLimit"
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/images": {
       "post": {
@@ -10359,18 +9886,7 @@
           }
         },
         "x-speakeasy-name-override": "generate"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/images/models": {
       "get": {
@@ -10439,18 +9955,7 @@
           }
         },
         "x-speakeasy-name-override": "listModels"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/images/models/{author}/{slug}/endpoints": {
       "get": {
@@ -10558,18 +10063,7 @@
           }
         },
         "x-speakeasy-name-override": "listModelEndpoints"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/key": {
       "get": {
@@ -10687,18 +10181,7 @@
           }
         },
         "x-speakeasy-name-override": "getCurrentKeyMetadata"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/keys": {
       "get": {
@@ -11024,18 +10507,7 @@
           }
         },
         "x-speakeasy-name-override": "create"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/keys/{hash}": {
       "delete": {
@@ -11466,18 +10938,7 @@
           }
         },
         "x-speakeasy-name-override": "update"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/messages": {
       "post": {
@@ -11746,18 +11207,7 @@
         "x-speakeasy-ignore": true,
         "x-speakeasy-name-override": "create",
         "x-speakeasy-stream-request-field": "stream"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/model/{author}/{slug}": {
       "get": {
@@ -11897,18 +11347,7 @@
           }
         },
         "x-speakeasy-name-override": "get"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/models": {
       "get": {
@@ -12392,18 +11831,7 @@
           },
           "type": "offsetLimit"
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/models/{author}/{slug}/endpoints": {
       "get": {
@@ -12517,18 +11945,7 @@
           }
         },
         "x-speakeasy-name-override": "list"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/models/count": {
       "get": {
@@ -12615,18 +12032,7 @@
           }
         },
         "x-speakeasy-name-override": "count"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/models/user": {
       "get": {
@@ -12831,18 +12237,7 @@
           },
           "type": "offsetLimit"
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/oauth/jwks": {
       "get": {
@@ -12874,18 +12269,7 @@
             }
           }
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/oauth/token": {
       "post": {
@@ -12957,18 +12341,7 @@
             }
           }
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/observability/destinations": {
       "get": {
@@ -13291,18 +12664,7 @@
           }
         },
         "x-speakeasy-name-override": "create"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/observability/destinations/{id}": {
       "delete": {
@@ -13704,18 +13066,7 @@
           }
         },
         "x-speakeasy-name-override": "update"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/organization/members": {
       "get": {
@@ -13862,18 +13213,7 @@
           },
           "type": "offsetLimit"
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/organization/settings": {
       "get": {
@@ -14086,18 +13426,7 @@
           }
         },
         "x-speakeasy-name-override": "updateSettings"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/presets": {
       "get": {
@@ -14255,18 +13584,7 @@
           },
           "type": "offsetLimit"
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/presets/{slug}": {
       "get": {
@@ -14416,18 +13734,7 @@
           }
         ],
         "x-speakeasy-name-override": "get"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/presets/{slug}/chat/completions": {
       "post": {
@@ -14616,18 +13923,7 @@
             "apiKey": []
           }
         ]
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/presets/{slug}/messages": {
       "post": {
@@ -14813,18 +14109,7 @@
             "apiKey": []
           }
         ]
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/presets/{slug}/responses": {
       "post": {
@@ -15003,18 +14288,7 @@
             "apiKey": []
           }
         ]
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/presets/{slug}/versions": {
       "get": {
@@ -15200,18 +14474,7 @@
           },
           "type": "offsetLimit"
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/presets/{slug}/versions/{version}": {
       "get": {
@@ -15360,18 +14623,7 @@
           }
         ],
         "x-speakeasy-name-override": "getVersion"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/private-endpoints": {
       "get": {
@@ -15617,18 +14869,7 @@
           }
         },
         "x-speakeasy-name-override": "create"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/private-endpoints/{id}": {
       "delete": {
@@ -16121,18 +15362,7 @@
           }
         },
         "x-speakeasy-name-override": "update"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/private-endpoints/{id}/activate": {
       "post": {
@@ -16313,18 +15543,7 @@
           }
         },
         "x-speakeasy-name-override": "activate"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/private-endpoints/{id}/disable": {
       "post": {
@@ -16505,18 +15724,7 @@
           }
         },
         "x-speakeasy-name-override": "disable"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/private-endpoints/{id}/enable": {
       "post": {
@@ -16697,18 +15905,7 @@
           }
         },
         "x-speakeasy-name-override": "enable"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/private-endpoints/{id}/pricing": {
       "put": {
@@ -16899,18 +16096,7 @@
           }
         },
         "x-speakeasy-name-override": "updatePricing"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/private-endpoints/{id}/validate": {
       "post": {
@@ -17101,18 +16287,7 @@
           }
         },
         "x-speakeasy-name-override": "validate"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/providers": {
       "get": {
@@ -17166,18 +16341,7 @@
           }
         },
         "x-speakeasy-name-override": "list"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/rerank": {
       "post": {
@@ -17409,18 +16573,7 @@
           }
         },
         "x-speakeasy-name-override": "rerank"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/responses": {
       "post": {
@@ -17813,18 +16966,7 @@
         },
         "x-speakeasy-name-override": "send",
         "x-speakeasy-stream-request-field": "stream"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/scim/group-mappings": {
       "get": {
@@ -18086,18 +17228,7 @@
           }
         },
         "x-speakeasy-name-override": "create"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/scim/group-mappings/{id}": {
       "delete": {
@@ -18447,18 +17578,7 @@
           }
         },
         "x-speakeasy-name-override": "update"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/scim/groups": {
       "get": {
@@ -18613,18 +17733,7 @@
           },
           "type": "offsetLimit"
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/scim/sync-jobs": {
       "post": {
@@ -18721,18 +17830,7 @@
           }
         },
         "x-speakeasy-name-override": "createSyncJob"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/scim/sync-jobs/{id}": {
       "get": {
@@ -18830,18 +17928,7 @@
           }
         },
         "x-speakeasy-name-override": "getSyncJob"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/systemone": {
       "post": {
@@ -19142,18 +18229,7 @@
           }
         },
         "x-speakeasy-name-override": "create"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/tools": {
       "get": {
@@ -19282,18 +18358,7 @@
             "bearer": []
           }
         ]
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/tools/{name}": {
       "get": {
@@ -19409,18 +18474,7 @@
             "bearer": []
           }
         ]
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/vault/interns/{internId}/connections": {
       "get": {
@@ -19717,18 +18771,7 @@
             "apiKey": []
           }
         ]
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/vault/interns/{internId}/effective-secrets": {
       "get": {
@@ -20071,18 +19114,7 @@
             "apiKey": []
           }
         ]
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/vault/interns/{internId}/secrets": {
       "get": {
@@ -20414,18 +19446,7 @@
             "apiKey": []
           }
         ]
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/vault/interns/{internId}/secrets/{name}": {
       "delete": {
@@ -20451,13 +19472,14 @@
           {
             "name": "name",
             "in": "path",
-            "description": "Existing secret name. Accepts legacy names stored before the 255-character write bound; new writes still require the documented name format.",
+            "description": "Secret name. Lowercase letters, digits and single underscores, starting with a letter and not ending with an underscore, 1 to 255 characters.",
             "required": true,
             "schema": {
+              "maxLength": 255,
               "minLength": 1,
               "pattern": "^(?!.*__)[a-z]([a-z0-9_]*[a-z0-9])?$",
               "type": "string",
-              "description": "Existing secret name. Accepts legacy names stored before the 255-character write bound; new writes still require the documented name format.",
+              "description": "Secret name. Lowercase letters, digits and single underscores, starting with a letter and not ending with an underscore, 1 to 255 characters.",
               "example": "github_token"
             }
           }
@@ -20957,7 +19979,7 @@
             }
           },
           "413": {
-            "description": "Payload Too Large - The JSON body exceeds 6074326 bytes.",
+            "description": "Payload Too Large - The JSON body exceeds 425000 bytes.",
             "content": {
               "application/json": {
                 "schema": {
@@ -21106,18 +20128,7 @@
             "apiKey": []
           }
         ]
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/vault/interns/{internId}/secrets/copy": {
       "post": {
@@ -21324,7 +20335,7 @@
             }
           },
           "413": {
-            "description": "Payload Too Large - The JSON body exceeds 6074326 bytes.",
+            "description": "Payload Too Large - The JSON body exceeds 425000 bytes.",
             "content": {
               "application/json": {
                 "schema": {
@@ -21473,18 +20484,7 @@
             "apiKey": []
           }
         ]
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/vault/secrets": {
       "get": {
@@ -21804,18 +20804,7 @@
             "apiKey": []
           }
         ]
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/vault/secrets/{name}": {
       "delete": {
@@ -21829,13 +20818,14 @@
           {
             "name": "name",
             "in": "path",
-            "description": "Existing secret name. Accepts legacy names stored before the 255-character write bound; new writes still require the documented name format.",
+            "description": "Secret name. Lowercase letters, digits and single underscores, starting with a letter and not ending with an underscore, 1 to 255 characters.",
             "required": true,
             "schema": {
+              "maxLength": 255,
               "minLength": 1,
               "pattern": "^(?!.*__)[a-z]([a-z0-9_]*[a-z0-9])?$",
               "type": "string",
-              "description": "Existing secret name. Accepts legacy names stored before the 255-character write bound; new writes still require the documented name format.",
+              "description": "Secret name. Lowercase letters, digits and single underscores, starting with a letter and not ending with an underscore, 1 to 255 characters.",
               "example": "github_token"
             }
           }
@@ -22323,7 +21313,7 @@
             }
           },
           "413": {
-            "description": "Payload Too Large - The JSON body exceeds 6074326 bytes.",
+            "description": "Payload Too Large - The JSON body exceeds 425000 bytes.",
             "content": {
               "application/json": {
                 "schema": {
@@ -22472,18 +21462,7 @@
             "apiKey": []
           }
         ]
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/videos": {
       "post": {
@@ -22689,18 +21668,7 @@
           }
         },
         "x-speakeasy-name-override": "generate"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/videos/{jobId}": {
       "get": {
@@ -22811,18 +21779,7 @@
           }
         },
         "x-speakeasy-name-override": "getGeneration"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/videos/{jobId}/content": {
       "get": {
@@ -22999,18 +21956,7 @@
           }
         },
         "x-speakeasy-name-override": "getVideoContent"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/videos/models": {
       "get": {
@@ -23096,18 +22042,7 @@
             }
           }
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/workspaces": {
       "get": {
@@ -23376,18 +22311,7 @@
           }
         },
         "x-speakeasy-name-override": "create"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/workspaces/{id}": {
       "delete": {
@@ -23787,18 +22711,7 @@
           }
         },
         "x-speakeasy-name-override": "update"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/workspaces/{id}/members": {
       "get": {
@@ -23957,18 +22870,7 @@
           },
           "type": "offsetLimit"
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/workspaces/{id}/members/add": {
       "post": {
@@ -24113,18 +23015,7 @@
           }
         },
         "x-speakeasy-name-override": "bulkAddMembers"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/workspaces/{id}/members/remove": {
       "post": {
@@ -24260,18 +23151,7 @@
           }
         },
         "x-speakeasy-name-override": "bulkRemoveMembers"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/workspaces/{id}/budgets": {
       "get": {
@@ -24385,18 +23265,7 @@
           }
         },
         "x-speakeasy-name-override": "listBudgets"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/workspaces/{id}/budgets/{interval}": {
       "delete": {
@@ -24812,18 +23681,7 @@
           }
         },
         "x-speakeasy-name-override": "setBudget"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     }
   },
   "components": {
@@ -28328,6 +27186,51 @@
           "type": "tool_search_tool_result"
         }
       },
+      "AnthropicToolUnion": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/AnthropicToolUnionOneOf1"
+          },
+          {
+            "$ref": "#/components/schemas/AnthropicToolUnionOneOf2"
+          },
+          {
+            "$ref": "#/components/schemas/AnthropicToolUnionOneOf3"
+          },
+          {
+            "$ref": "#/components/schemas/AnthropicToolUnionOneOf4"
+          },
+          {
+            "$ref": "#/components/schemas/AnthropicToolUnionOneOf5"
+          }
+        ],
+        "description": "An Anthropic tool definition: a client-defined tool with a JSON Schema \u0060input_schema\u0060, or a server tool (bash, text editor, web search).",
+        "example": {
+          "description": "Get the current weather for a city.",
+          "input_schema": {
+            "properties": {
+              "city": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "city"
+            ],
+            "type": "object"
+          },
+          "name": "get_weather"
+        },
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "custom": "#/components/schemas/AnthropicToolUnionOneOf1",
+            "bash_20250124": "#/components/schemas/AnthropicToolUnionOneOf2",
+            "text_editor_20250124": "#/components/schemas/AnthropicToolUnionOneOf3",
+            "web_search_20250305": "#/components/schemas/AnthropicToolUnionOneOf4",
+            "web_search_20260209": "#/components/schemas/AnthropicToolUnionOneOf5"
+          }
+        }
+      },
       "AnthropicToolUseBlock": {
         "required": [
           "type",
@@ -30729,7 +29632,8 @@
             "type": "integer"
           },
           "error": {
-            "$ref": "#/components/schemas/BaseResponsesResultError"
+            "description": "Error information returned from the API",
+            "$ref": "#/components/schemas/ResponsesErrorField"
           },
           "frequency_penalty": {
             "type": [
@@ -30742,10 +29646,10 @@
             "type": "string"
           },
           "incomplete_details": {
-            "$ref": "#/components/schemas/BaseResponsesResultIncompleteDetails"
+            "$ref": "#/components/schemas/IncompleteDetails"
           },
           "instructions": {
-            "$ref": "#/components/schemas/BaseResponsesResultInstructions"
+            "$ref": "#/components/schemas/BaseInputs"
           },
           "max_output_tokens": {
             "type": [
@@ -30807,7 +29711,7 @@
             "$ref": "#/components/schemas/PromptCacheOptions"
           },
           "reasoning": {
-            "$ref": "#/components/schemas/BaseResponsesResultReasoning"
+            "$ref": "#/components/schemas/BaseReasoningConfig"
           },
           "safety_identifier": {
             "type": [
@@ -30832,7 +29736,8 @@
             "format": "double"
           },
           "text": {
-            "$ref": "#/components/schemas/BaseResponsesResultText"
+            "description": "Text output configuration including format and verbosity",
+            "$ref": "#/components/schemas/TextConfig"
           },
           "tool_choice": {
             "$ref": "#/components/schemas/OpenAiResponsesToolChoice"
@@ -30844,10 +29749,7 @@
             }
           },
           "top_logprobs": {
-            "type": [
-              "null",
-              "integer"
-            ]
+            "type": "integer"
           },
           "top_p": {
             "type": [
@@ -30857,7 +29759,7 @@
             "format": "double"
           },
           "truncation": {
-            "$ref": "#/components/schemas/BaseResponsesResultTruncation"
+            "$ref": "#/components/schemas/Truncation"
           },
           "usage": {
             "$ref": "#/components/schemas/OpenAiResponsesUsage"
@@ -34575,118 +33477,6 @@
           "type": "web_search_preview"
         }
       },
-      "ClassifierFiltersFilter": {
-        "anyOf": [
-          {
-            "$ref": "#/components/schemas/ClassifierScalarFilter"
-          },
-          {
-            "$ref": "#/components/schemas/ClassifierSetFilter"
-          }
-        ]
-      },
-      "ClassifierScalarFilter": {
-        "required": [
-          "field",
-          "operator",
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "field": {
-            "pattern": "^[a-zA-Z_][a-zA-Z0-9_]{0,63}$",
-            "type": "string",
-            "description": "Classifier dimension name to filter on (snake_case identifier, e.g. \u0022department\u0022, \u0022work_type\u0022).",
-            "example": "department"
-          },
-          "operator": {
-            "description": "Equality operator taking a scalar filter value. Ordered comparisons are not available because classification values are strings.",
-            "$ref": "#/components/schemas/ClassifierScalarFilterOperator"
-          },
-          "value": {
-            "$ref": "#/components/schemas/ClassifierScalarFilterValue"
-          }
-        }
-      },
-      "ClassifierScalarFilterOperator": {
-        "enum": [
-          "eq",
-          "neq"
-        ],
-        "type": "string",
-        "description": "Equality operator taking a scalar filter value. Ordered comparisons are not available because classification values are strings.",
-        "example": "eq",
-        "x-speakeasy-unknown-values": "allow",
-        "x-ms-enum": {
-          "name": "ClassifierScalarFilterOperator",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "eq",
-              "name": "Eq"
-            },
-            {
-              "value": "neq",
-              "name": "Neq"
-            }
-          ]
-        }
-      },
-      "ClassifierSetFilter": {
-        "required": [
-          "field",
-          "operator",
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "field": {
-            "pattern": "^[a-zA-Z_][a-zA-Z0-9_]{0,63}$",
-            "type": "string",
-            "description": "Classifier dimension name to filter on (snake_case identifier, e.g. \u0022department\u0022, \u0022work_type\u0022).",
-            "example": "department"
-          },
-          "operator": {
-            "description": "Set-membership operator taking an array filter value.",
-            "$ref": "#/components/schemas/ClassifierSetFilterOperator"
-          },
-          "value": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ClassifierSetFilterValueItem"
-            },
-            "description": "Array of scalar filter values.",
-            "example": [
-              "Engineering",
-              "Support"
-            ]
-          }
-        }
-      },
-      "ClassifierSetFilterOperator": {
-        "enum": [
-          "in",
-          "not_in"
-        ],
-        "type": "string",
-        "description": "Set-membership operator taking an array filter value.",
-        "example": "in",
-        "x-speakeasy-unknown-values": "allow",
-        "x-ms-enum": {
-          "name": "ClassifierSetFilterOperator",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "in",
-              "name": "InValue"
-            },
-            {
-              "value": "not_in",
-              "name": "NotIn"
-            }
-          ]
-        }
-      },
       "ClientClosedRequestResponse": {
         "required": [
           "error"
@@ -36220,7 +35010,7 @@
           "user": {
             "maxLength": 512,
             "minLength": 1,
-            "pattern": "^(?!\\s)(?![\\s\\S]*\\s$)[^\\u0000]\u002B$",
+            "pattern": "^[^\\u0000]\u002B$",
             "type": "string",
             "description": "Immutable case-sensitive tracking string supplied as user on inference requests or as external.user on API keys: 1 to 512 characters, well-formed Unicode, no NUL, no surrounding whitespace. URL-encode it in resource paths; an ID of \u0060.\u0060 or \u0060..\u0060 cannot be addressed by path, so look it up with the list filter.",
             "example": "employee_123"
@@ -38053,7 +36843,7 @@
           "user": {
             "maxLength": 512,
             "minLength": 1,
-            "pattern": "^(?!\\s)(?![\\s\\S]*\\s$)[^\\u0000]\u002B$",
+            "pattern": "^[^\\u0000]\u002B$",
             "type": "string",
             "description": "Immutable case-sensitive tracking string supplied as user on inference requests or as external.user on API keys: 1 to 512 characters, well-formed Unicode, no NUL, no surrounding whitespace. URL-encode it in resource paths; an ID of \u0060.\u0060 or \u0060..\u0060 cannot be addressed by path, so look it up with the list filter.",
             "example": "employee_123"
@@ -38435,16 +37225,6 @@
       "FilesServerToolConfig": {
         "type": "object",
         "description": "Configuration for the openrouter:files server tool"
-      },
-      "Filter": {
-        "anyOf": [
-          {
-            "$ref": "#/components/schemas/ScalarFilter"
-          },
-          {
-            "$ref": "#/components/schemas/SetFilter"
-          }
-        ]
       },
       "FinishReason": {
         "enum": [
@@ -40870,7 +39650,7 @@
           },
           "output_compression": {
             "type": "integer",
-            "description": "Compression level (0-100) for webp/jpeg output. Ignored for png and by providers without a compression knob.",
+            "description": "Compression level (0-100) for jpeg/webp output. Ignored by providers without a compression knob; providers that honor it may reject it with other output formats (e.g. OpenAI requires output_format \u0022jpeg\u0022 or \u0022webp\u0022).",
             "example": 100
           },
           "output_format": {
@@ -44396,7 +43176,7 @@
             "$ref": "#/components/schemas/ToolAdditionType"
           }
         },
-        "description": "Loads a previously deferred tool (declared in \u0060tools\u0060 with \u0060defer_loading: true\u0060) mid-conversation without invalidating the prompt cache. Only valid in \u0060role: \u0022system\u0022\u0060 messages. Not supported on Claude Sonnet 5 or models older than Claude Opus 4.8.",
+        "description": "Adds a tool mid-conversation without invalidating the prompt cache: either a previously deferred tool (declared in \u0060tools\u0060 with \u0060defer_loading: true\u0060, referenced by name) or a full inline \u0060tool_definition\u0060. Only valid in \u0060role: \u0022system\u0022\u0060 messages. Not supported on Claude Sonnet 5 or models older than Claude Opus 4.8.",
         "example": {
           "tool": {
             "name": "get_forecast",
@@ -49203,10 +47983,10 @@
             "type": "string"
           },
           "incomplete_details": {
-            "$ref": "#/components/schemas/BaseResponsesResultIncompleteDetails"
+            "$ref": "#/components/schemas/IncompleteDetails"
           },
           "instructions": {
-            "$ref": "#/components/schemas/BaseResponsesResultInstructions"
+            "$ref": "#/components/schemas/BaseInputs"
           },
           "max_output_tokens": {
             "type": [
@@ -49265,7 +48045,7 @@
             "$ref": "#/components/schemas/PromptCacheOptions"
           },
           "reasoning": {
-            "$ref": "#/components/schemas/BaseResponsesResultReasoning"
+            "$ref": "#/components/schemas/BaseReasoningConfig"
           },
           "safety_identifier": {
             "type": [
@@ -49302,10 +48082,7 @@
             }
           },
           "top_logprobs": {
-            "type": [
-              "null",
-              "integer"
-            ]
+            "type": "integer"
           },
           "top_p": {
             "type": [
@@ -49315,7 +48092,7 @@
             "format": "double"
           },
           "truncation": {
-            "$ref": "#/components/schemas/BaseResponsesResultTruncation"
+            "$ref": "#/components/schemas/Truncation"
           },
           "usage": {
             "$ref": "#/components/schemas/OpenResponsesResultUsage"
@@ -49640,21 +48417,6 @@
             "max_results": 5
           },
           "type": "openrouter:web_search"
-        }
-      },
-      "OperatorType": {
-        "required": [
-          "name",
-          "value_type"
-        ],
-        "type": "object",
-        "properties": {
-          "name": {
-            "$ref": "#/components/schemas/OperatorTypeName"
-          },
-          "value_type": {
-            "$ref": "#/components/schemas/OperatorTypeValueType"
-          }
         }
       },
       "OrAnthropicBashToolResult": {
@@ -56833,72 +55595,6 @@
           ]
         }
       },
-      "ScalarFilter": {
-        "required": [
-          "field",
-          "operator",
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "field": {
-            "type": "string",
-            "description": "Dimension to filter on. Use the /meta endpoint for available dimensions.",
-            "example": "model"
-          },
-          "operator": {
-            "description": "Comparison operator taking a scalar filter value.",
-            "$ref": "#/components/schemas/ScalarFilterOperator"
-          },
-          "value": {
-            "$ref": "#/components/schemas/ScalarFilterValue"
-          }
-        }
-      },
-      "ScalarFilterOperator": {
-        "enum": [
-          "eq",
-          "neq",
-          "gt",
-          "gte",
-          "lt",
-          "lte"
-        ],
-        "type": "string",
-        "description": "Comparison operator taking a scalar filter value.",
-        "example": "eq",
-        "x-speakeasy-unknown-values": "allow",
-        "x-ms-enum": {
-          "name": "ScalarFilterOperator",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "eq",
-              "name": "Eq"
-            },
-            {
-              "value": "neq",
-              "name": "Neq"
-            },
-            {
-              "value": "gt",
-              "name": "Gt"
-            },
-            {
-              "value": "gte",
-              "name": "Gte"
-            },
-            {
-              "value": "lt",
-              "name": "Lt"
-            },
-            {
-              "value": "lte",
-              "name": "Lte"
-            }
-          ]
-        }
-      },
       "ScimGroup": {
         "required": [
           "id",
@@ -57779,59 +56475,6 @@
           "meta": {
             "$ref": "#/components/schemas/SessionCostMeta"
           }
-        }
-      },
-      "SetFilter": {
-        "required": [
-          "field",
-          "operator",
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "field": {
-            "type": "string",
-            "description": "Dimension to filter on. Use the /meta endpoint for available dimensions.",
-            "example": "model"
-          },
-          "include_unset": {
-            "type": "boolean",
-            "description": "Include rows where the dimension has no value. Applies only to dimensions that have an unset bucket."
-          },
-          "operator": {
-            "description": "Set-membership operator taking an array filter value.",
-            "$ref": "#/components/schemas/SetFilterOperator"
-          },
-          "value": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/SetFilterValueItem"
-            }
-          }
-        }
-      },
-      "SetFilterOperator": {
-        "enum": [
-          "in",
-          "not_in"
-        ],
-        "type": "string",
-        "description": "Set-membership operator taking an array filter value.",
-        "example": "in",
-        "x-speakeasy-unknown-values": "allow",
-        "x-ms-enum": {
-          "name": "SetFilterOperator",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "in",
-              "name": "InValue"
-            },
-            {
-              "value": "not_in",
-              "name": "NotIn"
-            }
-          ]
         }
       },
       "ShellCallItem": {
@@ -62359,10 +61002,10 @@
             "description": "Exact DNS hostnames the secret may be sent to, 1 to 100 entries. Each entry is lowercased and a trailing dot is removed, so \u0060API.Example.com.\u0060 is stored as \u0060api.example.com\u0060. Schemes, ports, paths, wildcards and empty values are rejected. Duplicates after normalization are collapsed. Matching is exact: a secret bound to \u0060api.example.com\u0060 is never released to \u0060example.com\u0060 or any other hostname."
           },
           "value": {
-            "maxLength": 985721,
+            "maxLength": 65536,
             "minLength": 1,
             "type": "string",
-            "description": "Secret value, 1 to 985721 characters. It is encrypted at rest and never returned."
+            "description": "Secret value, 1 to 65536 characters. It is encrypted at rest and never returned."
           }
         },
         "additionalProperties": false,
@@ -63964,10 +62607,8 @@
             "format": "binary"
           },
           "keyterms[]": {
-            "maxItems": 1000,
             "type": "array",
             "items": {
-              "maxLength": 100,
               "type": "string"
             },
             "description": "Domain terms, names, or phrases to bias recognition toward; repeat the part once per term (keyterms=... is also accepted). Only supported by some providers; 400 when the selected model cannot use keyterms."
@@ -63993,14 +62634,11 @@
             "description": "A unique identifier for grouping related requests (e.g., a conversation or agent workflow). Used for observability grouping in Broadcast and private logging; never sent to the provider. If provided in both the request body and the x-session-id header, the body value takes precedence."
           },
           "source_url": {
-            "maxLength": 8000,
             "type": "string",
             "description": "Publicly reachable http(s) URL of the audio file, downloaded by the provider directly (no size limit on our side). The format is derived from the URL path extension. Only supported by some providers; exactly one of file or source_url is required.",
             "format": "uri"
           },
           "temperature": {
-            "maximum": 1,
-            "minimum": 0,
             "type": "number",
             "description": "The sampling temperature."
           },
@@ -64350,6 +62988,176 @@
           }
         }
       },
+      "AnthropicToolUnionOneOf1": {
+        "required": [
+          "name",
+          "input_schema"
+        ],
+        "type": "object",
+        "properties": {
+          "cache_control": {
+            "description": "Enable automatic prompt caching. When set at the top level, the system automatically applies cache breakpoints to the last cacheable block in the request. When set on an individual content block, it marks an explicit cache breakpoint; block-level markers also work on OpenAI models that support explicit prompt caching \u2014 OpenRouter converts them to the provider\u0027s native format.",
+            "$ref": "#/components/schemas/AnthropicCacheControlDirective"
+          },
+          "defer_loading": {
+            "type": "boolean"
+          },
+          "description": {
+            "type": "string"
+          },
+          "input_schema": {
+            "$ref": "#/components/schemas/AnthropicToolUnionOneOf1InputSchema"
+          },
+          "name": {
+            "type": "string"
+          },
+          "strict": {
+            "type": "boolean"
+          },
+          "type": {
+            "$ref": "#/components/schemas/CustomType"
+          }
+        }
+      },
+      "AnthropicToolUnionOneOf2": {
+        "required": [
+          "type",
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "cache_control": {
+            "description": "Enable automatic prompt caching. When set at the top level, the system automatically applies cache breakpoints to the last cacheable block in the request. When set on an individual content block, it marks an explicit cache breakpoint; block-level markers also work on OpenAI models that support explicit prompt caching \u2014 OpenRouter converts them to the provider\u0027s native format.",
+            "$ref": "#/components/schemas/AnthropicCacheControlDirective"
+          },
+          "name": {
+            "$ref": "#/components/schemas/BashName"
+          },
+          "type": {
+            "$ref": "#/components/schemas/Bash20250124Type"
+          }
+        }
+      },
+      "AnthropicToolUnionOneOf3": {
+        "required": [
+          "type",
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "cache_control": {
+            "description": "Enable automatic prompt caching. When set at the top level, the system automatically applies cache breakpoints to the last cacheable block in the request. When set on an individual content block, it marks an explicit cache breakpoint; block-level markers also work on OpenAI models that support explicit prompt caching \u2014 OpenRouter converts them to the provider\u0027s native format.",
+            "$ref": "#/components/schemas/AnthropicCacheControlDirective"
+          },
+          "name": {
+            "$ref": "#/components/schemas/StrReplaceEditorName"
+          },
+          "type": {
+            "$ref": "#/components/schemas/TextEditor20250124Type"
+          }
+        }
+      },
+      "AnthropicToolUnionOneOf4": {
+        "required": [
+          "type",
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "allowed_domains": {
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "type": "string"
+            }
+          },
+          "blocked_domains": {
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "type": "string"
+            }
+          },
+          "cache_control": {
+            "description": "Enable automatic prompt caching. When set at the top level, the system automatically applies cache breakpoints to the last cacheable block in the request. When set on an individual content block, it marks an explicit cache breakpoint; block-level markers also work on OpenAI models that support explicit prompt caching \u2014 OpenRouter converts them to the provider\u0027s native format.",
+            "$ref": "#/components/schemas/AnthropicCacheControlDirective"
+          },
+          "max_uses": {
+            "type": [
+              "null",
+              "integer"
+            ]
+          },
+          "name": {
+            "$ref": "#/components/schemas/WebSearchName"
+          },
+          "type": {
+            "$ref": "#/components/schemas/WebSearch20250305Type"
+          },
+          "user_location": {
+            "$ref": "#/components/schemas/AnthropicWebSearchToolUserLocation"
+          }
+        }
+      },
+      "AnthropicToolUnionOneOf5": {
+        "required": [
+          "type",
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "allowed_callers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AnthropicToolUnionOneOf5AllowedCallersItem"
+            },
+            "example": [
+              "direct"
+            ]
+          },
+          "allowed_domains": {
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "type": "string"
+            }
+          },
+          "blocked_domains": {
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "type": "string"
+            }
+          },
+          "cache_control": {
+            "description": "Enable automatic prompt caching. When set at the top level, the system automatically applies cache breakpoints to the last cacheable block in the request. When set on an individual content block, it marks an explicit cache breakpoint; block-level markers also work on OpenAI models that support explicit prompt caching \u2014 OpenRouter converts them to the provider\u0027s native format.",
+            "$ref": "#/components/schemas/AnthropicCacheControlDirective"
+          },
+          "max_uses": {
+            "type": [
+              "null",
+              "integer"
+            ]
+          },
+          "name": {
+            "$ref": "#/components/schemas/WebSearchName"
+          },
+          "type": {
+            "$ref": "#/components/schemas/WebSearch20260209Type"
+          },
+          "user_location": {
+            "$ref": "#/components/schemas/AnthropicWebSearchToolUserLocation"
+          }
+        }
+      },
       "AnthropicUnknownUsageIterationAllOf2": {
         "required": [
           "type"
@@ -64586,36 +63394,6 @@
           "service_tier": "standard"
         }
       },
-      "BaseResponsesResultError": {
-        "anyOf": [
-          {
-            "$ref": "#/components/schemas/ResponsesErrorField"
-          },
-          {
-            "type": "null"
-          }
-        ]
-      },
-      "BaseResponsesResultIncompleteDetails": {
-        "anyOf": [
-          {
-            "$ref": "#/components/schemas/IncompleteDetails"
-          },
-          {
-            "type": "null"
-          }
-        ]
-      },
-      "BaseResponsesResultInstructions": {
-        "anyOf": [
-          {
-            "$ref": "#/components/schemas/BaseInputs"
-          },
-          {
-            "type": "null"
-          }
-        ]
-      },
       "BaseResponsesResultOutputItem": {
         "required": [
           "type"
@@ -64668,26 +63446,6 @@
             "web_search_call": "#/components/schemas/OutputItemWebSearchCall"
           }
         }
-      },
-      "BaseResponsesResultReasoning": {
-        "anyOf": [
-          {
-            "$ref": "#/components/schemas/BaseReasoningConfig"
-          },
-          {
-            "type": "null"
-          }
-        ]
-      },
-      "BaseResponsesResultText": {
-        "anyOf": [
-          {
-            "$ref": "#/components/schemas/TextConfig"
-          },
-          {
-            "type": "null"
-          }
-        ]
       },
       "BaseResponsesResultToolsItem": {
         "oneOf": [
@@ -64757,16 +63515,6 @@
             "namespace": "#/components/schemas/NamespaceTool"
           }
         }
-      },
-      "BaseResponsesResultTruncation": {
-        "anyOf": [
-          {
-            "$ref": "#/components/schemas/Truncation"
-          },
-          {
-            "type": "null"
-          }
-        ]
       },
       "BatchObjectResultsItemResponseBody": {
         "anyOf": [
@@ -65083,30 +63831,6 @@
         ],
         "description": "User message content",
         "example": "What is the capital of France?"
-      },
-      "ClassifierScalarFilterValue": {
-        "anyOf": [
-          {
-            "type": "string"
-          },
-          {
-            "type": "number",
-            "format": "double"
-          }
-        ],
-        "description": "Scalar (string or number) filter value.",
-        "example": "Engineering"
-      },
-      "ClassifierSetFilterValueItem": {
-        "anyOf": [
-          {
-            "type": "string"
-          },
-          {
-            "type": "number",
-            "format": "double"
-          }
-        ]
       },
       "CodeInterpreterServerToolContainer": {
         "anyOf": [
@@ -68097,6 +66821,9 @@
           },
           {
             "$ref": "#/components/schemas/MessagesToolAdditionBlockToolOneOf3"
+          },
+          {
+            "$ref": "#/components/schemas/MessagesToolAdditionBlockToolOneOf4"
           }
         ],
         "discriminator": {
@@ -68104,7 +66831,8 @@
           "mapping": {
             "tool_reference": "#/components/schemas/MessagesToolAdditionBlockToolOneOf1",
             "mcp_tool_reference": "#/components/schemas/MessagesToolAdditionBlockToolOneOf2",
-            "mcp_toolset_reference": "#/components/schemas/MessagesToolAdditionBlockToolOneOf3"
+            "mcp_toolset_reference": "#/components/schemas/MessagesToolAdditionBlockToolOneOf3",
+            "tool_definition": "#/components/schemas/MessagesToolAdditionBlockToolOneOf4"
           }
         }
       },
@@ -69918,18 +68646,6 @@
           }
         }
       },
-      "ScalarFilterValue": {
-        "anyOf": [
-          {
-            "type": "string"
-          },
-          {
-            "type": "number",
-            "format": "double"
-          }
-        ],
-        "description": "Several dimensions are enriched in responses (returned as human-readable labels), but filters must use the underlying ID: \u0060api_key_id\u0060 \u2014 numeric ID (from generation metadata) or key hash (64-char hex from GET /api/v1/keys, resolved server-side); \u0060user\u0060 \u2014 Clerk user ID (e.g. \u0022user_abc123\u0022), not the display name; \u0060workspace\u0060 \u2014 workspace UUID, not the workspace name (filtering or grouping by the account default workspace also covers activity recorded before workspace resolution existed, which is attributed to that default workspace); \u0060app\u0060 \u2014 numeric app ID, not the app title; \u0060model\u0060 \u2014 permaslug (e.g. \u0022openai/gpt-4o\u0022), not the display name. Other dimensions (provider, origin, country, etc.) are not enriched and accept the value as returned."
-      },
       "ServerToolDetailsAllOf2": {
         "type": "object",
         "properties": {
@@ -69937,18 +68653,6 @@
             "$ref": "#/components/schemas/ServerToolDetailsAllOf2NativeSupport"
           }
         }
-      },
-      "SetFilterValueItem": {
-        "anyOf": [
-          {
-            "type": "string"
-          },
-          {
-            "type": "number",
-            "format": "double"
-          }
-        ],
-        "description": "Several dimensions are enriched in responses (returned as human-readable labels), but filters must use the underlying ID: \u0060api_key_id\u0060 \u2014 numeric ID (from generation metadata) or key hash (64-char hex from GET /api/v1/keys, resolved server-side); \u0060user\u0060 \u2014 Clerk user ID (e.g. \u0022user_abc123\u0022), not the display name; \u0060workspace\u0060 \u2014 workspace UUID, not the workspace name (filtering or grouping by the account default workspace also covers activity recorded before workspace resolution existed, which is attributed to that default workspace); \u0060app\u0060 \u2014 numeric app ID, not the app title; \u0060model\u0060 \u2014 permaslug (e.g. \u0022openai/gpt-4o\u0022), not the display name. Other dimensions (provider, origin, country, etc.) are not enriched and accept the value as returned."
       },
       "ShellCallItemStatus": {
         "anyOf": [
@@ -72775,6 +71479,22 @@
           },
           "type": {
             "$ref": "#/components/schemas/McpToolsetReferenceType"
+          }
+        }
+      },
+      "MessagesToolAdditionBlockToolOneOf4": {
+        "required": [
+          "type",
+          "definition"
+        ],
+        "type": "object",
+        "properties": {
+          "definition": {
+            "description": "An Anthropic tool definition: a client-defined tool with a JSON Schema \u0060input_schema\u0060, or a server tool (bash, text editor, web search).",
+            "$ref": "#/components/schemas/AnthropicToolUnion"
+          },
+          "type": {
+            "$ref": "#/components/schemas/ToolDefinitionType"
           }
         }
       },
@@ -76704,15 +75424,25 @@
       },
       "ObservabilityS3DestinationConfig": {
         "required": [
-          "bucketName",
-          "accessKeyId",
-          "secretAccessKey"
+          "bucketName"
         ],
         "type": "object",
         "properties": {
           "accessKeyId": {
             "minLength": 1,
-            "type": "string"
+            "type": "string",
+            "visibleWhen": [
+              {
+                "field": "authMode",
+                "in": [
+                  "access_keys",
+                  ""
+                ]
+              }
+            ]
+          },
+          "authMode": {
+            "$ref": "#/components/schemas/ObservabilityS3DestinationConfigAuthMode"
           },
           "bucketName": {
             "minLength": 1,
@@ -76721,7 +75451,37 @@
           "endpoint": {
             "type": "string",
             "description": "Only for S3-compatible services like Cloudflare R2 (https://account-id.r2.cloudflarestorage.com) or MinIO. Leave blank for standard AWS S3.",
-            "format": "uri"
+            "format": "uri",
+            "visibleWhen": [
+              {
+                "field": "provider",
+                "in": [
+                  "cloudflare_r2",
+                  "gcs",
+                  "other",
+                  ""
+                ]
+              }
+            ]
+          },
+          "externalId": {
+            "type": "string",
+            "description": "Generated by OpenRouter when you save. Require it as sts:ExternalId in your role\u0027s trust policy.",
+            "readOnly": true,
+            "visibleWhen": [
+              {
+                "field": "provider",
+                "in": [
+                  "aws"
+                ]
+              },
+              {
+                "field": "authMode",
+                "in": [
+                  "iam_role"
+                ]
+              }
+            ]
           },
           "headers": {
             "$ref": "#/components/schemas/ObservabilityS3DestinationConfigHeadersProperty"
@@ -76735,15 +75495,56 @@
             "type": "string",
             "default": "openrouter-traces"
           },
+          "provider": {
+            "$ref": "#/components/schemas/ObservabilityS3DestinationConfigProvider"
+          },
           "region": {
-            "type": "string"
+            "type": "string",
+            "description": "Required for IAM role authentication. With access keys, AWS S3 detects the bucket region when you leave this blank."
+          },
+          "roleArn": {
+            "pattern": "^arn:aws(?:-[a-z]\u002B)*:iam::\\d{12}:role\\/[\\w\u002B=,.@/-]{1,512}$",
+            "type": "string",
+            "description": "The IAM role in your account that OpenRouter assumes. Its trust policy must allow sts:AssumeRole from arn:aws:iam::536697249728:role/openrouter-broadcast-exporter and require the external ID below, and its permissions must allow s3:PutObject on the bucket and prefix (plus kms:GenerateDataKey for SSE-KMS buckets).",
+            "visibleWhen": [
+              {
+                "field": "provider",
+                "in": [
+                  "aws"
+                ]
+              },
+              {
+                "field": "authMode",
+                "in": [
+                  "iam_role"
+                ]
+              }
+            ]
           },
           "secretAccessKey": {
             "minLength": 1,
-            "type": "string"
+            "type": "string",
+            "visibleWhen": [
+              {
+                "field": "authMode",
+                "in": [
+                  "access_keys",
+                  ""
+                ]
+              }
+            ]
           },
           "sessionToken": {
-            "type": "string"
+            "type": "string",
+            "visibleWhen": [
+              {
+                "field": "authMode",
+                "in": [
+                  "access_keys",
+                  ""
+                ]
+              }
+            ]
           }
         }
       },
@@ -78409,6 +77210,28 @@
             "description": "URL or base64-encoded data of the generated image"
           }
         }
+      },
+      "AnthropicToolUnionOneOf1InputSchema": {
+        "required": [
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "properties": {},
+          "required": {
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "type": "string"
+            }
+          },
+          "type": {
+            "$ref": "#/components/schemas/ObjectValueType"
+          }
+        },
+        "additionalProperties": {}
       },
       "ChatFunctionToolAnyOf1Function": {
         "required": [
@@ -80177,7 +79000,7 @@
             "maxItems": 20,
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/Filter"
+              "$ref": "#/components/schemas/QueryAnalyticsRequestFiltersItem"
             }
           },
           "granularity": {
@@ -81822,7 +80645,8 @@
             "type": "integer"
           },
           "error": {
-            "$ref": "#/components/schemas/BaseResponsesResultError"
+            "description": "Error information returned from the API",
+            "$ref": "#/components/schemas/ResponsesErrorField"
           },
           "frequency_penalty": {
             "type": [
@@ -81835,10 +80659,10 @@
             "type": "string"
           },
           "incomplete_details": {
-            "$ref": "#/components/schemas/BaseResponsesResultIncompleteDetails"
+            "$ref": "#/components/schemas/IncompleteDetails"
           },
           "instructions": {
-            "$ref": "#/components/schemas/BaseResponsesResultInstructions"
+            "$ref": "#/components/schemas/BaseInputs"
           },
           "max_output_tokens": {
             "type": [
@@ -81900,7 +80724,7 @@
             "$ref": "#/components/schemas/PromptCacheOptions"
           },
           "reasoning": {
-            "$ref": "#/components/schemas/BaseResponsesResultReasoning"
+            "$ref": "#/components/schemas/BaseReasoningConfig"
           },
           "safety_identifier": {
             "type": [
@@ -81925,7 +80749,8 @@
             "format": "double"
           },
           "text": {
-            "$ref": "#/components/schemas/BaseResponsesResultText"
+            "description": "Text output configuration including format and verbosity",
+            "$ref": "#/components/schemas/TextConfig"
           },
           "tool_choice": {
             "$ref": "#/components/schemas/OpenAiResponsesToolChoice"
@@ -81937,10 +80762,7 @@
             }
           },
           "top_logprobs": {
-            "type": [
-              "null",
-              "integer"
-            ]
+            "type": "integer"
           },
           "top_p": {
             "type": [
@@ -81950,7 +80772,7 @@
             "format": "double"
           },
           "truncation": {
-            "$ref": "#/components/schemas/BaseResponsesResultTruncation"
+            "$ref": "#/components/schemas/Truncation"
           },
           "usage": {
             "$ref": "#/components/schemas/OpenAiResponsesUsage"
@@ -82008,7 +80830,8 @@
             "type": "integer"
           },
           "error": {
-            "$ref": "#/components/schemas/BaseResponsesResultError"
+            "description": "Error information returned from the API",
+            "$ref": "#/components/schemas/ResponsesErrorField"
           },
           "frequency_penalty": {
             "type": [
@@ -82021,10 +80844,10 @@
             "type": "string"
           },
           "incomplete_details": {
-            "$ref": "#/components/schemas/BaseResponsesResultIncompleteDetails"
+            "$ref": "#/components/schemas/IncompleteDetails"
           },
           "instructions": {
-            "$ref": "#/components/schemas/BaseResponsesResultInstructions"
+            "$ref": "#/components/schemas/BaseInputs"
           },
           "max_output_tokens": {
             "type": [
@@ -82086,7 +80909,7 @@
             "$ref": "#/components/schemas/PromptCacheOptions"
           },
           "reasoning": {
-            "$ref": "#/components/schemas/BaseResponsesResultReasoning"
+            "$ref": "#/components/schemas/BaseReasoningConfig"
           },
           "safety_identifier": {
             "type": [
@@ -82111,7 +80934,8 @@
             "format": "double"
           },
           "text": {
-            "$ref": "#/components/schemas/BaseResponsesResultText"
+            "description": "Text output configuration including format and verbosity",
+            "$ref": "#/components/schemas/TextConfig"
           },
           "tool_choice": {
             "$ref": "#/components/schemas/OpenAiResponsesToolChoice"
@@ -82123,10 +80947,7 @@
             }
           },
           "top_logprobs": {
-            "type": [
-              "null",
-              "integer"
-            ]
+            "type": "integer"
           },
           "top_p": {
             "type": [
@@ -82136,7 +80957,7 @@
             "format": "double"
           },
           "truncation": {
-            "$ref": "#/components/schemas/BaseResponsesResultTruncation"
+            "$ref": "#/components/schemas/Truncation"
           },
           "usage": {
             "$ref": "#/components/schemas/OpenAiResponsesUsage"
@@ -82172,7 +80993,8 @@
       "OpenResponsesResultError": {
         "allOf": [
           {
-            "$ref": "#/components/schemas/BaseResponsesResultError"
+            "description": "Error information returned from the API",
+            "$ref": "#/components/schemas/ResponsesErrorField"
           },
           {
             "description": "Error of a failed response; \u0060metadata\u0060 carries OpenRouter-specific details.",
@@ -82199,6 +81021,7 @@
       "OpenResponsesResultText": {
         "allOf": [
           {
+            "description": "Text output configuration including format and verbosity",
             "$ref": "#/components/schemas/TextConfig"
           },
           {
@@ -82327,7 +81150,8 @@
             "type": "integer"
           },
           "error": {
-            "$ref": "#/components/schemas/BaseResponsesResultError"
+            "description": "Error information returned from the API",
+            "$ref": "#/components/schemas/ResponsesErrorField"
           },
           "frequency_penalty": {
             "type": [
@@ -82340,10 +81164,10 @@
             "type": "string"
           },
           "incomplete_details": {
-            "$ref": "#/components/schemas/BaseResponsesResultIncompleteDetails"
+            "$ref": "#/components/schemas/IncompleteDetails"
           },
           "instructions": {
-            "$ref": "#/components/schemas/BaseResponsesResultInstructions"
+            "$ref": "#/components/schemas/BaseInputs"
           },
           "max_output_tokens": {
             "type": [
@@ -82405,7 +81229,7 @@
             "$ref": "#/components/schemas/PromptCacheOptions"
           },
           "reasoning": {
-            "$ref": "#/components/schemas/BaseResponsesResultReasoning"
+            "$ref": "#/components/schemas/BaseReasoningConfig"
           },
           "safety_identifier": {
             "type": [
@@ -82430,7 +81254,8 @@
             "format": "double"
           },
           "text": {
-            "$ref": "#/components/schemas/BaseResponsesResultText"
+            "description": "Text output configuration including format and verbosity",
+            "$ref": "#/components/schemas/TextConfig"
           },
           "tool_choice": {
             "$ref": "#/components/schemas/OpenAiResponsesToolChoice"
@@ -82442,10 +81267,7 @@
             }
           },
           "top_logprobs": {
-            "type": [
-              "null",
-              "integer"
-            ]
+            "type": "integer"
           },
           "top_p": {
             "type": [
@@ -82455,7 +81277,7 @@
             "format": "double"
           },
           "truncation": {
-            "$ref": "#/components/schemas/BaseResponsesResultTruncation"
+            "$ref": "#/components/schemas/Truncation"
           },
           "usage": {
             "$ref": "#/components/schemas/OpenAiResponsesUsage"
@@ -82513,7 +81335,8 @@
             "type": "integer"
           },
           "error": {
-            "$ref": "#/components/schemas/BaseResponsesResultError"
+            "description": "Error information returned from the API",
+            "$ref": "#/components/schemas/ResponsesErrorField"
           },
           "frequency_penalty": {
             "type": [
@@ -82526,10 +81349,10 @@
             "type": "string"
           },
           "incomplete_details": {
-            "$ref": "#/components/schemas/BaseResponsesResultIncompleteDetails"
+            "$ref": "#/components/schemas/IncompleteDetails"
           },
           "instructions": {
-            "$ref": "#/components/schemas/BaseResponsesResultInstructions"
+            "$ref": "#/components/schemas/BaseInputs"
           },
           "max_output_tokens": {
             "type": [
@@ -82591,7 +81414,7 @@
             "$ref": "#/components/schemas/PromptCacheOptions"
           },
           "reasoning": {
-            "$ref": "#/components/schemas/BaseResponsesResultReasoning"
+            "$ref": "#/components/schemas/BaseReasoningConfig"
           },
           "safety_identifier": {
             "type": [
@@ -82616,7 +81439,8 @@
             "format": "double"
           },
           "text": {
-            "$ref": "#/components/schemas/BaseResponsesResultText"
+            "description": "Text output configuration including format and verbosity",
+            "$ref": "#/components/schemas/TextConfig"
           },
           "tool_choice": {
             "$ref": "#/components/schemas/OpenAiResponsesToolChoice"
@@ -82628,10 +81452,7 @@
             }
           },
           "top_logprobs": {
-            "type": [
-              "null",
-              "integer"
-            ]
+            "type": "integer"
           },
           "top_p": {
             "type": [
@@ -82641,7 +81462,7 @@
             "format": "double"
           },
           "truncation": {
-            "$ref": "#/components/schemas/BaseResponsesResultTruncation"
+            "$ref": "#/components/schemas/Truncation"
           },
           "usage": {
             "$ref": "#/components/schemas/OpenAiResponsesUsage"
@@ -82699,7 +81520,8 @@
             "type": "integer"
           },
           "error": {
-            "$ref": "#/components/schemas/BaseResponsesResultError"
+            "description": "Error information returned from the API",
+            "$ref": "#/components/schemas/ResponsesErrorField"
           },
           "frequency_penalty": {
             "type": [
@@ -82712,10 +81534,10 @@
             "type": "string"
           },
           "incomplete_details": {
-            "$ref": "#/components/schemas/BaseResponsesResultIncompleteDetails"
+            "$ref": "#/components/schemas/IncompleteDetails"
           },
           "instructions": {
-            "$ref": "#/components/schemas/BaseResponsesResultInstructions"
+            "$ref": "#/components/schemas/BaseInputs"
           },
           "max_output_tokens": {
             "type": [
@@ -82777,7 +81599,7 @@
             "$ref": "#/components/schemas/PromptCacheOptions"
           },
           "reasoning": {
-            "$ref": "#/components/schemas/BaseResponsesResultReasoning"
+            "$ref": "#/components/schemas/BaseReasoningConfig"
           },
           "safety_identifier": {
             "type": [
@@ -82802,7 +81624,8 @@
             "format": "double"
           },
           "text": {
-            "$ref": "#/components/schemas/BaseResponsesResultText"
+            "description": "Text output configuration including format and verbosity",
+            "$ref": "#/components/schemas/TextConfig"
           },
           "tool_choice": {
             "$ref": "#/components/schemas/OpenAiResponsesToolChoice"
@@ -82814,10 +81637,7 @@
             }
           },
           "top_logprobs": {
-            "type": [
-              "null",
-              "integer"
-            ]
+            "type": "integer"
           },
           "top_p": {
             "type": [
@@ -82827,7 +81647,7 @@
             "format": "double"
           },
           "truncation": {
-            "$ref": "#/components/schemas/BaseResponsesResultTruncation"
+            "$ref": "#/components/schemas/Truncation"
           },
           "usage": {
             "$ref": "#/components/schemas/OpenAiResponsesUsage"
@@ -83614,6 +82434,43 @@
           "type": "input_image"
         }
       },
+      "QueryAnalyticsRequestClassifierFiltersFiltersItemValue": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "number",
+            "format": "double"
+          },
+          {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/QueryAnalyticsRequestClassifierFiltersFiltersItemValueAnyOf3Item"
+            }
+          }
+        ],
+        "description": "Filter value. Use a scalar (string or number) for eq/neq, or an array for in/not_in.",
+        "example": "Engineering"
+      },
+      "QueryAnalyticsRequestFiltersItemValue": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "number",
+            "format": "double"
+          },
+          {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/QueryAnalyticsRequestFiltersItemValueAnyOf3Item"
+            }
+          }
+        ],
+        "description": "Filter value (scalar or array depending on operator). Several dimensions are enriched in responses (returned as human-readable labels), but filters must use the underlying ID: \u0060api_key_id\u0060 \u2014 numeric ID (from generation metadata) or key hash (64-char hex from GET /api/v1/keys, resolved server-side); \u0060user\u0060 \u2014 Clerk user ID (e.g. \u0022user_abc123\u0022), not the display name; \u0060workspace\u0060 \u2014 workspace UUID, not the workspace name (filtering or grouping by the account default workspace also covers activity recorded before workspace resolution existed, which is attributed to that default workspace); \u0060app\u0060 \u2014 numeric app ID, not the app title; \u0060model\u0060 \u2014 permaslug (e.g. \u0022openai/gpt-4o\u0022), not the display name. Other dimensions (provider, origin, country, etc.) are not enriched and accept the value as returned."
+      },
       "CreateEmbeddingsRequestInput": {
         "anyOf": [
           {
@@ -83905,6 +82762,28 @@
             "items": {
               "$ref": "#/components/schemas/ReasoningSummaryText"
             }
+          }
+        ]
+      },
+      "QueryAnalyticsRequestClassifierFiltersFiltersItemValueAnyOf3Item": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "number",
+            "format": "double"
+          }
+        ]
+      },
+      "QueryAnalyticsRequestFiltersItemValueAnyOf3Item": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "number",
+            "format": "double"
           }
         ]
       },
@@ -86650,7 +85529,7 @@
           "operators": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/OperatorType"
+              "$ref": "#/components/schemas/GetAnalyticsMeta200ResponseDataOperatorsItem"
             }
           }
         }
@@ -86671,7 +85550,6 @@
             "maxItems": 2,
             "type": "array",
             "items": {
-              "pattern": "^[a-zA-Z_][a-zA-Z0-9_]{0,63}$",
               "type": "string",
               "description": "Classifier dimension name (snake_case identifier). Each name becomes its own column key in the response; providing two names cross-groups results by both dimensions. With no names, the response uses \u0060clf_dimension_name\u0060/\u0060clf_dimension_value\u0060 columns (one row per dimension/value pair).",
               "example": "department"
@@ -86702,11 +85580,38 @@
             "minItems": 1,
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/ClassifierFiltersFilter"
+              "$ref": "#/components/schemas/QueryAnalyticsRequestClassifierFiltersFiltersItem"
             }
           }
         },
         "description": "Filter results to generations with specific classifier tag values. Can be combined with classifier_dimensions (must use the same classifier_id) or used independently with standard dimensions."
+      },
+      "QueryAnalyticsRequestFiltersItem": {
+        "required": [
+          "field",
+          "operator",
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "field": {
+            "type": "string",
+            "description": "Dimension to filter on. Use the /meta endpoint for available dimensions.",
+            "example": "model"
+          },
+          "include_unset": {
+            "type": "boolean",
+            "description": "Include rows where the dimension has no value. Applies only to the \u0060in\u0060 and \u0060not_in\u0060 operators and dimensions that have an unset bucket."
+          },
+          "operator": {
+            "type": "string",
+            "description": "Filter operator",
+            "example": "eq"
+          },
+          "value": {
+            "$ref": "#/components/schemas/QueryAnalyticsRequestFiltersItemValue"
+          }
+        }
       },
       "QueryAnalyticsRequestOrderBy": {
         "required": [
@@ -88335,6 +87240,44 @@
             "type": "string",
             "description": "Metric identifier used in query requests",
             "example": "request_count"
+          }
+        }
+      },
+      "GetAnalyticsMeta200ResponseDataOperatorsItem": {
+        "required": [
+          "name",
+          "value_type"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "$ref": "#/components/schemas/GetAnalyticsMeta200ResponseDataOperatorsItemName"
+          },
+          "value_type": {
+            "$ref": "#/components/schemas/GetAnalyticsMeta200ResponseDataOperatorsItemValueType"
+          }
+        }
+      },
+      "QueryAnalyticsRequestClassifierFiltersFiltersItem": {
+        "required": [
+          "field",
+          "operator",
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "field": {
+            "type": "string",
+            "description": "Classifier dimension name to filter on (snake_case identifier, e.g. \u0022department\u0022, \u0022work_type\u0022).",
+            "example": "department"
+          },
+          "operator": {
+            "type": "string",
+            "description": "Filter operator. Only equality/set operators are supported (eq, neq, in, not_in) \u2014 ordered comparisons are not available because classification values are strings.",
+            "example": "eq"
+          },
+          "value": {
+            "$ref": "#/components/schemas/QueryAnalyticsRequestClassifierFiltersFiltersItemValue"
           }
         }
       },
@@ -95210,83 +94153,6 @@
           ]
         }
       },
-      "OperatorTypeName": {
-        "enum": [
-          "eq",
-          "neq",
-          "in",
-          "not_in",
-          "gt",
-          "gte",
-          "lt",
-          "lte"
-        ],
-        "type": "string",
-        "description": "Operator identifier used in filter definitions",
-        "example": "eq",
-        "x-speakeasy-unknown-values": "allow",
-        "x-ms-enum": {
-          "name": "OperatorTypeName",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "eq",
-              "name": "Eq"
-            },
-            {
-              "value": "neq",
-              "name": "Neq"
-            },
-            {
-              "value": "in",
-              "name": "InValue"
-            },
-            {
-              "value": "not_in",
-              "name": "NotIn"
-            },
-            {
-              "value": "gt",
-              "name": "Gt"
-            },
-            {
-              "value": "gte",
-              "name": "Gte"
-            },
-            {
-              "value": "lt",
-              "name": "Lt"
-            },
-            {
-              "value": "lte",
-              "name": "Lte"
-            }
-          ]
-        }
-      },
-      "OperatorTypeValueType": {
-        "enum": [
-          "scalar",
-          "array"
-        ],
-        "type": "string",
-        "description": "Whether the operator expects a single value or an array",
-        "x-speakeasy-unknown-values": "allow",
-        "x-ms-enum": {
-          "name": "OperatorTypeValueType",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "scalar",
-              "name": "Scalar"
-            },
-            {
-              "value": "array",
-              "name": "Array"
-            }
-          ]
-        }
-      },
       "ServerToolUseType": {
         "enum": [
           "server_tool_use"
@@ -98423,6 +97289,7 @@
           "480x720",
           "480x854",
           "480x1120",
+          "496x864",
           "540x360",
           "560x752",
           "640x360",
@@ -98443,6 +97310,7 @@
           "834x1112",
           "840x360",
           "854x480",
+          "864x496",
           "960x720",
           "960x960",
           "992x432",
@@ -98535,6 +97403,10 @@
               "name": "Value480X1120"
             },
             {
+              "value": "496x864",
+              "name": "Value496X864"
+            },
+            {
               "value": "540x360",
               "name": "Value540X360"
             },
@@ -98613,6 +97485,10 @@
             {
               "value": "854x480",
               "name": "Value854X480"
+            },
+            {
+              "value": "864x496",
+              "name": "Value864X496"
             },
             {
               "value": "960x720",
@@ -98923,6 +97799,145 @@
             {
               "value": "segment",
               "name": "Segment"
+            }
+          ]
+        }
+      },
+      "BashName": {
+        "enum": [
+          "bash"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "BashName",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "bash",
+              "name": "Bash"
+            }
+          ]
+        }
+      },
+      "Bash20250124Type": {
+        "enum": [
+          "bash_20250124"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "Bash20250124Type",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "bash_20250124",
+              "name": "Bash20250124"
+            }
+          ]
+        }
+      },
+      "StrReplaceEditorName": {
+        "enum": [
+          "str_replace_editor"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "StrReplaceEditorName",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "str_replace_editor",
+              "name": "StrReplaceEditor"
+            }
+          ]
+        }
+      },
+      "TextEditor20250124Type": {
+        "enum": [
+          "text_editor_20250124"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "TextEditor20250124Type",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "text_editor_20250124",
+              "name": "TextEditor20250124"
+            }
+          ]
+        }
+      },
+      "WebSearchName": {
+        "enum": [
+          "web_search"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "WebSearchName",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "web_search",
+              "name": "WebSearch"
+            }
+          ]
+        }
+      },
+      "WebSearch20250305Type": {
+        "enum": [
+          "web_search_20250305"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "WebSearch20250305Type",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "web_search_20250305",
+              "name": "WebSearch20250305"
+            }
+          ]
+        }
+      },
+      "AnthropicToolUnionOneOf5AllowedCallersItem": {
+        "enum": [
+          "direct",
+          "code_execution_20250825",
+          "code_execution_20260120"
+        ],
+        "type": "string",
+        "x-speakeasy-unknown-values": "allow",
+        "x-ms-enum": {
+          "name": "AnthropicToolUnionOneOf5AllowedCallersItem",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "direct",
+              "name": "Direct"
+            },
+            {
+              "value": "code_execution_20250825",
+              "name": "CodeExecution20250825"
+            },
+            {
+              "value": "code_execution_20260120",
+              "name": "CodeExecution20260120"
+            }
+          ]
+        }
+      },
+      "WebSearch20260209Type": {
+        "enum": [
+          "web_search_20260209"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "WebSearch20260209Type",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "web_search_20260209",
+              "name": "WebSearch20260209"
             }
           ]
         }
@@ -99920,102 +98935,6 @@
           ]
         }
       },
-      "BashName": {
-        "enum": [
-          "bash"
-        ],
-        "type": "string",
-        "x-ms-enum": {
-          "name": "BashName",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "bash",
-              "name": "Bash"
-            }
-          ]
-        }
-      },
-      "Bash20250124Type": {
-        "enum": [
-          "bash_20250124"
-        ],
-        "type": "string",
-        "x-ms-enum": {
-          "name": "Bash20250124Type",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "bash_20250124",
-              "name": "Bash20250124"
-            }
-          ]
-        }
-      },
-      "StrReplaceEditorName": {
-        "enum": [
-          "str_replace_editor"
-        ],
-        "type": "string",
-        "x-ms-enum": {
-          "name": "StrReplaceEditorName",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "str_replace_editor",
-              "name": "StrReplaceEditor"
-            }
-          ]
-        }
-      },
-      "TextEditor20250124Type": {
-        "enum": [
-          "text_editor_20250124"
-        ],
-        "type": "string",
-        "x-ms-enum": {
-          "name": "TextEditor20250124Type",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "text_editor_20250124",
-              "name": "TextEditor20250124"
-            }
-          ]
-        }
-      },
-      "WebSearchName": {
-        "enum": [
-          "web_search"
-        ],
-        "type": "string",
-        "x-ms-enum": {
-          "name": "WebSearchName",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "web_search",
-              "name": "WebSearch"
-            }
-          ]
-        }
-      },
-      "WebSearch20250305Type": {
-        "enum": [
-          "web_search_20250305"
-        ],
-        "type": "string",
-        "x-ms-enum": {
-          "name": "WebSearch20250305Type",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "web_search_20250305",
-              "name": "WebSearch20250305"
-            }
-          ]
-        }
-      },
       "MessagesRequestToolsItemAnyOf5AllowedCallersItem": {
         "enum": [
           "direct",
@@ -100039,22 +98958,6 @@
             {
               "value": "code_execution_20260120",
               "name": "CodeExecution20260120"
-            }
-          ]
-        }
-      },
-      "WebSearch20260209Type": {
-        "enum": [
-          "web_search_20260209"
-        ],
-        "type": "string",
-        "x-ms-enum": {
-          "name": "WebSearch20260209Type",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "web_search_20260209",
-              "name": "WebSearch20260209"
             }
           ]
         }
@@ -100178,6 +99081,22 @@
             {
               "value": "mcp_toolset_reference",
               "name": "McpToolsetReference"
+            }
+          ]
+        }
+      },
+      "ToolDefinitionType": {
+        "enum": [
+          "tool_definition"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "ToolDefinitionType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "tool_definition",
+              "name": "ToolDefinition"
             }
           ]
         }
@@ -101452,6 +100371,80 @@
           ]
         }
       },
+      "ObservabilityS3DestinationConfigAuthMode": {
+        "enum": [
+          "access_keys",
+          "iam_role"
+        ],
+        "type": "string",
+        "description": "IAM role: OpenRouter assumes a role in your AWS account with short-lived STS credentials, so you don\u0027t share long-lived keys.",
+        "x-speakeasy-unknown-values": "allow",
+        "optionLabels": {
+          "access_keys": "Access keys",
+          "iam_role": "IAM role"
+        },
+        "visibleWhen": [
+          {
+            "field": "provider",
+            "in": [
+              "aws"
+            ]
+          }
+        ],
+        "x-ms-enum": {
+          "name": "ObservabilityS3DestinationConfigAuthMode",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "access_keys",
+              "name": "AccessKeys"
+            },
+            {
+              "value": "iam_role",
+              "name": "IamRole"
+            }
+          ]
+        }
+      },
+      "ObservabilityS3DestinationConfigProvider": {
+        "enum": [
+          "aws",
+          "cloudflare_r2",
+          "gcs",
+          "other"
+        ],
+        "type": "string",
+        "description": "The object storage service that hosts the bucket. AWS S3 supports IAM role authentication; the other providers use access keys.",
+        "x-speakeasy-unknown-values": "allow",
+        "optionLabels": {
+          "aws": "AWS S3",
+          "cloudflare_r2": "Cloudflare R2",
+          "gcs": "Google Cloud Storage",
+          "other": "Other S3-compatible"
+        },
+        "x-ms-enum": {
+          "name": "ObservabilityS3DestinationConfigProvider",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "aws",
+              "name": "Aws"
+            },
+            {
+              "value": "cloudflare_r2",
+              "name": "CloudflareR2"
+            },
+            {
+              "value": "gcs",
+              "name": "Gcs"
+            },
+            {
+              "value": "other",
+              "name": "Other"
+            }
+          ]
+        }
+      },
       "ObservabilityWebhookDestinationConfigMethod": {
         "title": "ObservabilityWebhookDestinationMethod",
         "enum": [
@@ -101529,6 +100522,22 @@
             {
               "value": "allow",
               "name": "Allow"
+            }
+          ]
+        }
+      },
+      "ObjectValueType": {
+        "enum": [
+          "object"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "ObjectValueType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "object",
+              "name": "ObjectValue"
             }
           ]
         }
@@ -104447,6 +103456,83 @@
           ]
         }
       },
+      "GetAnalyticsMeta200ResponseDataOperatorsItemName": {
+        "enum": [
+          "eq",
+          "neq",
+          "in",
+          "not_in",
+          "gt",
+          "gte",
+          "lt",
+          "lte"
+        ],
+        "type": "string",
+        "description": "Operator identifier used in filter definitions",
+        "example": "eq",
+        "x-speakeasy-unknown-values": "allow",
+        "x-ms-enum": {
+          "name": "GetAnalyticsMeta200ResponseDataOperatorsItemName",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "eq",
+              "name": "Eq"
+            },
+            {
+              "value": "neq",
+              "name": "Neq"
+            },
+            {
+              "value": "in",
+              "name": "InValue"
+            },
+            {
+              "value": "not_in",
+              "name": "NotIn"
+            },
+            {
+              "value": "gt",
+              "name": "Gt"
+            },
+            {
+              "value": "gte",
+              "name": "Gte"
+            },
+            {
+              "value": "lt",
+              "name": "Lt"
+            },
+            {
+              "value": "lte",
+              "name": "Lte"
+            }
+          ]
+        }
+      },
+      "GetAnalyticsMeta200ResponseDataOperatorsItemValueType": {
+        "enum": [
+          "scalar",
+          "array"
+        ],
+        "type": "string",
+        "description": "Whether the operator expects a single value or an array",
+        "x-speakeasy-unknown-values": "allow",
+        "x-ms-enum": {
+          "name": "GetAnalyticsMeta200ResponseDataOperatorsItemValueType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "scalar",
+              "name": "Scalar"
+            },
+            {
+              "value": "array",
+              "name": "Array"
+            }
+          ]
+        }
+      },
       "WorkspaceGroupBy": {
         "enum": [
           "workspace"
@@ -106079,22 +105165,12 @@
         }
       },
       "AppDisplayName": {
-        "name": "X-OpenRouter-Title",
+        "name": "X-Title",
         "in": "header",
         "description": "The app display name allows you to customize how your app appears in OpenRouter\u0027s dashboard.\n",
         "schema": {
           "type": "string"
-        },
-        "x-speakeasy-name-override": "appTitle"
-      },
-      "AppCategories": {
-        "name": "X-OpenRouter-Categories",
-        "in": "header",
-        "description": "Comma-separated list of app categories (e.g. \u0022cli-agent,cloud-agent\u0022). Used for marketplace rankings.\n",
-        "schema": {
-          "type": "string"
-        },
-        "x-speakeasy-name-override": "appCategories"
+        }
       }
     },
     "securitySchemes": {
@@ -106266,10 +105342,6 @@
     {
       "name": "beta.responses",
       "description": "Deprecated alias of responses. Use responses instead; scheduled for removal (sunset date TBD)."
-    },
-    {
-      "name": "End Users",
-      "description": "Deprecated alias of externalUsers. Use externalUsers instead; scheduled for removal (sunset date TBD)."
     }
   ],
   "externalDocs": {
@@ -106302,9 +105374,6 @@
       },
       {
         "$ref": "#/components/parameters/AppDisplayName"
-      },
-      {
-        "$ref": "#/components/parameters/AppCategories"
       }
     ]
   }

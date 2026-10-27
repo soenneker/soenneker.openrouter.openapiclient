@@ -20,10 +20,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The filters property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ClassifierFiltersFilter>? Filters { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestClassifierFiltersFiltersItem>? Filters { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ClassifierFiltersFilter> Filters { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestClassifierFiltersFiltersItem> Filters { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestClassifierFilters"/> and sets the default values.
@@ -51,7 +51,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "classifier_id", n => { ClassifierId = n.GetGuidValue(); } },
-                { "filters", n => { Filters = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ClassifierFiltersFilter>(global::Soenneker.OpenRouter.OpenApiClient.Models.ClassifierFiltersFilter.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "filters", n => { Filters = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestClassifierFiltersFiltersItem>(global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestClassifierFiltersFiltersItem.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -62,7 +62,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteGuidValue("classifier_id", ClassifierId);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ClassifierFiltersFilter>("filters", Filters);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestClassifierFiltersFiltersItem>("filters", Filters);
             writer.WriteAdditionalData(AdditionalData);
         }
     }
