@@ -435,9 +435,17 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning disable CS1591
         ParetoAlpha,
         #pragma warning restore CS1591
+        [EnumMember(Value = "Particle AI")]
+        #pragma warning disable CS1591
+        ParticleAi,
+        #pragma warning restore CS1591
         [EnumMember(Value = "Poolside")]
         #pragma warning disable CS1591
         Poolside,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "PrimaLabs")]
+        #pragma warning disable CS1591
+        PrimaLabs,
         #pragma warning restore CS1591
         [EnumMember(Value = "PrimeIntellect")]
         #pragma warning disable CS1591

@@ -191,7 +191,18 @@
           }
         },
         "x-speakeasy-max-method-params": 5
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/analytics/meta": {
       "get": {
@@ -291,7 +302,18 @@
             }
           }
         }
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/analytics/query": {
       "post": {
@@ -432,7 +454,18 @@
             }
           }
         }
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/api/alpha/decisions": {
       "post": {
@@ -738,7 +771,18 @@
           }
         ],
         "x-speakeasy-name-override": "create"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/audio/speech": {
       "post": {
@@ -971,7 +1015,18 @@
         },
         "x-speakeasy-max-method-params": 1,
         "x-speakeasy-name-override": "createSpeech"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/audio/transcriptions": {
       "post": {
@@ -1241,7 +1296,18 @@
         },
         "x-speakeasy-max-method-params": 1,
         "x-speakeasy-name-override": "createTranscription"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/auth/keys": {
       "post": {
@@ -1330,7 +1396,18 @@
             }
           }
         }
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/auth/keys/code": {
       "post": {
@@ -1456,7 +1533,18 @@
           }
         },
         "x-speakeasy-name-override": "createAuthCode"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/batches": {
       "get": {
@@ -1942,7 +2030,18 @@
           ],
           "strategy": "backoff"
         }
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/batches/{id}": {
       "delete": {
@@ -2215,7 +2314,18 @@
             }
           }
         }
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/benchmarks": {
       "get": {
@@ -2421,7 +2531,18 @@
             }
           }
         }
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/byok": {
       "get": {
@@ -2718,7 +2839,18 @@
           }
         },
         "x-speakeasy-name-override": "create"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/byok/{id}": {
       "delete": {
@@ -3106,7 +3238,18 @@
           }
         },
         "x-speakeasy-name-override": "update"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/chat/completions": {
       "post": {
@@ -3493,7 +3636,18 @@
         "x-speakeasy-group": "chat",
         "x-speakeasy-name-override": "send",
         "x-speakeasy-stream-request-field": "stream"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/classifications/task": {
       "get": {
@@ -3621,7 +3775,18 @@
             }
           }
         }
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/containers/{containerId}/files": {
       "get": {
@@ -3792,7 +3957,18 @@
             }
           }
         }
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/containers/{containerId}/files/{fileId}": {
       "get": {
@@ -3959,7 +4135,18 @@
             }
           }
         }
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/containers/{containerId}/files/{fileId}/content": {
       "get": {
@@ -4118,7 +4305,18 @@
             }
           }
         }
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/containers/{containerId}/files/{fileId}/promote": {
       "post": {
@@ -4318,7 +4516,18 @@
             }
           }
         }
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/credits": {
       "get": {
@@ -4395,7 +4604,18 @@
           }
         },
         "x-speakeasy-name-override": "getCredits"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/credits/coinbase": {
       "post": {
@@ -4431,7 +4651,18 @@
         "x-fern-ignore": true,
         "x-speakeasy-ignore": true,
         "x-speakeasy-name-override": "createCoinbaseCharge"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/datasets/app-rankings": {
       "get": {
@@ -4636,7 +4867,18 @@
           },
           "type": "offsetLimit"
         }
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/datasets/rankings-daily": {
       "get": {
@@ -4811,7 +5053,18 @@
             }
           }
         }
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/datasets/session-cost": {
       "get": {
@@ -4991,7 +5244,18 @@
           },
           "type": "offsetLimit"
         }
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/embeddings": {
       "post": {
@@ -5271,7 +5535,18 @@
           }
         },
         "x-speakeasy-name-override": "generate"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/embeddings/models": {
       "get": {
@@ -5417,7 +5692,18 @@
           },
           "type": "offsetLimit"
         }
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/endpoints/zdr": {
       "get": {
@@ -5516,15 +5802,43 @@
                 }
               }
             }
+          },
+          "503": {
+            "description": "Service Unavailable - Service temporarily unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceUnavailableResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 503,
+                    "message": "Service temporarily unavailable"
+                  }
+                }
+              }
+            }
           }
         },
         "x-speakeasy-name-override": "listZdrEndpoints"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/external-users": {
       "get": {
         "tags": [
-          "External Users"
+          "External Users",
+          "End Users"
         ],
         "summary": "List registered external users",
         "description": "List registrations belonging to the authenticated organization. Inactive registrations are excluded by default. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
@@ -5686,7 +6000,6 @@
             }
           }
         },
-        "x-speakeasy-group": "externalUsers",
         "x-speakeasy-name-override": "list",
         "x-speakeasy-pagination": {
           "inputs": [
@@ -5709,7 +6022,8 @@
       },
       "post": {
         "tags": [
-          "External Users"
+          "External Users",
+          "End Users"
         ],
         "summary": "Register an external user",
         "description": "Register a caller-supplied tracking ID under the authenticated organization. No login account, policy, or credentials are created. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
@@ -5827,14 +6141,25 @@
             }
           }
         },
-        "x-speakeasy-group": "externalUsers",
         "x-speakeasy-name-override": "create"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/external-users/{user}": {
       "delete": {
         "tags": [
-          "External Users"
+          "External Users",
+          "End Users"
         ],
         "summary": "Deactivate a registered external user",
         "description": "Soft-deactivate a registration while retaining its tracking ID. Repeat deactivation succeeds. This does not block inference; reactivate through PATCH. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
@@ -5924,12 +6249,12 @@
             }
           }
         },
-        "x-speakeasy-group": "externalUsers",
         "x-speakeasy-name-override": "delete"
       },
       "get": {
         "tags": [
-          "External Users"
+          "External Users",
+          "End Users"
         ],
         "summary": "Get a registered external user",
         "description": "Retrieve an active or inactive registration by its URL-encoded, caller-supplied tracking ID. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
@@ -6050,12 +6375,12 @@
             }
           }
         },
-        "x-speakeasy-group": "externalUsers",
         "x-speakeasy-name-override": "get"
       },
       "patch": {
         "tags": [
-          "External Users"
+          "External Users",
+          "End Users"
         ],
         "summary": "Update a registered external user",
         "description": "Update registration state without changing identity. State changes do not enforce inference access. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
@@ -6173,9 +6498,19 @@
             }
           }
         },
-        "x-speakeasy-group": "externalUsers",
         "x-speakeasy-name-override": "update"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/files": {
       "get": {
@@ -6632,7 +6967,18 @@
           }
         },
         "x-speakeasy-name-override": "upload"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/files/{fileId}": {
       "delete": {
@@ -6981,7 +7327,18 @@
           }
         },
         "x-speakeasy-name-override": "retrieve"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/files/{fileId}/content": {
       "get": {
@@ -7167,7 +7524,18 @@
           }
         },
         "x-speakeasy-name-override": "download"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/generation": {
       "get": {
@@ -7410,7 +7778,18 @@
             }
           }
         }
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/generation/content": {
       "get": {
@@ -7607,7 +7986,18 @@
             }
           }
         }
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/generation/feedback": {
       "post": {
@@ -7680,6 +8070,22 @@
               }
             }
           },
+          "403": {
+            "description": "Forbidden - Authentication successful but insufficient permissions",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ForbiddenResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 403,
+                    "message": "Only management keys can perform this operation"
+                  }
+                }
+              }
+            }
+          },
           "404": {
             "description": "Not Found - Resource does not exist",
             "content": {
@@ -7743,10 +8149,37 @@
                 }
               }
             }
+          },
+          "503": {
+            "description": "Service Unavailable - Service temporarily unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceUnavailableResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 503,
+                    "message": "Service temporarily unavailable"
+                  }
+                }
+              }
+            }
           }
         },
         "x-speakeasy-name-override": "submitFeedback"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/guardrails": {
       "get": {
@@ -8061,7 +8494,18 @@
           }
         },
         "x-speakeasy-name-override": "create"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/guardrails/{id}": {
       "delete": {
@@ -8458,7 +8902,18 @@
           }
         },
         "x-speakeasy-name-override": "update"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/guardrails/{id}/assignments/keys": {
       "get": {
@@ -8752,7 +9207,18 @@
           }
         },
         "x-speakeasy-name-override": "bulkAssignKeys"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/guardrails/{id}/assignments/keys/remove": {
       "post": {
@@ -8887,7 +9353,18 @@
           }
         },
         "x-speakeasy-name-override": "bulkUnassignKeys"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/guardrails/{id}/assignments/members": {
       "get": {
@@ -9181,7 +9658,18 @@
           }
         },
         "x-speakeasy-name-override": "bulkAssignMembers"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/guardrails/{id}/assignments/members/remove": {
       "post": {
@@ -9317,7 +9805,18 @@
           }
         },
         "x-speakeasy-name-override": "bulkUnassignMembers"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/guardrails/assignments/keys": {
       "get": {
@@ -9482,7 +9981,18 @@
           },
           "type": "offsetLimit"
         }
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/guardrails/assignments/members": {
       "get": {
@@ -9646,7 +10156,18 @@
           },
           "type": "offsetLimit"
         }
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/images": {
       "post": {
@@ -9886,7 +10407,18 @@
           }
         },
         "x-speakeasy-name-override": "generate"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/images/models": {
       "get": {
@@ -9955,7 +10487,18 @@
           }
         },
         "x-speakeasy-name-override": "listModels"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/images/models/{author}/{slug}/endpoints": {
       "get": {
@@ -10063,7 +10606,18 @@
           }
         },
         "x-speakeasy-name-override": "listModelEndpoints"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/key": {
       "get": {
@@ -10181,7 +10735,18 @@
           }
         },
         "x-speakeasy-name-override": "getCurrentKeyMetadata"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/keys": {
       "get": {
@@ -10507,7 +11072,18 @@
           }
         },
         "x-speakeasy-name-override": "create"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/keys/{hash}": {
       "delete": {
@@ -10938,7 +11514,18 @@
           }
         },
         "x-speakeasy-name-override": "update"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/messages": {
       "post": {
@@ -11207,7 +11794,18 @@
         "x-speakeasy-ignore": true,
         "x-speakeasy-name-override": "create",
         "x-speakeasy-stream-request-field": "stream"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/model/{author}/{slug}": {
       "get": {
@@ -11347,7 +11945,18 @@
           }
         },
         "x-speakeasy-name-override": "get"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/models": {
       "get": {
@@ -11810,6 +12419,22 @@
                 }
               }
             }
+          },
+          "503": {
+            "description": "Service Unavailable - Service temporarily unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceUnavailableResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 503,
+                    "message": "Service temporarily unavailable"
+                  }
+                }
+              }
+            }
           }
         },
         "x-speakeasy-name-override": "list",
@@ -11831,7 +12456,18 @@
           },
           "type": "offsetLimit"
         }
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/models/{author}/{slug}/endpoints": {
       "get": {
@@ -11942,10 +12578,37 @@
                 }
               }
             }
+          },
+          "503": {
+            "description": "Service Unavailable - Service temporarily unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceUnavailableResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 503,
+                    "message": "Service temporarily unavailable"
+                  }
+                }
+              }
+            }
           }
         },
         "x-speakeasy-name-override": "list"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/models/count": {
       "get": {
@@ -12032,7 +12695,18 @@
           }
         },
         "x-speakeasy-name-override": "count"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/models/user": {
       "get": {
@@ -12211,6 +12885,22 @@
                 }
               }
             }
+          },
+          "503": {
+            "description": "Service Unavailable - Service temporarily unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceUnavailableResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 503,
+                    "message": "Service temporarily unavailable"
+                  }
+                }
+              }
+            }
           }
         },
         "security": [
@@ -12237,7 +12927,18 @@
           },
           "type": "offsetLimit"
         }
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/oauth/jwks": {
       "get": {
@@ -12269,7 +12970,18 @@
             }
           }
         }
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/oauth/token": {
       "post": {
@@ -12341,7 +13053,18 @@
             }
           }
         }
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/observability/destinations": {
       "get": {
@@ -12664,7 +13387,18 @@
           }
         },
         "x-speakeasy-name-override": "create"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/observability/destinations/{id}": {
       "delete": {
@@ -13066,7 +13800,18 @@
           }
         },
         "x-speakeasy-name-override": "update"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/organization/members": {
       "get": {
@@ -13213,7 +13958,18 @@
           },
           "type": "offsetLimit"
         }
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/organization/settings": {
       "get": {
@@ -13426,7 +14182,18 @@
           }
         },
         "x-speakeasy-name-override": "updateSettings"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/presets": {
       "get": {
@@ -13558,6 +14325,22 @@
                 }
               }
             }
+          },
+          "503": {
+            "description": "Service Unavailable - Service temporarily unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceUnavailableResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 503,
+                    "message": "Service temporarily unavailable"
+                  }
+                }
+              }
+            }
           }
         },
         "security": [
@@ -13584,7 +14367,18 @@
           },
           "type": "offsetLimit"
         }
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/presets/{slug}": {
       "get": {
@@ -13726,6 +14520,22 @@
                 }
               }
             }
+          },
+          "503": {
+            "description": "Service Unavailable - Service temporarily unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceUnavailableResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 503,
+                    "message": "Service temporarily unavailable"
+                  }
+                }
+              }
+            }
           }
         },
         "security": [
@@ -13734,7 +14544,18 @@
           }
         ],
         "x-speakeasy-name-override": "get"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/presets/{slug}/chat/completions": {
       "post": {
@@ -13923,7 +14744,18 @@
             "apiKey": []
           }
         ]
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/presets/{slug}/messages": {
       "post": {
@@ -14109,7 +14941,18 @@
             "apiKey": []
           }
         ]
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/presets/{slug}/responses": {
       "post": {
@@ -14288,7 +15131,18 @@
             "apiKey": []
           }
         ]
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/presets/{slug}/versions": {
       "get": {
@@ -14448,6 +15302,22 @@
                 }
               }
             }
+          },
+          "503": {
+            "description": "Service Unavailable - Service temporarily unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceUnavailableResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 503,
+                    "message": "Service temporarily unavailable"
+                  }
+                }
+              }
+            }
           }
         },
         "security": [
@@ -14474,7 +15344,18 @@
           },
           "type": "offsetLimit"
         }
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/presets/{slug}/versions/{version}": {
       "get": {
@@ -14615,6 +15496,22 @@
                 }
               }
             }
+          },
+          "503": {
+            "description": "Service Unavailable - Service temporarily unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceUnavailableResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 503,
+                    "message": "Service temporarily unavailable"
+                  }
+                }
+              }
+            }
           }
         },
         "security": [
@@ -14623,7 +15520,18 @@
           }
         ],
         "x-speakeasy-name-override": "getVersion"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/private-endpoints": {
       "get": {
@@ -14722,12 +15630,12 @@
           {
             "name": "idempotency-key",
             "in": "header",
-            "description": "Retry-safe create: a repeated create with the same key from the same organization returns the endpoint the first request created instead of creating another. The endpoint is returned as it is now. Reusing a key with a different request body (model, provider, base URL, upstream model ID, declared ZDR or region, or pricing) is rejected with 422 \u0060idempotency_key_reused\u0060. \u0060activate\u0060 is not compared, and later edits to the endpoint do not affect the comparison.",
+            "description": "Retry-safe create: a repeated create with the same key from the same organization returns the endpoint the first request created instead of creating another. The endpoint is returned as it is now. Reusing a key with a different request body (model, provider, base URL, upstream model ID, declared ZDR or region, pricing, or declared parameters) is rejected with 422 \u0060idempotency_key_reused\u0060. Declared parameters are compared as a set, so a retry that reorders or repeats a name replays the endpoint. \u0060activate\u0060 and \u0060max_completion_tokens\u0060 are not compared, and later edits to the endpoint do not affect the comparison.",
             "schema": {
               "maxLength": 255,
               "minLength": 1,
               "type": "string",
-              "description": "Retry-safe create: a repeated create with the same key from the same organization returns the endpoint the first request created instead of creating another. The endpoint is returned as it is now. Reusing a key with a different request body (model, provider, base URL, upstream model ID, declared ZDR or region, or pricing) is rejected with 422 \u0060idempotency_key_reused\u0060. \u0060activate\u0060 is not compared, and later edits to the endpoint do not affect the comparison.",
+              "description": "Retry-safe create: a repeated create with the same key from the same organization returns the endpoint the first request created instead of creating another. The endpoint is returned as it is now. Reusing a key with a different request body (model, provider, base URL, upstream model ID, declared ZDR or region, pricing, or declared parameters) is rejected with 422 \u0060idempotency_key_reused\u0060. Declared parameters are compared as a set, so a retry that reorders or repeats a name replays the endpoint. \u0060activate\u0060 and \u0060max_completion_tokens\u0060 are not compared, and later edits to the endpoint do not affect the comparison.",
               "example": "wayfair-gpt-4o-eastus-2026-09"
             }
           }
@@ -14869,7 +15777,18 @@
           }
         },
         "x-speakeasy-name-override": "create"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/private-endpoints/{id}": {
       "delete": {
@@ -15362,7 +16281,18 @@
           }
         },
         "x-speakeasy-name-override": "update"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/private-endpoints/{id}/activate": {
       "post": {
@@ -15543,7 +16473,18 @@
           }
         },
         "x-speakeasy-name-override": "activate"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/private-endpoints/{id}/disable": {
       "post": {
@@ -15724,7 +16665,18 @@
           }
         },
         "x-speakeasy-name-override": "disable"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/private-endpoints/{id}/enable": {
       "post": {
@@ -15905,7 +16857,220 @@
           }
         },
         "x-speakeasy-name-override": "enable"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
+    },
+    "/private-endpoints/{id}/parameters": {
+      "put": {
+        "tags": [
+          "Private Endpoints"
+        ],
+        "summary": "Set private endpoint supported parameters",
+        "description": "Declare which request parameters the upstream supports beyond the ones validation proved. Applies to drafts and active endpoints; routing picks the change up for subsequent requests. The body replaces the earlier declaration and is read as a set: order and repeated names do not matter, but the list holds at most as many entries as there are declarable parameters, repeats included. \u0060tested_parameters\u0060 stay. Returns 400 \u0060parameters_invalid\u0060 when \u0060tool_choice\u0060 is declared without \u0060tools\u0060 being tested or declared. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
+        "operationId": "UpdatePrivateEndpointParameters",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Stable identifier of the private endpoint.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Stable identifier of the private endpoint.",
+              "format": "uuid",
+              "example": "5b1c4c4e-7d0a-4a8e-9f3a-2d6c1b0e8a11"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdatePrivateEndpointParametersRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "The endpoint with its new declared parameters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PrivateEndpointResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request - Invalid request parameters or malformed input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 400,
+                    "message": "Invalid request parameters"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Authentication required or invalid credentials",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 401,
+                    "message": "Missing Authentication header"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden - Authentication successful but insufficient permissions",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ForbiddenResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 403,
+                    "message": "Only management keys can perform this operation"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found - Resource does not exist",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFoundResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 404,
+                    "message": "Resource not found"
+                  }
+                }
+              }
+            }
+          },
+          "408": {
+            "description": "Request Timeout - Operation exceeded time limit",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RequestTimeoutResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 408,
+                    "message": "Operation timed out. Please try again later."
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict - Resource conflict or concurrent modification",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConflictResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 409,
+                    "message": "Resource conflict. Please try again later."
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity - Semantic validation failure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnprocessableEntityResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 422,
+                    "message": "Invalid argument"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error - Unexpected server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 500,
+                    "message": "Internal Server Error"
+                  }
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Bad Gateway - Provider/upstream API failure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadGatewayResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 502,
+                    "message": "Provider returned error"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-speakeasy-name-override": "updateParameters"
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/private-endpoints/{id}/pricing": {
       "put": {
@@ -16096,7 +17261,18 @@
           }
         },
         "x-speakeasy-name-override": "updatePricing"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/private-endpoints/{id}/validate": {
       "post": {
@@ -16287,7 +17463,18 @@
           }
         },
         "x-speakeasy-name-override": "validate"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/providers": {
       "get": {
@@ -16341,7 +17528,18 @@
           }
         },
         "x-speakeasy-name-override": "list"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/rerank": {
       "post": {
@@ -16573,7 +17771,18 @@
           }
         },
         "x-speakeasy-name-override": "rerank"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/responses": {
       "post": {
@@ -16966,7 +18175,18 @@
         },
         "x-speakeasy-name-override": "send",
         "x-speakeasy-stream-request-field": "stream"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/scim/group-mappings": {
       "get": {
@@ -17228,7 +18448,18 @@
           }
         },
         "x-speakeasy-name-override": "create"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/scim/group-mappings/{id}": {
       "delete": {
@@ -17578,7 +18809,18 @@
           }
         },
         "x-speakeasy-name-override": "update"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/scim/groups": {
       "get": {
@@ -17733,7 +18975,18 @@
           },
           "type": "offsetLimit"
         }
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/scim/sync-jobs": {
       "post": {
@@ -17830,7 +19083,18 @@
           }
         },
         "x-speakeasy-name-override": "createSyncJob"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/scim/sync-jobs/{id}": {
       "get": {
@@ -17928,7 +19192,18 @@
           }
         },
         "x-speakeasy-name-override": "getSyncJob"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/systemone": {
       "post": {
@@ -18229,7 +19504,18 @@
           }
         },
         "x-speakeasy-name-override": "create"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/tools": {
       "get": {
@@ -18358,7 +19644,18 @@
             "bearer": []
           }
         ]
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/tools/{name}": {
       "get": {
@@ -18474,7 +19771,18 @@
             "bearer": []
           }
         ]
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/vault/interns/{internId}/connections": {
       "get": {
@@ -18771,7 +20079,18 @@
             "apiKey": []
           }
         ]
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/vault/interns/{internId}/effective-secrets": {
       "get": {
@@ -19114,7 +20433,18 @@
             "apiKey": []
           }
         ]
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/vault/interns/{internId}/secrets": {
       "get": {
@@ -19446,7 +20776,18 @@
             "apiKey": []
           }
         ]
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/vault/interns/{internId}/secrets/{name}": {
       "delete": {
@@ -20128,7 +21469,18 @@
             "apiKey": []
           }
         ]
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/vault/interns/{internId}/secrets/copy": {
       "post": {
@@ -20484,7 +21836,18 @@
             "apiKey": []
           }
         ]
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/vault/secrets": {
       "get": {
@@ -20804,7 +22167,18 @@
             "apiKey": []
           }
         ]
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/vault/secrets/{name}": {
       "delete": {
@@ -21462,7 +22836,18 @@
             "apiKey": []
           }
         ]
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/videos": {
       "post": {
@@ -21668,7 +23053,18 @@
           }
         },
         "x-speakeasy-name-override": "generate"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/videos/{jobId}": {
       "get": {
@@ -21779,7 +23175,18 @@
           }
         },
         "x-speakeasy-name-override": "getGeneration"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/videos/{jobId}/content": {
       "get": {
@@ -21956,7 +23363,18 @@
           }
         },
         "x-speakeasy-name-override": "getVideoContent"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/videos/models": {
       "get": {
@@ -22042,7 +23460,18 @@
             }
           }
         }
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/workspaces": {
       "get": {
@@ -22311,7 +23740,18 @@
           }
         },
         "x-speakeasy-name-override": "create"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/workspaces/{id}": {
       "delete": {
@@ -22711,7 +24151,18 @@
           }
         },
         "x-speakeasy-name-override": "update"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/workspaces/{id}/members": {
       "get": {
@@ -22870,7 +24321,18 @@
           },
           "type": "offsetLimit"
         }
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/workspaces/{id}/members/add": {
       "post": {
@@ -23015,7 +24477,18 @@
           }
         },
         "x-speakeasy-name-override": "bulkAddMembers"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/workspaces/{id}/members/remove": {
       "post": {
@@ -23151,7 +24624,18 @@
           }
         },
         "x-speakeasy-name-override": "bulkRemoveMembers"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/workspaces/{id}/budgets": {
       "get": {
@@ -23265,7 +24749,18 @@
           }
         },
         "x-speakeasy-name-override": "listBudgets"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/workspaces/{id}/budgets/{interval}": {
       "delete": {
@@ -23681,7 +25176,18 @@
           }
         },
         "x-speakeasy-name-override": "setBudget"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     }
   },
   "components": {
@@ -29632,8 +31138,7 @@
             "type": "integer"
           },
           "error": {
-            "description": "Error information returned from the API",
-            "$ref": "#/components/schemas/ResponsesErrorField"
+            "$ref": "#/components/schemas/BaseResponsesResultError"
           },
           "frequency_penalty": {
             "type": [
@@ -29646,10 +31151,10 @@
             "type": "string"
           },
           "incomplete_details": {
-            "$ref": "#/components/schemas/IncompleteDetails"
+            "$ref": "#/components/schemas/BaseResponsesResultIncompleteDetails"
           },
           "instructions": {
-            "$ref": "#/components/schemas/BaseInputs"
+            "$ref": "#/components/schemas/BaseResponsesResultInstructions"
           },
           "max_output_tokens": {
             "type": [
@@ -29711,7 +31216,7 @@
             "$ref": "#/components/schemas/PromptCacheOptions"
           },
           "reasoning": {
-            "$ref": "#/components/schemas/BaseReasoningConfig"
+            "$ref": "#/components/schemas/BaseResponsesResultReasoning"
           },
           "safety_identifier": {
             "type": [
@@ -29736,8 +31241,7 @@
             "format": "double"
           },
           "text": {
-            "description": "Text output configuration including format and verbosity",
-            "$ref": "#/components/schemas/TextConfig"
+            "$ref": "#/components/schemas/BaseResponsesResultText"
           },
           "tool_choice": {
             "$ref": "#/components/schemas/OpenAiResponsesToolChoice"
@@ -29749,7 +31253,10 @@
             }
           },
           "top_logprobs": {
-            "type": "integer"
+            "type": [
+              "null",
+              "integer"
+            ]
           },
           "top_p": {
             "type": [
@@ -29759,7 +31266,7 @@
             "format": "double"
           },
           "truncation": {
-            "$ref": "#/components/schemas/Truncation"
+            "$ref": "#/components/schemas/BaseResponsesResultTruncation"
           },
           "usage": {
             "$ref": "#/components/schemas/OpenAiResponsesUsage"
@@ -31021,6 +32528,7 @@
           "openai",
           "parasail",
           "pareto-alpha",
+          "particle-ai",
           "perceptron",
           "perplexity",
           "phala",
@@ -31383,6 +32891,10 @@
             {
               "value": "pareto-alpha",
               "name": "ParetoAlpha"
+            },
+            {
+              "value": "particle-ai",
+              "name": "ParticleAi"
             },
             {
               "value": "perceptron",
@@ -35513,6 +37025,18 @@
             "description": "HTTPS base URL of your deployment. Required unless the provider derives its URL from the BYOK credential (Azure, Amazon Bedrock, Google Vertex).",
             "example": "https://contoso.openai.azure.com"
           },
+          "declared_parameters": {
+            "maxItems": 25,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PrivateEndpointDeclaredParameter"
+            },
+            "description": "Parameters the upstream supports beyond the tested ones. Replaces the earlier declaration; tested parameters stay. Order and repeated names are ignored, but the list holds at most as many entries as there are declarable parameters, repeats included. \u0060tool_choice\u0060 requires \u0060tools\u0060 to be tested or declared.",
+            "example": [
+              "temperature",
+              "seed"
+            ]
+          },
           "declared_region": {
             "$ref": "#/components/schemas/CreatePrivateEndpointRequestDeclaredRegion"
           },
@@ -35522,6 +37046,13 @@
               "boolean"
             ],
             "description": "Attest that this deployment retains no prompt or completion data."
+          },
+          "max_completion_tokens": {
+            "maximum": 2147483647,
+            "minimum": 1,
+            "type": "integer",
+            "description": "Cap on completion tokens per request. Requests asking for more skip this endpoint, and the default output length stays within it. When omitted, the cap is copied from the public endpoint for the same model and provider, if there is one.",
+            "example": 131072
           },
           "model_permaslug": {
             "minLength": 1,
@@ -36121,6 +37652,28 @@
           }
         }
       },
+      "DecisionsImageAsset": {
+        "required": [
+          "format",
+          "data_base64"
+        ],
+        "type": "object",
+        "properties": {
+          "data_base64": {
+            "minLength": 1,
+            "pattern": "^(?:[A-Za-z0-9\u002B/]{4})*(?:[A-Za-z0-9\u002B/]{2}==|[A-Za-z0-9\u002B/]{3}=)?$",
+            "type": "string"
+          },
+          "format": {
+            "$ref": "#/components/schemas/DecisionsImageAssetFormat"
+          },
+          "type": {
+            "$ref": "#/components/schemas/ImageType"
+          }
+        },
+        "additionalProperties": false,
+        "description": "An image sent once and referenced by its key in the \u0060assets\u0060 map. \u0060data_base64\u0060 is the PNG or JPEG file in standard base64 with no \u0060data:\u0060 prefix. The multipart \u0060part\u0060 field of TypeSafe\u0027s API is not accepted."
+      },
       "DecisionsNoulAnswer": {
         "required": [
           "type",
@@ -36163,6 +37716,9 @@
         ],
         "type": "object",
         "properties": {
+          "assets": {
+            "$ref": "#/components/schemas/DecisionsRequestAssetsProperty"
+          },
           "model": {
             "type": "string"
           },
@@ -39650,7 +41206,7 @@
           },
           "output_compression": {
             "type": "integer",
-            "description": "Compression level (0-100) for jpeg/webp output. Ignored by providers without a compression knob; providers that honor it may reject it with other output formats (e.g. OpenAI requires output_format \u0022jpeg\u0022 or \u0022webp\u0022).",
+            "description": "Compression level (0-100) for webp/jpeg output. Ignored for png and by providers without a compression knob.",
             "example": 100
           },
           "output_format": {
@@ -42008,6 +43564,14 @@
             ],
             "description": "Whether you attest this deployment retains no prompt or completion data. \u0060null\u0060 means undeclared.",
             "example": true
+          },
+          "max_completion_tokens": {
+            "type": [
+              "null",
+              "integer"
+            ],
+            "description": "Most completion tokens a request routed to this endpoint can produce, or \u0060null\u0060 when the endpoint sets no cap beyond the model context length.",
+            "example": 131072
           }
         }
       },
@@ -47983,10 +49547,10 @@
             "type": "string"
           },
           "incomplete_details": {
-            "$ref": "#/components/schemas/IncompleteDetails"
+            "$ref": "#/components/schemas/BaseResponsesResultIncompleteDetails"
           },
           "instructions": {
-            "$ref": "#/components/schemas/BaseInputs"
+            "$ref": "#/components/schemas/BaseResponsesResultInstructions"
           },
           "max_output_tokens": {
             "type": [
@@ -48045,7 +49609,7 @@
             "$ref": "#/components/schemas/PromptCacheOptions"
           },
           "reasoning": {
-            "$ref": "#/components/schemas/BaseReasoningConfig"
+            "$ref": "#/components/schemas/BaseResponsesResultReasoning"
           },
           "safety_identifier": {
             "type": [
@@ -48082,7 +49646,10 @@
             }
           },
           "top_logprobs": {
-            "type": "integer"
+            "type": [
+              "null",
+              "integer"
+            ]
           },
           "top_p": {
             "type": [
@@ -48092,7 +49659,7 @@
             "format": "double"
           },
           "truncation": {
-            "$ref": "#/components/schemas/Truncation"
+            "$ref": "#/components/schemas/BaseResponsesResultTruncation"
           },
           "usage": {
             "$ref": "#/components/schemas/OpenResponsesResultUsage"
@@ -52140,7 +53707,9 @@
           "upstream_model_id",
           "declared_zdr",
           "declared_region",
-          "pricing"
+          "pricing",
+          "tested_parameters",
+          "declared_parameters"
         ],
         "type": "object",
         "properties": {
@@ -52151,6 +53720,17 @@
             ],
             "description": "HTTPS base URL of your deployment, or \u0060null\u0060 for providers whose URL is derived from the BYOK credential (Azure, Amazon Bedrock, Google Vertex).",
             "example": "https://contoso.openai.azure.com"
+          },
+          "declared_parameters": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Parameters you declared the upstream supports. Requests that use a parameter only route to this endpoint when it is tested or declared.",
+            "example": [
+              "temperature",
+              "seed"
+            ]
           },
           "declared_region": {
             "description": "Where you attest this deployment processes data. \u0060global\u0060 means not regional; \u0060null\u0060 means undeclared.",
@@ -52169,6 +53749,14 @@
             "description": "Stable identifier of the private endpoint.",
             "format": "uuid",
             "example": "5b1c4c4e-7d0a-4a8e-9f3a-2d6c1b0e8a11"
+          },
+          "max_completion_tokens": {
+            "type": [
+              "null",
+              "integer"
+            ],
+            "description": "Most completion tokens a request routed to this endpoint can produce, or \u0060null\u0060 when the endpoint sets no cap beyond the model context length.",
+            "example": 131072
           },
           "model_name": {
             "type": [
@@ -52212,6 +53800,18 @@
             "description": "Lifecycle state. \u0060draft\u0060 endpoints are not routable until validated and activated; \u0060disabled\u0060 endpoints are activated but temporarily not routable.",
             "$ref": "#/components/schemas/PrivateEndpointStatus"
           },
+          "tested_parameters": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Parameters a validation run proved the upstream honors (\u0060tools\u0060, \u0060tool_choice\u0060, \u0060response_format\u0060, \u0060structured_outputs\u0060, \u0060stop\u0060). Read-only; cleared when the upstream configuration changes.",
+            "example": [
+              "tools",
+              "tool_choice",
+              "response_format"
+            ]
+          },
           "upstream_model_id": {
             "type": "string",
             "description": "Model or deployment identifier sent to the upstream provider.",
@@ -52220,9 +53820,14 @@
         },
         "example": {
           "base_url": "https://contoso.openai.azure.com",
+          "declared_parameters": [
+            "temperature",
+            "seed"
+          ],
           "declared_region": "us",
           "declared_zdr": true,
           "id": "5b1c4c4e-7d0a-4a8e-9f3a-2d6c1b0e8a11",
+          "max_completion_tokens": 131072,
           "model_name": "OpenAI: GPT-4o",
           "model_permaslug": "openai/gpt-4o-2024-08-06",
           "model_slug": "openai/gpt-4o",
@@ -52235,6 +53840,11 @@
           "provider_name": "Azure",
           "provider_slug": "azure",
           "status": "active",
+          "tested_parameters": [
+            "tools",
+            "tool_choice",
+            "response_format"
+          ],
           "upstream_model_id": "gpt-4o-prod"
         }
       },
@@ -52395,6 +54005,145 @@
           ]
         }
       },
+      "PrivateEndpointDeclaredParameter": {
+        "enum": [
+          "temperature",
+          "top_p",
+          "top_k",
+          "min_p",
+          "top_a",
+          "frequency_penalty",
+          "presence_penalty",
+          "repetition_penalty",
+          "max_tokens",
+          "max_completion_tokens",
+          "logit_bias",
+          "logprobs",
+          "top_logprobs",
+          "prediction",
+          "seed",
+          "response_format",
+          "structured_outputs",
+          "stop",
+          "tools",
+          "tool_choice",
+          "parallel_tool_calls",
+          "reasoning",
+          "reasoning_effort",
+          "web_search_options",
+          "verbosity"
+        ],
+        "type": "string",
+        "description": "A chat request parameter the endpoint accepts.",
+        "example": "seed",
+        "x-speakeasy-unknown-values": "allow",
+        "x-ms-enum": {
+          "name": "PrivateEndpointDeclaredParameter",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "temperature",
+              "name": "Temperature"
+            },
+            {
+              "value": "top_p",
+              "name": "TopP"
+            },
+            {
+              "value": "top_k",
+              "name": "TopK"
+            },
+            {
+              "value": "min_p",
+              "name": "MinP"
+            },
+            {
+              "value": "top_a",
+              "name": "TopA"
+            },
+            {
+              "value": "frequency_penalty",
+              "name": "FrequencyPenalty"
+            },
+            {
+              "value": "presence_penalty",
+              "name": "PresencePenalty"
+            },
+            {
+              "value": "repetition_penalty",
+              "name": "RepetitionPenalty"
+            },
+            {
+              "value": "max_tokens",
+              "name": "MaxTokens"
+            },
+            {
+              "value": "max_completion_tokens",
+              "name": "MaxCompletionTokens"
+            },
+            {
+              "value": "logit_bias",
+              "name": "LogitBias"
+            },
+            {
+              "value": "logprobs",
+              "name": "Logprobs"
+            },
+            {
+              "value": "top_logprobs",
+              "name": "TopLogprobs"
+            },
+            {
+              "value": "prediction",
+              "name": "Prediction"
+            },
+            {
+              "value": "seed",
+              "name": "Seed"
+            },
+            {
+              "value": "response_format",
+              "name": "ResponseFormat"
+            },
+            {
+              "value": "structured_outputs",
+              "name": "StructuredOutputs"
+            },
+            {
+              "value": "stop",
+              "name": "Stop"
+            },
+            {
+              "value": "tools",
+              "name": "Tools"
+            },
+            {
+              "value": "tool_choice",
+              "name": "ToolChoice"
+            },
+            {
+              "value": "parallel_tool_calls",
+              "name": "ParallelToolCalls"
+            },
+            {
+              "value": "reasoning",
+              "name": "Reasoning"
+            },
+            {
+              "value": "reasoning_effort",
+              "name": "ReasoningEffort"
+            },
+            {
+              "value": "web_search_options",
+              "name": "WebSearchOptions"
+            },
+            {
+              "value": "verbosity",
+              "name": "Verbosity"
+            }
+          ]
+        }
+      },
       "PrivateEndpointDeclaredRegion": {
         "enum": [
           "global",
@@ -52426,6 +54175,26 @@
               "name": "Us"
             }
           ]
+        }
+      },
+      "PrivateEndpointParameterCheck": {
+        "required": [
+          "parameter",
+          "supported"
+        ],
+        "type": "object",
+        "properties": {
+          "parameter": {
+            "type": "string",
+            "example": "response_format"
+          },
+          "supported": {
+            "type": "boolean"
+          }
+        },
+        "example": {
+          "parameter": "response_format",
+          "supported": true
         }
       },
       "PrivateEndpointPricing": {
@@ -52576,6 +54345,13 @@
               "$ref": "#/components/schemas/PrivateEndpointCheck"
             }
           },
+          "parameters": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PrivateEndpointParameterCheck"
+            },
+            "description": "Request parameters probed after the checks passed, each with whether the upstream honored it. Supported ones are recorded in \u0060tested_parameters\u0060. Absent on a failed run and for providers that run no parameter probes; empty when every probe group was already proven."
+          },
           "passed": {
             "type": "boolean",
             "description": "Whether every check passed.",
@@ -52598,6 +54374,13 @@
             "items": {
               "$ref": "#/components/schemas/PrivateEndpointCheck"
             }
+          },
+          "parameters": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PrivateEndpointParameterCheck"
+            },
+            "description": "Request parameters probed after the checks passed, each with whether the upstream honored it. Supported ones are recorded in \u0060tested_parameters\u0060. Absent on a failed run and for providers that run no parameter probes; empty when every probe group was already proven."
           },
           "passed": {
             "type": "boolean",
@@ -52772,7 +54555,9 @@
           "OpenInference",
           "Parasail",
           "ParetoAlpha",
+          "Particle AI",
           "Poolside",
+          "PrimaLabs",
           "PrimeIntellect",
           "Perceptron",
           "Perplexity",
@@ -52896,6 +54681,10 @@
             {
               "value": "OpenAI",
               "name": "OpenAi"
+            },
+            {
+              "value": "Particle AI",
+              "name": "ParticleAi"
             },
             {
               "value": "Sail Research",
@@ -53226,6 +55015,9 @@
           "pareto-alpha": {
             "$ref": "#/components/schemas/ProviderOptionsParetoAlphaProperty"
           },
+          "particle-ai": {
+            "$ref": "#/components/schemas/ProviderOptionsParticleAiProperty"
+          },
           "perceptron": {
             "$ref": "#/components/schemas/ProviderOptionsPerceptronProperty"
           },
@@ -53237,6 +55029,9 @@
           },
           "poolside": {
             "$ref": "#/components/schemas/ProviderOptionsPoolsideProperty"
+          },
+          "primalabs": {
+            "$ref": "#/components/schemas/ProviderOptionsPrimalabsProperty"
           },
           "primeintellect": {
             "$ref": "#/components/schemas/ProviderOptionsPrimeintellectProperty"
@@ -60344,6 +62139,26 @@
         },
         "additionalProperties": false
       },
+      "UpdatePrivateEndpointParametersRequest": {
+        "required": [
+          "declared_parameters"
+        ],
+        "type": "object",
+        "properties": {
+          "declared_parameters": {
+            "maxItems": 25,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PrivateEndpointDeclaredParameter"
+            },
+            "description": "Parameters the upstream supports beyond the tested ones. Replaces the earlier declaration; tested parameters stay. Order and repeated names are ignored, but the list holds at most as many entries as there are declarable parameters, repeats included. \u0060tool_choice\u0060 requires \u0060tools\u0060 to be tested or declared.",
+            "example": [
+              "temperature",
+              "seed"
+            ]
+          }
+        }
+      },
       "UpdatePrivateEndpointPricingRequest": {
         "required": [
           "pricing"
@@ -63394,6 +65209,36 @@
           "service_tier": "standard"
         }
       },
+      "BaseResponsesResultError": {
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/ResponsesErrorField"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "BaseResponsesResultIncompleteDetails": {
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/IncompleteDetails"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "BaseResponsesResultInstructions": {
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/BaseInputs"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
       "BaseResponsesResultOutputItem": {
         "required": [
           "type"
@@ -63446,6 +65291,26 @@
             "web_search_call": "#/components/schemas/OutputItemWebSearchCall"
           }
         }
+      },
+      "BaseResponsesResultReasoning": {
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/BaseReasoningConfig"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "BaseResponsesResultText": {
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/TextConfig"
+          },
+          {
+            "type": "null"
+          }
+        ]
       },
       "BaseResponsesResultToolsItem": {
         "oneOf": [
@@ -63515,6 +65380,16 @@
             "namespace": "#/components/schemas/NamespaceTool"
           }
         }
+      },
+      "BaseResponsesResultTruncation": {
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/Truncation"
+          },
+          {
+            "type": "null"
+          }
+        ]
       },
       "BatchObjectResultsItemResponseBody": {
         "anyOf": [
@@ -65841,6 +67716,9 @@
           "pareto-alpha": {
             "$ref": "#/components/schemas/ImageGenerationProviderPreferencesOptionsParetoAlpha"
           },
+          "particle-ai": {
+            "$ref": "#/components/schemas/ImageGenerationProviderPreferencesOptionsParticleAi"
+          },
           "perceptron": {
             "$ref": "#/components/schemas/ImageGenerationProviderPreferencesOptionsPerceptron"
           },
@@ -65852,6 +67730,9 @@
           },
           "poolside": {
             "$ref": "#/components/schemas/ImageGenerationProviderPreferencesOptionsPoolside"
+          },
+          "primalabs": {
+            "$ref": "#/components/schemas/ImageGenerationProviderPreferencesOptionsPrimalabs"
           },
           "primeintellect": {
             "$ref": "#/components/schemas/ImageGenerationProviderPreferencesOptionsPrimeintellect"
@@ -66331,6 +68212,14 @@
             ],
             "description": "Whether you attest this deployment retains no prompt or completion data. \u0060null\u0060 means undeclared.",
             "example": true
+          },
+          "max_completion_tokens": {
+            "type": [
+              "null",
+              "integer"
+            ],
+            "description": "Most completion tokens a request routed to this endpoint can produce, or \u0060null\u0060 when the endpoint sets no cap beyond the model context length.",
+            "example": 131072
           }
         }
       },
@@ -69832,6 +71721,9 @@
           "pareto-alpha": {
             "$ref": "#/components/schemas/VideoGenerationRequestProviderOptionsParetoAlpha"
           },
+          "particle-ai": {
+            "$ref": "#/components/schemas/VideoGenerationRequestProviderOptionsParticleAi"
+          },
           "perceptron": {
             "$ref": "#/components/schemas/VideoGenerationRequestProviderOptionsPerceptron"
           },
@@ -69843,6 +71735,9 @@
           },
           "poolside": {
             "$ref": "#/components/schemas/VideoGenerationRequestProviderOptionsPoolside"
+          },
+          "primalabs": {
+            "$ref": "#/components/schemas/VideoGenerationRequestProviderOptionsPrimalabs"
           },
           "primeintellect": {
             "$ref": "#/components/schemas/VideoGenerationRequestProviderOptionsPrimeintellect"
@@ -73762,6 +75657,13 @@
           }
         }
       },
+      "DecisionsRequestAssets": {
+        "type": "object",
+        "additionalProperties": {
+          "$ref": "#/components/schemas/DecisionsImageAsset"
+        },
+        "description": "Images keyed by reference string, as in TypeSafe\u0027s API. Write a reference wherever the image belongs in \u0060state\u0060, \u0060instructions\u0060, or \u0060criteria\u0060; every asset must be referenced at least once. Jev reads a reference as a whole string value or inside longer text. Other Decisions models read a whole-string reference wherever they read an \u0060image_url\u0060 part and reject a reference inside longer text."
+      },
       "DecisionsRequestQuestions": {
         "type": "object",
         "additionalProperties": {
@@ -75503,7 +77405,7 @@
             "description": "Required for IAM role authentication. With access keys, AWS S3 detects the bucket region when you leave this blank."
           },
           "roleArn": {
-            "pattern": "^arn:aws(?:-[a-z]\u002B)*:iam::\\d{12}:role\\/[\\w\u002B=,.@/-]{1,512}$",
+            "pattern": "^arn:aws:iam::\\d{12}:role\\/[\\w\u002B=,.@/-]{1,512}$",
             "type": "string",
             "description": "The IAM role in your account that OpenRouter assumes. Its trust policy must allow sts:AssumeRole from arn:aws:iam::536697249728:role/openrouter-broadcast-exporter and require the external ID below, and its permissions must allow s3:PutObject on the bucket and prefix (plus kms:GenerateDataKey for SSE-KMS buckets).",
             "visibleWhen": [
@@ -76457,6 +78359,10 @@
         "type": "object",
         "additionalProperties": {}
       },
+      "ProviderOptionsParticleAi": {
+        "type": "object",
+        "additionalProperties": {}
+      },
       "ProviderOptionsPerceptron": {
         "type": "object",
         "additionalProperties": {}
@@ -76470,6 +78376,10 @@
         "additionalProperties": {}
       },
       "ProviderOptionsPoolside": {
+        "type": "object",
+        "additionalProperties": {}
+      },
+      "ProviderOptionsPrimalabs": {
         "type": "object",
         "additionalProperties": {}
       },
@@ -80645,8 +82555,7 @@
             "type": "integer"
           },
           "error": {
-            "description": "Error information returned from the API",
-            "$ref": "#/components/schemas/ResponsesErrorField"
+            "$ref": "#/components/schemas/BaseResponsesResultError"
           },
           "frequency_penalty": {
             "type": [
@@ -80659,10 +82568,10 @@
             "type": "string"
           },
           "incomplete_details": {
-            "$ref": "#/components/schemas/IncompleteDetails"
+            "$ref": "#/components/schemas/BaseResponsesResultIncompleteDetails"
           },
           "instructions": {
-            "$ref": "#/components/schemas/BaseInputs"
+            "$ref": "#/components/schemas/BaseResponsesResultInstructions"
           },
           "max_output_tokens": {
             "type": [
@@ -80724,7 +82633,7 @@
             "$ref": "#/components/schemas/PromptCacheOptions"
           },
           "reasoning": {
-            "$ref": "#/components/schemas/BaseReasoningConfig"
+            "$ref": "#/components/schemas/BaseResponsesResultReasoning"
           },
           "safety_identifier": {
             "type": [
@@ -80749,8 +82658,7 @@
             "format": "double"
           },
           "text": {
-            "description": "Text output configuration including format and verbosity",
-            "$ref": "#/components/schemas/TextConfig"
+            "$ref": "#/components/schemas/BaseResponsesResultText"
           },
           "tool_choice": {
             "$ref": "#/components/schemas/OpenAiResponsesToolChoice"
@@ -80762,7 +82670,10 @@
             }
           },
           "top_logprobs": {
-            "type": "integer"
+            "type": [
+              "null",
+              "integer"
+            ]
           },
           "top_p": {
             "type": [
@@ -80772,7 +82683,7 @@
             "format": "double"
           },
           "truncation": {
-            "$ref": "#/components/schemas/Truncation"
+            "$ref": "#/components/schemas/BaseResponsesResultTruncation"
           },
           "usage": {
             "$ref": "#/components/schemas/OpenAiResponsesUsage"
@@ -80830,8 +82741,7 @@
             "type": "integer"
           },
           "error": {
-            "description": "Error information returned from the API",
-            "$ref": "#/components/schemas/ResponsesErrorField"
+            "$ref": "#/components/schemas/BaseResponsesResultError"
           },
           "frequency_penalty": {
             "type": [
@@ -80844,10 +82754,10 @@
             "type": "string"
           },
           "incomplete_details": {
-            "$ref": "#/components/schemas/IncompleteDetails"
+            "$ref": "#/components/schemas/BaseResponsesResultIncompleteDetails"
           },
           "instructions": {
-            "$ref": "#/components/schemas/BaseInputs"
+            "$ref": "#/components/schemas/BaseResponsesResultInstructions"
           },
           "max_output_tokens": {
             "type": [
@@ -80909,7 +82819,7 @@
             "$ref": "#/components/schemas/PromptCacheOptions"
           },
           "reasoning": {
-            "$ref": "#/components/schemas/BaseReasoningConfig"
+            "$ref": "#/components/schemas/BaseResponsesResultReasoning"
           },
           "safety_identifier": {
             "type": [
@@ -80934,8 +82844,7 @@
             "format": "double"
           },
           "text": {
-            "description": "Text output configuration including format and verbosity",
-            "$ref": "#/components/schemas/TextConfig"
+            "$ref": "#/components/schemas/BaseResponsesResultText"
           },
           "tool_choice": {
             "$ref": "#/components/schemas/OpenAiResponsesToolChoice"
@@ -80947,7 +82856,10 @@
             }
           },
           "top_logprobs": {
-            "type": "integer"
+            "type": [
+              "null",
+              "integer"
+            ]
           },
           "top_p": {
             "type": [
@@ -80957,7 +82869,7 @@
             "format": "double"
           },
           "truncation": {
-            "$ref": "#/components/schemas/Truncation"
+            "$ref": "#/components/schemas/BaseResponsesResultTruncation"
           },
           "usage": {
             "$ref": "#/components/schemas/OpenAiResponsesUsage"
@@ -80993,8 +82905,7 @@
       "OpenResponsesResultError": {
         "allOf": [
           {
-            "description": "Error information returned from the API",
-            "$ref": "#/components/schemas/ResponsesErrorField"
+            "$ref": "#/components/schemas/BaseResponsesResultError"
           },
           {
             "description": "Error of a failed response; \u0060metadata\u0060 carries OpenRouter-specific details.",
@@ -81021,7 +82932,6 @@
       "OpenResponsesResultText": {
         "allOf": [
           {
-            "description": "Text output configuration including format and verbosity",
             "$ref": "#/components/schemas/TextConfig"
           },
           {
@@ -81150,8 +83060,7 @@
             "type": "integer"
           },
           "error": {
-            "description": "Error information returned from the API",
-            "$ref": "#/components/schemas/ResponsesErrorField"
+            "$ref": "#/components/schemas/BaseResponsesResultError"
           },
           "frequency_penalty": {
             "type": [
@@ -81164,10 +83073,10 @@
             "type": "string"
           },
           "incomplete_details": {
-            "$ref": "#/components/schemas/IncompleteDetails"
+            "$ref": "#/components/schemas/BaseResponsesResultIncompleteDetails"
           },
           "instructions": {
-            "$ref": "#/components/schemas/BaseInputs"
+            "$ref": "#/components/schemas/BaseResponsesResultInstructions"
           },
           "max_output_tokens": {
             "type": [
@@ -81229,7 +83138,7 @@
             "$ref": "#/components/schemas/PromptCacheOptions"
           },
           "reasoning": {
-            "$ref": "#/components/schemas/BaseReasoningConfig"
+            "$ref": "#/components/schemas/BaseResponsesResultReasoning"
           },
           "safety_identifier": {
             "type": [
@@ -81254,8 +83163,7 @@
             "format": "double"
           },
           "text": {
-            "description": "Text output configuration including format and verbosity",
-            "$ref": "#/components/schemas/TextConfig"
+            "$ref": "#/components/schemas/BaseResponsesResultText"
           },
           "tool_choice": {
             "$ref": "#/components/schemas/OpenAiResponsesToolChoice"
@@ -81267,7 +83175,10 @@
             }
           },
           "top_logprobs": {
-            "type": "integer"
+            "type": [
+              "null",
+              "integer"
+            ]
           },
           "top_p": {
             "type": [
@@ -81277,7 +83188,7 @@
             "format": "double"
           },
           "truncation": {
-            "$ref": "#/components/schemas/Truncation"
+            "$ref": "#/components/schemas/BaseResponsesResultTruncation"
           },
           "usage": {
             "$ref": "#/components/schemas/OpenAiResponsesUsage"
@@ -81335,8 +83246,7 @@
             "type": "integer"
           },
           "error": {
-            "description": "Error information returned from the API",
-            "$ref": "#/components/schemas/ResponsesErrorField"
+            "$ref": "#/components/schemas/BaseResponsesResultError"
           },
           "frequency_penalty": {
             "type": [
@@ -81349,10 +83259,10 @@
             "type": "string"
           },
           "incomplete_details": {
-            "$ref": "#/components/schemas/IncompleteDetails"
+            "$ref": "#/components/schemas/BaseResponsesResultIncompleteDetails"
           },
           "instructions": {
-            "$ref": "#/components/schemas/BaseInputs"
+            "$ref": "#/components/schemas/BaseResponsesResultInstructions"
           },
           "max_output_tokens": {
             "type": [
@@ -81414,7 +83324,7 @@
             "$ref": "#/components/schemas/PromptCacheOptions"
           },
           "reasoning": {
-            "$ref": "#/components/schemas/BaseReasoningConfig"
+            "$ref": "#/components/schemas/BaseResponsesResultReasoning"
           },
           "safety_identifier": {
             "type": [
@@ -81439,8 +83349,7 @@
             "format": "double"
           },
           "text": {
-            "description": "Text output configuration including format and verbosity",
-            "$ref": "#/components/schemas/TextConfig"
+            "$ref": "#/components/schemas/BaseResponsesResultText"
           },
           "tool_choice": {
             "$ref": "#/components/schemas/OpenAiResponsesToolChoice"
@@ -81452,7 +83361,10 @@
             }
           },
           "top_logprobs": {
-            "type": "integer"
+            "type": [
+              "null",
+              "integer"
+            ]
           },
           "top_p": {
             "type": [
@@ -81462,7 +83374,7 @@
             "format": "double"
           },
           "truncation": {
-            "$ref": "#/components/schemas/Truncation"
+            "$ref": "#/components/schemas/BaseResponsesResultTruncation"
           },
           "usage": {
             "$ref": "#/components/schemas/OpenAiResponsesUsage"
@@ -81520,8 +83432,7 @@
             "type": "integer"
           },
           "error": {
-            "description": "Error information returned from the API",
-            "$ref": "#/components/schemas/ResponsesErrorField"
+            "$ref": "#/components/schemas/BaseResponsesResultError"
           },
           "frequency_penalty": {
             "type": [
@@ -81534,10 +83445,10 @@
             "type": "string"
           },
           "incomplete_details": {
-            "$ref": "#/components/schemas/IncompleteDetails"
+            "$ref": "#/components/schemas/BaseResponsesResultIncompleteDetails"
           },
           "instructions": {
-            "$ref": "#/components/schemas/BaseInputs"
+            "$ref": "#/components/schemas/BaseResponsesResultInstructions"
           },
           "max_output_tokens": {
             "type": [
@@ -81599,7 +83510,7 @@
             "$ref": "#/components/schemas/PromptCacheOptions"
           },
           "reasoning": {
-            "$ref": "#/components/schemas/BaseReasoningConfig"
+            "$ref": "#/components/schemas/BaseResponsesResultReasoning"
           },
           "safety_identifier": {
             "type": [
@@ -81624,8 +83535,7 @@
             "format": "double"
           },
           "text": {
-            "description": "Text output configuration including format and verbosity",
-            "$ref": "#/components/schemas/TextConfig"
+            "$ref": "#/components/schemas/BaseResponsesResultText"
           },
           "tool_choice": {
             "$ref": "#/components/schemas/OpenAiResponsesToolChoice"
@@ -81637,7 +83547,10 @@
             }
           },
           "top_logprobs": {
-            "type": "integer"
+            "type": [
+              "null",
+              "integer"
+            ]
           },
           "top_p": {
             "type": [
@@ -81647,7 +83560,7 @@
             "format": "double"
           },
           "truncation": {
-            "$ref": "#/components/schemas/Truncation"
+            "$ref": "#/components/schemas/BaseResponsesResultTruncation"
           },
           "usage": {
             "$ref": "#/components/schemas/OpenAiResponsesUsage"
@@ -83042,6 +84955,13 @@
           "$ref": "#/components/schemas/DecisionsChoiceQuestionCriteriaAdditionalProperties"
         }
       },
+      "DecisionsRequestAssetsProperty": {
+        "type": "object",
+        "additionalProperties": {
+          "$ref": "#/components/schemas/DecisionsImageAsset"
+        },
+        "description": "Images keyed by reference string, as in TypeSafe\u0027s API. Write a reference wherever the image belongs in \u0060state\u0060, \u0060instructions\u0060, or \u0060criteria\u0060; every asset must be referenced at least once. Jev reads a reference as a whole string value or inside longer text. Other Decisions models read a whole-string reference wherever they read an \u0060image_url\u0060 part and reject a reference inside longer text."
+      },
       "DecisionsRequestQuestionsProperty": {
         "type": "object",
         "additionalProperties": {
@@ -83697,6 +85617,10 @@
         "type": "object",
         "additionalProperties": {}
       },
+      "ProviderOptionsParticleAiProperty": {
+        "type": "object",
+        "additionalProperties": {}
+      },
       "ProviderOptionsPerceptronProperty": {
         "type": "object",
         "additionalProperties": {}
@@ -83710,6 +85634,10 @@
         "additionalProperties": {}
       },
       "ProviderOptionsPoolsideProperty": {
+        "type": "object",
+        "additionalProperties": {}
+      },
+      "ProviderOptionsPrimalabsProperty": {
         "type": "object",
         "additionalProperties": {}
       },
@@ -84508,6 +86436,10 @@
         "type": "object",
         "additionalProperties": {}
       },
+      "ImageGenerationProviderPreferencesOptionsParticleAi": {
+        "type": "object",
+        "additionalProperties": {}
+      },
       "ImageGenerationProviderPreferencesOptionsPerceptron": {
         "type": "object",
         "additionalProperties": {}
@@ -84521,6 +86453,10 @@
         "additionalProperties": {}
       },
       "ImageGenerationProviderPreferencesOptionsPoolside": {
+        "type": "object",
+        "additionalProperties": {}
+      },
+      "ImageGenerationProviderPreferencesOptionsPrimalabs": {
         "type": "object",
         "additionalProperties": {}
       },
@@ -85100,6 +87036,10 @@
         "type": "object",
         "additionalProperties": {}
       },
+      "VideoGenerationRequestProviderOptionsParticleAi": {
+        "type": "object",
+        "additionalProperties": {}
+      },
       "VideoGenerationRequestProviderOptionsPerceptron": {
         "type": "object",
         "additionalProperties": {}
@@ -85113,6 +87053,10 @@
         "additionalProperties": {}
       },
       "VideoGenerationRequestProviderOptionsPoolside": {
+        "type": "object",
+        "additionalProperties": {}
+      },
+      "VideoGenerationRequestProviderOptionsPrimalabs": {
         "type": "object",
         "additionalProperties": {}
       },
@@ -91446,6 +93390,33 @@
           ]
         }
       },
+      "DecisionsImageAssetFormat": {
+        "enum": [
+          "png",
+          "jpg",
+          "jpeg"
+        ],
+        "type": "string",
+        "x-speakeasy-unknown-values": "allow",
+        "x-ms-enum": {
+          "name": "DecisionsImageAssetFormat",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "png",
+              "name": "Png"
+            },
+            {
+              "value": "jpg",
+              "name": "Jpg"
+            },
+            {
+              "value": "jpeg",
+              "name": "Jpeg"
+            }
+          ]
+        }
+      },
       "NoulType": {
         "enum": [
           "noul"
@@ -95098,7 +97069,9 @@
           "OpenInference",
           "Parasail",
           "ParetoAlpha",
+          "Particle AI",
           "Poolside",
+          "PrimaLabs",
           "PrimeIntellect",
           "Perceptron",
           "Perplexity",
@@ -95259,6 +97232,10 @@
             {
               "value": "OpenAI",
               "name": "OpenAi"
+            },
+            {
+              "value": "Particle AI",
+              "name": "ParticleAi"
             },
             {
               "value": "Sail Research",
@@ -99953,7 +101930,9 @@
           "OpenInference",
           "Parasail",
           "ParetoAlpha",
+          "Particle AI",
           "Poolside",
+          "PrimaLabs",
           "PrimeIntellect",
           "Perceptron",
           "Perplexity",
@@ -100112,6 +102091,10 @@
             {
               "value": "OpenAI",
               "name": "OpenAi"
+            },
+            {
+              "value": "Particle AI",
+              "name": "ParticleAi"
             },
             {
               "value": "Sail Research",
@@ -103792,6 +105775,7 @@
           "openai",
           "parasail",
           "pareto-alpha",
+          "particle-ai",
           "perceptron",
           "perplexity",
           "phala",
@@ -104154,6 +106138,10 @@
             {
               "value": "pareto-alpha",
               "name": "ParetoAlpha"
+            },
+            {
+              "value": "particle-ai",
+              "name": "ParticleAi"
             },
             {
               "value": "perceptron",
@@ -105165,12 +107153,22 @@
         }
       },
       "AppDisplayName": {
-        "name": "X-Title",
+        "name": "X-OpenRouter-Title",
         "in": "header",
         "description": "The app display name allows you to customize how your app appears in OpenRouter\u0027s dashboard.\n",
         "schema": {
           "type": "string"
-        }
+        },
+        "x-speakeasy-name-override": "appTitle"
+      },
+      "AppCategories": {
+        "name": "X-OpenRouter-Categories",
+        "in": "header",
+        "description": "Comma-separated list of app categories (e.g. \u0022cli-agent,cloud-agent\u0022). Used for marketplace rankings.\n",
+        "schema": {
+          "type": "string"
+        },
+        "x-speakeasy-name-override": "appCategories"
       }
     },
     "securitySchemes": {
@@ -105342,6 +107340,10 @@
     {
       "name": "beta.responses",
       "description": "Deprecated alias of responses. Use responses instead; scheduled for removal (sunset date TBD)."
+    },
+    {
+      "name": "End Users",
+      "description": "Deprecated alias of externalUsers. Use externalUsers instead; scheduled for removal (sunset date TBD)."
     }
   ],
   "externalDocs": {
@@ -105374,6 +107376,9 @@
       },
       {
         "$ref": "#/components/parameters/AppDisplayName"
+      },
+      {
+        "$ref": "#/components/parameters/AppCategories"
       }
     ]
   }

@@ -815,6 +815,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsParetoAlphaProperty ParetoAlpha { get; set; }
 #endif
+        /// <summary>The particleAi property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsParticleAiProperty? ParticleAi { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsParticleAiProperty ParticleAi { get; set; }
+#endif
         /// <summary>The perceptron property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -846,6 +854,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsPoolsideProperty Poolside { get; set; }
+#endif
+        /// <summary>The primalabs property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsPrimalabsProperty? Primalabs { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsPrimalabsProperty Primalabs { get; set; }
 #endif
         /// <summary>The primeintellect property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -1324,10 +1340,12 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "openai", n => { Openai = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsOpenaiProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsOpenaiProperty.CreateFromDiscriminatorValue); } },
                 { "parasail", n => { Parasail = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsParasailProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsParasailProperty.CreateFromDiscriminatorValue); } },
                 { "pareto-alpha", n => { ParetoAlpha = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsParetoAlphaProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsParetoAlphaProperty.CreateFromDiscriminatorValue); } },
+                { "particle-ai", n => { ParticleAi = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsParticleAiProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsParticleAiProperty.CreateFromDiscriminatorValue); } },
                 { "perceptron", n => { Perceptron = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsPerceptronProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsPerceptronProperty.CreateFromDiscriminatorValue); } },
                 { "perplexity", n => { Perplexity = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsPerplexityProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsPerplexityProperty.CreateFromDiscriminatorValue); } },
                 { "phala", n => { Phala = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsPhalaProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsPhalaProperty.CreateFromDiscriminatorValue); } },
                 { "poolside", n => { Poolside = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsPoolsideProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsPoolsideProperty.CreateFromDiscriminatorValue); } },
+                { "primalabs", n => { Primalabs = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsPrimalabsProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsPrimalabsProperty.CreateFromDiscriminatorValue); } },
                 { "primeintellect", n => { Primeintellect = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsPrimeintellectProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsPrimeintellectProperty.CreateFromDiscriminatorValue); } },
                 { "quiver", n => { Quiver = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsQuiverProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsQuiverProperty.CreateFromDiscriminatorValue); } },
                 { "recraft", n => { Recraft = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsRecraftProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsRecraftProperty.CreateFromDiscriminatorValue); } },
@@ -1481,10 +1499,12 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsOpenInferenceProperty>("open-inference", OpenInference);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsParasailProperty>("parasail", Parasail);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsParetoAlphaProperty>("pareto-alpha", ParetoAlpha);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsParticleAiProperty>("particle-ai", ParticleAi);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsPerceptronProperty>("perceptron", Perceptron);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsPerplexityProperty>("perplexity", Perplexity);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsPhalaProperty>("phala", Phala);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsPoolsideProperty>("poolside", Poolside);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsPrimalabsProperty>("primalabs", Primalabs);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsPrimeintellectProperty>("primeintellect", Primeintellect);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsQuiverProperty>("quiver", Quiver);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsRecraftProperty>("recraft", Recraft);

@@ -22,12 +22,22 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public string BaseUrl { get; set; }
 #endif
+        /// <summary>Parameters you declared the upstream supports. Requests that use a parameter only route to this endpoint when it is tested or declared.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? DeclaredParameters { get; set; }
+#nullable restore
+#else
+        public List<string> DeclaredParameters { get; set; }
+#endif
         /// <summary>Where you attest this deployment processes data. `global` means not regional; `null` means undeclared.</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointDeclaredRegion? DeclaredRegion { get; set; }
         /// <summary>Whether you attest this deployment retains no prompt or completion data. `null` means undeclared.</summary>
         public bool? DeclaredZdr { get; set; }
         /// <summary>Stable identifier of the private endpoint.</summary>
         public Guid? Id { get; set; }
+        /// <summary>Most completion tokens a request routed to this endpoint can produce, or `null` when the endpoint sets no cap beyond the model context length.</summary>
+        public int? MaxCompletionTokens { get; set; }
         /// <summary>Display name of the model, or `null` when the model is no longer listed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -78,6 +88,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #endif
         /// <summary>Lifecycle state. `draft` endpoints are not routable until validated and activated; `disabled` endpoints are activated but temporarily not routable.</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointStatus? Status { get; set; }
+        /// <summary>Parameters a validation run proved the upstream honors (`tools`, `tool_choice`, `response_format`, `structured_outputs`, `stop`). Read-only; cleared when the upstream configuration changes.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? TestedParameters { get; set; }
+#nullable restore
+#else
+        public List<string> TestedParameters { get; set; }
+#endif
         /// <summary>Model or deployment identifier sent to the upstream provider.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -112,9 +130,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "base_url", n => { BaseUrl = n.GetStringValue(); } },
+                { "declared_parameters", n => { DeclaredParameters = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "declared_region", n => { DeclaredRegion = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointDeclaredRegion>(); } },
                 { "declared_zdr", n => { DeclaredZdr = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
+                { "max_completion_tokens", n => { MaxCompletionTokens = n.GetIntValue(); } },
                 { "model_name", n => { ModelName = n.GetStringValue(); } },
                 { "model_permaslug", n => { ModelPermaslug = n.GetStringValue(); } },
                 { "model_slug", n => { ModelSlug = n.GetStringValue(); } },
@@ -122,6 +142,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "provider_name", n => { ProviderName = n.GetStringValue(); } },
                 { "provider_slug", n => { ProviderSlug = n.GetStringValue(); } },
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointStatus>(); } },
+                { "tested_parameters", n => { TestedParameters = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "upstream_model_id", n => { UpstreamModelId = n.GetStringValue(); } },
             };
         }
@@ -133,9 +154,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("base_url", BaseUrl);
+            writer.WriteCollectionOfPrimitiveValues<string>("declared_parameters", DeclaredParameters);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointDeclaredRegion>("declared_region", DeclaredRegion);
             writer.WriteBoolValue("declared_zdr", DeclaredZdr);
             writer.WriteGuidValue("id", Id);
+            writer.WriteIntValue("max_completion_tokens", MaxCompletionTokens);
             writer.WriteStringValue("model_name", ModelName);
             writer.WriteStringValue("model_permaslug", ModelPermaslug);
             writer.WriteStringValue("model_slug", ModelSlug);
@@ -143,6 +166,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteStringValue("provider_name", ProviderName);
             writer.WriteStringValue("provider_slug", ProviderSlug);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointStatus>("status", Status);
+            writer.WriteCollectionOfPrimitiveValues<string>("tested_parameters", TestedParameters);
             writer.WriteStringValue("upstream_model_id", UpstreamModelId);
             writer.WriteAdditionalData(AdditionalData);
         }

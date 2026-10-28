@@ -22,6 +22,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public List<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointCheck> Checks { get; set; }
 #endif
+        /// <summary>Request parameters probed after the checks passed, each with whether the upstream honored it. Supported ones are recorded in `tested_parameters`. Absent on a failed run and for providers that run no parameter probes; empty when every probe group was already proven.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointParameterCheck>? Parameters { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointParameterCheck> Parameters { get; set; }
+#endif
         /// <summary>Whether every check passed.</summary>
         public bool? Passed { get; set; }
         /// <summary>
@@ -50,6 +58,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "checks", n => { Checks = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointCheck>(global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointCheck.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "parameters", n => { Parameters = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointParameterCheck>(global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointParameterCheck.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "passed", n => { Passed = n.GetBoolValue(); } },
             };
         }
@@ -61,6 +70,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointCheck>("checks", Checks);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointParameterCheck>("parameters", Parameters);
             writer.WriteBoolValue("passed", Passed);
             writer.WriteAdditionalData(AdditionalData);
         }

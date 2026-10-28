@@ -814,6 +814,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsParetoAlpha ParetoAlpha { get; set; }
 #endif
+        /// <summary>The particleAi property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsParticleAi? ParticleAi { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsParticleAi ParticleAi { get; set; }
+#endif
         /// <summary>The perceptron property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -845,6 +853,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPoolside Poolside { get; set; }
+#endif
+        /// <summary>The primalabs property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPrimalabs? Primalabs { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPrimalabs Primalabs { get; set; }
 #endif
         /// <summary>The primeintellect property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -1323,10 +1339,12 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "openai", n => { Openai = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsOpenai>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsOpenai.CreateFromDiscriminatorValue); } },
                 { "parasail", n => { Parasail = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsParasail>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsParasail.CreateFromDiscriminatorValue); } },
                 { "pareto-alpha", n => { ParetoAlpha = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsParetoAlpha>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsParetoAlpha.CreateFromDiscriminatorValue); } },
+                { "particle-ai", n => { ParticleAi = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsParticleAi>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsParticleAi.CreateFromDiscriminatorValue); } },
                 { "perceptron", n => { Perceptron = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPerceptron>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPerceptron.CreateFromDiscriminatorValue); } },
                 { "perplexity", n => { Perplexity = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPerplexity>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPerplexity.CreateFromDiscriminatorValue); } },
                 { "phala", n => { Phala = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPhala>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPhala.CreateFromDiscriminatorValue); } },
                 { "poolside", n => { Poolside = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPoolside>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPoolside.CreateFromDiscriminatorValue); } },
+                { "primalabs", n => { Primalabs = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPrimalabs>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPrimalabs.CreateFromDiscriminatorValue); } },
                 { "primeintellect", n => { Primeintellect = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPrimeintellect>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPrimeintellect.CreateFromDiscriminatorValue); } },
                 { "quiver", n => { Quiver = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsQuiver>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsQuiver.CreateFromDiscriminatorValue); } },
                 { "recraft", n => { Recraft = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsRecraft>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsRecraft.CreateFromDiscriminatorValue); } },
@@ -1480,10 +1498,12 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsOpenInference>("open-inference", OpenInference);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsParasail>("parasail", Parasail);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsParetoAlpha>("pareto-alpha", ParetoAlpha);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsParticleAi>("particle-ai", ParticleAi);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPerceptron>("perceptron", Perceptron);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPerplexity>("perplexity", Perplexity);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPhala>("phala", Phala);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPoolside>("poolside", Poolside);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPrimalabs>("primalabs", Primalabs);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPrimeintellect>("primeintellect", Primeintellect);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsQuiver>("quiver", Quiver);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsRecraft>("recraft", Recraft);

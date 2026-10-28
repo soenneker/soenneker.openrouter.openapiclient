@@ -814,6 +814,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsParetoAlpha ParetoAlpha { get; set; }
 #endif
+        /// <summary>The particleAi property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsParticleAi? ParticleAi { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsParticleAi ParticleAi { get; set; }
+#endif
         /// <summary>The perceptron property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -845,6 +853,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsPoolside Poolside { get; set; }
+#endif
+        /// <summary>The primalabs property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsPrimalabs? Primalabs { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsPrimalabs Primalabs { get; set; }
 #endif
         /// <summary>The primeintellect property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -1323,10 +1339,12 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "openai", n => { Openai = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsOpenai>(global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsOpenai.CreateFromDiscriminatorValue); } },
                 { "parasail", n => { Parasail = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsParasail>(global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsParasail.CreateFromDiscriminatorValue); } },
                 { "pareto-alpha", n => { ParetoAlpha = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsParetoAlpha>(global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsParetoAlpha.CreateFromDiscriminatorValue); } },
+                { "particle-ai", n => { ParticleAi = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsParticleAi>(global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsParticleAi.CreateFromDiscriminatorValue); } },
                 { "perceptron", n => { Perceptron = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsPerceptron>(global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsPerceptron.CreateFromDiscriminatorValue); } },
                 { "perplexity", n => { Perplexity = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsPerplexity>(global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsPerplexity.CreateFromDiscriminatorValue); } },
                 { "phala", n => { Phala = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsPhala>(global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsPhala.CreateFromDiscriminatorValue); } },
                 { "poolside", n => { Poolside = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsPoolside>(global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsPoolside.CreateFromDiscriminatorValue); } },
+                { "primalabs", n => { Primalabs = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsPrimalabs>(global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsPrimalabs.CreateFromDiscriminatorValue); } },
                 { "primeintellect", n => { Primeintellect = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsPrimeintellect>(global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsPrimeintellect.CreateFromDiscriminatorValue); } },
                 { "quiver", n => { Quiver = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsQuiver>(global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsQuiver.CreateFromDiscriminatorValue); } },
                 { "recraft", n => { Recraft = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsRecraft>(global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsRecraft.CreateFromDiscriminatorValue); } },
@@ -1480,10 +1498,12 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsOpenInference>("open-inference", OpenInference);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsParasail>("parasail", Parasail);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsParetoAlpha>("pareto-alpha", ParetoAlpha);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsParticleAi>("particle-ai", ParticleAi);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsPerceptron>("perceptron", Perceptron);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsPerplexity>("perplexity", Perplexity);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsPhala>("phala", Phala);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsPoolside>("poolside", Poolside);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsPrimalabs>("primalabs", Primalabs);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsPrimeintellect>("primeintellect", Primeintellect);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsQuiver>("quiver", Quiver);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsRecraft>("recraft", Recraft);

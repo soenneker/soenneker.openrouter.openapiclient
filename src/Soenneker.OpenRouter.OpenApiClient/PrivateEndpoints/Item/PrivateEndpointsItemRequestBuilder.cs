@@ -7,6 +7,7 @@ using Soenneker.OpenRouter.OpenApiClient.Models;
 using Soenneker.OpenRouter.OpenApiClient.PrivateEndpoints.Item.Activate;
 using Soenneker.OpenRouter.OpenApiClient.PrivateEndpoints.Item.Disable;
 using Soenneker.OpenRouter.OpenApiClient.PrivateEndpoints.Item.Enable;
+using Soenneker.OpenRouter.OpenApiClient.PrivateEndpoints.Item.Parameters;
 using Soenneker.OpenRouter.OpenApiClient.PrivateEndpoints.Item.Pricing;
 using Soenneker.OpenRouter.OpenApiClient.PrivateEndpoints.Item.Validate;
 using System.Collections.Generic;
@@ -36,6 +37,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.PrivateEndpoints.Item
         public global::Soenneker.OpenRouter.OpenApiClient.PrivateEndpoints.Item.Enable.EnableRequestBuilder Enable
         {
             get => new global::Soenneker.OpenRouter.OpenApiClient.PrivateEndpoints.Item.Enable.EnableRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The parameters property</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.PrivateEndpoints.Item.Parameters.ParametersRequestBuilder Parameters
+        {
+            get => new global::Soenneker.OpenRouter.OpenApiClient.PrivateEndpoints.Item.Parameters.ParametersRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The pricing property</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.PrivateEndpoints.Item.Pricing.PricingRequestBuilder Pricing

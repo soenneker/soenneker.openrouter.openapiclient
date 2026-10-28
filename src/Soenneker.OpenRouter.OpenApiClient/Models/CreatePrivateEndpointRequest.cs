@@ -30,10 +30,20 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public string BaseUrl { get; set; }
 #endif
+        /// <summary>Parameters the upstream supports beyond the tested ones. Replaces the earlier declaration; tested parameters stay. Order and repeated names are ignored, but the list holds at most as many entries as there are declarable parameters, repeats included. `tool_choice` requires `tools` to be tested or declared.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointDeclaredParameter?>? DeclaredParameters { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointDeclaredParameter?> DeclaredParameters { get; set; }
+#endif
         /// <summary>Attest where this deployment processes data.</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.CreatePrivateEndpointRequestDeclaredRegion? DeclaredRegion { get; set; }
         /// <summary>Attest that this deployment retains no prompt or completion data.</summary>
         public bool? DeclaredZdr { get; set; }
+        /// <summary>Cap on completion tokens per request. Requests asking for more skip this endpoint, and the default output length stays within it. When omitted, the cap is copied from the public endpoint for the same model and provider, if there is one.</summary>
+        public int? MaxCompletionTokens { get; set; }
         /// <summary>Permanent slug of the model this endpoint serves.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -93,8 +103,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             {
                 { "activate", n => { Activate = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointActivation>(global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointActivation.CreateFromDiscriminatorValue); } },
                 { "base_url", n => { BaseUrl = n.GetStringValue(); } },
+                { "declared_parameters", n => { DeclaredParameters = n.GetCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointDeclaredParameter>()?.AsList(); } },
                 { "declared_region", n => { DeclaredRegion = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.CreatePrivateEndpointRequestDeclaredRegion>(); } },
                 { "declared_zdr", n => { DeclaredZdr = n.GetBoolValue(); } },
+                { "max_completion_tokens", n => { MaxCompletionTokens = n.GetIntValue(); } },
                 { "model_permaslug", n => { ModelPermaslug = n.GetStringValue(); } },
                 { "pricing", n => { Pricing = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointPricing>(global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointPricing.CreateFromDiscriminatorValue); } },
                 { "provider_slug", n => { ProviderSlug = n.GetStringValue(); } },
@@ -110,8 +122,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointActivation>("activate", Activate);
             writer.WriteStringValue("base_url", BaseUrl);
+            writer.WriteCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointDeclaredParameter>("declared_parameters", DeclaredParameters);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.CreatePrivateEndpointRequestDeclaredRegion>("declared_region", DeclaredRegion);
             writer.WriteBoolValue("declared_zdr", DeclaredZdr);
+            writer.WriteIntValue("max_completion_tokens", MaxCompletionTokens);
             writer.WriteStringValue("model_permaslug", ModelPermaslug);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointPricing>("pricing", Pricing);
             writer.WriteStringValue("provider_slug", ProviderSlug);

@@ -37,7 +37,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #endif
         /// <summary>Upper bound on the number of images to generate (1-10). Providers may return fewer images, and providers that only support single-image generation reject n &gt; 1.</summary>
         public int? N { get; set; }
-        /// <summary>Compression level (0-100) for jpeg/webp output. Ignored by providers without a compression knob; providers that honor it may reject it with other output formats (e.g. OpenAI requires output_format &quot;jpeg&quot; or &quot;webp&quot;).</summary>
+        /// <summary>Compression level (0-100) for webp/jpeg output. Ignored for png and by providers without a compression knob.</summary>
         public int? OutputCompression { get; set; }
         /// <summary>Encoding of the returned image bytes. Most models produce raster formats (png, jpeg, webp). SVG is supported by vectorization models (e.g. Quiver) — the SVG markup is UTF-8 base64-encoded in `b64_json`.</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationRequestOutputFormat? OutputFormat { get; set; }

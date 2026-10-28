@@ -14,6 +14,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Images keyed by reference string, as in TypeSafe&apos;s API. Write a reference wherever the image belongs in `state`, `instructions`, or `criteria`; every asset must be referenced at least once. Jev reads a reference as a whole string value or inside longer text. Other Decisions models read a whole-string reference wherever they read an `image_url` part and reject a reference inside longer text.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.DecisionsRequestAssetsProperty? Assets { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.DecisionsRequestAssetsProperty Assets { get; set; }
+#endif
         /// <summary>The model property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -95,6 +103,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "assets", n => { Assets = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.DecisionsRequestAssetsProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.DecisionsRequestAssetsProperty.CreateFromDiscriminatorValue); } },
                 { "model", n => { Model = n.GetStringValue(); } },
                 { "provider", n => { Provider = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.DecisionsRequestProvider>(global::Soenneker.OpenRouter.OpenApiClient.Models.DecisionsRequestProvider.CreateFromDiscriminatorValue); } },
                 { "questions", n => { Questions = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.DecisionsRequestQuestionsProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.DecisionsRequestQuestionsProperty.CreateFromDiscriminatorValue); } },
@@ -111,6 +120,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.DecisionsRequestAssetsProperty>("assets", Assets);
             writer.WriteStringValue("model", Model);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.DecisionsRequestProvider>("provider", Provider);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.DecisionsRequestQuestionsProperty>("questions", Questions);

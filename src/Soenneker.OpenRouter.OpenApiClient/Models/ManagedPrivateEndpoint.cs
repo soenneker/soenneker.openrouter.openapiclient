@@ -28,6 +28,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public bool? DeclaredZdr { get; set; }
         /// <summary>Stable identifier of the private endpoint.</summary>
         public Guid? Id { get; set; }
+        /// <summary>Most completion tokens a request routed to this endpoint can produce, or `null` when the endpoint sets no cap beyond the model context length.</summary>
+        public int? MaxCompletionTokens { get; set; }
         /// <summary>Display name of the model, or `null` when the model is no longer listed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -91,6 +93,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "declared_region", n => { DeclaredRegion = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointDeclaredRegion>(); } },
                 { "declared_zdr", n => { DeclaredZdr = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
+                { "max_completion_tokens", n => { MaxCompletionTokens = n.GetIntValue(); } },
                 { "model_name", n => { ModelName = n.GetStringValue(); } },
                 { "model_permaslug", n => { ModelPermaslug = n.GetStringValue(); } },
                 { "model_slug", n => { ModelSlug = n.GetStringValue(); } },
@@ -109,6 +112,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointDeclaredRegion>("declared_region", DeclaredRegion);
             writer.WriteBoolValue("declared_zdr", DeclaredZdr);
             writer.WriteGuidValue("id", Id);
+            writer.WriteIntValue("max_completion_tokens", MaxCompletionTokens);
             writer.WriteStringValue("model_name", ModelName);
             writer.WriteStringValue("model_permaslug", ModelPermaslug);
             writer.WriteStringValue("model_slug", ModelSlug);
