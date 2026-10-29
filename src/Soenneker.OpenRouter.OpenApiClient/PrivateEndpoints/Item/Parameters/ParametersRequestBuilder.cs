@@ -34,7 +34,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.PrivateEndpoints.Item.Parameters
         {
         }
         /// <summary>
-        /// Declare which request parameters the upstream supports beyond the ones validation proved. Applies to drafts and active endpoints; routing picks the change up for subsequent requests. The body replaces the earlier declaration and is read as a set: order and repeated names do not matter, but the list holds at most as many entries as there are declarable parameters, repeats included. `tested_parameters` stay. Returns 400 `parameters_invalid` when `tool_choice` is declared without `tools` being tested or declared. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+        /// Deprecated: send `declared_parameters` to `PATCH /private-endpoints/{id}` instead; this route behaves exactly like that call and will be removed. The body replaces the earlier declaration and is read as a set; `tested_parameters` stay. Returns 400 `parameters_invalid` when `tool_choice` is declared without `tools` being tested or declared. [Management key](/docs/guides/overview/auth/management-api-keys) required.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointResponse"/></returns>
         /// <param name="body">The request body</param>
@@ -49,6 +49,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.PrivateEndpoints.Item.Parameters
         /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.UnprocessableEntityResponse">When receiving a 422 status code</exception>
         /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.InternalServerResponse">When receiving a 500 status code</exception>
         /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BadGatewayResponse">When receiving a 502 status code</exception>
+        [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointResponse?> PutAsync(global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointParametersRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -75,11 +76,12 @@ namespace Soenneker.OpenRouter.OpenApiClient.PrivateEndpoints.Item.Parameters
             return await RequestAdapter.SendAsync<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointResponse>(requestInfo, global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Declare which request parameters the upstream supports beyond the ones validation proved. Applies to drafts and active endpoints; routing picks the change up for subsequent requests. The body replaces the earlier declaration and is read as a set: order and repeated names do not matter, but the list holds at most as many entries as there are declarable parameters, repeats included. `tested_parameters` stay. Returns 400 `parameters_invalid` when `tool_choice` is declared without `tools` being tested or declared. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+        /// Deprecated: send `declared_parameters` to `PATCH /private-endpoints/{id}` instead; this route behaves exactly like that call and will be removed. The body replaces the earlier declaration and is read as a set; `tested_parameters` stay. Returns 400 `parameters_invalid` when `tool_choice` is declared without `tools` being tested or declared. [Management key](/docs/guides/overview/auth/management-api-keys) required.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public RequestInformation ToPutRequestInformation(global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointParametersRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
@@ -101,6 +103,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.PrivateEndpoints.Item.Parameters
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.PrivateEndpoints.Item.Parameters.ParametersRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
+        [Obsolete("")]
         public global::Soenneker.OpenRouter.OpenApiClient.PrivateEndpoints.Item.Parameters.ParametersRequestBuilder WithUrl(string rawUrl)
         {
             return new global::Soenneker.OpenRouter.OpenApiClient.PrivateEndpoints.Item.Parameters.ParametersRequestBuilder(rawUrl, RequestAdapter);

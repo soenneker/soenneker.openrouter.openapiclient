@@ -7,10 +7,11 @@ using System.IO;
 using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
+    /// <summary>
+    /// Only the fields present change. `base_url`, `upstream_model_id`, `declared_zdr` and `declared_region` are accepted on a draft only; `pricing` and `declared_parameters` replace their value; `settings` is itself a partial update where `null` clears a limit or restores the provider default.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public partial class UpdatePrivateEndpointRequest : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -22,10 +23,34 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public string BaseUrl { get; set; }
 #endif
+        /// <summary>Parameters the upstream supports beyond the tested ones. Replaces the earlier declaration; tested parameters stay. Order and repeated names are ignored, but the list holds at most as many entries as there are declarable parameters, repeats included. `tool_choice` requires `tools` to be tested or declared.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointDeclaredParameter?>? DeclaredParameters { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointDeclaredParameter?> DeclaredParameters { get; set; }
+#endif
         /// <summary>Attest where this deployment processes data.</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointRequestDeclaredRegion? DeclaredRegion { get; set; }
         /// <summary>Attest that this deployment retains no prompt or completion data.</summary>
         public bool? DeclaredZdr { get; set; }
+        /// <summary>Replaces the whole pricing object: omitting `cache_read` or `cache_write` reverts that rate to the pricing strategy default.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointRequestPricing? Pricing { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointRequestPricing Pricing { get; set; }
+#endif
+        /// <summary>Only the fields present change; an omitted field keeps its stored value and `null` clears a limit or reverts a flag to the provider default.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointRequestSettings? Settings { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointRequestSettings Settings { get; set; }
+#endif
         /// <summary>Model or deployment identifier sent to the upstream provider.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -60,8 +85,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "base_url", n => { BaseUrl = n.GetStringValue(); } },
+                { "declared_parameters", n => { DeclaredParameters = n.GetCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointDeclaredParameter>()?.AsList(); } },
                 { "declared_region", n => { DeclaredRegion = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointRequestDeclaredRegion>(); } },
                 { "declared_zdr", n => { DeclaredZdr = n.GetBoolValue(); } },
+                { "pricing", n => { Pricing = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointRequestPricing>(global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointRequestPricing.CreateFromDiscriminatorValue); } },
+                { "settings", n => { Settings = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointRequestSettings>(global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointRequestSettings.CreateFromDiscriminatorValue); } },
                 { "upstream_model_id", n => { UpstreamModelId = n.GetStringValue(); } },
             };
         }
@@ -73,8 +101,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("base_url", BaseUrl);
+            writer.WriteCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointDeclaredParameter>("declared_parameters", DeclaredParameters);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointRequestDeclaredRegion>("declared_region", DeclaredRegion);
             writer.WriteBoolValue("declared_zdr", DeclaredZdr);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointRequestPricing>("pricing", Pricing);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointRequestSettings>("settings", Settings);
             writer.WriteStringValue("upstream_model_id", UpstreamModelId);
             writer.WriteAdditionalData(AdditionalData);
         }

@@ -86,6 +86,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public string ProviderSlug { get; set; }
 #endif
+        /// <summary>Capabilities and limits routing uses for this endpoint. A new endpoint copies them from the public endpoint for the same model and provider, or from the model, and the owner can change them. Rate limits are not part of this object: a private endpoint is billed to its own upstream key, so request limits stay with the provider.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointSettings? Settings { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointSettings Settings { get; set; }
+#endif
         /// <summary>Lifecycle state. `draft` endpoints are not routable until validated and activated; `disabled` endpoints are activated but temporarily not routable.</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointStatus? Status { get; set; }
         /// <summary>Parameters a validation run proved the upstream honors (`tools`, `tool_choice`, `response_format`, `structured_outputs`, `stop`). Read-only; cleared when the upstream configuration changes.</summary>
@@ -141,6 +149,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "pricing", n => { Pricing = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointPricing>(global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointPricing.CreateFromDiscriminatorValue); } },
                 { "provider_name", n => { ProviderName = n.GetStringValue(); } },
                 { "provider_slug", n => { ProviderSlug = n.GetStringValue(); } },
+                { "settings", n => { Settings = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointSettings>(global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointSettings.CreateFromDiscriminatorValue); } },
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointStatus>(); } },
                 { "tested_parameters", n => { TestedParameters = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "upstream_model_id", n => { UpstreamModelId = n.GetStringValue(); } },
@@ -165,6 +174,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointPricing>("pricing", Pricing);
             writer.WriteStringValue("provider_name", ProviderName);
             writer.WriteStringValue("provider_slug", ProviderSlug);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointSettings>("settings", Settings);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointStatus>("status", Status);
             writer.WriteCollectionOfPrimitiveValues<string>("tested_parameters", TestedParameters);
             writer.WriteStringValue("upstream_model_id", UpstreamModelId);

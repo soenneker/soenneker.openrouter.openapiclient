@@ -8,18 +8,34 @@ using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     /// <summary>
-    /// OpenRouter extension. Same as the system message `configuration_update`: changes reasoning effort from this point in the conversation onward without invalidating the prompt cache for the preceding turns.
+    /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ChatDeveloperMessageConfigurationUpdateMember1"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ChatDeveloperMessageConfigurationUpdateMember2"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ConfigurationUpdate"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class ChatDeveloperMessageConfigurationUpdate : IParsable
+    public partial class ChatDeveloperMessageConfigurationUpdate : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Reasoning settings applied from this point in the conversation onward</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ChatDeveloperMessageConfigurationUpdateMember1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ConfigurationUpdateReasoning? Reasoning { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatDeveloperMessageConfigurationUpdateMember1? ChatDeveloperMessageConfigurationUpdateMember1 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ConfigurationUpdateReasoning Reasoning { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatDeveloperMessageConfigurationUpdateMember1 ChatDeveloperMessageConfigurationUpdateMember1 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ChatDeveloperMessageConfigurationUpdateMember2"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatDeveloperMessageConfigurationUpdateMember2? ChatDeveloperMessageConfigurationUpdateMember2 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatDeveloperMessageConfigurationUpdateMember2 ChatDeveloperMessageConfigurationUpdateMember2 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ConfigurationUpdate"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ConfigurationUpdate? ConfigurationUpdate { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ConfigurationUpdate ConfigurationUpdate { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -29,7 +45,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public static global::Soenneker.OpenRouter.OpenApiClient.Models.ChatDeveloperMessageConfigurationUpdate CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.OpenRouter.OpenApiClient.Models.ChatDeveloperMessageConfigurationUpdate();
+            var result = new global::Soenneker.OpenRouter.OpenApiClient.Models.ChatDeveloperMessageConfigurationUpdate();
+            result.ChatDeveloperMessageConfigurationUpdateMember1 = new global::Soenneker.OpenRouter.OpenApiClient.Models.ChatDeveloperMessageConfigurationUpdateMember1();
+            result.ChatDeveloperMessageConfigurationUpdateMember2 = new global::Soenneker.OpenRouter.OpenApiClient.Models.ChatDeveloperMessageConfigurationUpdateMember2();
+            result.ConfigurationUpdate = new global::Soenneker.OpenRouter.OpenApiClient.Models.ConfigurationUpdate();
+            return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -37,10 +57,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            if(ChatDeveloperMessageConfigurationUpdateMember1 != null || ChatDeveloperMessageConfigurationUpdateMember2 != null || ConfigurationUpdate != null)
             {
-                { "reasoning", n => { Reasoning = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ConfigurationUpdateReasoning>(global::Soenneker.OpenRouter.OpenApiClient.Models.ConfigurationUpdateReasoning.CreateFromDiscriminatorValue); } },
-            };
+                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(ChatDeveloperMessageConfigurationUpdateMember1, ChatDeveloperMessageConfigurationUpdateMember2, ConfigurationUpdate);
+            }
+            return new Dictionary<string, Action<IParseNode>>();
         }
         /// <summary>
         /// Serializes information the current object
@@ -49,7 +70,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ConfigurationUpdateReasoning>("reasoning", Reasoning);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatDeveloperMessageConfigurationUpdateMember1>(null, ChatDeveloperMessageConfigurationUpdateMember1, ChatDeveloperMessageConfigurationUpdateMember2, ConfigurationUpdate);
         }
     }
 }

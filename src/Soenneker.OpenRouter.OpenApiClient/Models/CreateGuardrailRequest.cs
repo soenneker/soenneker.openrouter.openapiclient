@@ -72,6 +72,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public bool? EnableFreeModelTraining { get; set; }
         /// <summary>Whether this guardrail allows paid endpoints that train on request data.</summary>
         public bool? EnablePaidModelTraining { get; set; }
+        /// <summary>Whether coding harnesses list only their vendor&apos;s own models: Codex lists OpenAI models and Claude Code and Claude Desktop list Anthropic models. Affects only the model list those harnesses request from GET /models; a model the client names directly is still routed. Any true across the workspace default, member, and API key guardrails applies.</summary>
+        public bool? EnforceFirstPartyHarnessModels { get; set; }
         /// <summary>Deprecated. Use enforce_zdr_anthropic, enforce_zdr_openai, enforce_zdr_google, enforce_zdr_xai, and enforce_zdr_other instead. When provided, its value is copied into any of those per-provider fields that are not explicitly specified on the request.</summary>
         [Obsolete("")]
         public bool? EnforceZdr { get; set; }
@@ -153,6 +155,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "enable_free_model_publication", n => { EnableFreeModelPublication = n.GetBoolValue(); } },
                 { "enable_free_model_training", n => { EnableFreeModelTraining = n.GetBoolValue(); } },
                 { "enable_paid_model_training", n => { EnablePaidModelTraining = n.GetBoolValue(); } },
+                { "enforce_first_party_harness_models", n => { EnforceFirstPartyHarnessModels = n.GetBoolValue(); } },
                 { "enforce_zdr", n => { EnforceZdr = n.GetBoolValue(); } },
                 { "enforce_zdr_anthropic", n => { EnforceZdrAnthropic = n.GetBoolValue(); } },
                 { "enforce_zdr_google", n => { EnforceZdrGoogle = n.GetBoolValue(); } },
@@ -186,6 +189,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteBoolValue("enable_free_model_publication", EnableFreeModelPublication);
             writer.WriteBoolValue("enable_free_model_training", EnableFreeModelTraining);
             writer.WriteBoolValue("enable_paid_model_training", EnablePaidModelTraining);
+            writer.WriteBoolValue("enforce_first_party_harness_models", EnforceFirstPartyHarnessModels);
             writer.WriteBoolValue("enforce_zdr", EnforceZdr);
             writer.WriteBoolValue("enforce_zdr_anthropic", EnforceZdrAnthropic);
             writer.WriteBoolValue("enforce_zdr_google", EnforceZdrGoogle);

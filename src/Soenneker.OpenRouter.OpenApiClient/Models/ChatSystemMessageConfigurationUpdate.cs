@@ -8,18 +8,34 @@ using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     /// <summary>
-    /// OpenRouter extension. Changes reasoning effort from this point in the conversation onward without invalidating the prompt cache for the preceding turns. Place it on a content-less system message (`content: &quot;&quot;`) directly before the user message it should apply to, and keep it at that position in later requests. Equivalent to the OpenAI Responses `configuration_update` input item and the Anthropic Messages per-message `output_config.effort`.
+    /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ChatSystemMessageConfigurationUpdateMember1"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ChatSystemMessageConfigurationUpdateMember2"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ConfigurationUpdate"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class ChatSystemMessageConfigurationUpdate : IParsable
+    public partial class ChatSystemMessageConfigurationUpdate : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Reasoning settings applied from this point in the conversation onward</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ChatSystemMessageConfigurationUpdateMember1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ConfigurationUpdateReasoning? Reasoning { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatSystemMessageConfigurationUpdateMember1? ChatSystemMessageConfigurationUpdateMember1 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ConfigurationUpdateReasoning Reasoning { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatSystemMessageConfigurationUpdateMember1 ChatSystemMessageConfigurationUpdateMember1 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ChatSystemMessageConfigurationUpdateMember2"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatSystemMessageConfigurationUpdateMember2? ChatSystemMessageConfigurationUpdateMember2 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatSystemMessageConfigurationUpdateMember2 ChatSystemMessageConfigurationUpdateMember2 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ConfigurationUpdate"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ConfigurationUpdate? ConfigurationUpdate { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ConfigurationUpdate ConfigurationUpdate { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -29,7 +45,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public static global::Soenneker.OpenRouter.OpenApiClient.Models.ChatSystemMessageConfigurationUpdate CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.OpenRouter.OpenApiClient.Models.ChatSystemMessageConfigurationUpdate();
+            var result = new global::Soenneker.OpenRouter.OpenApiClient.Models.ChatSystemMessageConfigurationUpdate();
+            result.ChatSystemMessageConfigurationUpdateMember1 = new global::Soenneker.OpenRouter.OpenApiClient.Models.ChatSystemMessageConfigurationUpdateMember1();
+            result.ChatSystemMessageConfigurationUpdateMember2 = new global::Soenneker.OpenRouter.OpenApiClient.Models.ChatSystemMessageConfigurationUpdateMember2();
+            result.ConfigurationUpdate = new global::Soenneker.OpenRouter.OpenApiClient.Models.ConfigurationUpdate();
+            return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -37,10 +57,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            if(ChatSystemMessageConfigurationUpdateMember1 != null || ChatSystemMessageConfigurationUpdateMember2 != null || ConfigurationUpdate != null)
             {
-                { "reasoning", n => { Reasoning = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ConfigurationUpdateReasoning>(global::Soenneker.OpenRouter.OpenApiClient.Models.ConfigurationUpdateReasoning.CreateFromDiscriminatorValue); } },
-            };
+                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(ChatSystemMessageConfigurationUpdateMember1, ChatSystemMessageConfigurationUpdateMember2, ConfigurationUpdate);
+            }
+            return new Dictionary<string, Action<IParseNode>>();
         }
         /// <summary>
         /// Serializes information the current object
@@ -49,7 +70,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ConfigurationUpdateReasoning>("reasoning", Reasoning);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatSystemMessageConfigurationUpdateMember1>(null, ChatSystemMessageConfigurationUpdateMember1, ChatSystemMessageConfigurationUpdateMember2, ConfigurationUpdate);
         }
     }
 }

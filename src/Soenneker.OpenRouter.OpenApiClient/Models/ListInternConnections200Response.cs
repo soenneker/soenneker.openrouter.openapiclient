@@ -22,6 +22,22 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ListInternConnections200ResponseDataItem> Data { get; set; }
 #endif
+        /// <summary>The intern&apos;s routing table, for the intern&apos;s own key only; null for any other caller or when the vault could not build it in time. The keys still list.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTable? Routing { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTable Routing { get; set; }
+#endif
+        /// <summary>The routing table as the plain lines the intern reads in its instructions&apos; Connections section, or a notice that it could not be read; null for a caller other than the intern.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? RoutingText { get; set; }
+#nullable restore
+#else
+        public string RoutingText { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ListInternConnections200Response"/> and sets the default values.
         /// </summary>
@@ -48,6 +64,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "data", n => { Data = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ListInternConnections200ResponseDataItem>(global::Soenneker.OpenRouter.OpenApiClient.Models.ListInternConnections200ResponseDataItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "routing", n => { Routing = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTable>(global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTable.CreateFromDiscriminatorValue); } },
+                { "routing_text", n => { RoutingText = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -58,6 +76,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ListInternConnections200ResponseDataItem>("data", Data);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTable>("routing", Routing);
+            writer.WriteStringValue("routing_text", RoutingText);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

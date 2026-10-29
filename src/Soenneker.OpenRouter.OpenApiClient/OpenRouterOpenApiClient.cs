@@ -36,6 +36,7 @@ using Soenneker.OpenRouter.OpenApiClient.Observability;
 using Soenneker.OpenRouter.OpenApiClient.Organization;
 using Soenneker.OpenRouter.OpenApiClient.Presets;
 using Soenneker.OpenRouter.OpenApiClient.PrivateEndpoints;
+using Soenneker.OpenRouter.OpenApiClient.PrivateProviders;
 using Soenneker.OpenRouter.OpenApiClient.Providers;
 using Soenneker.OpenRouter.OpenApiClient.Rerank;
 using Soenneker.OpenRouter.OpenApiClient.Responses;
@@ -206,6 +207,11 @@ namespace Soenneker.OpenRouter.OpenApiClient
         public global::Soenneker.OpenRouter.OpenApiClient.PrivateEndpoints.PrivateEndpointsRequestBuilder PrivateEndpoints
         {
             get => new global::Soenneker.OpenRouter.OpenApiClient.PrivateEndpoints.PrivateEndpointsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The privateProviders property</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.PrivateProviders.PrivateProvidersRequestBuilder PrivateProviders
+        {
+            get => new global::Soenneker.OpenRouter.OpenApiClient.PrivateProviders.PrivateProvidersRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The providers property</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Providers.ProvidersRequestBuilder Providers

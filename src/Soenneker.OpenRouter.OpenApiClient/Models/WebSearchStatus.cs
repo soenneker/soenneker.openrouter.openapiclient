@@ -24,5 +24,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning disable CS1591
         Failed,
         #pragma warning restore CS1591
+        [EnumMember(Value = "incomplete")]
+        #pragma warning disable CS1591
+        Incomplete,
+        #pragma warning restore CS1591
     }
 }

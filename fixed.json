@@ -12388,6 +12388,22 @@
               }
             }
           },
+          "401": {
+            "description": "Unauthorized - Authentication required or invalid credentials",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 401,
+                    "message": "Missing Authentication header"
+                  }
+                }
+              }
+            }
+          },
           "403": {
             "description": "Forbidden - Authentication successful but insufficient permissions",
             "content": {
@@ -12399,6 +12415,70 @@
                   "error": {
                     "code": 403,
                     "message": "Only management keys can perform this operation"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found - Resource does not exist",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFoundResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 404,
+                    "message": "Resource not found"
+                  }
+                }
+              }
+            }
+          },
+          "408": {
+            "description": "Request Timeout - Operation exceeded time limit",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RequestTimeoutResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 408,
+                    "message": "Operation timed out. Please try again later."
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict - Resource conflict or concurrent modification",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConflictResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 409,
+                    "message": "Resource conflict. Please try again later."
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests - Rate limit exceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TooManyRequestsResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 429,
+                    "message": "Rate limit exceeded"
                   }
                 }
               }
@@ -12865,6 +12945,54 @@
                   "error": {
                     "code": 404,
                     "message": "Resource not found"
+                  }
+                }
+              }
+            }
+          },
+          "408": {
+            "description": "Request Timeout - Operation exceeded time limit",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RequestTimeoutResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 408,
+                    "message": "Operation timed out. Please try again later."
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict - Resource conflict or concurrent modification",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConflictResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 409,
+                    "message": "Resource conflict. Please try again later."
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests - Rate limit exceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TooManyRequestsResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 429,
+                    "message": "Rate limit exceeded"
                   }
                 }
               }
@@ -15624,7 +15752,7 @@
           "Private Endpoints"
         ],
         "summary": "Create a private endpoint",
-        "description": "Create a private endpoint as a draft. Drafts are not routable: validate one with \u0060POST /private-endpoints/{id}/validate\u0060, then activate it with \u0060POST /private-endpoints/{id}/activate\u0060. Pass \u0060activate\u0060 to do all three in one call; if validation fails the draft is kept and returned with the failed checks. Send an \u0060Idempotency-Key\u0060 header to make retries safe: a repeated key with the same request returns the endpoint the first request created; reusing it with different fields returns 422 \u0060idempotency_key_reused\u0060. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
+        "description": "Create a private endpoint as a draft. Drafts are not routable: validate one with \u0060POST /private-endpoints/{id}/validate\u0060, then activate it with \u0060POST /private-endpoints/{id}/activate\u0060. Pass \u0060activate\u0060 to do all three in one call; if validation fails the draft is kept and returned with the failed checks. Send an \u0060Idempotency-Key\u0060 header to make retries safe: a repeated key with the same request returns the endpoint the first request created; reusing it with different fields returns 422 \u0060idempotency_key_reused\u0060. Returns 400 \u0060parameters_invalid\u0060 when \u0060tool_choice\u0060 is declared without \u0060tools\u0060. The response does not echo \u0060declared_parameters\u0060 or \u0060tested_parameters\u0060; read them with \u0060GET /private-endpoints/{id}\u0060. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
         "operationId": "CreatePrivateEndpoint",
         "parameters": [
           {
@@ -16097,8 +16225,8 @@
         "tags": [
           "Private Endpoints"
         ],
-        "summary": "Update a draft private endpoint",
-        "description": "Replace a draft endpoint\u0027s upstream configuration: send \u0060upstream_model_id\u0060, and \u0060base_url\u0060 to change it (an omitted \u0060base_url\u0060 keeps the stored one). Omitted data-policy declarations are kept while the upstream is unchanged and cleared when it changes. Any change clears earlier validation. Active endpoints return 409; delete and re-create them instead. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
+        "summary": "Update a private endpoint",
+        "description": "Change any of the endpoint fields you own in one call; only the fields present change, and the response is the whole endpoint. \u0060pricing\u0060 and \u0060declared_parameters\u0060 replace their stored value, \u0060settings\u0060 changes only the fields it names (\u0060null\u0060 clears a limit or restores the provider default); routing picks these up for subsequent requests on drafts and active endpoints alike. \u0060upstream_model_id\u0060, \u0060base_url\u0060, \u0060declared_zdr\u0060 and \u0060declared_region\u0060 re-point a draft: an omitted \u0060upstream_model_id\u0060 or \u0060base_url\u0060 keeps the stored one, omitted data-policy declarations are kept while the upstream is unchanged and cleared when it changes, and any upstream change clears earlier validation. Naming an upstream field on an active endpoint returns 409 \u0060already_active\u0060 and writes nothing; delete and re-create instead. Every group is checked before anything is written: 400 \u0060parameters_invalid\u0060 when \u0060tool_choice\u0060 is declared without \u0060tools\u0060 tested or declared, 400 \u0060settings_invalid\u0060 when \u0060max_prompt_tokens\u0060 exceeds the context length, both completion APIs are off, or \u0060excluded_parameters\u0060 names a tested parameter, 422 \u0060pricing_invalid\u0060 for rates the provider strategy cannot represent. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
         "operationId": "UpdatePrivateEndpoint",
         "parameters": [
           {
@@ -16875,8 +17003,8 @@
         "tags": [
           "Private Endpoints"
         ],
-        "summary": "Set private endpoint supported parameters",
-        "description": "Declare which request parameters the upstream supports beyond the ones validation proved. Applies to drafts and active endpoints; routing picks the change up for subsequent requests. The body replaces the earlier declaration and is read as a set: order and repeated names do not matter, but the list holds at most as many entries as there are declarable parameters, repeats included. \u0060tested_parameters\u0060 stay. Returns 400 \u0060parameters_invalid\u0060 when \u0060tool_choice\u0060 is declared without \u0060tools\u0060 being tested or declared. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
+        "summary": "Set private endpoint supported parameters (deprecated)",
+        "description": "Deprecated: send \u0060declared_parameters\u0060 to \u0060PATCH /private-endpoints/{id}\u0060 instead; this route behaves exactly like that call and will be removed. The body replaces the earlier declaration and is read as a set; \u0060tested_parameters\u0060 stay. Returns 400 \u0060parameters_invalid\u0060 when \u0060tool_choice\u0060 is declared without \u0060tools\u0060 being tested or declared. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
         "operationId": "UpdatePrivateEndpointParameters",
         "parameters": [
           {
@@ -17058,6 +17186,7 @@
             }
           }
         },
+        "deprecated": true,
         "x-speakeasy-name-override": "updateParameters"
       },
       "parameters": [
@@ -17077,8 +17206,8 @@
         "tags": [
           "Private Endpoints"
         ],
-        "summary": "Set private endpoint pricing",
-        "description": "Set the negotiated per-token rates reported for requests routed to this endpoint. Applies to drafts and active endpoints; new rates take effect for subsequent requests. The body replaces the whole pricing object: omitting \u0060cache_read\u0060 or \u0060cache_write\u0060 reverts that rate to the provider pricing strategy\u0027s default, even if it was set before. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
+        "summary": "Set private endpoint pricing (deprecated)",
+        "description": "Deprecated: send \u0060pricing\u0060 to \u0060PATCH /private-endpoints/{id}\u0060 instead; this route behaves exactly like that call and will be removed. The body replaces the whole pricing object: omitting \u0060cache_read\u0060 or \u0060cache_write\u0060 reverts that rate to the provider pricing strategy default. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
         "operationId": "UpdatePrivateEndpointPricing",
         "parameters": [
           {
@@ -17260,6 +17389,7 @@
             }
           }
         },
+        "deprecated": true,
         "x-speakeasy-name-override": "updatePricing"
       },
       "parameters": [
@@ -17463,6 +17593,782 @@
           }
         },
         "x-speakeasy-name-override": "validate"
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
+    },
+    "/private-providers": {
+      "get": {
+        "tags": [
+          "Private Providers"
+        ],
+        "summary": "List private providers",
+        "description": "List the organization\u0027s private providers. Requires the private endpoints entitlement. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
+        "operationId": "ListPrivateProviders",
+        "responses": {
+          "200": {
+            "description": "Private providers for the organization",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListPrivateProviders200Response"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Authentication required or invalid credentials",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 401,
+                    "message": "Missing Authentication header"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden - Authentication successful but insufficient permissions",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ForbiddenResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 403,
+                    "message": "Only management keys can perform this operation"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error - Unexpected server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 500,
+                    "message": "Internal Server Error"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-speakeasy-name-override": "list"
+      },
+      "post": {
+        "tags": [
+          "Private Providers"
+        ],
+        "summary": "Create a private provider",
+        "description": "Create a private, bring-your-own-key provider visible only to your organization. Use its slug as \u0060provider_slug\u0060 when creating private endpoints. Requires both the private endpoints and the private providers entitlements. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
+        "operationId": "CreatePrivateProvider",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePrivateProviderRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "The provider was created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreatePrivateProvider201Response"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request - Invalid request parameters or malformed input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 400,
+                    "message": "Invalid request parameters"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Authentication required or invalid credentials",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 401,
+                    "message": "Missing Authentication header"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden - Authentication successful but insufficient permissions",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ForbiddenResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 403,
+                    "message": "Only management keys can perform this operation"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found - Resource does not exist",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFoundResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 404,
+                    "message": "Resource not found"
+                  }
+                }
+              }
+            }
+          },
+          "408": {
+            "description": "Request Timeout - Operation exceeded time limit",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RequestTimeoutResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 408,
+                    "message": "Operation timed out. Please try again later."
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict - Resource conflict or concurrent modification",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConflictResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 409,
+                    "message": "Resource conflict. Please try again later."
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity - Semantic validation failure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnprocessableEntityResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 422,
+                    "message": "Invalid argument"
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests - Rate limit exceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TooManyRequestsResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 429,
+                    "message": "Rate limit exceeded"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error - Unexpected server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 500,
+                    "message": "Internal Server Error"
+                  }
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Bad Gateway - Provider/upstream API failure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadGatewayResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 502,
+                    "message": "Provider returned error"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-speakeasy-name-override": "create"
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
+    },
+    "/private-providers/{slug}": {
+      "delete": {
+        "tags": [
+          "Private Providers"
+        ],
+        "summary": "Delete a private provider",
+        "description": "Delete a private provider. Refuses (409) while any private endpoint still runs under it. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
+        "operationId": "DeletePrivateProvider",
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "acme"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The provider was deleted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeletePrivateProvider200Response"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request - Invalid request parameters or malformed input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 400,
+                    "message": "Invalid request parameters"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Authentication required or invalid credentials",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 401,
+                    "message": "Missing Authentication header"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden - Authentication successful but insufficient permissions",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ForbiddenResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 403,
+                    "message": "Only management keys can perform this operation"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found - Resource does not exist",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFoundResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 404,
+                    "message": "Resource not found"
+                  }
+                }
+              }
+            }
+          },
+          "408": {
+            "description": "Request Timeout - Operation exceeded time limit",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RequestTimeoutResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 408,
+                    "message": "Operation timed out. Please try again later."
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict - Resource conflict or concurrent modification",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConflictResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 409,
+                    "message": "Resource conflict. Please try again later."
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity - Semantic validation failure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnprocessableEntityResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 422,
+                    "message": "Invalid argument"
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests - Rate limit exceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TooManyRequestsResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 429,
+                    "message": "Rate limit exceeded"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error - Unexpected server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 500,
+                    "message": "Internal Server Error"
+                  }
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Bad Gateway - Provider/upstream API failure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadGatewayResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 502,
+                    "message": "Provider returned error"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-speakeasy-name-override": "delete"
+      },
+      "get": {
+        "tags": [
+          "Private Providers"
+        ],
+        "summary": "Get a private provider",
+        "description": "Get one of the organization\u2019s private providers by slug. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
+        "operationId": "GetPrivateProvider",
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "acme"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The private provider",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetPrivateProvider200Response"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Authentication required or invalid credentials",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 401,
+                    "message": "Missing Authentication header"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden - Authentication successful but insufficient permissions",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ForbiddenResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 403,
+                    "message": "Only management keys can perform this operation"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found - Resource does not exist",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFoundResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 404,
+                    "message": "Resource not found"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error - Unexpected server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 500,
+                    "message": "Internal Server Error"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-speakeasy-name-override": "get"
+      },
+      "patch": {
+        "tags": [
+          "Private Providers"
+        ],
+        "summary": "Update a private provider",
+        "description": "Update a private provider\u2019s details or declared data policy. The name and slug cannot change. Refuses (409) a data-policy change while OpenRouter pins the declared policy on one of its endpoints. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
+        "operationId": "UpdatePrivateProvider",
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "acme"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdatePrivateProviderRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "The updated provider",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdatePrivateProvider200Response"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request - Invalid request parameters or malformed input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 400,
+                    "message": "Invalid request parameters"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Authentication required or invalid credentials",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 401,
+                    "message": "Missing Authentication header"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden - Authentication successful but insufficient permissions",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ForbiddenResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 403,
+                    "message": "Only management keys can perform this operation"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found - Resource does not exist",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFoundResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 404,
+                    "message": "Resource not found"
+                  }
+                }
+              }
+            }
+          },
+          "408": {
+            "description": "Request Timeout - Operation exceeded time limit",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RequestTimeoutResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 408,
+                    "message": "Operation timed out. Please try again later."
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict - Resource conflict or concurrent modification",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConflictResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 409,
+                    "message": "Resource conflict. Please try again later."
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity - Semantic validation failure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnprocessableEntityResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 422,
+                    "message": "Invalid argument"
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests - Rate limit exceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TooManyRequestsResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 429,
+                    "message": "Rate limit exceeded"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error - Unexpected server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 500,
+                    "message": "Internal Server Error"
+                  }
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Bad Gateway - Provider/upstream API failure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadGatewayResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 502,
+                    "message": "Provider returned error"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-speakeasy-name-override": "update"
       },
       "parameters": [
         {
@@ -19790,7 +20696,7 @@
           "Vault"
         ],
         "summary": "List the connections an intern can use",
-        "description": "Lists the connections in scope for the intern, by the key of their card on the dashboard\u0027s Connections tab: \u0060github\u0060, \u0060slack\u0060, \u0060google\u0060, a catalog MCP server such as \u0060linear\u0060 or \u0060notion\u0060, or \u0060mcp:\u003Chost\u003E\u0060 for a custom MCP server. A connection is listed when it is stored, enabled, and not turned off or hidden for this intern, as the Connections tab lists it; whether its last test passed is not part of the rule. \u0060ori features add\u0060 checks a feature\u0027s \u0060ori.requires.connections\u0060 against this list. Keys only, never credentials. Returns 404 for an intern the key cannot see. The scope is selected by the API key: workspace routes act on the key\u0027s active workspace and intern routes act on one intern inside that workspace. There is no default workspace and no fallback to another scope. Every vault route, including reads, requires access to the Intern API programme and returns 404 outside it. An intern\u0027s own API key is confined to that intern: it can always read the intern\u0027s secrets and effective secrets, writes to them follow the rules above, and every other intern and every workspace route answers 404. Requests on regional hostnames such as \u0060eu.openrouter.ai\u0060 are refused. [API key](/docs/api-reference/authentication) required.",
+        "description": "Lists the connections in scope for the intern, by the key of their card on the dashboard\u0027s Connections tab: \u0060github\u0060, \u0060slack\u0060, \u0060google\u0060, a catalog MCP server such as \u0060linear\u0060 or \u0060notion\u0060, or \u0060mcp:\u003Chost\u003E\u0060 for a custom MCP server. A connection is listed when it is stored, enabled, and not turned off or hidden for this intern, as the Connections tab lists it; whether its last test passed is not part of the rule. \u0060ori features add\u0060 checks a feature\u0027s \u0060ori.requires.connections\u0060 against this list. \u0060routing\u0060 is the vault\u0027s routing table for the intern: the credentials it holds and what it would inject each for, from the same lookups the egress proxy picks a credential with, GitHub repository coverage read through the installation token and cached. \u0060routing_text\u0060 is that table as the lines the intern reads in its instructions. Never credentials. Returns 404 for an intern the key cannot see. The scope is selected by the API key: workspace routes act on the key\u0027s active workspace and intern routes act on one intern inside that workspace. There is no default workspace and no fallback to another scope. Every vault route, including reads, requires access to the Intern API programme and returns 404 outside it. An intern\u0027s own API key is confined to that intern: it can always read the intern\u0027s secrets and effective secrets, writes to them follow the rules above, and every other intern and every workspace route answers 404. Requests on regional hostnames such as \u0060eu.openrouter.ai\u0060 are refused. [API key](/docs/api-reference/authentication) required.",
         "operationId": "ListInternConnections",
         "parameters": [
           {
@@ -19822,7 +20728,83 @@
                     {
                       "key": "linear"
                     }
-                  ]
+                  ],
+                  "routing": {
+                    "agent_id": "intern_123",
+                    "custom_origins": [],
+                    "github": {
+                      "apps": [
+                        {
+                          "app_id": "71000003",
+                          "app_slug": "openrouter-interns",
+                          "installations": [
+                            {
+                              "account": "OpenRouterTeam",
+                              "account_type": "organization",
+                              "coverage": {
+                                "checked_at": "2026-10-27T19:30:00.000Z",
+                                "repository_count": 42,
+                                "selection": "all"
+                              },
+                              "credential_id": "cred_1",
+                              "holds_token": true,
+                              "is_enabled": true,
+                              "is_off_for_intern": false
+                            }
+                          ],
+                          "member_links": [
+                            {
+                              "holds_token": true,
+                              "login": "gfadlallah",
+                              "member_user_id": "user_1"
+                            }
+                          ],
+                          "scope": "workspace"
+                        }
+                      ],
+                      "tokens": []
+                    },
+                    "google": {
+                      "accounts": []
+                    },
+                    "host_rules": [
+                      {
+                        "holds_secret": false,
+                        "host": "api.openai.com",
+                        "secret_name": "openai_api_key"
+                      }
+                    ],
+                    "mcp_origins": [
+                      {
+                        "account_key": null,
+                        "holds_secret": true,
+                        "host": "mcp.linear.app",
+                        "injects": "bearer",
+                        "is_personal": false,
+                        "routes": [
+                          {
+                            "host": "mcp.linear.app",
+                            "path_prefix": null
+                          }
+                        ]
+                      }
+                    ],
+                    "read_at": "2026-10-27T20:00:00.000Z",
+                    "secrets": [
+                      {
+                        "created_at": "2026-09-15T10:00:00.000Z",
+                        "hosts": [
+                          "api.linear.app"
+                        ],
+                        "name": "linear_api_key",
+                        "scope": "workspace"
+                      }
+                    ],
+                    "slack": {
+                      "member_links": []
+                    }
+                  },
+                  "routing_text": "## Connections\n\n..."
                 }
               }
             }
@@ -35495,6 +36477,25 @@
           "type": "computer_use_preview"
         }
       },
+      "ConfigurationUpdate": {
+        "required": [
+          "reasoning"
+        ],
+        "type": "object",
+        "properties": {
+          "reasoning": {
+            "description": "Reasoning settings applied from this point in the conversation onward",
+            "$ref": "#/components/schemas/ConfigurationUpdateReasoning"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Mid-conversation configuration update. Changes reasoning effort from this point onward without invalidating the prompt cache for the preceding turns.",
+        "example": {
+          "reasoning": {
+            "effort": "low"
+          }
+        }
+      },
       "ConfigurationUpdateItem": {
         "required": [
           "type",
@@ -36641,6 +37642,14 @@
             "description": "Whether this guardrail allows paid endpoints that train on request data.",
             "example": true
           },
+          "enforce_first_party_harness_models": {
+            "type": [
+              "null",
+              "boolean"
+            ],
+            "description": "Whether coding harnesses list only their vendor\u0027s own models: Codex lists OpenAI models and Claude Code and Claude Desktop list Anthropic models. Affects only the model list those harnesses request from GET /models; a model the client names directly is still routed. Any true across the workspace default, member, and API key guardrails applies.",
+            "example": false
+          },
           "enforce_zdr": {
             "type": [
               "null",
@@ -37070,6 +38079,10 @@
             "description": "Slug of the upstream provider.",
             "example": "azure"
           },
+          "settings": {
+            "description": "Capabilities and limits to set over the ones copied from the public endpoint for this model and provider (or from the model). Omitted fields keep the copied values.",
+            "$ref": "#/components/schemas/UpdatePrivateEndpointSettingsRequest"
+          },
           "upstream_model_id": {
             "minLength": 1,
             "type": "string",
@@ -37090,6 +38103,38 @@
           },
           "error": {
             "$ref": "#/components/schemas/CreatePrivateEndpointValidationFailedResponseError"
+          }
+        }
+      },
+      "CreatePrivateProviderRequest": {
+        "required": [
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "base_url": {
+            "type": "string",
+            "description": "HTTPS base URL of an OpenAI-compatible API, used by private endpoints under this provider that set no URL of their own. Without it, each endpoint must set its own. Private, internal, metadata and OpenRouter hosts are rejected.",
+            "example": "https://inference.example.com/v1"
+          },
+          "data_policy": {
+            "description": "Defaults to training on and retaining prompts, the most conservative declaration. Your own declaration; it applies to your own traffic and OpenRouter does not verify it.",
+            "$ref": "#/components/schemas/PrivateProviderDataPolicy"
+          },
+          "display_name": {
+            "type": "string",
+            "description": "Defaults to \u0060name\u0060.",
+            "example": "Acme"
+          },
+          "name": {
+            "type": "string",
+            "description": "Provider name, shown in your activity, logs and Broadcast output. 2-64 letters, numbers, spaces, dots, underscores or hyphens. Cannot be changed later. Neither the name nor its slug may match a public provider name or slug (case-insensitive); other customers may use the same name.",
+            "example": "Acme"
+          },
+          "slug": {
+            "type": "string",
+            "description": "2-64 lowercase letters and numbers, separated by single hyphens. Cannot be changed later. Defaults to the name lowercased, with every run of other characters replaced by a hyphen (\u0060Acme Inference\u0060 becomes \u0060acme-inference\u0060).",
+            "example": "acme"
           }
         }
       },
@@ -40629,6 +41674,14 @@
             ],
             "description": "Whether this guardrail allows paid endpoints that train on request data.",
             "example": true
+          },
+          "enforce_first_party_harness_models": {
+            "type": [
+              "null",
+              "boolean"
+            ],
+            "description": "Whether coding harnesses list only their vendor\u0027s own models: Codex lists OpenAI models and Claude Code and Claude Desktop list Anthropic models. Affects only the model list those harnesses request from GET /models; a model the client names directly is still routed. Any true across the workspace default, member, and API key guardrails applies.",
+            "example": false
           },
           "enforce_zdr": {
             "type": [
@@ -50386,7 +51439,7 @@
           },
           "is_filtered_model_catalog_enabled": {
             "type": "boolean",
-            "description": "When true, \u0060GET /api/v1/models\u0060 called with one of the organization\u0027s API keys returns only the models that key can use (the \u0060/api/v1/models/user\u0060 catalog), and the signed-in dashboard shows the same list. Anonymous requests always receive the public catalog.",
+            "description": "When true, the signed-in dashboard lists only the models the organization can use. \u0060GET /api/v1/models\u0060 called with an API key always returns only the models that key can use, whatever this setting says; anonymous requests receive the public catalog.",
             "example": true
           }
         },
@@ -53709,7 +54762,8 @@
           "declared_region",
           "pricing",
           "tested_parameters",
-          "declared_parameters"
+          "declared_parameters",
+          "settings"
         ],
         "type": "object",
         "properties": {
@@ -53796,6 +54850,10 @@
             "description": "Slug of the upstream provider, or \u0060null\u0060 when the provider is no longer listed.",
             "example": "azure"
           },
+          "settings": {
+            "description": "Capabilities and limits routing uses for this endpoint. A new endpoint copies them from the public endpoint for the same model and provider, or from the model, and the owner can change them. Rate limits are not part of this object: a private endpoint is billed to its own upstream key, so request limits stay with the provider.",
+            "$ref": "#/components/schemas/PrivateEndpointSettings"
+          },
           "status": {
             "description": "Lifecycle state. \u0060draft\u0060 endpoints are not routable until validated and activated; \u0060disabled\u0060 endpoints are activated but temporarily not routable.",
             "$ref": "#/components/schemas/PrivateEndpointStatus"
@@ -53839,6 +54897,36 @@
           },
           "provider_name": "Azure",
           "provider_slug": "azure",
+          "settings": {
+            "completions": {
+              "chat": true,
+              "text": false
+            },
+            "context_length": 128000,
+            "excluded_parameters": [
+              "logit_bias"
+            ],
+            "inputs": {
+              "audio": false,
+              "base64_files": null,
+              "base64_images": true,
+              "file_urls": null,
+              "image_urls": true
+            },
+            "max_completion_tokens": 16384,
+            "max_prompt_tokens": null,
+            "quantization": "bf16",
+            "reasoning": {
+              "return_mechanism": "reasoning",
+              "supported": true
+            },
+            "tool_choice": {
+              "auto": true,
+              "function": false,
+              "none": true,
+              "required": true
+            }
+          },
           "status": "active",
           "tested_parameters": [
             "tools",
@@ -54237,6 +55325,118 @@
           "prompt": "0.0000025"
         }
       },
+      "PrivateEndpointQuantization": {
+        "enum": [
+          "int4",
+          "int8",
+          "fp4",
+          "mxfp4",
+          "nvfp4",
+          "fp6",
+          "fp8",
+          "mxfp8",
+          "fp16",
+          "bf16",
+          "fp32",
+          "unknown"
+        ],
+        "type": "string",
+        "description": "Weight precision the deployment runs at; \u0060unknown\u0060 when not stated.",
+        "example": "bf16",
+        "x-speakeasy-unknown-values": "allow",
+        "x-ms-enum": {
+          "name": "PrivateEndpointQuantization",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "int4",
+              "name": "Int4"
+            },
+            {
+              "value": "int8",
+              "name": "Int8"
+            },
+            {
+              "value": "fp4",
+              "name": "Fp4"
+            },
+            {
+              "value": "mxfp4",
+              "name": "Mxfp4"
+            },
+            {
+              "value": "nvfp4",
+              "name": "Nvfp4"
+            },
+            {
+              "value": "fp6",
+              "name": "Fp6"
+            },
+            {
+              "value": "fp8",
+              "name": "Fp8"
+            },
+            {
+              "value": "mxfp8",
+              "name": "Mxfp8"
+            },
+            {
+              "value": "fp16",
+              "name": "Fp16"
+            },
+            {
+              "value": "bf16",
+              "name": "Bf16"
+            },
+            {
+              "value": "fp32",
+              "name": "Fp32"
+            },
+            {
+              "value": "unknown",
+              "name": "Unknown"
+            }
+          ]
+        }
+      },
+      "PrivateEndpointReasoningReturnMechanism": {
+        "enum": [
+          "content-string",
+          "reasoning-content",
+          "reasoning",
+          "none",
+          null
+        ],
+        "type": [
+          "null",
+          "string"
+        ],
+        "description": "Where the upstream puts reasoning tokens in its response: \u0060reasoning\u0060 and \u0060reasoning-content\u0060 are response fields, \u0060content-string\u0060 is inline in the message, \u0060none\u0060 returns no reasoning. \u0060null\u0060 uses the provider default.",
+        "example": "reasoning",
+        "x-speakeasy-unknown-values": "allow",
+        "x-ms-enum": {
+          "name": "PrivateEndpointReasoningReturnMechanism",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "content-string",
+              "name": "ContentString"
+            },
+            {
+              "value": "reasoning-content",
+              "name": "ReasoningContent"
+            },
+            {
+              "value": "reasoning",
+              "name": "Reasoning"
+            },
+            {
+              "value": "none",
+              "name": "None"
+            }
+          ]
+        }
+      },
       "PrivateEndpointResponse": {
         "required": [
           "data"
@@ -54245,6 +55445,106 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/PrivateEndpoint"
+          }
+        }
+      },
+      "PrivateEndpointSettings": {
+        "required": [
+          "context_length",
+          "max_prompt_tokens",
+          "max_completion_tokens",
+          "quantization",
+          "reasoning",
+          "inputs",
+          "tool_choice",
+          "excluded_parameters",
+          "completions"
+        ],
+        "type": "object",
+        "properties": {
+          "completions": {
+            "$ref": "#/components/schemas/PrivateEndpointSettingsCompletions"
+          },
+          "context_length": {
+            "minimum": 1,
+            "type": [
+              "null",
+              "integer"
+            ],
+            "description": "Longest prompt plus completion, in tokens, or \u0060null\u0060 to keep the model default.",
+            "example": 128000
+          },
+          "excluded_parameters": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PrivateEndpointSettingsExcludedParametersItem"
+            },
+            "description": "Request parameters the upstream rejects even though the model supports them; requests using one do not route here. Cannot name a tested parameter.",
+            "example": [
+              "logit_bias"
+            ]
+          },
+          "inputs": {
+            "$ref": "#/components/schemas/PrivateEndpointSettingsInputs"
+          },
+          "max_completion_tokens": {
+            "minimum": 1,
+            "type": [
+              "null",
+              "integer"
+            ],
+            "description": "Longest completion the upstream returns, in tokens, or \u0060null\u0060 to keep the model default.",
+            "example": 16384
+          },
+          "max_prompt_tokens": {
+            "minimum": 1,
+            "type": [
+              "null",
+              "integer"
+            ],
+            "description": "Longest prompt, in tokens, or \u0060null\u0060 for no cap below the context length. Cannot exceed \u0060context_length\u0060, or the model context length while \u0060context_length\u0060 is \u0060null\u0060.",
+            "example": null
+          },
+          "quantization": {
+            "description": "Weight precision the deployment runs at; \u0060unknown\u0060 when not stated.",
+            "$ref": "#/components/schemas/PrivateEndpointQuantization"
+          },
+          "reasoning": {
+            "$ref": "#/components/schemas/PrivateEndpointSettingsReasoning"
+          },
+          "tool_choice": {
+            "$ref": "#/components/schemas/PrivateEndpointSettingsToolChoice"
+          }
+        },
+        "description": "Capabilities and limits routing uses for this endpoint. A new endpoint copies them from the public endpoint for the same model and provider, or from the model, and the owner can change them. Rate limits are not part of this object: a private endpoint is billed to its own upstream key, so request limits stay with the provider.",
+        "example": {
+          "completions": {
+            "chat": true,
+            "text": false
+          },
+          "context_length": 128000,
+          "excluded_parameters": [
+            "logit_bias"
+          ],
+          "inputs": {
+            "audio": false,
+            "base64_files": null,
+            "base64_images": true,
+            "file_urls": null,
+            "image_urls": true
+          },
+          "max_completion_tokens": 16384,
+          "max_prompt_tokens": null,
+          "quantization": "bf16",
+          "reasoning": {
+            "return_mechanism": "reasoning",
+            "supported": true
+          },
+          "tool_choice": {
+            "auto": true,
+            "function": false,
+            "none": true,
+            "required": true
           }
         }
       },
@@ -54398,6 +55698,90 @@
           "data": {
             "$ref": "#/components/schemas/PrivateEndpointValidation"
           }
+        }
+      },
+      "PrivateProvider": {
+        "required": [
+          "name",
+          "slug",
+          "display_name",
+          "base_url",
+          "data_policy",
+          "created_at"
+        ],
+        "type": "object",
+        "properties": {
+          "base_url": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "HTTPS base URL of an OpenAI-compatible API, used by private endpoints under this provider that set no URL of their own. Without it, each endpoint must set its own. Private, internal, metadata and OpenRouter hosts are rejected.",
+            "example": "https://inference.example.com/v1"
+          },
+          "created_at": {
+            "type": "string"
+          },
+          "data_policy": {
+            "$ref": "#/components/schemas/PrivateProviderDataPolicyProperty"
+          },
+          "display_name": {
+            "type": "string",
+            "example": "Acme"
+          },
+          "name": {
+            "type": "string",
+            "description": "Provider name, shown in your activity, logs and Broadcast output. 2-64 letters, numbers, spaces, dots, underscores or hyphens. Cannot be changed later. Neither the name nor its slug may match a public provider name or slug (case-insensitive); other customers may use the same name.",
+            "example": "Acme"
+          },
+          "slug": {
+            "type": "string",
+            "description": "The slug you chose, unique within your account. Use it as \u0060provider_slug\u0060 when creating private endpoints and BYOK keys, and in \u0060provider.order\u0060, \u0060only\u0060 and \u0060ignore\u0060.",
+            "example": "acme"
+          }
+        },
+        "example": {
+          "base_url": "https://inference.example.com/v1",
+          "created_at": "2026-10-06T12:00:00.000Z",
+          "data_policy": {
+            "prompt_retention_days": null,
+            "retains_prompts": false,
+            "training": false
+          },
+          "display_name": "Acme",
+          "name": "Acme",
+          "slug": "acme"
+        }
+      },
+      "PrivateProviderDataPolicy": {
+        "required": [
+          "training",
+          "retains_prompts",
+          "prompt_retention_days"
+        ],
+        "type": "object",
+        "properties": {
+          "prompt_retention_days": {
+            "type": [
+              "null",
+              "integer"
+            ],
+            "description": "Days prompts are retained. Must be \u0060null\u0060 unless \u0060retains_prompts\u0060 is true."
+          },
+          "retains_prompts": {
+            "type": "boolean",
+            "description": "Whether the provider retains prompts or completions."
+          },
+          "training": {
+            "type": "boolean",
+            "description": "Whether the provider trains on prompts."
+          }
+        },
+        "description": "Defaults to training on and retaining prompts, the most conservative declaration. Your own declaration; it applies to your own traffic and OpenRouter does not verify it.",
+        "example": {
+          "prompt_retention_days": null,
+          "retains_prompts": false,
+          "training": false
         }
       },
       "PromptCacheBreakpoint": {
@@ -61857,6 +63241,14 @@
             "description": "Whether this guardrail allows paid endpoints that train on request data.",
             "example": true
           },
+          "enforce_first_party_harness_models": {
+            "type": [
+              "null",
+              "boolean"
+            ],
+            "description": "Whether coding harnesses list only their vendor\u0027s own models: Codex lists OpenAI models and Claude Code and Claude Desktop list Anthropic models. Affects only the model list those harnesses request from GET /models; a model the client names directly is still routed. Any true across the workspace default, member, and API key guardrails applies.",
+            "example": true
+          },
           "enforce_zdr": {
             "type": [
               "null",
@@ -62133,7 +63525,7 @@
         "properties": {
           "is_filtered_model_catalog_enabled": {
             "type": "boolean",
-            "description": "When true, \u0060GET /api/v1/models\u0060 called with one of the organization\u0027s API keys returns only the models that key can use (the \u0060/api/v1/models/user\u0060 catalog), and the signed-in dashboard shows the same list. Anonymous requests always receive the public catalog.",
+            "description": "When true, the signed-in dashboard lists only the models the organization can use. \u0060GET /api/v1/models\u0060 called with an API key always returns only the models that key can use, whatever this setting says; anonymous requests receive the public catalog.",
             "example": true
           }
         },
@@ -62172,9 +63564,6 @@
         }
       },
       "UpdatePrivateEndpointRequest": {
-        "required": [
-          "upstream_model_id"
-        ],
         "type": "object",
         "properties": {
           "base_url": {
@@ -62182,6 +63571,18 @@
             "type": "string",
             "description": "HTTPS base URL of your deployment. Required unless the provider derives its URL from the BYOK credential (Azure, Amazon Bedrock, Google Vertex).",
             "example": "https://contoso.openai.azure.com"
+          },
+          "declared_parameters": {
+            "maxItems": 25,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PrivateEndpointDeclaredParameter"
+            },
+            "description": "Parameters the upstream supports beyond the tested ones. Replaces the earlier declaration; tested parameters stay. Order and repeated names are ignored, but the list holds at most as many entries as there are declarable parameters, repeats included. \u0060tool_choice\u0060 requires \u0060tools\u0060 to be tested or declared.",
+            "example": [
+              "temperature",
+              "seed"
+            ]
           },
           "declared_region": {
             "$ref": "#/components/schemas/UpdatePrivateEndpointRequestDeclaredRegion"
@@ -62193,11 +63594,108 @@
             ],
             "description": "Attest that this deployment retains no prompt or completion data."
           },
+          "pricing": {
+            "$ref": "#/components/schemas/UpdatePrivateEndpointRequestPricing"
+          },
+          "settings": {
+            "$ref": "#/components/schemas/UpdatePrivateEndpointRequestSettings"
+          },
           "upstream_model_id": {
             "minLength": 1,
             "type": "string",
             "description": "Model or deployment identifier sent to the upstream provider.",
             "example": "gpt-4o-prod"
+          }
+        },
+        "description": "Only the fields present change. \u0060base_url\u0060, \u0060upstream_model_id\u0060, \u0060declared_zdr\u0060 and \u0060declared_region\u0060 are accepted on a draft only; \u0060pricing\u0060 and \u0060declared_parameters\u0060 replace their value; \u0060settings\u0060 is itself a partial update where \u0060null\u0060 clears a limit or restores the provider default.",
+        "example": {
+          "declared_parameters": [
+            "seed"
+          ],
+          "settings": {
+            "context_length": 128000
+          }
+        }
+      },
+      "UpdatePrivateEndpointSettingsRequest": {
+        "type": "object",
+        "properties": {
+          "completions": {
+            "$ref": "#/components/schemas/UpdatePrivateEndpointSettingsRequestCompletions"
+          },
+          "context_length": {
+            "minimum": 1,
+            "type": [
+              "null",
+              "integer"
+            ],
+            "description": "Longest prompt plus completion, in tokens, or \u0060null\u0060 to keep the model default.",
+            "example": 128000
+          },
+          "excluded_parameters": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UpdatePrivateEndpointSettingsRequestExcludedParametersItem"
+            },
+            "description": "Request parameters the upstream rejects even though the model supports them; requests using one do not route here. Cannot name a tested parameter.",
+            "example": [
+              "logit_bias"
+            ]
+          },
+          "inputs": {
+            "$ref": "#/components/schemas/UpdatePrivateEndpointSettingsRequestInputs"
+          },
+          "max_completion_tokens": {
+            "minimum": 1,
+            "type": [
+              "null",
+              "integer"
+            ],
+            "description": "Longest completion the upstream returns, in tokens, or \u0060null\u0060 to keep the model default.",
+            "example": 16384
+          },
+          "max_prompt_tokens": {
+            "minimum": 1,
+            "type": [
+              "null",
+              "integer"
+            ],
+            "description": "Longest prompt, in tokens, or \u0060null\u0060 for no cap below the context length. Cannot exceed \u0060context_length\u0060, or the model context length while \u0060context_length\u0060 is \u0060null\u0060.",
+            "example": null
+          },
+          "quantization": {
+            "description": "Weight precision the deployment runs at; \u0060unknown\u0060 when not stated.",
+            "$ref": "#/components/schemas/PrivateEndpointQuantization"
+          },
+          "reasoning": {
+            "$ref": "#/components/schemas/UpdatePrivateEndpointSettingsRequestReasoning"
+          },
+          "tool_choice": {
+            "$ref": "#/components/schemas/UpdatePrivateEndpointSettingsRequestToolChoice"
+          }
+        },
+        "description": "Capabilities and limits to set over the ones copied from the public endpoint for this model and provider (or from the model). Omitted fields keep the copied values.",
+        "example": {
+          "context_length": 128000,
+          "reasoning": {
+            "supported": true
+          }
+        }
+      },
+      "UpdatePrivateProviderRequest": {
+        "type": "object",
+        "properties": {
+          "base_url": {
+            "type": "string",
+            "description": "HTTPS base URL of an OpenAI-compatible API, used by private endpoints under this provider that set no URL of their own. Without it, each endpoint must set its own. Private, internal, metadata and OpenRouter hosts are rejected.",
+            "example": "https://inference.example.com/v1"
+          },
+          "data_policy": {
+            "$ref": "#/components/schemas/UpdatePrivateProviderRequestDataPolicy"
+          },
+          "display_name": {
+            "type": "string",
+            "example": "Acme"
           }
         }
       },
@@ -62627,6 +64125,67 @@
           ],
           "has_more": false
         }
+      },
+      "VaultRoutingTable": {
+        "required": [
+          "agent_id",
+          "read_at",
+          "github",
+          "google",
+          "slack",
+          "mcp_origins",
+          "host_rules",
+          "custom_origins",
+          "secrets"
+        ],
+        "type": [
+          "null",
+          "object"
+        ],
+        "properties": {
+          "agent_id": {
+            "type": "string"
+          },
+          "custom_origins": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/VaultRoutingTableCustomOriginsItem"
+            }
+          },
+          "github": {
+            "$ref": "#/components/schemas/VaultRoutingTableGithub"
+          },
+          "google": {
+            "$ref": "#/components/schemas/VaultRoutingTableGoogle"
+          },
+          "host_rules": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/VaultRoutingTableHostRulesItem"
+            },
+            "description": "Built-in hosts the vault injects a named secret for, and whether that secret is stored."
+          },
+          "mcp_origins": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/VaultRoutingTableMcpOriginsItem"
+            }
+          },
+          "read_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "secrets": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/VaultRoutingTableSecretsItem"
+            }
+          },
+          "slack": {
+            "$ref": "#/components/schemas/VaultRoutingTableSlack"
+          }
+        },
+        "description": "The intern\u0027s routing table, for the intern\u0027s own key only; null for any other caller or when the vault could not build it in time. The keys still list."
       },
       "VaultSecret": {
         "required": [
@@ -63944,7 +65503,8 @@
           "completed",
           "searching",
           "in_progress",
-          "failed"
+          "failed",
+          "incomplete"
         ],
         "type": "string",
         "example": "completed",
@@ -63968,6 +65528,10 @@
             {
               "value": "failed",
               "name": "Failed"
+            },
+            {
+              "value": "incomplete",
+              "name": "Incomplete"
             }
           ]
         }
@@ -65434,6 +66998,25 @@
         ],
         "description": "Assistant message content"
       },
+      "ChatDeveloperMessageConfigurationUpdate": {
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/ConfigurationUpdate"
+          },
+          {
+            "type": "null"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "description": "OpenRouter extension. Same as the system message \u0060configuration_update\u0060: changes reasoning effort from this point in the conversation onward without invalidating the prompt cache for the preceding turns.",
+        "example": {
+          "reasoning": {
+            "effort": "low"
+          }
+        }
+      },
       "ChatDeveloperMessageContent": {
         "anyOf": [
           {
@@ -65661,6 +67244,25 @@
           }
         },
         "description": "Audio output data"
+      },
+      "ChatSystemMessageConfigurationUpdate": {
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/ConfigurationUpdate"
+          },
+          {
+            "type": "null"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "description": "OpenRouter extension. Changes reasoning effort from this point in the conversation onward without invalidating the prompt cache for the preceding turns. Place it on a content-less system message (\u0060content: \u0022\u0022\u0060) directly before the user message it should apply to, and keep it at that position in later requests. Equivalent to the OpenAI Responses \u0060configuration_update\u0060 input item and the Anthropic Messages per-message \u0060output_config.effort\u0060.",
+        "example": {
+          "reasoning": {
+            "effort": "low"
+          }
+        }
       },
       "ChatSystemMessageContent": {
         "anyOf": [
@@ -66014,6 +67616,14 @@
             ],
             "description": "Whether this guardrail allows paid endpoints that train on request data.",
             "example": true
+          },
+          "enforce_first_party_harness_models": {
+            "type": [
+              "null",
+              "boolean"
+            ],
+            "description": "Whether coding harnesses list only their vendor\u0027s own models: Codex lists OpenAI models and Claude Code and Claude Desktop list Anthropic models. Affects only the model list those harnesses request from GET /models; a model the client names directly is still routed. Any true across the workspace default, member, and API key guardrails applies.",
+            "example": false
           },
           "enforce_zdr": {
             "type": [
@@ -67031,6 +68641,14 @@
             ],
             "description": "Whether this guardrail allows paid endpoints that train on request data.",
             "example": true
+          },
+          "enforce_first_party_harness_models": {
+            "type": [
+              "null",
+              "boolean"
+            ],
+            "description": "Whether coding harnesses list only their vendor\u0027s own models: Codex lists OpenAI models and Claude Code and Claude Desktop list Anthropic models. Affects only the model list those harnesses request from GET /models; a model the client names directly is still routed. Any true across the workspace default, member, and API key guardrails applies.",
+            "example": false
           },
           "enforce_zdr": {
             "type": [
@@ -71053,6 +72671,14 @@
             "description": "Whether this guardrail allows paid endpoints that train on request data.",
             "example": true
           },
+          "enforce_first_party_harness_models": {
+            "type": [
+              "null",
+              "boolean"
+            ],
+            "description": "Whether coding harnesses list only their vendor\u0027s own models: Codex lists OpenAI models and Claude Code and Claude Desktop list Anthropic models. Affects only the model list those harnesses request from GET /models; a model the client names directly is still routed. Any true across the workspace default, member, and API key guardrails applies.",
+            "example": false
+          },
           "enforce_zdr": {
             "type": [
               "null",
@@ -71198,6 +72824,99 @@
           }
         ],
         "description": "The updated observability destination."
+      },
+      "UpdatePrivateEndpointRequestPricing": {
+        "required": [
+          "prompt",
+          "completion"
+        ],
+        "type": "object",
+        "properties": {
+          "cache_read": {
+            "pattern": "^\\d\u002B(\\.\\d\u002B)?$",
+            "type": "string",
+            "description": "USD per cache-read prompt token, as a decimal string. When omitted, inherited from the public endpoint of the same model and provider: scaled by its cache-read to prompt ratio, or left at the pricing strategy default when it publishes no cache-read rate. Required when there is no such endpoint and the provider bills cache reads.",
+            "example": "0.00000025"
+          },
+          "cache_write": {
+            "pattern": "^\\d\u002B(\\.\\d\u002B)?$",
+            "type": "string",
+            "description": "USD per cache-write prompt token, as a decimal string. When omitted, inherited from the public endpoint of the same model and provider: scaled by its cache-write to prompt ratio, or left at the pricing strategy default when it publishes no cache-write rate. Required when there is no such endpoint and the provider bills cache writes.",
+            "example": "0.000003125"
+          },
+          "completion": {
+            "pattern": "^\\d\u002B(\\.\\d\u002B)?$",
+            "type": "string",
+            "description": "USD per completion token, as a decimal string.",
+            "example": "0.00001"
+          },
+          "prompt": {
+            "pattern": "^\\d\u002B(\\.\\d\u002B)?$",
+            "type": "string",
+            "description": "USD per prompt token, as a decimal string.",
+            "example": "0.0000025"
+          }
+        },
+        "description": "Replaces the whole pricing object: omitting \u0060cache_read\u0060 or \u0060cache_write\u0060 reverts that rate to the pricing strategy default."
+      },
+      "UpdatePrivateEndpointRequestSettings": {
+        "type": "object",
+        "properties": {
+          "completions": {
+            "$ref": "#/components/schemas/UpdatePrivateEndpointSettingsRequestCompletions"
+          },
+          "context_length": {
+            "minimum": 1,
+            "type": [
+              "null",
+              "integer"
+            ],
+            "description": "Longest prompt plus completion, in tokens, or \u0060null\u0060 to keep the model default.",
+            "example": 128000
+          },
+          "excluded_parameters": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UpdatePrivateEndpointSettingsRequestExcludedParametersItem"
+            },
+            "description": "Request parameters the upstream rejects even though the model supports them; requests using one do not route here. Cannot name a tested parameter.",
+            "example": [
+              "logit_bias"
+            ]
+          },
+          "inputs": {
+            "$ref": "#/components/schemas/UpdatePrivateEndpointSettingsRequestInputs"
+          },
+          "max_completion_tokens": {
+            "minimum": 1,
+            "type": [
+              "null",
+              "integer"
+            ],
+            "description": "Longest completion the upstream returns, in tokens, or \u0060null\u0060 to keep the model default.",
+            "example": 16384
+          },
+          "max_prompt_tokens": {
+            "minimum": 1,
+            "type": [
+              "null",
+              "integer"
+            ],
+            "description": "Longest prompt, in tokens, or \u0060null\u0060 for no cap below the context length. Cannot exceed \u0060context_length\u0060, or the model context length while \u0060context_length\u0060 is \u0060null\u0060.",
+            "example": null
+          },
+          "quantization": {
+            "description": "Weight precision the deployment runs at; \u0060unknown\u0060 when not stated.",
+            "$ref": "#/components/schemas/PrivateEndpointQuantization"
+          },
+          "reasoning": {
+            "$ref": "#/components/schemas/UpdatePrivateEndpointSettingsRequestReasoning"
+          },
+          "tool_choice": {
+            "$ref": "#/components/schemas/UpdatePrivateEndpointSettingsRequestToolChoice"
+          }
+        },
+        "description": "Only the fields present change; an omitted field keeps its stored value and \u0060null\u0060 clears a limit or reverts a flag to the provider default."
       },
       "UpdateWorkspaceResponseData": {
         "required": [
@@ -75216,28 +76935,6 @@
           }
         }
       },
-      "ChatDeveloperMessageConfigurationUpdate": {
-        "required": [
-          "reasoning"
-        ],
-        "type": [
-          "null",
-          "object"
-        ],
-        "properties": {
-          "reasoning": {
-            "description": "Reasoning settings applied from this point in the conversation onward",
-            "$ref": "#/components/schemas/ConfigurationUpdateReasoning"
-          }
-        },
-        "additionalProperties": false,
-        "description": "OpenRouter extension. Same as the system message \u0060configuration_update\u0060: changes reasoning effort from this point in the conversation onward without invalidating the prompt cache for the preceding turns.",
-        "example": {
-          "reasoning": {
-            "effort": "low"
-          }
-        }
-      },
       "ChatDynamicServerToolParameters": {
         "type": "object",
         "additionalProperties": {}
@@ -75358,28 +77055,6 @@
           }
         },
         "description": "Function call details"
-      },
-      "ChatSystemMessageConfigurationUpdate": {
-        "required": [
-          "reasoning"
-        ],
-        "type": [
-          "null",
-          "object"
-        ],
-        "properties": {
-          "reasoning": {
-            "description": "Reasoning settings applied from this point in the conversation onward",
-            "$ref": "#/components/schemas/ConfigurationUpdateReasoning"
-          }
-        },
-        "additionalProperties": false,
-        "description": "OpenRouter extension. Changes reasoning effort from this point in the conversation onward without invalidating the prompt cache for the preceding turns. Place it on a content-less system message (\u0060content: \u0022\u0022\u0060) directly before the user message it should apply to, and keep it at that position in later requests. Equivalent to the OpenAI Responses \u0060configuration_update\u0060 input item and the Anthropic Messages per-message \u0060output_config.effort\u0060.",
-        "example": {
-          "reasoning": {
-            "effort": "low"
-          }
-        }
       },
       "ChatTokenLogprobTopLogprobsItem": {
         "required": [
@@ -77955,6 +79630,150 @@
         "type": "object",
         "additionalProperties": {}
       },
+      "PrivateEndpointSettingsCompletions": {
+        "required": [
+          "chat",
+          "text"
+        ],
+        "type": "object",
+        "properties": {
+          "chat": {
+            "type": [
+              "null",
+              "boolean"
+            ],
+            "description": "Serves \u0060/chat/completions\u0060; \u0060null\u0060 uses the provider default."
+          },
+          "text": {
+            "type": [
+              "null",
+              "boolean"
+            ],
+            "description": "Serves \u0060/completions\u0060; \u0060null\u0060 uses the provider default."
+          }
+        }
+      },
+      "PrivateEndpointSettingsInputs": {
+        "required": [
+          "image_urls",
+          "base64_images",
+          "file_urls",
+          "base64_files",
+          "audio"
+        ],
+        "type": "object",
+        "properties": {
+          "audio": {
+            "type": [
+              "null",
+              "boolean"
+            ],
+            "description": "Accepts audio input. \u0060null\u0060 keeps the provider default."
+          },
+          "base64_files": {
+            "type": [
+              "null",
+              "boolean"
+            ],
+            "description": "Accepts base64 file data. \u0060null\u0060 keeps the provider default."
+          },
+          "base64_images": {
+            "type": [
+              "null",
+              "boolean"
+            ],
+            "description": "Accepts base64 image data. \u0060null\u0060 keeps the provider default."
+          },
+          "file_urls": {
+            "type": [
+              "null",
+              "boolean"
+            ],
+            "description": "Accepts file URLs. \u0060null\u0060 keeps the provider default."
+          },
+          "image_urls": {
+            "type": [
+              "null",
+              "boolean"
+            ],
+            "description": "Accepts image URLs. \u0060null\u0060 keeps the provider default."
+          }
+        }
+      },
+      "PrivateEndpointSettingsReasoning": {
+        "required": [
+          "supported",
+          "return_mechanism"
+        ],
+        "type": "object",
+        "properties": {
+          "return_mechanism": {
+            "description": "Where the upstream puts reasoning tokens in its response: \u0060reasoning\u0060 and \u0060reasoning-content\u0060 are response fields, \u0060content-string\u0060 is inline in the message, \u0060none\u0060 returns no reasoning. \u0060null\u0060 uses the provider default.",
+            "$ref": "#/components/schemas/PrivateEndpointReasoningReturnMechanism"
+          },
+          "supported": {
+            "type": "boolean",
+            "description": "Whether requests with \u0060reasoning\u0060 route to this endpoint.",
+            "example": true
+          }
+        }
+      },
+      "PrivateEndpointSettingsToolChoice": {
+        "required": [
+          "none",
+          "auto",
+          "required",
+          "function"
+        ],
+        "type": "object",
+        "properties": {
+          "auto": {
+            "type": "boolean",
+            "description": "Accepts \u0060tool_choice: \u0022auto\u0022\u0060."
+          },
+          "function": {
+            "type": "boolean",
+            "description": "Accepts a named function in \u0060tool_choice\u0060."
+          },
+          "none": {
+            "type": "boolean",
+            "description": "Accepts \u0060tool_choice: \u0022none\u0022\u0060."
+          },
+          "required": {
+            "type": "boolean",
+            "description": "Accepts \u0060tool_choice: \u0022required\u0022\u0060."
+          }
+        }
+      },
+      "PrivateProviderDataPolicyProperty": {
+        "required": [
+          "training",
+          "retains_prompts",
+          "prompt_retention_days"
+        ],
+        "type": [
+          "null",
+          "object"
+        ],
+        "properties": {
+          "prompt_retention_days": {
+            "type": [
+              "null",
+              "integer"
+            ],
+            "description": "Days prompts are retained. Must be \u0060null\u0060 unless \u0060retains_prompts\u0060 is true."
+          },
+          "retains_prompts": {
+            "type": "boolean",
+            "description": "Whether the provider retains prompts or completions."
+          },
+          "training": {
+            "type": "boolean",
+            "description": "Whether the provider trains on prompts."
+          }
+        },
+        "description": "Your declared data policy, or \u0060null\u0060 when none was declared."
+      },
       "ProviderOptions01Ai": {
         "type": "object",
         "additionalProperties": {}
@@ -79065,6 +80884,274 @@
           "baseUrl": "https://us.cloud.langfuse.com",
           "publicKey": "pk-l...EfGh",
           "secretKey": "sk-l...AbCd"
+        }
+      },
+      "UpdatePrivateEndpointSettingsRequestCompletions": {
+        "type": "object",
+        "properties": {
+          "chat": {
+            "type": [
+              "null",
+              "boolean"
+            ],
+            "description": "Serves \u0060/chat/completions\u0060; \u0060null\u0060 uses the provider default."
+          },
+          "text": {
+            "type": [
+              "null",
+              "boolean"
+            ],
+            "description": "Serves \u0060/completions\u0060; \u0060null\u0060 uses the provider default."
+          }
+        }
+      },
+      "UpdatePrivateEndpointSettingsRequestInputs": {
+        "type": "object",
+        "properties": {
+          "audio": {
+            "type": [
+              "null",
+              "boolean"
+            ],
+            "description": "Accepts audio input. \u0060null\u0060 keeps the provider default."
+          },
+          "base64_files": {
+            "type": [
+              "null",
+              "boolean"
+            ],
+            "description": "Accepts base64 file data. \u0060null\u0060 keeps the provider default."
+          },
+          "base64_images": {
+            "type": [
+              "null",
+              "boolean"
+            ],
+            "description": "Accepts base64 image data. \u0060null\u0060 keeps the provider default."
+          },
+          "file_urls": {
+            "type": [
+              "null",
+              "boolean"
+            ],
+            "description": "Accepts file URLs. \u0060null\u0060 keeps the provider default."
+          },
+          "image_urls": {
+            "type": [
+              "null",
+              "boolean"
+            ],
+            "description": "Accepts image URLs. \u0060null\u0060 keeps the provider default."
+          }
+        }
+      },
+      "UpdatePrivateEndpointSettingsRequestReasoning": {
+        "type": "object",
+        "properties": {
+          "return_mechanism": {
+            "description": "Where the upstream puts reasoning tokens in its response: \u0060reasoning\u0060 and \u0060reasoning-content\u0060 are response fields, \u0060content-string\u0060 is inline in the message, \u0060none\u0060 returns no reasoning. \u0060null\u0060 uses the provider default.",
+            "$ref": "#/components/schemas/PrivateEndpointReasoningReturnMechanism"
+          },
+          "supported": {
+            "type": "boolean",
+            "description": "Whether requests with \u0060reasoning\u0060 route to this endpoint.",
+            "example": true
+          }
+        }
+      },
+      "UpdatePrivateEndpointSettingsRequestToolChoice": {
+        "type": "object",
+        "properties": {
+          "auto": {
+            "type": "boolean",
+            "description": "Accepts \u0060tool_choice: \u0022auto\u0022\u0060."
+          },
+          "function": {
+            "type": "boolean",
+            "description": "Accepts a named function in \u0060tool_choice\u0060."
+          },
+          "none": {
+            "type": "boolean",
+            "description": "Accepts \u0060tool_choice: \u0022none\u0022\u0060."
+          },
+          "required": {
+            "type": "boolean",
+            "description": "Accepts \u0060tool_choice: \u0022required\u0022\u0060."
+          }
+        }
+      },
+      "UpdatePrivateProviderRequestDataPolicy": {
+        "type": "object",
+        "properties": {
+          "prompt_retention_days": {
+            "type": [
+              "null",
+              "integer"
+            ],
+            "description": "Days prompts are retained. Must be \u0060null\u0060 unless \u0060retains_prompts\u0060 is true."
+          },
+          "retains_prompts": {
+            "type": "boolean",
+            "description": "Whether the provider retains prompts or completions."
+          },
+          "training": {
+            "type": "boolean",
+            "description": "Whether the provider trains on prompts."
+          }
+        }
+      },
+      "VaultRoutingTableCustomOriginsItem": {
+        "required": [
+          "host",
+          "path_prefix",
+          "status"
+        ],
+        "type": "object",
+        "properties": {
+          "host": {
+            "type": "string"
+          },
+          "path_prefix": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "status": {
+            "$ref": "#/components/schemas/VaultRoutingTableCustomOriginsItemStatus"
+          }
+        }
+      },
+      "VaultRoutingTableGithub": {
+        "required": [
+          "apps",
+          "tokens"
+        ],
+        "type": "object",
+        "properties": {
+          "apps": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/VaultRoutingTableGithubAppsItem"
+            }
+          },
+          "tokens": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/VaultRoutingTableGithubTokensItem"
+            }
+          }
+        }
+      },
+      "VaultRoutingTableGoogle": {
+        "required": [
+          "accounts"
+        ],
+        "type": "object",
+        "properties": {
+          "accounts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/VaultRoutingTableGoogleAccountsItem"
+            }
+          }
+        }
+      },
+      "VaultRoutingTableHostRulesItem": {
+        "required": [
+          "host",
+          "secret_name",
+          "holds_secret"
+        ],
+        "type": "object",
+        "properties": {
+          "holds_secret": {
+            "type": "boolean"
+          },
+          "host": {
+            "type": "string"
+          },
+          "secret_name": {
+            "type": "string"
+          }
+        }
+      },
+      "VaultRoutingTableMcpOriginsItem": {
+        "required": [
+          "host",
+          "account_key",
+          "is_personal",
+          "routes",
+          "status"
+        ],
+        "type": "object",
+        "properties": {
+          "account_key": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "host": {
+            "type": "string"
+          },
+          "is_personal": {
+            "type": "boolean",
+            "description": "Members\u0027 own accounts, matched to the acting member per turn."
+          },
+          "routes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/VaultRoutingTableMcpOriginsItemRoutesItem"
+            }
+          },
+          "status": {
+            "$ref": "#/components/schemas/VaultRoutingTableMcpOriginsItemStatus"
+          }
+        }
+      },
+      "VaultRoutingTableSecretsItem": {
+        "required": [
+          "name",
+          "hosts",
+          "scope",
+          "created_at"
+        ],
+        "type": "object",
+        "properties": {
+          "created_at": {
+            "type": "string"
+          },
+          "hosts": {
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "type": "string"
+            }
+          },
+          "name": {
+            "type": "string"
+          },
+          "scope": {
+            "$ref": "#/components/schemas/VaultRoutingTableSecretsItemScope"
+          }
+        }
+      },
+      "VaultRoutingTableSlack": {
+        "required": [
+          "member_links"
+        ],
+        "type": "object",
+        "properties": {
+          "member_links": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/VaultRoutingTableSlackMemberLinksItem"
+            },
+            "description": "Members whose own Slack account the vault can act as; whether the intern\u0027s own Slack app runs is a runtime fact the \u0060connections\u0060 tool reports."
+          }
         }
       },
       "VideoGenerationRequestProvider": {
@@ -80387,6 +82474,185 @@
           }
         }
       },
+      "VaultRoutingTableCustomOriginsItemStatus": {
+        "required": [
+          "state",
+          "failure"
+        ],
+        "type": "object",
+        "properties": {
+          "failure": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The credential failure code when \u0060state\u0060 is \u0060failing\u0060; null otherwise."
+          },
+          "state": {
+            "$ref": "#/components/schemas/VaultRoutingTableCustomOriginsItemStatusState"
+          }
+        },
+        "description": "The vault injection decision for this destination, at \u0060read_at\u0060."
+      },
+      "VaultRoutingTableGithubAppsItem": {
+        "required": [
+          "app_id",
+          "app_slug",
+          "scope",
+          "installations",
+          "member_links"
+        ],
+        "type": "object",
+        "properties": {
+          "app_id": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "app_slug": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "installations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/VaultRoutingTableGithubAppsItemInstallationsItem"
+            }
+          },
+          "member_links": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/VaultRoutingTableGithubAppsItemMemberLinksItem"
+            },
+            "description": "Members whose own account the vault would act as on this App\u0027s accounts; GitHub still limits a member\u0027s token to what that member can reach."
+          },
+          "scope": {
+            "$ref": "#/components/schemas/VaultRoutingTableGithubAppsItemScope"
+          }
+        }
+      },
+      "VaultRoutingTableGithubTokensItem": {
+        "required": [
+          "login",
+          "owner",
+          "repository_count",
+          "scope",
+          "holds_token"
+        ],
+        "type": "object",
+        "properties": {
+          "holds_token": {
+            "type": "boolean"
+          },
+          "login": {
+            "type": "string"
+          },
+          "owner": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "repository_count": {
+            "type": [
+              "null",
+              "integer"
+            ]
+          },
+          "scope": {
+            "$ref": "#/components/schemas/VaultRoutingTableGithubTokensItemScope"
+          }
+        }
+      },
+      "VaultRoutingTableGoogleAccountsItem": {
+        "required": [
+          "email",
+          "scope",
+          "is_delegated_to_intern",
+          "delegated_capabilities",
+          "holds_grant"
+        ],
+        "type": "object",
+        "properties": {
+          "delegated_capabilities": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "email": {
+            "type": "string"
+          },
+          "holds_grant": {
+            "type": "boolean"
+          },
+          "is_delegated_to_intern": {
+            "type": "boolean"
+          },
+          "scope": {
+            "$ref": "#/components/schemas/VaultRoutingTableGoogleAccountsItemScope"
+          }
+        }
+      },
+      "VaultRoutingTableMcpOriginsItemRoutesItem": {
+        "required": [
+          "host",
+          "path_prefix"
+        ],
+        "type": "object",
+        "properties": {
+          "host": {
+            "type": "string"
+          },
+          "path_prefix": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        }
+      },
+      "VaultRoutingTableMcpOriginsItemStatus": {
+        "required": [
+          "state",
+          "failure"
+        ],
+        "type": [
+          "null",
+          "object"
+        ],
+        "properties": {
+          "failure": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The credential failure code when \u0060state\u0060 is \u0060failing\u0060; null otherwise."
+          },
+          "state": {
+            "$ref": "#/components/schemas/VaultRoutingTableMcpOriginsItemStatusState"
+          }
+        },
+        "description": "The vault\u0027s decision for a request to this server; null for members\u0027 own accounts, decided per acting member."
+      },
+      "VaultRoutingTableSlackMemberLinksItem": {
+        "required": [
+          "slack_user_id",
+          "holds_token"
+        ],
+        "type": "object",
+        "properties": {
+          "holds_token": {
+            "type": "boolean"
+          },
+          "slack_user_id": {
+            "type": "string"
+          }
+        }
+      },
       "ChatFunctionToolAnyOf1FunctionParameters": {
         "type": "object",
         "additionalProperties": {},
@@ -80691,6 +82957,67 @@
         },
         "description": "Per-modality token breakdown. Only present when the input contains 2\u002B modalities (e.g. text \u002B image) and the upstream provider returns modality-level usage data. Only non-zero modality counts are included."
       },
+      "VaultRoutingTableGithubAppsItemInstallationsItem": {
+        "required": [
+          "credential_id",
+          "account",
+          "account_type",
+          "is_enabled",
+          "is_off_for_intern",
+          "holds_token",
+          "coverage",
+          "shadowed_by"
+        ],
+        "type": "object",
+        "properties": {
+          "account": {
+            "type": "string",
+            "description": "The account the App is installed on, as GitHub spells it."
+          },
+          "account_type": {
+            "$ref": "#/components/schemas/VaultRoutingTableGithubAppsItemInstallationsItemAccountType"
+          },
+          "coverage": {
+            "$ref": "#/components/schemas/VaultRoutingTableGithubAppsItemInstallationsItemCoverage"
+          },
+          "credential_id": {
+            "type": "string"
+          },
+          "holds_token": {
+            "type": "boolean",
+            "description": "Whether the vault holds a current installation token to inject."
+          },
+          "is_enabled": {
+            "type": "boolean"
+          },
+          "is_off_for_intern": {
+            "type": "boolean",
+            "description": "The workspace turned this shared installation off or hid it for this intern."
+          },
+          "shadowed_by": {
+            "$ref": "#/components/schemas/VaultRoutingTableGithubAppsItemInstallationsItemShadowedBy"
+          }
+        }
+      },
+      "VaultRoutingTableGithubAppsItemMemberLinksItem": {
+        "required": [
+          "login",
+          "via",
+          "holds_token"
+        ],
+        "type": "object",
+        "properties": {
+          "holds_token": {
+            "type": "boolean"
+          },
+          "login": {
+            "type": "string"
+          },
+          "via": {
+            "$ref": "#/components/schemas/VaultRoutingTableGithubAppsItemMemberLinksItemVia"
+          }
+        }
+      },
       "BatchObjectResultsItemResponseBodyAnyOf1ChoicesItemLogprobsContentItem": {
         "required": [
           "token",
@@ -80794,6 +83121,35 @@
             "$ref": "#/components/schemas/FunctionType"
           }
         }
+      },
+      "VaultRoutingTableGithubAppsItemInstallationsItemCoverage": {
+        "required": [
+          "selection",
+          "repository_count",
+          "checked_at"
+        ],
+        "type": [
+          "null",
+          "object"
+        ],
+        "properties": {
+          "checked_at": {
+            "type": "string",
+            "description": "When GitHub answered, through the installation token the vault holds.",
+            "format": "date-time"
+          },
+          "repository_count": {
+            "type": [
+              "null",
+              "integer"
+            ],
+            "description": "Repositories the installation covers; null when GitHub did not count them."
+          },
+          "selection": {
+            "$ref": "#/components/schemas/VaultRoutingTableGithubAppsItemInstallationsItemCoverageSelection"
+          }
+        },
+        "description": "What GitHub says the installation covers; null until read."
       },
       "BatchObjectResultsItemResponseBodyAnyOf1ChoicesItemLogprobsContentItemTopLogprobsItem": {
         "required": [
@@ -81412,6 +83768,8 @@
             "example": true
           },
           "limit": {
+            "exclusiveMaximum": 1000000,
+            "minimum": 0,
             "type": [
               "null",
               "number"
@@ -81424,6 +83782,7 @@
             "$ref": "#/components/schemas/CreateKeysRequestLimitReset"
           },
           "name": {
+            "maxLength": 256,
             "minLength": 1,
             "type": "string",
             "description": "Name for the new API key",
@@ -81559,6 +83918,8 @@
             "example": true
           },
           "limit": {
+            "exclusiveMaximum": 1000000,
+            "minimum": 0,
             "type": [
               "null",
               "number"
@@ -81571,6 +83932,8 @@
             "$ref": "#/components/schemas/UpdateKeysRequestLimitReset"
           },
           "name": {
+            "maxLength": 256,
+            "minLength": 1,
             "type": "string",
             "description": "New name for the API key",
             "example": "Updated API Key Name"
@@ -81698,6 +84061,17 @@
             "$ref": "#/components/schemas/BadGatewayResponse"
           }
         ]
+      },
+      "DeletePrivateProvider200Response": {
+        "required": [
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/DeletePrivateProvider200ResponseData"
+          }
+        }
       },
       "ListProviders200Response": {
         "required": [
@@ -81860,20 +84234,6 @@
       "CreateRerank200EventStreamResponse": {
         "type": "string",
         "description": "Not used for rerank - rerank does not support streaming"
-      },
-      "ListInternConnections200Response": {
-        "required": [
-          "data"
-        ],
-        "type": "object",
-        "properties": {
-          "data": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ListInternConnections200ResponseDataItem"
-            }
-          }
-        }
       },
       "ListVideosContent200Mp4Response": {
         "type": "string",
@@ -82059,9 +84419,83 @@
           }
         }
       },
+      "ListPrivateProviders200Response": {
+        "required": [
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PrivateProvider"
+            }
+          }
+        }
+      },
+      "CreatePrivateProvider201Response": {
+        "required": [
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/PrivateProvider"
+          }
+        }
+      },
+      "GetPrivateProvider200Response": {
+        "required": [
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/PrivateProvider"
+          }
+        }
+      },
+      "UpdatePrivateProvider200Response": {
+        "required": [
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/PrivateProvider"
+          }
+        }
+      },
       "CreateRerank200EventStreamResponseSchema": {
         "type": "string",
         "description": "Not used for rerank - rerank does not support streaming"
+      },
+      "ListInternConnections200Response": {
+        "required": [
+          "data",
+          "routing",
+          "routing_text"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ListInternConnections200ResponseDataItem"
+            }
+          },
+          "routing": {
+            "description": "The intern\u0027s routing table, for the intern\u0027s own key only; null for any other caller or when the vault could not build it in time. The keys still list.",
+            "$ref": "#/components/schemas/VaultRoutingTable"
+          },
+          "routing_text": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The routing table as the plain lines the intern reads in its instructions\u0027 Connections section, or a notice that it could not be read; null for a caller other than the intern."
+          }
+        }
       },
       "ListVideosContent200Mp4ResponseSchema": {
         "type": "string",
@@ -88900,6 +91334,19 @@
           },
           "role": {
             "$ref": "#/components/schemas/ListOrganizationMembers200ResponseDataItemRole"
+          }
+        }
+      },
+      "DeletePrivateProvider200ResponseData": {
+        "required": [
+          "slug"
+        ],
+        "type": "object",
+        "properties": {
+          "slug": {
+            "type": "string",
+            "description": "The slug you chose, unique within your account. Use it as \u0060provider_slug\u0060 when creating private endpoints and BYOK keys, and in \u0060provider.order\u0060, \u0060only\u0060 and \u0060ignore\u0060.",
+            "example": "acme"
           }
         }
       },
@@ -96916,6 +99363,148 @@
           ]
         }
       },
+      "PrivateEndpointSettingsExcludedParametersItem": {
+        "enum": [
+          "temperature",
+          "top_p",
+          "top_k",
+          "min_p",
+          "top_a",
+          "frequency_penalty",
+          "presence_penalty",
+          "repetition_penalty",
+          "max_tokens",
+          "max_completion_tokens",
+          "logit_bias",
+          "logprobs",
+          "top_logprobs",
+          "prediction",
+          "seed",
+          "response_format",
+          "structured_outputs",
+          "stop",
+          "tools",
+          "tool_choice",
+          "parallel_tool_calls",
+          "include_reasoning",
+          "reasoning",
+          "reasoning_effort",
+          "web_search_options",
+          "verbosity"
+        ],
+        "type": "string",
+        "x-speakeasy-unknown-values": "allow",
+        "x-ms-enum": {
+          "name": "PrivateEndpointSettingsExcludedParametersItem",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "temperature",
+              "name": "Temperature"
+            },
+            {
+              "value": "top_p",
+              "name": "TopP"
+            },
+            {
+              "value": "top_k",
+              "name": "TopK"
+            },
+            {
+              "value": "min_p",
+              "name": "MinP"
+            },
+            {
+              "value": "top_a",
+              "name": "TopA"
+            },
+            {
+              "value": "frequency_penalty",
+              "name": "FrequencyPenalty"
+            },
+            {
+              "value": "presence_penalty",
+              "name": "PresencePenalty"
+            },
+            {
+              "value": "repetition_penalty",
+              "name": "RepetitionPenalty"
+            },
+            {
+              "value": "max_tokens",
+              "name": "MaxTokens"
+            },
+            {
+              "value": "max_completion_tokens",
+              "name": "MaxCompletionTokens"
+            },
+            {
+              "value": "logit_bias",
+              "name": "LogitBias"
+            },
+            {
+              "value": "logprobs",
+              "name": "Logprobs"
+            },
+            {
+              "value": "top_logprobs",
+              "name": "TopLogprobs"
+            },
+            {
+              "value": "prediction",
+              "name": "Prediction"
+            },
+            {
+              "value": "seed",
+              "name": "Seed"
+            },
+            {
+              "value": "response_format",
+              "name": "ResponseFormat"
+            },
+            {
+              "value": "structured_outputs",
+              "name": "StructuredOutputs"
+            },
+            {
+              "value": "stop",
+              "name": "Stop"
+            },
+            {
+              "value": "tools",
+              "name": "Tools"
+            },
+            {
+              "value": "tool_choice",
+              "name": "ToolChoice"
+            },
+            {
+              "value": "parallel_tool_calls",
+              "name": "ParallelToolCalls"
+            },
+            {
+              "value": "include_reasoning",
+              "name": "IncludeReasoning"
+            },
+            {
+              "value": "reasoning",
+              "name": "Reasoning"
+            },
+            {
+              "value": "reasoning_effort",
+              "name": "ReasoningEffort"
+            },
+            {
+              "value": "web_search_options",
+              "name": "WebSearchOptions"
+            },
+            {
+              "value": "verbosity",
+              "name": "Verbosity"
+            }
+          ]
+        }
+      },
       "ExplicitValueMode": {
         "enum": [
           "explicit"
@@ -98825,6 +101414,148 @@
             {
               "value": "us",
               "name": "Us"
+            }
+          ]
+        }
+      },
+      "UpdatePrivateEndpointSettingsRequestExcludedParametersItem": {
+        "enum": [
+          "temperature",
+          "top_p",
+          "top_k",
+          "min_p",
+          "top_a",
+          "frequency_penalty",
+          "presence_penalty",
+          "repetition_penalty",
+          "max_tokens",
+          "max_completion_tokens",
+          "logit_bias",
+          "logprobs",
+          "top_logprobs",
+          "prediction",
+          "seed",
+          "response_format",
+          "structured_outputs",
+          "stop",
+          "tools",
+          "tool_choice",
+          "parallel_tool_calls",
+          "include_reasoning",
+          "reasoning",
+          "reasoning_effort",
+          "web_search_options",
+          "verbosity"
+        ],
+        "type": "string",
+        "x-speakeasy-unknown-values": "allow",
+        "x-ms-enum": {
+          "name": "UpdatePrivateEndpointSettingsRequestExcludedParametersItem",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "temperature",
+              "name": "Temperature"
+            },
+            {
+              "value": "top_p",
+              "name": "TopP"
+            },
+            {
+              "value": "top_k",
+              "name": "TopK"
+            },
+            {
+              "value": "min_p",
+              "name": "MinP"
+            },
+            {
+              "value": "top_a",
+              "name": "TopA"
+            },
+            {
+              "value": "frequency_penalty",
+              "name": "FrequencyPenalty"
+            },
+            {
+              "value": "presence_penalty",
+              "name": "PresencePenalty"
+            },
+            {
+              "value": "repetition_penalty",
+              "name": "RepetitionPenalty"
+            },
+            {
+              "value": "max_tokens",
+              "name": "MaxTokens"
+            },
+            {
+              "value": "max_completion_tokens",
+              "name": "MaxCompletionTokens"
+            },
+            {
+              "value": "logit_bias",
+              "name": "LogitBias"
+            },
+            {
+              "value": "logprobs",
+              "name": "Logprobs"
+            },
+            {
+              "value": "top_logprobs",
+              "name": "TopLogprobs"
+            },
+            {
+              "value": "prediction",
+              "name": "Prediction"
+            },
+            {
+              "value": "seed",
+              "name": "Seed"
+            },
+            {
+              "value": "response_format",
+              "name": "ResponseFormat"
+            },
+            {
+              "value": "structured_outputs",
+              "name": "StructuredOutputs"
+            },
+            {
+              "value": "stop",
+              "name": "Stop"
+            },
+            {
+              "value": "tools",
+              "name": "Tools"
+            },
+            {
+              "value": "tool_choice",
+              "name": "ToolChoice"
+            },
+            {
+              "value": "parallel_tool_calls",
+              "name": "ParallelToolCalls"
+            },
+            {
+              "value": "include_reasoning",
+              "name": "IncludeReasoning"
+            },
+            {
+              "value": "reasoning",
+              "name": "Reasoning"
+            },
+            {
+              "value": "reasoning_effort",
+              "name": "ReasoningEffort"
+            },
+            {
+              "value": "web_search_options",
+              "name": "WebSearchOptions"
+            },
+            {
+              "value": "verbosity",
+              "name": "Verbosity"
             }
           ]
         }
@@ -102509,6 +105240,33 @@
           ]
         }
       },
+      "VaultRoutingTableSecretsItemScope": {
+        "enum": [
+          "intern",
+          "attached",
+          "workspace"
+        ],
+        "type": "string",
+        "x-speakeasy-unknown-values": "allow",
+        "x-ms-enum": {
+          "name": "VaultRoutingTableSecretsItemScope",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "intern",
+              "name": "Intern"
+            },
+            {
+              "value": "attached",
+              "name": "Attached"
+            },
+            {
+              "value": "workspace",
+              "name": "Workspace"
+            }
+          ]
+        }
+      },
       "ObjectValueType": {
         "enum": [
           "object"
@@ -102573,6 +105331,129 @@
           ]
         }
       },
+      "VaultRoutingTableCustomOriginsItemStatusState": {
+        "enum": [
+          "usable",
+          "no_credential",
+          "failing"
+        ],
+        "type": "string",
+        "x-speakeasy-unknown-values": "allow",
+        "x-ms-enum": {
+          "name": "VaultRoutingTableCustomOriginsItemStatusState",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "usable",
+              "name": "Usable"
+            },
+            {
+              "value": "no_credential",
+              "name": "NoCredential"
+            },
+            {
+              "value": "failing",
+              "name": "Failing"
+            }
+          ]
+        }
+      },
+      "VaultRoutingTableGithubAppsItemScope": {
+        "enum": [
+          "workspace",
+          "intern"
+        ],
+        "type": "string",
+        "description": "\u0060workspace\u0060 applies to every intern of the workspace; \u0060intern\u0060 to this intern alone.",
+        "x-speakeasy-unknown-values": "allow",
+        "x-ms-enum": {
+          "name": "VaultRoutingTableGithubAppsItemScope",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "workspace",
+              "name": "Workspace"
+            },
+            {
+              "value": "intern",
+              "name": "Intern"
+            }
+          ]
+        }
+      },
+      "VaultRoutingTableGithubTokensItemScope": {
+        "enum": [
+          "workspace",
+          "intern"
+        ],
+        "type": "string",
+        "description": "\u0060workspace\u0060 applies to every intern of the workspace; \u0060intern\u0060 to this intern alone.",
+        "x-speakeasy-unknown-values": "allow",
+        "x-ms-enum": {
+          "name": "VaultRoutingTableGithubTokensItemScope",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "workspace",
+              "name": "Workspace"
+            },
+            {
+              "value": "intern",
+              "name": "Intern"
+            }
+          ]
+        }
+      },
+      "VaultRoutingTableGoogleAccountsItemScope": {
+        "enum": [
+          "workspace",
+          "intern"
+        ],
+        "type": "string",
+        "description": "\u0060workspace\u0060 applies to every intern of the workspace; \u0060intern\u0060 to this intern alone.",
+        "x-speakeasy-unknown-values": "allow",
+        "x-ms-enum": {
+          "name": "VaultRoutingTableGoogleAccountsItemScope",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "workspace",
+              "name": "Workspace"
+            },
+            {
+              "value": "intern",
+              "name": "Intern"
+            }
+          ]
+        }
+      },
+      "VaultRoutingTableMcpOriginsItemStatusState": {
+        "enum": [
+          "usable",
+          "no_credential",
+          "failing"
+        ],
+        "type": "string",
+        "x-speakeasy-unknown-values": "allow",
+        "x-ms-enum": {
+          "name": "VaultRoutingTableMcpOriginsItemStatusState",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "usable",
+              "name": "Usable"
+            },
+            {
+              "value": "no_credential",
+              "name": "NoCredential"
+            },
+            {
+              "value": "failing",
+              "name": "Failing"
+            }
+          ]
+        }
+      },
       "BatchObjectResultsItemResponseBodyAnyOf1DebugTimingsEvent": {
         "enum": [
           "adapter_request",
@@ -102601,6 +105482,109 @@
             {
               "value": "upstream_body_ended",
               "name": "UpstreamBodyEnded"
+            }
+          ]
+        }
+      },
+      "VaultRoutingTableGithubAppsItemInstallationsItemAccountType": {
+        "enum": [
+          "organization",
+          "user",
+          null
+        ],
+        "type": [
+          "null",
+          "string"
+        ],
+        "x-speakeasy-unknown-values": "allow",
+        "x-ms-enum": {
+          "name": "VaultRoutingTableGithubAppsItemInstallationsItemAccountType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "organization",
+              "name": "Organization"
+            },
+            {
+              "value": "user",
+              "name": "User"
+            }
+          ]
+        }
+      },
+      "VaultRoutingTableGithubAppsItemInstallationsItemShadowedBy": {
+        "enum": [
+          "installation",
+          "token",
+          null
+        ],
+        "type": [
+          "null",
+          "string"
+        ],
+        "description": "What egress uses instead of this installation for a request to its account: an earlier installation on the same account, or a token pinned to the account. Null when this installation answers.",
+        "x-speakeasy-unknown-values": "allow",
+        "x-ms-enum": {
+          "name": "VaultRoutingTableGithubAppsItemInstallationsItemShadowedBy",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "installation",
+              "name": "Installation"
+            },
+            {
+              "value": "token",
+              "name": "Token"
+            }
+          ]
+        }
+      },
+      "VaultRoutingTableGithubAppsItemMemberLinksItemVia": {
+        "enum": [
+          "app_link",
+          "token",
+          "any_link"
+        ],
+        "type": "string",
+        "description": "How the vault picks this link for the App, by the same selection egress uses.",
+        "x-speakeasy-unknown-values": "allow",
+        "x-ms-enum": {
+          "name": "VaultRoutingTableGithubAppsItemMemberLinksItemVia",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "app_link",
+              "name": "AppLink"
+            },
+            {
+              "value": "token",
+              "name": "Token"
+            },
+            {
+              "value": "any_link",
+              "name": "AnyLink"
+            }
+          ]
+        }
+      },
+      "VaultRoutingTableGithubAppsItemInstallationsItemCoverageSelection": {
+        "enum": [
+          "all",
+          "selected"
+        ],
+        "type": "string",
+        "x-speakeasy-unknown-values": "allow",
+        "x-ms-enum": {
+          "name": "VaultRoutingTableGithubAppsItemInstallationsItemCoverageSelection",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "all",
+              "name": "All"
+            },
+            {
+              "value": "selected",
+              "name": "Selected"
             }
           ]
         }
@@ -107285,6 +110269,10 @@
     {
       "name": "Private Endpoints",
       "description": "Private Endpoints endpoints"
+    },
+    {
+      "name": "Private Providers",
+      "description": "Private Providers endpoints"
     },
     {
       "name": "Providers",

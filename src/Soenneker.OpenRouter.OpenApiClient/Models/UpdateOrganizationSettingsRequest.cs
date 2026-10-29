@@ -12,7 +12,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     public partial class UpdateOrganizationSettingsRequest : IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>When true, `GET /api/v1/models` called with one of the organization&apos;s API keys returns only the models that key can use (the `/api/v1/models/user` catalog), and the signed-in dashboard shows the same list. Anonymous requests always receive the public catalog.</summary>
+        /// <summary>When true, the signed-in dashboard lists only the models the organization can use. `GET /api/v1/models` called with an API key always returns only the models that key can use, whatever this setting says; anonymous requests receive the public catalog.</summary>
         public bool? IsFilteredModelCatalogEnabled { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value

@@ -68,6 +68,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public string ProviderSlug { get; set; }
 #endif
+        /// <summary>Capabilities and limits to set over the ones copied from the public endpoint for this model and provider (or from the model). Omitted fields keep the copied values.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointSettingsRequest? Settings { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointSettingsRequest Settings { get; set; }
+#endif
         /// <summary>Model or deployment identifier sent to the upstream provider.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -110,6 +118,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "model_permaslug", n => { ModelPermaslug = n.GetStringValue(); } },
                 { "pricing", n => { Pricing = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointPricing>(global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointPricing.CreateFromDiscriminatorValue); } },
                 { "provider_slug", n => { ProviderSlug = n.GetStringValue(); } },
+                { "settings", n => { Settings = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointSettingsRequest>(global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointSettingsRequest.CreateFromDiscriminatorValue); } },
                 { "upstream_model_id", n => { UpstreamModelId = n.GetStringValue(); } },
             };
         }
@@ -129,6 +138,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteStringValue("model_permaslug", ModelPermaslug);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointPricing>("pricing", Pricing);
             writer.WriteStringValue("provider_slug", ProviderSlug);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointSettingsRequest>("settings", Settings);
             writer.WriteStringValue("upstream_model_id", UpstreamModelId);
             writer.WriteAdditionalData(AdditionalData);
         }

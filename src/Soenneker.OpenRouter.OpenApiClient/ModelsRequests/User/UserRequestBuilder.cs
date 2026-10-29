@@ -42,6 +42,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.ModelsRequests.User
         /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.UnauthorizedResponse">When receiving a 401 status code</exception>
         /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ForbiddenResponse">When receiving a 403 status code</exception>
         /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.NotFoundResponse">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.RequestTimeoutResponse">When receiving a 408 status code</exception>
+        /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ConflictResponse">When receiving a 409 status code</exception>
+        /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.TooManyRequestsResponse">When receiving a 429 status code</exception>
         /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.InternalServerResponse">When receiving a 500 status code</exception>
         /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ServiceUnavailableResponse">When receiving a 503 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -59,6 +62,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.ModelsRequests.User
                 { "401", global::Soenneker.OpenRouter.OpenApiClient.Models.UnauthorizedResponse.CreateFromDiscriminatorValue },
                 { "403", global::Soenneker.OpenRouter.OpenApiClient.Models.ForbiddenResponse.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.OpenRouter.OpenApiClient.Models.NotFoundResponse.CreateFromDiscriminatorValue },
+                { "408", global::Soenneker.OpenRouter.OpenApiClient.Models.RequestTimeoutResponse.CreateFromDiscriminatorValue },
+                { "409", global::Soenneker.OpenRouter.OpenApiClient.Models.ConflictResponse.CreateFromDiscriminatorValue },
+                { "429", global::Soenneker.OpenRouter.OpenApiClient.Models.TooManyRequestsResponse.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.OpenRouter.OpenApiClient.Models.InternalServerResponse.CreateFromDiscriminatorValue },
                 { "503", global::Soenneker.OpenRouter.OpenApiClient.Models.ServiceUnavailableResponse.CreateFromDiscriminatorValue },
             };
