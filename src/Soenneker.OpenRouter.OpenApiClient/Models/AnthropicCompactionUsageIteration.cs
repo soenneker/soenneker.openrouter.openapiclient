@@ -11,27 +11,47 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class AnthropicCompactionUsageIteration : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("cache_creation") is { } nullNodeCacheCreation && nullNodeCacheCreation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CacheCreation = null;
+            if (parseNode.GetChildNode("cache_creation_input_tokens") is { } nullNodeCacheCreationInputTokens && nullNodeCacheCreationInputTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CacheCreationInputTokens = null;
+            if (parseNode.GetChildNode("cache_read_input_tokens") is { } nullNodeCacheReadInputTokens && nullNodeCacheReadInputTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CacheReadInputTokens = null;
+            if (parseNode.GetChildNode("input_tokens") is { } nullNodeInputTokens && nullNodeInputTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InputTokens = null;
+            if (parseNode.GetChildNode("output_tokens") is { } nullNodeOutputTokens && nullNodeOutputTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OutputTokens = null;
+            if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The cache_creation property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicIterationCacheCreation? CacheCreation { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicIterationCacheCreation? CacheCreation { get => _explicitNullValueCacheCreation; set { _explicitNullValueCacheCreation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cache_creation"); else _explicitNullProperties?.Remove("cache_creation"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicIterationCacheCreation? _explicitNullValueCacheCreation = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicIterationCacheCreation CacheCreation { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicIterationCacheCreation CacheCreation { get => _explicitNullValueCacheCreation; set { _explicitNullValueCacheCreation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cache_creation"); else _explicitNullProperties?.Remove("cache_creation"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicIterationCacheCreation _explicitNullValueCacheCreation = default!;
 #endif
         /// <summary>The cache_creation_input_tokens property</summary>
-        public int? CacheCreationInputTokens { get; set; }
+        public int? CacheCreationInputTokens { get => _explicitNullValueCacheCreationInputTokens; set { _explicitNullValueCacheCreationInputTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cache_creation_input_tokens"); else _explicitNullProperties?.Remove("cache_creation_input_tokens"); } }
+        private int? _explicitNullValueCacheCreationInputTokens = default!;
         /// <summary>The cache_read_input_tokens property</summary>
-        public int? CacheReadInputTokens { get; set; }
+        public int? CacheReadInputTokens { get => _explicitNullValueCacheReadInputTokens; set { _explicitNullValueCacheReadInputTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cache_read_input_tokens"); else _explicitNullProperties?.Remove("cache_read_input_tokens"); } }
+        private int? _explicitNullValueCacheReadInputTokens = default!;
         /// <summary>The input_tokens property</summary>
-        public int? InputTokens { get; set; }
+        public int? InputTokens { get => _explicitNullValueInputTokens; set { _explicitNullValueInputTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input_tokens"); else _explicitNullProperties?.Remove("input_tokens"); } }
+        private int? _explicitNullValueInputTokens = default!;
         /// <summary>The output_tokens property</summary>
-        public int? OutputTokens { get; set; }
+        public int? OutputTokens { get => _explicitNullValueOutputTokens; set { _explicitNullValueOutputTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("output_tokens"); else _explicitNullProperties?.Remove("output_tokens"); } }
+        private int? _explicitNullValueOutputTokens = default!;
         /// <summary>The type property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.CompactionType? Type { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.CompactionType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.CompactionType? _explicitNullValueType = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCompactionUsageIteration"/> and sets the default values.
         /// </summary>
@@ -47,7 +67,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public static global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCompactionUsageIteration CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCompactionUsageIteration();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCompactionUsageIteration(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -78,6 +98,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteIntValue("input_tokens", InputTokens);
             writer.WriteIntValue("output_tokens", OutputTokens);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.CompactionType>("type", Type);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

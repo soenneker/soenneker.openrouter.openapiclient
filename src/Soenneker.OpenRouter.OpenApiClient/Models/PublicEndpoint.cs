@@ -12,127 +12,197 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PublicEndpoint : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("context_length") is { } nullNodeContextLength && nullNodeContextLength.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ContextLength = null;
+            if (parseNode.GetChildNode("latency_last_30m") is { } nullNodeLatencyLast30m && nullNodeLatencyLast30m.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LatencyLast30m = null;
+            if (parseNode.GetChildNode("max_completion_tokens") is { } nullNodeMaxCompletionTokens && nullNodeMaxCompletionTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxCompletionTokens = null;
+            if (parseNode.GetChildNode("max_prompt_tokens") is { } nullNodeMaxPromptTokens && nullNodeMaxPromptTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxPromptTokens = null;
+            if (parseNode.GetChildNode("model_id") is { } nullNodeModelId && nullNodeModelId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ModelId = null;
+            if (parseNode.GetChildNode("model_name") is { } nullNodeModelName && nullNodeModelName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ModelName = null;
+            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("native_tools") is { } nullNodeNativeTools && nullNodeNativeTools.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NativeTools = null;
+            if (parseNode.GetChildNode("perf_last_30m_by_workload") is { } nullNodePerfLast30mByWorkload && nullNodePerfLast30mByWorkload.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PerfLast30mByWorkload = null;
+            if (parseNode.GetChildNode("pricing") is { } nullNodePricing && nullNodePricing.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Pricing = null;
+            if (parseNode.GetChildNode("provider_name") is { } nullNodeProviderName && nullNodeProviderName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProviderName = null;
+            if (parseNode.GetChildNode("quantization") is { } nullNodeQuantization && nullNodeQuantization.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Quantization = null;
+            if (parseNode.GetChildNode("service_tier") is { } nullNodeServiceTier && nullNodeServiceTier.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ServiceTier = null;
+            if (parseNode.GetChildNode("status") is { } nullNodeStatus && nullNodeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Status = null;
+            if (parseNode.GetChildNode("supported_parameters") is { } nullNodeSupportedParameters && nullNodeSupportedParameters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SupportedParameters = null;
+            if (parseNode.GetChildNode("supports_diarization") is { } nullNodeSupportsDiarization && nullNodeSupportsDiarization.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SupportsDiarization = null;
+            if (parseNode.GetChildNode("supports_image_reference") is { } nullNodeSupportsImageReference && nullNodeSupportsImageReference.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SupportsImageReference = null;
+            if (parseNode.GetChildNode("supports_implicit_caching") is { } nullNodeSupportsImplicitCaching && nullNodeSupportsImplicitCaching.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SupportsImplicitCaching = null;
+            if (parseNode.GetChildNode("supports_multiple_audio_references") is { } nullNodeSupportsMultipleAudioReferences && nullNodeSupportsMultipleAudioReferences.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SupportsMultipleAudioReferences = null;
+            if (parseNode.GetChildNode("supports_tool_choice") is { } nullNodeSupportsToolChoice && nullNodeSupportsToolChoice.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SupportsToolChoice = null;
+            if (parseNode.GetChildNode("supports_voice_cloning") is { } nullNodeSupportsVoiceCloning && nullNodeSupportsVoiceCloning.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SupportsVoiceCloning = null;
+            if (parseNode.GetChildNode("tag") is { } nullNodeTag && nullNodeTag.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tag = null;
+            if (parseNode.GetChildNode("throughput_last_30m") is { } nullNodeThroughputLast30m && nullNodeThroughputLast30m.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ThroughputLast30m = null;
+            if (parseNode.GetChildNode("uptime_last_1d") is { } nullNodeUptimeLast1d && nullNodeUptimeLast1d.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UptimeLast1d = null;
+            if (parseNode.GetChildNode("uptime_last_30m") is { } nullNodeUptimeLast30m && nullNodeUptimeLast30m.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UptimeLast30m = null;
+            if (parseNode.GetChildNode("uptime_last_5m") is { } nullNodeUptimeLast5m && nullNodeUptimeLast5m.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UptimeLast5m = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The context_length property</summary>
-        public int? ContextLength { get; set; }
+        public int? ContextLength { get => _explicitNullValueContextLength; set { _explicitNullValueContextLength = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("context_length"); else _explicitNullProperties?.Remove("context_length"); } }
+        private int? _explicitNullValueContextLength = default!;
         /// <summary>Latency percentiles in milliseconds over the last 30 minutes. Latency measures time to first token. Only visible when authenticated with an API key or cookie; returns null for unauthenticated requests.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.PercentileStats? LatencyLast30m { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PercentileStats? LatencyLast30m { get => _explicitNullValueLatencyLast30m; set { _explicitNullValueLatencyLast30m = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latency_last_30m"); else _explicitNullProperties?.Remove("latency_last_30m"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.PercentileStats? _explicitNullValueLatencyLast30m = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.PercentileStats LatencyLast30m { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PercentileStats LatencyLast30m { get => _explicitNullValueLatencyLast30m; set { _explicitNullValueLatencyLast30m = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latency_last_30m"); else _explicitNullProperties?.Remove("latency_last_30m"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.PercentileStats _explicitNullValueLatencyLast30m = default!;
 #endif
         /// <summary>Maximum completion tokens for this endpoint. Input and output tokens share the context window, so the effective maximum output for a request is further limited by the context remaining after input tokens.</summary>
-        public int? MaxCompletionTokens { get; set; }
+        public int? MaxCompletionTokens { get => _explicitNullValueMaxCompletionTokens; set { _explicitNullValueMaxCompletionTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_completion_tokens"); else _explicitNullProperties?.Remove("max_completion_tokens"); } }
+        private int? _explicitNullValueMaxCompletionTokens = default!;
         /// <summary>The max_prompt_tokens property</summary>
-        public int? MaxPromptTokens { get; set; }
+        public int? MaxPromptTokens { get => _explicitNullValueMaxPromptTokens; set { _explicitNullValueMaxPromptTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_prompt_tokens"); else _explicitNullProperties?.Remove("max_prompt_tokens"); } }
+        private int? _explicitNullValueMaxPromptTokens = default!;
         /// <summary>The unique identifier for the model (permaslug)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ModelId { get; set; }
+        public string? ModelId { get => _explicitNullValueModelId; set { _explicitNullValueModelId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_id"); else _explicitNullProperties?.Remove("model_id"); } }
+        private string? _explicitNullValueModelId = default!;
 #nullable restore
 #else
-        public string ModelId { get; set; }
+        public string ModelId { get => _explicitNullValueModelId; set { _explicitNullValueModelId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_id"); else _explicitNullProperties?.Remove("model_id"); } }
+        private string _explicitNullValueModelId = default!;
 #endif
         /// <summary>The model_name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ModelName { get; set; }
+        public string? ModelName { get => _explicitNullValueModelName; set { _explicitNullValueModelName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_name"); else _explicitNullProperties?.Remove("model_name"); } }
+        private string? _explicitNullValueModelName = default!;
 #nullable restore
 #else
-        public string ModelName { get; set; }
+        public string ModelName { get => _explicitNullValueModelName; set { _explicitNullValueModelName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_name"); else _explicitNullProperties?.Remove("model_name"); } }
+        private string _explicitNullValueModelName = default!;
 #endif
         /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; set; }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get; set; }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string _explicitNullValueName = default!;
 #endif
         /// <summary>The server tools this endpoint accepts as the provider&apos;s own built-in tool (`engine: &quot;native&quot;`) instead of an OpenRouter engine, keyed by canonical `openrouter:*` name. Each value names the provider tool type the request is translated to. Where that tool runs (provider-side, or returned to the client as with Anthropic bash) is documented per tool. Empty when the provider has none.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointNativeToolsProperty? NativeTools { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointNativeToolsProperty? NativeTools { get => _explicitNullValueNativeTools; set { _explicitNullValueNativeTools = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("native_tools"); else _explicitNullProperties?.Remove("native_tools"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointNativeToolsProperty? _explicitNullValueNativeTools = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointNativeToolsProperty NativeTools { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointNativeToolsProperty NativeTools { get => _explicitNullValueNativeTools; set { _explicitNullValueNativeTools = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("native_tools"); else _explicitNullProperties?.Remove("native_tools"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointNativeToolsProperty _explicitNullValueNativeTools = default!;
 #endif
         /// <summary>Endpoint performance over the last 30 minutes, keyed by the kind of request served (e.g. `text_generation`, `image_generation`). Additive to the legacy singular latency and throughput fields; image and video generation report end-to-end latency. Only visible when authenticated with an API key or cookie.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkload? PerfLast30mByWorkload { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkload? PerfLast30mByWorkload { get => _explicitNullValuePerfLast30mByWorkload; set { _explicitNullValuePerfLast30mByWorkload = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("perf_last_30m_by_workload"); else _explicitNullProperties?.Remove("perf_last_30m_by_workload"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkload? _explicitNullValuePerfLast30mByWorkload = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkload PerfLast30mByWorkload { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkload PerfLast30mByWorkload { get => _explicitNullValuePerfLast30mByWorkload; set { _explicitNullValuePerfLast30mByWorkload = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("perf_last_30m_by_workload"); else _explicitNullProperties?.Remove("perf_last_30m_by_workload"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkload _explicitNullValuePerfLast30mByWorkload = default!;
 #endif
         /// <summary>The pricing property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPricing? Pricing { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPricing? Pricing { get => _explicitNullValuePricing; set { _explicitNullValuePricing = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pricing"); else _explicitNullProperties?.Remove("pricing"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPricing? _explicitNullValuePricing = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPricing Pricing { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPricing Pricing { get => _explicitNullValuePricing; set { _explicitNullValuePricing = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pricing"); else _explicitNullProperties?.Remove("pricing"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPricing _explicitNullValuePricing = default!;
 #endif
         /// <summary>The provider_name property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderName? ProviderName { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderName? ProviderName { get => _explicitNullValueProviderName; set { _explicitNullValueProviderName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("provider_name"); else _explicitNullProperties?.Remove("provider_name"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderName? _explicitNullValueProviderName = default!;
         /// <summary>The quantization property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.Quantization? Quantization { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.Quantization? Quantization { get => _explicitNullValueQuantization; set { _explicitNullValueQuantization = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quantization"); else _explicitNullProperties?.Remove("quantization"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.Quantization? _explicitNullValueQuantization = default!;
         /// <summary>The service tier this endpoint sells, or null for a standard endpoint. The same value whether the provider selects the tier with a request parameter or with a dedicated model id. Always the canonical tier: priority covers the fast request alias and the turbo, highspeed, and prime provider model-id spellings, none of which this field reports.</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicServiceTier? ServiceTier { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicServiceTier? ServiceTier { get => _explicitNullValueServiceTier; set { _explicitNullValueServiceTier = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("service_tier"); else _explicitNullProperties?.Remove("service_tier"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.PublicServiceTier? _explicitNullValueServiceTier = default!;
         /// <summary>The status property</summary>
-        public int? Status { get; set; }
+        public int? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        private int? _explicitNullValueStatus = default!;
         /// <summary>The supported_parameters property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.Parameter?>? SupportedParameters { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.Parameter?>? SupportedParameters { get => _explicitNullValueSupportedParameters; set { _explicitNullValueSupportedParameters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supported_parameters"); else _explicitNullProperties?.Remove("supported_parameters"); } }
+        private List<global::Soenneker.OpenRouter.OpenApiClient.Models.Parameter?>? _explicitNullValueSupportedParameters = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.Parameter?> SupportedParameters { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.Parameter?> SupportedParameters { get => _explicitNullValueSupportedParameters; set { _explicitNullValueSupportedParameters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supported_parameters"); else _explicitNullProperties?.Remove("supported_parameters"); } }
+        private List<global::Soenneker.OpenRouter.OpenApiClient.Models.Parameter?> _explicitNullValueSupportedParameters = default!;
 #endif
         /// <summary>Whether this STT endpoint can label each transcript segment with a speaker (speaker diarization). False when the endpoint has not declared support.</summary>
-        public bool? SupportsDiarization { get; set; }
+        public bool? SupportsDiarization { get => _explicitNullValueSupportsDiarization; set { _explicitNullValueSupportsDiarization = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supports_diarization"); else _explicitNullProperties?.Remove("supports_diarization"); } }
+        private bool? _explicitNullValueSupportsDiarization = default!;
         /// <summary>Whether this TTS endpoint accepts an `image_url` reference describing the desired voice. Requests carrying an image reference are only routed to endpoints where this is true.</summary>
-        public bool? SupportsImageReference { get; set; }
+        public bool? SupportsImageReference { get => _explicitNullValueSupportsImageReference; set { _explicitNullValueSupportsImageReference = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supports_image_reference"); else _explicitNullProperties?.Remove("supports_image_reference"); } }
+        private bool? _explicitNullValueSupportsImageReference = default!;
         /// <summary>The supports_implicit_caching property</summary>
-        public bool? SupportsImplicitCaching { get; set; }
+        public bool? SupportsImplicitCaching { get => _explicitNullValueSupportsImplicitCaching; set { _explicitNullValueSupportsImplicitCaching = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supports_implicit_caching"); else _explicitNullProperties?.Remove("supports_implicit_caching"); } }
+        private bool? _explicitNullValueSupportsImplicitCaching = default!;
         /// <summary>Whether this TTS endpoint accepts more than one `input_audio` reference clip per request. Requests carrying several clips are only routed to endpoints where this is true.</summary>
-        public bool? SupportsMultipleAudioReferences { get; set; }
+        public bool? SupportsMultipleAudioReferences { get => _explicitNullValueSupportsMultipleAudioReferences; set { _explicitNullValueSupportsMultipleAudioReferences = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supports_multiple_audio_references"); else _explicitNullProperties?.Remove("supports_multiple_audio_references"); } }
+        private bool? _explicitNullValueSupportsMultipleAudioReferences = default!;
         /// <summary>Per-variant `tool_choice` support. `tool_choice` in `supported_parameters` only says the parameter is accepted; these flags say which of its values passed testing.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ToolChoiceSupport? SupportsToolChoice { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ToolChoiceSupport? SupportsToolChoice { get => _explicitNullValueSupportsToolChoice; set { _explicitNullValueSupportsToolChoice = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supports_tool_choice"); else _explicitNullProperties?.Remove("supports_tool_choice"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ToolChoiceSupport? _explicitNullValueSupportsToolChoice = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ToolChoiceSupport SupportsToolChoice { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ToolChoiceSupport SupportsToolChoice { get => _explicitNullValueSupportsToolChoice; set { _explicitNullValueSupportsToolChoice = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supports_tool_choice"); else _explicitNullProperties?.Remove("supports_tool_choice"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ToolChoiceSupport _explicitNullValueSupportsToolChoice = default!;
 #endif
         /// <summary>Whether this TTS endpoint accepts inline reference audio (`input_references`) for stateless voice cloning. Requests carrying reference audio are only routed to endpoints where this is true.</summary>
-        public bool? SupportsVoiceCloning { get; set; }
+        public bool? SupportsVoiceCloning { get => _explicitNullValueSupportsVoiceCloning; set { _explicitNullValueSupportsVoiceCloning = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supports_voice_cloning"); else _explicitNullProperties?.Remove("supports_voice_cloning"); } }
+        private bool? _explicitNullValueSupportsVoiceCloning = default!;
         /// <summary>The tag property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Tag { get; set; }
+        public string? Tag { get => _explicitNullValueTag; set { _explicitNullValueTag = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tag"); else _explicitNullProperties?.Remove("tag"); } }
+        private string? _explicitNullValueTag = default!;
 #nullable restore
 #else
-        public string Tag { get; set; }
+        public string Tag { get => _explicitNullValueTag; set { _explicitNullValueTag = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tag"); else _explicitNullProperties?.Remove("tag"); } }
+        private string _explicitNullValueTag = default!;
 #endif
         /// <summary>Throughput percentiles in tokens per second over the last 30 minutes. Throughput measures output token generation speed; pN is the speed that N% of requests reached or exceeded, so p90 is lower than p50. Only visible when authenticated with an API key or cookie; returns null for unauthenticated requests.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointThroughputLast30M? ThroughputLast30m { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointThroughputLast30M? ThroughputLast30m { get => _explicitNullValueThroughputLast30m; set { _explicitNullValueThroughputLast30m = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("throughput_last_30m"); else _explicitNullProperties?.Remove("throughput_last_30m"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointThroughputLast30M? _explicitNullValueThroughputLast30m = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointThroughputLast30M ThroughputLast30m { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointThroughputLast30M ThroughputLast30m { get => _explicitNullValueThroughputLast30m; set { _explicitNullValueThroughputLast30m = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("throughput_last_30m"); else _explicitNullProperties?.Remove("throughput_last_30m"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointThroughputLast30M _explicitNullValueThroughputLast30m = default!;
 #endif
         /// <summary>Uptime percentage over the last day: the share of minutes in which at least 80% of provider attempts succeeded, counting only minutes with 10 or more attempts. Rate-limited and caller-caused failures are excluded. Null when no minute had enough traffic.</summary>
-        public double? UptimeLast1d { get; set; }
+        public double? UptimeLast1d { get => _explicitNullValueUptimeLast1d; set { _explicitNullValueUptimeLast1d = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("uptime_last_1d"); else _explicitNullProperties?.Remove("uptime_last_1d"); } }
+        private double? _explicitNullValueUptimeLast1d = default!;
         /// <summary>The uptime_last_30m property</summary>
-        public double? UptimeLast30m { get; set; }
+        public double? UptimeLast30m { get => _explicitNullValueUptimeLast30m; set { _explicitNullValueUptimeLast30m = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("uptime_last_30m"); else _explicitNullProperties?.Remove("uptime_last_30m"); } }
+        private double? _explicitNullValueUptimeLast30m = default!;
         /// <summary>Uptime percentage over the last 5 minutes: the share of minutes in which at least 80% of provider attempts succeeded, counting only minutes with 10 or more attempts. Rate-limited and caller-caused failures are excluded. Null when no minute had enough traffic.</summary>
-        public double? UptimeLast5m { get; set; }
+        public double? UptimeLast5m { get => _explicitNullValueUptimeLast5m; set { _explicitNullValueUptimeLast5m = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("uptime_last_5m"); else _explicitNullProperties?.Remove("uptime_last_5m"); } }
+        private double? _explicitNullValueUptimeLast5m = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpoint"/> and sets the default values.
         /// </summary>
@@ -151,7 +221,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public static global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpoint CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpoint();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpoint(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -222,6 +292,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteDoubleValue("uptime_last_1d", UptimeLast1d);
             writer.WriteDoubleValue("uptime_last_30m", UptimeLast30m);
             writer.WriteDoubleValue("uptime_last_5m", UptimeLast5m);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

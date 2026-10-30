@@ -39,11 +39,13 @@ namespace Soenneker.OpenRouter.OpenApiClient.PrivateEndpoints.Item
             get => new global::Soenneker.OpenRouter.OpenApiClient.PrivateEndpoints.Item.Enable.EnableRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The parameters property</summary>
+        [Obsolete("")]
         public global::Soenneker.OpenRouter.OpenApiClient.PrivateEndpoints.Item.Parameters.ParametersRequestBuilder Parameters
         {
             get => new global::Soenneker.OpenRouter.OpenApiClient.PrivateEndpoints.Item.Parameters.ParametersRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The pricing property</summary>
+        [Obsolete("")]
         public global::Soenneker.OpenRouter.OpenApiClient.PrivateEndpoints.Item.Pricing.PricingRequestBuilder Pricing
         {
             get => new global::Soenneker.OpenRouter.OpenApiClient.PrivateEndpoints.Item.Pricing.PricingRequestBuilder(PathParameters, RequestAdapter);
@@ -105,6 +107,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.PrivateEndpoints.Item
                 { "422", global::Soenneker.OpenRouter.OpenApiClient.Models.UnprocessableEntityResponse.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.OpenRouter.OpenApiClient.Models.InternalServerResponse.CreateFromDiscriminatorValue },
                 { "502", global::Soenneker.OpenRouter.OpenApiClient.Models.BadGatewayResponse.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.OpenRouter.OpenApiClient.Models.DeletePrivateEndpointResponse>(requestInfo, global::Soenneker.OpenRouter.OpenApiClient.Models.DeletePrivateEndpointResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -136,6 +140,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.PrivateEndpoints.Item
                 { "404", global::Soenneker.OpenRouter.OpenApiClient.Models.NotFoundResponse.CreateFromDiscriminatorValue },
                 { "408", global::Soenneker.OpenRouter.OpenApiClient.Models.RequestTimeoutResponse.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.OpenRouter.OpenApiClient.Models.InternalServerResponse.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointResponse>(requestInfo, global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -177,6 +183,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.PrivateEndpoints.Item
                 { "422", global::Soenneker.OpenRouter.OpenApiClient.Models.UnprocessableEntityResponse.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.OpenRouter.OpenApiClient.Models.InternalServerResponse.CreateFromDiscriminatorValue },
                 { "502", global::Soenneker.OpenRouter.OpenApiClient.Models.BadGatewayResponse.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointResponse>(requestInfo, global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

@@ -12,29 +12,53 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ArmorPlugin : IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("classifier_context") is { } nullNodeClassifierContext && nullNodeClassifierContext.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClassifierContext = null;
+            if (parseNode.GetChildNode("enabled") is { } nullNodeEnabled && nullNodeEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Enabled = null;
+            if (parseNode.GetChildNode("evaluate_native_tools") is { } nullNodeEvaluateNativeTools && nullNodeEvaluateNativeTools.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EvaluateNativeTools = null;
+            if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("mode") is { } nullNodeMode && nullNodeMode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Mode = null;
+            if (parseNode.GetChildNode("on_error") is { } nullNodeOnError && nullNodeOnError.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OnError = null;
+            if (parseNode.GetChildNode("output_mode") is { } nullNodeOutputMode && nullNodeOutputMode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OutputMode = null;
+            if (parseNode.GetChildNode("use_cc_style_default_rules") is { } nullNodeUseCcStyleDefaultRules && nullNodeUseCcStyleDefaultRules.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UseCcStyleDefaultRules = null;
+        }
+
         /// <summary>The Armor context: Claude Code&apos;s `classifier_context` (v1), with `auto_mode.{hard_deny,soft_deny,allow}` rules as strings or `{ id, instructions, threshold? }` objects and `auto_mode.environment` entries as `&quot;Name: value&quot;` strings or `{ name, value }` objects. `threshold` applies when Armor evaluates; when the provider evaluates natively (Anthropic dangerous-tool-use beta) rules are judged at the provider&apos;s own boundary.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ArmorContext? ClassifierContext { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ArmorContext? ClassifierContext { get => _explicitNullValueClassifierContext; set { _explicitNullValueClassifierContext = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("classifier_context"); else _explicitNullProperties?.Remove("classifier_context"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ArmorContext? _explicitNullValueClassifierContext = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ArmorContext ClassifierContext { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ArmorContext ClassifierContext { get => _explicitNullValueClassifierContext; set { _explicitNullValueClassifierContext = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("classifier_context"); else _explicitNullProperties?.Remove("classifier_context"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ArmorContext _explicitNullValueClassifierContext = default!;
 #endif
         /// <summary>Set to false to disable Armor for this request. Defaults to true.</summary>
-        public bool? Enabled { get; set; }
+        public bool? Enabled { get => _explicitNullValueEnabled; set { _explicitNullValueEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enabled"); else _explicitNullProperties?.Remove("enabled"); } }
+        private bool? _explicitNullValueEnabled = default!;
         /// <summary>Run provider-native server tools (web search, code execution, ...) through the agent loop so Armor evaluates them too. Defaults to false: native passthrough stands and such calls are reported `skipped`.</summary>
-        public bool? EvaluateNativeTools { get; set; }
+        public bool? EvaluateNativeTools { get => _explicitNullValueEvaluateNativeTools; set { _explicitNullValueEvaluateNativeTools = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evaluate_native_tools"); else _explicitNullProperties?.Remove("evaluate_native_tools"); } }
+        private bool? _explicitNullValueEvaluateNativeTools = default!;
         /// <summary>The id property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ArmorId? Id { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ArmorId? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ArmorId? _explicitNullValueId = default!;
         /// <summary>`enforce` withholds blocked calls; `audit` evaluates and reports the same verdicts without withholding any calls, regardless of `on_error`. Default `enforce`.</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ArmorPluginMode? Mode { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ArmorPluginMode? Mode { get => _explicitNullValueMode; set { _explicitNullValueMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mode"); else _explicitNullProperties?.Remove("mode"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ArmorPluginMode? _explicitNullValueMode = default!;
         /// <summary>When the classifier cannot answer (timeout, upstream error, context too long) the call is reported `unavailable`; `block` rejects it and `log` releases it. Default `block`.</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ArmorPluginOnError? OnError { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ArmorPluginOnError? OnError { get => _explicitNullValueOnError; set { _explicitNullValueOnError = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("on_error"); else _explicitNullProperties?.Remove("on_error"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ArmorPluginOnError? _explicitNullValueOnError = default!;
         /// <summary>How a blocked call reaches the caller. `text` (the default): the call is withheld and an `&lt;openrouter_armor_blocked&gt;` marker stands in assistant text. `custom_item` (Responses API only): the call is withheld and an `openrouter:armor_blocked` output item carries its id, name, arguments and the rule that fired. `claude_code_compatibility` (Messages API only; the default when the request carries a `dangerous_tool_use` safeguard, i.e. the client speaks Claude Code&apos;s protocol): the `tool_use` stays in `content[]` and the verdict is `flagged` in `safeguard_results`, so the client withholds execution and writes the error tool result as under the native classifier. Under `text` and `custom_item` the model received a failure result in the loop and continued in the same request; under `claude_code_compatibility` the turn ends on the flagged call and the model continues on the next request, after the client&apos;s denial.</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ArmorPluginOutputMode? OutputMode { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ArmorPluginOutputMode? OutputMode { get => _explicitNullValueOutputMode; set { _explicitNullValueOutputMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("output_mode"); else _explicitNullProperties?.Remove("output_mode"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ArmorPluginOutputMode? _explicitNullValueOutputMode = default!;
         /// <summary>Prepend Claude Code&apos;s built-in auto-mode rule set (1 hard-deny, 72 soft-deny, 17 allow, 21 environment slots) ahead of every configured rule. Defaults to true on the Anthropic Messages API and false elsewhere.</summary>
-        public bool? UseCcStyleDefaultRules { get; set; }
+        public bool? UseCcStyleDefaultRules { get => _explicitNullValueUseCcStyleDefaultRules; set { _explicitNullValueUseCcStyleDefaultRules = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("use_cc_style_default_rules"); else _explicitNullProperties?.Remove("use_cc_style_default_rules"); } }
+        private bool? _explicitNullValueUseCcStyleDefaultRules = default!;
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -43,7 +67,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public static global::Soenneker.OpenRouter.OpenApiClient.Models.ArmorPlugin CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.OpenRouter.OpenApiClient.Models.ArmorPlugin();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.ArmorPlugin(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -77,7 +101,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ArmorPluginMode>("mode", Mode);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ArmorPluginOnError>("on_error", OnError);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ArmorPluginOutputMode>("output_mode", OutputMode);
-            writer.WriteBoolValue("use_cc_style_default_rules", UseCcStyleDefaultRules);
+            writer.WriteBoolValue("use_cc_style_default_rules", UseCcStyleDefaultRules);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

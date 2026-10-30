@@ -11,19 +11,36 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ParetoRouterPlugin : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("enabled") is { } nullNodeEnabled && nullNodeEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Enabled = null;
+            if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("max_price") is { } nullNodeMaxPrice && nullNodeMaxPrice.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxPrice = null;
+            if (parseNode.GetChildNode("min_coding_score") is { } nullNodeMinCodingScore && nullNodeMinCodingScore.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MinCodingScore = null;
+            if (parseNode.GetChildNode("price_source") is { } nullNodePriceSource && nullNodePriceSource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PriceSource = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Set to false to disable the pareto-router plugin for this request. Defaults to true.</summary>
-        public bool? Enabled { get; set; }
+        public bool? Enabled { get => _explicitNullValueEnabled; set { _explicitNullValueEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enabled"); else _explicitNullProperties?.Remove("enabled"); } }
+        private bool? _explicitNullValueEnabled = default!;
         /// <summary>The id property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ParetoRouterId? Id { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ParetoRouterId? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ParetoRouterId? _explicitNullValueId = default!;
         /// <summary>Maximum input price in USD per million tokens. When set, quality-tier selection (min_coding_score) is bypassed: the router computes the Pareto frontier over the top coding models and routes to the best-scoring frontier model priced at or below this cap, falling back through cheaper frontier models, then non-frontier models. Enforced against the price source given by price_source. Returns 404 when no candidate satisfies the cap.</summary>
-        public double? MaxPrice { get; set; }
+        public double? MaxPrice { get => _explicitNullValueMaxPrice; set { _explicitNullValueMaxPrice = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_price"); else _explicitNullProperties?.Remove("max_price"); } }
+        private double? _explicitNullValueMaxPrice = default!;
         /// <summary>Minimum coding quality score between 0 and 1. Maps to internal quality tiers: &gt;= 0.66 → high (top coding models), &gt;= 0.33 → medium (strong modern flagships), &lt; 0.33 → low (capable coders above the median). Omit to default to the highest tier (equivalent to &gt;= 0.66). Not used when max_price is set (price-based selection takes over).</summary>
-        public double? MinCodingScore { get; set; }
+        public double? MinCodingScore { get => _explicitNullValueMinCodingScore; set { _explicitNullValueMinCodingScore = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("min_coding_score"); else _explicitNullProperties?.Remove("min_coding_score"); } }
+        private double? _explicitNullValueMinCodingScore = default!;
         /// <summary>Price source for the Pareto frontier cost axis and for enforcing max_price. &quot;prompt&quot; uses catalog list price (endpoint.pricing.prompt). &quot;weighted_avg&quot; uses traffic-weighted effective input price from ClickHouse, falling back to prompt price for models without traffic data. Defaults to &quot;prompt&quot;.</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ParetoRouterPluginPriceSource? PriceSource { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ParetoRouterPluginPriceSource? PriceSource { get => _explicitNullValuePriceSource; set { _explicitNullValuePriceSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("price_source"); else _explicitNullProperties?.Remove("price_source"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ParetoRouterPluginPriceSource? _explicitNullValuePriceSource = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ParetoRouterPlugin"/> and sets the default values.
         /// </summary>
@@ -39,7 +56,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public static global::Soenneker.OpenRouter.OpenApiClient.Models.ParetoRouterPlugin CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.OpenRouter.OpenApiClient.Models.ParetoRouterPlugin();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.ParetoRouterPlugin(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -68,6 +85,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteDoubleValue("max_price", MaxPrice);
             writer.WriteDoubleValue("min_coding_score", MinCodingScore);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ParetoRouterPluginPriceSource>("price_source", PriceSource);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

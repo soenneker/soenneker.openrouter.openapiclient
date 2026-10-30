@@ -12,17 +12,32 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CostDetails : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("server_tool_cost") is { } nullNodeServerToolCost && nullNodeServerToolCost.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ServerToolCost = null;
+            if (parseNode.GetChildNode("upstream_inference_completions_cost") is { } nullNodeUpstreamInferenceCompletionsCost && nullNodeUpstreamInferenceCompletionsCost.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UpstreamInferenceCompletionsCost = null;
+            if (parseNode.GetChildNode("upstream_inference_cost") is { } nullNodeUpstreamInferenceCost && nullNodeUpstreamInferenceCost.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UpstreamInferenceCost = null;
+            if (parseNode.GetChildNode("upstream_inference_prompt_cost") is { } nullNodeUpstreamInferencePromptCost && nullNodeUpstreamInferencePromptCost.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UpstreamInferencePromptCost = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Metered server-tool execution cost (for example, shell sandbox time) billed for this request, in USD. Matches the billed checkpoint and settlement amounts exactly. 0 when a metered server tool ran but settled at zero dollars; absent when no metered server tool ran.</summary>
-        public double? ServerToolCost { get; set; }
+        public double? ServerToolCost { get => _explicitNullValueServerToolCost; set { _explicitNullValueServerToolCost = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("server_tool_cost"); else _explicitNullProperties?.Remove("server_tool_cost"); } }
+        private double? _explicitNullValueServerToolCost = default!;
         /// <summary>The upstream_inference_completions_cost property</summary>
-        public double? UpstreamInferenceCompletionsCost { get; set; }
+        public double? UpstreamInferenceCompletionsCost { get => _explicitNullValueUpstreamInferenceCompletionsCost; set { _explicitNullValueUpstreamInferenceCompletionsCost = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("upstream_inference_completions_cost"); else _explicitNullProperties?.Remove("upstream_inference_completions_cost"); } }
+        private double? _explicitNullValueUpstreamInferenceCompletionsCost = default!;
         /// <summary>The upstream_inference_cost property</summary>
-        public double? UpstreamInferenceCost { get; set; }
+        public double? UpstreamInferenceCost { get => _explicitNullValueUpstreamInferenceCost; set { _explicitNullValueUpstreamInferenceCost = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("upstream_inference_cost"); else _explicitNullProperties?.Remove("upstream_inference_cost"); } }
+        private double? _explicitNullValueUpstreamInferenceCost = default!;
         /// <summary>The upstream_inference_prompt_cost property</summary>
-        public double? UpstreamInferencePromptCost { get; set; }
+        public double? UpstreamInferencePromptCost { get => _explicitNullValueUpstreamInferencePromptCost; set { _explicitNullValueUpstreamInferencePromptCost = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("upstream_inference_prompt_cost"); else _explicitNullProperties?.Remove("upstream_inference_prompt_cost"); } }
+        private double? _explicitNullValueUpstreamInferencePromptCost = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.CostDetails"/> and sets the default values.
         /// </summary>
@@ -38,7 +53,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public static global::Soenneker.OpenRouter.OpenApiClient.Models.CostDetails CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.OpenRouter.OpenApiClient.Models.CostDetails();
+            // Preserve a nullable root response.
+            if (parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) return null!;
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.CostDetails(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -65,6 +82,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteDoubleValue("upstream_inference_completions_cost", UpstreamInferenceCompletionsCost);
             writer.WriteDoubleValue("upstream_inference_cost", UpstreamInferenceCost);
             writer.WriteDoubleValue("upstream_inference_prompt_cost", UpstreamInferencePromptCost);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

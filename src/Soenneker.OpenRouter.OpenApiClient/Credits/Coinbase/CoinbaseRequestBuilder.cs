@@ -54,6 +54,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Credits.Coinbase
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "410", global::Soenneker.OpenRouter.OpenApiClient.Models.GoneResponse.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }

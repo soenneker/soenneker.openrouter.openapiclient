@@ -11,12 +11,23 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class AnthropicThinkingBlockBinding : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("mismatch_behavior") is { } nullNodeMismatchBehavior && nullNodeMismatchBehavior.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MismatchBehavior = null;
+            if (parseNode.GetChildNode("prefix_mismatch_behavior") is { } nullNodePrefixMismatchBehavior && nullNodePrefixMismatchBehavior.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PrefixMismatchBehavior = null;
+        }
+
         /// <summary>Deprecated: legacy alias of prefix_mismatch_behavior. Send only one of the two.</summary>
         [Obsolete("")]
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicThinkingBlockBindingMismatchBehavior? MismatchBehavior { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicThinkingBlockBindingMismatchBehavior? MismatchBehavior { get => _explicitNullValueMismatchBehavior; set { _explicitNullValueMismatchBehavior = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mismatch_behavior"); else _explicitNullProperties?.Remove("mismatch_behavior"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicThinkingBlockBindingMismatchBehavior? _explicitNullValueMismatchBehavior = default!;
         /// <summary>The prefix_mismatch_behavior property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicThinkingBlockBindingPrefixMismatchBehavior? PrefixMismatchBehavior { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicThinkingBlockBindingPrefixMismatchBehavior? PrefixMismatchBehavior { get => _explicitNullValuePrefixMismatchBehavior; set { _explicitNullValuePrefixMismatchBehavior = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("prefix_mismatch_behavior"); else _explicitNullProperties?.Remove("prefix_mismatch_behavior"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicThinkingBlockBindingPrefixMismatchBehavior? _explicitNullValuePrefixMismatchBehavior = default!;
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -25,7 +36,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public static global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicThinkingBlockBinding CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicThinkingBlockBinding();
+            // Preserve a nullable root response.
+            if (parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) return null!;
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicThinkingBlockBinding(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -47,7 +60,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicThinkingBlockBindingMismatchBehavior>("mismatch_behavior", MismatchBehavior);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicThinkingBlockBindingPrefixMismatchBehavior>("prefix_mismatch_behavior", PrefixMismatchBehavior);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicThinkingBlockBindingPrefixMismatchBehavior>("prefix_mismatch_behavior", PrefixMismatchBehavior);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

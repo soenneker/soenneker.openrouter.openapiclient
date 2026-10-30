@@ -12,7 +12,12 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class AnthropicTextEditorCodeExecutionContent : IComposedTypeWrapper, IParsable
-    {
+    , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
+        // Preserve ambiguous union payloads without inventing a discriminator.
+        /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
         /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextEditorCodeExecutionCreateResult"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -53,25 +58,36 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public static global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextEditorCodeExecutionContent CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
+            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextEditorCodeExecutionContent();
-            if("text_editor_code_execution_create_result".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("AnthropicTextEditorCodeExecutionCreateResult".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.AnthropicTextEditorCodeExecutionCreateResult = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextEditorCodeExecutionCreateResult();
+                
             }
-            else if("text_editor_code_execution_str_replace_result".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("AnthropicTextEditorCodeExecutionStrReplaceResult".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.AnthropicTextEditorCodeExecutionStrReplaceResult = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextEditorCodeExecutionStrReplaceResult();
+                
             }
-            else if("text_editor_code_execution_tool_result_error".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("AnthropicTextEditorCodeExecutionToolResultError".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.AnthropicTextEditorCodeExecutionToolResultError = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextEditorCodeExecutionToolResultError();
+                
             }
-            else if("text_editor_code_execution_view_result".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("AnthropicTextEditorCodeExecutionViewResult".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.AnthropicTextEditorCodeExecutionViewResult = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextEditorCodeExecutionViewResult();
+                
             }
-            return result;
+            
+            var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
+            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("error_code") != null && (parseNode.GetChildNode("error_code")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("invalid_tool_input".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal) || "unavailable".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal) || "too_many_requests".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal) || "execution_time_exceeded".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal) || "file_not_found".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("error_message") != null && parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag4 && ("text_editor_code_execution_tool_result_error".Equals(tag4.GetValue(), global::System.StringComparison.Ordinal)))))();
+            bool matchesUnionBranch1 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("content") != null && parseNode.GetChildNode("file_type") != null && (parseNode.GetChildNode("file_type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag2 && ("text".Equals(tag2.GetValue(), global::System.StringComparison.Ordinal) || "image".Equals(tag2.GetValue(), global::System.StringComparison.Ordinal) || "pdf".Equals(tag2.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("num_lines") != null && parseNode.GetChildNode("start_line") != null && parseNode.GetChildNode("total_lines") != null && parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag7 && ("text_editor_code_execution_view_result".Equals(tag7.GetValue(), global::System.StringComparison.Ordinal)))))();
+            bool matchesUnionBranch2 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("is_file_update") != null && parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag2 && ("text_editor_code_execution_create_result".Equals(tag2.GetValue(), global::System.StringComparison.Ordinal)))))();
+            bool matchesUnionBranch3 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("lines") != null && parseNode.GetChildNode("new_lines") != null && parseNode.GetChildNode("new_start") != null && parseNode.GetChildNode("old_lines") != null && parseNode.GetChildNode("old_start") != null && parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag6 && ("text_editor_code_execution_str_replace_result".Equals(tag6.GetValue(), global::System.StringComparison.Ordinal)))))();
+            if (result.AnthropicTextEditorCodeExecutionCreateResult == null && result.AnthropicTextEditorCodeExecutionStrReplaceResult == null && result.AnthropicTextEditorCodeExecutionToolResultError == null && result.AnthropicTextEditorCodeExecutionViewResult == null && matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch3) result.AnthropicTextEditorCodeExecutionToolResultError = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextEditorCodeExecutionToolResultError(), parseNode);
+            if (result.AnthropicTextEditorCodeExecutionCreateResult == null && result.AnthropicTextEditorCodeExecutionStrReplaceResult == null && result.AnthropicTextEditorCodeExecutionToolResultError == null && result.AnthropicTextEditorCodeExecutionViewResult == null && matchesUnionBranch1 && !matchesUnionBranch0 && !matchesUnionBranch2 && !matchesUnionBranch3) result.AnthropicTextEditorCodeExecutionViewResult = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextEditorCodeExecutionViewResult(), parseNode);
+            if (result.AnthropicTextEditorCodeExecutionCreateResult == null && result.AnthropicTextEditorCodeExecutionStrReplaceResult == null && result.AnthropicTextEditorCodeExecutionToolResultError == null && result.AnthropicTextEditorCodeExecutionViewResult == null && matchesUnionBranch2 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch3) result.AnthropicTextEditorCodeExecutionCreateResult = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextEditorCodeExecutionCreateResult(), parseNode);
+            if (result.AnthropicTextEditorCodeExecutionCreateResult == null && result.AnthropicTextEditorCodeExecutionStrReplaceResult == null && result.AnthropicTextEditorCodeExecutionToolResultError == null && result.AnthropicTextEditorCodeExecutionViewResult == null && matchesUnionBranch3 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2) result.AnthropicTextEditorCodeExecutionStrReplaceResult = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextEditorCodeExecutionStrReplaceResult(), parseNode);
+            if (result.AnthropicTextEditorCodeExecutionCreateResult == null && result.AnthropicTextEditorCodeExecutionStrReplaceResult == null && result.AnthropicTextEditorCodeExecutionToolResultError == null && result.AnthropicTextEditorCodeExecutionViewResult == null) result.UnrecognizedValue = unionPayload;
+return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -103,21 +119,32 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
+            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
+            if (AnthropicTextEditorCodeExecutionCreateResult == null && AnthropicTextEditorCodeExecutionStrReplaceResult == null && AnthropicTextEditorCodeExecutionToolResultError == null && AnthropicTextEditorCodeExecutionViewResult == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            if (AnthropicTextEditorCodeExecutionCreateResult != null && AnthropicTextEditorCodeExecutionStrReplaceResult == null && AnthropicTextEditorCodeExecutionToolResultError == null && AnthropicTextEditorCodeExecutionViewResult == null) { if (AnthropicTextEditorCodeExecutionCreateResult is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, AnthropicTextEditorCodeExecutionCreateResult); return; }
+            if (AnthropicTextEditorCodeExecutionStrReplaceResult != null && AnthropicTextEditorCodeExecutionCreateResult == null && AnthropicTextEditorCodeExecutionToolResultError == null && AnthropicTextEditorCodeExecutionViewResult == null) { if (AnthropicTextEditorCodeExecutionStrReplaceResult is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, AnthropicTextEditorCodeExecutionStrReplaceResult); return; }
+            if (AnthropicTextEditorCodeExecutionToolResultError != null && AnthropicTextEditorCodeExecutionCreateResult == null && AnthropicTextEditorCodeExecutionStrReplaceResult == null && AnthropicTextEditorCodeExecutionViewResult == null) { if (AnthropicTextEditorCodeExecutionToolResultError is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, AnthropicTextEditorCodeExecutionToolResultError); return; }
+            if (AnthropicTextEditorCodeExecutionViewResult != null && AnthropicTextEditorCodeExecutionCreateResult == null && AnthropicTextEditorCodeExecutionStrReplaceResult == null && AnthropicTextEditorCodeExecutionToolResultError == null) { if (AnthropicTextEditorCodeExecutionViewResult is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, AnthropicTextEditorCodeExecutionViewResult); return; }
+
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             if(AnthropicTextEditorCodeExecutionCreateResult != null)
             {
+                if (AnthropicTextEditorCodeExecutionCreateResult is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextEditorCodeExecutionCreateResult>(null, AnthropicTextEditorCodeExecutionCreateResult);
             }
             else if(AnthropicTextEditorCodeExecutionStrReplaceResult != null)
             {
+                if (AnthropicTextEditorCodeExecutionStrReplaceResult is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextEditorCodeExecutionStrReplaceResult>(null, AnthropicTextEditorCodeExecutionStrReplaceResult);
             }
             else if(AnthropicTextEditorCodeExecutionToolResultError != null)
             {
+                if (AnthropicTextEditorCodeExecutionToolResultError is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextEditorCodeExecutionToolResultError>(null, AnthropicTextEditorCodeExecutionToolResultError);
             }
             else if(AnthropicTextEditorCodeExecutionViewResult != null)
             {
+                if (AnthropicTextEditorCodeExecutionViewResult is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextEditorCodeExecutionViewResult>(null, AnthropicTextEditorCodeExecutionViewResult);
             }
         }

@@ -12,7 +12,12 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ImageGenerationProviderPreferencesSort : IComposedTypeWrapper, IParsable
-    {
+    , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
+        // Preserve ambiguous union payloads without inventing a discriminator.
+        /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
         /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesSortMember1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -40,15 +45,19 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var result = new global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesSort();
-            if(parseNode.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderSort>() is global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderSort providerSortValue)
+            if(parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString unionEnumValue0 && ("price".Equals(unionEnumValue0.GetValue(), global::System.StringComparison.OrdinalIgnoreCase) || "throughput".Equals(unionEnumValue0.GetValue(), global::System.StringComparison.OrdinalIgnoreCase) || "latency".Equals(unionEnumValue0.GetValue(), global::System.StringComparison.OrdinalIgnoreCase) || "exacto".Equals(unionEnumValue0.GetValue(), global::System.StringComparison.OrdinalIgnoreCase)) && parseNode.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderSort>() is global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderSort providerSortValue)
             {
                 result.ProviderSort = providerSortValue;
             }
             else {
-                result.ImageGenerationProviderPreferencesSortMember1 = new global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesSortMember1();
-                result.ProviderSortConfig = new global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderSortConfig();
+                
+                
             }
-            return result;
+            
+            var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
+            if (result.ImageGenerationProviderPreferencesSortMember1 == null && result.ProviderSort == null && result.ProviderSortConfig == null && unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject) result.ProviderSortConfig = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderSortConfig(), parseNode);
+            if (result.ImageGenerationProviderPreferencesSortMember1 == null && result.ProviderSort == null && result.ProviderSortConfig == null) result.UnrecognizedValue = unionPayload;
+return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -68,6 +77,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
+            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
+            if (ImageGenerationProviderPreferencesSortMember1 == null && ProviderSort == null && ProviderSortConfig == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            if (ImageGenerationProviderPreferencesSortMember1 != null && ProviderSort == null && ProviderSortConfig == null) { if (ImageGenerationProviderPreferencesSortMember1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, ImageGenerationProviderPreferencesSortMember1); return; }
+            if (ProviderSortConfig != null && ImageGenerationProviderPreferencesSortMember1 == null && ProviderSort == null) { if (ProviderSortConfig is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, ProviderSortConfig); return; }
+
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             if(ProviderSort != null)
             {

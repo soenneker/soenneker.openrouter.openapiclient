@@ -231,6 +231,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning disable CS1591
         Krea,
         #pragma warning restore CS1591
+        [EnumMember(Value = "kt")]
+        #pragma warning disable CS1591
+        Kt,
+        #pragma warning restore CS1591
         [EnumMember(Value = "liquid")]
         #pragma warning disable CS1591
         Liquid,

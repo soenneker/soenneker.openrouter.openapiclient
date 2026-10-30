@@ -12,24 +12,37 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ModelBenchmarks : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("artificial_analysis") is { } nullNodeArtificialAnalysis && nullNodeArtificialAnalysis.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ArtificialAnalysis = null;
+            if (parseNode.GetChildNode("design_arena") is { } nullNodeDesignArena && nullNodeDesignArena.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DesignArena = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Artificial Analysis benchmark index scores.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.AaBenchmarkEntry? ArtificialAnalysis { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AaBenchmarkEntry? ArtificialAnalysis { get => _explicitNullValueArtificialAnalysis; set { _explicitNullValueArtificialAnalysis = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("artificial_analysis"); else _explicitNullProperties?.Remove("artificial_analysis"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.AaBenchmarkEntry? _explicitNullValueArtificialAnalysis = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.AaBenchmarkEntry ArtificialAnalysis { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AaBenchmarkEntry ArtificialAnalysis { get => _explicitNullValueArtificialAnalysis; set { _explicitNullValueArtificialAnalysis = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("artificial_analysis"); else _explicitNullProperties?.Remove("artificial_analysis"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.AaBenchmarkEntry _explicitNullValueArtificialAnalysis = default!;
 #endif
         /// <summary>Design Arena ELO rankings across arena+category pairs.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.DaBenchmarkEntry>? DesignArena { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.DaBenchmarkEntry>? DesignArena { get => _explicitNullValueDesignArena; set { _explicitNullValueDesignArena = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("design_arena"); else _explicitNullProperties?.Remove("design_arena"); } }
+        private List<global::Soenneker.OpenRouter.OpenApiClient.Models.DaBenchmarkEntry>? _explicitNullValueDesignArena = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.DaBenchmarkEntry> DesignArena { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.DaBenchmarkEntry> DesignArena { get => _explicitNullValueDesignArena; set { _explicitNullValueDesignArena = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("design_arena"); else _explicitNullProperties?.Remove("design_arena"); } }
+        private List<global::Soenneker.OpenRouter.OpenApiClient.Models.DaBenchmarkEntry> _explicitNullValueDesignArena = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ModelBenchmarks"/> and sets the default values.
@@ -46,7 +59,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public static global::Soenneker.OpenRouter.OpenApiClient.Models.ModelBenchmarks CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.OpenRouter.OpenApiClient.Models.ModelBenchmarks();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.ModelBenchmarks(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -69,6 +82,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AaBenchmarkEntry>("artificial_analysis", ArtificialAnalysis);
             writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.DaBenchmarkEntry>("design_arena", DesignArena);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -11,67 +11,107 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class CreateObservabilityDestinationRequest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("api_key_hashes") is { } nullNodeApiKeyHashes && nullNodeApiKeyHashes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ApiKeyHashes = null;
+            if (parseNode.GetChildNode("broadcast_generation_cost") is { } nullNodeBroadcastGenerationCost && nullNodeBroadcastGenerationCost.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BroadcastGenerationCost = null;
+            if (parseNode.GetChildNode("broadcast_generation_cost_allocation") is { } nullNodeBroadcastGenerationCostAllocation && nullNodeBroadcastGenerationCostAllocation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BroadcastGenerationCostAllocation = null;
+            if (parseNode.GetChildNode("broadcast_generation_identity") is { } nullNodeBroadcastGenerationIdentity && nullNodeBroadcastGenerationIdentity.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BroadcastGenerationIdentity = null;
+            if (parseNode.GetChildNode("broadcast_generation_request_context") is { } nullNodeBroadcastGenerationRequestContext && nullNodeBroadcastGenerationRequestContext.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BroadcastGenerationRequestContext = null;
+            if (parseNode.GetChildNode("config") is { } nullNodeConfig && nullNodeConfig.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Config = null;
+            if (parseNode.GetChildNode("enabled") is { } nullNodeEnabled && nullNodeEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Enabled = null;
+            if (parseNode.GetChildNode("filter_rules") is { } nullNodeFilterRules && nullNodeFilterRules.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FilterRules = null;
+            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("privacy_mode") is { } nullNodePrivacyMode && nullNodePrivacyMode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PrivacyMode = null;
+            if (parseNode.GetChildNode("regions") is { } nullNodeRegions && nullNodeRegions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Regions = null;
+            if (parseNode.GetChildNode("sampling_rate") is { } nullNodeSamplingRate && nullNodeSamplingRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SamplingRate = null;
+            if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
+            if (parseNode.GetChildNode("workspace_id") is { } nullNodeWorkspaceId && nullNodeWorkspaceId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WorkspaceId = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Optional allowlist of OpenRouter API key hashes whose traffic is forwarded. `null` or omitted means all keys. Must contain at least one hash if provided.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? ApiKeyHashes { get; set; }
+        public List<string>? ApiKeyHashes { get => _explicitNullValueApiKeyHashes; set { _explicitNullValueApiKeyHashes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("api_key_hashes"); else _explicitNullProperties?.Remove("api_key_hashes"); } }
+        private List<string>? _explicitNullValueApiKeyHashes = default!;
 #nullable restore
 #else
-        public List<string> ApiKeyHashes { get; set; }
+        public List<string> ApiKeyHashes { get => _explicitNullValueApiKeyHashes; set { _explicitNullValueApiKeyHashes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("api_key_hashes"); else _explicitNullProperties?.Remove("api_key_hashes"); } }
+        private List<string> _explicitNullValueApiKeyHashes = default!;
 #endif
         /// <summary>When true, include cost and billing generation metadata.</summary>
-        public bool? BroadcastGenerationCost { get; set; }
+        public bool? BroadcastGenerationCost { get => _explicitNullValueBroadcastGenerationCost; set { _explicitNullValueBroadcastGenerationCost = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("broadcast_generation_cost"); else _explicitNullProperties?.Remove("broadcast_generation_cost"); } }
+        private bool? _explicitNullValueBroadcastGenerationCost = default!;
         /// <summary>Beta. When true, include openrouter_cost_allocation: per-token-kind usage and cost, sent only when they reconcile with the billed cost.</summary>
-        public bool? BroadcastGenerationCostAllocation { get; set; }
+        public bool? BroadcastGenerationCostAllocation { get => _explicitNullValueBroadcastGenerationCostAllocation; set { _explicitNullValueBroadcastGenerationCostAllocation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("broadcast_generation_cost_allocation"); else _explicitNullProperties?.Remove("broadcast_generation_cost_allocation"); } }
+        private bool? _explicitNullValueBroadcastGenerationCostAllocation = default!;
         /// <summary>When true, include identity generation metadata.</summary>
-        public bool? BroadcastGenerationIdentity { get; set; }
+        public bool? BroadcastGenerationIdentity { get => _explicitNullValueBroadcastGenerationIdentity; set { _explicitNullValueBroadcastGenerationIdentity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("broadcast_generation_identity"); else _explicitNullProperties?.Remove("broadcast_generation_identity"); } }
+        private bool? _explicitNullValueBroadcastGenerationIdentity = default!;
         /// <summary>When true, include request-context generation metadata.</summary>
-        public bool? BroadcastGenerationRequestContext { get; set; }
+        public bool? BroadcastGenerationRequestContext { get => _explicitNullValueBroadcastGenerationRequestContext; set { _explicitNullValueBroadcastGenerationRequestContext = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("broadcast_generation_request_context"); else _explicitNullProperties?.Remove("broadcast_generation_request_context"); } }
+        private bool? _explicitNullValueBroadcastGenerationRequestContext = default!;
         /// <summary>Provider-specific configuration. The shape depends on `type` and is validated server-side.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.CreateObservabilityDestinationRequestConfigProperty? Config { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.CreateObservabilityDestinationRequestConfigProperty? Config { get => _explicitNullValueConfig; set { _explicitNullValueConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("config"); else _explicitNullProperties?.Remove("config"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.CreateObservabilityDestinationRequestConfigProperty? _explicitNullValueConfig = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.CreateObservabilityDestinationRequestConfigProperty Config { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.CreateObservabilityDestinationRequestConfigProperty Config { get => _explicitNullValueConfig; set { _explicitNullValueConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("config"); else _explicitNullProperties?.Remove("config"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.CreateObservabilityDestinationRequestConfigProperty _explicitNullValueConfig = default!;
 #endif
         /// <summary>Whether this destination should be enabled immediately.</summary>
-        public bool? Enabled { get; set; }
+        public bool? Enabled { get => _explicitNullValueEnabled; set { _explicitNullValueEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enabled"); else _explicitNullProperties?.Remove("enabled"); } }
+        private bool? _explicitNullValueEnabled = default!;
         /// <summary>Optional structured filter rules controlling which events are forwarded.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityFilterRulesConfigNullable? FilterRules { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityFilterRulesConfigNullable? FilterRules { get => _explicitNullValueFilterRules; set { _explicitNullValueFilterRules = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filter_rules"); else _explicitNullProperties?.Remove("filter_rules"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityFilterRulesConfigNullable? _explicitNullValueFilterRules = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityFilterRulesConfigNullable FilterRules { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityFilterRulesConfigNullable FilterRules { get => _explicitNullValueFilterRules; set { _explicitNullValueFilterRules = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filter_rules"); else _explicitNullProperties?.Remove("filter_rules"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityFilterRulesConfigNullable _explicitNullValueFilterRules = default!;
 #endif
         /// <summary>Human-readable name for the destination.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; set; }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get; set; }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string _explicitNullValueName = default!;
 #endif
         /// <summary>When true, request/response bodies are not forwarded — only metadata.</summary>
-        public bool? PrivacyMode { get; set; }
+        public bool? PrivacyMode { get => _explicitNullValuePrivacyMode; set { _explicitNullValuePrivacyMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("privacy_mode"); else _explicitNullProperties?.Remove("privacy_mode"); } }
+        private bool? _explicitNullValuePrivacyMode = default!;
         /// <summary>Data regions this destination applies to. `eu` is accepted as an alias for `europe` and normalizes to `europe`. Omitting this field defaults to [&apos;global&apos;]; the array must be non-empty.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityDataRegionInput?>? Regions { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityDataRegionInput?>? Regions { get => _explicitNullValueRegions; set { _explicitNullValueRegions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("regions"); else _explicitNullProperties?.Remove("regions"); } }
+        private List<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityDataRegionInput?>? _explicitNullValueRegions = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityDataRegionInput?> Regions { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityDataRegionInput?> Regions { get => _explicitNullValueRegions; set { _explicitNullValueRegions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("regions"); else _explicitNullProperties?.Remove("regions"); } }
+        private List<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityDataRegionInput?> _explicitNullValueRegions = default!;
 #endif
         /// <summary>Sampling rate between 0.0001 and 1 (1 = 100%).</summary>
-        public double? SamplingRate { get; set; }
+        public double? SamplingRate { get => _explicitNullValueSamplingRate; set { _explicitNullValueSamplingRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sampling_rate"); else _explicitNullProperties?.Remove("sampling_rate"); } }
+        private double? _explicitNullValueSamplingRate = default!;
         /// <summary>The destination type. Only stable destination types are accepted.</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.CreateObservabilityDestinationRequestType? Type { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.CreateObservabilityDestinationRequestType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.CreateObservabilityDestinationRequestType? _explicitNullValueType = default!;
         /// <summary>Optional workspace ID. Defaults to the authenticated entity&apos;s default workspace.</summary>
-        public Guid? WorkspaceId { get; set; }
+        public Guid? WorkspaceId { get => _explicitNullValueWorkspaceId; set { _explicitNullValueWorkspaceId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("workspace_id"); else _explicitNullProperties?.Remove("workspace_id"); } }
+        private Guid? _explicitNullValueWorkspaceId = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.CreateObservabilityDestinationRequest"/> and sets the default values.
         /// </summary>
@@ -93,7 +133,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public static global::Soenneker.OpenRouter.OpenApiClient.Models.CreateObservabilityDestinationRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.OpenRouter.OpenApiClient.Models.CreateObservabilityDestinationRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.CreateObservabilityDestinationRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -140,6 +180,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteDoubleValue("sampling_rate", SamplingRate);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.CreateObservabilityDestinationRequestType>("type", Type);
             writer.WriteGuidValue("workspace_id", WorkspaceId);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

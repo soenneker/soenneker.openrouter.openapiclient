@@ -12,19 +12,36 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class UnifiedBenchmarksDaItemTournamentStats : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("first_place") is { } nullNodeFirstPlace && nullNodeFirstPlace.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FirstPlace = null;
+            if (parseNode.GetChildNode("fourth_place") is { } nullNodeFourthPlace && nullNodeFourthPlace.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FourthPlace = null;
+            if (parseNode.GetChildNode("second_place") is { } nullNodeSecondPlace && nullNodeSecondPlace.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SecondPlace = null;
+            if (parseNode.GetChildNode("third_place") is { } nullNodeThirdPlace && nullNodeThirdPlace.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ThirdPlace = null;
+            if (parseNode.GetChildNode("total") is { } nullNodeTotal && nullNodeTotal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Total = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The first_place property</summary>
-        public int? FirstPlace { get; set; }
+        public int? FirstPlace { get => _explicitNullValueFirstPlace; set { _explicitNullValueFirstPlace = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("first_place"); else _explicitNullProperties?.Remove("first_place"); } }
+        private int? _explicitNullValueFirstPlace = default!;
         /// <summary>The fourth_place property</summary>
-        public int? FourthPlace { get; set; }
+        public int? FourthPlace { get => _explicitNullValueFourthPlace; set { _explicitNullValueFourthPlace = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fourth_place"); else _explicitNullProperties?.Remove("fourth_place"); } }
+        private int? _explicitNullValueFourthPlace = default!;
         /// <summary>The second_place property</summary>
-        public int? SecondPlace { get; set; }
+        public int? SecondPlace { get => _explicitNullValueSecondPlace; set { _explicitNullValueSecondPlace = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("second_place"); else _explicitNullProperties?.Remove("second_place"); } }
+        private int? _explicitNullValueSecondPlace = default!;
         /// <summary>The third_place property</summary>
-        public int? ThirdPlace { get; set; }
+        public int? ThirdPlace { get => _explicitNullValueThirdPlace; set { _explicitNullValueThirdPlace = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("third_place"); else _explicitNullProperties?.Remove("third_place"); } }
+        private int? _explicitNullValueThirdPlace = default!;
         /// <summary>The total property</summary>
-        public int? Total { get; set; }
+        public int? Total { get => _explicitNullValueTotal; set { _explicitNullValueTotal = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total"); else _explicitNullProperties?.Remove("total"); } }
+        private int? _explicitNullValueTotal = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.UnifiedBenchmarksDaItemTournamentStats"/> and sets the default values.
         /// </summary>
@@ -40,7 +57,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public static global::Soenneker.OpenRouter.OpenApiClient.Models.UnifiedBenchmarksDaItemTournamentStats CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.OpenRouter.OpenApiClient.Models.UnifiedBenchmarksDaItemTournamentStats();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.UnifiedBenchmarksDaItemTournamentStats(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -69,6 +86,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteIntValue("second_place", SecondPlace);
             writer.WriteIntValue("third_place", ThirdPlace);
             writer.WriteIntValue("total", Total);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

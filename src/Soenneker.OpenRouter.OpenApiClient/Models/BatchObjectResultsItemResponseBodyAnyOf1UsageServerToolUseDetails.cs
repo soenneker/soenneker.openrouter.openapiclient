@@ -12,15 +12,28 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class BatchObjectResultsItemResponseBodyAnyOf1UsageServerToolUseDetails : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("tool_calls_executed") is { } nullNodeToolCallsExecuted && nullNodeToolCallsExecuted.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ToolCallsExecuted = null;
+            if (parseNode.GetChildNode("tool_calls_requested") is { } nullNodeToolCallsRequested && nullNodeToolCallsRequested.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ToolCallsRequested = null;
+            if (parseNode.GetChildNode("web_search_requests") is { } nullNodeWebSearchRequests && nullNodeWebSearchRequests.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WebSearchRequests = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Number of OpenRouter server tool calls that executed and produced a result.</summary>
-        public int? ToolCallsExecuted { get; set; }
+        public int? ToolCallsExecuted { get => _explicitNullValueToolCallsExecuted; set { _explicitNullValueToolCallsExecuted = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tool_calls_executed"); else _explicitNullProperties?.Remove("tool_calls_executed"); } }
+        private int? _explicitNullValueToolCallsExecuted = default!;
         /// <summary>Total number of OpenRouter server-orchestrated tool calls the model requested, across all tool types. Provider-native tools (e.g. native web search) are not counted here.</summary>
-        public int? ToolCallsRequested { get; set; }
+        public int? ToolCallsRequested { get => _explicitNullValueToolCallsRequested; set { _explicitNullValueToolCallsRequested = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tool_calls_requested"); else _explicitNullProperties?.Remove("tool_calls_requested"); } }
+        private int? _explicitNullValueToolCallsRequested = default!;
         /// <summary>Number of web searches performed by server-side tools. For server-orchestrated tool calls a web search is also counted in tool_calls_requested; provider-native web search may report web_search_requests only. Do not sum the two.</summary>
-        public int? WebSearchRequests { get; set; }
+        public int? WebSearchRequests { get => _explicitNullValueWebSearchRequests; set { _explicitNullValueWebSearchRequests = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("web_search_requests"); else _explicitNullProperties?.Remove("web_search_requests"); } }
+        private int? _explicitNullValueWebSearchRequests = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BatchObjectResultsItemResponseBodyAnyOf1UsageServerToolUseDetails"/> and sets the default values.
         /// </summary>
@@ -36,7 +49,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public static global::Soenneker.OpenRouter.OpenApiClient.Models.BatchObjectResultsItemResponseBodyAnyOf1UsageServerToolUseDetails CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.OpenRouter.OpenApiClient.Models.BatchObjectResultsItemResponseBodyAnyOf1UsageServerToolUseDetails();
+            // Preserve a nullable root response.
+            if (parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) return null!;
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.BatchObjectResultsItemResponseBodyAnyOf1UsageServerToolUseDetails(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -61,6 +76,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteIntValue("tool_calls_executed", ToolCallsExecuted);
             writer.WriteIntValue("tool_calls_requested", ToolCallsRequested);
             writer.WriteIntValue("web_search_requests", WebSearchRequests);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

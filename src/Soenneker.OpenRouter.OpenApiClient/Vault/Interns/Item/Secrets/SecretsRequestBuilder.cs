@@ -25,7 +25,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Vault.Interns.Item.Secrets
             get => new global::Soenneker.OpenRouter.OpenApiClient.Vault.Interns.Item.Secrets.Copy.CopyRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Soenneker.OpenRouter.OpenApiClient.vault.interns.item.secrets.item collection</summary>
-        /// <param name="position">Secret name. Lowercase letters, digits and single underscores, starting with a letter and not ending with an underscore, 1 to 255 characters.</param>
+        /// <param name="position">Existing secret name. Accepts legacy names stored before the 255-character write bound; new writes still require the documented name format.</param>
         /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Vault.Interns.Item.Secrets.Item.WithNameItemRequestBuilder"/></returns>
         public global::Soenneker.OpenRouter.OpenApiClient.Vault.Interns.Item.Secrets.Item.WithNameItemRequestBuilder this[string position]
         {
@@ -90,6 +90,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Vault.Interns.Item.Secrets
                 { "502", global::Soenneker.OpenRouter.OpenApiClient.Models.BadGatewayResponse.CreateFromDiscriminatorValue },
                 { "503", global::Soenneker.OpenRouter.OpenApiClient.Models.ServiceUnavailableResponse.CreateFromDiscriminatorValue },
                 { "504", global::Soenneker.OpenRouter.OpenApiClient.Models.GatewayTimeoutResponse.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultSecretListResponse>(requestInfo, global::Soenneker.OpenRouter.OpenApiClient.Models.VaultSecretListResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

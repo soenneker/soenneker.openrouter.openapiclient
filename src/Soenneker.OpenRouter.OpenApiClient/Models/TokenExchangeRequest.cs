@@ -12,27 +12,47 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TokenExchangeRequest : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("federation_policy_id") is { } nullNodeFederationPolicyId && nullNodeFederationPolicyId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FederationPolicyId = null;
+            if (parseNode.GetChildNode("grant_type") is { } nullNodeGrantType && nullNodeGrantType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GrantType = null;
+            if (parseNode.GetChildNode("requested_token_type") is { } nullNodeRequestedTokenType && nullNodeRequestedTokenType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RequestedTokenType = null;
+            if (parseNode.GetChildNode("scope") is { } nullNodeScope && nullNodeScope.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Scope = null;
+            if (parseNode.GetChildNode("subject_token") is { } nullNodeSubjectToken && nullNodeSubjectToken.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SubjectToken = null;
+            if (parseNode.GetChildNode("subject_token_type") is { } nullNodeSubjectTokenType && nullNodeSubjectTokenType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SubjectTokenType = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The federation policy to evaluate, from Settings → Workload identity. Binds the exchange to one organization.</summary>
-        public Guid? FederationPolicyId { get; set; }
+        public Guid? FederationPolicyId { get => _explicitNullValueFederationPolicyId; set { _explicitNullValueFederationPolicyId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("federation_policy_id"); else _explicitNullProperties?.Remove("federation_policy_id"); } }
+        private Guid? _explicitNullValueFederationPolicyId = default!;
         /// <summary>Must be `urn:ietf:params:oauth:grant-type:token-exchange`.</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.UrnColonIetfColonParamsColonOAuthColonGrantTypeColonTokenExchangeGrantType? GrantType { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.UrnColonIetfColonParamsColonOAuthColonGrantTypeColonTokenExchangeGrantType? GrantType { get => _explicitNullValueGrantType; set { _explicitNullValueGrantType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("grant_type"); else _explicitNullProperties?.Remove("grant_type"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.UrnColonIetfColonParamsColonOAuthColonGrantTypeColonTokenExchangeGrantType? _explicitNullValueGrantType = default!;
         /// <summary>Optional; when present must be `urn:ietf:params:oauth:token-type:access_token`.</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.UrnColonIetfColonParamsColonOAuthColonTokenTypeColonAccessTokenRequestedTokenType? RequestedTokenType { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.UrnColonIetfColonParamsColonOAuthColonTokenTypeColonAccessTokenRequestedTokenType? RequestedTokenType { get => _explicitNullValueRequestedTokenType; set { _explicitNullValueRequestedTokenType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("requested_token_type"); else _explicitNullProperties?.Remove("requested_token_type"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.UrnColonIetfColonParamsColonOAuthColonTokenTypeColonAccessTokenRequestedTokenType? _explicitNullValueRequestedTokenType = default!;
         /// <summary>Optional; when present must match the policy&apos;s key: `management` for a management key, `inference` otherwise.</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.TokenExchangeRequestScope? Scope { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.TokenExchangeRequestScope? Scope { get => _explicitNullValueScope; set { _explicitNullValueScope = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scope"); else _explicitNullProperties?.Remove("scope"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.TokenExchangeRequestScope? _explicitNullValueScope = default!;
         /// <summary>The JWT issued by your identity provider.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SubjectToken { get; set; }
+        public string? SubjectToken { get => _explicitNullValueSubjectToken; set { _explicitNullValueSubjectToken = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("subject_token"); else _explicitNullProperties?.Remove("subject_token"); } }
+        private string? _explicitNullValueSubjectToken = default!;
 #nullable restore
 #else
-        public string SubjectToken { get; set; }
+        public string SubjectToken { get => _explicitNullValueSubjectToken; set { _explicitNullValueSubjectToken = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("subject_token"); else _explicitNullProperties?.Remove("subject_token"); } }
+        private string _explicitNullValueSubjectToken = default!;
 #endif
         /// <summary>Must be `urn:ietf:params:oauth:token-type:jwt`.</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.UrnColonIetfColonParamsColonOAuthColonTokenTypeColonJwtSubjectTokenType? SubjectTokenType { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.UrnColonIetfColonParamsColonOAuthColonTokenTypeColonJwtSubjectTokenType? SubjectTokenType { get => _explicitNullValueSubjectTokenType; set { _explicitNullValueSubjectTokenType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("subject_token_type"); else _explicitNullProperties?.Remove("subject_token_type"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.UrnColonIetfColonParamsColonOAuthColonTokenTypeColonJwtSubjectTokenType? _explicitNullValueSubjectTokenType = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.TokenExchangeRequest"/> and sets the default values.
         /// </summary>
@@ -48,7 +68,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public static global::Soenneker.OpenRouter.OpenApiClient.Models.TokenExchangeRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.OpenRouter.OpenApiClient.Models.TokenExchangeRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.TokenExchangeRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -79,6 +99,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.TokenExchangeRequestScope>("scope", Scope);
             writer.WriteStringValue("subject_token", SubjectToken);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.UrnColonIetfColonParamsColonOAuthColonTokenTypeColonJwtSubjectTokenType>("subject_token_type", SubjectTokenType);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

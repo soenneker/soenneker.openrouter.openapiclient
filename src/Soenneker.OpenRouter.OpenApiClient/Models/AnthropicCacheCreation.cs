@@ -11,13 +11,24 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class AnthropicCacheCreation : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("ephemeral_1h_input_tokens") is { } nullNodeEphemeral1hInputTokens && nullNodeEphemeral1hInputTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Ephemeral1hInputTokens = null;
+            if (parseNode.GetChildNode("ephemeral_5m_input_tokens") is { } nullNodeEphemeral5mInputTokens && nullNodeEphemeral5mInputTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Ephemeral5mInputTokens = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The ephemeral_1h_input_tokens property</summary>
-        public int? Ephemeral1hInputTokens { get; set; }
+        public int? Ephemeral1hInputTokens { get => _explicitNullValueEphemeral1hInputTokens; set { _explicitNullValueEphemeral1hInputTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ephemeral_1h_input_tokens"); else _explicitNullProperties?.Remove("ephemeral_1h_input_tokens"); } }
+        private int? _explicitNullValueEphemeral1hInputTokens = default!;
         /// <summary>The ephemeral_5m_input_tokens property</summary>
-        public int? Ephemeral5mInputTokens { get; set; }
+        public int? Ephemeral5mInputTokens { get => _explicitNullValueEphemeral5mInputTokens; set { _explicitNullValueEphemeral5mInputTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ephemeral_5m_input_tokens"); else _explicitNullProperties?.Remove("ephemeral_5m_input_tokens"); } }
+        private int? _explicitNullValueEphemeral5mInputTokens = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheCreation"/> and sets the default values.
         /// </summary>
@@ -33,7 +44,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public static global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheCreation CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheCreation();
+            // Preserve a nullable root response.
+            if (parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) return null!;
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheCreation(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -56,6 +69,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("ephemeral_1h_input_tokens", Ephemeral1hInputTokens);
             writer.WriteIntValue("ephemeral_5m_input_tokens", Ephemeral5mInputTokens);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

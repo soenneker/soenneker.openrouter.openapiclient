@@ -11,1208 +11,1676 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class VideoGenerationRequestProviderOptions : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("ai21") is { } nullNodeAi21 && nullNodeAi21.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Ai21 = null;
+            if (parseNode.GetChildNode("aion-labs") is { } nullNodeAionLabs && nullNodeAionLabs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AionLabs = null;
+            if (parseNode.GetChildNode("akashml") is { } nullNodeAkashml && nullNodeAkashml.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Akashml = null;
+            if (parseNode.GetChildNode("alibaba") is { } nullNodeAlibaba && nullNodeAlibaba.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Alibaba = null;
+            if (parseNode.GetChildNode("amazon-bedrock") is { } nullNodeAmazonBedrock && nullNodeAmazonBedrock.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AmazonBedrock = null;
+            if (parseNode.GetChildNode("amazon-bedrock/claude-on-aws") is { } nullNodeAmazonBedrockClaudeOnAws && nullNodeAmazonBedrockClaudeOnAws.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AmazonBedrockClaudeOnAws = null;
+            if (parseNode.GetChildNode("amazon-nova") is { } nullNodeAmazonNova && nullNodeAmazonNova.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AmazonNova = null;
+            if (parseNode.GetChildNode("ambient") is { } nullNodeAmbient && nullNodeAmbient.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Ambient = null;
+            if (parseNode.GetChildNode("anthropic") is { } nullNodeAnthropic && nullNodeAnthropic.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Anthropic = null;
+            if (parseNode.GetChildNode("anthropic/2") is { } nullNodeAnthropic2 && nullNodeAnthropic2.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Anthropic2 = null;
+            if (parseNode.GetChildNode("anyscale") is { } nullNodeAnyscale && nullNodeAnyscale.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Anyscale = null;
+            if (parseNode.GetChildNode("arcee-ai") is { } nullNodeArceeAi && nullNodeArceeAi.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ArceeAi = null;
+            if (parseNode.GetChildNode("assemblyai") is { } nullNodeAssemblyai && nullNodeAssemblyai.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Assemblyai = null;
+            if (parseNode.GetChildNode("atlas-cloud") is { } nullNodeAtlasCloud && nullNodeAtlasCloud.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AtlasCloud = null;
+            if (parseNode.GetChildNode("atoma") is { } nullNodeAtoma && nullNodeAtoma.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Atoma = null;
+            if (parseNode.GetChildNode("avian") is { } nullNodeAvian && nullNodeAvian.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Avian = null;
+            if (parseNode.GetChildNode("azure") is { } nullNodeAzure && nullNodeAzure.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Azure = null;
+            if (parseNode.GetChildNode("baidu") is { } nullNodeBaidu && nullNodeBaidu.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Baidu = null;
+            if (parseNode.GetChildNode("baseten") is { } nullNodeBaseten && nullNodeBaseten.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Baseten = null;
+            if (parseNode.GetChildNode("black-forest-labs") is { } nullNodeBlackForestLabs && nullNodeBlackForestLabs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BlackForestLabs = null;
+            if (parseNode.GetChildNode("byteplus") is { } nullNodeByteplus && nullNodeByteplus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Byteplus = null;
+            if (parseNode.GetChildNode("centml") is { } nullNodeCentml && nullNodeCentml.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Centml = null;
+            if (parseNode.GetChildNode("cerebras") is { } nullNodeCerebras && nullNodeCerebras.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Cerebras = null;
+            if (parseNode.GetChildNode("chutes") is { } nullNodeChutes && nullNodeChutes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Chutes = null;
+            if (parseNode.GetChildNode("cirrascale") is { } nullNodeCirrascale && nullNodeCirrascale.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Cirrascale = null;
+            if (parseNode.GetChildNode("clarifai") is { } nullNodeClarifai && nullNodeClarifai.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Clarifai = null;
+            if (parseNode.GetChildNode("claude-on-aws") is { } nullNodeClaudeOnAws && nullNodeClaudeOnAws.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClaudeOnAws = null;
+            if (parseNode.GetChildNode("cloudflare") is { } nullNodeCloudflare && nullNodeCloudflare.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Cloudflare = null;
+            if (parseNode.GetChildNode("cohere") is { } nullNodeCohere && nullNodeCohere.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Cohere = null;
+            if (parseNode.GetChildNode("coreweave") is { } nullNodeCoreweave && nullNodeCoreweave.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Coreweave = null;
+            if (parseNode.GetChildNode("cosine") is { } nullNodeCosine && nullNodeCosine.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Cosine = null;
+            if (parseNode.GetChildNode("crofai") is { } nullNodeCrofai && nullNodeCrofai.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Crofai = null;
+            if (parseNode.GetChildNode("crucible") is { } nullNodeCrucible && nullNodeCrucible.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Crucible = null;
+            if (parseNode.GetChildNode("crusoe") is { } nullNodeCrusoe && nullNodeCrusoe.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Crusoe = null;
+            if (parseNode.GetChildNode("darkbloom") is { } nullNodeDarkbloom && nullNodeDarkbloom.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Darkbloom = null;
+            if (parseNode.GetChildNode("databricks") is { } nullNodeDatabricks && nullNodeDatabricks.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Databricks = null;
+            if (parseNode.GetChildNode("decart") is { } nullNodeDecart && nullNodeDecart.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Decart = null;
+            if (parseNode.GetChildNode("deepgram") is { } nullNodeDeepgram && nullNodeDeepgram.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Deepgram = null;
+            if (parseNode.GetChildNode("deepinfra") is { } nullNodeDeepinfra && nullNodeDeepinfra.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Deepinfra = null;
+            if (parseNode.GetChildNode("deepseek") is { } nullNodeDeepseek && nullNodeDeepseek.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Deepseek = null;
+            if (parseNode.GetChildNode("dekallm") is { } nullNodeDekallm && nullNodeDekallm.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Dekallm = null;
+            if (parseNode.GetChildNode("digitalocean") is { } nullNodeDigitalocean && nullNodeDigitalocean.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Digitalocean = null;
+            if (parseNode.GetChildNode("elevenlabs") is { } nullNodeElevenlabs && nullNodeElevenlabs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Elevenlabs = null;
+            if (parseNode.GetChildNode("enfer") is { } nullNodeEnfer && nullNodeEnfer.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Enfer = null;
+            if (parseNode.GetChildNode("fake-provider") is { } nullNodeFakeProvider && nullNodeFakeProvider.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FakeProvider = null;
+            if (parseNode.GetChildNode("featherless") is { } nullNodeFeatherless && nullNodeFeatherless.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Featherless = null;
+            if (parseNode.GetChildNode("fireworks") is { } nullNodeFireworks && nullNodeFireworks.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Fireworks = null;
+            if (parseNode.GetChildNode("fish-audio") is { } nullNodeFishAudio && nullNodeFishAudio.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FishAudio = null;
+            if (parseNode.GetChildNode("friendli") is { } nullNodeFriendli && nullNodeFriendli.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Friendli = null;
+            if (parseNode.GetChildNode("gmicloud") is { } nullNodeGmicloud && nullNodeGmicloud.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Gmicloud = null;
+            if (parseNode.GetChildNode("google-ai-studio") is { } nullNodeGoogleAiStudio && nullNodeGoogleAiStudio.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GoogleAiStudio = null;
+            if (parseNode.GetChildNode("google-vertex") is { } nullNodeGoogleVertex && nullNodeGoogleVertex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GoogleVertex = null;
+            if (parseNode.GetChildNode("gopomelo") is { } nullNodeGopomelo && nullNodeGopomelo.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Gopomelo = null;
+            if (parseNode.GetChildNode("groq") is { } nullNodeGroq && nullNodeGroq.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Groq = null;
+            if (parseNode.GetChildNode("heygen") is { } nullNodeHeygen && nullNodeHeygen.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Heygen = null;
+            if (parseNode.GetChildNode("huggingface") is { } nullNodeHuggingface && nullNodeHuggingface.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Huggingface = null;
+            if (parseNode.GetChildNode("hyperbolic") is { } nullNodeHyperbolic && nullNodeHyperbolic.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Hyperbolic = null;
+            if (parseNode.GetChildNode("hyperbolic-quantized") is { } nullNodeHyperbolicQuantized && nullNodeHyperbolicQuantized.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HyperbolicQuantized = null;
+            if (parseNode.GetChildNode("inception") is { } nullNodeInception && nullNodeInception.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Inception = null;
+            if (parseNode.GetChildNode("inceptron") is { } nullNodeInceptron && nullNodeInceptron.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Inceptron = null;
+            if (parseNode.GetChildNode("inferact-vllm") is { } nullNodeInferactVllm && nullNodeInferactVllm.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InferactVllm = null;
+            if (parseNode.GetChildNode("inference-net") is { } nullNodeInferenceNet && nullNodeInferenceNet.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InferenceNet = null;
+            if (parseNode.GetChildNode("infermatic") is { } nullNodeInfermatic && nullNodeInfermatic.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Infermatic = null;
+            if (parseNode.GetChildNode("inflection") is { } nullNodeInflection && nullNodeInflection.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Inflection = null;
+            if (parseNode.GetChildNode("inocloud") is { } nullNodeInocloud && nullNodeInocloud.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Inocloud = null;
+            if (parseNode.GetChildNode("io-net") is { } nullNodeIoNet && nullNodeIoNet.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IoNet = null;
+            if (parseNode.GetChildNode("ionstream") is { } nullNodeIonstream && nullNodeIonstream.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Ionstream = null;
+            if (parseNode.GetChildNode("klusterai") is { } nullNodeKlusterai && nullNodeKlusterai.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Klusterai = null;
+            if (parseNode.GetChildNode("krea") is { } nullNodeKrea && nullNodeKrea.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Krea = null;
+            if (parseNode.GetChildNode("kt") is { } nullNodeKt && nullNodeKt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Kt = null;
+            if (parseNode.GetChildNode("lambda") is { } nullNodeLambda && nullNodeLambda.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Lambda = null;
+            if (parseNode.GetChildNode("lepton") is { } nullNodeLepton && nullNodeLepton.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Lepton = null;
+            if (parseNode.GetChildNode("liquid") is { } nullNodeLiquid && nullNodeLiquid.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Liquid = null;
+            if (parseNode.GetChildNode("lynn") is { } nullNodeLynn && nullNodeLynn.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Lynn = null;
+            if (parseNode.GetChildNode("lynn-private") is { } nullNodeLynnPrivate && nullNodeLynnPrivate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LynnPrivate = null;
+            if (parseNode.GetChildNode("makora") is { } nullNodeMakora && nullNodeMakora.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Makora = null;
+            if (parseNode.GetChildNode("mancer") is { } nullNodeMancer && nullNodeMancer.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Mancer = null;
+            if (parseNode.GetChildNode("mancer-old") is { } nullNodeMancerOld && nullNodeMancerOld.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MancerOld = null;
+            if (parseNode.GetChildNode("mara") is { } nullNodeMara && nullNodeMara.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Mara = null;
+            if (parseNode.GetChildNode("meta") is { } nullNodeMeta && nullNodeMeta.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Meta = null;
+            if (parseNode.GetChildNode("minimax") is { } nullNodeMinimax && nullNodeMinimax.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Minimax = null;
+            if (parseNode.GetChildNode("mistral") is { } nullNodeMistral && nullNodeMistral.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Mistral = null;
+            if (parseNode.GetChildNode("modal") is { } nullNodeModal && nullNodeModal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Modal = null;
+            if (parseNode.GetChildNode("modelrun") is { } nullNodeModelrun && nullNodeModelrun.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Modelrun = null;
+            if (parseNode.GetChildNode("modular") is { } nullNodeModular && nullNodeModular.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Modular = null;
+            if (parseNode.GetChildNode("moonshotai") is { } nullNodeMoonshotai && nullNodeMoonshotai.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Moonshotai = null;
+            if (parseNode.GetChildNode("morph") is { } nullNodeMorph && nullNodeMorph.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Morph = null;
+            if (parseNode.GetChildNode("ncompass") is { } nullNodeNcompass && nullNodeNcompass.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Ncompass = null;
+            if (parseNode.GetChildNode("near-ai") is { } nullNodeNearAi && nullNodeNearAi.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NearAi = null;
+            if (parseNode.GetChildNode("nebius") is { } nullNodeNebius && nullNodeNebius.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Nebius = null;
+            if (parseNode.GetChildNode("nex-agi") is { } nullNodeNexAgi && nullNodeNexAgi.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NexAgi = null;
+            if (parseNode.GetChildNode("nextbit") is { } nullNodeNextbit && nullNodeNextbit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Nextbit = null;
+            if (parseNode.GetChildNode("nineteen") is { } nullNodeNineteen && nullNodeNineteen.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Nineteen = null;
+            if (parseNode.GetChildNode("novita") is { } nullNodeNovita && nullNodeNovita.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Novita = null;
+            if (parseNode.GetChildNode("nvidia") is { } nullNodeNvidia && nullNodeNvidia.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Nvidia = null;
+            if (parseNode.GetChildNode("octoai") is { } nullNodeOctoai && nullNodeOctoai.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Octoai = null;
+            if (parseNode.GetChildNode("ollama") is { } nullNodeOllama && nullNodeOllama.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Ollama = null;
+            if (parseNode.GetChildNode("openai") is { } nullNodeOpenai && nullNodeOpenai.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Openai = null;
+            if (parseNode.GetChildNode("open-inference") is { } nullNodeOpenInference && nullNodeOpenInference.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OpenInference = null;
+            if (parseNode.GetChildNode("parasail") is { } nullNodeParasail && nullNodeParasail.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Parasail = null;
+            if (parseNode.GetChildNode("pareto-alpha") is { } nullNodeParetoAlpha && nullNodeParetoAlpha.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ParetoAlpha = null;
+            if (parseNode.GetChildNode("particle-ai") is { } nullNodeParticleAi && nullNodeParticleAi.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ParticleAi = null;
+            if (parseNode.GetChildNode("perceptron") is { } nullNodePerceptron && nullNodePerceptron.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Perceptron = null;
+            if (parseNode.GetChildNode("perplexity") is { } nullNodePerplexity && nullNodePerplexity.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Perplexity = null;
+            if (parseNode.GetChildNode("phala") is { } nullNodePhala && nullNodePhala.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Phala = null;
+            if (parseNode.GetChildNode("poolside") is { } nullNodePoolside && nullNodePoolside.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Poolside = null;
+            if (parseNode.GetChildNode("primalabs") is { } nullNodePrimalabs && nullNodePrimalabs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Primalabs = null;
+            if (parseNode.GetChildNode("primeintellect") is { } nullNodePrimeintellect && nullNodePrimeintellect.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Primeintellect = null;
+            if (parseNode.GetChildNode("quiver") is { } nullNodeQuiver && nullNodeQuiver.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Quiver = null;
+            if (parseNode.GetChildNode("recraft") is { } nullNodeRecraft && nullNodeRecraft.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Recraft = null;
+            if (parseNode.GetChildNode("recursal") is { } nullNodeRecursal && nullNodeRecursal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Recursal = null;
+            if (parseNode.GetChildNode("recursive") is { } nullNodeRecursive && nullNodeRecursive.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Recursive = null;
+            if (parseNode.GetChildNode("reflection") is { } nullNodeReflection && nullNodeReflection.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Reflection = null;
+            if (parseNode.GetChildNode("reka") is { } nullNodeReka && nullNodeReka.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Reka = null;
+            if (parseNode.GetChildNode("relace") is { } nullNodeRelace && nullNodeRelace.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Relace = null;
+            if (parseNode.GetChildNode("replicate") is { } nullNodeReplicate && nullNodeReplicate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Replicate = null;
+            if (parseNode.GetChildNode("respan") is { } nullNodeRespan && nullNodeRespan.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Respan = null;
+            if (parseNode.GetChildNode("runway") is { } nullNodeRunway && nullNodeRunway.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Runway = null;
+            if (parseNode.GetChildNode("sail-research") is { } nullNodeSailResearch && nullNodeSailResearch.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SailResearch = null;
+            if (parseNode.GetChildNode("sakana") is { } nullNodeSakana && nullNodeSakana.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Sakana = null;
+            if (parseNode.GetChildNode("sakana-ai") is { } nullNodeSakanaAi && nullNodeSakanaAi.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SakanaAi = null;
+            if (parseNode.GetChildNode("sambanova") is { } nullNodeSambanova && nullNodeSambanova.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Sambanova = null;
+            if (parseNode.GetChildNode("sambanova-cloaked") is { } nullNodeSambanovaCloaked && nullNodeSambanovaCloaked.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SambanovaCloaked = null;
+            if (parseNode.GetChildNode("scaledown") is { } nullNodeScaledown && nullNodeScaledown.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Scaledown = null;
+            if (parseNode.GetChildNode("seed") is { } nullNodeSeed && nullNodeSeed.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Seed = null;
+            if (parseNode.GetChildNode("sf-compute") is { } nullNodeSfCompute && nullNodeSfCompute.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SfCompute = null;
+            if (parseNode.GetChildNode("siliconflow") is { } nullNodeSiliconflow && nullNodeSiliconflow.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Siliconflow = null;
+            if (parseNode.GetChildNode("sourceful") is { } nullNodeSourceful && nullNodeSourceful.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Sourceful = null;
+            if (parseNode.GetChildNode("stealth") is { } nullNodeStealth && nullNodeStealth.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Stealth = null;
+            if (parseNode.GetChildNode("stepfun") is { } nullNodeStepfun && nullNodeStepfun.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Stepfun = null;
+            if (parseNode.GetChildNode("streamlake") is { } nullNodeStreamlake && nullNodeStreamlake.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Streamlake = null;
+            if (parseNode.GetChildNode("switchpoint") is { } nullNodeSwitchpoint && nullNodeSwitchpoint.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Switchpoint = null;
+            if (parseNode.GetChildNode("targon") is { } nullNodeTargon && nullNodeTargon.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Targon = null;
+            if (parseNode.GetChildNode("tencent") is { } nullNodeTencent && nullNodeTencent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tencent = null;
+            if (parseNode.GetChildNode("tenstorrent") is { } nullNodeTenstorrent && nullNodeTenstorrent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tenstorrent = null;
+            if (parseNode.GetChildNode("thinkingmachines") is { } nullNodeThinkingmachines && nullNodeThinkingmachines.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Thinkingmachines = null;
+            if (parseNode.GetChildNode("together") is { } nullNodeTogether && nullNodeTogether.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Together = null;
+            if (parseNode.GetChildNode("together-lite") is { } nullNodeTogetherLite && nullNodeTogetherLite.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TogetherLite = null;
+            if (parseNode.GetChildNode("typesafe") is { } nullNodeTypesafe && nullNodeTypesafe.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Typesafe = null;
+            if (parseNode.GetChildNode("ubicloud") is { } nullNodeUbicloud && nullNodeUbicloud.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Ubicloud = null;
+            if (parseNode.GetChildNode("unbiased") is { } nullNodeUnbiased && nullNodeUnbiased.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Unbiased = null;
+            if (parseNode.GetChildNode("upstage") is { } nullNodeUpstage && nullNodeUpstage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Upstage = null;
+            if (parseNode.GetChildNode("venice") is { } nullNodeVenice && nullNodeVenice.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Venice = null;
+            if (parseNode.GetChildNode("voyageai") is { } nullNodeVoyageai && nullNodeVoyageai.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Voyageai = null;
+            if (parseNode.GetChildNode("wafer") is { } nullNodeWafer && nullNodeWafer.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Wafer = null;
+            if (parseNode.GetChildNode("wandb") is { } nullNodeWandb && nullNodeWandb.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Wandb = null;
+            if (parseNode.GetChildNode("wandb-legacy") is { } nullNodeWandbLegacy && nullNodeWandbLegacy.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WandbLegacy = null;
+            if (parseNode.GetChildNode("xai") is { } nullNodeXai && nullNodeXai.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Xai = null;
+            if (parseNode.GetChildNode("xiaomi") is { } nullNodeXiaomi && nullNodeXiaomi.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Xiaomi = null;
+            if (parseNode.GetChildNode("z-ai") is { } nullNodeZAi && nullNodeZAi.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ZAi = null;
+            if (parseNode.GetChildNode("01ai") is { } nullNodeZeroOneai && nullNodeZeroOneai.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ZeroOneai = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The ai21 property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAi21? Ai21 { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAi21? Ai21 { get => _explicitNullValueAi21; set { _explicitNullValueAi21 = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ai21"); else _explicitNullProperties?.Remove("ai21"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAi21? _explicitNullValueAi21 = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAi21 Ai21 { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAi21 Ai21 { get => _explicitNullValueAi21; set { _explicitNullValueAi21 = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ai21"); else _explicitNullProperties?.Remove("ai21"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAi21 _explicitNullValueAi21 = default!;
 #endif
         /// <summary>The aionLabs property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAionLabs? AionLabs { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAionLabs? AionLabs { get => _explicitNullValueAionLabs; set { _explicitNullValueAionLabs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("aion-labs"); else _explicitNullProperties?.Remove("aion-labs"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAionLabs? _explicitNullValueAionLabs = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAionLabs AionLabs { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAionLabs AionLabs { get => _explicitNullValueAionLabs; set { _explicitNullValueAionLabs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("aion-labs"); else _explicitNullProperties?.Remove("aion-labs"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAionLabs _explicitNullValueAionLabs = default!;
 #endif
         /// <summary>The akashml property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAkashml? Akashml { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAkashml? Akashml { get => _explicitNullValueAkashml; set { _explicitNullValueAkashml = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("akashml"); else _explicitNullProperties?.Remove("akashml"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAkashml? _explicitNullValueAkashml = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAkashml Akashml { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAkashml Akashml { get => _explicitNullValueAkashml; set { _explicitNullValueAkashml = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("akashml"); else _explicitNullProperties?.Remove("akashml"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAkashml _explicitNullValueAkashml = default!;
 #endif
         /// <summary>The alibaba property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAlibaba? Alibaba { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAlibaba? Alibaba { get => _explicitNullValueAlibaba; set { _explicitNullValueAlibaba = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("alibaba"); else _explicitNullProperties?.Remove("alibaba"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAlibaba? _explicitNullValueAlibaba = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAlibaba Alibaba { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAlibaba Alibaba { get => _explicitNullValueAlibaba; set { _explicitNullValueAlibaba = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("alibaba"); else _explicitNullProperties?.Remove("alibaba"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAlibaba _explicitNullValueAlibaba = default!;
 #endif
         /// <summary>The amazonBedrock property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAmazonBedrock? AmazonBedrock { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAmazonBedrock? AmazonBedrock { get => _explicitNullValueAmazonBedrock; set { _explicitNullValueAmazonBedrock = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("amazon-bedrock"); else _explicitNullProperties?.Remove("amazon-bedrock"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAmazonBedrock? _explicitNullValueAmazonBedrock = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAmazonBedrock AmazonBedrock { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAmazonBedrock AmazonBedrock { get => _explicitNullValueAmazonBedrock; set { _explicitNullValueAmazonBedrock = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("amazon-bedrock"); else _explicitNullProperties?.Remove("amazon-bedrock"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAmazonBedrock _explicitNullValueAmazonBedrock = default!;
 #endif
         /// <summary>The amazonBedrockClaudeOnAws property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAmazonBedrockClaudeOnAws? AmazonBedrockClaudeOnAws { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAmazonBedrockClaudeOnAws? AmazonBedrockClaudeOnAws { get => _explicitNullValueAmazonBedrockClaudeOnAws; set { _explicitNullValueAmazonBedrockClaudeOnAws = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("amazon-bedrock/claude-on-aws"); else _explicitNullProperties?.Remove("amazon-bedrock/claude-on-aws"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAmazonBedrockClaudeOnAws? _explicitNullValueAmazonBedrockClaudeOnAws = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAmazonBedrockClaudeOnAws AmazonBedrockClaudeOnAws { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAmazonBedrockClaudeOnAws AmazonBedrockClaudeOnAws { get => _explicitNullValueAmazonBedrockClaudeOnAws; set { _explicitNullValueAmazonBedrockClaudeOnAws = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("amazon-bedrock/claude-on-aws"); else _explicitNullProperties?.Remove("amazon-bedrock/claude-on-aws"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAmazonBedrockClaudeOnAws _explicitNullValueAmazonBedrockClaudeOnAws = default!;
 #endif
         /// <summary>The amazonNova property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAmazonNova? AmazonNova { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAmazonNova? AmazonNova { get => _explicitNullValueAmazonNova; set { _explicitNullValueAmazonNova = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("amazon-nova"); else _explicitNullProperties?.Remove("amazon-nova"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAmazonNova? _explicitNullValueAmazonNova = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAmazonNova AmazonNova { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAmazonNova AmazonNova { get => _explicitNullValueAmazonNova; set { _explicitNullValueAmazonNova = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("amazon-nova"); else _explicitNullProperties?.Remove("amazon-nova"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAmazonNova _explicitNullValueAmazonNova = default!;
 #endif
         /// <summary>The ambient property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAmbient? Ambient { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAmbient? Ambient { get => _explicitNullValueAmbient; set { _explicitNullValueAmbient = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ambient"); else _explicitNullProperties?.Remove("ambient"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAmbient? _explicitNullValueAmbient = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAmbient Ambient { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAmbient Ambient { get => _explicitNullValueAmbient; set { _explicitNullValueAmbient = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ambient"); else _explicitNullProperties?.Remove("ambient"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAmbient _explicitNullValueAmbient = default!;
 #endif
         /// <summary>The anthropic property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAnthropic? Anthropic { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAnthropic? Anthropic { get => _explicitNullValueAnthropic; set { _explicitNullValueAnthropic = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("anthropic"); else _explicitNullProperties?.Remove("anthropic"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAnthropic? _explicitNullValueAnthropic = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAnthropic Anthropic { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAnthropic Anthropic { get => _explicitNullValueAnthropic; set { _explicitNullValueAnthropic = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("anthropic"); else _explicitNullProperties?.Remove("anthropic"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAnthropic _explicitNullValueAnthropic = default!;
 #endif
         /// <summary>The anthropic2 property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAnthropic2? Anthropic2 { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAnthropic2? Anthropic2 { get => _explicitNullValueAnthropic2; set { _explicitNullValueAnthropic2 = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("anthropic/2"); else _explicitNullProperties?.Remove("anthropic/2"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAnthropic2? _explicitNullValueAnthropic2 = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAnthropic2 Anthropic2 { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAnthropic2 Anthropic2 { get => _explicitNullValueAnthropic2; set { _explicitNullValueAnthropic2 = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("anthropic/2"); else _explicitNullProperties?.Remove("anthropic/2"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAnthropic2 _explicitNullValueAnthropic2 = default!;
 #endif
         /// <summary>The anyscale property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAnyscale? Anyscale { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAnyscale? Anyscale { get => _explicitNullValueAnyscale; set { _explicitNullValueAnyscale = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("anyscale"); else _explicitNullProperties?.Remove("anyscale"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAnyscale? _explicitNullValueAnyscale = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAnyscale Anyscale { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAnyscale Anyscale { get => _explicitNullValueAnyscale; set { _explicitNullValueAnyscale = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("anyscale"); else _explicitNullProperties?.Remove("anyscale"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAnyscale _explicitNullValueAnyscale = default!;
 #endif
         /// <summary>The arceeAi property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsArceeAi? ArceeAi { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsArceeAi? ArceeAi { get => _explicitNullValueArceeAi; set { _explicitNullValueArceeAi = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("arcee-ai"); else _explicitNullProperties?.Remove("arcee-ai"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsArceeAi? _explicitNullValueArceeAi = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsArceeAi ArceeAi { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsArceeAi ArceeAi { get => _explicitNullValueArceeAi; set { _explicitNullValueArceeAi = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("arcee-ai"); else _explicitNullProperties?.Remove("arcee-ai"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsArceeAi _explicitNullValueArceeAi = default!;
 #endif
         /// <summary>The assemblyai property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAssemblyai? Assemblyai { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAssemblyai? Assemblyai { get => _explicitNullValueAssemblyai; set { _explicitNullValueAssemblyai = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("assemblyai"); else _explicitNullProperties?.Remove("assemblyai"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAssemblyai? _explicitNullValueAssemblyai = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAssemblyai Assemblyai { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAssemblyai Assemblyai { get => _explicitNullValueAssemblyai; set { _explicitNullValueAssemblyai = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("assemblyai"); else _explicitNullProperties?.Remove("assemblyai"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAssemblyai _explicitNullValueAssemblyai = default!;
 #endif
         /// <summary>The atlasCloud property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAtlasCloud? AtlasCloud { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAtlasCloud? AtlasCloud { get => _explicitNullValueAtlasCloud; set { _explicitNullValueAtlasCloud = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("atlas-cloud"); else _explicitNullProperties?.Remove("atlas-cloud"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAtlasCloud? _explicitNullValueAtlasCloud = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAtlasCloud AtlasCloud { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAtlasCloud AtlasCloud { get => _explicitNullValueAtlasCloud; set { _explicitNullValueAtlasCloud = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("atlas-cloud"); else _explicitNullProperties?.Remove("atlas-cloud"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAtlasCloud _explicitNullValueAtlasCloud = default!;
 #endif
         /// <summary>The atoma property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAtoma? Atoma { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAtoma? Atoma { get => _explicitNullValueAtoma; set { _explicitNullValueAtoma = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("atoma"); else _explicitNullProperties?.Remove("atoma"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAtoma? _explicitNullValueAtoma = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAtoma Atoma { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAtoma Atoma { get => _explicitNullValueAtoma; set { _explicitNullValueAtoma = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("atoma"); else _explicitNullProperties?.Remove("atoma"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAtoma _explicitNullValueAtoma = default!;
 #endif
         /// <summary>The avian property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAvian? Avian { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAvian? Avian { get => _explicitNullValueAvian; set { _explicitNullValueAvian = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("avian"); else _explicitNullProperties?.Remove("avian"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAvian? _explicitNullValueAvian = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAvian Avian { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAvian Avian { get => _explicitNullValueAvian; set { _explicitNullValueAvian = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("avian"); else _explicitNullProperties?.Remove("avian"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAvian _explicitNullValueAvian = default!;
 #endif
         /// <summary>The azure property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAzure? Azure { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAzure? Azure { get => _explicitNullValueAzure; set { _explicitNullValueAzure = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("azure"); else _explicitNullProperties?.Remove("azure"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAzure? _explicitNullValueAzure = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAzure Azure { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAzure Azure { get => _explicitNullValueAzure; set { _explicitNullValueAzure = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("azure"); else _explicitNullProperties?.Remove("azure"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAzure _explicitNullValueAzure = default!;
 #endif
         /// <summary>The baidu property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsBaidu? Baidu { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsBaidu? Baidu { get => _explicitNullValueBaidu; set { _explicitNullValueBaidu = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baidu"); else _explicitNullProperties?.Remove("baidu"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsBaidu? _explicitNullValueBaidu = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsBaidu Baidu { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsBaidu Baidu { get => _explicitNullValueBaidu; set { _explicitNullValueBaidu = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baidu"); else _explicitNullProperties?.Remove("baidu"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsBaidu _explicitNullValueBaidu = default!;
 #endif
         /// <summary>The baseten property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsBaseten? Baseten { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsBaseten? Baseten { get => _explicitNullValueBaseten; set { _explicitNullValueBaseten = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baseten"); else _explicitNullProperties?.Remove("baseten"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsBaseten? _explicitNullValueBaseten = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsBaseten Baseten { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsBaseten Baseten { get => _explicitNullValueBaseten; set { _explicitNullValueBaseten = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baseten"); else _explicitNullProperties?.Remove("baseten"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsBaseten _explicitNullValueBaseten = default!;
 #endif
         /// <summary>The blackForestLabs property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsBlackForestLabs? BlackForestLabs { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsBlackForestLabs? BlackForestLabs { get => _explicitNullValueBlackForestLabs; set { _explicitNullValueBlackForestLabs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("black-forest-labs"); else _explicitNullProperties?.Remove("black-forest-labs"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsBlackForestLabs? _explicitNullValueBlackForestLabs = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsBlackForestLabs BlackForestLabs { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsBlackForestLabs BlackForestLabs { get => _explicitNullValueBlackForestLabs; set { _explicitNullValueBlackForestLabs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("black-forest-labs"); else _explicitNullProperties?.Remove("black-forest-labs"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsBlackForestLabs _explicitNullValueBlackForestLabs = default!;
 #endif
         /// <summary>The byteplus property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsByteplus? Byteplus { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsByteplus? Byteplus { get => _explicitNullValueByteplus; set { _explicitNullValueByteplus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("byteplus"); else _explicitNullProperties?.Remove("byteplus"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsByteplus? _explicitNullValueByteplus = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsByteplus Byteplus { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsByteplus Byteplus { get => _explicitNullValueByteplus; set { _explicitNullValueByteplus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("byteplus"); else _explicitNullProperties?.Remove("byteplus"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsByteplus _explicitNullValueByteplus = default!;
 #endif
         /// <summary>The centml property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsCentml? Centml { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsCentml? Centml { get => _explicitNullValueCentml; set { _explicitNullValueCentml = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("centml"); else _explicitNullProperties?.Remove("centml"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsCentml? _explicitNullValueCentml = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsCentml Centml { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsCentml Centml { get => _explicitNullValueCentml; set { _explicitNullValueCentml = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("centml"); else _explicitNullProperties?.Remove("centml"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsCentml _explicitNullValueCentml = default!;
 #endif
         /// <summary>The cerebras property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsCerebras? Cerebras { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsCerebras? Cerebras { get => _explicitNullValueCerebras; set { _explicitNullValueCerebras = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cerebras"); else _explicitNullProperties?.Remove("cerebras"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsCerebras? _explicitNullValueCerebras = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsCerebras Cerebras { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsCerebras Cerebras { get => _explicitNullValueCerebras; set { _explicitNullValueCerebras = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cerebras"); else _explicitNullProperties?.Remove("cerebras"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsCerebras _explicitNullValueCerebras = default!;
 #endif
         /// <summary>The chutes property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsChutes? Chutes { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsChutes? Chutes { get => _explicitNullValueChutes; set { _explicitNullValueChutes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chutes"); else _explicitNullProperties?.Remove("chutes"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsChutes? _explicitNullValueChutes = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsChutes Chutes { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsChutes Chutes { get => _explicitNullValueChutes; set { _explicitNullValueChutes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chutes"); else _explicitNullProperties?.Remove("chutes"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsChutes _explicitNullValueChutes = default!;
 #endif
         /// <summary>The cirrascale property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsCirrascale? Cirrascale { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsCirrascale? Cirrascale { get => _explicitNullValueCirrascale; set { _explicitNullValueCirrascale = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cirrascale"); else _explicitNullProperties?.Remove("cirrascale"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsCirrascale? _explicitNullValueCirrascale = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsCirrascale Cirrascale { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsCirrascale Cirrascale { get => _explicitNullValueCirrascale; set { _explicitNullValueCirrascale = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cirrascale"); else _explicitNullProperties?.Remove("cirrascale"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsCirrascale _explicitNullValueCirrascale = default!;
 #endif
         /// <summary>The clarifai property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsClarifai? Clarifai { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsClarifai? Clarifai { get => _explicitNullValueClarifai; set { _explicitNullValueClarifai = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("clarifai"); else _explicitNullProperties?.Remove("clarifai"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsClarifai? _explicitNullValueClarifai = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsClarifai Clarifai { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsClarifai Clarifai { get => _explicitNullValueClarifai; set { _explicitNullValueClarifai = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("clarifai"); else _explicitNullProperties?.Remove("clarifai"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsClarifai _explicitNullValueClarifai = default!;
 #endif
         /// <summary>The claudeOnAws property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsClaudeOnAws? ClaudeOnAws { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsClaudeOnAws? ClaudeOnAws { get => _explicitNullValueClaudeOnAws; set { _explicitNullValueClaudeOnAws = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("claude-on-aws"); else _explicitNullProperties?.Remove("claude-on-aws"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsClaudeOnAws? _explicitNullValueClaudeOnAws = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsClaudeOnAws ClaudeOnAws { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsClaudeOnAws ClaudeOnAws { get => _explicitNullValueClaudeOnAws; set { _explicitNullValueClaudeOnAws = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("claude-on-aws"); else _explicitNullProperties?.Remove("claude-on-aws"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsClaudeOnAws _explicitNullValueClaudeOnAws = default!;
 #endif
         /// <summary>The cloudflare property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsCloudflare? Cloudflare { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsCloudflare? Cloudflare { get => _explicitNullValueCloudflare; set { _explicitNullValueCloudflare = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cloudflare"); else _explicitNullProperties?.Remove("cloudflare"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsCloudflare? _explicitNullValueCloudflare = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsCloudflare Cloudflare { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsCloudflare Cloudflare { get => _explicitNullValueCloudflare; set { _explicitNullValueCloudflare = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cloudflare"); else _explicitNullProperties?.Remove("cloudflare"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsCloudflare _explicitNullValueCloudflare = default!;
 #endif
         /// <summary>The cohere property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsCohere? Cohere { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsCohere? Cohere { get => _explicitNullValueCohere; set { _explicitNullValueCohere = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cohere"); else _explicitNullProperties?.Remove("cohere"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsCohere? _explicitNullValueCohere = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsCohere Cohere { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsCohere Cohere { get => _explicitNullValueCohere; set { _explicitNullValueCohere = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cohere"); else _explicitNullProperties?.Remove("cohere"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsCohere _explicitNullValueCohere = default!;
 #endif
         /// <summary>The coreweave property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsCoreweave? Coreweave { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsCoreweave? Coreweave { get => _explicitNullValueCoreweave; set { _explicitNullValueCoreweave = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("coreweave"); else _explicitNullProperties?.Remove("coreweave"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsCoreweave? _explicitNullValueCoreweave = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsCoreweave Coreweave { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsCoreweave Coreweave { get => _explicitNullValueCoreweave; set { _explicitNullValueCoreweave = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("coreweave"); else _explicitNullProperties?.Remove("coreweave"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsCoreweave _explicitNullValueCoreweave = default!;
 #endif
         /// <summary>The cosine property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsCosine? Cosine { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsCosine? Cosine { get => _explicitNullValueCosine; set { _explicitNullValueCosine = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cosine"); else _explicitNullProperties?.Remove("cosine"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsCosine? _explicitNullValueCosine = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsCosine Cosine { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsCosine Cosine { get => _explicitNullValueCosine; set { _explicitNullValueCosine = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cosine"); else _explicitNullProperties?.Remove("cosine"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsCosine _explicitNullValueCosine = default!;
 #endif
         /// <summary>The crofai property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsCrofai? Crofai { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsCrofai? Crofai { get => _explicitNullValueCrofai; set { _explicitNullValueCrofai = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("crofai"); else _explicitNullProperties?.Remove("crofai"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsCrofai? _explicitNullValueCrofai = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsCrofai Crofai { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsCrofai Crofai { get => _explicitNullValueCrofai; set { _explicitNullValueCrofai = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("crofai"); else _explicitNullProperties?.Remove("crofai"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsCrofai _explicitNullValueCrofai = default!;
 #endif
         /// <summary>The crucible property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsCrucible? Crucible { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsCrucible? Crucible { get => _explicitNullValueCrucible; set { _explicitNullValueCrucible = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("crucible"); else _explicitNullProperties?.Remove("crucible"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsCrucible? _explicitNullValueCrucible = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsCrucible Crucible { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsCrucible Crucible { get => _explicitNullValueCrucible; set { _explicitNullValueCrucible = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("crucible"); else _explicitNullProperties?.Remove("crucible"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsCrucible _explicitNullValueCrucible = default!;
 #endif
         /// <summary>The crusoe property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsCrusoe? Crusoe { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsCrusoe? Crusoe { get => _explicitNullValueCrusoe; set { _explicitNullValueCrusoe = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("crusoe"); else _explicitNullProperties?.Remove("crusoe"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsCrusoe? _explicitNullValueCrusoe = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsCrusoe Crusoe { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsCrusoe Crusoe { get => _explicitNullValueCrusoe; set { _explicitNullValueCrusoe = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("crusoe"); else _explicitNullProperties?.Remove("crusoe"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsCrusoe _explicitNullValueCrusoe = default!;
 #endif
         /// <summary>The darkbloom property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsDarkbloom? Darkbloom { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsDarkbloom? Darkbloom { get => _explicitNullValueDarkbloom; set { _explicitNullValueDarkbloom = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("darkbloom"); else _explicitNullProperties?.Remove("darkbloom"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsDarkbloom? _explicitNullValueDarkbloom = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsDarkbloom Darkbloom { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsDarkbloom Darkbloom { get => _explicitNullValueDarkbloom; set { _explicitNullValueDarkbloom = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("darkbloom"); else _explicitNullProperties?.Remove("darkbloom"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsDarkbloom _explicitNullValueDarkbloom = default!;
 #endif
         /// <summary>The databricks property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsDatabricks? Databricks { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsDatabricks? Databricks { get => _explicitNullValueDatabricks; set { _explicitNullValueDatabricks = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("databricks"); else _explicitNullProperties?.Remove("databricks"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsDatabricks? _explicitNullValueDatabricks = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsDatabricks Databricks { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsDatabricks Databricks { get => _explicitNullValueDatabricks; set { _explicitNullValueDatabricks = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("databricks"); else _explicitNullProperties?.Remove("databricks"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsDatabricks _explicitNullValueDatabricks = default!;
 #endif
         /// <summary>The decart property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsDecart? Decart { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsDecart? Decart { get => _explicitNullValueDecart; set { _explicitNullValueDecart = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("decart"); else _explicitNullProperties?.Remove("decart"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsDecart? _explicitNullValueDecart = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsDecart Decart { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsDecart Decart { get => _explicitNullValueDecart; set { _explicitNullValueDecart = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("decart"); else _explicitNullProperties?.Remove("decart"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsDecart _explicitNullValueDecart = default!;
 #endif
         /// <summary>The deepgram property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsDeepgram? Deepgram { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsDeepgram? Deepgram { get => _explicitNullValueDeepgram; set { _explicitNullValueDeepgram = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deepgram"); else _explicitNullProperties?.Remove("deepgram"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsDeepgram? _explicitNullValueDeepgram = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsDeepgram Deepgram { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsDeepgram Deepgram { get => _explicitNullValueDeepgram; set { _explicitNullValueDeepgram = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deepgram"); else _explicitNullProperties?.Remove("deepgram"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsDeepgram _explicitNullValueDeepgram = default!;
 #endif
         /// <summary>The deepinfra property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsDeepinfra? Deepinfra { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsDeepinfra? Deepinfra { get => _explicitNullValueDeepinfra; set { _explicitNullValueDeepinfra = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deepinfra"); else _explicitNullProperties?.Remove("deepinfra"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsDeepinfra? _explicitNullValueDeepinfra = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsDeepinfra Deepinfra { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsDeepinfra Deepinfra { get => _explicitNullValueDeepinfra; set { _explicitNullValueDeepinfra = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deepinfra"); else _explicitNullProperties?.Remove("deepinfra"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsDeepinfra _explicitNullValueDeepinfra = default!;
 #endif
         /// <summary>The deepseek property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsDeepseek? Deepseek { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsDeepseek? Deepseek { get => _explicitNullValueDeepseek; set { _explicitNullValueDeepseek = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deepseek"); else _explicitNullProperties?.Remove("deepseek"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsDeepseek? _explicitNullValueDeepseek = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsDeepseek Deepseek { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsDeepseek Deepseek { get => _explicitNullValueDeepseek; set { _explicitNullValueDeepseek = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deepseek"); else _explicitNullProperties?.Remove("deepseek"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsDeepseek _explicitNullValueDeepseek = default!;
 #endif
         /// <summary>The dekallm property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsDekallm? Dekallm { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsDekallm? Dekallm { get => _explicitNullValueDekallm; set { _explicitNullValueDekallm = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dekallm"); else _explicitNullProperties?.Remove("dekallm"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsDekallm? _explicitNullValueDekallm = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsDekallm Dekallm { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsDekallm Dekallm { get => _explicitNullValueDekallm; set { _explicitNullValueDekallm = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dekallm"); else _explicitNullProperties?.Remove("dekallm"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsDekallm _explicitNullValueDekallm = default!;
 #endif
         /// <summary>The digitalocean property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsDigitalocean? Digitalocean { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsDigitalocean? Digitalocean { get => _explicitNullValueDigitalocean; set { _explicitNullValueDigitalocean = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("digitalocean"); else _explicitNullProperties?.Remove("digitalocean"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsDigitalocean? _explicitNullValueDigitalocean = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsDigitalocean Digitalocean { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsDigitalocean Digitalocean { get => _explicitNullValueDigitalocean; set { _explicitNullValueDigitalocean = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("digitalocean"); else _explicitNullProperties?.Remove("digitalocean"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsDigitalocean _explicitNullValueDigitalocean = default!;
 #endif
         /// <summary>The elevenlabs property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsElevenlabs? Elevenlabs { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsElevenlabs? Elevenlabs { get => _explicitNullValueElevenlabs; set { _explicitNullValueElevenlabs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("elevenlabs"); else _explicitNullProperties?.Remove("elevenlabs"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsElevenlabs? _explicitNullValueElevenlabs = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsElevenlabs Elevenlabs { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsElevenlabs Elevenlabs { get => _explicitNullValueElevenlabs; set { _explicitNullValueElevenlabs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("elevenlabs"); else _explicitNullProperties?.Remove("elevenlabs"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsElevenlabs _explicitNullValueElevenlabs = default!;
 #endif
         /// <summary>The enfer property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsEnfer? Enfer { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsEnfer? Enfer { get => _explicitNullValueEnfer; set { _explicitNullValueEnfer = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enfer"); else _explicitNullProperties?.Remove("enfer"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsEnfer? _explicitNullValueEnfer = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsEnfer Enfer { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsEnfer Enfer { get => _explicitNullValueEnfer; set { _explicitNullValueEnfer = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enfer"); else _explicitNullProperties?.Remove("enfer"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsEnfer _explicitNullValueEnfer = default!;
 #endif
         /// <summary>The fakeProvider property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsFakeProvider? FakeProvider { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsFakeProvider? FakeProvider { get => _explicitNullValueFakeProvider; set { _explicitNullValueFakeProvider = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fake-provider"); else _explicitNullProperties?.Remove("fake-provider"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsFakeProvider? _explicitNullValueFakeProvider = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsFakeProvider FakeProvider { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsFakeProvider FakeProvider { get => _explicitNullValueFakeProvider; set { _explicitNullValueFakeProvider = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fake-provider"); else _explicitNullProperties?.Remove("fake-provider"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsFakeProvider _explicitNullValueFakeProvider = default!;
 #endif
         /// <summary>The featherless property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsFeatherless? Featherless { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsFeatherless? Featherless { get => _explicitNullValueFeatherless; set { _explicitNullValueFeatherless = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("featherless"); else _explicitNullProperties?.Remove("featherless"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsFeatherless? _explicitNullValueFeatherless = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsFeatherless Featherless { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsFeatherless Featherless { get => _explicitNullValueFeatherless; set { _explicitNullValueFeatherless = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("featherless"); else _explicitNullProperties?.Remove("featherless"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsFeatherless _explicitNullValueFeatherless = default!;
 #endif
         /// <summary>The fireworks property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsFireworks? Fireworks { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsFireworks? Fireworks { get => _explicitNullValueFireworks; set { _explicitNullValueFireworks = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fireworks"); else _explicitNullProperties?.Remove("fireworks"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsFireworks? _explicitNullValueFireworks = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsFireworks Fireworks { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsFireworks Fireworks { get => _explicitNullValueFireworks; set { _explicitNullValueFireworks = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fireworks"); else _explicitNullProperties?.Remove("fireworks"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsFireworks _explicitNullValueFireworks = default!;
 #endif
         /// <summary>The fishAudio property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsFishAudio? FishAudio { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsFishAudio? FishAudio { get => _explicitNullValueFishAudio; set { _explicitNullValueFishAudio = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fish-audio"); else _explicitNullProperties?.Remove("fish-audio"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsFishAudio? _explicitNullValueFishAudio = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsFishAudio FishAudio { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsFishAudio FishAudio { get => _explicitNullValueFishAudio; set { _explicitNullValueFishAudio = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fish-audio"); else _explicitNullProperties?.Remove("fish-audio"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsFishAudio _explicitNullValueFishAudio = default!;
 #endif
         /// <summary>The friendli property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsFriendli? Friendli { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsFriendli? Friendli { get => _explicitNullValueFriendli; set { _explicitNullValueFriendli = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("friendli"); else _explicitNullProperties?.Remove("friendli"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsFriendli? _explicitNullValueFriendli = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsFriendli Friendli { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsFriendli Friendli { get => _explicitNullValueFriendli; set { _explicitNullValueFriendli = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("friendli"); else _explicitNullProperties?.Remove("friendli"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsFriendli _explicitNullValueFriendli = default!;
 #endif
         /// <summary>The gmicloud property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsGmicloud? Gmicloud { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsGmicloud? Gmicloud { get => _explicitNullValueGmicloud; set { _explicitNullValueGmicloud = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gmicloud"); else _explicitNullProperties?.Remove("gmicloud"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsGmicloud? _explicitNullValueGmicloud = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsGmicloud Gmicloud { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsGmicloud Gmicloud { get => _explicitNullValueGmicloud; set { _explicitNullValueGmicloud = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gmicloud"); else _explicitNullProperties?.Remove("gmicloud"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsGmicloud _explicitNullValueGmicloud = default!;
 #endif
         /// <summary>The googleAiStudio property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsGoogleAiStudio? GoogleAiStudio { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsGoogleAiStudio? GoogleAiStudio { get => _explicitNullValueGoogleAiStudio; set { _explicitNullValueGoogleAiStudio = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("google-ai-studio"); else _explicitNullProperties?.Remove("google-ai-studio"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsGoogleAiStudio? _explicitNullValueGoogleAiStudio = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsGoogleAiStudio GoogleAiStudio { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsGoogleAiStudio GoogleAiStudio { get => _explicitNullValueGoogleAiStudio; set { _explicitNullValueGoogleAiStudio = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("google-ai-studio"); else _explicitNullProperties?.Remove("google-ai-studio"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsGoogleAiStudio _explicitNullValueGoogleAiStudio = default!;
 #endif
         /// <summary>The googleVertex property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsGoogleVertex? GoogleVertex { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsGoogleVertex? GoogleVertex { get => _explicitNullValueGoogleVertex; set { _explicitNullValueGoogleVertex = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("google-vertex"); else _explicitNullProperties?.Remove("google-vertex"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsGoogleVertex? _explicitNullValueGoogleVertex = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsGoogleVertex GoogleVertex { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsGoogleVertex GoogleVertex { get => _explicitNullValueGoogleVertex; set { _explicitNullValueGoogleVertex = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("google-vertex"); else _explicitNullProperties?.Remove("google-vertex"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsGoogleVertex _explicitNullValueGoogleVertex = default!;
 #endif
         /// <summary>The gopomelo property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsGopomelo? Gopomelo { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsGopomelo? Gopomelo { get => _explicitNullValueGopomelo; set { _explicitNullValueGopomelo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gopomelo"); else _explicitNullProperties?.Remove("gopomelo"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsGopomelo? _explicitNullValueGopomelo = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsGopomelo Gopomelo { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsGopomelo Gopomelo { get => _explicitNullValueGopomelo; set { _explicitNullValueGopomelo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gopomelo"); else _explicitNullProperties?.Remove("gopomelo"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsGopomelo _explicitNullValueGopomelo = default!;
 #endif
         /// <summary>The groq property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsGroq? Groq { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsGroq? Groq { get => _explicitNullValueGroq; set { _explicitNullValueGroq = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("groq"); else _explicitNullProperties?.Remove("groq"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsGroq? _explicitNullValueGroq = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsGroq Groq { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsGroq Groq { get => _explicitNullValueGroq; set { _explicitNullValueGroq = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("groq"); else _explicitNullProperties?.Remove("groq"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsGroq _explicitNullValueGroq = default!;
 #endif
         /// <summary>The heygen property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsHeygen? Heygen { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsHeygen? Heygen { get => _explicitNullValueHeygen; set { _explicitNullValueHeygen = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("heygen"); else _explicitNullProperties?.Remove("heygen"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsHeygen? _explicitNullValueHeygen = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsHeygen Heygen { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsHeygen Heygen { get => _explicitNullValueHeygen; set { _explicitNullValueHeygen = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("heygen"); else _explicitNullProperties?.Remove("heygen"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsHeygen _explicitNullValueHeygen = default!;
 #endif
         /// <summary>The huggingface property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsHuggingface? Huggingface { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsHuggingface? Huggingface { get => _explicitNullValueHuggingface; set { _explicitNullValueHuggingface = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("huggingface"); else _explicitNullProperties?.Remove("huggingface"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsHuggingface? _explicitNullValueHuggingface = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsHuggingface Huggingface { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsHuggingface Huggingface { get => _explicitNullValueHuggingface; set { _explicitNullValueHuggingface = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("huggingface"); else _explicitNullProperties?.Remove("huggingface"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsHuggingface _explicitNullValueHuggingface = default!;
 #endif
         /// <summary>The hyperbolic property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsHyperbolic? Hyperbolic { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsHyperbolic? Hyperbolic { get => _explicitNullValueHyperbolic; set { _explicitNullValueHyperbolic = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hyperbolic"); else _explicitNullProperties?.Remove("hyperbolic"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsHyperbolic? _explicitNullValueHyperbolic = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsHyperbolic Hyperbolic { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsHyperbolic Hyperbolic { get => _explicitNullValueHyperbolic; set { _explicitNullValueHyperbolic = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hyperbolic"); else _explicitNullProperties?.Remove("hyperbolic"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsHyperbolic _explicitNullValueHyperbolic = default!;
 #endif
         /// <summary>The hyperbolicQuantized property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsHyperbolicQuantized? HyperbolicQuantized { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsHyperbolicQuantized? HyperbolicQuantized { get => _explicitNullValueHyperbolicQuantized; set { _explicitNullValueHyperbolicQuantized = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hyperbolic-quantized"); else _explicitNullProperties?.Remove("hyperbolic-quantized"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsHyperbolicQuantized? _explicitNullValueHyperbolicQuantized = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsHyperbolicQuantized HyperbolicQuantized { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsHyperbolicQuantized HyperbolicQuantized { get => _explicitNullValueHyperbolicQuantized; set { _explicitNullValueHyperbolicQuantized = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hyperbolic-quantized"); else _explicitNullProperties?.Remove("hyperbolic-quantized"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsHyperbolicQuantized _explicitNullValueHyperbolicQuantized = default!;
 #endif
         /// <summary>The inception property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsInception? Inception { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsInception? Inception { get => _explicitNullValueInception; set { _explicitNullValueInception = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inception"); else _explicitNullProperties?.Remove("inception"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsInception? _explicitNullValueInception = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsInception Inception { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsInception Inception { get => _explicitNullValueInception; set { _explicitNullValueInception = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inception"); else _explicitNullProperties?.Remove("inception"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsInception _explicitNullValueInception = default!;
 #endif
         /// <summary>The inceptron property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsInceptron? Inceptron { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsInceptron? Inceptron { get => _explicitNullValueInceptron; set { _explicitNullValueInceptron = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inceptron"); else _explicitNullProperties?.Remove("inceptron"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsInceptron? _explicitNullValueInceptron = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsInceptron Inceptron { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsInceptron Inceptron { get => _explicitNullValueInceptron; set { _explicitNullValueInceptron = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inceptron"); else _explicitNullProperties?.Remove("inceptron"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsInceptron _explicitNullValueInceptron = default!;
 #endif
         /// <summary>The inferactVllm property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsInferactVllm? InferactVllm { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsInferactVllm? InferactVllm { get => _explicitNullValueInferactVllm; set { _explicitNullValueInferactVllm = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inferact-vllm"); else _explicitNullProperties?.Remove("inferact-vllm"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsInferactVllm? _explicitNullValueInferactVllm = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsInferactVllm InferactVllm { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsInferactVllm InferactVllm { get => _explicitNullValueInferactVllm; set { _explicitNullValueInferactVllm = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inferact-vllm"); else _explicitNullProperties?.Remove("inferact-vllm"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsInferactVllm _explicitNullValueInferactVllm = default!;
 #endif
         /// <summary>The inferenceNet property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsInferenceNet? InferenceNet { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsInferenceNet? InferenceNet { get => _explicitNullValueInferenceNet; set { _explicitNullValueInferenceNet = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inference-net"); else _explicitNullProperties?.Remove("inference-net"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsInferenceNet? _explicitNullValueInferenceNet = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsInferenceNet InferenceNet { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsInferenceNet InferenceNet { get => _explicitNullValueInferenceNet; set { _explicitNullValueInferenceNet = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inference-net"); else _explicitNullProperties?.Remove("inference-net"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsInferenceNet _explicitNullValueInferenceNet = default!;
 #endif
         /// <summary>The infermatic property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsInfermatic? Infermatic { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsInfermatic? Infermatic { get => _explicitNullValueInfermatic; set { _explicitNullValueInfermatic = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("infermatic"); else _explicitNullProperties?.Remove("infermatic"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsInfermatic? _explicitNullValueInfermatic = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsInfermatic Infermatic { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsInfermatic Infermatic { get => _explicitNullValueInfermatic; set { _explicitNullValueInfermatic = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("infermatic"); else _explicitNullProperties?.Remove("infermatic"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsInfermatic _explicitNullValueInfermatic = default!;
 #endif
         /// <summary>The inflection property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsInflection? Inflection { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsInflection? Inflection { get => _explicitNullValueInflection; set { _explicitNullValueInflection = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inflection"); else _explicitNullProperties?.Remove("inflection"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsInflection? _explicitNullValueInflection = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsInflection Inflection { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsInflection Inflection { get => _explicitNullValueInflection; set { _explicitNullValueInflection = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inflection"); else _explicitNullProperties?.Remove("inflection"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsInflection _explicitNullValueInflection = default!;
 #endif
         /// <summary>The inocloud property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsInocloud? Inocloud { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsInocloud? Inocloud { get => _explicitNullValueInocloud; set { _explicitNullValueInocloud = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inocloud"); else _explicitNullProperties?.Remove("inocloud"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsInocloud? _explicitNullValueInocloud = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsInocloud Inocloud { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsInocloud Inocloud { get => _explicitNullValueInocloud; set { _explicitNullValueInocloud = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inocloud"); else _explicitNullProperties?.Remove("inocloud"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsInocloud _explicitNullValueInocloud = default!;
 #endif
         /// <summary>The ioNet property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsIoNet? IoNet { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsIoNet? IoNet { get => _explicitNullValueIoNet; set { _explicitNullValueIoNet = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("io-net"); else _explicitNullProperties?.Remove("io-net"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsIoNet? _explicitNullValueIoNet = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsIoNet IoNet { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsIoNet IoNet { get => _explicitNullValueIoNet; set { _explicitNullValueIoNet = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("io-net"); else _explicitNullProperties?.Remove("io-net"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsIoNet _explicitNullValueIoNet = default!;
 #endif
         /// <summary>The ionstream property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsIonstream? Ionstream { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsIonstream? Ionstream { get => _explicitNullValueIonstream; set { _explicitNullValueIonstream = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ionstream"); else _explicitNullProperties?.Remove("ionstream"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsIonstream? _explicitNullValueIonstream = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsIonstream Ionstream { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsIonstream Ionstream { get => _explicitNullValueIonstream; set { _explicitNullValueIonstream = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ionstream"); else _explicitNullProperties?.Remove("ionstream"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsIonstream _explicitNullValueIonstream = default!;
 #endif
         /// <summary>The klusterai property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsKlusterai? Klusterai { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsKlusterai? Klusterai { get => _explicitNullValueKlusterai; set { _explicitNullValueKlusterai = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("klusterai"); else _explicitNullProperties?.Remove("klusterai"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsKlusterai? _explicitNullValueKlusterai = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsKlusterai Klusterai { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsKlusterai Klusterai { get => _explicitNullValueKlusterai; set { _explicitNullValueKlusterai = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("klusterai"); else _explicitNullProperties?.Remove("klusterai"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsKlusterai _explicitNullValueKlusterai = default!;
 #endif
         /// <summary>The krea property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsKrea? Krea { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsKrea? Krea { get => _explicitNullValueKrea; set { _explicitNullValueKrea = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("krea"); else _explicitNullProperties?.Remove("krea"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsKrea? _explicitNullValueKrea = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsKrea Krea { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsKrea Krea { get => _explicitNullValueKrea; set { _explicitNullValueKrea = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("krea"); else _explicitNullProperties?.Remove("krea"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsKrea _explicitNullValueKrea = default!;
+#endif
+        /// <summary>The kt property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsKt? Kt { get => _explicitNullValueKt; set { _explicitNullValueKt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("kt"); else _explicitNullProperties?.Remove("kt"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsKt? _explicitNullValueKt = default!;
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsKt Kt { get => _explicitNullValueKt; set { _explicitNullValueKt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("kt"); else _explicitNullProperties?.Remove("kt"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsKt _explicitNullValueKt = default!;
 #endif
         /// <summary>The lambda property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsLambda? Lambda { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsLambda? Lambda { get => _explicitNullValueLambda; set { _explicitNullValueLambda = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lambda"); else _explicitNullProperties?.Remove("lambda"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsLambda? _explicitNullValueLambda = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsLambda Lambda { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsLambda Lambda { get => _explicitNullValueLambda; set { _explicitNullValueLambda = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lambda"); else _explicitNullProperties?.Remove("lambda"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsLambda _explicitNullValueLambda = default!;
 #endif
         /// <summary>The lepton property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsLepton? Lepton { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsLepton? Lepton { get => _explicitNullValueLepton; set { _explicitNullValueLepton = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lepton"); else _explicitNullProperties?.Remove("lepton"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsLepton? _explicitNullValueLepton = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsLepton Lepton { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsLepton Lepton { get => _explicitNullValueLepton; set { _explicitNullValueLepton = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lepton"); else _explicitNullProperties?.Remove("lepton"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsLepton _explicitNullValueLepton = default!;
 #endif
         /// <summary>The liquid property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsLiquid? Liquid { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsLiquid? Liquid { get => _explicitNullValueLiquid; set { _explicitNullValueLiquid = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("liquid"); else _explicitNullProperties?.Remove("liquid"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsLiquid? _explicitNullValueLiquid = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsLiquid Liquid { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsLiquid Liquid { get => _explicitNullValueLiquid; set { _explicitNullValueLiquid = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("liquid"); else _explicitNullProperties?.Remove("liquid"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsLiquid _explicitNullValueLiquid = default!;
 #endif
         /// <summary>The lynn property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsLynn? Lynn { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsLynn? Lynn { get => _explicitNullValueLynn; set { _explicitNullValueLynn = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lynn"); else _explicitNullProperties?.Remove("lynn"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsLynn? _explicitNullValueLynn = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsLynn Lynn { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsLynn Lynn { get => _explicitNullValueLynn; set { _explicitNullValueLynn = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lynn"); else _explicitNullProperties?.Remove("lynn"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsLynn _explicitNullValueLynn = default!;
 #endif
         /// <summary>The lynnPrivate property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsLynnPrivate? LynnPrivate { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsLynnPrivate? LynnPrivate { get => _explicitNullValueLynnPrivate; set { _explicitNullValueLynnPrivate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lynn-private"); else _explicitNullProperties?.Remove("lynn-private"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsLynnPrivate? _explicitNullValueLynnPrivate = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsLynnPrivate LynnPrivate { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsLynnPrivate LynnPrivate { get => _explicitNullValueLynnPrivate; set { _explicitNullValueLynnPrivate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lynn-private"); else _explicitNullProperties?.Remove("lynn-private"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsLynnPrivate _explicitNullValueLynnPrivate = default!;
 #endif
         /// <summary>The makora property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsMakora? Makora { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsMakora? Makora { get => _explicitNullValueMakora; set { _explicitNullValueMakora = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("makora"); else _explicitNullProperties?.Remove("makora"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsMakora? _explicitNullValueMakora = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsMakora Makora { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsMakora Makora { get => _explicitNullValueMakora; set { _explicitNullValueMakora = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("makora"); else _explicitNullProperties?.Remove("makora"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsMakora _explicitNullValueMakora = default!;
 #endif
         /// <summary>The mancer property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsMancer? Mancer { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsMancer? Mancer { get => _explicitNullValueMancer; set { _explicitNullValueMancer = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mancer"); else _explicitNullProperties?.Remove("mancer"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsMancer? _explicitNullValueMancer = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsMancer Mancer { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsMancer Mancer { get => _explicitNullValueMancer; set { _explicitNullValueMancer = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mancer"); else _explicitNullProperties?.Remove("mancer"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsMancer _explicitNullValueMancer = default!;
 #endif
         /// <summary>The mancerOld property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsMancerOld? MancerOld { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsMancerOld? MancerOld { get => _explicitNullValueMancerOld; set { _explicitNullValueMancerOld = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mancer-old"); else _explicitNullProperties?.Remove("mancer-old"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsMancerOld? _explicitNullValueMancerOld = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsMancerOld MancerOld { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsMancerOld MancerOld { get => _explicitNullValueMancerOld; set { _explicitNullValueMancerOld = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mancer-old"); else _explicitNullProperties?.Remove("mancer-old"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsMancerOld _explicitNullValueMancerOld = default!;
 #endif
         /// <summary>The mara property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsMara? Mara { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsMara? Mara { get => _explicitNullValueMara; set { _explicitNullValueMara = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mara"); else _explicitNullProperties?.Remove("mara"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsMara? _explicitNullValueMara = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsMara Mara { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsMara Mara { get => _explicitNullValueMara; set { _explicitNullValueMara = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mara"); else _explicitNullProperties?.Remove("mara"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsMara _explicitNullValueMara = default!;
 #endif
         /// <summary>The meta property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsMeta? Meta { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsMeta? Meta { get => _explicitNullValueMeta; set { _explicitNullValueMeta = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("meta"); else _explicitNullProperties?.Remove("meta"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsMeta? _explicitNullValueMeta = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsMeta Meta { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsMeta Meta { get => _explicitNullValueMeta; set { _explicitNullValueMeta = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("meta"); else _explicitNullProperties?.Remove("meta"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsMeta _explicitNullValueMeta = default!;
 #endif
         /// <summary>The minimax property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsMinimax? Minimax { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsMinimax? Minimax { get => _explicitNullValueMinimax; set { _explicitNullValueMinimax = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("minimax"); else _explicitNullProperties?.Remove("minimax"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsMinimax? _explicitNullValueMinimax = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsMinimax Minimax { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsMinimax Minimax { get => _explicitNullValueMinimax; set { _explicitNullValueMinimax = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("minimax"); else _explicitNullProperties?.Remove("minimax"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsMinimax _explicitNullValueMinimax = default!;
 #endif
         /// <summary>The mistral property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsMistral? Mistral { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsMistral? Mistral { get => _explicitNullValueMistral; set { _explicitNullValueMistral = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mistral"); else _explicitNullProperties?.Remove("mistral"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsMistral? _explicitNullValueMistral = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsMistral Mistral { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsMistral Mistral { get => _explicitNullValueMistral; set { _explicitNullValueMistral = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mistral"); else _explicitNullProperties?.Remove("mistral"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsMistral _explicitNullValueMistral = default!;
 #endif
         /// <summary>The modal property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsModal? Modal { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsModal? Modal { get => _explicitNullValueModal; set { _explicitNullValueModal = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("modal"); else _explicitNullProperties?.Remove("modal"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsModal? _explicitNullValueModal = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsModal Modal { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsModal Modal { get => _explicitNullValueModal; set { _explicitNullValueModal = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("modal"); else _explicitNullProperties?.Remove("modal"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsModal _explicitNullValueModal = default!;
 #endif
         /// <summary>The modelrun property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsModelrun? Modelrun { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsModelrun? Modelrun { get => _explicitNullValueModelrun; set { _explicitNullValueModelrun = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("modelrun"); else _explicitNullProperties?.Remove("modelrun"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsModelrun? _explicitNullValueModelrun = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsModelrun Modelrun { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsModelrun Modelrun { get => _explicitNullValueModelrun; set { _explicitNullValueModelrun = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("modelrun"); else _explicitNullProperties?.Remove("modelrun"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsModelrun _explicitNullValueModelrun = default!;
 #endif
         /// <summary>The modular property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsModular? Modular { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsModular? Modular { get => _explicitNullValueModular; set { _explicitNullValueModular = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("modular"); else _explicitNullProperties?.Remove("modular"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsModular? _explicitNullValueModular = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsModular Modular { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsModular Modular { get => _explicitNullValueModular; set { _explicitNullValueModular = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("modular"); else _explicitNullProperties?.Remove("modular"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsModular _explicitNullValueModular = default!;
 #endif
         /// <summary>The moonshotai property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsMoonshotai? Moonshotai { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsMoonshotai? Moonshotai { get => _explicitNullValueMoonshotai; set { _explicitNullValueMoonshotai = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("moonshotai"); else _explicitNullProperties?.Remove("moonshotai"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsMoonshotai? _explicitNullValueMoonshotai = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsMoonshotai Moonshotai { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsMoonshotai Moonshotai { get => _explicitNullValueMoonshotai; set { _explicitNullValueMoonshotai = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("moonshotai"); else _explicitNullProperties?.Remove("moonshotai"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsMoonshotai _explicitNullValueMoonshotai = default!;
 #endif
         /// <summary>The morph property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsMorph? Morph { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsMorph? Morph { get => _explicitNullValueMorph; set { _explicitNullValueMorph = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("morph"); else _explicitNullProperties?.Remove("morph"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsMorph? _explicitNullValueMorph = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsMorph Morph { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsMorph Morph { get => _explicitNullValueMorph; set { _explicitNullValueMorph = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("morph"); else _explicitNullProperties?.Remove("morph"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsMorph _explicitNullValueMorph = default!;
 #endif
         /// <summary>The ncompass property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsNcompass? Ncompass { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsNcompass? Ncompass { get => _explicitNullValueNcompass; set { _explicitNullValueNcompass = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ncompass"); else _explicitNullProperties?.Remove("ncompass"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsNcompass? _explicitNullValueNcompass = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsNcompass Ncompass { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsNcompass Ncompass { get => _explicitNullValueNcompass; set { _explicitNullValueNcompass = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ncompass"); else _explicitNullProperties?.Remove("ncompass"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsNcompass _explicitNullValueNcompass = default!;
 #endif
         /// <summary>The nearAi property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsNearAi? NearAi { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsNearAi? NearAi { get => _explicitNullValueNearAi; set { _explicitNullValueNearAi = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("near-ai"); else _explicitNullProperties?.Remove("near-ai"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsNearAi? _explicitNullValueNearAi = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsNearAi NearAi { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsNearAi NearAi { get => _explicitNullValueNearAi; set { _explicitNullValueNearAi = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("near-ai"); else _explicitNullProperties?.Remove("near-ai"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsNearAi _explicitNullValueNearAi = default!;
 #endif
         /// <summary>The nebius property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsNebius? Nebius { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsNebius? Nebius { get => _explicitNullValueNebius; set { _explicitNullValueNebius = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("nebius"); else _explicitNullProperties?.Remove("nebius"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsNebius? _explicitNullValueNebius = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsNebius Nebius { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsNebius Nebius { get => _explicitNullValueNebius; set { _explicitNullValueNebius = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("nebius"); else _explicitNullProperties?.Remove("nebius"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsNebius _explicitNullValueNebius = default!;
 #endif
         /// <summary>The nexAgi property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsNexAgi? NexAgi { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsNexAgi? NexAgi { get => _explicitNullValueNexAgi; set { _explicitNullValueNexAgi = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("nex-agi"); else _explicitNullProperties?.Remove("nex-agi"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsNexAgi? _explicitNullValueNexAgi = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsNexAgi NexAgi { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsNexAgi NexAgi { get => _explicitNullValueNexAgi; set { _explicitNullValueNexAgi = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("nex-agi"); else _explicitNullProperties?.Remove("nex-agi"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsNexAgi _explicitNullValueNexAgi = default!;
 #endif
         /// <summary>The nextbit property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsNextbit? Nextbit { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsNextbit? Nextbit { get => _explicitNullValueNextbit; set { _explicitNullValueNextbit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("nextbit"); else _explicitNullProperties?.Remove("nextbit"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsNextbit? _explicitNullValueNextbit = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsNextbit Nextbit { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsNextbit Nextbit { get => _explicitNullValueNextbit; set { _explicitNullValueNextbit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("nextbit"); else _explicitNullProperties?.Remove("nextbit"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsNextbit _explicitNullValueNextbit = default!;
 #endif
         /// <summary>The nineteen property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsNineteen? Nineteen { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsNineteen? Nineteen { get => _explicitNullValueNineteen; set { _explicitNullValueNineteen = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("nineteen"); else _explicitNullProperties?.Remove("nineteen"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsNineteen? _explicitNullValueNineteen = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsNineteen Nineteen { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsNineteen Nineteen { get => _explicitNullValueNineteen; set { _explicitNullValueNineteen = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("nineteen"); else _explicitNullProperties?.Remove("nineteen"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsNineteen _explicitNullValueNineteen = default!;
 #endif
         /// <summary>The novita property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsNovita? Novita { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsNovita? Novita { get => _explicitNullValueNovita; set { _explicitNullValueNovita = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("novita"); else _explicitNullProperties?.Remove("novita"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsNovita? _explicitNullValueNovita = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsNovita Novita { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsNovita Novita { get => _explicitNullValueNovita; set { _explicitNullValueNovita = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("novita"); else _explicitNullProperties?.Remove("novita"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsNovita _explicitNullValueNovita = default!;
 #endif
         /// <summary>The nvidia property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsNvidia? Nvidia { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsNvidia? Nvidia { get => _explicitNullValueNvidia; set { _explicitNullValueNvidia = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("nvidia"); else _explicitNullProperties?.Remove("nvidia"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsNvidia? _explicitNullValueNvidia = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsNvidia Nvidia { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsNvidia Nvidia { get => _explicitNullValueNvidia; set { _explicitNullValueNvidia = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("nvidia"); else _explicitNullProperties?.Remove("nvidia"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsNvidia _explicitNullValueNvidia = default!;
 #endif
         /// <summary>The octoai property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsOctoai? Octoai { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsOctoai? Octoai { get => _explicitNullValueOctoai; set { _explicitNullValueOctoai = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("octoai"); else _explicitNullProperties?.Remove("octoai"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsOctoai? _explicitNullValueOctoai = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsOctoai Octoai { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsOctoai Octoai { get => _explicitNullValueOctoai; set { _explicitNullValueOctoai = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("octoai"); else _explicitNullProperties?.Remove("octoai"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsOctoai _explicitNullValueOctoai = default!;
 #endif
         /// <summary>The ollama property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsOllama? Ollama { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsOllama? Ollama { get => _explicitNullValueOllama; set { _explicitNullValueOllama = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ollama"); else _explicitNullProperties?.Remove("ollama"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsOllama? _explicitNullValueOllama = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsOllama Ollama { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsOllama Ollama { get => _explicitNullValueOllama; set { _explicitNullValueOllama = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ollama"); else _explicitNullProperties?.Remove("ollama"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsOllama _explicitNullValueOllama = default!;
 #endif
         /// <summary>The openai property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsOpenai? Openai { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsOpenai? Openai { get => _explicitNullValueOpenai; set { _explicitNullValueOpenai = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("openai"); else _explicitNullProperties?.Remove("openai"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsOpenai? _explicitNullValueOpenai = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsOpenai Openai { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsOpenai Openai { get => _explicitNullValueOpenai; set { _explicitNullValueOpenai = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("openai"); else _explicitNullProperties?.Remove("openai"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsOpenai _explicitNullValueOpenai = default!;
 #endif
         /// <summary>The openInference property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsOpenInference? OpenInference { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsOpenInference? OpenInference { get => _explicitNullValueOpenInference; set { _explicitNullValueOpenInference = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("open-inference"); else _explicitNullProperties?.Remove("open-inference"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsOpenInference? _explicitNullValueOpenInference = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsOpenInference OpenInference { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsOpenInference OpenInference { get => _explicitNullValueOpenInference; set { _explicitNullValueOpenInference = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("open-inference"); else _explicitNullProperties?.Remove("open-inference"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsOpenInference _explicitNullValueOpenInference = default!;
 #endif
         /// <summary>The parasail property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsParasail? Parasail { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsParasail? Parasail { get => _explicitNullValueParasail; set { _explicitNullValueParasail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("parasail"); else _explicitNullProperties?.Remove("parasail"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsParasail? _explicitNullValueParasail = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsParasail Parasail { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsParasail Parasail { get => _explicitNullValueParasail; set { _explicitNullValueParasail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("parasail"); else _explicitNullProperties?.Remove("parasail"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsParasail _explicitNullValueParasail = default!;
 #endif
         /// <summary>The paretoAlpha property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsParetoAlpha? ParetoAlpha { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsParetoAlpha? ParetoAlpha { get => _explicitNullValueParetoAlpha; set { _explicitNullValueParetoAlpha = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pareto-alpha"); else _explicitNullProperties?.Remove("pareto-alpha"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsParetoAlpha? _explicitNullValueParetoAlpha = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsParetoAlpha ParetoAlpha { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsParetoAlpha ParetoAlpha { get => _explicitNullValueParetoAlpha; set { _explicitNullValueParetoAlpha = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pareto-alpha"); else _explicitNullProperties?.Remove("pareto-alpha"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsParetoAlpha _explicitNullValueParetoAlpha = default!;
 #endif
         /// <summary>The particleAi property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsParticleAi? ParticleAi { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsParticleAi? ParticleAi { get => _explicitNullValueParticleAi; set { _explicitNullValueParticleAi = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("particle-ai"); else _explicitNullProperties?.Remove("particle-ai"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsParticleAi? _explicitNullValueParticleAi = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsParticleAi ParticleAi { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsParticleAi ParticleAi { get => _explicitNullValueParticleAi; set { _explicitNullValueParticleAi = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("particle-ai"); else _explicitNullProperties?.Remove("particle-ai"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsParticleAi _explicitNullValueParticleAi = default!;
 #endif
         /// <summary>The perceptron property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPerceptron? Perceptron { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPerceptron? Perceptron { get => _explicitNullValuePerceptron; set { _explicitNullValuePerceptron = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("perceptron"); else _explicitNullProperties?.Remove("perceptron"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPerceptron? _explicitNullValuePerceptron = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPerceptron Perceptron { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPerceptron Perceptron { get => _explicitNullValuePerceptron; set { _explicitNullValuePerceptron = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("perceptron"); else _explicitNullProperties?.Remove("perceptron"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPerceptron _explicitNullValuePerceptron = default!;
 #endif
         /// <summary>The perplexity property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPerplexity? Perplexity { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPerplexity? Perplexity { get => _explicitNullValuePerplexity; set { _explicitNullValuePerplexity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("perplexity"); else _explicitNullProperties?.Remove("perplexity"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPerplexity? _explicitNullValuePerplexity = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPerplexity Perplexity { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPerplexity Perplexity { get => _explicitNullValuePerplexity; set { _explicitNullValuePerplexity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("perplexity"); else _explicitNullProperties?.Remove("perplexity"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPerplexity _explicitNullValuePerplexity = default!;
 #endif
         /// <summary>The phala property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPhala? Phala { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPhala? Phala { get => _explicitNullValuePhala; set { _explicitNullValuePhala = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("phala"); else _explicitNullProperties?.Remove("phala"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPhala? _explicitNullValuePhala = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPhala Phala { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPhala Phala { get => _explicitNullValuePhala; set { _explicitNullValuePhala = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("phala"); else _explicitNullProperties?.Remove("phala"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPhala _explicitNullValuePhala = default!;
 #endif
         /// <summary>The poolside property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPoolside? Poolside { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPoolside? Poolside { get => _explicitNullValuePoolside; set { _explicitNullValuePoolside = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("poolside"); else _explicitNullProperties?.Remove("poolside"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPoolside? _explicitNullValuePoolside = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPoolside Poolside { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPoolside Poolside { get => _explicitNullValuePoolside; set { _explicitNullValuePoolside = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("poolside"); else _explicitNullProperties?.Remove("poolside"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPoolside _explicitNullValuePoolside = default!;
 #endif
         /// <summary>The primalabs property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPrimalabs? Primalabs { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPrimalabs? Primalabs { get => _explicitNullValuePrimalabs; set { _explicitNullValuePrimalabs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("primalabs"); else _explicitNullProperties?.Remove("primalabs"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPrimalabs? _explicitNullValuePrimalabs = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPrimalabs Primalabs { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPrimalabs Primalabs { get => _explicitNullValuePrimalabs; set { _explicitNullValuePrimalabs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("primalabs"); else _explicitNullProperties?.Remove("primalabs"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPrimalabs _explicitNullValuePrimalabs = default!;
 #endif
         /// <summary>The primeintellect property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPrimeintellect? Primeintellect { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPrimeintellect? Primeintellect { get => _explicitNullValuePrimeintellect; set { _explicitNullValuePrimeintellect = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("primeintellect"); else _explicitNullProperties?.Remove("primeintellect"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPrimeintellect? _explicitNullValuePrimeintellect = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPrimeintellect Primeintellect { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPrimeintellect Primeintellect { get => _explicitNullValuePrimeintellect; set { _explicitNullValuePrimeintellect = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("primeintellect"); else _explicitNullProperties?.Remove("primeintellect"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPrimeintellect _explicitNullValuePrimeintellect = default!;
 #endif
         /// <summary>The quiver property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsQuiver? Quiver { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsQuiver? Quiver { get => _explicitNullValueQuiver; set { _explicitNullValueQuiver = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quiver"); else _explicitNullProperties?.Remove("quiver"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsQuiver? _explicitNullValueQuiver = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsQuiver Quiver { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsQuiver Quiver { get => _explicitNullValueQuiver; set { _explicitNullValueQuiver = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quiver"); else _explicitNullProperties?.Remove("quiver"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsQuiver _explicitNullValueQuiver = default!;
 #endif
         /// <summary>The recraft property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsRecraft? Recraft { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsRecraft? Recraft { get => _explicitNullValueRecraft; set { _explicitNullValueRecraft = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recraft"); else _explicitNullProperties?.Remove("recraft"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsRecraft? _explicitNullValueRecraft = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsRecraft Recraft { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsRecraft Recraft { get => _explicitNullValueRecraft; set { _explicitNullValueRecraft = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recraft"); else _explicitNullProperties?.Remove("recraft"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsRecraft _explicitNullValueRecraft = default!;
 #endif
         /// <summary>The recursal property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsRecursal? Recursal { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsRecursal? Recursal { get => _explicitNullValueRecursal; set { _explicitNullValueRecursal = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recursal"); else _explicitNullProperties?.Remove("recursal"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsRecursal? _explicitNullValueRecursal = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsRecursal Recursal { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsRecursal Recursal { get => _explicitNullValueRecursal; set { _explicitNullValueRecursal = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recursal"); else _explicitNullProperties?.Remove("recursal"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsRecursal _explicitNullValueRecursal = default!;
 #endif
         /// <summary>The recursive property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsRecursive? Recursive { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsRecursive? Recursive { get => _explicitNullValueRecursive; set { _explicitNullValueRecursive = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recursive"); else _explicitNullProperties?.Remove("recursive"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsRecursive? _explicitNullValueRecursive = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsRecursive Recursive { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsRecursive Recursive { get => _explicitNullValueRecursive; set { _explicitNullValueRecursive = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recursive"); else _explicitNullProperties?.Remove("recursive"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsRecursive _explicitNullValueRecursive = default!;
 #endif
         /// <summary>The reflection property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsReflection? Reflection { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsReflection? Reflection { get => _explicitNullValueReflection; set { _explicitNullValueReflection = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reflection"); else _explicitNullProperties?.Remove("reflection"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsReflection? _explicitNullValueReflection = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsReflection Reflection { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsReflection Reflection { get => _explicitNullValueReflection; set { _explicitNullValueReflection = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reflection"); else _explicitNullProperties?.Remove("reflection"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsReflection _explicitNullValueReflection = default!;
 #endif
         /// <summary>The reka property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsReka? Reka { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsReka? Reka { get => _explicitNullValueReka; set { _explicitNullValueReka = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reka"); else _explicitNullProperties?.Remove("reka"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsReka? _explicitNullValueReka = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsReka Reka { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsReka Reka { get => _explicitNullValueReka; set { _explicitNullValueReka = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reka"); else _explicitNullProperties?.Remove("reka"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsReka _explicitNullValueReka = default!;
 #endif
         /// <summary>The relace property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsRelace? Relace { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsRelace? Relace { get => _explicitNullValueRelace; set { _explicitNullValueRelace = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("relace"); else _explicitNullProperties?.Remove("relace"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsRelace? _explicitNullValueRelace = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsRelace Relace { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsRelace Relace { get => _explicitNullValueRelace; set { _explicitNullValueRelace = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("relace"); else _explicitNullProperties?.Remove("relace"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsRelace _explicitNullValueRelace = default!;
 #endif
         /// <summary>The replicate property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsReplicate? Replicate { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsReplicate? Replicate { get => _explicitNullValueReplicate; set { _explicitNullValueReplicate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("replicate"); else _explicitNullProperties?.Remove("replicate"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsReplicate? _explicitNullValueReplicate = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsReplicate Replicate { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsReplicate Replicate { get => _explicitNullValueReplicate; set { _explicitNullValueReplicate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("replicate"); else _explicitNullProperties?.Remove("replicate"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsReplicate _explicitNullValueReplicate = default!;
 #endif
         /// <summary>The respan property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsRespan? Respan { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsRespan? Respan { get => _explicitNullValueRespan; set { _explicitNullValueRespan = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("respan"); else _explicitNullProperties?.Remove("respan"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsRespan? _explicitNullValueRespan = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsRespan Respan { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsRespan Respan { get => _explicitNullValueRespan; set { _explicitNullValueRespan = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("respan"); else _explicitNullProperties?.Remove("respan"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsRespan _explicitNullValueRespan = default!;
 #endif
         /// <summary>The runway property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsRunway? Runway { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsRunway? Runway { get => _explicitNullValueRunway; set { _explicitNullValueRunway = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("runway"); else _explicitNullProperties?.Remove("runway"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsRunway? _explicitNullValueRunway = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsRunway Runway { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsRunway Runway { get => _explicitNullValueRunway; set { _explicitNullValueRunway = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("runway"); else _explicitNullProperties?.Remove("runway"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsRunway _explicitNullValueRunway = default!;
 #endif
         /// <summary>The sailResearch property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsSailResearch? SailResearch { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsSailResearch? SailResearch { get => _explicitNullValueSailResearch; set { _explicitNullValueSailResearch = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sail-research"); else _explicitNullProperties?.Remove("sail-research"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsSailResearch? _explicitNullValueSailResearch = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsSailResearch SailResearch { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsSailResearch SailResearch { get => _explicitNullValueSailResearch; set { _explicitNullValueSailResearch = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sail-research"); else _explicitNullProperties?.Remove("sail-research"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsSailResearch _explicitNullValueSailResearch = default!;
 #endif
         /// <summary>The sakana property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsSakana? Sakana { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsSakana? Sakana { get => _explicitNullValueSakana; set { _explicitNullValueSakana = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sakana"); else _explicitNullProperties?.Remove("sakana"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsSakana? _explicitNullValueSakana = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsSakana Sakana { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsSakana Sakana { get => _explicitNullValueSakana; set { _explicitNullValueSakana = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sakana"); else _explicitNullProperties?.Remove("sakana"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsSakana _explicitNullValueSakana = default!;
 #endif
         /// <summary>The sakanaAi property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsSakanaAi? SakanaAi { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsSakanaAi? SakanaAi { get => _explicitNullValueSakanaAi; set { _explicitNullValueSakanaAi = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sakana-ai"); else _explicitNullProperties?.Remove("sakana-ai"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsSakanaAi? _explicitNullValueSakanaAi = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsSakanaAi SakanaAi { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsSakanaAi SakanaAi { get => _explicitNullValueSakanaAi; set { _explicitNullValueSakanaAi = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sakana-ai"); else _explicitNullProperties?.Remove("sakana-ai"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsSakanaAi _explicitNullValueSakanaAi = default!;
 #endif
         /// <summary>The sambanova property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsSambanova? Sambanova { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsSambanova? Sambanova { get => _explicitNullValueSambanova; set { _explicitNullValueSambanova = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sambanova"); else _explicitNullProperties?.Remove("sambanova"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsSambanova? _explicitNullValueSambanova = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsSambanova Sambanova { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsSambanova Sambanova { get => _explicitNullValueSambanova; set { _explicitNullValueSambanova = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sambanova"); else _explicitNullProperties?.Remove("sambanova"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsSambanova _explicitNullValueSambanova = default!;
 #endif
         /// <summary>The sambanovaCloaked property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsSambanovaCloaked? SambanovaCloaked { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsSambanovaCloaked? SambanovaCloaked { get => _explicitNullValueSambanovaCloaked; set { _explicitNullValueSambanovaCloaked = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sambanova-cloaked"); else _explicitNullProperties?.Remove("sambanova-cloaked"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsSambanovaCloaked? _explicitNullValueSambanovaCloaked = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsSambanovaCloaked SambanovaCloaked { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsSambanovaCloaked SambanovaCloaked { get => _explicitNullValueSambanovaCloaked; set { _explicitNullValueSambanovaCloaked = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sambanova-cloaked"); else _explicitNullProperties?.Remove("sambanova-cloaked"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsSambanovaCloaked _explicitNullValueSambanovaCloaked = default!;
 #endif
         /// <summary>The scaledown property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsScaledown? Scaledown { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsScaledown? Scaledown { get => _explicitNullValueScaledown; set { _explicitNullValueScaledown = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scaledown"); else _explicitNullProperties?.Remove("scaledown"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsScaledown? _explicitNullValueScaledown = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsScaledown Scaledown { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsScaledown Scaledown { get => _explicitNullValueScaledown; set { _explicitNullValueScaledown = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scaledown"); else _explicitNullProperties?.Remove("scaledown"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsScaledown _explicitNullValueScaledown = default!;
 #endif
         /// <summary>The seed property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsSeed? Seed { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsSeed? Seed { get => _explicitNullValueSeed; set { _explicitNullValueSeed = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("seed"); else _explicitNullProperties?.Remove("seed"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsSeed? _explicitNullValueSeed = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsSeed Seed { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsSeed Seed { get => _explicitNullValueSeed; set { _explicitNullValueSeed = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("seed"); else _explicitNullProperties?.Remove("seed"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsSeed _explicitNullValueSeed = default!;
 #endif
         /// <summary>The sfCompute property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsSfCompute? SfCompute { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsSfCompute? SfCompute { get => _explicitNullValueSfCompute; set { _explicitNullValueSfCompute = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sf-compute"); else _explicitNullProperties?.Remove("sf-compute"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsSfCompute? _explicitNullValueSfCompute = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsSfCompute SfCompute { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsSfCompute SfCompute { get => _explicitNullValueSfCompute; set { _explicitNullValueSfCompute = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sf-compute"); else _explicitNullProperties?.Remove("sf-compute"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsSfCompute _explicitNullValueSfCompute = default!;
 #endif
         /// <summary>The siliconflow property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsSiliconflow? Siliconflow { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsSiliconflow? Siliconflow { get => _explicitNullValueSiliconflow; set { _explicitNullValueSiliconflow = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("siliconflow"); else _explicitNullProperties?.Remove("siliconflow"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsSiliconflow? _explicitNullValueSiliconflow = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsSiliconflow Siliconflow { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsSiliconflow Siliconflow { get => _explicitNullValueSiliconflow; set { _explicitNullValueSiliconflow = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("siliconflow"); else _explicitNullProperties?.Remove("siliconflow"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsSiliconflow _explicitNullValueSiliconflow = default!;
 #endif
         /// <summary>The sourceful property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsSourceful? Sourceful { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsSourceful? Sourceful { get => _explicitNullValueSourceful; set { _explicitNullValueSourceful = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sourceful"); else _explicitNullProperties?.Remove("sourceful"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsSourceful? _explicitNullValueSourceful = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsSourceful Sourceful { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsSourceful Sourceful { get => _explicitNullValueSourceful; set { _explicitNullValueSourceful = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sourceful"); else _explicitNullProperties?.Remove("sourceful"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsSourceful _explicitNullValueSourceful = default!;
 #endif
         /// <summary>The stealth property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsStealth? Stealth { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsStealth? Stealth { get => _explicitNullValueStealth; set { _explicitNullValueStealth = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("stealth"); else _explicitNullProperties?.Remove("stealth"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsStealth? _explicitNullValueStealth = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsStealth Stealth { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsStealth Stealth { get => _explicitNullValueStealth; set { _explicitNullValueStealth = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("stealth"); else _explicitNullProperties?.Remove("stealth"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsStealth _explicitNullValueStealth = default!;
 #endif
         /// <summary>The stepfun property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsStepfun? Stepfun { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsStepfun? Stepfun { get => _explicitNullValueStepfun; set { _explicitNullValueStepfun = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("stepfun"); else _explicitNullProperties?.Remove("stepfun"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsStepfun? _explicitNullValueStepfun = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsStepfun Stepfun { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsStepfun Stepfun { get => _explicitNullValueStepfun; set { _explicitNullValueStepfun = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("stepfun"); else _explicitNullProperties?.Remove("stepfun"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsStepfun _explicitNullValueStepfun = default!;
 #endif
         /// <summary>The streamlake property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsStreamlake? Streamlake { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsStreamlake? Streamlake { get => _explicitNullValueStreamlake; set { _explicitNullValueStreamlake = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("streamlake"); else _explicitNullProperties?.Remove("streamlake"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsStreamlake? _explicitNullValueStreamlake = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsStreamlake Streamlake { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsStreamlake Streamlake { get => _explicitNullValueStreamlake; set { _explicitNullValueStreamlake = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("streamlake"); else _explicitNullProperties?.Remove("streamlake"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsStreamlake _explicitNullValueStreamlake = default!;
 #endif
         /// <summary>The switchpoint property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsSwitchpoint? Switchpoint { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsSwitchpoint? Switchpoint { get => _explicitNullValueSwitchpoint; set { _explicitNullValueSwitchpoint = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("switchpoint"); else _explicitNullProperties?.Remove("switchpoint"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsSwitchpoint? _explicitNullValueSwitchpoint = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsSwitchpoint Switchpoint { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsSwitchpoint Switchpoint { get => _explicitNullValueSwitchpoint; set { _explicitNullValueSwitchpoint = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("switchpoint"); else _explicitNullProperties?.Remove("switchpoint"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsSwitchpoint _explicitNullValueSwitchpoint = default!;
 #endif
         /// <summary>The targon property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsTargon? Targon { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsTargon? Targon { get => _explicitNullValueTargon; set { _explicitNullValueTargon = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("targon"); else _explicitNullProperties?.Remove("targon"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsTargon? _explicitNullValueTargon = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsTargon Targon { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsTargon Targon { get => _explicitNullValueTargon; set { _explicitNullValueTargon = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("targon"); else _explicitNullProperties?.Remove("targon"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsTargon _explicitNullValueTargon = default!;
 #endif
         /// <summary>The tencent property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsTencent? Tencent { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsTencent? Tencent { get => _explicitNullValueTencent; set { _explicitNullValueTencent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tencent"); else _explicitNullProperties?.Remove("tencent"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsTencent? _explicitNullValueTencent = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsTencent Tencent { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsTencent Tencent { get => _explicitNullValueTencent; set { _explicitNullValueTencent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tencent"); else _explicitNullProperties?.Remove("tencent"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsTencent _explicitNullValueTencent = default!;
 #endif
         /// <summary>The tenstorrent property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsTenstorrent? Tenstorrent { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsTenstorrent? Tenstorrent { get => _explicitNullValueTenstorrent; set { _explicitNullValueTenstorrent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tenstorrent"); else _explicitNullProperties?.Remove("tenstorrent"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsTenstorrent? _explicitNullValueTenstorrent = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsTenstorrent Tenstorrent { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsTenstorrent Tenstorrent { get => _explicitNullValueTenstorrent; set { _explicitNullValueTenstorrent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tenstorrent"); else _explicitNullProperties?.Remove("tenstorrent"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsTenstorrent _explicitNullValueTenstorrent = default!;
 #endif
         /// <summary>The thinkingmachines property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsThinkingmachines? Thinkingmachines { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsThinkingmachines? Thinkingmachines { get => _explicitNullValueThinkingmachines; set { _explicitNullValueThinkingmachines = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("thinkingmachines"); else _explicitNullProperties?.Remove("thinkingmachines"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsThinkingmachines? _explicitNullValueThinkingmachines = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsThinkingmachines Thinkingmachines { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsThinkingmachines Thinkingmachines { get => _explicitNullValueThinkingmachines; set { _explicitNullValueThinkingmachines = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("thinkingmachines"); else _explicitNullProperties?.Remove("thinkingmachines"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsThinkingmachines _explicitNullValueThinkingmachines = default!;
 #endif
         /// <summary>The together property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsTogether? Together { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsTogether? Together { get => _explicitNullValueTogether; set { _explicitNullValueTogether = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("together"); else _explicitNullProperties?.Remove("together"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsTogether? _explicitNullValueTogether = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsTogether Together { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsTogether Together { get => _explicitNullValueTogether; set { _explicitNullValueTogether = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("together"); else _explicitNullProperties?.Remove("together"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsTogether _explicitNullValueTogether = default!;
 #endif
         /// <summary>The togetherLite property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsTogetherLite? TogetherLite { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsTogetherLite? TogetherLite { get => _explicitNullValueTogetherLite; set { _explicitNullValueTogetherLite = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("together-lite"); else _explicitNullProperties?.Remove("together-lite"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsTogetherLite? _explicitNullValueTogetherLite = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsTogetherLite TogetherLite { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsTogetherLite TogetherLite { get => _explicitNullValueTogetherLite; set { _explicitNullValueTogetherLite = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("together-lite"); else _explicitNullProperties?.Remove("together-lite"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsTogetherLite _explicitNullValueTogetherLite = default!;
 #endif
         /// <summary>The typesafe property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsTypesafe? Typesafe { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsTypesafe? Typesafe { get => _explicitNullValueTypesafe; set { _explicitNullValueTypesafe = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("typesafe"); else _explicitNullProperties?.Remove("typesafe"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsTypesafe? _explicitNullValueTypesafe = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsTypesafe Typesafe { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsTypesafe Typesafe { get => _explicitNullValueTypesafe; set { _explicitNullValueTypesafe = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("typesafe"); else _explicitNullProperties?.Remove("typesafe"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsTypesafe _explicitNullValueTypesafe = default!;
 #endif
         /// <summary>The ubicloud property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsUbicloud? Ubicloud { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsUbicloud? Ubicloud { get => _explicitNullValueUbicloud; set { _explicitNullValueUbicloud = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ubicloud"); else _explicitNullProperties?.Remove("ubicloud"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsUbicloud? _explicitNullValueUbicloud = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsUbicloud Ubicloud { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsUbicloud Ubicloud { get => _explicitNullValueUbicloud; set { _explicitNullValueUbicloud = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ubicloud"); else _explicitNullProperties?.Remove("ubicloud"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsUbicloud _explicitNullValueUbicloud = default!;
 #endif
         /// <summary>The unbiased property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsUnbiased? Unbiased { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsUnbiased? Unbiased { get => _explicitNullValueUnbiased; set { _explicitNullValueUnbiased = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unbiased"); else _explicitNullProperties?.Remove("unbiased"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsUnbiased? _explicitNullValueUnbiased = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsUnbiased Unbiased { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsUnbiased Unbiased { get => _explicitNullValueUnbiased; set { _explicitNullValueUnbiased = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unbiased"); else _explicitNullProperties?.Remove("unbiased"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsUnbiased _explicitNullValueUnbiased = default!;
 #endif
         /// <summary>The upstage property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsUpstage? Upstage { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsUpstage? Upstage { get => _explicitNullValueUpstage; set { _explicitNullValueUpstage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("upstage"); else _explicitNullProperties?.Remove("upstage"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsUpstage? _explicitNullValueUpstage = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsUpstage Upstage { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsUpstage Upstage { get => _explicitNullValueUpstage; set { _explicitNullValueUpstage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("upstage"); else _explicitNullProperties?.Remove("upstage"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsUpstage _explicitNullValueUpstage = default!;
 #endif
         /// <summary>The venice property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsVenice? Venice { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsVenice? Venice { get => _explicitNullValueVenice; set { _explicitNullValueVenice = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("venice"); else _explicitNullProperties?.Remove("venice"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsVenice? _explicitNullValueVenice = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsVenice Venice { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsVenice Venice { get => _explicitNullValueVenice; set { _explicitNullValueVenice = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("venice"); else _explicitNullProperties?.Remove("venice"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsVenice _explicitNullValueVenice = default!;
 #endif
         /// <summary>The voyageai property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsVoyageai? Voyageai { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsVoyageai? Voyageai { get => _explicitNullValueVoyageai; set { _explicitNullValueVoyageai = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("voyageai"); else _explicitNullProperties?.Remove("voyageai"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsVoyageai? _explicitNullValueVoyageai = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsVoyageai Voyageai { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsVoyageai Voyageai { get => _explicitNullValueVoyageai; set { _explicitNullValueVoyageai = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("voyageai"); else _explicitNullProperties?.Remove("voyageai"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsVoyageai _explicitNullValueVoyageai = default!;
 #endif
         /// <summary>The wafer property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsWafer? Wafer { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsWafer? Wafer { get => _explicitNullValueWafer; set { _explicitNullValueWafer = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("wafer"); else _explicitNullProperties?.Remove("wafer"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsWafer? _explicitNullValueWafer = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsWafer Wafer { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsWafer Wafer { get => _explicitNullValueWafer; set { _explicitNullValueWafer = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("wafer"); else _explicitNullProperties?.Remove("wafer"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsWafer _explicitNullValueWafer = default!;
 #endif
         /// <summary>The wandb property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsWandb? Wandb { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsWandb? Wandb { get => _explicitNullValueWandb; set { _explicitNullValueWandb = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("wandb"); else _explicitNullProperties?.Remove("wandb"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsWandb? _explicitNullValueWandb = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsWandb Wandb { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsWandb Wandb { get => _explicitNullValueWandb; set { _explicitNullValueWandb = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("wandb"); else _explicitNullProperties?.Remove("wandb"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsWandb _explicitNullValueWandb = default!;
 #endif
         /// <summary>The wandbLegacy property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsWandbLegacy? WandbLegacy { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsWandbLegacy? WandbLegacy { get => _explicitNullValueWandbLegacy; set { _explicitNullValueWandbLegacy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("wandb-legacy"); else _explicitNullProperties?.Remove("wandb-legacy"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsWandbLegacy? _explicitNullValueWandbLegacy = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsWandbLegacy WandbLegacy { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsWandbLegacy WandbLegacy { get => _explicitNullValueWandbLegacy; set { _explicitNullValueWandbLegacy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("wandb-legacy"); else _explicitNullProperties?.Remove("wandb-legacy"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsWandbLegacy _explicitNullValueWandbLegacy = default!;
 #endif
         /// <summary>The xai property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsXai? Xai { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsXai? Xai { get => _explicitNullValueXai; set { _explicitNullValueXai = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("xai"); else _explicitNullProperties?.Remove("xai"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsXai? _explicitNullValueXai = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsXai Xai { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsXai Xai { get => _explicitNullValueXai; set { _explicitNullValueXai = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("xai"); else _explicitNullProperties?.Remove("xai"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsXai _explicitNullValueXai = default!;
 #endif
         /// <summary>The xiaomi property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsXiaomi? Xiaomi { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsXiaomi? Xiaomi { get => _explicitNullValueXiaomi; set { _explicitNullValueXiaomi = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("xiaomi"); else _explicitNullProperties?.Remove("xiaomi"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsXiaomi? _explicitNullValueXiaomi = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsXiaomi Xiaomi { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsXiaomi Xiaomi { get => _explicitNullValueXiaomi; set { _explicitNullValueXiaomi = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("xiaomi"); else _explicitNullProperties?.Remove("xiaomi"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsXiaomi _explicitNullValueXiaomi = default!;
 #endif
         /// <summary>The zAi property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsZAi? ZAi { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsZAi? ZAi { get => _explicitNullValueZAi; set { _explicitNullValueZAi = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("z-ai"); else _explicitNullProperties?.Remove("z-ai"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsZAi? _explicitNullValueZAi = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsZAi ZAi { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsZAi ZAi { get => _explicitNullValueZAi; set { _explicitNullValueZAi = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("z-ai"); else _explicitNullProperties?.Remove("z-ai"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsZAi _explicitNullValueZAi = default!;
 #endif
         /// <summary>The ZeroOneai property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptions01Ai? ZeroOneai { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptions01Ai? ZeroOneai { get => _explicitNullValueZeroOneai; set { _explicitNullValueZeroOneai = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("01ai"); else _explicitNullProperties?.Remove("01ai"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptions01Ai? _explicitNullValueZeroOneai = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptions01Ai ZeroOneai { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptions01Ai ZeroOneai { get => _explicitNullValueZeroOneai; set { _explicitNullValueZeroOneai = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("01ai"); else _explicitNullProperties?.Remove("01ai"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptions01Ai _explicitNullValueZeroOneai = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptions"/> and sets the default values.
@@ -1229,7 +1697,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public static global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptions CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptions();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptions(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -1308,6 +1776,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "ionstream", n => { Ionstream = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsIonstream>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsIonstream.CreateFromDiscriminatorValue); } },
                 { "klusterai", n => { Klusterai = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsKlusterai>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsKlusterai.CreateFromDiscriminatorValue); } },
                 { "krea", n => { Krea = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsKrea>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsKrea.CreateFromDiscriminatorValue); } },
+                { "kt", n => { Kt = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsKt>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsKt.CreateFromDiscriminatorValue); } },
                 { "lambda", n => { Lambda = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsLambda>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsLambda.CreateFromDiscriminatorValue); } },
                 { "lepton", n => { Lepton = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsLepton>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsLepton.CreateFromDiscriminatorValue); } },
                 { "liquid", n => { Liquid = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsLiquid>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsLiquid.CreateFromDiscriminatorValue); } },
@@ -1467,6 +1936,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsIonstream>("ionstream", Ionstream);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsKlusterai>("klusterai", Klusterai);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsKrea>("krea", Krea);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsKt>("kt", Kt);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsLambda>("lambda", Lambda);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsLepton>("lepton", Lepton);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsLiquid>("liquid", Liquid);
@@ -1548,6 +2018,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsXiaomi>("xiaomi", Xiaomi);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsZAi>("z-ai", ZAi);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptions01Ai>("01ai", ZeroOneai);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

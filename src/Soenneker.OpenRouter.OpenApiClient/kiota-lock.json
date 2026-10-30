@@ -1,8 +1,8 @@
 {
-  "descriptionHash": "AA2CEBB51FD8D345B557398F7E0D0865BC1717689FA0016928C4D07065121519F3B012B9BA791E3C0281542470695AB6EF8948A5536B0E53F07FB564E5F30F1B",
+  "descriptionHash": "409D2E572493F40D207DA74F7147799D792F4EB167289CB10D602C865A3C79BDF78A5FE195BCDA6DBC8929150F3B8F03C4D70D1D60674FF5A2A807F694A482F2",
   "descriptionLocation": "../../fixed.json",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "1.36.1",
+  "kiotaVersion": "1.37.0",
   "clientClassName": "OpenRouterOpenApiClient",
   "typeAccessModifier": "Public",
   "clientNamespaceName": "Soenneker.OpenRouter.OpenApiClient",

@@ -12,15 +12,28 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class AaBenchmarkEntry : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("agentic_index") is { } nullNodeAgenticIndex && nullNodeAgenticIndex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AgenticIndex = null;
+            if (parseNode.GetChildNode("coding_index") is { } nullNodeCodingIndex && nullNodeCodingIndex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CodingIndex = null;
+            if (parseNode.GetChildNode("intelligence_index") is { } nullNodeIntelligenceIndex && nullNodeIntelligenceIndex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IntelligenceIndex = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Artificial Analysis Agentic Index score</summary>
-        public double? AgenticIndex { get; set; }
+        public double? AgenticIndex { get => _explicitNullValueAgenticIndex; set { _explicitNullValueAgenticIndex = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agentic_index"); else _explicitNullProperties?.Remove("agentic_index"); } }
+        private double? _explicitNullValueAgenticIndex = default!;
         /// <summary>Artificial Analysis Coding Index score</summary>
-        public double? CodingIndex { get; set; }
+        public double? CodingIndex { get => _explicitNullValueCodingIndex; set { _explicitNullValueCodingIndex = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("coding_index"); else _explicitNullProperties?.Remove("coding_index"); } }
+        private double? _explicitNullValueCodingIndex = default!;
         /// <summary>Artificial Analysis Intelligence Index score</summary>
-        public double? IntelligenceIndex { get; set; }
+        public double? IntelligenceIndex { get => _explicitNullValueIntelligenceIndex; set { _explicitNullValueIntelligenceIndex = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("intelligence_index"); else _explicitNullProperties?.Remove("intelligence_index"); } }
+        private double? _explicitNullValueIntelligenceIndex = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AaBenchmarkEntry"/> and sets the default values.
         /// </summary>
@@ -36,7 +49,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public static global::Soenneker.OpenRouter.OpenApiClient.Models.AaBenchmarkEntry CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.OpenRouter.OpenApiClient.Models.AaBenchmarkEntry();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.AaBenchmarkEntry(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -61,6 +74,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteDoubleValue("agentic_index", AgenticIndex);
             writer.WriteDoubleValue("coding_index", CodingIndex);
             writer.WriteDoubleValue("intelligence_index", IntelligenceIndex);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

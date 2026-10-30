@@ -12,18 +12,30 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class QueryAnalyticsRequestClassifierFilters : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("classifier_id") is { } nullNodeClassifierId && nullNodeClassifierId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClassifierId = null;
+            if (parseNode.GetChildNode("filters") is { } nullNodeFilters && nullNodeFilters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Filters = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>UUID of the classifier whose tags to filter by. Must match classifier_dimensions.classifier_id when both are specified.</summary>
-        public Guid? ClassifierId { get; set; }
+        public Guid? ClassifierId { get => _explicitNullValueClassifierId; set { _explicitNullValueClassifierId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("classifier_id"); else _explicitNullProperties?.Remove("classifier_id"); } }
+        private Guid? _explicitNullValueClassifierId = default!;
         /// <summary>The filters property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestClassifierFiltersFiltersItem>? Filters { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ClassifierFiltersFilter>? Filters { get => _explicitNullValueFilters; set { _explicitNullValueFilters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filters"); else _explicitNullProperties?.Remove("filters"); } }
+        private List<global::Soenneker.OpenRouter.OpenApiClient.Models.ClassifierFiltersFilter>? _explicitNullValueFilters = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestClassifierFiltersFiltersItem> Filters { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ClassifierFiltersFilter> Filters { get => _explicitNullValueFilters; set { _explicitNullValueFilters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filters"); else _explicitNullProperties?.Remove("filters"); } }
+        private List<global::Soenneker.OpenRouter.OpenApiClient.Models.ClassifierFiltersFilter> _explicitNullValueFilters = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestClassifierFilters"/> and sets the default values.
@@ -40,7 +52,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public static global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestClassifierFilters CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestClassifierFilters();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestClassifierFilters(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -51,7 +63,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "classifier_id", n => { ClassifierId = n.GetGuidValue(); } },
-                { "filters", n => { Filters = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestClassifierFiltersFiltersItem>(global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestClassifierFiltersFiltersItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "filters", n => { Filters = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ClassifierFiltersFilter>(global::Soenneker.OpenRouter.OpenApiClient.Models.ClassifierFiltersFilter.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -62,7 +74,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteGuidValue("classifier_id", ClassifierId);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestClassifierFiltersFiltersItem>("filters", Filters);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ClassifierFiltersFilter>("filters", Filters);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

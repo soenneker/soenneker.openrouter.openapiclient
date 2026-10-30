@@ -12,74 +12,107 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class VaultRoutingTable : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("agent_id") is { } nullNodeAgentId && nullNodeAgentId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AgentId = null;
+            if (parseNode.GetChildNode("custom_origins") is { } nullNodeCustomOrigins && nullNodeCustomOrigins.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CustomOrigins = null;
+            if (parseNode.GetChildNode("github") is { } nullNodeGithub && nullNodeGithub.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Github = null;
+            if (parseNode.GetChildNode("google") is { } nullNodeGoogle && nullNodeGoogle.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Google = null;
+            if (parseNode.GetChildNode("host_rules") is { } nullNodeHostRules && nullNodeHostRules.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HostRules = null;
+            if (parseNode.GetChildNode("mcp_origins") is { } nullNodeMcpOrigins && nullNodeMcpOrigins.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) McpOrigins = null;
+            if (parseNode.GetChildNode("read_at") is { } nullNodeReadAt && nullNodeReadAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReadAt = null;
+            if (parseNode.GetChildNode("secrets") is { } nullNodeSecrets && nullNodeSecrets.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Secrets = null;
+            if (parseNode.GetChildNode("slack") is { } nullNodeSlack && nullNodeSlack.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Slack = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The agent_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AgentId { get; set; }
+        public string? AgentId { get => _explicitNullValueAgentId; set { _explicitNullValueAgentId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_id"); else _explicitNullProperties?.Remove("agent_id"); } }
+        private string? _explicitNullValueAgentId = default!;
 #nullable restore
 #else
-        public string AgentId { get; set; }
+        public string AgentId { get => _explicitNullValueAgentId; set { _explicitNullValueAgentId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_id"); else _explicitNullProperties?.Remove("agent_id"); } }
+        private string _explicitNullValueAgentId = default!;
 #endif
         /// <summary>The custom_origins property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableCustomOriginsItem>? CustomOrigins { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableCustomOriginsItem>? CustomOrigins { get => _explicitNullValueCustomOrigins; set { _explicitNullValueCustomOrigins = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_origins"); else _explicitNullProperties?.Remove("custom_origins"); } }
+        private List<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableCustomOriginsItem>? _explicitNullValueCustomOrigins = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableCustomOriginsItem> CustomOrigins { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableCustomOriginsItem> CustomOrigins { get => _explicitNullValueCustomOrigins; set { _explicitNullValueCustomOrigins = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_origins"); else _explicitNullProperties?.Remove("custom_origins"); } }
+        private List<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableCustomOriginsItem> _explicitNullValueCustomOrigins = default!;
 #endif
         /// <summary>The github property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGithub? Github { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGithub? Github { get => _explicitNullValueGithub; set { _explicitNullValueGithub = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("github"); else _explicitNullProperties?.Remove("github"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGithub? _explicitNullValueGithub = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGithub Github { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGithub Github { get => _explicitNullValueGithub; set { _explicitNullValueGithub = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("github"); else _explicitNullProperties?.Remove("github"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGithub _explicitNullValueGithub = default!;
 #endif
         /// <summary>The google property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGoogle? Google { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGoogle? Google { get => _explicitNullValueGoogle; set { _explicitNullValueGoogle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("google"); else _explicitNullProperties?.Remove("google"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGoogle? _explicitNullValueGoogle = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGoogle Google { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGoogle Google { get => _explicitNullValueGoogle; set { _explicitNullValueGoogle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("google"); else _explicitNullProperties?.Remove("google"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGoogle _explicitNullValueGoogle = default!;
 #endif
         /// <summary>Built-in hosts the vault injects a named secret for, and whether that secret is stored.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableHostRulesItem>? HostRules { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableHostRulesItem>? HostRules { get => _explicitNullValueHostRules; set { _explicitNullValueHostRules = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("host_rules"); else _explicitNullProperties?.Remove("host_rules"); } }
+        private List<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableHostRulesItem>? _explicitNullValueHostRules = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableHostRulesItem> HostRules { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableHostRulesItem> HostRules { get => _explicitNullValueHostRules; set { _explicitNullValueHostRules = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("host_rules"); else _explicitNullProperties?.Remove("host_rules"); } }
+        private List<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableHostRulesItem> _explicitNullValueHostRules = default!;
 #endif
         /// <summary>The mcp_origins property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableMcpOriginsItem>? McpOrigins { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableMcpOriginsItem>? McpOrigins { get => _explicitNullValueMcpOrigins; set { _explicitNullValueMcpOrigins = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mcp_origins"); else _explicitNullProperties?.Remove("mcp_origins"); } }
+        private List<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableMcpOriginsItem>? _explicitNullValueMcpOrigins = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableMcpOriginsItem> McpOrigins { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableMcpOriginsItem> McpOrigins { get => _explicitNullValueMcpOrigins; set { _explicitNullValueMcpOrigins = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mcp_origins"); else _explicitNullProperties?.Remove("mcp_origins"); } }
+        private List<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableMcpOriginsItem> _explicitNullValueMcpOrigins = default!;
 #endif
         /// <summary>The read_at property</summary>
-        public DateTimeOffset? ReadAt { get; set; }
+        public DateTimeOffset? ReadAt { get => _explicitNullValueReadAt; set { _explicitNullValueReadAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("read_at"); else _explicitNullProperties?.Remove("read_at"); } }
+        private DateTimeOffset? _explicitNullValueReadAt = default!;
         /// <summary>The secrets property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableSecretsItem>? Secrets { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableSecretsItem>? Secrets { get => _explicitNullValueSecrets; set { _explicitNullValueSecrets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("secrets"); else _explicitNullProperties?.Remove("secrets"); } }
+        private List<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableSecretsItem>? _explicitNullValueSecrets = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableSecretsItem> Secrets { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableSecretsItem> Secrets { get => _explicitNullValueSecrets; set { _explicitNullValueSecrets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("secrets"); else _explicitNullProperties?.Remove("secrets"); } }
+        private List<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableSecretsItem> _explicitNullValueSecrets = default!;
 #endif
         /// <summary>The slack property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableSlack? Slack { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableSlack? Slack { get => _explicitNullValueSlack; set { _explicitNullValueSlack = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slack"); else _explicitNullProperties?.Remove("slack"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableSlack? _explicitNullValueSlack = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableSlack Slack { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableSlack Slack { get => _explicitNullValueSlack; set { _explicitNullValueSlack = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slack"); else _explicitNullProperties?.Remove("slack"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableSlack _explicitNullValueSlack = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTable"/> and sets the default values.
@@ -96,7 +129,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public static global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTable CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTable();
+            // Preserve a nullable root response.
+            if (parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) return null!;
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTable(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -133,6 +168,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("read_at", ReadAt);
             writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableSecretsItem>("secrets", Secrets);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableSlack>("slack", Slack);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -12,7 +12,12 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class FileDeleteResponse : IComposedTypeWrapper, IParsable
-    {
+    , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
+        // Preserve ambiguous union payloads without inventing a discriminator.
+        /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
         /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicFileDeleted"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -45,21 +50,30 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public static global::Soenneker.OpenRouter.OpenApiClient.Models.FileDeleteResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            var mappingValue = parseNode.GetChildNode("_shape")?.GetStringValue();
+            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.OpenRouter.OpenApiClient.Models.FileDeleteResponse();
-            if("anthropic".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("AnthropicFileDeleted".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.AnthropicFileDeleted = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicFileDeleted();
+                
             }
-            else if("openai".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("OpenAiFileDeleted".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.OpenAiFileDeleted = new global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAiFileDeleted();
+                
             }
-            else if("openrouter".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("OpenRouterFileDeleted".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.OpenRouterFileDeleted = new global::Soenneker.OpenRouter.OpenApiClient.Models.OpenRouterFileDeleted();
+                
             }
-            return result;
+            
+            var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
+            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("_shape") != null && (parseNode.GetChildNode("_shape")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("openrouter".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("id") != null && parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag4 && ("file_deleted".Equals(tag4.GetValue(), global::System.StringComparison.Ordinal)))))();
+            bool matchesUnionBranch1 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("_shape") != null && (parseNode.GetChildNode("_shape")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("openai".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("id") != null && parseNode.GetChildNode("object") != null && (parseNode.GetChildNode("object")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag4 && ("file".Equals(tag4.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("deleted") != null))();
+            bool matchesUnionBranch2 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("_shape") != null && (parseNode.GetChildNode("_shape")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("anthropic".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("id") != null && parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag4 && ("file_deleted".Equals(tag4.GetValue(), global::System.StringComparison.Ordinal)))))();
+            if (result.AnthropicFileDeleted == null && result.OpenAiFileDeleted == null && result.OpenRouterFileDeleted == null && matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2) result.OpenRouterFileDeleted = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.OpenRouterFileDeleted(), parseNode);
+            if (result.AnthropicFileDeleted == null && result.OpenAiFileDeleted == null && result.OpenRouterFileDeleted == null && matchesUnionBranch1 && !matchesUnionBranch0 && !matchesUnionBranch2) result.OpenAiFileDeleted = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAiFileDeleted(), parseNode);
+            if (result.AnthropicFileDeleted == null && result.OpenAiFileDeleted == null && result.OpenRouterFileDeleted == null && matchesUnionBranch2 && !matchesUnionBranch0 && !matchesUnionBranch1) result.AnthropicFileDeleted = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicFileDeleted(), parseNode);
+            if (result.AnthropicFileDeleted == null && result.OpenAiFileDeleted == null && result.OpenRouterFileDeleted == null) result.UnrecognizedValue = unionPayload;
+return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -87,17 +101,26 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
+            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
+            if (AnthropicFileDeleted == null && OpenAiFileDeleted == null && OpenRouterFileDeleted == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            if (AnthropicFileDeleted != null && OpenAiFileDeleted == null && OpenRouterFileDeleted == null) { if (AnthropicFileDeleted is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, AnthropicFileDeleted); return; }
+            if (OpenAiFileDeleted != null && AnthropicFileDeleted == null && OpenRouterFileDeleted == null) { if (OpenAiFileDeleted is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, OpenAiFileDeleted); return; }
+            if (OpenRouterFileDeleted != null && AnthropicFileDeleted == null && OpenAiFileDeleted == null) { if (OpenRouterFileDeleted is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, OpenRouterFileDeleted); return; }
+
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             if(AnthropicFileDeleted != null)
             {
+                if (AnthropicFileDeleted is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicFileDeleted>(null, AnthropicFileDeleted);
             }
             else if(OpenAiFileDeleted != null)
             {
+                if (OpenAiFileDeleted is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAiFileDeleted>(null, OpenAiFileDeleted);
             }
             else if(OpenRouterFileDeleted != null)
             {
+                if (OpenRouterFileDeleted is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OpenRouterFileDeleted>(null, OpenRouterFileDeleted);
             }
         }

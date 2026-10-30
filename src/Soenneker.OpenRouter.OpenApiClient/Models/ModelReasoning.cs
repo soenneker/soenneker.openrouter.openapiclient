@@ -12,25 +12,43 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ModelReasoning : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("default_effort") is { } nullNodeDefaultEffort && nullNodeDefaultEffort.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefaultEffort = null;
+            if (parseNode.GetChildNode("default_enabled") is { } nullNodeDefaultEnabled && nullNodeDefaultEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefaultEnabled = null;
+            if (parseNode.GetChildNode("mandatory") is { } nullNodeMandatory && nullNodeMandatory.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Mandatory = null;
+            if (parseNode.GetChildNode("supported_efforts") is { } nullNodeSupportedEfforts && nullNodeSupportedEfforts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SupportedEfforts = null;
+            if (parseNode.GetChildNode("supports_max_tokens") is { } nullNodeSupportsMaxTokens && nullNodeSupportsMaxTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SupportsMaxTokens = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Default reasoning effort when the client enables reasoning without specifying effort. Maps to `reasoning.effort` in chat requests. When `&quot;none&quot;`, prefer omitting effort unless the user explicitly disables reasoning.</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ModelReasoningDefaultEffort? DefaultEffort { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ModelReasoningDefaultEffort? DefaultEffort { get => _explicitNullValueDefaultEffort; set { _explicitNullValueDefaultEffort = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_effort"); else _explicitNullProperties?.Remove("default_effort"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ModelReasoningDefaultEffort? _explicitNullValueDefaultEffort = default!;
         /// <summary>Default reasoning enabled state when the client does not set `reasoning.enabled`.</summary>
-        public bool? DefaultEnabled { get; set; }
+        public bool? DefaultEnabled { get => _explicitNullValueDefaultEnabled; set { _explicitNullValueDefaultEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_enabled"); else _explicitNullProperties?.Remove("default_enabled"); } }
+        private bool? _explicitNullValueDefaultEnabled = default!;
         /// <summary>When true, reasoning cannot be disabled and effort &quot;none&quot; is rejected.</summary>
-        public bool? Mandatory { get; set; }
+        public bool? Mandatory { get => _explicitNullValueMandatory; set { _explicitNullValueMandatory = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mandatory"); else _explicitNullProperties?.Remove("mandatory"); } }
+        private bool? _explicitNullValueMandatory = default!;
         /// <summary>Allowed reasoning effort values for this model, in descending effort order (highest first). Null means no allowlist — all gateway effort values are accepted.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningEffort?>? SupportedEfforts { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningEffort?>? SupportedEfforts { get => _explicitNullValueSupportedEfforts; set { _explicitNullValueSupportedEfforts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supported_efforts"); else _explicitNullProperties?.Remove("supported_efforts"); } }
+        private List<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningEffort?>? _explicitNullValueSupportedEfforts = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningEffort?> SupportedEfforts { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningEffort?> SupportedEfforts { get => _explicitNullValueSupportedEfforts; set { _explicitNullValueSupportedEfforts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supported_efforts"); else _explicitNullProperties?.Remove("supported_efforts"); } }
+        private List<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningEffort?> _explicitNullValueSupportedEfforts = default!;
 #endif
         /// <summary>Present and `true` when the model accepts `reasoning.max_tokens` in requests (Anthropic-style) instead of or in addition to `reasoning.effort`. Omitted otherwise.</summary>
-        public bool? SupportsMaxTokens { get; set; }
+        public bool? SupportsMaxTokens { get => _explicitNullValueSupportsMaxTokens; set { _explicitNullValueSupportsMaxTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supports_max_tokens"); else _explicitNullProperties?.Remove("supports_max_tokens"); } }
+        private bool? _explicitNullValueSupportsMaxTokens = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ModelReasoning"/> and sets the default values.
         /// </summary>
@@ -46,7 +64,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public static global::Soenneker.OpenRouter.OpenApiClient.Models.ModelReasoning CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.OpenRouter.OpenApiClient.Models.ModelReasoning();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.ModelReasoning(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -75,6 +93,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteBoolValue("mandatory", Mandatory);
             writer.WriteCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningEffort>("supported_efforts", SupportedEfforts);
             writer.WriteBoolValue("supports_max_tokens", SupportsMaxTokens);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

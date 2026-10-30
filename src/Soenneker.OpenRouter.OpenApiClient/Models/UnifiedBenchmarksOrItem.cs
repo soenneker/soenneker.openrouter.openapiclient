@@ -11,45 +11,73 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class UnifiedBenchmarksOrItem : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("accuracy") is { } nullNodeAccuracy && nullNodeAccuracy.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Accuracy = null;
+            if (parseNode.GetChildNode("accuracy_stddev") is { } nullNodeAccuracyStddev && nullNodeAccuracyStddev.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AccuracyStddev = null;
+            if (parseNode.GetChildNode("avg_cost_per_task") is { } nullNodeAvgCostPerTask && nullNodeAvgCostPerTask.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AvgCostPerTask = null;
+            if (parseNode.GetChildNode("benchmark_type") is { } nullNodeBenchmarkType && nullNodeBenchmarkType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BenchmarkType = null;
+            if (parseNode.GetChildNode("display_name") is { } nullNodeDisplayName && nullNodeDisplayName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DisplayName = null;
+            if (parseNode.GetChildNode("last_run_timestamp") is { } nullNodeLastRunTimestamp && nullNodeLastRunTimestamp.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LastRunTimestamp = null;
+            if (parseNode.GetChildNode("model_permaslug") is { } nullNodeModelPermaslug && nullNodeModelPermaslug.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ModelPermaslug = null;
+            if (parseNode.GetChildNode("source") is { } nullNodeSource && nullNodeSource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Source = null;
+            if (parseNode.GetChildNode("total_tasks") is { } nullNodeTotalTasks && nullNodeTotalTasks.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalTasks = null;
+        }
+
         /// <summary>Aggregate accuracy score from 0 to 1. Higher is better.</summary>
-        public double? Accuracy { get; set; }
+        public double? Accuracy { get => _explicitNullValueAccuracy; set { _explicitNullValueAccuracy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("accuracy"); else _explicitNullProperties?.Remove("accuracy"); } }
+        private double? _explicitNullValueAccuracy = default!;
         /// <summary>Standard deviation of run accuracy, or null for a single run.</summary>
-        public double? AccuracyStddev { get; set; }
+        public double? AccuracyStddev { get => _explicitNullValueAccuracyStddev; set { _explicitNullValueAccuracyStddev = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("accuracy_stddev"); else _explicitNullProperties?.Remove("accuracy_stddev"); } }
+        private double? _explicitNullValueAccuracyStddev = default!;
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Average cost per task in USD, or null if unavailable.</summary>
-        public double? AvgCostPerTask { get; set; }
+        public double? AvgCostPerTask { get => _explicitNullValueAvgCostPerTask; set { _explicitNullValueAvgCostPerTask = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("avg_cost_per_task"); else _explicitNullProperties?.Remove("avg_cost_per_task"); } }
+        private double? _explicitNullValueAvgCostPerTask = default!;
         /// <summary>OpenRouter benchmark evaluation type.</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.UnifiedBenchmarksOrItemBenchmarkType? BenchmarkType { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.UnifiedBenchmarksOrItemBenchmarkType? BenchmarkType { get => _explicitNullValueBenchmarkType; set { _explicitNullValueBenchmarkType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("benchmark_type"); else _explicitNullProperties?.Remove("benchmark_type"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.UnifiedBenchmarksOrItemBenchmarkType? _explicitNullValueBenchmarkType = default!;
         /// <summary>Human-readable model name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DisplayName { get; set; }
+        public string? DisplayName { get => _explicitNullValueDisplayName; set { _explicitNullValueDisplayName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("display_name"); else _explicitNullProperties?.Remove("display_name"); } }
+        private string? _explicitNullValueDisplayName = default!;
 #nullable restore
 #else
-        public string DisplayName { get; set; }
+        public string DisplayName { get => _explicitNullValueDisplayName; set { _explicitNullValueDisplayName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("display_name"); else _explicitNullProperties?.Remove("display_name"); } }
+        private string _explicitNullValueDisplayName = default!;
 #endif
         /// <summary>Timestamp of the most recent public benchmark run.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? LastRunTimestamp { get; set; }
+        public string? LastRunTimestamp { get => _explicitNullValueLastRunTimestamp; set { _explicitNullValueLastRunTimestamp = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_run_timestamp"); else _explicitNullProperties?.Remove("last_run_timestamp"); } }
+        private string? _explicitNullValueLastRunTimestamp = default!;
 #nullable restore
 #else
-        public string LastRunTimestamp { get; set; }
+        public string LastRunTimestamp { get => _explicitNullValueLastRunTimestamp; set { _explicitNullValueLastRunTimestamp = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_run_timestamp"); else _explicitNullProperties?.Remove("last_run_timestamp"); } }
+        private string _explicitNullValueLastRunTimestamp = default!;
 #endif
         /// <summary>Stable OpenRouter model identifier.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ModelPermaslug { get; set; }
+        public string? ModelPermaslug { get => _explicitNullValueModelPermaslug; set { _explicitNullValueModelPermaslug = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_permaslug"); else _explicitNullProperties?.Remove("model_permaslug"); } }
+        private string? _explicitNullValueModelPermaslug = default!;
 #nullable restore
 #else
-        public string ModelPermaslug { get; set; }
+        public string ModelPermaslug { get => _explicitNullValueModelPermaslug; set { _explicitNullValueModelPermaslug = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_permaslug"); else _explicitNullProperties?.Remove("model_permaslug"); } }
+        private string _explicitNullValueModelPermaslug = default!;
 #endif
         /// <summary>Benchmark source discriminator.</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.OpenrouterSource? Source { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.OpenrouterSource? Source { get => _explicitNullValueSource; set { _explicitNullValueSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source"); else _explicitNullProperties?.Remove("source"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.OpenrouterSource? _explicitNullValueSource = default!;
         /// <summary>Total benchmark tasks across runs.</summary>
-        public int? TotalTasks { get; set; }
+        public int? TotalTasks { get => _explicitNullValueTotalTasks; set { _explicitNullValueTotalTasks = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_tasks"); else _explicitNullProperties?.Remove("total_tasks"); } }
+        private int? _explicitNullValueTotalTasks = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.UnifiedBenchmarksOrItem"/> and sets the default values.
         /// </summary>
@@ -65,7 +93,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public static global::Soenneker.OpenRouter.OpenApiClient.Models.UnifiedBenchmarksOrItem CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.OpenRouter.OpenApiClient.Models.UnifiedBenchmarksOrItem();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.UnifiedBenchmarksOrItem(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -102,6 +130,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteStringValue("model_permaslug", ModelPermaslug);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OpenrouterSource>("source", Source);
             writer.WriteIntValue("total_tasks", TotalTasks);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

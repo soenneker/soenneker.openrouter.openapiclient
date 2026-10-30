@@ -12,19 +12,36 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class BatchObjectResultsItemResponseBodyAnyOf4UsagePromptTokensDetails : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("audio_tokens") is { } nullNodeAudioTokens && nullNodeAudioTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AudioTokens = null;
+            if (parseNode.GetChildNode("file_tokens") is { } nullNodeFileTokens && nullNodeFileTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FileTokens = null;
+            if (parseNode.GetChildNode("image_tokens") is { } nullNodeImageTokens && nullNodeImageTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ImageTokens = null;
+            if (parseNode.GetChildNode("text_tokens") is { } nullNodeTextTokens && nullNodeTextTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TextTokens = null;
+            if (parseNode.GetChildNode("video_tokens") is { } nullNodeVideoTokens && nullNodeVideoTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) VideoTokens = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Number of audio tokens in the input</summary>
-        public int? AudioTokens { get; set; }
+        public int? AudioTokens { get => _explicitNullValueAudioTokens; set { _explicitNullValueAudioTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("audio_tokens"); else _explicitNullProperties?.Remove("audio_tokens"); } }
+        private int? _explicitNullValueAudioTokens = default!;
         /// <summary>Number of file/document tokens in the input</summary>
-        public int? FileTokens { get; set; }
+        public int? FileTokens { get => _explicitNullValueFileTokens; set { _explicitNullValueFileTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("file_tokens"); else _explicitNullProperties?.Remove("file_tokens"); } }
+        private int? _explicitNullValueFileTokens = default!;
         /// <summary>Number of image tokens in the input</summary>
-        public int? ImageTokens { get; set; }
+        public int? ImageTokens { get => _explicitNullValueImageTokens; set { _explicitNullValueImageTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("image_tokens"); else _explicitNullProperties?.Remove("image_tokens"); } }
+        private int? _explicitNullValueImageTokens = default!;
         /// <summary>Number of text tokens in the input</summary>
-        public int? TextTokens { get; set; }
+        public int? TextTokens { get => _explicitNullValueTextTokens; set { _explicitNullValueTextTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("text_tokens"); else _explicitNullProperties?.Remove("text_tokens"); } }
+        private int? _explicitNullValueTextTokens = default!;
         /// <summary>Number of video tokens in the input</summary>
-        public int? VideoTokens { get; set; }
+        public int? VideoTokens { get => _explicitNullValueVideoTokens; set { _explicitNullValueVideoTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("video_tokens"); else _explicitNullProperties?.Remove("video_tokens"); } }
+        private int? _explicitNullValueVideoTokens = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BatchObjectResultsItemResponseBodyAnyOf4UsagePromptTokensDetails"/> and sets the default values.
         /// </summary>
@@ -40,7 +57,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public static global::Soenneker.OpenRouter.OpenApiClient.Models.BatchObjectResultsItemResponseBodyAnyOf4UsagePromptTokensDetails CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.OpenRouter.OpenApiClient.Models.BatchObjectResultsItemResponseBodyAnyOf4UsagePromptTokensDetails();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.BatchObjectResultsItemResponseBodyAnyOf4UsagePromptTokensDetails(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -69,6 +86,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteIntValue("image_tokens", ImageTokens);
             writer.WriteIntValue("text_tokens", TextTokens);
             writer.WriteIntValue("video_tokens", VideoTokens);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

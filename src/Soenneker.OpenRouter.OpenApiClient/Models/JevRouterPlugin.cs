@@ -11,40 +11,61 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class JevRouterPlugin : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("allowed_models") is { } nullNodeAllowedModels && nullNodeAllowedModels.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AllowedModels = null;
+            if (parseNode.GetChildNode("cost_tier") is { } nullNodeCostTier && nullNodeCostTier.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CostTier = null;
+            if (parseNode.GetChildNode("excluded_models") is { } nullNodeExcludedModels && nullNodeExcludedModels.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExcludedModels = null;
+            if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("models") is { } nullNodeModels && nullNodeModels.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Models = null;
+        }
+
         /// <summary>Alias of `models`, matching the auto-router field name. Entries from both fields are combined.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? AllowedModels { get; set; }
+        public List<string>? AllowedModels { get => _explicitNullValueAllowedModels; set { _explicitNullValueAllowedModels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allowed_models"); else _explicitNullProperties?.Remove("allowed_models"); } }
+        private List<string>? _explicitNullValueAllowedModels = default!;
 #nullable restore
 #else
-        public List<string> AllowedModels { get; set; }
+        public List<string> AllowedModels { get => _explicitNullValueAllowedModels; set { _explicitNullValueAllowedModels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allowed_models"); else _explicitNullProperties?.Remove("allowed_models"); } }
+        private List<string> _explicitNullValueAllowedModels = default!;
 #endif
         /// <summary>Select low, medium, high, or a cost tier configured by the operator. Overrides the live-config tier and replaces the shared routing policy with that tier. Omit to use the live configuration. Model exclusions and the router kill switch still apply.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CostTier { get; set; }
+        public string? CostTier { get => _explicitNullValueCostTier; set { _explicitNullValueCostTier = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cost_tier"); else _explicitNullProperties?.Remove("cost_tier"); } }
+        private string? _explicitNullValueCostTier = default!;
 #nullable restore
 #else
-        public string CostTier { get; set; }
+        public string CostTier { get => _explicitNullValueCostTier; set { _explicitNullValueCostTier = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cost_tier"); else _explicitNullProperties?.Remove("cost_tier"); } }
+        private string _explicitNullValueCostTier = default!;
 #endif
         /// <summary>Remove these models from the router. Each entry is a model slug or a wildcard pattern (e.g. &quot;xiaomi/*&quot;). A `~author/family-latest` alias matches every revision of that family. Up to 1024 patterns, each at most 1024 characters, with 65536 total characters across all patterns. Applied after `models`, so an excluded pattern always wins over an included one; when the lists leave no model the request can use, it fails with 404 rather than routing outside them.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? ExcludedModels { get; set; }
+        public List<string>? ExcludedModels { get => _explicitNullValueExcludedModels; set { _explicitNullValueExcludedModels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("excluded_models"); else _explicitNullProperties?.Remove("excluded_models"); } }
+        private List<string>? _explicitNullValueExcludedModels = default!;
 #nullable restore
 #else
-        public List<string> ExcludedModels { get; set; }
+        public List<string> ExcludedModels { get => _explicitNullValueExcludedModels; set { _explicitNullValueExcludedModels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("excluded_models"); else _explicitNullProperties?.Remove("excluded_models"); } }
+        private List<string> _explicitNullValueExcludedModels = default!;
 #endif
         /// <summary>The id property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.JevRouterId? Id { get; set; }
-        /// <summary>Restrict the router to these models. Each entry is a model slug or a wildcard pattern (e.g. &quot;anthropic/*&quot;), matched against the current pool; models outside the pool are ignored. A `~author/family-latest` alias matches every revision of that family. Up to 1024 patterns, each at most 1024 characters, with 65536 total characters across all patterns. When omitted or empty, every model in the pool is a candidate; when no pool model matches, the list is ignored and the whole pool is used (`excluded_models` still apply). `allowed_models` is an alias; entries from both fields are combined.</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.JevRouterId? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.JevRouterId? _explicitNullValueId = default!;
+        /// <summary>Restrict the router to these models. Each entry is a model slug or a wildcard pattern (e.g. &quot;anthropic/*&quot;), matched against the current pool; models outside the pool are ignored. A `~author/family-latest` alias matches every revision of that family. Up to 1024 patterns, each at most 1024 characters, with 65536 total characters across all patterns. When omitted or empty, every model in the pool is a candidate; when no pool model matches, the list is ignored and the whole pool is used (`excluded_models` still apply). When no entry matches any catalog model, for example a misspelled slug, the request fails with 404 instead. `allowed_models` is an alias; entries from both fields are combined.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Models { get; set; }
+        public List<string>? Models { get => _explicitNullValueModels; set { _explicitNullValueModels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("models"); else _explicitNullProperties?.Remove("models"); } }
+        private List<string>? _explicitNullValueModels = default!;
 #nullable restore
 #else
-        public List<string> Models { get; set; }
+        public List<string> Models { get => _explicitNullValueModels; set { _explicitNullValueModels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("models"); else _explicitNullProperties?.Remove("models"); } }
+        private List<string> _explicitNullValueModels = default!;
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -54,7 +75,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public static global::Soenneker.OpenRouter.OpenApiClient.Models.JevRouterPlugin CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.OpenRouter.OpenApiClient.Models.JevRouterPlugin();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.JevRouterPlugin(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -82,7 +103,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteStringValue("cost_tier", CostTier);
             writer.WriteCollectionOfPrimitiveValues<string>("excluded_models", ExcludedModels);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.JevRouterId>("id", Id);
-            writer.WriteCollectionOfPrimitiveValues<string>("models", Models);
+            writer.WriteCollectionOfPrimitiveValues<string>("models", Models);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

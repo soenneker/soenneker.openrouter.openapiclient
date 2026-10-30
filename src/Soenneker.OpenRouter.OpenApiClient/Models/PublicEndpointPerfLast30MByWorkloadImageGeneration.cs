@@ -11,26 +11,41 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class PublicEndpointPerfLast30MByWorkloadImageGeneration : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("latency") is { } nullNodeLatency && nullNodeLatency.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Latency = null;
+            if (parseNode.GetChildNode("request_count") is { } nullNodeRequestCount && nullNodeRequestCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RequestCount = null;
+            if (parseNode.GetChildNode("throughput") is { } nullNodeThroughput && nullNodeThroughput.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Throughput = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Latency percentiles in milliseconds for this workload. Image and video generation report full end-to-end generation time, because their raw latency only measures request acknowledgement; every other workload reports time to first token or result.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadImageGenerationLatency? Latency { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadImageGenerationLatency? Latency { get => _explicitNullValueLatency; set { _explicitNullValueLatency = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latency"); else _explicitNullProperties?.Remove("latency"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadImageGenerationLatency? _explicitNullValueLatency = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadImageGenerationLatency Latency { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadImageGenerationLatency Latency { get => _explicitNullValueLatency; set { _explicitNullValueLatency = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latency"); else _explicitNullProperties?.Remove("latency"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadImageGenerationLatency _explicitNullValueLatency = default!;
 #endif
         /// <summary>Total requests admitted for this workload in the window.</summary>
-        public int? RequestCount { get; set; }
+        public int? RequestCount { get => _explicitNullValueRequestCount; set { _explicitNullValueRequestCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("request_count"); else _explicitNullProperties?.Remove("request_count"); } }
+        private int? _explicitNullValueRequestCount = default!;
         /// <summary>Throughput percentiles in tokens per second; pN is the speed that N% of requests reached or exceeded, so p90 is lower than p50. Only meaningful for text generation; null for workloads without token throughput.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadImageGenerationThroughput? Throughput { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadImageGenerationThroughput? Throughput { get => _explicitNullValueThroughput; set { _explicitNullValueThroughput = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("throughput"); else _explicitNullProperties?.Remove("throughput"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadImageGenerationThroughput? _explicitNullValueThroughput = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadImageGenerationThroughput Throughput { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadImageGenerationThroughput Throughput { get => _explicitNullValueThroughput; set { _explicitNullValueThroughput = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("throughput"); else _explicitNullProperties?.Remove("throughput"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadImageGenerationThroughput _explicitNullValueThroughput = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadImageGeneration"/> and sets the default values.
@@ -47,7 +62,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public static global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadImageGeneration CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadImageGeneration();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadImageGeneration(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -72,6 +87,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadImageGenerationLatency>("latency", Latency);
             writer.WriteIntValue("request_count", RequestCount);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadImageGenerationThroughput>("throughput", Throughput);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

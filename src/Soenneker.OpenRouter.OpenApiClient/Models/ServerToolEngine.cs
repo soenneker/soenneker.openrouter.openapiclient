@@ -11,63 +11,94 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ServerToolEngine : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("byok") is { } nullNodeByok && nullNodeByok.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Byok = null;
+            if (parseNode.GetChildNode("data_regions") is { } nullNodeDataRegions && nullNodeDataRegions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DataRegions = null;
+            if (parseNode.GetChildNode("default_mode") is { } nullNodeDefaultMode && nullNodeDefaultMode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefaultMode = null;
+            if (parseNode.GetChildNode("executed_by") is { } nullNodeExecutedBy && nullNodeExecutedBy.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExecutedBy = null;
+            if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("pricing") is { } nullNodePricing && nullNodePricing.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Pricing = null;
+            if (parseNode.GetChildNode("pricing_doc_url") is { } nullNodePricingDocUrl && nullNodePricingDocUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PricingDocUrl = null;
+            if (parseNode.GetChildNode("pricing_source") is { } nullNodePricingSource && nullNodePricingSource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PricingSource = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether the engine needs the caller&apos;s own key, saved in plugin settings: `required` (OpenRouter holds none), `optional` (OpenRouter&apos;s key is used unless the caller saved one), or `none`</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ServerToolEngineByok? Byok { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ServerToolEngineByok? Byok { get => _explicitNullValueByok; set { _explicitNullValueByok = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("byok"); else _explicitNullProperties?.Remove("byok"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ServerToolEngineByok? _explicitNullValueByok = default!;
         /// <summary>The data regions whose requests this engine serves without leaving the region. A request pinned to a region can only use engines that list it; `global` is always listed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ServerToolEngineDataRegionsItem?>? DataRegions { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ServerToolEngineDataRegionsItem?>? DataRegions { get => _explicitNullValueDataRegions; set { _explicitNullValueDataRegions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data_regions"); else _explicitNullProperties?.Remove("data_regions"); } }
+        private List<global::Soenneker.OpenRouter.OpenApiClient.Models.ServerToolEngineDataRegionsItem?>? _explicitNullValueDataRegions = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ServerToolEngineDataRegionsItem?> DataRegions { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ServerToolEngineDataRegionsItem?> DataRegions { get => _explicitNullValueDataRegions; set { _explicitNullValueDataRegions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data_regions"); else _explicitNullProperties?.Remove("data_regions"); } }
+        private List<global::Soenneker.OpenRouter.OpenApiClient.Models.ServerToolEngineDataRegionsItem?> _explicitNullValueDataRegions = default!;
 #endif
         /// <summary>The `parameters.mode` a request without one runs and bills as; null for engines without modes. The `pricing[]` row with this `mode` is what an unmoded request bills</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DefaultMode { get; set; }
+        public string? DefaultMode { get => _explicitNullValueDefaultMode; set { _explicitNullValueDefaultMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_mode"); else _explicitNullProperties?.Remove("default_mode"); } }
+        private string? _explicitNullValueDefaultMode = default!;
 #nullable restore
 #else
-        public string DefaultMode { get; set; }
+        public string DefaultMode { get => _explicitNullValueDefaultMode; set { _explicitNullValueDefaultMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_mode"); else _explicitNullProperties?.Remove("default_mode"); } }
+        private string _explicitNullValueDefaultMode = default!;
 #endif
         /// <summary>Who runs the tool call: the model provider during inference (`provider`), OpenRouter (`openrouter`), or the caller&apos;s application after the call is returned (`client`).</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ServerToolExecutedBy? ExecutedBy { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ServerToolExecutedBy? ExecutedBy { get => _explicitNullValueExecutedBy; set { _explicitNullValueExecutedBy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("executed_by"); else _explicitNullProperties?.Remove("executed_by"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ServerToolExecutedBy? _explicitNullValueExecutedBy = default!;
         /// <summary>The `parameters.engine` value that selects this engine; null for the single engine of a tool without an engine parameter</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Id { get; set; }
+        public string? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private string? _explicitNullValueId = default!;
 #nullable restore
 #else
-        public string Id { get; set; }
+        public string Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private string _explicitNullValueId = default!;
 #endif
         /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; set; }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get; set; }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string _explicitNullValueName = default!;
 #endif
         /// <summary>The rows OpenRouter bills; non-empty exactly when `pricing_source` is `openrouter`</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ServerToolPrice>? Pricing { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ServerToolPrice>? Pricing { get => _explicitNullValuePricing; set { _explicitNullValuePricing = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pricing"); else _explicitNullProperties?.Remove("pricing"); } }
+        private List<global::Soenneker.OpenRouter.OpenApiClient.Models.ServerToolPrice>? _explicitNullValuePricing = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ServerToolPrice> Pricing { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ServerToolPrice> Pricing { get => _explicitNullValuePricing; set { _explicitNullValuePricing = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pricing"); else _explicitNullProperties?.Remove("pricing"); } }
+        private List<global::Soenneker.OpenRouter.OpenApiClient.Models.ServerToolPrice> _explicitNullValuePricing = default!;
 #endif
         /// <summary>Where the rates are documented when `pricing_source` is `provider` or `byok`; null otherwise</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? PricingDocUrl { get; set; }
+        public string? PricingDocUrl { get => _explicitNullValuePricingDocUrl; set { _explicitNullValuePricingDocUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pricing_doc_url"); else _explicitNullProperties?.Remove("pricing_doc_url"); } }
+        private string? _explicitNullValuePricingDocUrl = default!;
 #nullable restore
 #else
-        public string PricingDocUrl { get; set; }
+        public string PricingDocUrl { get => _explicitNullValuePricingDocUrl; set { _explicitNullValuePricingDocUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pricing_doc_url"); else _explicitNullProperties?.Remove("pricing_doc_url"); } }
+        private string _explicitNullValuePricingDocUrl = default!;
 #endif
         /// <summary>Who bills the engine&apos;s calls beyond the model&apos;s tokens: `openrouter` (the `pricing` rows, from the caller&apos;s credits), `provider` (a per-call tool fee from the model&apos;s provider on the inference call, at its own rates), `byok` (the engine&apos;s vendor, against the caller&apos;s own key), or `none` (no charge)</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ServerToolEnginePricingSource? PricingSource { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ServerToolEnginePricingSource? PricingSource { get => _explicitNullValuePricingSource; set { _explicitNullValuePricingSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pricing_source"); else _explicitNullProperties?.Remove("pricing_source"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ServerToolEnginePricingSource? _explicitNullValuePricingSource = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ServerToolEngine"/> and sets the default values.
         /// </summary>
@@ -83,7 +114,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public static global::Soenneker.OpenRouter.OpenApiClient.Models.ServerToolEngine CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.OpenRouter.OpenApiClient.Models.ServerToolEngine();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.ServerToolEngine(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -120,6 +151,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ServerToolPrice>("pricing", Pricing);
             writer.WriteStringValue("pricing_doc_url", PricingDocUrl);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ServerToolEnginePricingSource>("pricing_source", PricingSource);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

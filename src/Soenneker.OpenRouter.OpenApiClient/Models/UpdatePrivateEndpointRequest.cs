@@ -12,52 +12,78 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class UpdatePrivateEndpointRequest : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("base_url") is { } nullNodeBaseUrl && nullNodeBaseUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BaseUrl = null;
+            if (parseNode.GetChildNode("declared_parameters") is { } nullNodeDeclaredParameters && nullNodeDeclaredParameters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeclaredParameters = null;
+            if (parseNode.GetChildNode("declared_region") is { } nullNodeDeclaredRegion && nullNodeDeclaredRegion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeclaredRegion = null;
+            if (parseNode.GetChildNode("declared_zdr") is { } nullNodeDeclaredZdr && nullNodeDeclaredZdr.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeclaredZdr = null;
+            if (parseNode.GetChildNode("pricing") is { } nullNodePricing && nullNodePricing.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Pricing = null;
+            if (parseNode.GetChildNode("settings") is { } nullNodeSettings && nullNodeSettings.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Settings = null;
+            if (parseNode.GetChildNode("upstream_model_id") is { } nullNodeUpstreamModelId && nullNodeUpstreamModelId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UpstreamModelId = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>HTTPS base URL of your deployment. Required unless the provider derives its URL from the BYOK credential (Azure, Amazon Bedrock, Google Vertex).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? BaseUrl { get; set; }
+        public string? BaseUrl { get => _explicitNullValueBaseUrl; set { _explicitNullValueBaseUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("base_url"); else _explicitNullProperties?.Remove("base_url"); } }
+        private string? _explicitNullValueBaseUrl = default!;
 #nullable restore
 #else
-        public string BaseUrl { get; set; }
+        public string BaseUrl { get => _explicitNullValueBaseUrl; set { _explicitNullValueBaseUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("base_url"); else _explicitNullProperties?.Remove("base_url"); } }
+        private string _explicitNullValueBaseUrl = default!;
 #endif
         /// <summary>Parameters the upstream supports beyond the tested ones. Replaces the earlier declaration; tested parameters stay. Order and repeated names are ignored, but the list holds at most as many entries as there are declarable parameters, repeats included. `tool_choice` requires `tools` to be tested or declared.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointDeclaredParameter?>? DeclaredParameters { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointDeclaredParameter?>? DeclaredParameters { get => _explicitNullValueDeclaredParameters; set { _explicitNullValueDeclaredParameters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("declared_parameters"); else _explicitNullProperties?.Remove("declared_parameters"); } }
+        private List<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointDeclaredParameter?>? _explicitNullValueDeclaredParameters = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointDeclaredParameter?> DeclaredParameters { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointDeclaredParameter?> DeclaredParameters { get => _explicitNullValueDeclaredParameters; set { _explicitNullValueDeclaredParameters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("declared_parameters"); else _explicitNullProperties?.Remove("declared_parameters"); } }
+        private List<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointDeclaredParameter?> _explicitNullValueDeclaredParameters = default!;
 #endif
         /// <summary>Attest where this deployment processes data.</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointRequestDeclaredRegion? DeclaredRegion { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointRequestDeclaredRegion? DeclaredRegion { get => _explicitNullValueDeclaredRegion; set { _explicitNullValueDeclaredRegion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("declared_region"); else _explicitNullProperties?.Remove("declared_region"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointRequestDeclaredRegion? _explicitNullValueDeclaredRegion = default!;
         /// <summary>Attest that this deployment retains no prompt or completion data.</summary>
-        public bool? DeclaredZdr { get; set; }
+        public bool? DeclaredZdr { get => _explicitNullValueDeclaredZdr; set { _explicitNullValueDeclaredZdr = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("declared_zdr"); else _explicitNullProperties?.Remove("declared_zdr"); } }
+        private bool? _explicitNullValueDeclaredZdr = default!;
         /// <summary>Replaces the whole pricing object: omitting `cache_read` or `cache_write` reverts that rate to the pricing strategy default.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointRequestPricing? Pricing { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointRequestPricing? Pricing { get => _explicitNullValuePricing; set { _explicitNullValuePricing = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pricing"); else _explicitNullProperties?.Remove("pricing"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointRequestPricing? _explicitNullValuePricing = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointRequestPricing Pricing { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointRequestPricing Pricing { get => _explicitNullValuePricing; set { _explicitNullValuePricing = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pricing"); else _explicitNullProperties?.Remove("pricing"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointRequestPricing _explicitNullValuePricing = default!;
 #endif
         /// <summary>Only the fields present change; an omitted field keeps its stored value and `null` clears a limit or reverts a flag to the provider default.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointRequestSettings? Settings { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointRequestSettings? Settings { get => _explicitNullValueSettings; set { _explicitNullValueSettings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("settings"); else _explicitNullProperties?.Remove("settings"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointRequestSettings? _explicitNullValueSettings = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointRequestSettings Settings { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointRequestSettings Settings { get => _explicitNullValueSettings; set { _explicitNullValueSettings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("settings"); else _explicitNullProperties?.Remove("settings"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointRequestSettings _explicitNullValueSettings = default!;
 #endif
         /// <summary>Model or deployment identifier sent to the upstream provider.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? UpstreamModelId { get; set; }
+        public string? UpstreamModelId { get => _explicitNullValueUpstreamModelId; set { _explicitNullValueUpstreamModelId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("upstream_model_id"); else _explicitNullProperties?.Remove("upstream_model_id"); } }
+        private string? _explicitNullValueUpstreamModelId = default!;
 #nullable restore
 #else
-        public string UpstreamModelId { get; set; }
+        public string UpstreamModelId { get => _explicitNullValueUpstreamModelId; set { _explicitNullValueUpstreamModelId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("upstream_model_id"); else _explicitNullProperties?.Remove("upstream_model_id"); } }
+        private string _explicitNullValueUpstreamModelId = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointRequest"/> and sets the default values.
@@ -74,7 +100,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public static global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -107,6 +133,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointRequestPricing>("pricing", Pricing);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointRequestSettings>("settings", Settings);
             writer.WriteStringValue("upstream_model_id", UpstreamModelId);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

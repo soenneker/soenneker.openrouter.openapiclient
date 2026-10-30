@@ -12,7 +12,12 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class AnthropicTextCitation : IComposedTypeWrapper, IParsable
-    {
+    , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
+        // Preserve ambiguous union payloads without inventing a discriminator.
+        /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
         /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCitationCharLocation"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -61,29 +66,42 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public static global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextCitation CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
+            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextCitation();
-            if("char_location".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("AnthropicCitationCharLocation".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.AnthropicCitationCharLocation = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCitationCharLocation();
+                
             }
-            else if("content_block_location".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("AnthropicCitationContentBlockLocation".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.AnthropicCitationContentBlockLocation = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCitationContentBlockLocation();
+                
             }
-            else if("page_location".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("AnthropicCitationPageLocation".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.AnthropicCitationPageLocation = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCitationPageLocation();
+                
             }
-            else if("search_result_location".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("AnthropicCitationSearchResultLocation".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.AnthropicCitationSearchResultLocation = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCitationSearchResultLocation();
+                
             }
-            else if("web_search_result_location".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("AnthropicCitationWebSearchResultLocation".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.AnthropicCitationWebSearchResultLocation = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCitationWebSearchResultLocation();
+                
             }
-            return result;
+            
+            var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
+            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("char_location".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("cited_text") != null && parseNode.GetChildNode("document_index") != null && parseNode.GetChildNode("document_title") != null && parseNode.GetChildNode("start_char_index") != null && parseNode.GetChildNode("end_char_index") != null && parseNode.GetChildNode("file_id") != null))();
+            bool matchesUnionBranch1 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("page_location".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("cited_text") != null && parseNode.GetChildNode("document_index") != null && parseNode.GetChildNode("document_title") != null && parseNode.GetChildNode("start_page_number") != null && parseNode.GetChildNode("end_page_number") != null && parseNode.GetChildNode("file_id") != null))();
+            bool matchesUnionBranch2 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("content_block_location".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("cited_text") != null && parseNode.GetChildNode("document_index") != null && parseNode.GetChildNode("document_title") != null && parseNode.GetChildNode("start_block_index") != null && parseNode.GetChildNode("end_block_index") != null && parseNode.GetChildNode("file_id") != null))();
+            bool matchesUnionBranch3 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("web_search_result_location".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("cited_text") != null && parseNode.GetChildNode("encrypted_index") != null && parseNode.GetChildNode("title") != null && parseNode.GetChildNode("url") != null))();
+            bool matchesUnionBranch4 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("search_result_location".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("cited_text") != null && parseNode.GetChildNode("search_result_index") != null && parseNode.GetChildNode("source") != null && parseNode.GetChildNode("title") != null && parseNode.GetChildNode("start_block_index") != null && parseNode.GetChildNode("end_block_index") != null))();
+            if (result.AnthropicCitationCharLocation == null && result.AnthropicCitationContentBlockLocation == null && result.AnthropicCitationPageLocation == null && result.AnthropicCitationSearchResultLocation == null && result.AnthropicCitationWebSearchResultLocation == null && matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch3 && !matchesUnionBranch4) result.AnthropicCitationCharLocation = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCitationCharLocation(), parseNode);
+            if (result.AnthropicCitationCharLocation == null && result.AnthropicCitationContentBlockLocation == null && result.AnthropicCitationPageLocation == null && result.AnthropicCitationSearchResultLocation == null && result.AnthropicCitationWebSearchResultLocation == null && matchesUnionBranch1 && !matchesUnionBranch0 && !matchesUnionBranch2 && !matchesUnionBranch3 && !matchesUnionBranch4) result.AnthropicCitationPageLocation = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCitationPageLocation(), parseNode);
+            if (result.AnthropicCitationCharLocation == null && result.AnthropicCitationContentBlockLocation == null && result.AnthropicCitationPageLocation == null && result.AnthropicCitationSearchResultLocation == null && result.AnthropicCitationWebSearchResultLocation == null && matchesUnionBranch2 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch3 && !matchesUnionBranch4) result.AnthropicCitationContentBlockLocation = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCitationContentBlockLocation(), parseNode);
+            if (result.AnthropicCitationCharLocation == null && result.AnthropicCitationContentBlockLocation == null && result.AnthropicCitationPageLocation == null && result.AnthropicCitationSearchResultLocation == null && result.AnthropicCitationWebSearchResultLocation == null && matchesUnionBranch3 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch4) result.AnthropicCitationWebSearchResultLocation = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCitationWebSearchResultLocation(), parseNode);
+            if (result.AnthropicCitationCharLocation == null && result.AnthropicCitationContentBlockLocation == null && result.AnthropicCitationPageLocation == null && result.AnthropicCitationSearchResultLocation == null && result.AnthropicCitationWebSearchResultLocation == null && matchesUnionBranch4 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch3) result.AnthropicCitationSearchResultLocation = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCitationSearchResultLocation(), parseNode);
+            if (result.AnthropicCitationCharLocation == null && result.AnthropicCitationContentBlockLocation == null && result.AnthropicCitationPageLocation == null && result.AnthropicCitationSearchResultLocation == null && result.AnthropicCitationWebSearchResultLocation == null) result.UnrecognizedValue = unionPayload;
+return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -119,25 +137,38 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
+            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
+            if (AnthropicCitationCharLocation == null && AnthropicCitationContentBlockLocation == null && AnthropicCitationPageLocation == null && AnthropicCitationSearchResultLocation == null && AnthropicCitationWebSearchResultLocation == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            if (AnthropicCitationCharLocation != null && AnthropicCitationContentBlockLocation == null && AnthropicCitationPageLocation == null && AnthropicCitationSearchResultLocation == null && AnthropicCitationWebSearchResultLocation == null) { if (AnthropicCitationCharLocation is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, AnthropicCitationCharLocation); return; }
+            if (AnthropicCitationContentBlockLocation != null && AnthropicCitationCharLocation == null && AnthropicCitationPageLocation == null && AnthropicCitationSearchResultLocation == null && AnthropicCitationWebSearchResultLocation == null) { if (AnthropicCitationContentBlockLocation is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, AnthropicCitationContentBlockLocation); return; }
+            if (AnthropicCitationPageLocation != null && AnthropicCitationCharLocation == null && AnthropicCitationContentBlockLocation == null && AnthropicCitationSearchResultLocation == null && AnthropicCitationWebSearchResultLocation == null) { if (AnthropicCitationPageLocation is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, AnthropicCitationPageLocation); return; }
+            if (AnthropicCitationSearchResultLocation != null && AnthropicCitationCharLocation == null && AnthropicCitationContentBlockLocation == null && AnthropicCitationPageLocation == null && AnthropicCitationWebSearchResultLocation == null) { if (AnthropicCitationSearchResultLocation is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, AnthropicCitationSearchResultLocation); return; }
+            if (AnthropicCitationWebSearchResultLocation != null && AnthropicCitationCharLocation == null && AnthropicCitationContentBlockLocation == null && AnthropicCitationPageLocation == null && AnthropicCitationSearchResultLocation == null) { if (AnthropicCitationWebSearchResultLocation is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, AnthropicCitationWebSearchResultLocation); return; }
+
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             if(AnthropicCitationCharLocation != null)
             {
+                if (AnthropicCitationCharLocation is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCitationCharLocation>(null, AnthropicCitationCharLocation);
             }
             else if(AnthropicCitationContentBlockLocation != null)
             {
+                if (AnthropicCitationContentBlockLocation is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCitationContentBlockLocation>(null, AnthropicCitationContentBlockLocation);
             }
             else if(AnthropicCitationPageLocation != null)
             {
+                if (AnthropicCitationPageLocation is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCitationPageLocation>(null, AnthropicCitationPageLocation);
             }
             else if(AnthropicCitationSearchResultLocation != null)
             {
+                if (AnthropicCitationSearchResultLocation is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCitationSearchResultLocation>(null, AnthropicCitationSearchResultLocation);
             }
             else if(AnthropicCitationWebSearchResultLocation != null)
             {
+                if (AnthropicCitationWebSearchResultLocation is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCitationWebSearchResultLocation>(null, AnthropicCitationWebSearchResultLocation);
             }
         }

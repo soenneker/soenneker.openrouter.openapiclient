@@ -11,20 +11,34 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class RouterParams : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("quality_floor") is { } nullNodeQualityFloor && nullNodeQualityFloor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QualityFloor = null;
+            if (parseNode.GetChildNode("throughput_floor") is { } nullNodeThroughputFloor && nullNodeThroughputFloor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ThroughputFloor = null;
+            if (parseNode.GetChildNode("version_group") is { } nullNodeVersionGroup && nullNodeVersionGroup.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) VersionGroup = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The quality_floor property</summary>
-        public double? QualityFloor { get; set; }
+        public double? QualityFloor { get => _explicitNullValueQualityFloor; set { _explicitNullValueQualityFloor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quality_floor"); else _explicitNullProperties?.Remove("quality_floor"); } }
+        private double? _explicitNullValueQualityFloor = default!;
         /// <summary>The throughput_floor property</summary>
-        public double? ThroughputFloor { get; set; }
+        public double? ThroughputFloor { get => _explicitNullValueThroughputFloor; set { _explicitNullValueThroughputFloor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("throughput_floor"); else _explicitNullProperties?.Remove("throughput_floor"); } }
+        private double? _explicitNullValueThroughputFloor = default!;
         /// <summary>The version_group property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? VersionGroup { get; set; }
+        public string? VersionGroup { get => _explicitNullValueVersionGroup; set { _explicitNullValueVersionGroup = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("version_group"); else _explicitNullProperties?.Remove("version_group"); } }
+        private string? _explicitNullValueVersionGroup = default!;
 #nullable restore
 #else
-        public string VersionGroup { get; set; }
+        public string VersionGroup { get => _explicitNullValueVersionGroup; set { _explicitNullValueVersionGroup = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("version_group"); else _explicitNullProperties?.Remove("version_group"); } }
+        private string _explicitNullValueVersionGroup = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.RouterParams"/> and sets the default values.
@@ -41,7 +55,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public static global::Soenneker.OpenRouter.OpenApiClient.Models.RouterParams CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.OpenRouter.OpenApiClient.Models.RouterParams();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.RouterParams(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -66,6 +80,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteDoubleValue("quality_floor", QualityFloor);
             writer.WriteDoubleValue("throughput_floor", ThroughputFloor);
             writer.WriteStringValue("version_group", VersionGroup);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

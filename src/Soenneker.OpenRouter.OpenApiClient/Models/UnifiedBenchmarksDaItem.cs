@@ -11,65 +11,98 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class UnifiedBenchmarksDaItem : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("arena") is { } nullNodeArena && nullNodeArena.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Arena = null;
+            if (parseNode.GetChildNode("avg_generation_time_ms") is { } nullNodeAvgGenerationTimeMs && nullNodeAvgGenerationTimeMs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AvgGenerationTimeMs = null;
+            if (parseNode.GetChildNode("category") is { } nullNodeCategory && nullNodeCategory.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Category = null;
+            if (parseNode.GetChildNode("display_name") is { } nullNodeDisplayName && nullNodeDisplayName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DisplayName = null;
+            if (parseNode.GetChildNode("elo") is { } nullNodeElo && nullNodeElo.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Elo = null;
+            if (parseNode.GetChildNode("model_permaslug") is { } nullNodeModelPermaslug && nullNodeModelPermaslug.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ModelPermaslug = null;
+            if (parseNode.GetChildNode("pricing") is { } nullNodePricing && nullNodePricing.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Pricing = null;
+            if (parseNode.GetChildNode("source") is { } nullNodeSource && nullNodeSource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Source = null;
+            if (parseNode.GetChildNode("tournament_stats") is { } nullNodeTournamentStats && nullNodeTournamentStats.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TournamentStats = null;
+            if (parseNode.GetChildNode("win_rate") is { } nullNodeWinRate && nullNodeWinRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WinRate = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Arena this ranking belongs to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Arena { get; set; }
+        public string? Arena { get => _explicitNullValueArena; set { _explicitNullValueArena = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("arena"); else _explicitNullProperties?.Remove("arena"); } }
+        private string? _explicitNullValueArena = default!;
 #nullable restore
 #else
-        public string Arena { get; set; }
+        public string Arena { get => _explicitNullValueArena; set { _explicitNullValueArena = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("arena"); else _explicitNullProperties?.Remove("arena"); } }
+        private string _explicitNullValueArena = default!;
 #endif
         /// <summary>Average generation time in milliseconds.</summary>
-        public double? AvgGenerationTimeMs { get; set; }
+        public double? AvgGenerationTimeMs { get => _explicitNullValueAvgGenerationTimeMs; set { _explicitNullValueAvgGenerationTimeMs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("avg_generation_time_ms"); else _explicitNullProperties?.Remove("avg_generation_time_ms"); } }
+        private double? _explicitNullValueAvgGenerationTimeMs = default!;
         /// <summary>Category within the arena.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Category { get; set; }
+        public string? Category { get => _explicitNullValueCategory; set { _explicitNullValueCategory = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("category"); else _explicitNullProperties?.Remove("category"); } }
+        private string? _explicitNullValueCategory = default!;
 #nullable restore
 #else
-        public string Category { get; set; }
+        public string Category { get => _explicitNullValueCategory; set { _explicitNullValueCategory = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("category"); else _explicitNullProperties?.Remove("category"); } }
+        private string _explicitNullValueCategory = default!;
 #endif
         /// <summary>Human-readable model name from Design Arena.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DisplayName { get; set; }
+        public string? DisplayName { get => _explicitNullValueDisplayName; set { _explicitNullValueDisplayName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("display_name"); else _explicitNullProperties?.Remove("display_name"); } }
+        private string? _explicitNullValueDisplayName = default!;
 #nullable restore
 #else
-        public string DisplayName { get; set; }
+        public string DisplayName { get => _explicitNullValueDisplayName; set { _explicitNullValueDisplayName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("display_name"); else _explicitNullProperties?.Remove("display_name"); } }
+        private string _explicitNullValueDisplayName = default!;
 #endif
         /// <summary>ELO rating from head-to-head arena battles.</summary>
-        public double? Elo { get; set; }
+        public double? Elo { get => _explicitNullValueElo; set { _explicitNullValueElo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("elo"); else _explicitNullProperties?.Remove("elo"); } }
+        private double? _explicitNullValueElo = default!;
         /// <summary>Stable OpenRouter model identifier when mapped; otherwise the upstream Design Arena model id.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ModelPermaslug { get; set; }
+        public string? ModelPermaslug { get => _explicitNullValueModelPermaslug; set { _explicitNullValueModelPermaslug = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_permaslug"); else _explicitNullProperties?.Remove("model_permaslug"); } }
+        private string? _explicitNullValueModelPermaslug = default!;
 #nullable restore
 #else
-        public string ModelPermaslug { get; set; }
+        public string ModelPermaslug { get => _explicitNullValueModelPermaslug; set { _explicitNullValueModelPermaslug = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_permaslug"); else _explicitNullProperties?.Remove("model_permaslug"); } }
+        private string _explicitNullValueModelPermaslug = default!;
 #endif
         /// <summary>OpenRouter pricing per token for this model. Null if pricing is unavailable.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.UnifiedBenchmarkPricing? Pricing { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.UnifiedBenchmarkPricing? Pricing { get => _explicitNullValuePricing; set { _explicitNullValuePricing = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pricing"); else _explicitNullProperties?.Remove("pricing"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.UnifiedBenchmarkPricing? _explicitNullValuePricing = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.UnifiedBenchmarkPricing Pricing { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.UnifiedBenchmarkPricing Pricing { get => _explicitNullValuePricing; set { _explicitNullValuePricing = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pricing"); else _explicitNullProperties?.Remove("pricing"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.UnifiedBenchmarkPricing _explicitNullValuePricing = default!;
 #endif
         /// <summary>Benchmark source discriminator.</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.DesignArenaSource? Source { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.DesignArenaSource? Source { get => _explicitNullValueSource; set { _explicitNullValueSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source"); else _explicitNullProperties?.Remove("source"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.DesignArenaSource? _explicitNullValueSource = default!;
         /// <summary>Placement distribution from tournament matches.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.UnifiedBenchmarksDaItemTournamentStats? TournamentStats { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.UnifiedBenchmarksDaItemTournamentStats? TournamentStats { get => _explicitNullValueTournamentStats; set { _explicitNullValueTournamentStats = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tournament_stats"); else _explicitNullProperties?.Remove("tournament_stats"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.UnifiedBenchmarksDaItemTournamentStats? _explicitNullValueTournamentStats = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.UnifiedBenchmarksDaItemTournamentStats TournamentStats { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.UnifiedBenchmarksDaItemTournamentStats TournamentStats { get => _explicitNullValueTournamentStats; set { _explicitNullValueTournamentStats = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tournament_stats"); else _explicitNullProperties?.Remove("tournament_stats"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.UnifiedBenchmarksDaItemTournamentStats _explicitNullValueTournamentStats = default!;
 #endif
         /// <summary>Win rate as a percentage (0–100).</summary>
-        public double? WinRate { get; set; }
+        public double? WinRate { get => _explicitNullValueWinRate; set { _explicitNullValueWinRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("win_rate"); else _explicitNullProperties?.Remove("win_rate"); } }
+        private double? _explicitNullValueWinRate = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.UnifiedBenchmarksDaItem"/> and sets the default values.
         /// </summary>
@@ -85,7 +118,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public static global::Soenneker.OpenRouter.OpenApiClient.Models.UnifiedBenchmarksDaItem CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.OpenRouter.OpenApiClient.Models.UnifiedBenchmarksDaItem();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.UnifiedBenchmarksDaItem(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -124,6 +157,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.DesignArenaSource>("source", Source);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.UnifiedBenchmarksDaItemTournamentStats>("tournament_stats", TournamentStats);
             writer.WriteDoubleValue("win_rate", WinRate);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

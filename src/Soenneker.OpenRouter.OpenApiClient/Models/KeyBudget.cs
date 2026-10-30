@@ -12,39 +12,66 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class KeyBudget : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("budget_id") is { } nullNodeBudgetId && nullNodeBudgetId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BudgetId = null;
+            if (parseNode.GetChildNode("guardrail_id") is { } nullNodeGuardrailId && nullNodeGuardrailId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GuardrailId = null;
+            if (parseNode.GetChildNode("include_byok") is { } nullNodeIncludeByok && nullNodeIncludeByok.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IncludeByok = null;
+            if (parseNode.GetChildNode("limit_usd") is { } nullNodeLimitUsd && nullNodeLimitUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LimitUsd = null;
+            if (parseNode.GetChildNode("remaining_usd") is { } nullNodeRemainingUsd && nullNodeRemainingUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RemainingUsd = null;
+            if (parseNode.GetChildNode("reset_interval") is { } nullNodeResetInterval && nullNodeResetInterval.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResetInterval = null;
+            if (parseNode.GetChildNode("resets_at") is { } nullNodeResetsAt && nullNodeResetsAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResetsAt = null;
+            if (parseNode.GetChildNode("scope") is { } nullNodeScope && nullNodeScope.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Scope = null;
+            if (parseNode.GetChildNode("spend_usd") is { } nullNodeSpendUsd && nullNodeSpendUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SpendUsd = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>ID of the workspace budget for the `workspace` scope; null for other scopes.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? BudgetId { get; set; }
+        public string? BudgetId { get => _explicitNullValueBudgetId; set { _explicitNullValueBudgetId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("budget_id"); else _explicitNullProperties?.Remove("budget_id"); } }
+        private string? _explicitNullValueBudgetId = default!;
 #nullable restore
 #else
-        public string BudgetId { get; set; }
+        public string BudgetId { get => _explicitNullValueBudgetId; set { _explicitNullValueBudgetId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("budget_id"); else _explicitNullProperties?.Remove("budget_id"); } }
+        private string _explicitNullValueBudgetId = default!;
 #endif
         /// <summary>ID of the guardrail that carries this budget; null for other scopes.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? GuardrailId { get; set; }
+        public string? GuardrailId { get => _explicitNullValueGuardrailId; set { _explicitNullValueGuardrailId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("guardrail_id"); else _explicitNullProperties?.Remove("guardrail_id"); } }
+        private string? _explicitNullValueGuardrailId = default!;
 #nullable restore
 #else
-        public string GuardrailId { get; set; }
+        public string GuardrailId { get => _explicitNullValueGuardrailId; set { _explicitNullValueGuardrailId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("guardrail_id"); else _explicitNullProperties?.Remove("guardrail_id"); } }
+        private string _explicitNullValueGuardrailId = default!;
 #endif
         /// <summary>Whether external BYOK inference spend counts toward this budget.</summary>
-        public bool? IncludeByok { get; set; }
+        public bool? IncludeByok { get => _explicitNullValueIncludeByok; set { _explicitNullValueIncludeByok = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("include_byok"); else _explicitNullProperties?.Remove("include_byok"); } }
+        private bool? _explicitNullValueIncludeByok = default!;
         /// <summary>Budget limit in USD for the current window.</summary>
-        public double? LimitUsd { get; set; }
+        public double? LimitUsd { get => _explicitNullValueLimitUsd; set { _explicitNullValueLimitUsd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("limit_usd"); else _explicitNullProperties?.Remove("limit_usd"); } }
+        private double? _explicitNullValueLimitUsd = default!;
         /// <summary>`limit_usd - spend_usd`. Zero or negative means this layer rejects requests with a 403 until it resets.</summary>
-        public double? RemainingUsd { get; set; }
+        public double? RemainingUsd { get => _explicitNullValueRemainingUsd; set { _explicitNullValueRemainingUsd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("remaining_usd"); else _explicitNullProperties?.Remove("remaining_usd"); } }
+        private double? _explicitNullValueRemainingUsd = default!;
         /// <summary>UTC window the spend is counted over (weeks start Monday); null for a lifetime budget that never resets.</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.KeyBudgetResetInterval? ResetInterval { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.KeyBudgetResetInterval? ResetInterval { get => _explicitNullValueResetInterval; set { _explicitNullValueResetInterval = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reset_interval"); else _explicitNullProperties?.Remove("reset_interval"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.KeyBudgetResetInterval? _explicitNullValueResetInterval = default!;
         /// <summary>ISO 8601 UTC instant at which the window rolls over and spend returns to zero; null for a lifetime budget.</summary>
-        public DateTimeOffset? ResetsAt { get; set; }
+        public DateTimeOffset? ResetsAt { get => _explicitNullValueResetsAt; set { _explicitNullValueResetsAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resets_at"); else _explicitNullProperties?.Remove("resets_at"); } }
+        private DateTimeOffset? _explicitNullValueResetsAt = default!;
         /// <summary>Which budget layer this is, in the order enforcement checks them: the workspace default guardrail against the member aggregate (`workspace_default_member`) and against this key (`workspace_default_key`), the member guardrail (`member`), the API key guardrail (`api_key`), a workspace budget (`workspace`), or the key&apos;s own limit (`key_limit`).</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.KeyBudgetScope? Scope { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.KeyBudgetScope? Scope { get => _explicitNullValueScope; set { _explicitNullValueScope = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scope"); else _explicitNullProperties?.Remove("scope"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.KeyBudgetScope? _explicitNullValueScope = default!;
         /// <summary>Spend in USD that enforcement counts against this limit in the current window: the member aggregate for member-scoped layers, otherwise this key or workspace.</summary>
-        public double? SpendUsd { get; set; }
+        public double? SpendUsd { get => _explicitNullValueSpendUsd; set { _explicitNullValueSpendUsd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("spend_usd"); else _explicitNullProperties?.Remove("spend_usd"); } }
+        private double? _explicitNullValueSpendUsd = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.KeyBudget"/> and sets the default values.
         /// </summary>
@@ -60,7 +87,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public static global::Soenneker.OpenRouter.OpenApiClient.Models.KeyBudget CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.OpenRouter.OpenApiClient.Models.KeyBudget();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.KeyBudget(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -97,6 +124,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("resets_at", ResetsAt);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.KeyBudgetScope>("scope", Scope);
             writer.WriteDoubleValue("spend_usd", SpendUsd);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

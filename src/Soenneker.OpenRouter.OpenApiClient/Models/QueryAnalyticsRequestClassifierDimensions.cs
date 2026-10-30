@@ -12,21 +12,35 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class QueryAnalyticsRequestClassifierDimensions : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("classifier_id") is { } nullNodeClassifierId && nullNodeClassifierId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClassifierId = null;
+            if (parseNode.GetChildNode("dimension_names") is { } nullNodeDimensionNames && nullNodeDimensionNames.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DimensionNames = null;
+            if (parseNode.GetChildNode("include_nulls") is { } nullNodeIncludeNulls && nullNodeIncludeNulls.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IncludeNulls = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>UUID of the classifier whose tags to group by.</summary>
-        public Guid? ClassifierId { get; set; }
+        public Guid? ClassifierId { get => _explicitNullValueClassifierId; set { _explicitNullValueClassifierId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("classifier_id"); else _explicitNullProperties?.Remove("classifier_id"); } }
+        private Guid? _explicitNullValueClassifierId = default!;
         /// <summary>The dimension_names property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? DimensionNames { get; set; }
+        public List<string>? DimensionNames { get => _explicitNullValueDimensionNames; set { _explicitNullValueDimensionNames = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dimension_names"); else _explicitNullProperties?.Remove("dimension_names"); } }
+        private List<string>? _explicitNullValueDimensionNames = default!;
 #nullable restore
 #else
-        public List<string> DimensionNames { get; set; }
+        public List<string> DimensionNames { get => _explicitNullValueDimensionNames; set { _explicitNullValueDimensionNames = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dimension_names"); else _explicitNullProperties?.Remove("dimension_names"); } }
+        private List<string> _explicitNullValueDimensionNames = default!;
 #endif
         /// <summary>When true, also include generations that have no tag from this classifier. Defaults to false, which returns only classified generations.</summary>
-        public bool? IncludeNulls { get; set; }
+        public bool? IncludeNulls { get => _explicitNullValueIncludeNulls; set { _explicitNullValueIncludeNulls = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("include_nulls"); else _explicitNullProperties?.Remove("include_nulls"); } }
+        private bool? _explicitNullValueIncludeNulls = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestClassifierDimensions"/> and sets the default values.
         /// </summary>
@@ -42,7 +56,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public static global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestClassifierDimensions CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestClassifierDimensions();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestClassifierDimensions(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -67,6 +81,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteGuidValue("classifier_id", ClassifierId);
             writer.WriteCollectionOfPrimitiveValues<string>("dimension_names", DimensionNames);
             writer.WriteBoolValue("include_nulls", IncludeNulls);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

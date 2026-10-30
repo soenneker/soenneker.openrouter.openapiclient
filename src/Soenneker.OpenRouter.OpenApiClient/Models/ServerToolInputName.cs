@@ -11,32 +11,48 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ServerToolInputName : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("api_formats") is { } nullNodeApiFormats && nullNodeApiFormats.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ApiFormats = null;
+            if (parseNode.GetChildNode("output_names") is { } nullNodeOutputNames && nullNodeOutputNames.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OutputNames = null;
+            if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>API formats that accept this spelling in `tools[].type`</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ServerToolInputNameApiFormatsItem?>? ApiFormats { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ServerToolInputNameApiFormatsItem?>? ApiFormats { get => _explicitNullValueApiFormats; set { _explicitNullValueApiFormats = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("api_formats"); else _explicitNullProperties?.Remove("api_formats"); } }
+        private List<global::Soenneker.OpenRouter.OpenApiClient.Models.ServerToolInputNameApiFormatsItem?>? _explicitNullValueApiFormats = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ServerToolInputNameApiFormatsItem?> ApiFormats { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ServerToolInputNameApiFormatsItem?> ApiFormats { get => _explicitNullValueApiFormats; set { _explicitNullValueApiFormats = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("api_formats"); else _explicitNullProperties?.Remove("api_formats"); } }
+        private List<global::Soenneker.OpenRouter.OpenApiClient.Models.ServerToolInputNameApiFormatsItem?> _explicitNullValueApiFormats = default!;
 #endif
         /// <summary>What the call surfaces as on each accepting API format when requested under this spelling; a format is absent when the call is not visible to the caller</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ServerToolOutputName>? OutputNames { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ServerToolOutputName>? OutputNames { get => _explicitNullValueOutputNames; set { _explicitNullValueOutputNames = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("output_names"); else _explicitNullProperties?.Remove("output_names"); } }
+        private List<global::Soenneker.OpenRouter.OpenApiClient.Models.ServerToolOutputName>? _explicitNullValueOutputNames = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ServerToolOutputName> OutputNames { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ServerToolOutputName> OutputNames { get => _explicitNullValueOutputNames; set { _explicitNullValueOutputNames = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("output_names"); else _explicitNullProperties?.Remove("output_names"); } }
+        private List<global::Soenneker.OpenRouter.OpenApiClient.Models.ServerToolOutputName> _explicitNullValueOutputNames = default!;
 #endif
         /// <summary>The type property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Type { get; set; }
+        public string? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        private string? _explicitNullValueType = default!;
 #nullable restore
 #else
-        public string Type { get; set; }
+        public string Type { get => _explicitNullValueType; set { _explicitNullValueType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        private string _explicitNullValueType = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ServerToolInputName"/> and sets the default values.
@@ -53,7 +69,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public static global::Soenneker.OpenRouter.OpenApiClient.Models.ServerToolInputName CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.OpenRouter.OpenApiClient.Models.ServerToolInputName();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.ServerToolInputName(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -78,6 +94,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ServerToolInputNameApiFormatsItem>("api_formats", ApiFormats);
             writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ServerToolOutputName>("output_names", OutputNames);
             writer.WriteStringValue("type", Type);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

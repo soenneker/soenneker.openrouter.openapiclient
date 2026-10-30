@@ -11,76 +11,111 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class QueryAnalyticsRequest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("classifier_dimensions") is { } nullNodeClassifierDimensions && nullNodeClassifierDimensions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClassifierDimensions = null;
+            if (parseNode.GetChildNode("classifier_filters") is { } nullNodeClassifierFilters && nullNodeClassifierFilters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClassifierFilters = null;
+            if (parseNode.GetChildNode("dimensions") is { } nullNodeDimensions && nullNodeDimensions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Dimensions = null;
+            if (parseNode.GetChildNode("filters") is { } nullNodeFilters && nullNodeFilters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Filters = null;
+            if (parseNode.GetChildNode("granularity") is { } nullNodeGranularity && nullNodeGranularity.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Granularity = null;
+            if (parseNode.GetChildNode("group_limit") is { } nullNodeGroupLimit && nullNodeGroupLimit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GroupLimit = null;
+            if (parseNode.GetChildNode("limit") is { } nullNodeLimit && nullNodeLimit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Limit = null;
+            if (parseNode.GetChildNode("metrics") is { } nullNodeMetrics && nullNodeMetrics.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Metrics = null;
+            if (parseNode.GetChildNode("order_by") is { } nullNodeOrderBy && nullNodeOrderBy.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrderBy = null;
+            if (parseNode.GetChildNode("time_range") is { } nullNodeTimeRange && nullNodeTimeRange.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TimeRange = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Group results by custom classifier tags, breaking down metrics by the specified dimension values. Requires an active classifier on the workspace.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestClassifierDimensions? ClassifierDimensions { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestClassifierDimensions? ClassifierDimensions { get => _explicitNullValueClassifierDimensions; set { _explicitNullValueClassifierDimensions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("classifier_dimensions"); else _explicitNullProperties?.Remove("classifier_dimensions"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestClassifierDimensions? _explicitNullValueClassifierDimensions = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestClassifierDimensions ClassifierDimensions { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestClassifierDimensions ClassifierDimensions { get => _explicitNullValueClassifierDimensions; set { _explicitNullValueClassifierDimensions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("classifier_dimensions"); else _explicitNullProperties?.Remove("classifier_dimensions"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestClassifierDimensions _explicitNullValueClassifierDimensions = default!;
 #endif
         /// <summary>Filter results to generations with specific classifier tag values. Can be combined with classifier_dimensions (must use the same classifier_id) or used independently with standard dimensions.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestClassifierFilters? ClassifierFilters { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestClassifierFilters? ClassifierFilters { get => _explicitNullValueClassifierFilters; set { _explicitNullValueClassifierFilters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("classifier_filters"); else _explicitNullProperties?.Remove("classifier_filters"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestClassifierFilters? _explicitNullValueClassifierFilters = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestClassifierFilters ClassifierFilters { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestClassifierFilters ClassifierFilters { get => _explicitNullValueClassifierFilters; set { _explicitNullValueClassifierFilters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("classifier_filters"); else _explicitNullProperties?.Remove("classifier_filters"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestClassifierFilters _explicitNullValueClassifierFilters = default!;
 #endif
         /// <summary>The dimensions property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Dimensions { get; set; }
+        public List<string>? Dimensions { get => _explicitNullValueDimensions; set { _explicitNullValueDimensions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dimensions"); else _explicitNullProperties?.Remove("dimensions"); } }
+        private List<string>? _explicitNullValueDimensions = default!;
 #nullable restore
 #else
-        public List<string> Dimensions { get; set; }
+        public List<string> Dimensions { get => _explicitNullValueDimensions; set { _explicitNullValueDimensions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dimensions"); else _explicitNullProperties?.Remove("dimensions"); } }
+        private List<string> _explicitNullValueDimensions = default!;
 #endif
         /// <summary>The filters property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestFiltersItem>? Filters { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.Filter>? Filters { get => _explicitNullValueFilters; set { _explicitNullValueFilters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filters"); else _explicitNullProperties?.Remove("filters"); } }
+        private List<global::Soenneker.OpenRouter.OpenApiClient.Models.Filter>? _explicitNullValueFilters = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestFiltersItem> Filters { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.Filter> Filters { get => _explicitNullValueFilters; set { _explicitNullValueFilters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filters"); else _explicitNullProperties?.Remove("filters"); } }
+        private List<global::Soenneker.OpenRouter.OpenApiClient.Models.Filter> _explicitNullValueFilters = default!;
 #endif
         /// <summary>Time granularity</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Granularity { get; set; }
+        public string? Granularity { get => _explicitNullValueGranularity; set { _explicitNullValueGranularity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("granularity"); else _explicitNullProperties?.Remove("granularity"); } }
+        private string? _explicitNullValueGranularity = default!;
 #nullable restore
 #else
-        public string Granularity { get; set; }
+        public string Granularity { get => _explicitNullValueGranularity; set { _explicitNullValueGranularity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("granularity"); else _explicitNullProperties?.Remove("granularity"); } }
+        private string _explicitNullValueGranularity = default!;
 #endif
         /// <summary>Maximum rows per distinct combination of dimensions. When omitted on time-series queries (granularity + dimensions), auto-computed to avoid truncating time windows. Explicit values override the default and may truncate time buckets if set lower than the number of buckets in the range. Ignored when no dimensions are specified.</summary>
-        public int? GroupLimit { get; set; }
+        public int? GroupLimit { get => _explicitNullValueGroupLimit; set { _explicitNullValueGroupLimit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("group_limit"); else _explicitNullProperties?.Remove("group_limit"); } }
+        private int? _explicitNullValueGroupLimit = default!;
         /// <summary>Maximum total rows returned. Defaults to 1000. On time-series queries with dimensions and no explicit group_limit, the server may raise this to accommodate the expected number of unique time-bucket/dimension combinations.</summary>
-        public int? Limit { get; set; }
+        public int? Limit { get => _explicitNullValueLimit; set { _explicitNullValueLimit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("limit"); else _explicitNullProperties?.Remove("limit"); } }
+        private int? _explicitNullValueLimit = default!;
         /// <summary>The metrics property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Metrics { get; set; }
+        public List<string>? Metrics { get => _explicitNullValueMetrics; set { _explicitNullValueMetrics = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metrics"); else _explicitNullProperties?.Remove("metrics"); } }
+        private List<string>? _explicitNullValueMetrics = default!;
 #nullable restore
 #else
-        public List<string> Metrics { get; set; }
+        public List<string> Metrics { get => _explicitNullValueMetrics; set { _explicitNullValueMetrics = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metrics"); else _explicitNullProperties?.Remove("metrics"); } }
+        private List<string> _explicitNullValueMetrics = default!;
 #endif
         /// <summary>The order_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestOrderBy? OrderBy { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestOrderBy? OrderBy { get => _explicitNullValueOrderBy; set { _explicitNullValueOrderBy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("order_by"); else _explicitNullProperties?.Remove("order_by"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestOrderBy? _explicitNullValueOrderBy = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestOrderBy OrderBy { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestOrderBy OrderBy { get => _explicitNullValueOrderBy; set { _explicitNullValueOrderBy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("order_by"); else _explicitNullProperties?.Remove("order_by"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestOrderBy _explicitNullValueOrderBy = default!;
 #endif
         /// <summary>The time_range property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestTimeRange? TimeRange { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestTimeRange? TimeRange { get => _explicitNullValueTimeRange; set { _explicitNullValueTimeRange = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("time_range"); else _explicitNullProperties?.Remove("time_range"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestTimeRange? _explicitNullValueTimeRange = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestTimeRange TimeRange { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestTimeRange TimeRange { get => _explicitNullValueTimeRange; set { _explicitNullValueTimeRange = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("time_range"); else _explicitNullProperties?.Remove("time_range"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestTimeRange _explicitNullValueTimeRange = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequest"/> and sets the default values.
@@ -97,7 +132,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public static global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -110,7 +145,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "classifier_dimensions", n => { ClassifierDimensions = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestClassifierDimensions>(global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestClassifierDimensions.CreateFromDiscriminatorValue); } },
                 { "classifier_filters", n => { ClassifierFilters = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestClassifierFilters>(global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestClassifierFilters.CreateFromDiscriminatorValue); } },
                 { "dimensions", n => { Dimensions = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "filters", n => { Filters = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestFiltersItem>(global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestFiltersItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "filters", n => { Filters = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.Filter>(global::Soenneker.OpenRouter.OpenApiClient.Models.Filter.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "granularity", n => { Granularity = n.GetStringValue(); } },
                 { "group_limit", n => { GroupLimit = n.GetIntValue(); } },
                 { "limit", n => { Limit = n.GetIntValue(); } },
@@ -129,13 +164,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestClassifierDimensions>("classifier_dimensions", ClassifierDimensions);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestClassifierFilters>("classifier_filters", ClassifierFilters);
             writer.WriteCollectionOfPrimitiveValues<string>("dimensions", Dimensions);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestFiltersItem>("filters", Filters);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.Filter>("filters", Filters);
             writer.WriteStringValue("granularity", Granularity);
             writer.WriteIntValue("group_limit", GroupLimit);
             writer.WriteIntValue("limit", Limit);
             writer.WriteCollectionOfPrimitiveValues<string>("metrics", Metrics);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestOrderBy>("order_by", OrderBy);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.QueryAnalyticsRequestTimeRange>("time_range", TimeRange);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

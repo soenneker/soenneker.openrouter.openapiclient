@@ -12,7 +12,12 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ChatMessages : IComposedTypeWrapper, IParsable
-    {
+    , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
+        // Preserve ambiguous union payloads without inventing a discriminator.
+        /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
         /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ChatAssistantMessage"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -61,29 +66,42 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public static global::Soenneker.OpenRouter.OpenApiClient.Models.ChatMessages CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            var mappingValue = parseNode.GetChildNode("role")?.GetStringValue();
+            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.OpenRouter.OpenApiClient.Models.ChatMessages();
-            if("assistant".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("ChatAssistantMessage".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.ChatAssistantMessage = new global::Soenneker.OpenRouter.OpenApiClient.Models.ChatAssistantMessage();
+                
             }
-            else if("developer".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("ChatDeveloperMessage".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.ChatDeveloperMessage = new global::Soenneker.OpenRouter.OpenApiClient.Models.ChatDeveloperMessage();
+                
             }
-            else if("system".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("ChatSystemMessage".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.ChatSystemMessage = new global::Soenneker.OpenRouter.OpenApiClient.Models.ChatSystemMessage();
+                
             }
-            else if("tool".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("ChatToolMessage".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.ChatToolMessage = new global::Soenneker.OpenRouter.OpenApiClient.Models.ChatToolMessage();
+                
             }
-            else if("user".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("ChatUserMessage".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.ChatUserMessage = new global::Soenneker.OpenRouter.OpenApiClient.Models.ChatUserMessage();
+                
             }
-            return result;
+            
+            var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
+            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("role") != null && (parseNode.GetChildNode("role")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("system".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("content") != null))();
+            bool matchesUnionBranch1 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("role") != null && (parseNode.GetChildNode("role")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("user".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("content") != null))();
+            bool matchesUnionBranch2 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("role") != null && (parseNode.GetChildNode("role")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("developer".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("content") != null))();
+            bool matchesUnionBranch3 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("role") != null && (parseNode.GetChildNode("role")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("assistant".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal)))))();
+            bool matchesUnionBranch4 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("role") != null && (parseNode.GetChildNode("role")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("tool".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("content") != null && parseNode.GetChildNode("tool_call_id") != null))();
+            if (result.ChatAssistantMessage == null && result.ChatDeveloperMessage == null && result.ChatSystemMessage == null && result.ChatToolMessage == null && result.ChatUserMessage == null && matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch3 && !matchesUnionBranch4) result.ChatSystemMessage = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.ChatSystemMessage(), parseNode);
+            if (result.ChatAssistantMessage == null && result.ChatDeveloperMessage == null && result.ChatSystemMessage == null && result.ChatToolMessage == null && result.ChatUserMessage == null && matchesUnionBranch1 && !matchesUnionBranch0 && !matchesUnionBranch2 && !matchesUnionBranch3 && !matchesUnionBranch4) result.ChatUserMessage = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.ChatUserMessage(), parseNode);
+            if (result.ChatAssistantMessage == null && result.ChatDeveloperMessage == null && result.ChatSystemMessage == null && result.ChatToolMessage == null && result.ChatUserMessage == null && matchesUnionBranch2 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch3 && !matchesUnionBranch4) result.ChatDeveloperMessage = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.ChatDeveloperMessage(), parseNode);
+            if (result.ChatAssistantMessage == null && result.ChatDeveloperMessage == null && result.ChatSystemMessage == null && result.ChatToolMessage == null && result.ChatUserMessage == null && matchesUnionBranch3 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch4) result.ChatAssistantMessage = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.ChatAssistantMessage(), parseNode);
+            if (result.ChatAssistantMessage == null && result.ChatDeveloperMessage == null && result.ChatSystemMessage == null && result.ChatToolMessage == null && result.ChatUserMessage == null && matchesUnionBranch4 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch3) result.ChatToolMessage = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.ChatToolMessage(), parseNode);
+            if (result.ChatAssistantMessage == null && result.ChatDeveloperMessage == null && result.ChatSystemMessage == null && result.ChatToolMessage == null && result.ChatUserMessage == null) result.UnrecognizedValue = unionPayload;
+return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -119,25 +137,38 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
+            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
+            if (ChatAssistantMessage == null && ChatDeveloperMessage == null && ChatSystemMessage == null && ChatToolMessage == null && ChatUserMessage == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            if (ChatAssistantMessage != null && ChatDeveloperMessage == null && ChatSystemMessage == null && ChatToolMessage == null && ChatUserMessage == null) { if (ChatAssistantMessage is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, ChatAssistantMessage); return; }
+            if (ChatDeveloperMessage != null && ChatAssistantMessage == null && ChatSystemMessage == null && ChatToolMessage == null && ChatUserMessage == null) { if (ChatDeveloperMessage is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, ChatDeveloperMessage); return; }
+            if (ChatSystemMessage != null && ChatAssistantMessage == null && ChatDeveloperMessage == null && ChatToolMessage == null && ChatUserMessage == null) { if (ChatSystemMessage is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, ChatSystemMessage); return; }
+            if (ChatToolMessage != null && ChatAssistantMessage == null && ChatDeveloperMessage == null && ChatSystemMessage == null && ChatUserMessage == null) { if (ChatToolMessage is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, ChatToolMessage); return; }
+            if (ChatUserMessage != null && ChatAssistantMessage == null && ChatDeveloperMessage == null && ChatSystemMessage == null && ChatToolMessage == null) { if (ChatUserMessage is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, ChatUserMessage); return; }
+
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             if(ChatAssistantMessage != null)
             {
+                if (ChatAssistantMessage is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatAssistantMessage>(null, ChatAssistantMessage);
             }
             else if(ChatDeveloperMessage != null)
             {
+                if (ChatDeveloperMessage is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatDeveloperMessage>(null, ChatDeveloperMessage);
             }
             else if(ChatSystemMessage != null)
             {
+                if (ChatSystemMessage is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatSystemMessage>(null, ChatSystemMessage);
             }
             else if(ChatToolMessage != null)
             {
+                if (ChatToolMessage is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatToolMessage>(null, ChatToolMessage);
             }
             else if(ChatUserMessage != null)
             {
+                if (ChatUserMessage is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatUserMessage>(null, ChatUserMessage);
             }
         }

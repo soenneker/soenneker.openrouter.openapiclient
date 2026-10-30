@@ -339,6 +339,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning disable CS1591
         Inflection,
         #pragma warning restore CS1591
+        [EnumMember(Value = "KT")]
+        #pragma warning disable CS1591
+        Kt,
+        #pragma warning restore CS1591
         [EnumMember(Value = "Liquid")]
         #pragma warning disable CS1591
         Liquid,

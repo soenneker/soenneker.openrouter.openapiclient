@@ -11,27 +11,47 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class AnthropicTextEditorCodeExecutionStrReplaceResult : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("lines") is { } nullNodeLines && nullNodeLines.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Lines = null;
+            if (parseNode.GetChildNode("new_lines") is { } nullNodeNewLines && nullNodeNewLines.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NewLines = null;
+            if (parseNode.GetChildNode("new_start") is { } nullNodeNewStart && nullNodeNewStart.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NewStart = null;
+            if (parseNode.GetChildNode("old_lines") is { } nullNodeOldLines && nullNodeOldLines.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OldLines = null;
+            if (parseNode.GetChildNode("old_start") is { } nullNodeOldStart && nullNodeOldStart.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OldStart = null;
+            if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The lines property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Lines { get; set; }
+        public List<string>? Lines { get => _explicitNullValueLines; set { _explicitNullValueLines = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lines"); else _explicitNullProperties?.Remove("lines"); } }
+        private List<string>? _explicitNullValueLines = default!;
 #nullable restore
 #else
-        public List<string> Lines { get; set; }
+        public List<string> Lines { get => _explicitNullValueLines; set { _explicitNullValueLines = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lines"); else _explicitNullProperties?.Remove("lines"); } }
+        private List<string> _explicitNullValueLines = default!;
 #endif
         /// <summary>The new_lines property</summary>
-        public int? NewLines { get; set; }
+        public int? NewLines { get => _explicitNullValueNewLines; set { _explicitNullValueNewLines = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("new_lines"); else _explicitNullProperties?.Remove("new_lines"); } }
+        private int? _explicitNullValueNewLines = default!;
         /// <summary>The new_start property</summary>
-        public int? NewStart { get; set; }
+        public int? NewStart { get => _explicitNullValueNewStart; set { _explicitNullValueNewStart = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("new_start"); else _explicitNullProperties?.Remove("new_start"); } }
+        private int? _explicitNullValueNewStart = default!;
         /// <summary>The old_lines property</summary>
-        public int? OldLines { get; set; }
+        public int? OldLines { get => _explicitNullValueOldLines; set { _explicitNullValueOldLines = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("old_lines"); else _explicitNullProperties?.Remove("old_lines"); } }
+        private int? _explicitNullValueOldLines = default!;
         /// <summary>The old_start property</summary>
-        public int? OldStart { get; set; }
+        public int? OldStart { get => _explicitNullValueOldStart; set { _explicitNullValueOldStart = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("old_start"); else _explicitNullProperties?.Remove("old_start"); } }
+        private int? _explicitNullValueOldStart = default!;
         /// <summary>The type property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.TextEditorCodeExecutionStrReplaceResultType? Type { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.TextEditorCodeExecutionStrReplaceResultType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.TextEditorCodeExecutionStrReplaceResultType? _explicitNullValueType = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextEditorCodeExecutionStrReplaceResult"/> and sets the default values.
         /// </summary>
@@ -47,7 +67,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public static global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextEditorCodeExecutionStrReplaceResult CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextEditorCodeExecutionStrReplaceResult();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextEditorCodeExecutionStrReplaceResult(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -78,6 +98,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteIntValue("old_lines", OldLines);
             writer.WriteIntValue("old_start", OldStart);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.TextEditorCodeExecutionStrReplaceResultType>("type", Type);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

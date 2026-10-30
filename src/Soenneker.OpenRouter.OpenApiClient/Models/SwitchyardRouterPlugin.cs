@@ -11,20 +11,34 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class SwitchyardRouterPlugin : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("algorithm") is { } nullNodeAlgorithm && nullNodeAlgorithm.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Algorithm = null;
+            if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("judge_model") is { } nullNodeJudgeModel && nullNodeJudgeModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) JudgeModel = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Routing algorithm for this request. &quot;capability&quot; calls a small judge model to rate how demanding the task is, then picks the efficient or capable candidate. &quot;stage&quot; reads the tool-result history (errors, repeated failures, edits landing) and calls the judge only when those signals are undecided. &quot;auto&quot; is &quot;stage&quot; without the judge call. &quot;random&quot; picks one candidate at random. &quot;composite&quot; keeps the tier chosen on the last human turn and re-evaluates tool turns with the stage signals. &quot;passthrough&quot; serves the eligible candidates in the order OpenRouter already ranked them, with no routing decision and no judge call. Omit this field to use the platform default, stage.</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.SwitchyardRouterPluginAlgorithm? Algorithm { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.SwitchyardRouterPluginAlgorithm? Algorithm { get => _explicitNullValueAlgorithm; set { _explicitNullValueAlgorithm = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("algorithm"); else _explicitNullProperties?.Remove("algorithm"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.SwitchyardRouterPluginAlgorithm? _explicitNullValueAlgorithm = default!;
         /// <summary>The id property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.SwitchyardRouterId? Id { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.SwitchyardRouterId? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.SwitchyardRouterId? _explicitNullValueId = default!;
         /// <summary>The model that runs the judge call for the judge-backed algorithms (&quot;capability&quot;, &quot;stage&quot;, and &quot;composite&quot;). The model must support structured outputs and have a provider that your account and request settings allow. Otherwise, the request uses the platform default judge, google/gemini-3.5-flash-lite, or openai/gpt-4o-mini when the default does not fit either, and reports the reason in the routing metadata. The judge call is billed to you like any other request.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? JudgeModel { get; set; }
+        public string? JudgeModel { get => _explicitNullValueJudgeModel; set { _explicitNullValueJudgeModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("judge_model"); else _explicitNullProperties?.Remove("judge_model"); } }
+        private string? _explicitNullValueJudgeModel = default!;
 #nullable restore
 #else
-        public string JudgeModel { get; set; }
+        public string JudgeModel { get => _explicitNullValueJudgeModel; set { _explicitNullValueJudgeModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("judge_model"); else _explicitNullProperties?.Remove("judge_model"); } }
+        private string _explicitNullValueJudgeModel = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.SwitchyardRouterPlugin"/> and sets the default values.
@@ -41,7 +55,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public static global::Soenneker.OpenRouter.OpenApiClient.Models.SwitchyardRouterPlugin CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.OpenRouter.OpenApiClient.Models.SwitchyardRouterPlugin();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.SwitchyardRouterPlugin(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -66,6 +80,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SwitchyardRouterPluginAlgorithm>("algorithm", Algorithm);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SwitchyardRouterId>("id", Id);
             writer.WriteStringValue("judge_model", JudgeModel);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

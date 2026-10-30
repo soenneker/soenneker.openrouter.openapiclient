@@ -12,16 +12,28 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class BatchDeletionTargets : IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("openrouter") is { } nullNodeOpenrouter && nullNodeOpenrouter.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Openrouter = null;
+            if (parseNode.GetChildNode("upstream") is { } nullNodeUpstream && nullNodeUpstream.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Upstream = null;
+        }
+
         /// <summary>OpenRouter-held request and result artifacts were purged.</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.DeletedOpenrouter? Openrouter { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.DeletedOpenrouter? Openrouter { get => _explicitNullValueOpenrouter; set { _explicitNullValueOpenrouter = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("openrouter"); else _explicitNullProperties?.Remove("openrouter"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.DeletedOpenrouter? _explicitNullValueOpenrouter = default!;
         /// <summary>The upstream batch deletion outcome; omitted when no provider was assigned.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.BatchDeletionTargetsUpstream? Upstream { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.BatchDeletionTargetsUpstream? Upstream { get => _explicitNullValueUpstream; set { _explicitNullValueUpstream = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("upstream"); else _explicitNullProperties?.Remove("upstream"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.BatchDeletionTargetsUpstream? _explicitNullValueUpstream = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.BatchDeletionTargetsUpstream Upstream { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.BatchDeletionTargetsUpstream Upstream { get => _explicitNullValueUpstream; set { _explicitNullValueUpstream = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("upstream"); else _explicitNullProperties?.Remove("upstream"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.BatchDeletionTargetsUpstream _explicitNullValueUpstream = default!;
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -31,7 +43,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public static global::Soenneker.OpenRouter.OpenApiClient.Models.BatchDeletionTargets CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.OpenRouter.OpenApiClient.Models.BatchDeletionTargets();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.BatchDeletionTargets(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -53,7 +65,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.DeletedOpenrouter>("openrouter", Openrouter);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.BatchDeletionTargetsUpstream>("upstream", Upstream);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.BatchDeletionTargetsUpstream>("upstream", Upstream);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

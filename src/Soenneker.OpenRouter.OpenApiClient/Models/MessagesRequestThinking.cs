@@ -12,7 +12,12 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class MessagesRequestThinking : IComposedTypeWrapper, IParsable
-    {
+    , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
+        // Preserve ambiguous union payloads without inventing a discriminator.
+        /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
         /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestThinkingOneOf1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -57,21 +62,32 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             var result = new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestThinking();
             if("enabled".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.MessagesRequestThinkingOneOf1 = new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestThinkingOneOf1();
+                
             }
             else if("disabled".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.MessagesRequestThinkingOneOf2 = new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestThinkingOneOf2();
+                
             }
             else if("adaptive".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.MessagesRequestThinkingOneOf3 = new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestThinkingOneOf3();
+                
             }
             else if("between_tools".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.MessagesRequestThinkingOneOf4 = new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestThinkingOneOf4();
+                
             }
-            return result;
+            
+            var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
+            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("enabled".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("budget_tokens") != null))();
+            bool matchesUnionBranch1 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("disabled".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal)))))();
+            bool matchesUnionBranch2 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("adaptive".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal)))))();
+            bool matchesUnionBranch3 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("between_tools".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal)))))();
+            if (result.MessagesRequestThinkingOneOf1 == null && result.MessagesRequestThinkingOneOf2 == null && result.MessagesRequestThinkingOneOf3 == null && result.MessagesRequestThinkingOneOf4 == null && matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch3) result.MessagesRequestThinkingOneOf1 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestThinkingOneOf1(), parseNode);
+            if (result.MessagesRequestThinkingOneOf1 == null && result.MessagesRequestThinkingOneOf2 == null && result.MessagesRequestThinkingOneOf3 == null && result.MessagesRequestThinkingOneOf4 == null && matchesUnionBranch1 && !matchesUnionBranch0 && !matchesUnionBranch2 && !matchesUnionBranch3) result.MessagesRequestThinkingOneOf2 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestThinkingOneOf2(), parseNode);
+            if (result.MessagesRequestThinkingOneOf1 == null && result.MessagesRequestThinkingOneOf2 == null && result.MessagesRequestThinkingOneOf3 == null && result.MessagesRequestThinkingOneOf4 == null && matchesUnionBranch2 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch3) result.MessagesRequestThinkingOneOf3 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestThinkingOneOf3(), parseNode);
+            if (result.MessagesRequestThinkingOneOf1 == null && result.MessagesRequestThinkingOneOf2 == null && result.MessagesRequestThinkingOneOf3 == null && result.MessagesRequestThinkingOneOf4 == null && matchesUnionBranch3 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2) result.MessagesRequestThinkingOneOf4 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestThinkingOneOf4(), parseNode);
+            if (result.MessagesRequestThinkingOneOf1 == null && result.MessagesRequestThinkingOneOf2 == null && result.MessagesRequestThinkingOneOf3 == null && result.MessagesRequestThinkingOneOf4 == null) result.UnrecognizedValue = unionPayload;
+return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -103,21 +119,32 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
+            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
+            if (MessagesRequestThinkingOneOf1 == null && MessagesRequestThinkingOneOf2 == null && MessagesRequestThinkingOneOf3 == null && MessagesRequestThinkingOneOf4 == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            if (MessagesRequestThinkingOneOf1 != null && MessagesRequestThinkingOneOf2 == null && MessagesRequestThinkingOneOf3 == null && MessagesRequestThinkingOneOf4 == null) { if (MessagesRequestThinkingOneOf1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, MessagesRequestThinkingOneOf1); return; }
+            if (MessagesRequestThinkingOneOf2 != null && MessagesRequestThinkingOneOf1 == null && MessagesRequestThinkingOneOf3 == null && MessagesRequestThinkingOneOf4 == null) { if (MessagesRequestThinkingOneOf2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, MessagesRequestThinkingOneOf2); return; }
+            if (MessagesRequestThinkingOneOf3 != null && MessagesRequestThinkingOneOf1 == null && MessagesRequestThinkingOneOf2 == null && MessagesRequestThinkingOneOf4 == null) { if (MessagesRequestThinkingOneOf3 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, MessagesRequestThinkingOneOf3); return; }
+            if (MessagesRequestThinkingOneOf4 != null && MessagesRequestThinkingOneOf1 == null && MessagesRequestThinkingOneOf2 == null && MessagesRequestThinkingOneOf3 == null) { if (MessagesRequestThinkingOneOf4 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, MessagesRequestThinkingOneOf4); return; }
+
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             if(MessagesRequestThinkingOneOf1 != null)
             {
+                if (MessagesRequestThinkingOneOf1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestThinkingOneOf1>(null, MessagesRequestThinkingOneOf1);
             }
             else if(MessagesRequestThinkingOneOf2 != null)
             {
+                if (MessagesRequestThinkingOneOf2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestThinkingOneOf2>(null, MessagesRequestThinkingOneOf2);
             }
             else if(MessagesRequestThinkingOneOf3 != null)
             {
+                if (MessagesRequestThinkingOneOf3 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestThinkingOneOf3>(null, MessagesRequestThinkingOneOf3);
             }
             else if(MessagesRequestThinkingOneOf4 != null)
             {
+                if (MessagesRequestThinkingOneOf4 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestThinkingOneOf4>(null, MessagesRequestThinkingOneOf4);
             }
         }

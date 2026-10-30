@@ -11,1208 +11,1676 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ImageGenerationProviderPreferencesOptions : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("ai21") is { } nullNodeAi21 && nullNodeAi21.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Ai21 = null;
+            if (parseNode.GetChildNode("aion-labs") is { } nullNodeAionLabs && nullNodeAionLabs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AionLabs = null;
+            if (parseNode.GetChildNode("akashml") is { } nullNodeAkashml && nullNodeAkashml.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Akashml = null;
+            if (parseNode.GetChildNode("alibaba") is { } nullNodeAlibaba && nullNodeAlibaba.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Alibaba = null;
+            if (parseNode.GetChildNode("amazon-bedrock") is { } nullNodeAmazonBedrock && nullNodeAmazonBedrock.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AmazonBedrock = null;
+            if (parseNode.GetChildNode("amazon-bedrock/claude-on-aws") is { } nullNodeAmazonBedrockClaudeOnAws && nullNodeAmazonBedrockClaudeOnAws.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AmazonBedrockClaudeOnAws = null;
+            if (parseNode.GetChildNode("amazon-nova") is { } nullNodeAmazonNova && nullNodeAmazonNova.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AmazonNova = null;
+            if (parseNode.GetChildNode("ambient") is { } nullNodeAmbient && nullNodeAmbient.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Ambient = null;
+            if (parseNode.GetChildNode("anthropic") is { } nullNodeAnthropic && nullNodeAnthropic.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Anthropic = null;
+            if (parseNode.GetChildNode("anthropic/2") is { } nullNodeAnthropic2 && nullNodeAnthropic2.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Anthropic2 = null;
+            if (parseNode.GetChildNode("anyscale") is { } nullNodeAnyscale && nullNodeAnyscale.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Anyscale = null;
+            if (parseNode.GetChildNode("arcee-ai") is { } nullNodeArceeAi && nullNodeArceeAi.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ArceeAi = null;
+            if (parseNode.GetChildNode("assemblyai") is { } nullNodeAssemblyai && nullNodeAssemblyai.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Assemblyai = null;
+            if (parseNode.GetChildNode("atlas-cloud") is { } nullNodeAtlasCloud && nullNodeAtlasCloud.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AtlasCloud = null;
+            if (parseNode.GetChildNode("atoma") is { } nullNodeAtoma && nullNodeAtoma.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Atoma = null;
+            if (parseNode.GetChildNode("avian") is { } nullNodeAvian && nullNodeAvian.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Avian = null;
+            if (parseNode.GetChildNode("azure") is { } nullNodeAzure && nullNodeAzure.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Azure = null;
+            if (parseNode.GetChildNode("baidu") is { } nullNodeBaidu && nullNodeBaidu.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Baidu = null;
+            if (parseNode.GetChildNode("baseten") is { } nullNodeBaseten && nullNodeBaseten.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Baseten = null;
+            if (parseNode.GetChildNode("black-forest-labs") is { } nullNodeBlackForestLabs && nullNodeBlackForestLabs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BlackForestLabs = null;
+            if (parseNode.GetChildNode("byteplus") is { } nullNodeByteplus && nullNodeByteplus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Byteplus = null;
+            if (parseNode.GetChildNode("centml") is { } nullNodeCentml && nullNodeCentml.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Centml = null;
+            if (parseNode.GetChildNode("cerebras") is { } nullNodeCerebras && nullNodeCerebras.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Cerebras = null;
+            if (parseNode.GetChildNode("chutes") is { } nullNodeChutes && nullNodeChutes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Chutes = null;
+            if (parseNode.GetChildNode("cirrascale") is { } nullNodeCirrascale && nullNodeCirrascale.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Cirrascale = null;
+            if (parseNode.GetChildNode("clarifai") is { } nullNodeClarifai && nullNodeClarifai.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Clarifai = null;
+            if (parseNode.GetChildNode("claude-on-aws") is { } nullNodeClaudeOnAws && nullNodeClaudeOnAws.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClaudeOnAws = null;
+            if (parseNode.GetChildNode("cloudflare") is { } nullNodeCloudflare && nullNodeCloudflare.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Cloudflare = null;
+            if (parseNode.GetChildNode("cohere") is { } nullNodeCohere && nullNodeCohere.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Cohere = null;
+            if (parseNode.GetChildNode("coreweave") is { } nullNodeCoreweave && nullNodeCoreweave.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Coreweave = null;
+            if (parseNode.GetChildNode("cosine") is { } nullNodeCosine && nullNodeCosine.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Cosine = null;
+            if (parseNode.GetChildNode("crofai") is { } nullNodeCrofai && nullNodeCrofai.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Crofai = null;
+            if (parseNode.GetChildNode("crucible") is { } nullNodeCrucible && nullNodeCrucible.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Crucible = null;
+            if (parseNode.GetChildNode("crusoe") is { } nullNodeCrusoe && nullNodeCrusoe.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Crusoe = null;
+            if (parseNode.GetChildNode("darkbloom") is { } nullNodeDarkbloom && nullNodeDarkbloom.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Darkbloom = null;
+            if (parseNode.GetChildNode("databricks") is { } nullNodeDatabricks && nullNodeDatabricks.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Databricks = null;
+            if (parseNode.GetChildNode("decart") is { } nullNodeDecart && nullNodeDecart.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Decart = null;
+            if (parseNode.GetChildNode("deepgram") is { } nullNodeDeepgram && nullNodeDeepgram.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Deepgram = null;
+            if (parseNode.GetChildNode("deepinfra") is { } nullNodeDeepinfra && nullNodeDeepinfra.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Deepinfra = null;
+            if (parseNode.GetChildNode("deepseek") is { } nullNodeDeepseek && nullNodeDeepseek.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Deepseek = null;
+            if (parseNode.GetChildNode("dekallm") is { } nullNodeDekallm && nullNodeDekallm.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Dekallm = null;
+            if (parseNode.GetChildNode("digitalocean") is { } nullNodeDigitalocean && nullNodeDigitalocean.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Digitalocean = null;
+            if (parseNode.GetChildNode("elevenlabs") is { } nullNodeElevenlabs && nullNodeElevenlabs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Elevenlabs = null;
+            if (parseNode.GetChildNode("enfer") is { } nullNodeEnfer && nullNodeEnfer.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Enfer = null;
+            if (parseNode.GetChildNode("fake-provider") is { } nullNodeFakeProvider && nullNodeFakeProvider.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FakeProvider = null;
+            if (parseNode.GetChildNode("featherless") is { } nullNodeFeatherless && nullNodeFeatherless.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Featherless = null;
+            if (parseNode.GetChildNode("fireworks") is { } nullNodeFireworks && nullNodeFireworks.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Fireworks = null;
+            if (parseNode.GetChildNode("fish-audio") is { } nullNodeFishAudio && nullNodeFishAudio.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FishAudio = null;
+            if (parseNode.GetChildNode("friendli") is { } nullNodeFriendli && nullNodeFriendli.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Friendli = null;
+            if (parseNode.GetChildNode("gmicloud") is { } nullNodeGmicloud && nullNodeGmicloud.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Gmicloud = null;
+            if (parseNode.GetChildNode("google-ai-studio") is { } nullNodeGoogleAiStudio && nullNodeGoogleAiStudio.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GoogleAiStudio = null;
+            if (parseNode.GetChildNode("google-vertex") is { } nullNodeGoogleVertex && nullNodeGoogleVertex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GoogleVertex = null;
+            if (parseNode.GetChildNode("gopomelo") is { } nullNodeGopomelo && nullNodeGopomelo.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Gopomelo = null;
+            if (parseNode.GetChildNode("groq") is { } nullNodeGroq && nullNodeGroq.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Groq = null;
+            if (parseNode.GetChildNode("heygen") is { } nullNodeHeygen && nullNodeHeygen.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Heygen = null;
+            if (parseNode.GetChildNode("huggingface") is { } nullNodeHuggingface && nullNodeHuggingface.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Huggingface = null;
+            if (parseNode.GetChildNode("hyperbolic") is { } nullNodeHyperbolic && nullNodeHyperbolic.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Hyperbolic = null;
+            if (parseNode.GetChildNode("hyperbolic-quantized") is { } nullNodeHyperbolicQuantized && nullNodeHyperbolicQuantized.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HyperbolicQuantized = null;
+            if (parseNode.GetChildNode("inception") is { } nullNodeInception && nullNodeInception.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Inception = null;
+            if (parseNode.GetChildNode("inceptron") is { } nullNodeInceptron && nullNodeInceptron.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Inceptron = null;
+            if (parseNode.GetChildNode("inferact-vllm") is { } nullNodeInferactVllm && nullNodeInferactVllm.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InferactVllm = null;
+            if (parseNode.GetChildNode("inference-net") is { } nullNodeInferenceNet && nullNodeInferenceNet.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InferenceNet = null;
+            if (parseNode.GetChildNode("infermatic") is { } nullNodeInfermatic && nullNodeInfermatic.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Infermatic = null;
+            if (parseNode.GetChildNode("inflection") is { } nullNodeInflection && nullNodeInflection.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Inflection = null;
+            if (parseNode.GetChildNode("inocloud") is { } nullNodeInocloud && nullNodeInocloud.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Inocloud = null;
+            if (parseNode.GetChildNode("io-net") is { } nullNodeIoNet && nullNodeIoNet.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IoNet = null;
+            if (parseNode.GetChildNode("ionstream") is { } nullNodeIonstream && nullNodeIonstream.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Ionstream = null;
+            if (parseNode.GetChildNode("klusterai") is { } nullNodeKlusterai && nullNodeKlusterai.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Klusterai = null;
+            if (parseNode.GetChildNode("krea") is { } nullNodeKrea && nullNodeKrea.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Krea = null;
+            if (parseNode.GetChildNode("kt") is { } nullNodeKt && nullNodeKt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Kt = null;
+            if (parseNode.GetChildNode("lambda") is { } nullNodeLambda && nullNodeLambda.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Lambda = null;
+            if (parseNode.GetChildNode("lepton") is { } nullNodeLepton && nullNodeLepton.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Lepton = null;
+            if (parseNode.GetChildNode("liquid") is { } nullNodeLiquid && nullNodeLiquid.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Liquid = null;
+            if (parseNode.GetChildNode("lynn") is { } nullNodeLynn && nullNodeLynn.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Lynn = null;
+            if (parseNode.GetChildNode("lynn-private") is { } nullNodeLynnPrivate && nullNodeLynnPrivate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LynnPrivate = null;
+            if (parseNode.GetChildNode("makora") is { } nullNodeMakora && nullNodeMakora.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Makora = null;
+            if (parseNode.GetChildNode("mancer") is { } nullNodeMancer && nullNodeMancer.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Mancer = null;
+            if (parseNode.GetChildNode("mancer-old") is { } nullNodeMancerOld && nullNodeMancerOld.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MancerOld = null;
+            if (parseNode.GetChildNode("mara") is { } nullNodeMara && nullNodeMara.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Mara = null;
+            if (parseNode.GetChildNode("meta") is { } nullNodeMeta && nullNodeMeta.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Meta = null;
+            if (parseNode.GetChildNode("minimax") is { } nullNodeMinimax && nullNodeMinimax.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Minimax = null;
+            if (parseNode.GetChildNode("mistral") is { } nullNodeMistral && nullNodeMistral.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Mistral = null;
+            if (parseNode.GetChildNode("modal") is { } nullNodeModal && nullNodeModal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Modal = null;
+            if (parseNode.GetChildNode("modelrun") is { } nullNodeModelrun && nullNodeModelrun.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Modelrun = null;
+            if (parseNode.GetChildNode("modular") is { } nullNodeModular && nullNodeModular.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Modular = null;
+            if (parseNode.GetChildNode("moonshotai") is { } nullNodeMoonshotai && nullNodeMoonshotai.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Moonshotai = null;
+            if (parseNode.GetChildNode("morph") is { } nullNodeMorph && nullNodeMorph.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Morph = null;
+            if (parseNode.GetChildNode("ncompass") is { } nullNodeNcompass && nullNodeNcompass.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Ncompass = null;
+            if (parseNode.GetChildNode("near-ai") is { } nullNodeNearAi && nullNodeNearAi.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NearAi = null;
+            if (parseNode.GetChildNode("nebius") is { } nullNodeNebius && nullNodeNebius.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Nebius = null;
+            if (parseNode.GetChildNode("nex-agi") is { } nullNodeNexAgi && nullNodeNexAgi.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NexAgi = null;
+            if (parseNode.GetChildNode("nextbit") is { } nullNodeNextbit && nullNodeNextbit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Nextbit = null;
+            if (parseNode.GetChildNode("nineteen") is { } nullNodeNineteen && nullNodeNineteen.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Nineteen = null;
+            if (parseNode.GetChildNode("novita") is { } nullNodeNovita && nullNodeNovita.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Novita = null;
+            if (parseNode.GetChildNode("nvidia") is { } nullNodeNvidia && nullNodeNvidia.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Nvidia = null;
+            if (parseNode.GetChildNode("octoai") is { } nullNodeOctoai && nullNodeOctoai.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Octoai = null;
+            if (parseNode.GetChildNode("ollama") is { } nullNodeOllama && nullNodeOllama.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Ollama = null;
+            if (parseNode.GetChildNode("openai") is { } nullNodeOpenai && nullNodeOpenai.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Openai = null;
+            if (parseNode.GetChildNode("open-inference") is { } nullNodeOpenInference && nullNodeOpenInference.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OpenInference = null;
+            if (parseNode.GetChildNode("parasail") is { } nullNodeParasail && nullNodeParasail.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Parasail = null;
+            if (parseNode.GetChildNode("pareto-alpha") is { } nullNodeParetoAlpha && nullNodeParetoAlpha.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ParetoAlpha = null;
+            if (parseNode.GetChildNode("particle-ai") is { } nullNodeParticleAi && nullNodeParticleAi.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ParticleAi = null;
+            if (parseNode.GetChildNode("perceptron") is { } nullNodePerceptron && nullNodePerceptron.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Perceptron = null;
+            if (parseNode.GetChildNode("perplexity") is { } nullNodePerplexity && nullNodePerplexity.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Perplexity = null;
+            if (parseNode.GetChildNode("phala") is { } nullNodePhala && nullNodePhala.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Phala = null;
+            if (parseNode.GetChildNode("poolside") is { } nullNodePoolside && nullNodePoolside.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Poolside = null;
+            if (parseNode.GetChildNode("primalabs") is { } nullNodePrimalabs && nullNodePrimalabs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Primalabs = null;
+            if (parseNode.GetChildNode("primeintellect") is { } nullNodePrimeintellect && nullNodePrimeintellect.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Primeintellect = null;
+            if (parseNode.GetChildNode("quiver") is { } nullNodeQuiver && nullNodeQuiver.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Quiver = null;
+            if (parseNode.GetChildNode("recraft") is { } nullNodeRecraft && nullNodeRecraft.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Recraft = null;
+            if (parseNode.GetChildNode("recursal") is { } nullNodeRecursal && nullNodeRecursal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Recursal = null;
+            if (parseNode.GetChildNode("recursive") is { } nullNodeRecursive && nullNodeRecursive.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Recursive = null;
+            if (parseNode.GetChildNode("reflection") is { } nullNodeReflection && nullNodeReflection.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Reflection = null;
+            if (parseNode.GetChildNode("reka") is { } nullNodeReka && nullNodeReka.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Reka = null;
+            if (parseNode.GetChildNode("relace") is { } nullNodeRelace && nullNodeRelace.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Relace = null;
+            if (parseNode.GetChildNode("replicate") is { } nullNodeReplicate && nullNodeReplicate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Replicate = null;
+            if (parseNode.GetChildNode("respan") is { } nullNodeRespan && nullNodeRespan.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Respan = null;
+            if (parseNode.GetChildNode("runway") is { } nullNodeRunway && nullNodeRunway.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Runway = null;
+            if (parseNode.GetChildNode("sail-research") is { } nullNodeSailResearch && nullNodeSailResearch.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SailResearch = null;
+            if (parseNode.GetChildNode("sakana") is { } nullNodeSakana && nullNodeSakana.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Sakana = null;
+            if (parseNode.GetChildNode("sakana-ai") is { } nullNodeSakanaAi && nullNodeSakanaAi.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SakanaAi = null;
+            if (parseNode.GetChildNode("sambanova") is { } nullNodeSambanova && nullNodeSambanova.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Sambanova = null;
+            if (parseNode.GetChildNode("sambanova-cloaked") is { } nullNodeSambanovaCloaked && nullNodeSambanovaCloaked.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SambanovaCloaked = null;
+            if (parseNode.GetChildNode("scaledown") is { } nullNodeScaledown && nullNodeScaledown.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Scaledown = null;
+            if (parseNode.GetChildNode("seed") is { } nullNodeSeed && nullNodeSeed.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Seed = null;
+            if (parseNode.GetChildNode("sf-compute") is { } nullNodeSfCompute && nullNodeSfCompute.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SfCompute = null;
+            if (parseNode.GetChildNode("siliconflow") is { } nullNodeSiliconflow && nullNodeSiliconflow.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Siliconflow = null;
+            if (parseNode.GetChildNode("sourceful") is { } nullNodeSourceful && nullNodeSourceful.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Sourceful = null;
+            if (parseNode.GetChildNode("stealth") is { } nullNodeStealth && nullNodeStealth.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Stealth = null;
+            if (parseNode.GetChildNode("stepfun") is { } nullNodeStepfun && nullNodeStepfun.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Stepfun = null;
+            if (parseNode.GetChildNode("streamlake") is { } nullNodeStreamlake && nullNodeStreamlake.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Streamlake = null;
+            if (parseNode.GetChildNode("switchpoint") is { } nullNodeSwitchpoint && nullNodeSwitchpoint.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Switchpoint = null;
+            if (parseNode.GetChildNode("targon") is { } nullNodeTargon && nullNodeTargon.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Targon = null;
+            if (parseNode.GetChildNode("tencent") is { } nullNodeTencent && nullNodeTencent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tencent = null;
+            if (parseNode.GetChildNode("tenstorrent") is { } nullNodeTenstorrent && nullNodeTenstorrent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tenstorrent = null;
+            if (parseNode.GetChildNode("thinkingmachines") is { } nullNodeThinkingmachines && nullNodeThinkingmachines.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Thinkingmachines = null;
+            if (parseNode.GetChildNode("together") is { } nullNodeTogether && nullNodeTogether.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Together = null;
+            if (parseNode.GetChildNode("together-lite") is { } nullNodeTogetherLite && nullNodeTogetherLite.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TogetherLite = null;
+            if (parseNode.GetChildNode("typesafe") is { } nullNodeTypesafe && nullNodeTypesafe.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Typesafe = null;
+            if (parseNode.GetChildNode("ubicloud") is { } nullNodeUbicloud && nullNodeUbicloud.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Ubicloud = null;
+            if (parseNode.GetChildNode("unbiased") is { } nullNodeUnbiased && nullNodeUnbiased.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Unbiased = null;
+            if (parseNode.GetChildNode("upstage") is { } nullNodeUpstage && nullNodeUpstage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Upstage = null;
+            if (parseNode.GetChildNode("venice") is { } nullNodeVenice && nullNodeVenice.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Venice = null;
+            if (parseNode.GetChildNode("voyageai") is { } nullNodeVoyageai && nullNodeVoyageai.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Voyageai = null;
+            if (parseNode.GetChildNode("wafer") is { } nullNodeWafer && nullNodeWafer.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Wafer = null;
+            if (parseNode.GetChildNode("wandb") is { } nullNodeWandb && nullNodeWandb.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Wandb = null;
+            if (parseNode.GetChildNode("wandb-legacy") is { } nullNodeWandbLegacy && nullNodeWandbLegacy.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WandbLegacy = null;
+            if (parseNode.GetChildNode("xai") is { } nullNodeXai && nullNodeXai.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Xai = null;
+            if (parseNode.GetChildNode("xiaomi") is { } nullNodeXiaomi && nullNodeXiaomi.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Xiaomi = null;
+            if (parseNode.GetChildNode("z-ai") is { } nullNodeZAi && nullNodeZAi.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ZAi = null;
+            if (parseNode.GetChildNode("01ai") is { } nullNodeZeroOneai && nullNodeZeroOneai.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ZeroOneai = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The ai21 property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAi21? Ai21 { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAi21? Ai21 { get => _explicitNullValueAi21; set { _explicitNullValueAi21 = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ai21"); else _explicitNullProperties?.Remove("ai21"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAi21? _explicitNullValueAi21 = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAi21 Ai21 { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAi21 Ai21 { get => _explicitNullValueAi21; set { _explicitNullValueAi21 = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ai21"); else _explicitNullProperties?.Remove("ai21"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAi21 _explicitNullValueAi21 = default!;
 #endif
         /// <summary>The aionLabs property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAionLabs? AionLabs { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAionLabs? AionLabs { get => _explicitNullValueAionLabs; set { _explicitNullValueAionLabs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("aion-labs"); else _explicitNullProperties?.Remove("aion-labs"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAionLabs? _explicitNullValueAionLabs = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAionLabs AionLabs { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAionLabs AionLabs { get => _explicitNullValueAionLabs; set { _explicitNullValueAionLabs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("aion-labs"); else _explicitNullProperties?.Remove("aion-labs"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAionLabs _explicitNullValueAionLabs = default!;
 #endif
         /// <summary>The akashml property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAkashml? Akashml { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAkashml? Akashml { get => _explicitNullValueAkashml; set { _explicitNullValueAkashml = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("akashml"); else _explicitNullProperties?.Remove("akashml"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAkashml? _explicitNullValueAkashml = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAkashml Akashml { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAkashml Akashml { get => _explicitNullValueAkashml; set { _explicitNullValueAkashml = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("akashml"); else _explicitNullProperties?.Remove("akashml"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAkashml _explicitNullValueAkashml = default!;
 #endif
         /// <summary>The alibaba property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAlibaba? Alibaba { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAlibaba? Alibaba { get => _explicitNullValueAlibaba; set { _explicitNullValueAlibaba = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("alibaba"); else _explicitNullProperties?.Remove("alibaba"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAlibaba? _explicitNullValueAlibaba = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAlibaba Alibaba { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAlibaba Alibaba { get => _explicitNullValueAlibaba; set { _explicitNullValueAlibaba = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("alibaba"); else _explicitNullProperties?.Remove("alibaba"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAlibaba _explicitNullValueAlibaba = default!;
 #endif
         /// <summary>The amazonBedrock property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAmazonBedrock? AmazonBedrock { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAmazonBedrock? AmazonBedrock { get => _explicitNullValueAmazonBedrock; set { _explicitNullValueAmazonBedrock = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("amazon-bedrock"); else _explicitNullProperties?.Remove("amazon-bedrock"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAmazonBedrock? _explicitNullValueAmazonBedrock = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAmazonBedrock AmazonBedrock { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAmazonBedrock AmazonBedrock { get => _explicitNullValueAmazonBedrock; set { _explicitNullValueAmazonBedrock = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("amazon-bedrock"); else _explicitNullProperties?.Remove("amazon-bedrock"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAmazonBedrock _explicitNullValueAmazonBedrock = default!;
 #endif
         /// <summary>The amazonBedrockClaudeOnAws property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAmazonBedrockClaudeOnAws? AmazonBedrockClaudeOnAws { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAmazonBedrockClaudeOnAws? AmazonBedrockClaudeOnAws { get => _explicitNullValueAmazonBedrockClaudeOnAws; set { _explicitNullValueAmazonBedrockClaudeOnAws = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("amazon-bedrock/claude-on-aws"); else _explicitNullProperties?.Remove("amazon-bedrock/claude-on-aws"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAmazonBedrockClaudeOnAws? _explicitNullValueAmazonBedrockClaudeOnAws = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAmazonBedrockClaudeOnAws AmazonBedrockClaudeOnAws { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAmazonBedrockClaudeOnAws AmazonBedrockClaudeOnAws { get => _explicitNullValueAmazonBedrockClaudeOnAws; set { _explicitNullValueAmazonBedrockClaudeOnAws = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("amazon-bedrock/claude-on-aws"); else _explicitNullProperties?.Remove("amazon-bedrock/claude-on-aws"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAmazonBedrockClaudeOnAws _explicitNullValueAmazonBedrockClaudeOnAws = default!;
 #endif
         /// <summary>The amazonNova property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAmazonNova? AmazonNova { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAmazonNova? AmazonNova { get => _explicitNullValueAmazonNova; set { _explicitNullValueAmazonNova = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("amazon-nova"); else _explicitNullProperties?.Remove("amazon-nova"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAmazonNova? _explicitNullValueAmazonNova = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAmazonNova AmazonNova { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAmazonNova AmazonNova { get => _explicitNullValueAmazonNova; set { _explicitNullValueAmazonNova = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("amazon-nova"); else _explicitNullProperties?.Remove("amazon-nova"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAmazonNova _explicitNullValueAmazonNova = default!;
 #endif
         /// <summary>The ambient property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAmbient? Ambient { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAmbient? Ambient { get => _explicitNullValueAmbient; set { _explicitNullValueAmbient = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ambient"); else _explicitNullProperties?.Remove("ambient"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAmbient? _explicitNullValueAmbient = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAmbient Ambient { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAmbient Ambient { get => _explicitNullValueAmbient; set { _explicitNullValueAmbient = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ambient"); else _explicitNullProperties?.Remove("ambient"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAmbient _explicitNullValueAmbient = default!;
 #endif
         /// <summary>The anthropic property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAnthropic? Anthropic { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAnthropic? Anthropic { get => _explicitNullValueAnthropic; set { _explicitNullValueAnthropic = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("anthropic"); else _explicitNullProperties?.Remove("anthropic"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAnthropic? _explicitNullValueAnthropic = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAnthropic Anthropic { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAnthropic Anthropic { get => _explicitNullValueAnthropic; set { _explicitNullValueAnthropic = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("anthropic"); else _explicitNullProperties?.Remove("anthropic"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAnthropic _explicitNullValueAnthropic = default!;
 #endif
         /// <summary>The anthropic2 property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAnthropic2? Anthropic2 { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAnthropic2? Anthropic2 { get => _explicitNullValueAnthropic2; set { _explicitNullValueAnthropic2 = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("anthropic/2"); else _explicitNullProperties?.Remove("anthropic/2"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAnthropic2? _explicitNullValueAnthropic2 = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAnthropic2 Anthropic2 { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAnthropic2 Anthropic2 { get => _explicitNullValueAnthropic2; set { _explicitNullValueAnthropic2 = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("anthropic/2"); else _explicitNullProperties?.Remove("anthropic/2"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAnthropic2 _explicitNullValueAnthropic2 = default!;
 #endif
         /// <summary>The anyscale property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAnyscale? Anyscale { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAnyscale? Anyscale { get => _explicitNullValueAnyscale; set { _explicitNullValueAnyscale = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("anyscale"); else _explicitNullProperties?.Remove("anyscale"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAnyscale? _explicitNullValueAnyscale = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAnyscale Anyscale { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAnyscale Anyscale { get => _explicitNullValueAnyscale; set { _explicitNullValueAnyscale = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("anyscale"); else _explicitNullProperties?.Remove("anyscale"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAnyscale _explicitNullValueAnyscale = default!;
 #endif
         /// <summary>The arceeAi property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsArceeAi? ArceeAi { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsArceeAi? ArceeAi { get => _explicitNullValueArceeAi; set { _explicitNullValueArceeAi = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("arcee-ai"); else _explicitNullProperties?.Remove("arcee-ai"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsArceeAi? _explicitNullValueArceeAi = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsArceeAi ArceeAi { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsArceeAi ArceeAi { get => _explicitNullValueArceeAi; set { _explicitNullValueArceeAi = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("arcee-ai"); else _explicitNullProperties?.Remove("arcee-ai"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsArceeAi _explicitNullValueArceeAi = default!;
 #endif
         /// <summary>The assemblyai property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAssemblyai? Assemblyai { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAssemblyai? Assemblyai { get => _explicitNullValueAssemblyai; set { _explicitNullValueAssemblyai = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("assemblyai"); else _explicitNullProperties?.Remove("assemblyai"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAssemblyai? _explicitNullValueAssemblyai = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAssemblyai Assemblyai { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAssemblyai Assemblyai { get => _explicitNullValueAssemblyai; set { _explicitNullValueAssemblyai = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("assemblyai"); else _explicitNullProperties?.Remove("assemblyai"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAssemblyai _explicitNullValueAssemblyai = default!;
 #endif
         /// <summary>The atlasCloud property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAtlasCloud? AtlasCloud { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAtlasCloud? AtlasCloud { get => _explicitNullValueAtlasCloud; set { _explicitNullValueAtlasCloud = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("atlas-cloud"); else _explicitNullProperties?.Remove("atlas-cloud"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAtlasCloud? _explicitNullValueAtlasCloud = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAtlasCloud AtlasCloud { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAtlasCloud AtlasCloud { get => _explicitNullValueAtlasCloud; set { _explicitNullValueAtlasCloud = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("atlas-cloud"); else _explicitNullProperties?.Remove("atlas-cloud"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAtlasCloud _explicitNullValueAtlasCloud = default!;
 #endif
         /// <summary>The atoma property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAtoma? Atoma { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAtoma? Atoma { get => _explicitNullValueAtoma; set { _explicitNullValueAtoma = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("atoma"); else _explicitNullProperties?.Remove("atoma"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAtoma? _explicitNullValueAtoma = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAtoma Atoma { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAtoma Atoma { get => _explicitNullValueAtoma; set { _explicitNullValueAtoma = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("atoma"); else _explicitNullProperties?.Remove("atoma"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAtoma _explicitNullValueAtoma = default!;
 #endif
         /// <summary>The avian property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAvian? Avian { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAvian? Avian { get => _explicitNullValueAvian; set { _explicitNullValueAvian = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("avian"); else _explicitNullProperties?.Remove("avian"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAvian? _explicitNullValueAvian = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAvian Avian { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAvian Avian { get => _explicitNullValueAvian; set { _explicitNullValueAvian = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("avian"); else _explicitNullProperties?.Remove("avian"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAvian _explicitNullValueAvian = default!;
 #endif
         /// <summary>The azure property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAzure? Azure { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAzure? Azure { get => _explicitNullValueAzure; set { _explicitNullValueAzure = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("azure"); else _explicitNullProperties?.Remove("azure"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAzure? _explicitNullValueAzure = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAzure Azure { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAzure Azure { get => _explicitNullValueAzure; set { _explicitNullValueAzure = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("azure"); else _explicitNullProperties?.Remove("azure"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsAzure _explicitNullValueAzure = default!;
 #endif
         /// <summary>The baidu property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsBaidu? Baidu { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsBaidu? Baidu { get => _explicitNullValueBaidu; set { _explicitNullValueBaidu = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baidu"); else _explicitNullProperties?.Remove("baidu"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsBaidu? _explicitNullValueBaidu = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsBaidu Baidu { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsBaidu Baidu { get => _explicitNullValueBaidu; set { _explicitNullValueBaidu = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baidu"); else _explicitNullProperties?.Remove("baidu"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsBaidu _explicitNullValueBaidu = default!;
 #endif
         /// <summary>The baseten property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsBaseten? Baseten { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsBaseten? Baseten { get => _explicitNullValueBaseten; set { _explicitNullValueBaseten = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baseten"); else _explicitNullProperties?.Remove("baseten"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsBaseten? _explicitNullValueBaseten = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsBaseten Baseten { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsBaseten Baseten { get => _explicitNullValueBaseten; set { _explicitNullValueBaseten = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baseten"); else _explicitNullProperties?.Remove("baseten"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsBaseten _explicitNullValueBaseten = default!;
 #endif
         /// <summary>The blackForestLabs property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsBlackForestLabs? BlackForestLabs { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsBlackForestLabs? BlackForestLabs { get => _explicitNullValueBlackForestLabs; set { _explicitNullValueBlackForestLabs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("black-forest-labs"); else _explicitNullProperties?.Remove("black-forest-labs"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsBlackForestLabs? _explicitNullValueBlackForestLabs = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsBlackForestLabs BlackForestLabs { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsBlackForestLabs BlackForestLabs { get => _explicitNullValueBlackForestLabs; set { _explicitNullValueBlackForestLabs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("black-forest-labs"); else _explicitNullProperties?.Remove("black-forest-labs"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsBlackForestLabs _explicitNullValueBlackForestLabs = default!;
 #endif
         /// <summary>The byteplus property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsByteplus? Byteplus { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsByteplus? Byteplus { get => _explicitNullValueByteplus; set { _explicitNullValueByteplus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("byteplus"); else _explicitNullProperties?.Remove("byteplus"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsByteplus? _explicitNullValueByteplus = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsByteplus Byteplus { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsByteplus Byteplus { get => _explicitNullValueByteplus; set { _explicitNullValueByteplus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("byteplus"); else _explicitNullProperties?.Remove("byteplus"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsByteplus _explicitNullValueByteplus = default!;
 #endif
         /// <summary>The centml property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsCentml? Centml { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsCentml? Centml { get => _explicitNullValueCentml; set { _explicitNullValueCentml = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("centml"); else _explicitNullProperties?.Remove("centml"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsCentml? _explicitNullValueCentml = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsCentml Centml { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsCentml Centml { get => _explicitNullValueCentml; set { _explicitNullValueCentml = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("centml"); else _explicitNullProperties?.Remove("centml"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsCentml _explicitNullValueCentml = default!;
 #endif
         /// <summary>The cerebras property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsCerebras? Cerebras { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsCerebras? Cerebras { get => _explicitNullValueCerebras; set { _explicitNullValueCerebras = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cerebras"); else _explicitNullProperties?.Remove("cerebras"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsCerebras? _explicitNullValueCerebras = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsCerebras Cerebras { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsCerebras Cerebras { get => _explicitNullValueCerebras; set { _explicitNullValueCerebras = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cerebras"); else _explicitNullProperties?.Remove("cerebras"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsCerebras _explicitNullValueCerebras = default!;
 #endif
         /// <summary>The chutes property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsChutes? Chutes { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsChutes? Chutes { get => _explicitNullValueChutes; set { _explicitNullValueChutes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chutes"); else _explicitNullProperties?.Remove("chutes"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsChutes? _explicitNullValueChutes = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsChutes Chutes { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsChutes Chutes { get => _explicitNullValueChutes; set { _explicitNullValueChutes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chutes"); else _explicitNullProperties?.Remove("chutes"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsChutes _explicitNullValueChutes = default!;
 #endif
         /// <summary>The cirrascale property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsCirrascale? Cirrascale { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsCirrascale? Cirrascale { get => _explicitNullValueCirrascale; set { _explicitNullValueCirrascale = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cirrascale"); else _explicitNullProperties?.Remove("cirrascale"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsCirrascale? _explicitNullValueCirrascale = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsCirrascale Cirrascale { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsCirrascale Cirrascale { get => _explicitNullValueCirrascale; set { _explicitNullValueCirrascale = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cirrascale"); else _explicitNullProperties?.Remove("cirrascale"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsCirrascale _explicitNullValueCirrascale = default!;
 #endif
         /// <summary>The clarifai property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsClarifai? Clarifai { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsClarifai? Clarifai { get => _explicitNullValueClarifai; set { _explicitNullValueClarifai = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("clarifai"); else _explicitNullProperties?.Remove("clarifai"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsClarifai? _explicitNullValueClarifai = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsClarifai Clarifai { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsClarifai Clarifai { get => _explicitNullValueClarifai; set { _explicitNullValueClarifai = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("clarifai"); else _explicitNullProperties?.Remove("clarifai"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsClarifai _explicitNullValueClarifai = default!;
 #endif
         /// <summary>The claudeOnAws property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsClaudeOnAws? ClaudeOnAws { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsClaudeOnAws? ClaudeOnAws { get => _explicitNullValueClaudeOnAws; set { _explicitNullValueClaudeOnAws = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("claude-on-aws"); else _explicitNullProperties?.Remove("claude-on-aws"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsClaudeOnAws? _explicitNullValueClaudeOnAws = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsClaudeOnAws ClaudeOnAws { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsClaudeOnAws ClaudeOnAws { get => _explicitNullValueClaudeOnAws; set { _explicitNullValueClaudeOnAws = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("claude-on-aws"); else _explicitNullProperties?.Remove("claude-on-aws"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsClaudeOnAws _explicitNullValueClaudeOnAws = default!;
 #endif
         /// <summary>The cloudflare property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsCloudflare? Cloudflare { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsCloudflare? Cloudflare { get => _explicitNullValueCloudflare; set { _explicitNullValueCloudflare = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cloudflare"); else _explicitNullProperties?.Remove("cloudflare"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsCloudflare? _explicitNullValueCloudflare = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsCloudflare Cloudflare { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsCloudflare Cloudflare { get => _explicitNullValueCloudflare; set { _explicitNullValueCloudflare = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cloudflare"); else _explicitNullProperties?.Remove("cloudflare"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsCloudflare _explicitNullValueCloudflare = default!;
 #endif
         /// <summary>The cohere property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsCohere? Cohere { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsCohere? Cohere { get => _explicitNullValueCohere; set { _explicitNullValueCohere = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cohere"); else _explicitNullProperties?.Remove("cohere"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsCohere? _explicitNullValueCohere = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsCohere Cohere { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsCohere Cohere { get => _explicitNullValueCohere; set { _explicitNullValueCohere = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cohere"); else _explicitNullProperties?.Remove("cohere"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsCohere _explicitNullValueCohere = default!;
 #endif
         /// <summary>The coreweave property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsCoreweave? Coreweave { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsCoreweave? Coreweave { get => _explicitNullValueCoreweave; set { _explicitNullValueCoreweave = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("coreweave"); else _explicitNullProperties?.Remove("coreweave"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsCoreweave? _explicitNullValueCoreweave = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsCoreweave Coreweave { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsCoreweave Coreweave { get => _explicitNullValueCoreweave; set { _explicitNullValueCoreweave = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("coreweave"); else _explicitNullProperties?.Remove("coreweave"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsCoreweave _explicitNullValueCoreweave = default!;
 #endif
         /// <summary>The cosine property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsCosine? Cosine { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsCosine? Cosine { get => _explicitNullValueCosine; set { _explicitNullValueCosine = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cosine"); else _explicitNullProperties?.Remove("cosine"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsCosine? _explicitNullValueCosine = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsCosine Cosine { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsCosine Cosine { get => _explicitNullValueCosine; set { _explicitNullValueCosine = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cosine"); else _explicitNullProperties?.Remove("cosine"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsCosine _explicitNullValueCosine = default!;
 #endif
         /// <summary>The crofai property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsCrofai? Crofai { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsCrofai? Crofai { get => _explicitNullValueCrofai; set { _explicitNullValueCrofai = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("crofai"); else _explicitNullProperties?.Remove("crofai"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsCrofai? _explicitNullValueCrofai = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsCrofai Crofai { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsCrofai Crofai { get => _explicitNullValueCrofai; set { _explicitNullValueCrofai = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("crofai"); else _explicitNullProperties?.Remove("crofai"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsCrofai _explicitNullValueCrofai = default!;
 #endif
         /// <summary>The crucible property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsCrucible? Crucible { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsCrucible? Crucible { get => _explicitNullValueCrucible; set { _explicitNullValueCrucible = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("crucible"); else _explicitNullProperties?.Remove("crucible"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsCrucible? _explicitNullValueCrucible = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsCrucible Crucible { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsCrucible Crucible { get => _explicitNullValueCrucible; set { _explicitNullValueCrucible = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("crucible"); else _explicitNullProperties?.Remove("crucible"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsCrucible _explicitNullValueCrucible = default!;
 #endif
         /// <summary>The crusoe property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsCrusoe? Crusoe { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsCrusoe? Crusoe { get => _explicitNullValueCrusoe; set { _explicitNullValueCrusoe = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("crusoe"); else _explicitNullProperties?.Remove("crusoe"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsCrusoe? _explicitNullValueCrusoe = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsCrusoe Crusoe { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsCrusoe Crusoe { get => _explicitNullValueCrusoe; set { _explicitNullValueCrusoe = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("crusoe"); else _explicitNullProperties?.Remove("crusoe"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsCrusoe _explicitNullValueCrusoe = default!;
 #endif
         /// <summary>The darkbloom property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsDarkbloom? Darkbloom { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsDarkbloom? Darkbloom { get => _explicitNullValueDarkbloom; set { _explicitNullValueDarkbloom = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("darkbloom"); else _explicitNullProperties?.Remove("darkbloom"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsDarkbloom? _explicitNullValueDarkbloom = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsDarkbloom Darkbloom { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsDarkbloom Darkbloom { get => _explicitNullValueDarkbloom; set { _explicitNullValueDarkbloom = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("darkbloom"); else _explicitNullProperties?.Remove("darkbloom"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsDarkbloom _explicitNullValueDarkbloom = default!;
 #endif
         /// <summary>The databricks property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsDatabricks? Databricks { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsDatabricks? Databricks { get => _explicitNullValueDatabricks; set { _explicitNullValueDatabricks = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("databricks"); else _explicitNullProperties?.Remove("databricks"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsDatabricks? _explicitNullValueDatabricks = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsDatabricks Databricks { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsDatabricks Databricks { get => _explicitNullValueDatabricks; set { _explicitNullValueDatabricks = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("databricks"); else _explicitNullProperties?.Remove("databricks"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsDatabricks _explicitNullValueDatabricks = default!;
 #endif
         /// <summary>The decart property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsDecart? Decart { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsDecart? Decart { get => _explicitNullValueDecart; set { _explicitNullValueDecart = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("decart"); else _explicitNullProperties?.Remove("decart"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsDecart? _explicitNullValueDecart = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsDecart Decart { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsDecart Decart { get => _explicitNullValueDecart; set { _explicitNullValueDecart = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("decart"); else _explicitNullProperties?.Remove("decart"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsDecart _explicitNullValueDecart = default!;
 #endif
         /// <summary>The deepgram property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsDeepgram? Deepgram { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsDeepgram? Deepgram { get => _explicitNullValueDeepgram; set { _explicitNullValueDeepgram = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deepgram"); else _explicitNullProperties?.Remove("deepgram"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsDeepgram? _explicitNullValueDeepgram = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsDeepgram Deepgram { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsDeepgram Deepgram { get => _explicitNullValueDeepgram; set { _explicitNullValueDeepgram = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deepgram"); else _explicitNullProperties?.Remove("deepgram"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsDeepgram _explicitNullValueDeepgram = default!;
 #endif
         /// <summary>The deepinfra property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsDeepinfra? Deepinfra { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsDeepinfra? Deepinfra { get => _explicitNullValueDeepinfra; set { _explicitNullValueDeepinfra = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deepinfra"); else _explicitNullProperties?.Remove("deepinfra"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsDeepinfra? _explicitNullValueDeepinfra = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsDeepinfra Deepinfra { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsDeepinfra Deepinfra { get => _explicitNullValueDeepinfra; set { _explicitNullValueDeepinfra = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deepinfra"); else _explicitNullProperties?.Remove("deepinfra"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsDeepinfra _explicitNullValueDeepinfra = default!;
 #endif
         /// <summary>The deepseek property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsDeepseek? Deepseek { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsDeepseek? Deepseek { get => _explicitNullValueDeepseek; set { _explicitNullValueDeepseek = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deepseek"); else _explicitNullProperties?.Remove("deepseek"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsDeepseek? _explicitNullValueDeepseek = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsDeepseek Deepseek { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsDeepseek Deepseek { get => _explicitNullValueDeepseek; set { _explicitNullValueDeepseek = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deepseek"); else _explicitNullProperties?.Remove("deepseek"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsDeepseek _explicitNullValueDeepseek = default!;
 #endif
         /// <summary>The dekallm property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsDekallm? Dekallm { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsDekallm? Dekallm { get => _explicitNullValueDekallm; set { _explicitNullValueDekallm = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dekallm"); else _explicitNullProperties?.Remove("dekallm"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsDekallm? _explicitNullValueDekallm = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsDekallm Dekallm { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsDekallm Dekallm { get => _explicitNullValueDekallm; set { _explicitNullValueDekallm = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dekallm"); else _explicitNullProperties?.Remove("dekallm"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsDekallm _explicitNullValueDekallm = default!;
 #endif
         /// <summary>The digitalocean property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsDigitalocean? Digitalocean { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsDigitalocean? Digitalocean { get => _explicitNullValueDigitalocean; set { _explicitNullValueDigitalocean = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("digitalocean"); else _explicitNullProperties?.Remove("digitalocean"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsDigitalocean? _explicitNullValueDigitalocean = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsDigitalocean Digitalocean { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsDigitalocean Digitalocean { get => _explicitNullValueDigitalocean; set { _explicitNullValueDigitalocean = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("digitalocean"); else _explicitNullProperties?.Remove("digitalocean"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsDigitalocean _explicitNullValueDigitalocean = default!;
 #endif
         /// <summary>The elevenlabs property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsElevenlabs? Elevenlabs { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsElevenlabs? Elevenlabs { get => _explicitNullValueElevenlabs; set { _explicitNullValueElevenlabs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("elevenlabs"); else _explicitNullProperties?.Remove("elevenlabs"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsElevenlabs? _explicitNullValueElevenlabs = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsElevenlabs Elevenlabs { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsElevenlabs Elevenlabs { get => _explicitNullValueElevenlabs; set { _explicitNullValueElevenlabs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("elevenlabs"); else _explicitNullProperties?.Remove("elevenlabs"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsElevenlabs _explicitNullValueElevenlabs = default!;
 #endif
         /// <summary>The enfer property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsEnfer? Enfer { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsEnfer? Enfer { get => _explicitNullValueEnfer; set { _explicitNullValueEnfer = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enfer"); else _explicitNullProperties?.Remove("enfer"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsEnfer? _explicitNullValueEnfer = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsEnfer Enfer { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsEnfer Enfer { get => _explicitNullValueEnfer; set { _explicitNullValueEnfer = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enfer"); else _explicitNullProperties?.Remove("enfer"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsEnfer _explicitNullValueEnfer = default!;
 #endif
         /// <summary>The fakeProvider property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsFakeProvider? FakeProvider { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsFakeProvider? FakeProvider { get => _explicitNullValueFakeProvider; set { _explicitNullValueFakeProvider = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fake-provider"); else _explicitNullProperties?.Remove("fake-provider"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsFakeProvider? _explicitNullValueFakeProvider = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsFakeProvider FakeProvider { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsFakeProvider FakeProvider { get => _explicitNullValueFakeProvider; set { _explicitNullValueFakeProvider = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fake-provider"); else _explicitNullProperties?.Remove("fake-provider"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsFakeProvider _explicitNullValueFakeProvider = default!;
 #endif
         /// <summary>The featherless property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsFeatherless? Featherless { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsFeatherless? Featherless { get => _explicitNullValueFeatherless; set { _explicitNullValueFeatherless = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("featherless"); else _explicitNullProperties?.Remove("featherless"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsFeatherless? _explicitNullValueFeatherless = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsFeatherless Featherless { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsFeatherless Featherless { get => _explicitNullValueFeatherless; set { _explicitNullValueFeatherless = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("featherless"); else _explicitNullProperties?.Remove("featherless"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsFeatherless _explicitNullValueFeatherless = default!;
 #endif
         /// <summary>The fireworks property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsFireworks? Fireworks { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsFireworks? Fireworks { get => _explicitNullValueFireworks; set { _explicitNullValueFireworks = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fireworks"); else _explicitNullProperties?.Remove("fireworks"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsFireworks? _explicitNullValueFireworks = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsFireworks Fireworks { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsFireworks Fireworks { get => _explicitNullValueFireworks; set { _explicitNullValueFireworks = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fireworks"); else _explicitNullProperties?.Remove("fireworks"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsFireworks _explicitNullValueFireworks = default!;
 #endif
         /// <summary>The fishAudio property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsFishAudio? FishAudio { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsFishAudio? FishAudio { get => _explicitNullValueFishAudio; set { _explicitNullValueFishAudio = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fish-audio"); else _explicitNullProperties?.Remove("fish-audio"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsFishAudio? _explicitNullValueFishAudio = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsFishAudio FishAudio { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsFishAudio FishAudio { get => _explicitNullValueFishAudio; set { _explicitNullValueFishAudio = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fish-audio"); else _explicitNullProperties?.Remove("fish-audio"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsFishAudio _explicitNullValueFishAudio = default!;
 #endif
         /// <summary>The friendli property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsFriendli? Friendli { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsFriendli? Friendli { get => _explicitNullValueFriendli; set { _explicitNullValueFriendli = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("friendli"); else _explicitNullProperties?.Remove("friendli"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsFriendli? _explicitNullValueFriendli = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsFriendli Friendli { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsFriendli Friendli { get => _explicitNullValueFriendli; set { _explicitNullValueFriendli = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("friendli"); else _explicitNullProperties?.Remove("friendli"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsFriendli _explicitNullValueFriendli = default!;
 #endif
         /// <summary>The gmicloud property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsGmicloud? Gmicloud { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsGmicloud? Gmicloud { get => _explicitNullValueGmicloud; set { _explicitNullValueGmicloud = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gmicloud"); else _explicitNullProperties?.Remove("gmicloud"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsGmicloud? _explicitNullValueGmicloud = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsGmicloud Gmicloud { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsGmicloud Gmicloud { get => _explicitNullValueGmicloud; set { _explicitNullValueGmicloud = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gmicloud"); else _explicitNullProperties?.Remove("gmicloud"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsGmicloud _explicitNullValueGmicloud = default!;
 #endif
         /// <summary>The googleAiStudio property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsGoogleAiStudio? GoogleAiStudio { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsGoogleAiStudio? GoogleAiStudio { get => _explicitNullValueGoogleAiStudio; set { _explicitNullValueGoogleAiStudio = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("google-ai-studio"); else _explicitNullProperties?.Remove("google-ai-studio"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsGoogleAiStudio? _explicitNullValueGoogleAiStudio = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsGoogleAiStudio GoogleAiStudio { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsGoogleAiStudio GoogleAiStudio { get => _explicitNullValueGoogleAiStudio; set { _explicitNullValueGoogleAiStudio = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("google-ai-studio"); else _explicitNullProperties?.Remove("google-ai-studio"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsGoogleAiStudio _explicitNullValueGoogleAiStudio = default!;
 #endif
         /// <summary>The googleVertex property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsGoogleVertex? GoogleVertex { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsGoogleVertex? GoogleVertex { get => _explicitNullValueGoogleVertex; set { _explicitNullValueGoogleVertex = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("google-vertex"); else _explicitNullProperties?.Remove("google-vertex"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsGoogleVertex? _explicitNullValueGoogleVertex = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsGoogleVertex GoogleVertex { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsGoogleVertex GoogleVertex { get => _explicitNullValueGoogleVertex; set { _explicitNullValueGoogleVertex = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("google-vertex"); else _explicitNullProperties?.Remove("google-vertex"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsGoogleVertex _explicitNullValueGoogleVertex = default!;
 #endif
         /// <summary>The gopomelo property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsGopomelo? Gopomelo { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsGopomelo? Gopomelo { get => _explicitNullValueGopomelo; set { _explicitNullValueGopomelo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gopomelo"); else _explicitNullProperties?.Remove("gopomelo"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsGopomelo? _explicitNullValueGopomelo = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsGopomelo Gopomelo { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsGopomelo Gopomelo { get => _explicitNullValueGopomelo; set { _explicitNullValueGopomelo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gopomelo"); else _explicitNullProperties?.Remove("gopomelo"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsGopomelo _explicitNullValueGopomelo = default!;
 #endif
         /// <summary>The groq property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsGroq? Groq { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsGroq? Groq { get => _explicitNullValueGroq; set { _explicitNullValueGroq = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("groq"); else _explicitNullProperties?.Remove("groq"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsGroq? _explicitNullValueGroq = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsGroq Groq { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsGroq Groq { get => _explicitNullValueGroq; set { _explicitNullValueGroq = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("groq"); else _explicitNullProperties?.Remove("groq"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsGroq _explicitNullValueGroq = default!;
 #endif
         /// <summary>The heygen property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsHeygen? Heygen { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsHeygen? Heygen { get => _explicitNullValueHeygen; set { _explicitNullValueHeygen = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("heygen"); else _explicitNullProperties?.Remove("heygen"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsHeygen? _explicitNullValueHeygen = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsHeygen Heygen { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsHeygen Heygen { get => _explicitNullValueHeygen; set { _explicitNullValueHeygen = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("heygen"); else _explicitNullProperties?.Remove("heygen"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsHeygen _explicitNullValueHeygen = default!;
 #endif
         /// <summary>The huggingface property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsHuggingface? Huggingface { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsHuggingface? Huggingface { get => _explicitNullValueHuggingface; set { _explicitNullValueHuggingface = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("huggingface"); else _explicitNullProperties?.Remove("huggingface"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsHuggingface? _explicitNullValueHuggingface = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsHuggingface Huggingface { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsHuggingface Huggingface { get => _explicitNullValueHuggingface; set { _explicitNullValueHuggingface = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("huggingface"); else _explicitNullProperties?.Remove("huggingface"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsHuggingface _explicitNullValueHuggingface = default!;
 #endif
         /// <summary>The hyperbolic property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsHyperbolic? Hyperbolic { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsHyperbolic? Hyperbolic { get => _explicitNullValueHyperbolic; set { _explicitNullValueHyperbolic = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hyperbolic"); else _explicitNullProperties?.Remove("hyperbolic"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsHyperbolic? _explicitNullValueHyperbolic = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsHyperbolic Hyperbolic { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsHyperbolic Hyperbolic { get => _explicitNullValueHyperbolic; set { _explicitNullValueHyperbolic = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hyperbolic"); else _explicitNullProperties?.Remove("hyperbolic"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsHyperbolic _explicitNullValueHyperbolic = default!;
 #endif
         /// <summary>The hyperbolicQuantized property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsHyperbolicQuantized? HyperbolicQuantized { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsHyperbolicQuantized? HyperbolicQuantized { get => _explicitNullValueHyperbolicQuantized; set { _explicitNullValueHyperbolicQuantized = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hyperbolic-quantized"); else _explicitNullProperties?.Remove("hyperbolic-quantized"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsHyperbolicQuantized? _explicitNullValueHyperbolicQuantized = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsHyperbolicQuantized HyperbolicQuantized { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsHyperbolicQuantized HyperbolicQuantized { get => _explicitNullValueHyperbolicQuantized; set { _explicitNullValueHyperbolicQuantized = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hyperbolic-quantized"); else _explicitNullProperties?.Remove("hyperbolic-quantized"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsHyperbolicQuantized _explicitNullValueHyperbolicQuantized = default!;
 #endif
         /// <summary>The inception property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsInception? Inception { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsInception? Inception { get => _explicitNullValueInception; set { _explicitNullValueInception = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inception"); else _explicitNullProperties?.Remove("inception"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsInception? _explicitNullValueInception = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsInception Inception { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsInception Inception { get => _explicitNullValueInception; set { _explicitNullValueInception = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inception"); else _explicitNullProperties?.Remove("inception"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsInception _explicitNullValueInception = default!;
 #endif
         /// <summary>The inceptron property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsInceptron? Inceptron { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsInceptron? Inceptron { get => _explicitNullValueInceptron; set { _explicitNullValueInceptron = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inceptron"); else _explicitNullProperties?.Remove("inceptron"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsInceptron? _explicitNullValueInceptron = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsInceptron Inceptron { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsInceptron Inceptron { get => _explicitNullValueInceptron; set { _explicitNullValueInceptron = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inceptron"); else _explicitNullProperties?.Remove("inceptron"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsInceptron _explicitNullValueInceptron = default!;
 #endif
         /// <summary>The inferactVllm property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsInferactVllm? InferactVllm { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsInferactVllm? InferactVllm { get => _explicitNullValueInferactVllm; set { _explicitNullValueInferactVllm = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inferact-vllm"); else _explicitNullProperties?.Remove("inferact-vllm"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsInferactVllm? _explicitNullValueInferactVllm = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsInferactVllm InferactVllm { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsInferactVllm InferactVllm { get => _explicitNullValueInferactVllm; set { _explicitNullValueInferactVllm = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inferact-vllm"); else _explicitNullProperties?.Remove("inferact-vllm"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsInferactVllm _explicitNullValueInferactVllm = default!;
 #endif
         /// <summary>The inferenceNet property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsInferenceNet? InferenceNet { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsInferenceNet? InferenceNet { get => _explicitNullValueInferenceNet; set { _explicitNullValueInferenceNet = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inference-net"); else _explicitNullProperties?.Remove("inference-net"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsInferenceNet? _explicitNullValueInferenceNet = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsInferenceNet InferenceNet { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsInferenceNet InferenceNet { get => _explicitNullValueInferenceNet; set { _explicitNullValueInferenceNet = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inference-net"); else _explicitNullProperties?.Remove("inference-net"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsInferenceNet _explicitNullValueInferenceNet = default!;
 #endif
         /// <summary>The infermatic property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsInfermatic? Infermatic { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsInfermatic? Infermatic { get => _explicitNullValueInfermatic; set { _explicitNullValueInfermatic = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("infermatic"); else _explicitNullProperties?.Remove("infermatic"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsInfermatic? _explicitNullValueInfermatic = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsInfermatic Infermatic { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsInfermatic Infermatic { get => _explicitNullValueInfermatic; set { _explicitNullValueInfermatic = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("infermatic"); else _explicitNullProperties?.Remove("infermatic"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsInfermatic _explicitNullValueInfermatic = default!;
 #endif
         /// <summary>The inflection property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsInflection? Inflection { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsInflection? Inflection { get => _explicitNullValueInflection; set { _explicitNullValueInflection = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inflection"); else _explicitNullProperties?.Remove("inflection"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsInflection? _explicitNullValueInflection = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsInflection Inflection { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsInflection Inflection { get => _explicitNullValueInflection; set { _explicitNullValueInflection = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inflection"); else _explicitNullProperties?.Remove("inflection"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsInflection _explicitNullValueInflection = default!;
 #endif
         /// <summary>The inocloud property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsInocloud? Inocloud { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsInocloud? Inocloud { get => _explicitNullValueInocloud; set { _explicitNullValueInocloud = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inocloud"); else _explicitNullProperties?.Remove("inocloud"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsInocloud? _explicitNullValueInocloud = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsInocloud Inocloud { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsInocloud Inocloud { get => _explicitNullValueInocloud; set { _explicitNullValueInocloud = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inocloud"); else _explicitNullProperties?.Remove("inocloud"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsInocloud _explicitNullValueInocloud = default!;
 #endif
         /// <summary>The ioNet property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsIoNet? IoNet { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsIoNet? IoNet { get => _explicitNullValueIoNet; set { _explicitNullValueIoNet = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("io-net"); else _explicitNullProperties?.Remove("io-net"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsIoNet? _explicitNullValueIoNet = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsIoNet IoNet { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsIoNet IoNet { get => _explicitNullValueIoNet; set { _explicitNullValueIoNet = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("io-net"); else _explicitNullProperties?.Remove("io-net"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsIoNet _explicitNullValueIoNet = default!;
 #endif
         /// <summary>The ionstream property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsIonstream? Ionstream { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsIonstream? Ionstream { get => _explicitNullValueIonstream; set { _explicitNullValueIonstream = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ionstream"); else _explicitNullProperties?.Remove("ionstream"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsIonstream? _explicitNullValueIonstream = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsIonstream Ionstream { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsIonstream Ionstream { get => _explicitNullValueIonstream; set { _explicitNullValueIonstream = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ionstream"); else _explicitNullProperties?.Remove("ionstream"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsIonstream _explicitNullValueIonstream = default!;
 #endif
         /// <summary>The klusterai property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsKlusterai? Klusterai { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsKlusterai? Klusterai { get => _explicitNullValueKlusterai; set { _explicitNullValueKlusterai = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("klusterai"); else _explicitNullProperties?.Remove("klusterai"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsKlusterai? _explicitNullValueKlusterai = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsKlusterai Klusterai { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsKlusterai Klusterai { get => _explicitNullValueKlusterai; set { _explicitNullValueKlusterai = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("klusterai"); else _explicitNullProperties?.Remove("klusterai"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsKlusterai _explicitNullValueKlusterai = default!;
 #endif
         /// <summary>The krea property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsKrea? Krea { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsKrea? Krea { get => _explicitNullValueKrea; set { _explicitNullValueKrea = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("krea"); else _explicitNullProperties?.Remove("krea"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsKrea? _explicitNullValueKrea = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsKrea Krea { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsKrea Krea { get => _explicitNullValueKrea; set { _explicitNullValueKrea = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("krea"); else _explicitNullProperties?.Remove("krea"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsKrea _explicitNullValueKrea = default!;
+#endif
+        /// <summary>The kt property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsKt? Kt { get => _explicitNullValueKt; set { _explicitNullValueKt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("kt"); else _explicitNullProperties?.Remove("kt"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsKt? _explicitNullValueKt = default!;
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsKt Kt { get => _explicitNullValueKt; set { _explicitNullValueKt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("kt"); else _explicitNullProperties?.Remove("kt"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsKt _explicitNullValueKt = default!;
 #endif
         /// <summary>The lambda property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsLambda? Lambda { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsLambda? Lambda { get => _explicitNullValueLambda; set { _explicitNullValueLambda = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lambda"); else _explicitNullProperties?.Remove("lambda"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsLambda? _explicitNullValueLambda = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsLambda Lambda { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsLambda Lambda { get => _explicitNullValueLambda; set { _explicitNullValueLambda = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lambda"); else _explicitNullProperties?.Remove("lambda"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsLambda _explicitNullValueLambda = default!;
 #endif
         /// <summary>The lepton property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsLepton? Lepton { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsLepton? Lepton { get => _explicitNullValueLepton; set { _explicitNullValueLepton = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lepton"); else _explicitNullProperties?.Remove("lepton"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsLepton? _explicitNullValueLepton = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsLepton Lepton { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsLepton Lepton { get => _explicitNullValueLepton; set { _explicitNullValueLepton = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lepton"); else _explicitNullProperties?.Remove("lepton"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsLepton _explicitNullValueLepton = default!;
 #endif
         /// <summary>The liquid property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsLiquid? Liquid { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsLiquid? Liquid { get => _explicitNullValueLiquid; set { _explicitNullValueLiquid = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("liquid"); else _explicitNullProperties?.Remove("liquid"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsLiquid? _explicitNullValueLiquid = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsLiquid Liquid { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsLiquid Liquid { get => _explicitNullValueLiquid; set { _explicitNullValueLiquid = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("liquid"); else _explicitNullProperties?.Remove("liquid"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsLiquid _explicitNullValueLiquid = default!;
 #endif
         /// <summary>The lynn property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsLynn? Lynn { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsLynn? Lynn { get => _explicitNullValueLynn; set { _explicitNullValueLynn = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lynn"); else _explicitNullProperties?.Remove("lynn"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsLynn? _explicitNullValueLynn = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsLynn Lynn { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsLynn Lynn { get => _explicitNullValueLynn; set { _explicitNullValueLynn = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lynn"); else _explicitNullProperties?.Remove("lynn"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsLynn _explicitNullValueLynn = default!;
 #endif
         /// <summary>The lynnPrivate property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsLynnPrivate? LynnPrivate { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsLynnPrivate? LynnPrivate { get => _explicitNullValueLynnPrivate; set { _explicitNullValueLynnPrivate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lynn-private"); else _explicitNullProperties?.Remove("lynn-private"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsLynnPrivate? _explicitNullValueLynnPrivate = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsLynnPrivate LynnPrivate { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsLynnPrivate LynnPrivate { get => _explicitNullValueLynnPrivate; set { _explicitNullValueLynnPrivate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lynn-private"); else _explicitNullProperties?.Remove("lynn-private"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsLynnPrivate _explicitNullValueLynnPrivate = default!;
 #endif
         /// <summary>The makora property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsMakora? Makora { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsMakora? Makora { get => _explicitNullValueMakora; set { _explicitNullValueMakora = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("makora"); else _explicitNullProperties?.Remove("makora"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsMakora? _explicitNullValueMakora = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsMakora Makora { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsMakora Makora { get => _explicitNullValueMakora; set { _explicitNullValueMakora = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("makora"); else _explicitNullProperties?.Remove("makora"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsMakora _explicitNullValueMakora = default!;
 #endif
         /// <summary>The mancer property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsMancer? Mancer { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsMancer? Mancer { get => _explicitNullValueMancer; set { _explicitNullValueMancer = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mancer"); else _explicitNullProperties?.Remove("mancer"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsMancer? _explicitNullValueMancer = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsMancer Mancer { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsMancer Mancer { get => _explicitNullValueMancer; set { _explicitNullValueMancer = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mancer"); else _explicitNullProperties?.Remove("mancer"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsMancer _explicitNullValueMancer = default!;
 #endif
         /// <summary>The mancerOld property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsMancerOld? MancerOld { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsMancerOld? MancerOld { get => _explicitNullValueMancerOld; set { _explicitNullValueMancerOld = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mancer-old"); else _explicitNullProperties?.Remove("mancer-old"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsMancerOld? _explicitNullValueMancerOld = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsMancerOld MancerOld { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsMancerOld MancerOld { get => _explicitNullValueMancerOld; set { _explicitNullValueMancerOld = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mancer-old"); else _explicitNullProperties?.Remove("mancer-old"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsMancerOld _explicitNullValueMancerOld = default!;
 #endif
         /// <summary>The mara property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsMara? Mara { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsMara? Mara { get => _explicitNullValueMara; set { _explicitNullValueMara = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mara"); else _explicitNullProperties?.Remove("mara"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsMara? _explicitNullValueMara = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsMara Mara { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsMara Mara { get => _explicitNullValueMara; set { _explicitNullValueMara = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mara"); else _explicitNullProperties?.Remove("mara"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsMara _explicitNullValueMara = default!;
 #endif
         /// <summary>The meta property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsMeta? Meta { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsMeta? Meta { get => _explicitNullValueMeta; set { _explicitNullValueMeta = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("meta"); else _explicitNullProperties?.Remove("meta"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsMeta? _explicitNullValueMeta = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsMeta Meta { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsMeta Meta { get => _explicitNullValueMeta; set { _explicitNullValueMeta = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("meta"); else _explicitNullProperties?.Remove("meta"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsMeta _explicitNullValueMeta = default!;
 #endif
         /// <summary>The minimax property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsMinimax? Minimax { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsMinimax? Minimax { get => _explicitNullValueMinimax; set { _explicitNullValueMinimax = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("minimax"); else _explicitNullProperties?.Remove("minimax"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsMinimax? _explicitNullValueMinimax = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsMinimax Minimax { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsMinimax Minimax { get => _explicitNullValueMinimax; set { _explicitNullValueMinimax = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("minimax"); else _explicitNullProperties?.Remove("minimax"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsMinimax _explicitNullValueMinimax = default!;
 #endif
         /// <summary>The mistral property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsMistral? Mistral { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsMistral? Mistral { get => _explicitNullValueMistral; set { _explicitNullValueMistral = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mistral"); else _explicitNullProperties?.Remove("mistral"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsMistral? _explicitNullValueMistral = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsMistral Mistral { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsMistral Mistral { get => _explicitNullValueMistral; set { _explicitNullValueMistral = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mistral"); else _explicitNullProperties?.Remove("mistral"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsMistral _explicitNullValueMistral = default!;
 #endif
         /// <summary>The modal property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsModal? Modal { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsModal? Modal { get => _explicitNullValueModal; set { _explicitNullValueModal = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("modal"); else _explicitNullProperties?.Remove("modal"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsModal? _explicitNullValueModal = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsModal Modal { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsModal Modal { get => _explicitNullValueModal; set { _explicitNullValueModal = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("modal"); else _explicitNullProperties?.Remove("modal"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsModal _explicitNullValueModal = default!;
 #endif
         /// <summary>The modelrun property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsModelrun? Modelrun { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsModelrun? Modelrun { get => _explicitNullValueModelrun; set { _explicitNullValueModelrun = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("modelrun"); else _explicitNullProperties?.Remove("modelrun"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsModelrun? _explicitNullValueModelrun = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsModelrun Modelrun { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsModelrun Modelrun { get => _explicitNullValueModelrun; set { _explicitNullValueModelrun = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("modelrun"); else _explicitNullProperties?.Remove("modelrun"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsModelrun _explicitNullValueModelrun = default!;
 #endif
         /// <summary>The modular property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsModular? Modular { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsModular? Modular { get => _explicitNullValueModular; set { _explicitNullValueModular = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("modular"); else _explicitNullProperties?.Remove("modular"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsModular? _explicitNullValueModular = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsModular Modular { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsModular Modular { get => _explicitNullValueModular; set { _explicitNullValueModular = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("modular"); else _explicitNullProperties?.Remove("modular"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsModular _explicitNullValueModular = default!;
 #endif
         /// <summary>The moonshotai property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsMoonshotai? Moonshotai { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsMoonshotai? Moonshotai { get => _explicitNullValueMoonshotai; set { _explicitNullValueMoonshotai = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("moonshotai"); else _explicitNullProperties?.Remove("moonshotai"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsMoonshotai? _explicitNullValueMoonshotai = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsMoonshotai Moonshotai { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsMoonshotai Moonshotai { get => _explicitNullValueMoonshotai; set { _explicitNullValueMoonshotai = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("moonshotai"); else _explicitNullProperties?.Remove("moonshotai"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsMoonshotai _explicitNullValueMoonshotai = default!;
 #endif
         /// <summary>The morph property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsMorph? Morph { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsMorph? Morph { get => _explicitNullValueMorph; set { _explicitNullValueMorph = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("morph"); else _explicitNullProperties?.Remove("morph"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsMorph? _explicitNullValueMorph = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsMorph Morph { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsMorph Morph { get => _explicitNullValueMorph; set { _explicitNullValueMorph = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("morph"); else _explicitNullProperties?.Remove("morph"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsMorph _explicitNullValueMorph = default!;
 #endif
         /// <summary>The ncompass property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsNcompass? Ncompass { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsNcompass? Ncompass { get => _explicitNullValueNcompass; set { _explicitNullValueNcompass = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ncompass"); else _explicitNullProperties?.Remove("ncompass"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsNcompass? _explicitNullValueNcompass = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsNcompass Ncompass { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsNcompass Ncompass { get => _explicitNullValueNcompass; set { _explicitNullValueNcompass = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ncompass"); else _explicitNullProperties?.Remove("ncompass"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsNcompass _explicitNullValueNcompass = default!;
 #endif
         /// <summary>The nearAi property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsNearAi? NearAi { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsNearAi? NearAi { get => _explicitNullValueNearAi; set { _explicitNullValueNearAi = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("near-ai"); else _explicitNullProperties?.Remove("near-ai"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsNearAi? _explicitNullValueNearAi = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsNearAi NearAi { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsNearAi NearAi { get => _explicitNullValueNearAi; set { _explicitNullValueNearAi = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("near-ai"); else _explicitNullProperties?.Remove("near-ai"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsNearAi _explicitNullValueNearAi = default!;
 #endif
         /// <summary>The nebius property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsNebius? Nebius { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsNebius? Nebius { get => _explicitNullValueNebius; set { _explicitNullValueNebius = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("nebius"); else _explicitNullProperties?.Remove("nebius"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsNebius? _explicitNullValueNebius = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsNebius Nebius { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsNebius Nebius { get => _explicitNullValueNebius; set { _explicitNullValueNebius = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("nebius"); else _explicitNullProperties?.Remove("nebius"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsNebius _explicitNullValueNebius = default!;
 #endif
         /// <summary>The nexAgi property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsNexAgi? NexAgi { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsNexAgi? NexAgi { get => _explicitNullValueNexAgi; set { _explicitNullValueNexAgi = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("nex-agi"); else _explicitNullProperties?.Remove("nex-agi"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsNexAgi? _explicitNullValueNexAgi = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsNexAgi NexAgi { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsNexAgi NexAgi { get => _explicitNullValueNexAgi; set { _explicitNullValueNexAgi = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("nex-agi"); else _explicitNullProperties?.Remove("nex-agi"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsNexAgi _explicitNullValueNexAgi = default!;
 #endif
         /// <summary>The nextbit property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsNextbit? Nextbit { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsNextbit? Nextbit { get => _explicitNullValueNextbit; set { _explicitNullValueNextbit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("nextbit"); else _explicitNullProperties?.Remove("nextbit"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsNextbit? _explicitNullValueNextbit = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsNextbit Nextbit { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsNextbit Nextbit { get => _explicitNullValueNextbit; set { _explicitNullValueNextbit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("nextbit"); else _explicitNullProperties?.Remove("nextbit"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsNextbit _explicitNullValueNextbit = default!;
 #endif
         /// <summary>The nineteen property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsNineteen? Nineteen { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsNineteen? Nineteen { get => _explicitNullValueNineteen; set { _explicitNullValueNineteen = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("nineteen"); else _explicitNullProperties?.Remove("nineteen"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsNineteen? _explicitNullValueNineteen = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsNineteen Nineteen { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsNineteen Nineteen { get => _explicitNullValueNineteen; set { _explicitNullValueNineteen = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("nineteen"); else _explicitNullProperties?.Remove("nineteen"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsNineteen _explicitNullValueNineteen = default!;
 #endif
         /// <summary>The novita property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsNovita? Novita { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsNovita? Novita { get => _explicitNullValueNovita; set { _explicitNullValueNovita = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("novita"); else _explicitNullProperties?.Remove("novita"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsNovita? _explicitNullValueNovita = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsNovita Novita { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsNovita Novita { get => _explicitNullValueNovita; set { _explicitNullValueNovita = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("novita"); else _explicitNullProperties?.Remove("novita"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsNovita _explicitNullValueNovita = default!;
 #endif
         /// <summary>The nvidia property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsNvidia? Nvidia { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsNvidia? Nvidia { get => _explicitNullValueNvidia; set { _explicitNullValueNvidia = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("nvidia"); else _explicitNullProperties?.Remove("nvidia"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsNvidia? _explicitNullValueNvidia = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsNvidia Nvidia { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsNvidia Nvidia { get => _explicitNullValueNvidia; set { _explicitNullValueNvidia = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("nvidia"); else _explicitNullProperties?.Remove("nvidia"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsNvidia _explicitNullValueNvidia = default!;
 #endif
         /// <summary>The octoai property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsOctoai? Octoai { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsOctoai? Octoai { get => _explicitNullValueOctoai; set { _explicitNullValueOctoai = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("octoai"); else _explicitNullProperties?.Remove("octoai"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsOctoai? _explicitNullValueOctoai = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsOctoai Octoai { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsOctoai Octoai { get => _explicitNullValueOctoai; set { _explicitNullValueOctoai = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("octoai"); else _explicitNullProperties?.Remove("octoai"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsOctoai _explicitNullValueOctoai = default!;
 #endif
         /// <summary>The ollama property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsOllama? Ollama { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsOllama? Ollama { get => _explicitNullValueOllama; set { _explicitNullValueOllama = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ollama"); else _explicitNullProperties?.Remove("ollama"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsOllama? _explicitNullValueOllama = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsOllama Ollama { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsOllama Ollama { get => _explicitNullValueOllama; set { _explicitNullValueOllama = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ollama"); else _explicitNullProperties?.Remove("ollama"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsOllama _explicitNullValueOllama = default!;
 #endif
         /// <summary>The openai property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsOpenai? Openai { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsOpenai? Openai { get => _explicitNullValueOpenai; set { _explicitNullValueOpenai = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("openai"); else _explicitNullProperties?.Remove("openai"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsOpenai? _explicitNullValueOpenai = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsOpenai Openai { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsOpenai Openai { get => _explicitNullValueOpenai; set { _explicitNullValueOpenai = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("openai"); else _explicitNullProperties?.Remove("openai"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsOpenai _explicitNullValueOpenai = default!;
 #endif
         /// <summary>The openInference property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsOpenInference? OpenInference { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsOpenInference? OpenInference { get => _explicitNullValueOpenInference; set { _explicitNullValueOpenInference = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("open-inference"); else _explicitNullProperties?.Remove("open-inference"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsOpenInference? _explicitNullValueOpenInference = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsOpenInference OpenInference { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsOpenInference OpenInference { get => _explicitNullValueOpenInference; set { _explicitNullValueOpenInference = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("open-inference"); else _explicitNullProperties?.Remove("open-inference"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsOpenInference _explicitNullValueOpenInference = default!;
 #endif
         /// <summary>The parasail property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsParasail? Parasail { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsParasail? Parasail { get => _explicitNullValueParasail; set { _explicitNullValueParasail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("parasail"); else _explicitNullProperties?.Remove("parasail"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsParasail? _explicitNullValueParasail = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsParasail Parasail { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsParasail Parasail { get => _explicitNullValueParasail; set { _explicitNullValueParasail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("parasail"); else _explicitNullProperties?.Remove("parasail"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsParasail _explicitNullValueParasail = default!;
 #endif
         /// <summary>The paretoAlpha property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsParetoAlpha? ParetoAlpha { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsParetoAlpha? ParetoAlpha { get => _explicitNullValueParetoAlpha; set { _explicitNullValueParetoAlpha = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pareto-alpha"); else _explicitNullProperties?.Remove("pareto-alpha"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsParetoAlpha? _explicitNullValueParetoAlpha = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsParetoAlpha ParetoAlpha { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsParetoAlpha ParetoAlpha { get => _explicitNullValueParetoAlpha; set { _explicitNullValueParetoAlpha = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pareto-alpha"); else _explicitNullProperties?.Remove("pareto-alpha"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsParetoAlpha _explicitNullValueParetoAlpha = default!;
 #endif
         /// <summary>The particleAi property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsParticleAi? ParticleAi { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsParticleAi? ParticleAi { get => _explicitNullValueParticleAi; set { _explicitNullValueParticleAi = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("particle-ai"); else _explicitNullProperties?.Remove("particle-ai"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsParticleAi? _explicitNullValueParticleAi = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsParticleAi ParticleAi { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsParticleAi ParticleAi { get => _explicitNullValueParticleAi; set { _explicitNullValueParticleAi = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("particle-ai"); else _explicitNullProperties?.Remove("particle-ai"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsParticleAi _explicitNullValueParticleAi = default!;
 #endif
         /// <summary>The perceptron property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsPerceptron? Perceptron { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsPerceptron? Perceptron { get => _explicitNullValuePerceptron; set { _explicitNullValuePerceptron = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("perceptron"); else _explicitNullProperties?.Remove("perceptron"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsPerceptron? _explicitNullValuePerceptron = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsPerceptron Perceptron { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsPerceptron Perceptron { get => _explicitNullValuePerceptron; set { _explicitNullValuePerceptron = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("perceptron"); else _explicitNullProperties?.Remove("perceptron"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsPerceptron _explicitNullValuePerceptron = default!;
 #endif
         /// <summary>The perplexity property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsPerplexity? Perplexity { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsPerplexity? Perplexity { get => _explicitNullValuePerplexity; set { _explicitNullValuePerplexity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("perplexity"); else _explicitNullProperties?.Remove("perplexity"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsPerplexity? _explicitNullValuePerplexity = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsPerplexity Perplexity { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsPerplexity Perplexity { get => _explicitNullValuePerplexity; set { _explicitNullValuePerplexity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("perplexity"); else _explicitNullProperties?.Remove("perplexity"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsPerplexity _explicitNullValuePerplexity = default!;
 #endif
         /// <summary>The phala property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsPhala? Phala { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsPhala? Phala { get => _explicitNullValuePhala; set { _explicitNullValuePhala = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("phala"); else _explicitNullProperties?.Remove("phala"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsPhala? _explicitNullValuePhala = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsPhala Phala { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsPhala Phala { get => _explicitNullValuePhala; set { _explicitNullValuePhala = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("phala"); else _explicitNullProperties?.Remove("phala"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsPhala _explicitNullValuePhala = default!;
 #endif
         /// <summary>The poolside property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsPoolside? Poolside { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsPoolside? Poolside { get => _explicitNullValuePoolside; set { _explicitNullValuePoolside = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("poolside"); else _explicitNullProperties?.Remove("poolside"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsPoolside? _explicitNullValuePoolside = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsPoolside Poolside { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsPoolside Poolside { get => _explicitNullValuePoolside; set { _explicitNullValuePoolside = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("poolside"); else _explicitNullProperties?.Remove("poolside"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsPoolside _explicitNullValuePoolside = default!;
 #endif
         /// <summary>The primalabs property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsPrimalabs? Primalabs { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsPrimalabs? Primalabs { get => _explicitNullValuePrimalabs; set { _explicitNullValuePrimalabs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("primalabs"); else _explicitNullProperties?.Remove("primalabs"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsPrimalabs? _explicitNullValuePrimalabs = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsPrimalabs Primalabs { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsPrimalabs Primalabs { get => _explicitNullValuePrimalabs; set { _explicitNullValuePrimalabs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("primalabs"); else _explicitNullProperties?.Remove("primalabs"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsPrimalabs _explicitNullValuePrimalabs = default!;
 #endif
         /// <summary>The primeintellect property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsPrimeintellect? Primeintellect { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsPrimeintellect? Primeintellect { get => _explicitNullValuePrimeintellect; set { _explicitNullValuePrimeintellect = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("primeintellect"); else _explicitNullProperties?.Remove("primeintellect"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsPrimeintellect? _explicitNullValuePrimeintellect = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsPrimeintellect Primeintellect { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsPrimeintellect Primeintellect { get => _explicitNullValuePrimeintellect; set { _explicitNullValuePrimeintellect = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("primeintellect"); else _explicitNullProperties?.Remove("primeintellect"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsPrimeintellect _explicitNullValuePrimeintellect = default!;
 #endif
         /// <summary>The quiver property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsQuiver? Quiver { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsQuiver? Quiver { get => _explicitNullValueQuiver; set { _explicitNullValueQuiver = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quiver"); else _explicitNullProperties?.Remove("quiver"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsQuiver? _explicitNullValueQuiver = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsQuiver Quiver { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsQuiver Quiver { get => _explicitNullValueQuiver; set { _explicitNullValueQuiver = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quiver"); else _explicitNullProperties?.Remove("quiver"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsQuiver _explicitNullValueQuiver = default!;
 #endif
         /// <summary>The recraft property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsRecraft? Recraft { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsRecraft? Recraft { get => _explicitNullValueRecraft; set { _explicitNullValueRecraft = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recraft"); else _explicitNullProperties?.Remove("recraft"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsRecraft? _explicitNullValueRecraft = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsRecraft Recraft { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsRecraft Recraft { get => _explicitNullValueRecraft; set { _explicitNullValueRecraft = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recraft"); else _explicitNullProperties?.Remove("recraft"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsRecraft _explicitNullValueRecraft = default!;
 #endif
         /// <summary>The recursal property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsRecursal? Recursal { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsRecursal? Recursal { get => _explicitNullValueRecursal; set { _explicitNullValueRecursal = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recursal"); else _explicitNullProperties?.Remove("recursal"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsRecursal? _explicitNullValueRecursal = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsRecursal Recursal { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsRecursal Recursal { get => _explicitNullValueRecursal; set { _explicitNullValueRecursal = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recursal"); else _explicitNullProperties?.Remove("recursal"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsRecursal _explicitNullValueRecursal = default!;
 #endif
         /// <summary>The recursive property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsRecursive? Recursive { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsRecursive? Recursive { get => _explicitNullValueRecursive; set { _explicitNullValueRecursive = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recursive"); else _explicitNullProperties?.Remove("recursive"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsRecursive? _explicitNullValueRecursive = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsRecursive Recursive { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsRecursive Recursive { get => _explicitNullValueRecursive; set { _explicitNullValueRecursive = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recursive"); else _explicitNullProperties?.Remove("recursive"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsRecursive _explicitNullValueRecursive = default!;
 #endif
         /// <summary>The reflection property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsReflection? Reflection { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsReflection? Reflection { get => _explicitNullValueReflection; set { _explicitNullValueReflection = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reflection"); else _explicitNullProperties?.Remove("reflection"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsReflection? _explicitNullValueReflection = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsReflection Reflection { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsReflection Reflection { get => _explicitNullValueReflection; set { _explicitNullValueReflection = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reflection"); else _explicitNullProperties?.Remove("reflection"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsReflection _explicitNullValueReflection = default!;
 #endif
         /// <summary>The reka property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsReka? Reka { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsReka? Reka { get => _explicitNullValueReka; set { _explicitNullValueReka = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reka"); else _explicitNullProperties?.Remove("reka"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsReka? _explicitNullValueReka = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsReka Reka { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsReka Reka { get => _explicitNullValueReka; set { _explicitNullValueReka = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reka"); else _explicitNullProperties?.Remove("reka"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsReka _explicitNullValueReka = default!;
 #endif
         /// <summary>The relace property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsRelace? Relace { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsRelace? Relace { get => _explicitNullValueRelace; set { _explicitNullValueRelace = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("relace"); else _explicitNullProperties?.Remove("relace"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsRelace? _explicitNullValueRelace = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsRelace Relace { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsRelace Relace { get => _explicitNullValueRelace; set { _explicitNullValueRelace = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("relace"); else _explicitNullProperties?.Remove("relace"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsRelace _explicitNullValueRelace = default!;
 #endif
         /// <summary>The replicate property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsReplicate? Replicate { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsReplicate? Replicate { get => _explicitNullValueReplicate; set { _explicitNullValueReplicate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("replicate"); else _explicitNullProperties?.Remove("replicate"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsReplicate? _explicitNullValueReplicate = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsReplicate Replicate { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsReplicate Replicate { get => _explicitNullValueReplicate; set { _explicitNullValueReplicate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("replicate"); else _explicitNullProperties?.Remove("replicate"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsReplicate _explicitNullValueReplicate = default!;
 #endif
         /// <summary>The respan property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsRespan? Respan { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsRespan? Respan { get => _explicitNullValueRespan; set { _explicitNullValueRespan = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("respan"); else _explicitNullProperties?.Remove("respan"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsRespan? _explicitNullValueRespan = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsRespan Respan { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsRespan Respan { get => _explicitNullValueRespan; set { _explicitNullValueRespan = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("respan"); else _explicitNullProperties?.Remove("respan"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsRespan _explicitNullValueRespan = default!;
 #endif
         /// <summary>The runway property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsRunway? Runway { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsRunway? Runway { get => _explicitNullValueRunway; set { _explicitNullValueRunway = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("runway"); else _explicitNullProperties?.Remove("runway"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsRunway? _explicitNullValueRunway = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsRunway Runway { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsRunway Runway { get => _explicitNullValueRunway; set { _explicitNullValueRunway = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("runway"); else _explicitNullProperties?.Remove("runway"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsRunway _explicitNullValueRunway = default!;
 #endif
         /// <summary>The sailResearch property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSailResearch? SailResearch { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSailResearch? SailResearch { get => _explicitNullValueSailResearch; set { _explicitNullValueSailResearch = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sail-research"); else _explicitNullProperties?.Remove("sail-research"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSailResearch? _explicitNullValueSailResearch = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSailResearch SailResearch { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSailResearch SailResearch { get => _explicitNullValueSailResearch; set { _explicitNullValueSailResearch = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sail-research"); else _explicitNullProperties?.Remove("sail-research"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSailResearch _explicitNullValueSailResearch = default!;
 #endif
         /// <summary>The sakana property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSakana? Sakana { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSakana? Sakana { get => _explicitNullValueSakana; set { _explicitNullValueSakana = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sakana"); else _explicitNullProperties?.Remove("sakana"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSakana? _explicitNullValueSakana = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSakana Sakana { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSakana Sakana { get => _explicitNullValueSakana; set { _explicitNullValueSakana = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sakana"); else _explicitNullProperties?.Remove("sakana"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSakana _explicitNullValueSakana = default!;
 #endif
         /// <summary>The sakanaAi property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSakanaAi? SakanaAi { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSakanaAi? SakanaAi { get => _explicitNullValueSakanaAi; set { _explicitNullValueSakanaAi = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sakana-ai"); else _explicitNullProperties?.Remove("sakana-ai"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSakanaAi? _explicitNullValueSakanaAi = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSakanaAi SakanaAi { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSakanaAi SakanaAi { get => _explicitNullValueSakanaAi; set { _explicitNullValueSakanaAi = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sakana-ai"); else _explicitNullProperties?.Remove("sakana-ai"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSakanaAi _explicitNullValueSakanaAi = default!;
 #endif
         /// <summary>The sambanova property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSambanova? Sambanova { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSambanova? Sambanova { get => _explicitNullValueSambanova; set { _explicitNullValueSambanova = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sambanova"); else _explicitNullProperties?.Remove("sambanova"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSambanova? _explicitNullValueSambanova = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSambanova Sambanova { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSambanova Sambanova { get => _explicitNullValueSambanova; set { _explicitNullValueSambanova = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sambanova"); else _explicitNullProperties?.Remove("sambanova"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSambanova _explicitNullValueSambanova = default!;
 #endif
         /// <summary>The sambanovaCloaked property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSambanovaCloaked? SambanovaCloaked { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSambanovaCloaked? SambanovaCloaked { get => _explicitNullValueSambanovaCloaked; set { _explicitNullValueSambanovaCloaked = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sambanova-cloaked"); else _explicitNullProperties?.Remove("sambanova-cloaked"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSambanovaCloaked? _explicitNullValueSambanovaCloaked = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSambanovaCloaked SambanovaCloaked { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSambanovaCloaked SambanovaCloaked { get => _explicitNullValueSambanovaCloaked; set { _explicitNullValueSambanovaCloaked = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sambanova-cloaked"); else _explicitNullProperties?.Remove("sambanova-cloaked"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSambanovaCloaked _explicitNullValueSambanovaCloaked = default!;
 #endif
         /// <summary>The scaledown property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsScaledown? Scaledown { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsScaledown? Scaledown { get => _explicitNullValueScaledown; set { _explicitNullValueScaledown = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scaledown"); else _explicitNullProperties?.Remove("scaledown"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsScaledown? _explicitNullValueScaledown = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsScaledown Scaledown { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsScaledown Scaledown { get => _explicitNullValueScaledown; set { _explicitNullValueScaledown = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scaledown"); else _explicitNullProperties?.Remove("scaledown"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsScaledown _explicitNullValueScaledown = default!;
 #endif
         /// <summary>The seed property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSeed? Seed { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSeed? Seed { get => _explicitNullValueSeed; set { _explicitNullValueSeed = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("seed"); else _explicitNullProperties?.Remove("seed"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSeed? _explicitNullValueSeed = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSeed Seed { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSeed Seed { get => _explicitNullValueSeed; set { _explicitNullValueSeed = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("seed"); else _explicitNullProperties?.Remove("seed"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSeed _explicitNullValueSeed = default!;
 #endif
         /// <summary>The sfCompute property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSfCompute? SfCompute { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSfCompute? SfCompute { get => _explicitNullValueSfCompute; set { _explicitNullValueSfCompute = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sf-compute"); else _explicitNullProperties?.Remove("sf-compute"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSfCompute? _explicitNullValueSfCompute = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSfCompute SfCompute { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSfCompute SfCompute { get => _explicitNullValueSfCompute; set { _explicitNullValueSfCompute = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sf-compute"); else _explicitNullProperties?.Remove("sf-compute"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSfCompute _explicitNullValueSfCompute = default!;
 #endif
         /// <summary>The siliconflow property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSiliconflow? Siliconflow { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSiliconflow? Siliconflow { get => _explicitNullValueSiliconflow; set { _explicitNullValueSiliconflow = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("siliconflow"); else _explicitNullProperties?.Remove("siliconflow"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSiliconflow? _explicitNullValueSiliconflow = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSiliconflow Siliconflow { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSiliconflow Siliconflow { get => _explicitNullValueSiliconflow; set { _explicitNullValueSiliconflow = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("siliconflow"); else _explicitNullProperties?.Remove("siliconflow"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSiliconflow _explicitNullValueSiliconflow = default!;
 #endif
         /// <summary>The sourceful property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSourceful? Sourceful { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSourceful? Sourceful { get => _explicitNullValueSourceful; set { _explicitNullValueSourceful = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sourceful"); else _explicitNullProperties?.Remove("sourceful"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSourceful? _explicitNullValueSourceful = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSourceful Sourceful { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSourceful Sourceful { get => _explicitNullValueSourceful; set { _explicitNullValueSourceful = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sourceful"); else _explicitNullProperties?.Remove("sourceful"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSourceful _explicitNullValueSourceful = default!;
 #endif
         /// <summary>The stealth property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsStealth? Stealth { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsStealth? Stealth { get => _explicitNullValueStealth; set { _explicitNullValueStealth = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("stealth"); else _explicitNullProperties?.Remove("stealth"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsStealth? _explicitNullValueStealth = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsStealth Stealth { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsStealth Stealth { get => _explicitNullValueStealth; set { _explicitNullValueStealth = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("stealth"); else _explicitNullProperties?.Remove("stealth"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsStealth _explicitNullValueStealth = default!;
 #endif
         /// <summary>The stepfun property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsStepfun? Stepfun { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsStepfun? Stepfun { get => _explicitNullValueStepfun; set { _explicitNullValueStepfun = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("stepfun"); else _explicitNullProperties?.Remove("stepfun"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsStepfun? _explicitNullValueStepfun = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsStepfun Stepfun { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsStepfun Stepfun { get => _explicitNullValueStepfun; set { _explicitNullValueStepfun = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("stepfun"); else _explicitNullProperties?.Remove("stepfun"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsStepfun _explicitNullValueStepfun = default!;
 #endif
         /// <summary>The streamlake property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsStreamlake? Streamlake { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsStreamlake? Streamlake { get => _explicitNullValueStreamlake; set { _explicitNullValueStreamlake = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("streamlake"); else _explicitNullProperties?.Remove("streamlake"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsStreamlake? _explicitNullValueStreamlake = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsStreamlake Streamlake { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsStreamlake Streamlake { get => _explicitNullValueStreamlake; set { _explicitNullValueStreamlake = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("streamlake"); else _explicitNullProperties?.Remove("streamlake"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsStreamlake _explicitNullValueStreamlake = default!;
 #endif
         /// <summary>The switchpoint property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSwitchpoint? Switchpoint { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSwitchpoint? Switchpoint { get => _explicitNullValueSwitchpoint; set { _explicitNullValueSwitchpoint = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("switchpoint"); else _explicitNullProperties?.Remove("switchpoint"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSwitchpoint? _explicitNullValueSwitchpoint = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSwitchpoint Switchpoint { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSwitchpoint Switchpoint { get => _explicitNullValueSwitchpoint; set { _explicitNullValueSwitchpoint = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("switchpoint"); else _explicitNullProperties?.Remove("switchpoint"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSwitchpoint _explicitNullValueSwitchpoint = default!;
 #endif
         /// <summary>The targon property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsTargon? Targon { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsTargon? Targon { get => _explicitNullValueTargon; set { _explicitNullValueTargon = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("targon"); else _explicitNullProperties?.Remove("targon"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsTargon? _explicitNullValueTargon = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsTargon Targon { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsTargon Targon { get => _explicitNullValueTargon; set { _explicitNullValueTargon = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("targon"); else _explicitNullProperties?.Remove("targon"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsTargon _explicitNullValueTargon = default!;
 #endif
         /// <summary>The tencent property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsTencent? Tencent { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsTencent? Tencent { get => _explicitNullValueTencent; set { _explicitNullValueTencent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tencent"); else _explicitNullProperties?.Remove("tencent"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsTencent? _explicitNullValueTencent = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsTencent Tencent { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsTencent Tencent { get => _explicitNullValueTencent; set { _explicitNullValueTencent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tencent"); else _explicitNullProperties?.Remove("tencent"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsTencent _explicitNullValueTencent = default!;
 #endif
         /// <summary>The tenstorrent property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsTenstorrent? Tenstorrent { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsTenstorrent? Tenstorrent { get => _explicitNullValueTenstorrent; set { _explicitNullValueTenstorrent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tenstorrent"); else _explicitNullProperties?.Remove("tenstorrent"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsTenstorrent? _explicitNullValueTenstorrent = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsTenstorrent Tenstorrent { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsTenstorrent Tenstorrent { get => _explicitNullValueTenstorrent; set { _explicitNullValueTenstorrent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tenstorrent"); else _explicitNullProperties?.Remove("tenstorrent"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsTenstorrent _explicitNullValueTenstorrent = default!;
 #endif
         /// <summary>The thinkingmachines property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsThinkingmachines? Thinkingmachines { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsThinkingmachines? Thinkingmachines { get => _explicitNullValueThinkingmachines; set { _explicitNullValueThinkingmachines = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("thinkingmachines"); else _explicitNullProperties?.Remove("thinkingmachines"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsThinkingmachines? _explicitNullValueThinkingmachines = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsThinkingmachines Thinkingmachines { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsThinkingmachines Thinkingmachines { get => _explicitNullValueThinkingmachines; set { _explicitNullValueThinkingmachines = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("thinkingmachines"); else _explicitNullProperties?.Remove("thinkingmachines"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsThinkingmachines _explicitNullValueThinkingmachines = default!;
 #endif
         /// <summary>The together property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsTogether? Together { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsTogether? Together { get => _explicitNullValueTogether; set { _explicitNullValueTogether = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("together"); else _explicitNullProperties?.Remove("together"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsTogether? _explicitNullValueTogether = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsTogether Together { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsTogether Together { get => _explicitNullValueTogether; set { _explicitNullValueTogether = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("together"); else _explicitNullProperties?.Remove("together"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsTogether _explicitNullValueTogether = default!;
 #endif
         /// <summary>The togetherLite property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsTogetherLite? TogetherLite { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsTogetherLite? TogetherLite { get => _explicitNullValueTogetherLite; set { _explicitNullValueTogetherLite = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("together-lite"); else _explicitNullProperties?.Remove("together-lite"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsTogetherLite? _explicitNullValueTogetherLite = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsTogetherLite TogetherLite { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsTogetherLite TogetherLite { get => _explicitNullValueTogetherLite; set { _explicitNullValueTogetherLite = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("together-lite"); else _explicitNullProperties?.Remove("together-lite"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsTogetherLite _explicitNullValueTogetherLite = default!;
 #endif
         /// <summary>The typesafe property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsTypesafe? Typesafe { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsTypesafe? Typesafe { get => _explicitNullValueTypesafe; set { _explicitNullValueTypesafe = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("typesafe"); else _explicitNullProperties?.Remove("typesafe"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsTypesafe? _explicitNullValueTypesafe = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsTypesafe Typesafe { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsTypesafe Typesafe { get => _explicitNullValueTypesafe; set { _explicitNullValueTypesafe = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("typesafe"); else _explicitNullProperties?.Remove("typesafe"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsTypesafe _explicitNullValueTypesafe = default!;
 #endif
         /// <summary>The ubicloud property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsUbicloud? Ubicloud { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsUbicloud? Ubicloud { get => _explicitNullValueUbicloud; set { _explicitNullValueUbicloud = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ubicloud"); else _explicitNullProperties?.Remove("ubicloud"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsUbicloud? _explicitNullValueUbicloud = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsUbicloud Ubicloud { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsUbicloud Ubicloud { get => _explicitNullValueUbicloud; set { _explicitNullValueUbicloud = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ubicloud"); else _explicitNullProperties?.Remove("ubicloud"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsUbicloud _explicitNullValueUbicloud = default!;
 #endif
         /// <summary>The unbiased property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsUnbiased? Unbiased { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsUnbiased? Unbiased { get => _explicitNullValueUnbiased; set { _explicitNullValueUnbiased = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unbiased"); else _explicitNullProperties?.Remove("unbiased"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsUnbiased? _explicitNullValueUnbiased = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsUnbiased Unbiased { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsUnbiased Unbiased { get => _explicitNullValueUnbiased; set { _explicitNullValueUnbiased = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unbiased"); else _explicitNullProperties?.Remove("unbiased"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsUnbiased _explicitNullValueUnbiased = default!;
 #endif
         /// <summary>The upstage property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsUpstage? Upstage { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsUpstage? Upstage { get => _explicitNullValueUpstage; set { _explicitNullValueUpstage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("upstage"); else _explicitNullProperties?.Remove("upstage"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsUpstage? _explicitNullValueUpstage = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsUpstage Upstage { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsUpstage Upstage { get => _explicitNullValueUpstage; set { _explicitNullValueUpstage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("upstage"); else _explicitNullProperties?.Remove("upstage"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsUpstage _explicitNullValueUpstage = default!;
 #endif
         /// <summary>The venice property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsVenice? Venice { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsVenice? Venice { get => _explicitNullValueVenice; set { _explicitNullValueVenice = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("venice"); else _explicitNullProperties?.Remove("venice"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsVenice? _explicitNullValueVenice = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsVenice Venice { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsVenice Venice { get => _explicitNullValueVenice; set { _explicitNullValueVenice = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("venice"); else _explicitNullProperties?.Remove("venice"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsVenice _explicitNullValueVenice = default!;
 #endif
         /// <summary>The voyageai property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsVoyageai? Voyageai { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsVoyageai? Voyageai { get => _explicitNullValueVoyageai; set { _explicitNullValueVoyageai = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("voyageai"); else _explicitNullProperties?.Remove("voyageai"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsVoyageai? _explicitNullValueVoyageai = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsVoyageai Voyageai { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsVoyageai Voyageai { get => _explicitNullValueVoyageai; set { _explicitNullValueVoyageai = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("voyageai"); else _explicitNullProperties?.Remove("voyageai"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsVoyageai _explicitNullValueVoyageai = default!;
 #endif
         /// <summary>The wafer property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsWafer? Wafer { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsWafer? Wafer { get => _explicitNullValueWafer; set { _explicitNullValueWafer = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("wafer"); else _explicitNullProperties?.Remove("wafer"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsWafer? _explicitNullValueWafer = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsWafer Wafer { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsWafer Wafer { get => _explicitNullValueWafer; set { _explicitNullValueWafer = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("wafer"); else _explicitNullProperties?.Remove("wafer"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsWafer _explicitNullValueWafer = default!;
 #endif
         /// <summary>The wandb property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsWandb? Wandb { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsWandb? Wandb { get => _explicitNullValueWandb; set { _explicitNullValueWandb = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("wandb"); else _explicitNullProperties?.Remove("wandb"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsWandb? _explicitNullValueWandb = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsWandb Wandb { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsWandb Wandb { get => _explicitNullValueWandb; set { _explicitNullValueWandb = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("wandb"); else _explicitNullProperties?.Remove("wandb"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsWandb _explicitNullValueWandb = default!;
 #endif
         /// <summary>The wandbLegacy property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsWandbLegacy? WandbLegacy { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsWandbLegacy? WandbLegacy { get => _explicitNullValueWandbLegacy; set { _explicitNullValueWandbLegacy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("wandb-legacy"); else _explicitNullProperties?.Remove("wandb-legacy"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsWandbLegacy? _explicitNullValueWandbLegacy = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsWandbLegacy WandbLegacy { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsWandbLegacy WandbLegacy { get => _explicitNullValueWandbLegacy; set { _explicitNullValueWandbLegacy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("wandb-legacy"); else _explicitNullProperties?.Remove("wandb-legacy"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsWandbLegacy _explicitNullValueWandbLegacy = default!;
 #endif
         /// <summary>The xai property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsXai? Xai { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsXai? Xai { get => _explicitNullValueXai; set { _explicitNullValueXai = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("xai"); else _explicitNullProperties?.Remove("xai"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsXai? _explicitNullValueXai = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsXai Xai { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsXai Xai { get => _explicitNullValueXai; set { _explicitNullValueXai = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("xai"); else _explicitNullProperties?.Remove("xai"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsXai _explicitNullValueXai = default!;
 #endif
         /// <summary>The xiaomi property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsXiaomi? Xiaomi { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsXiaomi? Xiaomi { get => _explicitNullValueXiaomi; set { _explicitNullValueXiaomi = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("xiaomi"); else _explicitNullProperties?.Remove("xiaomi"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsXiaomi? _explicitNullValueXiaomi = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsXiaomi Xiaomi { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsXiaomi Xiaomi { get => _explicitNullValueXiaomi; set { _explicitNullValueXiaomi = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("xiaomi"); else _explicitNullProperties?.Remove("xiaomi"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsXiaomi _explicitNullValueXiaomi = default!;
 #endif
         /// <summary>The zAi property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsZAi? ZAi { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsZAi? ZAi { get => _explicitNullValueZAi; set { _explicitNullValueZAi = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("z-ai"); else _explicitNullProperties?.Remove("z-ai"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsZAi? _explicitNullValueZAi = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsZAi ZAi { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsZAi ZAi { get => _explicitNullValueZAi; set { _explicitNullValueZAi = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("z-ai"); else _explicitNullProperties?.Remove("z-ai"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsZAi _explicitNullValueZAi = default!;
 #endif
         /// <summary>The ZeroOneai property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptions01Ai? ZeroOneai { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptions01Ai? ZeroOneai { get => _explicitNullValueZeroOneai; set { _explicitNullValueZeroOneai = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("01ai"); else _explicitNullProperties?.Remove("01ai"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptions01Ai? _explicitNullValueZeroOneai = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptions01Ai ZeroOneai { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptions01Ai ZeroOneai { get => _explicitNullValueZeroOneai; set { _explicitNullValueZeroOneai = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("01ai"); else _explicitNullProperties?.Remove("01ai"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptions01Ai _explicitNullValueZeroOneai = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptions"/> and sets the default values.
@@ -1229,7 +1697,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public static global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptions CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptions();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptions(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -1308,6 +1776,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "ionstream", n => { Ionstream = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsIonstream>(global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsIonstream.CreateFromDiscriminatorValue); } },
                 { "klusterai", n => { Klusterai = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsKlusterai>(global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsKlusterai.CreateFromDiscriminatorValue); } },
                 { "krea", n => { Krea = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsKrea>(global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsKrea.CreateFromDiscriminatorValue); } },
+                { "kt", n => { Kt = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsKt>(global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsKt.CreateFromDiscriminatorValue); } },
                 { "lambda", n => { Lambda = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsLambda>(global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsLambda.CreateFromDiscriminatorValue); } },
                 { "lepton", n => { Lepton = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsLepton>(global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsLepton.CreateFromDiscriminatorValue); } },
                 { "liquid", n => { Liquid = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsLiquid>(global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsLiquid.CreateFromDiscriminatorValue); } },
@@ -1467,6 +1936,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsIonstream>("ionstream", Ionstream);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsKlusterai>("klusterai", Klusterai);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsKrea>("krea", Krea);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsKt>("kt", Kt);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsLambda>("lambda", Lambda);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsLepton>("lepton", Lepton);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsLiquid>("liquid", Liquid);
@@ -1548,6 +2018,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsXiaomi>("xiaomi", Xiaomi);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsZAi>("z-ai", ZAi);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptions01Ai>("01ai", ZeroOneai);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

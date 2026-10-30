@@ -79,6 +79,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Audio.Transcriptions
                 { "504", global::Soenneker.OpenRouter.OpenApiClient.Models.GatewayTimeoutResponse.CreateFromDiscriminatorValue },
                 { "524", global::Soenneker.OpenRouter.OpenApiClient.Models.EdgeNetworkTimeoutResponse.CreateFromDiscriminatorValue },
                 { "529", global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOverloadedResponse.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.OpenRouter.OpenApiClient.Models.SttResponse>(requestInfo, global::Soenneker.OpenRouter.OpenApiClient.Models.SttResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

@@ -12,130 +12,184 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PublicPricing : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("audio") is { } nullNodeAudio && nullNodeAudio.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Audio = null;
+            if (parseNode.GetChildNode("audio_output") is { } nullNodeAudioOutput && nullNodeAudioOutput.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AudioOutput = null;
+            if (parseNode.GetChildNode("completion") is { } nullNodeCompletion && nullNodeCompletion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Completion = null;
+            if (parseNode.GetChildNode("discount") is { } nullNodeDiscount && nullNodeDiscount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Discount = null;
+            if (parseNode.GetChildNode("image") is { } nullNodeImage && nullNodeImage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Image = null;
+            if (parseNode.GetChildNode("image_output") is { } nullNodeImageOutput && nullNodeImageOutput.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ImageOutput = null;
+            if (parseNode.GetChildNode("image_token") is { } nullNodeImageToken && nullNodeImageToken.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ImageToken = null;
+            if (parseNode.GetChildNode("input_audio_cache") is { } nullNodeInputAudioCache && nullNodeInputAudioCache.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InputAudioCache = null;
+            if (parseNode.GetChildNode("input_cache_read") is { } nullNodeInputCacheRead && nullNodeInputCacheRead.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InputCacheRead = null;
+            if (parseNode.GetChildNode("input_cache_write") is { } nullNodeInputCacheWrite && nullNodeInputCacheWrite.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InputCacheWrite = null;
+            if (parseNode.GetChildNode("input_cache_write_1h") is { } nullNodeInputCacheWrite1h && nullNodeInputCacheWrite1h.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InputCacheWrite1h = null;
+            if (parseNode.GetChildNode("internal_reasoning") is { } nullNodeInternalReasoning && nullNodeInternalReasoning.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InternalReasoning = null;
+            if (parseNode.GetChildNode("overrides") is { } nullNodeOverrides && nullNodeOverrides.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Overrides = null;
+            if (parseNode.GetChildNode("prompt") is { } nullNodePrompt && nullNodePrompt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Prompt = null;
+            if (parseNode.GetChildNode("request") is { } nullNodeRequest && nullNodeRequest.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Request = null;
+            if (parseNode.GetChildNode("web_search") is { } nullNodeWebSearch && nullNodeWebSearch.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WebSearch = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Price in USD per audio input token</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Audio { get; set; }
+        public string? Audio { get => _explicitNullValueAudio; set { _explicitNullValueAudio = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("audio"); else _explicitNullProperties?.Remove("audio"); } }
+        private string? _explicitNullValueAudio = default!;
 #nullable restore
 #else
-        public string Audio { get; set; }
+        public string Audio { get => _explicitNullValueAudio; set { _explicitNullValueAudio = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("audio"); else _explicitNullProperties?.Remove("audio"); } }
+        private string _explicitNullValueAudio = default!;
 #endif
         /// <summary>Price in USD per audio output token</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AudioOutput { get; set; }
+        public string? AudioOutput { get => _explicitNullValueAudioOutput; set { _explicitNullValueAudioOutput = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("audio_output"); else _explicitNullProperties?.Remove("audio_output"); } }
+        private string? _explicitNullValueAudioOutput = default!;
 #nullable restore
 #else
-        public string AudioOutput { get; set; }
+        public string AudioOutput { get => _explicitNullValueAudioOutput; set { _explicitNullValueAudioOutput = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("audio_output"); else _explicitNullProperties?.Remove("audio_output"); } }
+        private string _explicitNullValueAudioOutput = default!;
 #endif
         /// <summary>Price in USD per token for completion (output) generation</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Completion { get; set; }
+        public string? Completion { get => _explicitNullValueCompletion; set { _explicitNullValueCompletion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("completion"); else _explicitNullProperties?.Remove("completion"); } }
+        private string? _explicitNullValueCompletion = default!;
 #nullable restore
 #else
-        public string Completion { get; set; }
+        public string Completion { get => _explicitNullValueCompletion; set { _explicitNullValueCompletion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("completion"); else _explicitNullProperties?.Remove("completion"); } }
+        private string _explicitNullValueCompletion = default!;
 #endif
         /// <summary>Fractional discount applied to this endpoint&apos;s pricing; the price is multiplied by (1 - discount) (0 = no discount, 1 = free)</summary>
-        public double? Discount { get; set; }
+        public double? Discount { get => _explicitNullValueDiscount; set { _explicitNullValueDiscount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("discount"); else _explicitNullProperties?.Remove("discount"); } }
+        private double? _explicitNullValueDiscount = default!;
         /// <summary>Price in USD per input image</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Image { get; set; }
+        public string? Image { get => _explicitNullValueImage; set { _explicitNullValueImage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("image"); else _explicitNullProperties?.Remove("image"); } }
+        private string? _explicitNullValueImage = default!;
 #nullable restore
 #else
-        public string Image { get; set; }
+        public string Image { get => _explicitNullValueImage; set { _explicitNullValueImage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("image"); else _explicitNullProperties?.Remove("image"); } }
+        private string _explicitNullValueImage = default!;
 #endif
         /// <summary>Price in USD per output image</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ImageOutput { get; set; }
+        public string? ImageOutput { get => _explicitNullValueImageOutput; set { _explicitNullValueImageOutput = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("image_output"); else _explicitNullProperties?.Remove("image_output"); } }
+        private string? _explicitNullValueImageOutput = default!;
 #nullable restore
 #else
-        public string ImageOutput { get; set; }
+        public string ImageOutput { get => _explicitNullValueImageOutput; set { _explicitNullValueImageOutput = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("image_output"); else _explicitNullProperties?.Remove("image_output"); } }
+        private string _explicitNullValueImageOutput = default!;
 #endif
         /// <summary>Price in USD per image token</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ImageToken { get; set; }
+        public string? ImageToken { get => _explicitNullValueImageToken; set { _explicitNullValueImageToken = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("image_token"); else _explicitNullProperties?.Remove("image_token"); } }
+        private string? _explicitNullValueImageToken = default!;
 #nullable restore
 #else
-        public string ImageToken { get; set; }
+        public string ImageToken { get => _explicitNullValueImageToken; set { _explicitNullValueImageToken = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("image_token"); else _explicitNullProperties?.Remove("image_token"); } }
+        private string _explicitNullValueImageToken = default!;
 #endif
         /// <summary>Price in USD per cached audio input token</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? InputAudioCache { get; set; }
+        public string? InputAudioCache { get => _explicitNullValueInputAudioCache; set { _explicitNullValueInputAudioCache = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input_audio_cache"); else _explicitNullProperties?.Remove("input_audio_cache"); } }
+        private string? _explicitNullValueInputAudioCache = default!;
 #nullable restore
 #else
-        public string InputAudioCache { get; set; }
+        public string InputAudioCache { get => _explicitNullValueInputAudioCache; set { _explicitNullValueInputAudioCache = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input_audio_cache"); else _explicitNullProperties?.Remove("input_audio_cache"); } }
+        private string _explicitNullValueInputAudioCache = default!;
 #endif
         /// <summary>Price in USD per cached input token (read)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? InputCacheRead { get; set; }
+        public string? InputCacheRead { get => _explicitNullValueInputCacheRead; set { _explicitNullValueInputCacheRead = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input_cache_read"); else _explicitNullProperties?.Remove("input_cache_read"); } }
+        private string? _explicitNullValueInputCacheRead = default!;
 #nullable restore
 #else
-        public string InputCacheRead { get; set; }
+        public string InputCacheRead { get => _explicitNullValueInputCacheRead; set { _explicitNullValueInputCacheRead = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input_cache_read"); else _explicitNullProperties?.Remove("input_cache_read"); } }
+        private string _explicitNullValueInputCacheRead = default!;
 #endif
         /// <summary>Price per cache-write token, in USD per token. For providers with multiple cache TTLs (e.g. Anthropic), this is the default (5-minute) cache-write rate.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? InputCacheWrite { get; set; }
+        public string? InputCacheWrite { get => _explicitNullValueInputCacheWrite; set { _explicitNullValueInputCacheWrite = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input_cache_write"); else _explicitNullProperties?.Remove("input_cache_write"); } }
+        private string? _explicitNullValueInputCacheWrite = default!;
 #nullable restore
 #else
-        public string InputCacheWrite { get; set; }
+        public string InputCacheWrite { get => _explicitNullValueInputCacheWrite; set { _explicitNullValueInputCacheWrite = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input_cache_write"); else _explicitNullProperties?.Remove("input_cache_write"); } }
+        private string _explicitNullValueInputCacheWrite = default!;
 #endif
         /// <summary>Price per 1-hour cache-write token, in USD per token. Only present for providers that price an extended (1-hour) cache TTL separately, such as Anthropic.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? InputCacheWrite1h { get; set; }
+        public string? InputCacheWrite1h { get => _explicitNullValueInputCacheWrite1h; set { _explicitNullValueInputCacheWrite1h = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input_cache_write_1h"); else _explicitNullProperties?.Remove("input_cache_write_1h"); } }
+        private string? _explicitNullValueInputCacheWrite1h = default!;
 #nullable restore
 #else
-        public string InputCacheWrite1h { get; set; }
+        public string InputCacheWrite1h { get => _explicitNullValueInputCacheWrite1h; set { _explicitNullValueInputCacheWrite1h = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input_cache_write_1h"); else _explicitNullProperties?.Remove("input_cache_write_1h"); } }
+        private string _explicitNullValueInputCacheWrite1h = default!;
 #endif
         /// <summary>Price in USD per internal reasoning token</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? InternalReasoning { get; set; }
+        public string? InternalReasoning { get => _explicitNullValueInternalReasoning; set { _explicitNullValueInternalReasoning = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("internal_reasoning"); else _explicitNullProperties?.Remove("internal_reasoning"); } }
+        private string? _explicitNullValueInternalReasoning = default!;
 #nullable restore
 #else
-        public string InternalReasoning { get; set; }
+        public string InternalReasoning { get => _explicitNullValueInternalReasoning; set { _explicitNullValueInternalReasoning = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("internal_reasoning"); else _explicitNullProperties?.Remove("internal_reasoning"); } }
+        private string _explicitNullValueInternalReasoning = default!;
 #endif
         /// <summary>Conditional overrides of the base pricing (e.g. long-context or time-based pricing). An entry applies when all of its condition fields (e.g. min_prompt_tokens, or the utc_start/utc_end time window) match the request; among applicable entries, later entries win per key; price keys absent from an entry inherit the base price. The top-level pricing keys always reflect the price that applies under default conditions.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.PricingOverride>? Overrides { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.PricingOverride>? Overrides { get => _explicitNullValueOverrides; set { _explicitNullValueOverrides = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("overrides"); else _explicitNullProperties?.Remove("overrides"); } }
+        private List<global::Soenneker.OpenRouter.OpenApiClient.Models.PricingOverride>? _explicitNullValueOverrides = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.PricingOverride> Overrides { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.PricingOverride> Overrides { get => _explicitNullValueOverrides; set { _explicitNullValueOverrides = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("overrides"); else _explicitNullProperties?.Remove("overrides"); } }
+        private List<global::Soenneker.OpenRouter.OpenApiClient.Models.PricingOverride> _explicitNullValueOverrides = default!;
 #endif
         /// <summary>Price in USD per token for prompt (input) processing</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Prompt { get; set; }
+        public string? Prompt { get => _explicitNullValuePrompt; set { _explicitNullValuePrompt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("prompt"); else _explicitNullProperties?.Remove("prompt"); } }
+        private string? _explicitNullValuePrompt = default!;
 #nullable restore
 #else
-        public string Prompt { get; set; }
+        public string Prompt { get => _explicitNullValuePrompt; set { _explicitNullValuePrompt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("prompt"); else _explicitNullProperties?.Remove("prompt"); } }
+        private string _explicitNullValuePrompt = default!;
 #endif
         /// <summary>Price in USD per request</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Request { get; set; }
+        public string? Request { get => _explicitNullValueRequest; set { _explicitNullValueRequest = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("request"); else _explicitNullProperties?.Remove("request"); } }
+        private string? _explicitNullValueRequest = default!;
 #nullable restore
 #else
-        public string Request { get; set; }
+        public string Request { get => _explicitNullValueRequest; set { _explicitNullValueRequest = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("request"); else _explicitNullProperties?.Remove("request"); } }
+        private string _explicitNullValueRequest = default!;
 #endif
         /// <summary>Price in USD per web search</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? WebSearch { get; set; }
+        public string? WebSearch { get => _explicitNullValueWebSearch; set { _explicitNullValueWebSearch = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("web_search"); else _explicitNullProperties?.Remove("web_search"); } }
+        private string? _explicitNullValueWebSearch = default!;
 #nullable restore
 #else
-        public string WebSearch { get; set; }
+        public string WebSearch { get => _explicitNullValueWebSearch; set { _explicitNullValueWebSearch = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("web_search"); else _explicitNullProperties?.Remove("web_search"); } }
+        private string _explicitNullValueWebSearch = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing"/> and sets the default values.
@@ -152,7 +206,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public static global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.PublicPricing(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -203,6 +257,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteStringValue("prompt", Prompt);
             writer.WriteStringValue("request", Request);
             writer.WriteStringValue("web_search", WebSearch);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

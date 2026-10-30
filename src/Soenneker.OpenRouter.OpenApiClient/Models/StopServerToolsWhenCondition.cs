@@ -12,7 +12,12 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class StopServerToolsWhenCondition : IComposedTypeWrapper, IParsable
-    {
+    , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
+        // Preserve ambiguous union payloads without inventing a discriminator.
+        /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
         /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.StopServerToolsWhenFinishReasonIs"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -61,29 +66,42 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public static global::Soenneker.OpenRouter.OpenApiClient.Models.StopServerToolsWhenCondition CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
+            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.OpenRouter.OpenApiClient.Models.StopServerToolsWhenCondition();
-            if("finish_reason_is".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("StopServerToolsWhenFinishReasonIs".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.StopServerToolsWhenFinishReasonIs = new global::Soenneker.OpenRouter.OpenApiClient.Models.StopServerToolsWhenFinishReasonIs();
+                
             }
-            else if("has_tool_call".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("StopServerToolsWhenHasToolCall".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.StopServerToolsWhenHasToolCall = new global::Soenneker.OpenRouter.OpenApiClient.Models.StopServerToolsWhenHasToolCall();
+                
             }
-            else if("max_cost".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("StopServerToolsWhenMaxCost".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.StopServerToolsWhenMaxCost = new global::Soenneker.OpenRouter.OpenApiClient.Models.StopServerToolsWhenMaxCost();
+                
             }
-            else if("max_tokens_used".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("StopServerToolsWhenMaxTokensUsed".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.StopServerToolsWhenMaxTokensUsed = new global::Soenneker.OpenRouter.OpenApiClient.Models.StopServerToolsWhenMaxTokensUsed();
+                
             }
-            else if("step_count_is".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("StopServerToolsWhenStepCountIs".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.StopServerToolsWhenStepCountIs = new global::Soenneker.OpenRouter.OpenApiClient.Models.StopServerToolsWhenStepCountIs();
+                
             }
-            return result;
+            
+            var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
+            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("step_count_is".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("step_count") != null))();
+            bool matchesUnionBranch1 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("has_tool_call".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("tool_name") != null))();
+            bool matchesUnionBranch2 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("max_tokens_used".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("max_tokens") != null))();
+            bool matchesUnionBranch3 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("max_cost".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("max_cost_in_dollars") != null))();
+            bool matchesUnionBranch4 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("finish_reason_is".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("reason") != null))();
+            if (result.StopServerToolsWhenFinishReasonIs == null && result.StopServerToolsWhenHasToolCall == null && result.StopServerToolsWhenMaxCost == null && result.StopServerToolsWhenMaxTokensUsed == null && result.StopServerToolsWhenStepCountIs == null && matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch3 && !matchesUnionBranch4) result.StopServerToolsWhenStepCountIs = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.StopServerToolsWhenStepCountIs(), parseNode);
+            if (result.StopServerToolsWhenFinishReasonIs == null && result.StopServerToolsWhenHasToolCall == null && result.StopServerToolsWhenMaxCost == null && result.StopServerToolsWhenMaxTokensUsed == null && result.StopServerToolsWhenStepCountIs == null && matchesUnionBranch1 && !matchesUnionBranch0 && !matchesUnionBranch2 && !matchesUnionBranch3 && !matchesUnionBranch4) result.StopServerToolsWhenHasToolCall = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.StopServerToolsWhenHasToolCall(), parseNode);
+            if (result.StopServerToolsWhenFinishReasonIs == null && result.StopServerToolsWhenHasToolCall == null && result.StopServerToolsWhenMaxCost == null && result.StopServerToolsWhenMaxTokensUsed == null && result.StopServerToolsWhenStepCountIs == null && matchesUnionBranch2 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch3 && !matchesUnionBranch4) result.StopServerToolsWhenMaxTokensUsed = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.StopServerToolsWhenMaxTokensUsed(), parseNode);
+            if (result.StopServerToolsWhenFinishReasonIs == null && result.StopServerToolsWhenHasToolCall == null && result.StopServerToolsWhenMaxCost == null && result.StopServerToolsWhenMaxTokensUsed == null && result.StopServerToolsWhenStepCountIs == null && matchesUnionBranch3 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch4) result.StopServerToolsWhenMaxCost = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.StopServerToolsWhenMaxCost(), parseNode);
+            if (result.StopServerToolsWhenFinishReasonIs == null && result.StopServerToolsWhenHasToolCall == null && result.StopServerToolsWhenMaxCost == null && result.StopServerToolsWhenMaxTokensUsed == null && result.StopServerToolsWhenStepCountIs == null && matchesUnionBranch4 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch3) result.StopServerToolsWhenFinishReasonIs = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.StopServerToolsWhenFinishReasonIs(), parseNode);
+            if (result.StopServerToolsWhenFinishReasonIs == null && result.StopServerToolsWhenHasToolCall == null && result.StopServerToolsWhenMaxCost == null && result.StopServerToolsWhenMaxTokensUsed == null && result.StopServerToolsWhenStepCountIs == null) result.UnrecognizedValue = unionPayload;
+return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -119,25 +137,38 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
+            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
+            if (StopServerToolsWhenFinishReasonIs == null && StopServerToolsWhenHasToolCall == null && StopServerToolsWhenMaxCost == null && StopServerToolsWhenMaxTokensUsed == null && StopServerToolsWhenStepCountIs == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            if (StopServerToolsWhenFinishReasonIs != null && StopServerToolsWhenHasToolCall == null && StopServerToolsWhenMaxCost == null && StopServerToolsWhenMaxTokensUsed == null && StopServerToolsWhenStepCountIs == null) { if (StopServerToolsWhenFinishReasonIs is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, StopServerToolsWhenFinishReasonIs); return; }
+            if (StopServerToolsWhenHasToolCall != null && StopServerToolsWhenFinishReasonIs == null && StopServerToolsWhenMaxCost == null && StopServerToolsWhenMaxTokensUsed == null && StopServerToolsWhenStepCountIs == null) { if (StopServerToolsWhenHasToolCall is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, StopServerToolsWhenHasToolCall); return; }
+            if (StopServerToolsWhenMaxCost != null && StopServerToolsWhenFinishReasonIs == null && StopServerToolsWhenHasToolCall == null && StopServerToolsWhenMaxTokensUsed == null && StopServerToolsWhenStepCountIs == null) { if (StopServerToolsWhenMaxCost is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, StopServerToolsWhenMaxCost); return; }
+            if (StopServerToolsWhenMaxTokensUsed != null && StopServerToolsWhenFinishReasonIs == null && StopServerToolsWhenHasToolCall == null && StopServerToolsWhenMaxCost == null && StopServerToolsWhenStepCountIs == null) { if (StopServerToolsWhenMaxTokensUsed is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, StopServerToolsWhenMaxTokensUsed); return; }
+            if (StopServerToolsWhenStepCountIs != null && StopServerToolsWhenFinishReasonIs == null && StopServerToolsWhenHasToolCall == null && StopServerToolsWhenMaxCost == null && StopServerToolsWhenMaxTokensUsed == null) { if (StopServerToolsWhenStepCountIs is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, StopServerToolsWhenStepCountIs); return; }
+
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             if(StopServerToolsWhenFinishReasonIs != null)
             {
+                if (StopServerToolsWhenFinishReasonIs is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.StopServerToolsWhenFinishReasonIs>(null, StopServerToolsWhenFinishReasonIs);
             }
             else if(StopServerToolsWhenHasToolCall != null)
             {
+                if (StopServerToolsWhenHasToolCall is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.StopServerToolsWhenHasToolCall>(null, StopServerToolsWhenHasToolCall);
             }
             else if(StopServerToolsWhenMaxCost != null)
             {
+                if (StopServerToolsWhenMaxCost is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.StopServerToolsWhenMaxCost>(null, StopServerToolsWhenMaxCost);
             }
             else if(StopServerToolsWhenMaxTokensUsed != null)
             {
+                if (StopServerToolsWhenMaxTokensUsed is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.StopServerToolsWhenMaxTokensUsed>(null, StopServerToolsWhenMaxTokensUsed);
             }
             else if(StopServerToolsWhenStepCountIs != null)
             {
+                if (StopServerToolsWhenStepCountIs is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.StopServerToolsWhenStepCountIs>(null, StopServerToolsWhenStepCountIs);
             }
         }

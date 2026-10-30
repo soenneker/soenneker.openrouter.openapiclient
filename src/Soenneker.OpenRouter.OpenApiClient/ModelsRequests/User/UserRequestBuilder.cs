@@ -22,7 +22,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.ModelsRequests.User
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public UserRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/models/user{?limit*,offset*,output_modalities*,sort*}", pathParameters)
+        public UserRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/models/user{?client*,limit*,offset*,output_modalities*,sort*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.ModelsRequests.User
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public UserRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/models/user{?limit*,offset*,output_modalities*,sort*}", rawUrl)
+        public UserRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/models/user{?client*,limit*,offset*,output_modalities*,sort*}", rawUrl)
         {
         }
         /// <summary>
@@ -67,6 +67,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.ModelsRequests.User
                 { "429", global::Soenneker.OpenRouter.OpenApiClient.Models.TooManyRequestsResponse.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.OpenRouter.OpenApiClient.Models.InternalServerResponse.CreateFromDiscriminatorValue },
                 { "503", global::Soenneker.OpenRouter.OpenApiClient.Models.ServiceUnavailableResponse.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.OpenRouter.OpenApiClient.Models.ModelsListResponse>(requestInfo, global::Soenneker.OpenRouter.OpenApiClient.Models.ModelsListResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -104,6 +106,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.ModelsRequests.User
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class UserRequestBuilderGetQueryParameters 
         {
+            /// <summary>Return only the models and presets the named harness offers: those that support tool calling, and, when one of your guardrails sets `enforce_first_party_harness_models`, only the harness vendor&apos;s own models (OpenAI for codex, Anthropic for claude_code and claude_desktop). One of: claude_code, claude_desktop, codex. Omit it to get every model you can use.</summary>
+            [QueryParameter("client")]
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.ListModelsUserClientParameter? Client { get; set; }
             /// <summary>Maximum number of records to return (max 1000). When both offset and limit are omitted, the full list is returned</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }

@@ -12,59 +12,86 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ImageEndpoint : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("allowed_passthrough_parameters") is { } nullNodeAllowedPassthroughParameters && nullNodeAllowedPassthroughParameters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AllowedPassthroughParameters = null;
+            if (parseNode.GetChildNode("pricing") is { } nullNodePricing && nullNodePricing.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Pricing = null;
+            if (parseNode.GetChildNode("provider_name") is { } nullNodeProviderName && nullNodeProviderName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProviderName = null;
+            if (parseNode.GetChildNode("provider_slug") is { } nullNodeProviderSlug && nullNodeProviderSlug.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProviderSlug = null;
+            if (parseNode.GetChildNode("provider_tag") is { } nullNodeProviderTag && nullNodeProviderTag.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProviderTag = null;
+            if (parseNode.GetChildNode("supported_parameters") is { } nullNodeSupportedParameters && nullNodeSupportedParameters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SupportedParameters = null;
+            if (parseNode.GetChildNode("supports_streaming") is { } nullNodeSupportsStreaming && nullNodeSupportsStreaming.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SupportsStreaming = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Provider-specific options accepted under provider.options[provider_slug].</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? AllowedPassthroughParameters { get; set; }
+        public List<string>? AllowedPassthroughParameters { get => _explicitNullValueAllowedPassthroughParameters; set { _explicitNullValueAllowedPassthroughParameters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allowed_passthrough_parameters"); else _explicitNullProperties?.Remove("allowed_passthrough_parameters"); } }
+        private List<string>? _explicitNullValueAllowedPassthroughParameters = default!;
 #nullable restore
 #else
-        public List<string> AllowedPassthroughParameters { get; set; }
+        public List<string> AllowedPassthroughParameters { get => _explicitNullValueAllowedPassthroughParameters; set { _explicitNullValueAllowedPassthroughParameters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allowed_passthrough_parameters"); else _explicitNullProperties?.Remove("allowed_passthrough_parameters"); } }
+        private List<string> _explicitNullValueAllowedPassthroughParameters = default!;
 #endif
         /// <summary>Billable pricing lines for this endpoint.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ImagePricingEntry>? Pricing { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ImagePricingEntry>? Pricing { get => _explicitNullValuePricing; set { _explicitNullValuePricing = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pricing"); else _explicitNullProperties?.Remove("pricing"); } }
+        private List<global::Soenneker.OpenRouter.OpenApiClient.Models.ImagePricingEntry>? _explicitNullValuePricing = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ImagePricingEntry> Pricing { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ImagePricingEntry> Pricing { get => _explicitNullValuePricing; set { _explicitNullValuePricing = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pricing"); else _explicitNullProperties?.Remove("pricing"); } }
+        private List<global::Soenneker.OpenRouter.OpenApiClient.Models.ImagePricingEntry> _explicitNullValuePricing = default!;
 #endif
         /// <summary>Provider display name</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ProviderName { get; set; }
+        public string? ProviderName { get => _explicitNullValueProviderName; set { _explicitNullValueProviderName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("provider_name"); else _explicitNullProperties?.Remove("provider_name"); } }
+        private string? _explicitNullValueProviderName = default!;
 #nullable restore
 #else
-        public string ProviderName { get; set; }
+        public string ProviderName { get => _explicitNullValueProviderName; set { _explicitNullValueProviderName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("provider_name"); else _explicitNullProperties?.Remove("provider_name"); } }
+        private string _explicitNullValueProviderName = default!;
 #endif
         /// <summary>Provider slug</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ProviderSlug { get; set; }
+        public string? ProviderSlug { get => _explicitNullValueProviderSlug; set { _explicitNullValueProviderSlug = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("provider_slug"); else _explicitNullProperties?.Remove("provider_slug"); } }
+        private string? _explicitNullValueProviderSlug = default!;
 #nullable restore
 #else
-        public string ProviderSlug { get; set; }
+        public string ProviderSlug { get => _explicitNullValueProviderSlug; set { _explicitNullValueProviderSlug = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("provider_slug"); else _explicitNullProperties?.Remove("provider_slug"); } }
+        private string _explicitNullValueProviderSlug = default!;
 #endif
         /// <summary>Provider tag for request-side selection</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ProviderTag { get; set; }
+        public string? ProviderTag { get => _explicitNullValueProviderTag; set { _explicitNullValueProviderTag = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("provider_tag"); else _explicitNullProperties?.Remove("provider_tag"); } }
+        private string? _explicitNullValueProviderTag = default!;
 #nullable restore
 #else
-        public string ProviderTag { get; set; }
+        public string ProviderTag { get => _explicitNullValueProviderTag; set { _explicitNullValueProviderTag = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("provider_tag"); else _explicitNullProperties?.Remove("provider_tag"); } }
+        private string _explicitNullValueProviderTag = default!;
 #endif
         /// <summary>The definitive set of parameters this endpoint accepts for this model.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageEndpointSupportedParameters? SupportedParameters { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageEndpointSupportedParameters? SupportedParameters { get => _explicitNullValueSupportedParameters; set { _explicitNullValueSupportedParameters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supported_parameters"); else _explicitNullProperties?.Remove("supported_parameters"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageEndpointSupportedParameters? _explicitNullValueSupportedParameters = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageEndpointSupportedParameters SupportedParameters { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageEndpointSupportedParameters SupportedParameters { get => _explicitNullValueSupportedParameters; set { _explicitNullValueSupportedParameters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supported_parameters"); else _explicitNullProperties?.Remove("supported_parameters"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageEndpointSupportedParameters _explicitNullValueSupportedParameters = default!;
 #endif
         /// <summary>Whether this endpoint supports native SSE streaming (`stream: true` in the request).</summary>
-        public bool? SupportsStreaming { get; set; }
+        public bool? SupportsStreaming { get => _explicitNullValueSupportsStreaming; set { _explicitNullValueSupportsStreaming = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supports_streaming"); else _explicitNullProperties?.Remove("supports_streaming"); } }
+        private bool? _explicitNullValueSupportsStreaming = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ImageEndpoint"/> and sets the default values.
         /// </summary>
@@ -80,7 +107,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public static global::Soenneker.OpenRouter.OpenApiClient.Models.ImageEndpoint CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.OpenRouter.OpenApiClient.Models.ImageEndpoint();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.ImageEndpoint(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -113,6 +140,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteStringValue("provider_tag", ProviderTag);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageEndpointSupportedParameters>("supported_parameters", SupportedParameters);
             writer.WriteBoolValue("supports_streaming", SupportsStreaming);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

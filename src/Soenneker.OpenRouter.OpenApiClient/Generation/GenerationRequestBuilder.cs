@@ -83,6 +83,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Generation
                 { "502", global::Soenneker.OpenRouter.OpenApiClient.Models.BadGatewayResponse.CreateFromDiscriminatorValue },
                 { "524", global::Soenneker.OpenRouter.OpenApiClient.Models.EdgeNetworkTimeoutResponse.CreateFromDiscriminatorValue },
                 { "529", global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOverloadedResponse.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.OpenRouter.OpenApiClient.Models.GenerationResponse>(requestInfo, global::Soenneker.OpenRouter.OpenApiClient.Models.GenerationResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

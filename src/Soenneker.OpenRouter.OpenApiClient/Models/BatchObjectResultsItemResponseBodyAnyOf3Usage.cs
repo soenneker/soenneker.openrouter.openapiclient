@@ -11,61 +11,95 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class BatchObjectResultsItemResponseBodyAnyOf3Usage : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("cache_creation") is { } nullNodeCacheCreation && nullNodeCacheCreation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CacheCreation = null;
+            if (parseNode.GetChildNode("cache_creation_input_tokens") is { } nullNodeCacheCreationInputTokens && nullNodeCacheCreationInputTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CacheCreationInputTokens = null;
+            if (parseNode.GetChildNode("cache_read_input_tokens") is { } nullNodeCacheReadInputTokens && nullNodeCacheReadInputTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CacheReadInputTokens = null;
+            if (parseNode.GetChildNode("inference_geo") is { } nullNodeInferenceGeo && nullNodeInferenceGeo.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InferenceGeo = null;
+            if (parseNode.GetChildNode("input_tokens") is { } nullNodeInputTokens && nullNodeInputTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InputTokens = null;
+            if (parseNode.GetChildNode("iterations") is { } nullNodeIterations && nullNodeIterations.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Iterations = null;
+            if (parseNode.GetChildNode("output_tokens") is { } nullNodeOutputTokens && nullNodeOutputTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OutputTokens = null;
+            if (parseNode.GetChildNode("output_tokens_details") is { } nullNodeOutputTokensDetails && nullNodeOutputTokensDetails.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OutputTokensDetails = null;
+            if (parseNode.GetChildNode("server_tool_use") is { } nullNodeServerToolUse && nullNodeServerToolUse.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ServerToolUse = null;
+            if (parseNode.GetChildNode("service_tier") is { } nullNodeServiceTier && nullNodeServiceTier.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ServiceTier = null;
+            if (parseNode.GetChildNode("speed") is { } nullNodeSpeed && nullNodeSpeed.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Speed = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The cache_creation property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheCreation? CacheCreation { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheCreation? CacheCreation { get => _explicitNullValueCacheCreation; set { _explicitNullValueCacheCreation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cache_creation"); else _explicitNullProperties?.Remove("cache_creation"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheCreation? _explicitNullValueCacheCreation = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheCreation CacheCreation { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheCreation CacheCreation { get => _explicitNullValueCacheCreation; set { _explicitNullValueCacheCreation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cache_creation"); else _explicitNullProperties?.Remove("cache_creation"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheCreation _explicitNullValueCacheCreation = default!;
 #endif
         /// <summary>The cache_creation_input_tokens property</summary>
-        public int? CacheCreationInputTokens { get; set; }
+        public int? CacheCreationInputTokens { get => _explicitNullValueCacheCreationInputTokens; set { _explicitNullValueCacheCreationInputTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cache_creation_input_tokens"); else _explicitNullProperties?.Remove("cache_creation_input_tokens"); } }
+        private int? _explicitNullValueCacheCreationInputTokens = default!;
         /// <summary>The cache_read_input_tokens property</summary>
-        public int? CacheReadInputTokens { get; set; }
+        public int? CacheReadInputTokens { get => _explicitNullValueCacheReadInputTokens; set { _explicitNullValueCacheReadInputTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cache_read_input_tokens"); else _explicitNullProperties?.Remove("cache_read_input_tokens"); } }
+        private int? _explicitNullValueCacheReadInputTokens = default!;
         /// <summary>The inference_geo property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? InferenceGeo { get; set; }
+        public string? InferenceGeo { get => _explicitNullValueInferenceGeo; set { _explicitNullValueInferenceGeo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inference_geo"); else _explicitNullProperties?.Remove("inference_geo"); } }
+        private string? _explicitNullValueInferenceGeo = default!;
 #nullable restore
 #else
-        public string InferenceGeo { get; set; }
+        public string InferenceGeo { get => _explicitNullValueInferenceGeo; set { _explicitNullValueInferenceGeo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inference_geo"); else _explicitNullProperties?.Remove("inference_geo"); } }
+        private string _explicitNullValueInferenceGeo = default!;
 #endif
         /// <summary>The input_tokens property</summary>
-        public int? InputTokens { get; set; }
+        public int? InputTokens { get => _explicitNullValueInputTokens; set { _explicitNullValueInputTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input_tokens"); else _explicitNullProperties?.Remove("input_tokens"); } }
+        private int? _explicitNullValueInputTokens = default!;
         /// <summary>The iterations property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicUsageIteration>? Iterations { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicUsageIteration>? Iterations { get => _explicitNullValueIterations; set { _explicitNullValueIterations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("iterations"); else _explicitNullProperties?.Remove("iterations"); } }
+        private List<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicUsageIteration>? _explicitNullValueIterations = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicUsageIteration> Iterations { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicUsageIteration> Iterations { get => _explicitNullValueIterations; set { _explicitNullValueIterations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("iterations"); else _explicitNullProperties?.Remove("iterations"); } }
+        private List<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicUsageIteration> _explicitNullValueIterations = default!;
 #endif
         /// <summary>The output_tokens property</summary>
-        public int? OutputTokens { get; set; }
+        public int? OutputTokens { get => _explicitNullValueOutputTokens; set { _explicitNullValueOutputTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("output_tokens"); else _explicitNullProperties?.Remove("output_tokens"); } }
+        private int? _explicitNullValueOutputTokens = default!;
         /// <summary>The output_tokens_details property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicOutputTokensDetails? OutputTokensDetails { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicOutputTokensDetails? OutputTokensDetails { get => _explicitNullValueOutputTokensDetails; set { _explicitNullValueOutputTokensDetails = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("output_tokens_details"); else _explicitNullProperties?.Remove("output_tokens_details"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicOutputTokensDetails? _explicitNullValueOutputTokensDetails = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicOutputTokensDetails OutputTokensDetails { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicOutputTokensDetails OutputTokensDetails { get => _explicitNullValueOutputTokensDetails; set { _explicitNullValueOutputTokensDetails = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("output_tokens_details"); else _explicitNullProperties?.Remove("output_tokens_details"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicOutputTokensDetails _explicitNullValueOutputTokensDetails = default!;
 #endif
         /// <summary>The server_tool_use property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicServerToolUsage? ServerToolUse { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicServerToolUsage? ServerToolUse { get => _explicitNullValueServerToolUse; set { _explicitNullValueServerToolUse = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("server_tool_use"); else _explicitNullProperties?.Remove("server_tool_use"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicServerToolUsage? _explicitNullValueServerToolUse = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicServerToolUsage ServerToolUse { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicServerToolUsage ServerToolUse { get => _explicitNullValueServerToolUse; set { _explicitNullValueServerToolUse = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("server_tool_use"); else _explicitNullProperties?.Remove("server_tool_use"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicServerToolUsage _explicitNullValueServerToolUse = default!;
 #endif
         /// <summary>The service_tier property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicServiceTier? ServiceTier { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicServiceTier? ServiceTier { get => _explicitNullValueServiceTier; set { _explicitNullValueServiceTier = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("service_tier"); else _explicitNullProperties?.Remove("service_tier"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicServiceTier? _explicitNullValueServiceTier = default!;
         /// <summary>The speed property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicSpeed? Speed { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicSpeed? Speed { get => _explicitNullValueSpeed; set { _explicitNullValueSpeed = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("speed"); else _explicitNullProperties?.Remove("speed"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicSpeed? _explicitNullValueSpeed = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BatchObjectResultsItemResponseBodyAnyOf3Usage"/> and sets the default values.
         /// </summary>
@@ -81,7 +115,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public static global::Soenneker.OpenRouter.OpenApiClient.Models.BatchObjectResultsItemResponseBodyAnyOf3Usage CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.OpenRouter.OpenApiClient.Models.BatchObjectResultsItemResponseBodyAnyOf3Usage();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.BatchObjectResultsItemResponseBodyAnyOf3Usage(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -122,6 +156,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicServerToolUsage>("server_tool_use", ServerToolUse);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicServiceTier>("service_tier", ServiceTier);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicSpeed>("speed", Speed);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

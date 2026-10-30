@@ -34,6 +34,8 @@ internal static class OpenApiFormSerializer
         {
             JsonValueKind.String => value.GetString()!,
             JsonValueKind.Number or JsonValueKind.True or JsonValueKind.False => value.GetRawText(),
+            // Complex array elements and map values use their JSON representation as a form value.
+            JsonValueKind.Object or JsonValueKind.Array or JsonValueKind.Null => value.GetRawText(),
             _ => throw new InvalidOperationException("This form encoding requires scalar values.")
         };
         void Deep(string key, JsonElement value, bool allowReserved)

@@ -13,31 +13,52 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class XSearchOptions : IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("allowed_x_handles") is { } nullNodeAllowedXHandles && nullNodeAllowedXHandles.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AllowedXHandles = null;
+            if (parseNode.GetChildNode("enable_image_understanding") is { } nullNodeEnableImageUnderstanding && nullNodeEnableImageUnderstanding.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EnableImageUnderstanding = null;
+            if (parseNode.GetChildNode("enable_video_understanding") is { } nullNodeEnableVideoUnderstanding && nullNodeEnableVideoUnderstanding.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EnableVideoUnderstanding = null;
+            if (parseNode.GetChildNode("excluded_x_handles") is { } nullNodeExcludedXHandles && nullNodeExcludedXHandles.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExcludedXHandles = null;
+            if (parseNode.GetChildNode("from_date") is { } nullNodeFromDate && nullNodeFromDate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FromDate = null;
+            if (parseNode.GetChildNode("to_date") is { } nullNodeToDate && nullNodeToDate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ToDate = null;
+        }
+
         /// <summary>Only include posts from these X handles (max 20). Cannot be used with excluded_x_handles.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? AllowedXHandles { get; set; }
+        public List<string>? AllowedXHandles { get => _explicitNullValueAllowedXHandles; set { _explicitNullValueAllowedXHandles = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allowed_x_handles"); else _explicitNullProperties?.Remove("allowed_x_handles"); } }
+        private List<string>? _explicitNullValueAllowedXHandles = default!;
 #nullable restore
 #else
-        public List<string> AllowedXHandles { get; set; }
+        public List<string> AllowedXHandles { get => _explicitNullValueAllowedXHandles; set { _explicitNullValueAllowedXHandles = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allowed_x_handles"); else _explicitNullProperties?.Remove("allowed_x_handles"); } }
+        private List<string> _explicitNullValueAllowedXHandles = default!;
 #endif
         /// <summary>Analyze images attached to matching posts.</summary>
-        public bool? EnableImageUnderstanding { get; set; }
+        public bool? EnableImageUnderstanding { get => _explicitNullValueEnableImageUnderstanding; set { _explicitNullValueEnableImageUnderstanding = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enable_image_understanding"); else _explicitNullProperties?.Remove("enable_image_understanding"); } }
+        private bool? _explicitNullValueEnableImageUnderstanding = default!;
         /// <summary>Analyze videos attached to matching posts.</summary>
-        public bool? EnableVideoUnderstanding { get; set; }
+        public bool? EnableVideoUnderstanding { get => _explicitNullValueEnableVideoUnderstanding; set { _explicitNullValueEnableVideoUnderstanding = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enable_video_understanding"); else _explicitNullProperties?.Remove("enable_video_understanding"); } }
+        private bool? _explicitNullValueEnableVideoUnderstanding = default!;
         /// <summary>Exclude posts from these X handles (max 20). Cannot be used with allowed_x_handles.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? ExcludedXHandles { get; set; }
+        public List<string>? ExcludedXHandles { get => _explicitNullValueExcludedXHandles; set { _explicitNullValueExcludedXHandles = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("excluded_x_handles"); else _explicitNullProperties?.Remove("excluded_x_handles"); } }
+        private List<string>? _explicitNullValueExcludedXHandles = default!;
 #nullable restore
 #else
-        public List<string> ExcludedXHandles { get; set; }
+        public List<string> ExcludedXHandles { get => _explicitNullValueExcludedXHandles; set { _explicitNullValueExcludedXHandles = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("excluded_x_handles"); else _explicitNullProperties?.Remove("excluded_x_handles"); } }
+        private List<string> _explicitNullValueExcludedXHandles = default!;
 #endif
         /// <summary>Start of the post date range (ISO 8601 date, e.g. &quot;2025-01-01&quot;).</summary>
-        public Date? FromDate { get; set; }
+        public Date? FromDate { get => _explicitNullValueFromDate; set { _explicitNullValueFromDate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("from_date"); else _explicitNullProperties?.Remove("from_date"); } }
+        private Date? _explicitNullValueFromDate = default!;
         /// <summary>End of the post date range (ISO 8601 date, e.g. &quot;2025-12-31&quot;).</summary>
-        public Date? ToDate { get; set; }
+        public Date? ToDate { get => _explicitNullValueToDate; set { _explicitNullValueToDate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("to_date"); else _explicitNullProperties?.Remove("to_date"); } }
+        private Date? _explicitNullValueToDate = default!;
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -46,7 +67,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public static global::Soenneker.OpenRouter.OpenApiClient.Models.XSearchOptions CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.OpenRouter.OpenApiClient.Models.XSearchOptions();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.XSearchOptions(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -76,7 +97,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteBoolValue("enable_video_understanding", EnableVideoUnderstanding);
             writer.WriteCollectionOfPrimitiveValues<string>("excluded_x_handles", ExcludedXHandles);
             writer.WriteDateValue("from_date", FromDate);
-            writer.WriteDateValue("to_date", ToDate);
+            writer.WriteDateValue("to_date", ToDate);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

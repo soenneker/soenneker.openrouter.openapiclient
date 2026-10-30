@@ -12,7 +12,12 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class AlignmentCallRecord : IComposedTypeWrapper, IParsable
-    {
+    , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
+        // Preserve ambiguous union payloads without inventing a discriminator.
+        /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
         /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AlignmentAllowedCallRecord"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -45,21 +50,30 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public static global::Soenneker.OpenRouter.OpenApiClient.Models.AlignmentCallRecord CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            var mappingValue = parseNode.GetChildNode("outcome")?.GetStringValue();
+            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.OpenRouter.OpenApiClient.Models.AlignmentCallRecord();
-            if("allowed".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("AlignmentAllowedCallRecord".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.AlignmentAllowedCallRecord = new global::Soenneker.OpenRouter.OpenApiClient.Models.AlignmentAllowedCallRecord();
+                
             }
-            else if("blocked".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("AlignmentBlockedCallRecord".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.AlignmentBlockedCallRecord = new global::Soenneker.OpenRouter.OpenApiClient.Models.AlignmentBlockedCallRecord();
+                
             }
-            else if("unavailable".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("AlignmentUnavailableCallRecord".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.AlignmentUnavailableCallRecord = new global::Soenneker.OpenRouter.OpenApiClient.Models.AlignmentUnavailableCallRecord();
+                
             }
-            return result;
+            
+            var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
+            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("call") != null && parseNode.GetChildNode("outcome") != null && (parseNode.GetChildNode("outcome")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag2 && ("allowed".Equals(tag2.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("rules") != null))();
+            bool matchesUnionBranch1 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("call") != null && parseNode.GetChildNode("outcome") != null && (parseNode.GetChildNode("outcome")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag2 && ("blocked".Equals(tag2.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("rules") != null))();
+            bool matchesUnionBranch2 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("call") != null && parseNode.GetChildNode("outcome") != null && (parseNode.GetChildNode("outcome")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag2 && ("unavailable".Equals(tag2.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("reason") != null && (parseNode.GetChildNode("reason")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag4 && ("cut".Equals(tag4.GetValue(), global::System.StringComparison.Ordinal) || "evaluator_error".Equals(tag4.GetValue(), global::System.StringComparison.Ordinal) || "malformed_answer".Equals(tag4.GetValue(), global::System.StringComparison.Ordinal) || "time_limit".Equals(tag4.GetValue(), global::System.StringComparison.Ordinal)))))();
+            if (result.AlignmentAllowedCallRecord == null && result.AlignmentBlockedCallRecord == null && result.AlignmentUnavailableCallRecord == null && matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2) result.AlignmentAllowedCallRecord = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.AlignmentAllowedCallRecord(), parseNode);
+            if (result.AlignmentAllowedCallRecord == null && result.AlignmentBlockedCallRecord == null && result.AlignmentUnavailableCallRecord == null && matchesUnionBranch1 && !matchesUnionBranch0 && !matchesUnionBranch2) result.AlignmentBlockedCallRecord = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.AlignmentBlockedCallRecord(), parseNode);
+            if (result.AlignmentAllowedCallRecord == null && result.AlignmentBlockedCallRecord == null && result.AlignmentUnavailableCallRecord == null && matchesUnionBranch2 && !matchesUnionBranch0 && !matchesUnionBranch1) result.AlignmentUnavailableCallRecord = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.AlignmentUnavailableCallRecord(), parseNode);
+            if (result.AlignmentAllowedCallRecord == null && result.AlignmentBlockedCallRecord == null && result.AlignmentUnavailableCallRecord == null) result.UnrecognizedValue = unionPayload;
+return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -87,17 +101,26 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
+            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
+            if (AlignmentAllowedCallRecord == null && AlignmentBlockedCallRecord == null && AlignmentUnavailableCallRecord == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            if (AlignmentAllowedCallRecord != null && AlignmentBlockedCallRecord == null && AlignmentUnavailableCallRecord == null) { if (AlignmentAllowedCallRecord is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, AlignmentAllowedCallRecord); return; }
+            if (AlignmentBlockedCallRecord != null && AlignmentAllowedCallRecord == null && AlignmentUnavailableCallRecord == null) { if (AlignmentBlockedCallRecord is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, AlignmentBlockedCallRecord); return; }
+            if (AlignmentUnavailableCallRecord != null && AlignmentAllowedCallRecord == null && AlignmentBlockedCallRecord == null) { if (AlignmentUnavailableCallRecord is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, AlignmentUnavailableCallRecord); return; }
+
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             if(AlignmentAllowedCallRecord != null)
             {
+                if (AlignmentAllowedCallRecord is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AlignmentAllowedCallRecord>(null, AlignmentAllowedCallRecord);
             }
             else if(AlignmentBlockedCallRecord != null)
             {
+                if (AlignmentBlockedCallRecord is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AlignmentBlockedCallRecord>(null, AlignmentBlockedCallRecord);
             }
             else if(AlignmentUnavailableCallRecord != null)
             {
+                if (AlignmentUnavailableCallRecord is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AlignmentUnavailableCallRecord>(null, AlignmentUnavailableCallRecord);
             }
         }

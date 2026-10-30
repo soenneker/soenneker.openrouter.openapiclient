@@ -12,56 +12,86 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class UpdatePrivateEndpointSettingsRequest : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("completions") is { } nullNodeCompletions && nullNodeCompletions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Completions = null;
+            if (parseNode.GetChildNode("context_length") is { } nullNodeContextLength && nullNodeContextLength.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ContextLength = null;
+            if (parseNode.GetChildNode("excluded_parameters") is { } nullNodeExcludedParameters && nullNodeExcludedParameters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExcludedParameters = null;
+            if (parseNode.GetChildNode("inputs") is { } nullNodeInputs && nullNodeInputs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Inputs = null;
+            if (parseNode.GetChildNode("max_completion_tokens") is { } nullNodeMaxCompletionTokens && nullNodeMaxCompletionTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxCompletionTokens = null;
+            if (parseNode.GetChildNode("max_prompt_tokens") is { } nullNodeMaxPromptTokens && nullNodeMaxPromptTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxPromptTokens = null;
+            if (parseNode.GetChildNode("quantization") is { } nullNodeQuantization && nullNodeQuantization.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Quantization = null;
+            if (parseNode.GetChildNode("reasoning") is { } nullNodeReasoning && nullNodeReasoning.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Reasoning = null;
+            if (parseNode.GetChildNode("tool_choice") is { } nullNodeToolChoice && nullNodeToolChoice.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ToolChoice = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The completions property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointSettingsRequestCompletions? Completions { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointSettingsRequestCompletions? Completions { get => _explicitNullValueCompletions; set { _explicitNullValueCompletions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("completions"); else _explicitNullProperties?.Remove("completions"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointSettingsRequestCompletions? _explicitNullValueCompletions = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointSettingsRequestCompletions Completions { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointSettingsRequestCompletions Completions { get => _explicitNullValueCompletions; set { _explicitNullValueCompletions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("completions"); else _explicitNullProperties?.Remove("completions"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointSettingsRequestCompletions _explicitNullValueCompletions = default!;
 #endif
         /// <summary>Longest prompt plus completion, in tokens, or `null` to keep the model default.</summary>
-        public int? ContextLength { get; set; }
+        public int? ContextLength { get => _explicitNullValueContextLength; set { _explicitNullValueContextLength = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("context_length"); else _explicitNullProperties?.Remove("context_length"); } }
+        private int? _explicitNullValueContextLength = default!;
         /// <summary>Request parameters the upstream rejects even though the model supports them; requests using one do not route here. Cannot name a tested parameter.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointSettingsRequestExcludedParametersItem?>? ExcludedParameters { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointSettingsRequestExcludedParametersItem?>? ExcludedParameters { get => _explicitNullValueExcludedParameters; set { _explicitNullValueExcludedParameters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("excluded_parameters"); else _explicitNullProperties?.Remove("excluded_parameters"); } }
+        private List<global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointSettingsRequestExcludedParametersItem?>? _explicitNullValueExcludedParameters = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointSettingsRequestExcludedParametersItem?> ExcludedParameters { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointSettingsRequestExcludedParametersItem?> ExcludedParameters { get => _explicitNullValueExcludedParameters; set { _explicitNullValueExcludedParameters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("excluded_parameters"); else _explicitNullProperties?.Remove("excluded_parameters"); } }
+        private List<global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointSettingsRequestExcludedParametersItem?> _explicitNullValueExcludedParameters = default!;
 #endif
         /// <summary>The inputs property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointSettingsRequestInputs? Inputs { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointSettingsRequestInputs? Inputs { get => _explicitNullValueInputs; set { _explicitNullValueInputs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inputs"); else _explicitNullProperties?.Remove("inputs"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointSettingsRequestInputs? _explicitNullValueInputs = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointSettingsRequestInputs Inputs { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointSettingsRequestInputs Inputs { get => _explicitNullValueInputs; set { _explicitNullValueInputs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inputs"); else _explicitNullProperties?.Remove("inputs"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointSettingsRequestInputs _explicitNullValueInputs = default!;
 #endif
         /// <summary>Longest completion the upstream returns, in tokens, or `null` to keep the model default.</summary>
-        public int? MaxCompletionTokens { get; set; }
+        public int? MaxCompletionTokens { get => _explicitNullValueMaxCompletionTokens; set { _explicitNullValueMaxCompletionTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_completion_tokens"); else _explicitNullProperties?.Remove("max_completion_tokens"); } }
+        private int? _explicitNullValueMaxCompletionTokens = default!;
         /// <summary>Longest prompt, in tokens, or `null` for no cap below the context length. Cannot exceed `context_length`, or the model context length while `context_length` is `null`.</summary>
-        public int? MaxPromptTokens { get; set; }
+        public int? MaxPromptTokens { get => _explicitNullValueMaxPromptTokens; set { _explicitNullValueMaxPromptTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_prompt_tokens"); else _explicitNullProperties?.Remove("max_prompt_tokens"); } }
+        private int? _explicitNullValueMaxPromptTokens = default!;
         /// <summary>Weight precision the deployment runs at; `unknown` when not stated.</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointQuantization? Quantization { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointQuantization? Quantization { get => _explicitNullValueQuantization; set { _explicitNullValueQuantization = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quantization"); else _explicitNullProperties?.Remove("quantization"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointQuantization? _explicitNullValueQuantization = default!;
         /// <summary>The reasoning property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointSettingsRequestReasoning? Reasoning { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointSettingsRequestReasoning? Reasoning { get => _explicitNullValueReasoning; set { _explicitNullValueReasoning = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reasoning"); else _explicitNullProperties?.Remove("reasoning"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointSettingsRequestReasoning? _explicitNullValueReasoning = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointSettingsRequestReasoning Reasoning { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointSettingsRequestReasoning Reasoning { get => _explicitNullValueReasoning; set { _explicitNullValueReasoning = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reasoning"); else _explicitNullProperties?.Remove("reasoning"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointSettingsRequestReasoning _explicitNullValueReasoning = default!;
 #endif
         /// <summary>The tool_choice property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointSettingsRequestToolChoice? ToolChoice { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointSettingsRequestToolChoice? ToolChoice { get => _explicitNullValueToolChoice; set { _explicitNullValueToolChoice = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tool_choice"); else _explicitNullProperties?.Remove("tool_choice"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointSettingsRequestToolChoice? _explicitNullValueToolChoice = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointSettingsRequestToolChoice ToolChoice { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointSettingsRequestToolChoice ToolChoice { get => _explicitNullValueToolChoice; set { _explicitNullValueToolChoice = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tool_choice"); else _explicitNullProperties?.Remove("tool_choice"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointSettingsRequestToolChoice _explicitNullValueToolChoice = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointSettingsRequest"/> and sets the default values.
@@ -78,7 +108,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public static global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointSettingsRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointSettingsRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointSettingsRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -115,6 +145,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointQuantization>("quantization", Quantization);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointSettingsRequestReasoning>("reasoning", Reasoning);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointSettingsRequestToolChoice>("tool_choice", ToolChoice);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

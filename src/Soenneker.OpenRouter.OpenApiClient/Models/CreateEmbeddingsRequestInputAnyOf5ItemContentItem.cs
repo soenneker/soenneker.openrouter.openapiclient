@@ -12,7 +12,12 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CreateEmbeddingsRequestInputAnyOf5ItemContentItem : IComposedTypeWrapper, IParsable
-    {
+    , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
+        // Preserve ambiguous union payloads without inventing a discriminator.
+        /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
         /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ContentPartInputAudio"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -65,25 +70,38 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             var result = new global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInputAnyOf5ItemContentItem();
             if("input_audio".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.ContentPartInputAudio = new global::Soenneker.OpenRouter.OpenApiClient.Models.ContentPartInputAudio();
+                
             }
             else if("input_file".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.ContentPartInputFile = new global::Soenneker.OpenRouter.OpenApiClient.Models.ContentPartInputFile();
+                
             }
             else if("input_video".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.ContentPartInputVideo = new global::Soenneker.OpenRouter.OpenApiClient.Models.ContentPartInputVideo();
+                
             }
             else if("text".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.CreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf1 = new global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf1();
+                
             }
             else if("image_url".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.CreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf2 = new global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf2();
+                
             }
-            return result;
+            
+            var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
+            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("text".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("text") != null))();
+            bool matchesUnionBranch1 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("image_url".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("image_url") != null))();
+            bool matchesUnionBranch2 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("input_audio".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("input_audio") != null))();
+            bool matchesUnionBranch3 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("input_video".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("input_video") != null))();
+            bool matchesUnionBranch4 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("input_file".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("input_file") != null))();
+            if (result.ContentPartInputAudio == null && result.ContentPartInputFile == null && result.ContentPartInputVideo == null && result.CreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf1 == null && result.CreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf2 == null && matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch3 && !matchesUnionBranch4) result.CreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf1 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf1(), parseNode);
+            if (result.ContentPartInputAudio == null && result.ContentPartInputFile == null && result.ContentPartInputVideo == null && result.CreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf1 == null && result.CreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf2 == null && matchesUnionBranch1 && !matchesUnionBranch0 && !matchesUnionBranch2 && !matchesUnionBranch3 && !matchesUnionBranch4) result.CreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf2 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf2(), parseNode);
+            if (result.ContentPartInputAudio == null && result.ContentPartInputFile == null && result.ContentPartInputVideo == null && result.CreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf1 == null && result.CreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf2 == null && matchesUnionBranch2 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch3 && !matchesUnionBranch4) result.ContentPartInputAudio = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.ContentPartInputAudio(), parseNode);
+            if (result.ContentPartInputAudio == null && result.ContentPartInputFile == null && result.ContentPartInputVideo == null && result.CreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf1 == null && result.CreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf2 == null && matchesUnionBranch3 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch4) result.ContentPartInputVideo = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.ContentPartInputVideo(), parseNode);
+            if (result.ContentPartInputAudio == null && result.ContentPartInputFile == null && result.ContentPartInputVideo == null && result.CreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf1 == null && result.CreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf2 == null && matchesUnionBranch4 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch3) result.ContentPartInputFile = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.ContentPartInputFile(), parseNode);
+            if (result.ContentPartInputAudio == null && result.ContentPartInputFile == null && result.ContentPartInputVideo == null && result.CreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf1 == null && result.CreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf2 == null) result.UnrecognizedValue = unionPayload;
+return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -119,25 +137,38 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
+            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
+            if (ContentPartInputAudio == null && ContentPartInputFile == null && ContentPartInputVideo == null && CreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf1 == null && CreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf2 == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            if (ContentPartInputAudio != null && ContentPartInputFile == null && ContentPartInputVideo == null && CreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf1 == null && CreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf2 == null) { if (ContentPartInputAudio is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, ContentPartInputAudio); return; }
+            if (ContentPartInputFile != null && ContentPartInputAudio == null && ContentPartInputVideo == null && CreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf1 == null && CreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf2 == null) { if (ContentPartInputFile is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, ContentPartInputFile); return; }
+            if (ContentPartInputVideo != null && ContentPartInputAudio == null && ContentPartInputFile == null && CreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf1 == null && CreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf2 == null) { if (ContentPartInputVideo is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, ContentPartInputVideo); return; }
+            if (CreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf1 != null && ContentPartInputAudio == null && ContentPartInputFile == null && ContentPartInputVideo == null && CreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf2 == null) { if (CreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, CreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf1); return; }
+            if (CreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf2 != null && ContentPartInputAudio == null && ContentPartInputFile == null && ContentPartInputVideo == null && CreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf1 == null) { if (CreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, CreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf2); return; }
+
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             if(ContentPartInputAudio != null)
             {
+                if (ContentPartInputAudio is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentPartInputAudio>(null, ContentPartInputAudio);
             }
             else if(ContentPartInputFile != null)
             {
+                if (ContentPartInputFile is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentPartInputFile>(null, ContentPartInputFile);
             }
             else if(ContentPartInputVideo != null)
             {
+                if (ContentPartInputVideo is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentPartInputVideo>(null, ContentPartInputVideo);
             }
             else if(CreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf1 != null)
             {
+                if (CreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf1>(null, CreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf1);
             }
             else if(CreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf2 != null)
             {
+                if (CreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf2>(null, CreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf2);
             }
         }

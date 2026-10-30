@@ -12,89 +12,133 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DecisionsRequestProvider : IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("allow_fallbacks") is { } nullNodeAllowFallbacks && nullNodeAllowFallbacks.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AllowFallbacks = null;
+            if (parseNode.GetChildNode("data_collection") is { } nullNodeDataCollection && nullNodeDataCollection.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DataCollection = null;
+            if (parseNode.GetChildNode("enforce_distillable_text") is { } nullNodeEnforceDistillableText && nullNodeEnforceDistillableText.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EnforceDistillableText = null;
+            if (parseNode.GetChildNode("ignore") is { } nullNodeIgnore && nullNodeIgnore.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Ignore = null;
+            if (parseNode.GetChildNode("max_price") is { } nullNodeMaxPrice && nullNodeMaxPrice.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxPrice = null;
+            if (parseNode.GetChildNode("only") is { } nullNodeOnly && nullNodeOnly.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Only = null;
+            if (parseNode.GetChildNode("options") is { } nullNodeOptions && nullNodeOptions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Options = null;
+            if (parseNode.GetChildNode("order") is { } nullNodeOrder && nullNodeOrder.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Order = null;
+            if (parseNode.GetChildNode("preferred_max_latency") is { } nullNodePreferredMaxLatency && nullNodePreferredMaxLatency.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PreferredMaxLatency = null;
+            if (parseNode.GetChildNode("preferred_min_throughput") is { } nullNodePreferredMinThroughput && nullNodePreferredMinThroughput.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PreferredMinThroughput = null;
+            if (parseNode.GetChildNode("quantizations") is { } nullNodeQuantizations && nullNodeQuantizations.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Quantizations = null;
+            if (parseNode.GetChildNode("require_parameters") is { } nullNodeRequireParameters && nullNodeRequireParameters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RequireParameters = null;
+            if (parseNode.GetChildNode("sort") is { } nullNodeSort && nullNodeSort.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Sort = null;
+            if (parseNode.GetChildNode("zdr") is { } nullNodeZdr && nullNodeZdr.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Zdr = null;
+        }
+
         /// <summary>Whether to allow backup providers to serve requests- true: (default) when the primary provider (or your custom providers in &quot;order&quot;) is unavailable, use the next best provider.- false: use only the primary/custom provider, and return the upstream error if it&apos;s unavailable.</summary>
-        public bool? AllowFallbacks { get; set; }
+        public bool? AllowFallbacks { get => _explicitNullValueAllowFallbacks; set { _explicitNullValueAllowFallbacks = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allow_fallbacks"); else _explicitNullProperties?.Remove("allow_fallbacks"); } }
+        private bool? _explicitNullValueAllowFallbacks = default!;
         /// <summary>Data collection setting. If no available model provider meets the requirement, your request will return an error.- allow: (default) allow providers which store user data non-transiently and may train on it- deny: use only providers which do not collect user data.</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferencesDataCollection? DataCollection { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferencesDataCollection? DataCollection { get => _explicitNullValueDataCollection; set { _explicitNullValueDataCollection = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data_collection"); else _explicitNullProperties?.Remove("data_collection"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferencesDataCollection? _explicitNullValueDataCollection = default!;
         /// <summary>Whether to restrict routing to only models that allow text distillation. When true, only models where the author has allowed distillation will be used.</summary>
-        public bool? EnforceDistillableText { get; set; }
+        public bool? EnforceDistillableText { get => _explicitNullValueEnforceDistillableText; set { _explicitNullValueEnforceDistillableText = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enforce_distillable_text"); else _explicitNullProperties?.Remove("enforce_distillable_text"); } }
+        private bool? _explicitNullValueEnforceDistillableText = default!;
         /// <summary>List of provider slugs to ignore. If provided, this list is merged with your account-wide ignored provider settings for this request.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Ignore { get; set; }
+        public List<string>? Ignore { get => _explicitNullValueIgnore; set { _explicitNullValueIgnore = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ignore"); else _explicitNullProperties?.Remove("ignore"); } }
+        private List<string>? _explicitNullValueIgnore = default!;
 #nullable restore
 #else
-        public List<string> Ignore { get; set; }
+        public List<string> Ignore { get => _explicitNullValueIgnore; set { _explicitNullValueIgnore = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ignore"); else _explicitNullProperties?.Remove("ignore"); } }
+        private List<string> _explicitNullValueIgnore = default!;
 #endif
         /// <summary>The object specifying the maximum price you want to pay for this request. USD price per million tokens, for prompt and completion.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferencesMaxPrice? MaxPrice { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferencesMaxPrice? MaxPrice { get => _explicitNullValueMaxPrice; set { _explicitNullValueMaxPrice = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_price"); else _explicitNullProperties?.Remove("max_price"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferencesMaxPrice? _explicitNullValueMaxPrice = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferencesMaxPrice MaxPrice { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferencesMaxPrice MaxPrice { get => _explicitNullValueMaxPrice; set { _explicitNullValueMaxPrice = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_price"); else _explicitNullProperties?.Remove("max_price"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferencesMaxPrice _explicitNullValueMaxPrice = default!;
 #endif
         /// <summary>List of provider slugs to allow. If provided, this list is merged with your account-wide allowed provider settings for this request.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Only { get; set; }
+        public List<string>? Only { get => _explicitNullValueOnly; set { _explicitNullValueOnly = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("only"); else _explicitNullProperties?.Remove("only"); } }
+        private List<string>? _explicitNullValueOnly = default!;
 #nullable restore
 #else
-        public List<string> Only { get; set; }
+        public List<string> Only { get => _explicitNullValueOnly; set { _explicitNullValueOnly = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("only"); else _explicitNullProperties?.Remove("only"); } }
+        private List<string> _explicitNullValueOnly = default!;
 #endif
         /// <summary>Provider-specific options keyed by provider slug. Only options for the matched provider are forwarded; the rest are ignored. Unrecognized keys are silently dropped.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions? Options { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions? Options { get => _explicitNullValueOptions; set { _explicitNullValueOptions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("options"); else _explicitNullProperties?.Remove("options"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions? _explicitNullValueOptions = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions Options { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions Options { get => _explicitNullValueOptions; set { _explicitNullValueOptions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("options"); else _explicitNullProperties?.Remove("options"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions _explicitNullValueOptions = default!;
 #endif
         /// <summary>An ordered list of provider slugs. The router will attempt to use the first provider in the subset of this list that supports your requested model, and fall back to the next if it is unavailable. If no providers are available, the request will fail with an error message.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Order { get; set; }
+        public List<string>? Order { get => _explicitNullValueOrder; set { _explicitNullValueOrder = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("order"); else _explicitNullProperties?.Remove("order"); } }
+        private List<string>? _explicitNullValueOrder = default!;
 #nullable restore
 #else
-        public List<string> Order { get; set; }
+        public List<string> Order { get => _explicitNullValueOrder; set { _explicitNullValueOrder = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("order"); else _explicitNullProperties?.Remove("order"); } }
+        private List<string> _explicitNullValueOrder = default!;
 #endif
         /// <summary>Preferred maximum latency (in seconds). Can be a number (applies to p50) or an object with percentile-specific cutoffs. Endpoints above the threshold(s) may still be used, but are deprioritized in routing. When using fallback models, this may cause a fallback model to be used instead of the primary model if it meets the threshold.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.PreferredMaxLatency? PreferredMaxLatency { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PreferredMaxLatency? PreferredMaxLatency { get => _explicitNullValuePreferredMaxLatency; set { _explicitNullValuePreferredMaxLatency = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("preferred_max_latency"); else _explicitNullProperties?.Remove("preferred_max_latency"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.PreferredMaxLatency? _explicitNullValuePreferredMaxLatency = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.PreferredMaxLatency PreferredMaxLatency { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PreferredMaxLatency PreferredMaxLatency { get => _explicitNullValuePreferredMaxLatency; set { _explicitNullValuePreferredMaxLatency = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("preferred_max_latency"); else _explicitNullProperties?.Remove("preferred_max_latency"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.PreferredMaxLatency _explicitNullValuePreferredMaxLatency = default!;
 #endif
         /// <summary>Preferred minimum throughput (in tokens per second). Can be a number (applies to p50) or an object with percentile-specific cutoffs. Endpoints below the threshold(s) may still be used, but are deprioritized in routing. When using fallback models, this may cause a fallback model to be used instead of the primary model if it meets the threshold.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.PreferredMinThroughput? PreferredMinThroughput { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PreferredMinThroughput? PreferredMinThroughput { get => _explicitNullValuePreferredMinThroughput; set { _explicitNullValuePreferredMinThroughput = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("preferred_min_throughput"); else _explicitNullProperties?.Remove("preferred_min_throughput"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.PreferredMinThroughput? _explicitNullValuePreferredMinThroughput = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.PreferredMinThroughput PreferredMinThroughput { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PreferredMinThroughput PreferredMinThroughput { get => _explicitNullValuePreferredMinThroughput; set { _explicitNullValuePreferredMinThroughput = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("preferred_min_throughput"); else _explicitNullProperties?.Remove("preferred_min_throughput"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.PreferredMinThroughput _explicitNullValuePreferredMinThroughput = default!;
 #endif
         /// <summary>A list of quantization levels to filter the provider by.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.Quantization?>? Quantizations { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.Quantization?>? Quantizations { get => _explicitNullValueQuantizations; set { _explicitNullValueQuantizations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quantizations"); else _explicitNullProperties?.Remove("quantizations"); } }
+        private List<global::Soenneker.OpenRouter.OpenApiClient.Models.Quantization?>? _explicitNullValueQuantizations = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.Quantization?> Quantizations { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.Quantization?> Quantizations { get => _explicitNullValueQuantizations; set { _explicitNullValueQuantizations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quantizations"); else _explicitNullProperties?.Remove("quantizations"); } }
+        private List<global::Soenneker.OpenRouter.OpenApiClient.Models.Quantization?> _explicitNullValueQuantizations = default!;
 #endif
         /// <summary>Whether to filter providers to only those that support the parameters you&apos;ve provided. If this setting is omitted or set to false, then providers will receive only the parameters they support, and ignore the rest.</summary>
-        public bool? RequireParameters { get; set; }
+        public bool? RequireParameters { get => _explicitNullValueRequireParameters; set { _explicitNullValueRequireParameters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("require_parameters"); else _explicitNullProperties?.Remove("require_parameters"); } }
+        private bool? _explicitNullValueRequireParameters = default!;
         /// <summary>The sorting strategy to use for this request, if &quot;order&quot; is not specified. When set, no load balancing is performed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferencesSort? Sort { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferencesSort? Sort { get => _explicitNullValueSort; set { _explicitNullValueSort = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sort"); else _explicitNullProperties?.Remove("sort"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferencesSort? _explicitNullValueSort = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferencesSort Sort { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferencesSort Sort { get => _explicitNullValueSort; set { _explicitNullValueSort = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sort"); else _explicitNullProperties?.Remove("sort"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferencesSort _explicitNullValueSort = default!;
 #endif
         /// <summary>Whether to restrict routing to only ZDR (Zero Data Retention) endpoints. When true, only endpoints that do not retain prompts will be used.</summary>
-        public bool? Zdr { get; set; }
+        public bool? Zdr { get => _explicitNullValueZdr; set { _explicitNullValueZdr = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("zdr"); else _explicitNullProperties?.Remove("zdr"); } }
+        private bool? _explicitNullValueZdr = default!;
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -103,7 +147,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public static global::Soenneker.OpenRouter.OpenApiClient.Models.DecisionsRequestProvider CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.OpenRouter.OpenApiClient.Models.DecisionsRequestProvider();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.DecisionsRequestProvider(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -149,7 +193,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.Quantization>("quantizations", Quantizations);
             writer.WriteBoolValue("require_parameters", RequireParameters);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferencesSort>("sort", Sort);
-            writer.WriteBoolValue("zdr", Zdr);
+            writer.WriteBoolValue("zdr", Zdr);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

@@ -12,78 +12,112 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PublicEndpointPerfLast30MByWorkload : IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("decisions") is { } nullNodeDecisions && nullNodeDecisions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Decisions = null;
+            if (parseNode.GetChildNode("embeddings") is { } nullNodeEmbeddings && nullNodeEmbeddings.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Embeddings = null;
+            if (parseNode.GetChildNode("image_generation") is { } nullNodeImageGeneration && nullNodeImageGeneration.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ImageGeneration = null;
+            if (parseNode.GetChildNode("rerank") is { } nullNodeRerank && nullNodeRerank.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Rerank = null;
+            if (parseNode.GetChildNode("stt") is { } nullNodeStt && nullNodeStt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Stt = null;
+            if (parseNode.GetChildNode("text_generation") is { } nullNodeTextGeneration && nullNodeTextGeneration.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TextGeneration = null;
+            if (parseNode.GetChildNode("tts") is { } nullNodeTts && nullNodeTts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tts = null;
+            if (parseNode.GetChildNode("unknown") is { } nullNodeUnknown && nullNodeUnknown.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Unknown = null;
+            if (parseNode.GetChildNode("video_generation") is { } nullNodeVideoGeneration && nullNodeVideoGeneration.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) VideoGeneration = null;
+        }
+
         /// <summary>The decisions property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadDecisions? Decisions { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadDecisions? Decisions { get => _explicitNullValueDecisions; set { _explicitNullValueDecisions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("decisions"); else _explicitNullProperties?.Remove("decisions"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadDecisions? _explicitNullValueDecisions = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadDecisions Decisions { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadDecisions Decisions { get => _explicitNullValueDecisions; set { _explicitNullValueDecisions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("decisions"); else _explicitNullProperties?.Remove("decisions"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadDecisions _explicitNullValueDecisions = default!;
 #endif
         /// <summary>The embeddings property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadEmbeddings? Embeddings { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadEmbeddings? Embeddings { get => _explicitNullValueEmbeddings; set { _explicitNullValueEmbeddings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("embeddings"); else _explicitNullProperties?.Remove("embeddings"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadEmbeddings? _explicitNullValueEmbeddings = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadEmbeddings Embeddings { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadEmbeddings Embeddings { get => _explicitNullValueEmbeddings; set { _explicitNullValueEmbeddings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("embeddings"); else _explicitNullProperties?.Remove("embeddings"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadEmbeddings _explicitNullValueEmbeddings = default!;
 #endif
         /// <summary>The image_generation property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadImageGeneration? ImageGeneration { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadImageGeneration? ImageGeneration { get => _explicitNullValueImageGeneration; set { _explicitNullValueImageGeneration = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("image_generation"); else _explicitNullProperties?.Remove("image_generation"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadImageGeneration? _explicitNullValueImageGeneration = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadImageGeneration ImageGeneration { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadImageGeneration ImageGeneration { get => _explicitNullValueImageGeneration; set { _explicitNullValueImageGeneration = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("image_generation"); else _explicitNullProperties?.Remove("image_generation"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadImageGeneration _explicitNullValueImageGeneration = default!;
 #endif
         /// <summary>The rerank property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadRerank? Rerank { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadRerank? Rerank { get => _explicitNullValueRerank; set { _explicitNullValueRerank = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rerank"); else _explicitNullProperties?.Remove("rerank"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadRerank? _explicitNullValueRerank = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadRerank Rerank { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadRerank Rerank { get => _explicitNullValueRerank; set { _explicitNullValueRerank = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rerank"); else _explicitNullProperties?.Remove("rerank"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadRerank _explicitNullValueRerank = default!;
 #endif
         /// <summary>The stt property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadStt? Stt { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadStt? Stt { get => _explicitNullValueStt; set { _explicitNullValueStt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("stt"); else _explicitNullProperties?.Remove("stt"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadStt? _explicitNullValueStt = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadStt Stt { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadStt Stt { get => _explicitNullValueStt; set { _explicitNullValueStt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("stt"); else _explicitNullProperties?.Remove("stt"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadStt _explicitNullValueStt = default!;
 #endif
         /// <summary>The text_generation property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadTextGeneration? TextGeneration { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadTextGeneration? TextGeneration { get => _explicitNullValueTextGeneration; set { _explicitNullValueTextGeneration = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("text_generation"); else _explicitNullProperties?.Remove("text_generation"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadTextGeneration? _explicitNullValueTextGeneration = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadTextGeneration TextGeneration { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadTextGeneration TextGeneration { get => _explicitNullValueTextGeneration; set { _explicitNullValueTextGeneration = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("text_generation"); else _explicitNullProperties?.Remove("text_generation"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadTextGeneration _explicitNullValueTextGeneration = default!;
 #endif
         /// <summary>The tts property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadTts? Tts { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadTts? Tts { get => _explicitNullValueTts; set { _explicitNullValueTts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tts"); else _explicitNullProperties?.Remove("tts"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadTts? _explicitNullValueTts = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadTts Tts { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadTts Tts { get => _explicitNullValueTts; set { _explicitNullValueTts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tts"); else _explicitNullProperties?.Remove("tts"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadTts _explicitNullValueTts = default!;
 #endif
         /// <summary>The unknown property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadUnknown? Unknown { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadUnknown? Unknown { get => _explicitNullValueUnknown; set { _explicitNullValueUnknown = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unknown"); else _explicitNullProperties?.Remove("unknown"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadUnknown? _explicitNullValueUnknown = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadUnknown Unknown { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadUnknown Unknown { get => _explicitNullValueUnknown; set { _explicitNullValueUnknown = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unknown"); else _explicitNullProperties?.Remove("unknown"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadUnknown _explicitNullValueUnknown = default!;
 #endif
         /// <summary>The video_generation property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadVideoGeneration? VideoGeneration { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadVideoGeneration? VideoGeneration { get => _explicitNullValueVideoGeneration; set { _explicitNullValueVideoGeneration = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("video_generation"); else _explicitNullProperties?.Remove("video_generation"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadVideoGeneration? _explicitNullValueVideoGeneration = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadVideoGeneration VideoGeneration { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadVideoGeneration VideoGeneration { get => _explicitNullValueVideoGeneration; set { _explicitNullValueVideoGeneration = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("video_generation"); else _explicitNullProperties?.Remove("video_generation"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadVideoGeneration _explicitNullValueVideoGeneration = default!;
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -93,7 +127,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public static global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkload CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkload();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkload(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -129,7 +163,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadTextGeneration>("text_generation", TextGeneration);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadTts>("tts", Tts);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadUnknown>("unknown", Unknown);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadVideoGeneration>("video_generation", VideoGeneration);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadVideoGeneration>("video_generation", VideoGeneration);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

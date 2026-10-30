@@ -11,31 +11,50 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class VaultRoutingTableGoogleAccountsItem : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("delegated_capabilities") is { } nullNodeDelegatedCapabilities && nullNodeDelegatedCapabilities.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DelegatedCapabilities = null;
+            if (parseNode.GetChildNode("email") is { } nullNodeEmail && nullNodeEmail.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Email = null;
+            if (parseNode.GetChildNode("holds_grant") is { } nullNodeHoldsGrant && nullNodeHoldsGrant.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HoldsGrant = null;
+            if (parseNode.GetChildNode("is_delegated_to_intern") is { } nullNodeIsDelegatedToIntern && nullNodeIsDelegatedToIntern.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsDelegatedToIntern = null;
+            if (parseNode.GetChildNode("scope") is { } nullNodeScope && nullNodeScope.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Scope = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The delegated_capabilities property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? DelegatedCapabilities { get; set; }
+        public List<string>? DelegatedCapabilities { get => _explicitNullValueDelegatedCapabilities; set { _explicitNullValueDelegatedCapabilities = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("delegated_capabilities"); else _explicitNullProperties?.Remove("delegated_capabilities"); } }
+        private List<string>? _explicitNullValueDelegatedCapabilities = default!;
 #nullable restore
 #else
-        public List<string> DelegatedCapabilities { get; set; }
+        public List<string> DelegatedCapabilities { get => _explicitNullValueDelegatedCapabilities; set { _explicitNullValueDelegatedCapabilities = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("delegated_capabilities"); else _explicitNullProperties?.Remove("delegated_capabilities"); } }
+        private List<string> _explicitNullValueDelegatedCapabilities = default!;
 #endif
         /// <summary>The email property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Email { get; set; }
+        public string? Email { get => _explicitNullValueEmail; set { _explicitNullValueEmail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email"); else _explicitNullProperties?.Remove("email"); } }
+        private string? _explicitNullValueEmail = default!;
 #nullable restore
 #else
-        public string Email { get; set; }
+        public string Email { get => _explicitNullValueEmail; set { _explicitNullValueEmail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email"); else _explicitNullProperties?.Remove("email"); } }
+        private string _explicitNullValueEmail = default!;
 #endif
         /// <summary>The holds_grant property</summary>
-        public bool? HoldsGrant { get; set; }
+        public bool? HoldsGrant { get => _explicitNullValueHoldsGrant; set { _explicitNullValueHoldsGrant = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("holds_grant"); else _explicitNullProperties?.Remove("holds_grant"); } }
+        private bool? _explicitNullValueHoldsGrant = default!;
         /// <summary>The is_delegated_to_intern property</summary>
-        public bool? IsDelegatedToIntern { get; set; }
+        public bool? IsDelegatedToIntern { get => _explicitNullValueIsDelegatedToIntern; set { _explicitNullValueIsDelegatedToIntern = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_delegated_to_intern"); else _explicitNullProperties?.Remove("is_delegated_to_intern"); } }
+        private bool? _explicitNullValueIsDelegatedToIntern = default!;
         /// <summary>`workspace` applies to every intern of the workspace; `intern` to this intern alone.</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGoogleAccountsItemScope? Scope { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGoogleAccountsItemScope? Scope { get => _explicitNullValueScope; set { _explicitNullValueScope = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scope"); else _explicitNullProperties?.Remove("scope"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGoogleAccountsItemScope? _explicitNullValueScope = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGoogleAccountsItem"/> and sets the default values.
         /// </summary>
@@ -51,7 +70,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public static global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGoogleAccountsItem CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGoogleAccountsItem();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGoogleAccountsItem(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -80,6 +99,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteBoolValue("holds_grant", HoldsGrant);
             writer.WriteBoolValue("is_delegated_to_intern", IsDelegatedToIntern);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGoogleAccountsItemScope>("scope", Scope);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

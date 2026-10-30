@@ -12,7 +12,12 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Formats : IComposedTypeWrapper, IParsable
-    {
+    , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
+        // Preserve ambiguous union payloads without inventing a discriminator.
+        /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
         /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.FormatJsonObjectConfig"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -49,17 +54,26 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             var result = new global::Soenneker.OpenRouter.OpenApiClient.Models.Formats();
             if("json_object".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.FormatJsonObjectConfig = new global::Soenneker.OpenRouter.OpenApiClient.Models.FormatJsonObjectConfig();
+                
             }
             else if("json_schema".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.FormatJsonSchemaConfig = new global::Soenneker.OpenRouter.OpenApiClient.Models.FormatJsonSchemaConfig();
+                
             }
             else if("text".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.FormatTextConfig = new global::Soenneker.OpenRouter.OpenApiClient.Models.FormatTextConfig();
+                
             }
-            return result;
+            
+            var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
+            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("text".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal)))))();
+            bool matchesUnionBranch1 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("json_object".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal)))))();
+            bool matchesUnionBranch2 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("json_schema".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("name") != null && parseNode.GetChildNode("schema") != null))();
+            if (result.FormatJsonObjectConfig == null && result.FormatJsonSchemaConfig == null && result.FormatTextConfig == null && matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2) result.FormatTextConfig = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.FormatTextConfig(), parseNode);
+            if (result.FormatJsonObjectConfig == null && result.FormatJsonSchemaConfig == null && result.FormatTextConfig == null && matchesUnionBranch1 && !matchesUnionBranch0 && !matchesUnionBranch2) result.FormatJsonObjectConfig = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.FormatJsonObjectConfig(), parseNode);
+            if (result.FormatJsonObjectConfig == null && result.FormatJsonSchemaConfig == null && result.FormatTextConfig == null && matchesUnionBranch2 && !matchesUnionBranch0 && !matchesUnionBranch1) result.FormatJsonSchemaConfig = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.FormatJsonSchemaConfig(), parseNode);
+            if (result.FormatJsonObjectConfig == null && result.FormatJsonSchemaConfig == null && result.FormatTextConfig == null) result.UnrecognizedValue = unionPayload;
+return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -87,17 +101,26 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
+            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
+            if (FormatJsonObjectConfig == null && FormatJsonSchemaConfig == null && FormatTextConfig == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            if (FormatJsonObjectConfig != null && FormatJsonSchemaConfig == null && FormatTextConfig == null) { if (FormatJsonObjectConfig is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, FormatJsonObjectConfig); return; }
+            if (FormatJsonSchemaConfig != null && FormatJsonObjectConfig == null && FormatTextConfig == null) { if (FormatJsonSchemaConfig is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, FormatJsonSchemaConfig); return; }
+            if (FormatTextConfig != null && FormatJsonObjectConfig == null && FormatJsonSchemaConfig == null) { if (FormatTextConfig is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, FormatTextConfig); return; }
+
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             if(FormatJsonObjectConfig != null)
             {
+                if (FormatJsonObjectConfig is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.FormatJsonObjectConfig>(null, FormatJsonObjectConfig);
             }
             else if(FormatJsonSchemaConfig != null)
             {
+                if (FormatJsonSchemaConfig is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.FormatJsonSchemaConfig>(null, FormatJsonSchemaConfig);
             }
             else if(FormatTextConfig != null)
             {
+                if (FormatTextConfig is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.FormatTextConfig>(null, FormatTextConfig);
             }
         }

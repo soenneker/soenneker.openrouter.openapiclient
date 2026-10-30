@@ -11,23 +11,39 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class MessagesRequestThinkingOneOf1 : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("block_binding") is { } nullNodeBlockBinding && nullNodeBlockBinding.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BlockBinding = null;
+            if (parseNode.GetChildNode("budget_tokens") is { } nullNodeBudgetTokens && nullNodeBudgetTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BudgetTokens = null;
+            if (parseNode.GetChildNode("display") is { } nullNodeDisplay && nullNodeDisplay.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Display = null;
+            if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The block_binding property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicThinkingBlockBinding? BlockBinding { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicThinkingBlockBinding? BlockBinding { get => _explicitNullValueBlockBinding; set { _explicitNullValueBlockBinding = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("block_binding"); else _explicitNullProperties?.Remove("block_binding"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicThinkingBlockBinding? _explicitNullValueBlockBinding = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicThinkingBlockBinding BlockBinding { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicThinkingBlockBinding BlockBinding { get => _explicitNullValueBlockBinding; set { _explicitNullValueBlockBinding = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("block_binding"); else _explicitNullProperties?.Remove("block_binding"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicThinkingBlockBinding _explicitNullValueBlockBinding = default!;
 #endif
         /// <summary>The budget_tokens property</summary>
-        public int? BudgetTokens { get; set; }
+        public int? BudgetTokens { get => _explicitNullValueBudgetTokens; set { _explicitNullValueBudgetTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("budget_tokens"); else _explicitNullProperties?.Remove("budget_tokens"); } }
+        private int? _explicitNullValueBudgetTokens = default!;
         /// <summary>The display property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicThinkingDisplay? Display { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicThinkingDisplay? Display { get => _explicitNullValueDisplay; set { _explicitNullValueDisplay = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("display"); else _explicitNullProperties?.Remove("display"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicThinkingDisplay? _explicitNullValueDisplay = default!;
         /// <summary>The type property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.EnabledType? Type { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.EnabledType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.EnabledType? _explicitNullValueType = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestThinkingOneOf1"/> and sets the default values.
         /// </summary>
@@ -43,7 +59,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public static global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestThinkingOneOf1 CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestThinkingOneOf1();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestThinkingOneOf1(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -70,6 +86,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteIntValue("budget_tokens", BudgetTokens);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicThinkingDisplay>("display", Display);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.EnabledType>("type", Type);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

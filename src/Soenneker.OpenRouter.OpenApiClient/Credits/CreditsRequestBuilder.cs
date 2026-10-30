@@ -19,6 +19,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Credits
     public partial class CreditsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The coinbase property</summary>
+        [Obsolete("")]
         public global::Soenneker.OpenRouter.OpenApiClient.Credits.Coinbase.CoinbaseRequestBuilder Coinbase
         {
             get => new global::Soenneker.OpenRouter.OpenApiClient.Credits.Coinbase.CoinbaseRequestBuilder(PathParameters, RequestAdapter);
@@ -63,6 +64,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Credits
                 { "401", global::Soenneker.OpenRouter.OpenApiClient.Models.UnauthorizedResponse.CreateFromDiscriminatorValue },
                 { "403", global::Soenneker.OpenRouter.OpenApiClient.Models.ForbiddenResponse.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.OpenRouter.OpenApiClient.Models.InternalServerResponse.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.OpenRouter.OpenApiClient.Models.GetCredits200Response>(requestInfo, global::Soenneker.OpenRouter.OpenApiClient.Models.GetCredits200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

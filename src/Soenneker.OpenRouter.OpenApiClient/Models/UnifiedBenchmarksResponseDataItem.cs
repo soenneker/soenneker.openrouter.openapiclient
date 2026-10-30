@@ -12,7 +12,12 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class UnifiedBenchmarksResponseDataItem : IComposedTypeWrapper, IParsable
-    {
+    , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
+        // Preserve ambiguous union payloads without inventing a discriminator.
+        /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
         /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.UnifiedBenchmarksAaItem"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -57,21 +62,32 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             var result = new global::Soenneker.OpenRouter.OpenApiClient.Models.UnifiedBenchmarksResponseDataItem();
             if("UnifiedBenchmarksAaItem".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.UnifiedBenchmarksAaItem = new global::Soenneker.OpenRouter.OpenApiClient.Models.UnifiedBenchmarksAaItem();
+                
             }
             else if("UnifiedBenchmarksDaItem".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.UnifiedBenchmarksDaItem = new global::Soenneker.OpenRouter.OpenApiClient.Models.UnifiedBenchmarksDaItem();
+                
             }
             else if("UnifiedBenchmarksOrItem".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.UnifiedBenchmarksOrItem = new global::Soenneker.OpenRouter.OpenApiClient.Models.UnifiedBenchmarksOrItem();
+                
             }
             else if("UnifiedBenchmarksSearchItem".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.UnifiedBenchmarksSearchItem = new global::Soenneker.OpenRouter.OpenApiClient.Models.UnifiedBenchmarksSearchItem();
+                
             }
-            return result;
+            
+            var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
+            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("source") != null && (parseNode.GetChildNode("source")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("artificial-analysis".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("model_permaslug") != null && parseNode.GetChildNode("display_name") != null && parseNode.GetChildNode("intelligence_index") != null && parseNode.GetChildNode("coding_index") != null && parseNode.GetChildNode("agentic_index") != null && parseNode.GetChildNode("pricing") != null))();
+            bool matchesUnionBranch1 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("source") != null && (parseNode.GetChildNode("source")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("design-arena".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("model_permaslug") != null && parseNode.GetChildNode("display_name") != null && parseNode.GetChildNode("arena") != null && parseNode.GetChildNode("category") != null && parseNode.GetChildNode("elo") != null && parseNode.GetChildNode("win_rate") != null && parseNode.GetChildNode("avg_generation_time_ms") != null && parseNode.GetChildNode("tournament_stats") != null && parseNode.GetChildNode("pricing") != null))();
+            bool matchesUnionBranch2 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("source") != null && (parseNode.GetChildNode("source")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("openrouter".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("model_permaslug") != null && parseNode.GetChildNode("display_name") != null && parseNode.GetChildNode("benchmark_type") != null && (parseNode.GetChildNode("benchmark_type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag5 && ("gpqa_diamond".Equals(tag5.GetValue(), global::System.StringComparison.Ordinal) || "tau_bench_verified_airline".Equals(tag5.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("accuracy") != null && parseNode.GetChildNode("accuracy_stddev") != null && parseNode.GetChildNode("avg_cost_per_task") != null && parseNode.GetChildNode("total_tasks") != null && parseNode.GetChildNode("last_run_timestamp") != null))();
+            bool matchesUnionBranch3 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("source") != null && (parseNode.GetChildNode("source")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("openrouter".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("model_permaslug") != null && parseNode.GetChildNode("display_name") != null && parseNode.GetChildNode("benchmark_type") != null && (parseNode.GetChildNode("benchmark_type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag5 && ("search_browsecomp".Equals(tag5.GetValue(), global::System.StringComparison.Ordinal) || "search_hle".Equals(tag5.GetValue(), global::System.StringComparison.Ordinal) || "search_dsqa".Equals(tag5.GetValue(), global::System.StringComparison.Ordinal) || "search_widesearch".Equals(tag5.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("primary_metric") != null && (parseNode.GetChildNode("primary_metric")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag7 && ("accuracy".Equals(tag7.GetValue(), global::System.StringComparison.Ordinal) || "f1_by_item".Equals(tag7.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("primary_score") != null && parseNode.GetChildNode("total_tasks") != null && parseNode.GetChildNode("avg_cost_per_task") != null && parseNode.GetChildNode("avg_latency_per_task_ms") != null && parseNode.GetChildNode("search_engine") != null && parseNode.GetChildNode("search_surface") != null && (parseNode.GetChildNode("search_surface")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag14 && ("server-tool".Equals(tag14.GetValue(), global::System.StringComparison.Ordinal) || "plugin".Equals(tag14.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("last_run_timestamp") != null))();
+            if (result.UnifiedBenchmarksAaItem == null && result.UnifiedBenchmarksDaItem == null && result.UnifiedBenchmarksOrItem == null && result.UnifiedBenchmarksSearchItem == null && matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch3) result.UnifiedBenchmarksAaItem = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.UnifiedBenchmarksAaItem(), parseNode);
+            if (result.UnifiedBenchmarksAaItem == null && result.UnifiedBenchmarksDaItem == null && result.UnifiedBenchmarksOrItem == null && result.UnifiedBenchmarksSearchItem == null && matchesUnionBranch1 && !matchesUnionBranch0 && !matchesUnionBranch2 && !matchesUnionBranch3) result.UnifiedBenchmarksDaItem = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.UnifiedBenchmarksDaItem(), parseNode);
+            if (result.UnifiedBenchmarksAaItem == null && result.UnifiedBenchmarksDaItem == null && result.UnifiedBenchmarksOrItem == null && result.UnifiedBenchmarksSearchItem == null && matchesUnionBranch2 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch3) result.UnifiedBenchmarksOrItem = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.UnifiedBenchmarksOrItem(), parseNode);
+            if (result.UnifiedBenchmarksAaItem == null && result.UnifiedBenchmarksDaItem == null && result.UnifiedBenchmarksOrItem == null && result.UnifiedBenchmarksSearchItem == null && matchesUnionBranch3 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2) result.UnifiedBenchmarksSearchItem = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.UnifiedBenchmarksSearchItem(), parseNode);
+            if (result.UnifiedBenchmarksAaItem == null && result.UnifiedBenchmarksDaItem == null && result.UnifiedBenchmarksOrItem == null && result.UnifiedBenchmarksSearchItem == null) result.UnrecognizedValue = unionPayload;
+return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -103,21 +119,32 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
+            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
+            if (UnifiedBenchmarksAaItem == null && UnifiedBenchmarksDaItem == null && UnifiedBenchmarksOrItem == null && UnifiedBenchmarksSearchItem == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            if (UnifiedBenchmarksAaItem != null && UnifiedBenchmarksDaItem == null && UnifiedBenchmarksOrItem == null && UnifiedBenchmarksSearchItem == null) { if (UnifiedBenchmarksAaItem is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, UnifiedBenchmarksAaItem); return; }
+            if (UnifiedBenchmarksDaItem != null && UnifiedBenchmarksAaItem == null && UnifiedBenchmarksOrItem == null && UnifiedBenchmarksSearchItem == null) { if (UnifiedBenchmarksDaItem is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, UnifiedBenchmarksDaItem); return; }
+            if (UnifiedBenchmarksOrItem != null && UnifiedBenchmarksAaItem == null && UnifiedBenchmarksDaItem == null && UnifiedBenchmarksSearchItem == null) { if (UnifiedBenchmarksOrItem is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, UnifiedBenchmarksOrItem); return; }
+            if (UnifiedBenchmarksSearchItem != null && UnifiedBenchmarksAaItem == null && UnifiedBenchmarksDaItem == null && UnifiedBenchmarksOrItem == null) { if (UnifiedBenchmarksSearchItem is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, UnifiedBenchmarksSearchItem); return; }
+
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             if(UnifiedBenchmarksAaItem != null)
             {
+                if (UnifiedBenchmarksAaItem is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.UnifiedBenchmarksAaItem>(null, UnifiedBenchmarksAaItem);
             }
             else if(UnifiedBenchmarksDaItem != null)
             {
+                if (UnifiedBenchmarksDaItem is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.UnifiedBenchmarksDaItem>(null, UnifiedBenchmarksDaItem);
             }
             else if(UnifiedBenchmarksOrItem != null)
             {
+                if (UnifiedBenchmarksOrItem is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.UnifiedBenchmarksOrItem>(null, UnifiedBenchmarksOrItem);
             }
             else if(UnifiedBenchmarksSearchItem != null)
             {
+                if (UnifiedBenchmarksSearchItem is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.UnifiedBenchmarksSearchItem>(null, UnifiedBenchmarksSearchItem);
             }
         }

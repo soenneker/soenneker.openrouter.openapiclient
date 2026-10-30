@@ -12,7 +12,12 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class FileListResponse : IComposedTypeWrapper, IParsable
-    {
+    , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
+        // Preserve ambiguous union payloads without inventing a discriminator.
+        /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
         /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicFileList"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -45,21 +50,30 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public static global::Soenneker.OpenRouter.OpenApiClient.Models.FileListResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            var mappingValue = parseNode.GetChildNode("_shape")?.GetStringValue();
+            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.OpenRouter.OpenApiClient.Models.FileListResponse();
-            if("anthropic".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("AnthropicFileList".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.AnthropicFileList = new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicFileList();
+                
             }
-            else if("openai".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("OpenAiFileList".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.OpenAiFileList = new global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAiFileList();
+                
             }
-            else if("openrouter".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("OpenRouterFileList".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.OpenRouterFileList = new global::Soenneker.OpenRouter.OpenApiClient.Models.OpenRouterFileList();
+                
             }
-            return result;
+            
+            var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
+            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("_shape") != null && (parseNode.GetChildNode("_shape")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("openrouter".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("data") != null && parseNode.GetChildNode("has_more") != null && parseNode.GetChildNode("first_id") != null && parseNode.GetChildNode("last_id") != null && parseNode.GetChildNode("cursor") != null))();
+            bool matchesUnionBranch1 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("_shape") != null && (parseNode.GetChildNode("_shape")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("openai".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("object") != null && (parseNode.GetChildNode("object")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag3 && ("list".Equals(tag3.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("data") != null && parseNode.GetChildNode("has_more") != null && parseNode.GetChildNode("first_id") != null && parseNode.GetChildNode("last_id") != null))();
+            bool matchesUnionBranch2 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("_shape") != null && (parseNode.GetChildNode("_shape")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("anthropic".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("data") != null && parseNode.GetChildNode("has_more") != null && parseNode.GetChildNode("first_id") != null && parseNode.GetChildNode("last_id") != null))();
+            if (result.AnthropicFileList == null && result.OpenAiFileList == null && result.OpenRouterFileList == null && matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2) result.OpenRouterFileList = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.OpenRouterFileList(), parseNode);
+            if (result.AnthropicFileList == null && result.OpenAiFileList == null && result.OpenRouterFileList == null && matchesUnionBranch1 && !matchesUnionBranch0 && !matchesUnionBranch2) result.OpenAiFileList = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAiFileList(), parseNode);
+            if (result.AnthropicFileList == null && result.OpenAiFileList == null && result.OpenRouterFileList == null && matchesUnionBranch2 && !matchesUnionBranch0 && !matchesUnionBranch1) result.AnthropicFileList = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicFileList(), parseNode);
+            if (result.AnthropicFileList == null && result.OpenAiFileList == null && result.OpenRouterFileList == null) result.UnrecognizedValue = unionPayload;
+return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -87,17 +101,26 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
+            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
+            if (AnthropicFileList == null && OpenAiFileList == null && OpenRouterFileList == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            if (AnthropicFileList != null && OpenAiFileList == null && OpenRouterFileList == null) { if (AnthropicFileList is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, AnthropicFileList); return; }
+            if (OpenAiFileList != null && AnthropicFileList == null && OpenRouterFileList == null) { if (OpenAiFileList is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, OpenAiFileList); return; }
+            if (OpenRouterFileList != null && AnthropicFileList == null && OpenAiFileList == null) { if (OpenRouterFileList is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, OpenRouterFileList); return; }
+
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             if(AnthropicFileList != null)
             {
+                if (AnthropicFileList is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicFileList>(null, AnthropicFileList);
             }
             else if(OpenAiFileList != null)
             {
+                if (OpenAiFileList is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAiFileList>(null, OpenAiFileList);
             }
             else if(OpenRouterFileList != null)
             {
+                if (OpenRouterFileList is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OpenRouterFileList>(null, OpenRouterFileList);
             }
         }

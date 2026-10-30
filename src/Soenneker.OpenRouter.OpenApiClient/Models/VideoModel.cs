@@ -11,126 +11,181 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class VideoModel : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("allowed_passthrough_parameters") is { } nullNodeAllowedPassthroughParameters && nullNodeAllowedPassthroughParameters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AllowedPassthroughParameters = null;
+            if (parseNode.GetChildNode("canonical_slug") is { } nullNodeCanonicalSlug && nullNodeCanonicalSlug.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CanonicalSlug = null;
+            if (parseNode.GetChildNode("created") is { } nullNodeCreated && nullNodeCreated.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Created = null;
+            if (parseNode.GetChildNode("creativity") is { } nullNodeCreativity && nullNodeCreativity.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Creativity = null;
+            if (parseNode.GetChildNode("description") is { } nullNodeDescription && nullNodeDescription.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Description = null;
+            if (parseNode.GetChildNode("generate_audio") is { } nullNodeGenerateAudio && nullNodeGenerateAudio.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GenerateAudio = null;
+            if (parseNode.GetChildNode("hugging_face_id") is { } nullNodeHuggingFaceId && nullNodeHuggingFaceId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HuggingFaceId = null;
+            if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("pricing_skus") is { } nullNodePricingSkus && nullNodePricingSkus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PricingSkus = null;
+            if (parseNode.GetChildNode("seed") is { } nullNodeSeed && nullNodeSeed.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Seed = null;
+            if (parseNode.GetChildNode("supported_aspect_ratios") is { } nullNodeSupportedAspectRatios && nullNodeSupportedAspectRatios.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SupportedAspectRatios = null;
+            if (parseNode.GetChildNode("supported_durations") is { } nullNodeSupportedDurations && nullNodeSupportedDurations.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SupportedDurations = null;
+            if (parseNode.GetChildNode("supported_frame_images") is { } nullNodeSupportedFrameImages && nullNodeSupportedFrameImages.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SupportedFrameImages = null;
+            if (parseNode.GetChildNode("supported_resolutions") is { } nullNodeSupportedResolutions && nullNodeSupportedResolutions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SupportedResolutions = null;
+            if (parseNode.GetChildNode("supported_sizes") is { } nullNodeSupportedSizes && nullNodeSupportedSizes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SupportedSizes = null;
+            if (parseNode.GetChildNode("upscale_factor") is { } nullNodeUpscaleFactor && nullNodeUpscaleFactor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UpscaleFactor = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>List of parameters that are allowed to be passed through to the provider</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? AllowedPassthroughParameters { get; set; }
+        public List<string>? AllowedPassthroughParameters { get => _explicitNullValueAllowedPassthroughParameters; set { _explicitNullValueAllowedPassthroughParameters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allowed_passthrough_parameters"); else _explicitNullProperties?.Remove("allowed_passthrough_parameters"); } }
+        private List<string>? _explicitNullValueAllowedPassthroughParameters = default!;
 #nullable restore
 #else
-        public List<string> AllowedPassthroughParameters { get; set; }
+        public List<string> AllowedPassthroughParameters { get => _explicitNullValueAllowedPassthroughParameters; set { _explicitNullValueAllowedPassthroughParameters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allowed_passthrough_parameters"); else _explicitNullProperties?.Remove("allowed_passthrough_parameters"); } }
+        private List<string> _explicitNullValueAllowedPassthroughParameters = default!;
 #endif
         /// <summary>Canonical slug for the model</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CanonicalSlug { get; set; }
+        public string? CanonicalSlug { get => _explicitNullValueCanonicalSlug; set { _explicitNullValueCanonicalSlug = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("canonical_slug"); else _explicitNullProperties?.Remove("canonical_slug"); } }
+        private string? _explicitNullValueCanonicalSlug = default!;
 #nullable restore
 #else
-        public string CanonicalSlug { get; set; }
+        public string CanonicalSlug { get => _explicitNullValueCanonicalSlug; set { _explicitNullValueCanonicalSlug = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("canonical_slug"); else _explicitNullProperties?.Remove("canonical_slug"); } }
+        private string _explicitNullValueCanonicalSlug = default!;
 #endif
         /// <summary>Unix timestamp of when the model was created</summary>
-        public int? Created { get; set; }
+        public int? Created { get => _explicitNullValueCreated; set { _explicitNullValueCreated = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created"); else _explicitNullProperties?.Remove("created"); } }
+        private int? _explicitNullValueCreated = default!;
         /// <summary>Supported creativity levels for video upscaling models</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<int?>? Creativity { get; set; }
+        public List<int?>? Creativity { get => _explicitNullValueCreativity; set { _explicitNullValueCreativity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("creativity"); else _explicitNullProperties?.Remove("creativity"); } }
+        private List<int?>? _explicitNullValueCreativity = default!;
 #nullable restore
 #else
-        public List<int?> Creativity { get; set; }
+        public List<int?> Creativity { get => _explicitNullValueCreativity; set { _explicitNullValueCreativity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("creativity"); else _explicitNullProperties?.Remove("creativity"); } }
+        private List<int?> _explicitNullValueCreativity = default!;
 #endif
         /// <summary>Description of the model</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Description { get; set; }
+        public string? Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        private string? _explicitNullValueDescription = default!;
 #nullable restore
 #else
-        public string Description { get; set; }
+        public string Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        private string _explicitNullValueDescription = default!;
 #endif
         /// <summary>Whether the model supports generating audio alongside video</summary>
-        public bool? GenerateAudio { get; set; }
+        public bool? GenerateAudio { get => _explicitNullValueGenerateAudio; set { _explicitNullValueGenerateAudio = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("generate_audio"); else _explicitNullProperties?.Remove("generate_audio"); } }
+        private bool? _explicitNullValueGenerateAudio = default!;
         /// <summary>Hugging Face model identifier, if applicable</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? HuggingFaceId { get; set; }
+        public string? HuggingFaceId { get => _explicitNullValueHuggingFaceId; set { _explicitNullValueHuggingFaceId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hugging_face_id"); else _explicitNullProperties?.Remove("hugging_face_id"); } }
+        private string? _explicitNullValueHuggingFaceId = default!;
 #nullable restore
 #else
-        public string HuggingFaceId { get; set; }
+        public string HuggingFaceId { get => _explicitNullValueHuggingFaceId; set { _explicitNullValueHuggingFaceId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hugging_face_id"); else _explicitNullProperties?.Remove("hugging_face_id"); } }
+        private string _explicitNullValueHuggingFaceId = default!;
 #endif
         /// <summary>Unique identifier for the model</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Id { get; set; }
+        public string? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private string? _explicitNullValueId = default!;
 #nullable restore
 #else
-        public string Id { get; set; }
+        public string Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private string _explicitNullValueId = default!;
 #endif
         /// <summary>Display name of the model</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; set; }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get; set; }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string _explicitNullValueName = default!;
 #endif
         /// <summary>Pricing SKUs with provider prefix stripped, values as strings</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModelPricingSkusProperty? PricingSkus { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModelPricingSkusProperty? PricingSkus { get => _explicitNullValuePricingSkus; set { _explicitNullValuePricingSkus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pricing_skus"); else _explicitNullProperties?.Remove("pricing_skus"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModelPricingSkusProperty? _explicitNullValuePricingSkus = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModelPricingSkusProperty PricingSkus { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModelPricingSkusProperty PricingSkus { get => _explicitNullValuePricingSkus; set { _explicitNullValuePricingSkus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pricing_skus"); else _explicitNullProperties?.Remove("pricing_skus"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModelPricingSkusProperty _explicitNullValuePricingSkus = default!;
 #endif
         /// <summary>Whether the model supports deterministic generation via seed parameter</summary>
-        public bool? Seed { get; set; }
+        public bool? Seed { get => _explicitNullValueSeed; set { _explicitNullValueSeed = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("seed"); else _explicitNullProperties?.Remove("seed"); } }
+        private bool? _explicitNullValueSeed = default!;
         /// <summary>Supported output aspect ratios</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModelSupportedAspectRatiosItem?>? SupportedAspectRatios { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModelSupportedAspectRatiosItem?>? SupportedAspectRatios { get => _explicitNullValueSupportedAspectRatios; set { _explicitNullValueSupportedAspectRatios = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supported_aspect_ratios"); else _explicitNullProperties?.Remove("supported_aspect_ratios"); } }
+        private List<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModelSupportedAspectRatiosItem?>? _explicitNullValueSupportedAspectRatios = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModelSupportedAspectRatiosItem?> SupportedAspectRatios { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModelSupportedAspectRatiosItem?> SupportedAspectRatios { get => _explicitNullValueSupportedAspectRatios; set { _explicitNullValueSupportedAspectRatios = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supported_aspect_ratios"); else _explicitNullProperties?.Remove("supported_aspect_ratios"); } }
+        private List<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModelSupportedAspectRatiosItem?> _explicitNullValueSupportedAspectRatios = default!;
 #endif
         /// <summary>Supported video durations in seconds</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<int?>? SupportedDurations { get; set; }
+        public List<int?>? SupportedDurations { get => _explicitNullValueSupportedDurations; set { _explicitNullValueSupportedDurations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supported_durations"); else _explicitNullProperties?.Remove("supported_durations"); } }
+        private List<int?>? _explicitNullValueSupportedDurations = default!;
 #nullable restore
 #else
-        public List<int?> SupportedDurations { get; set; }
+        public List<int?> SupportedDurations { get => _explicitNullValueSupportedDurations; set { _explicitNullValueSupportedDurations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supported_durations"); else _explicitNullProperties?.Remove("supported_durations"); } }
+        private List<int?> _explicitNullValueSupportedDurations = default!;
 #endif
         /// <summary>Supported frame image types (e.g. first_frame, last_frame)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModelSupportedFrameImagesItem?>? SupportedFrameImages { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModelSupportedFrameImagesItem?>? SupportedFrameImages { get => _explicitNullValueSupportedFrameImages; set { _explicitNullValueSupportedFrameImages = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supported_frame_images"); else _explicitNullProperties?.Remove("supported_frame_images"); } }
+        private List<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModelSupportedFrameImagesItem?>? _explicitNullValueSupportedFrameImages = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModelSupportedFrameImagesItem?> SupportedFrameImages { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModelSupportedFrameImagesItem?> SupportedFrameImages { get => _explicitNullValueSupportedFrameImages; set { _explicitNullValueSupportedFrameImages = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supported_frame_images"); else _explicitNullProperties?.Remove("supported_frame_images"); } }
+        private List<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModelSupportedFrameImagesItem?> _explicitNullValueSupportedFrameImages = default!;
 #endif
         /// <summary>Supported output resolutions</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModelSupportedResolutionsItem?>? SupportedResolutions { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModelSupportedResolutionsItem?>? SupportedResolutions { get => _explicitNullValueSupportedResolutions; set { _explicitNullValueSupportedResolutions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supported_resolutions"); else _explicitNullProperties?.Remove("supported_resolutions"); } }
+        private List<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModelSupportedResolutionsItem?>? _explicitNullValueSupportedResolutions = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModelSupportedResolutionsItem?> SupportedResolutions { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModelSupportedResolutionsItem?> SupportedResolutions { get => _explicitNullValueSupportedResolutions; set { _explicitNullValueSupportedResolutions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supported_resolutions"); else _explicitNullProperties?.Remove("supported_resolutions"); } }
+        private List<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModelSupportedResolutionsItem?> _explicitNullValueSupportedResolutions = default!;
 #endif
         /// <summary>Supported output sizes (width x height)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModelSupportedSizesItem?>? SupportedSizes { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModelSupportedSizesItem?>? SupportedSizes { get => _explicitNullValueSupportedSizes; set { _explicitNullValueSupportedSizes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supported_sizes"); else _explicitNullProperties?.Remove("supported_sizes"); } }
+        private List<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModelSupportedSizesItem?>? _explicitNullValueSupportedSizes = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModelSupportedSizesItem?> SupportedSizes { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModelSupportedSizesItem?> SupportedSizes { get => _explicitNullValueSupportedSizes; set { _explicitNullValueSupportedSizes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supported_sizes"); else _explicitNullProperties?.Remove("supported_sizes"); } }
+        private List<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModelSupportedSizesItem?> _explicitNullValueSupportedSizes = default!;
 #endif
         /// <summary>Supported upscale factor range for video upscaling models</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModelUpscaleFactor? UpscaleFactor { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModelUpscaleFactor? UpscaleFactor { get => _explicitNullValueUpscaleFactor; set { _explicitNullValueUpscaleFactor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("upscale_factor"); else _explicitNullProperties?.Remove("upscale_factor"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModelUpscaleFactor? _explicitNullValueUpscaleFactor = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModelUpscaleFactor UpscaleFactor { get; set; }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModelUpscaleFactor UpscaleFactor { get => _explicitNullValueUpscaleFactor; set { _explicitNullValueUpscaleFactor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("upscale_factor"); else _explicitNullProperties?.Remove("upscale_factor"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModelUpscaleFactor _explicitNullValueUpscaleFactor = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModel"/> and sets the default values.
@@ -147,7 +202,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public static global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModel CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModel();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModel(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -200,6 +255,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModelSupportedResolutionsItem>("supported_resolutions", SupportedResolutions);
             writer.WriteCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModelSupportedSizesItem>("supported_sizes", SupportedSizes);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModelUpscaleFactor>("upscale_factor", UpscaleFactor);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }
