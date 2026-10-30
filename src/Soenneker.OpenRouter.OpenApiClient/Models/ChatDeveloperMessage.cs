@@ -18,10 +18,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("configuration_update") is { } nullNodeConfigurationUpdate && nullNodeConfigurationUpdate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConfigurationUpdate = null;
-            if (parseNode.GetChildNode("content") is { } nullNodeContent && nullNodeContent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Content = null;
-            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
-            if (parseNode.GetChildNode("role") is { } nullNodeRole && nullNodeRole.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Role = null;
+            if (parseNode.GetChildNode("configuration_update") is null) { _explicitNullValueConfigurationUpdate = default!; _explicitNullProperties?.Remove("configuration_update"); }
+            else if (parseNode.GetChildNode("configuration_update") is { } nullNodeConfigurationUpdate && nullNodeConfigurationUpdate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConfigurationUpdate = null;
+            if (parseNode.GetChildNode("content") is null) { _explicitNullValueContent = default!; _explicitNullProperties?.Remove("content"); }
+            else if (parseNode.GetChildNode("content") is { } nullNodeContent && nullNodeContent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Content = null;
+            if (parseNode.GetChildNode("name") is null) { _explicitNullValueName = default!; _explicitNullProperties?.Remove("name"); }
+            else if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("role") is null) { _explicitNullValueRole = default!; _explicitNullProperties?.Remove("role"); }
+            else if (parseNode.GetChildNode("role") is { } nullNodeRole && nullNodeRole.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Role = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -29,35 +33,35 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>OpenRouter extension. Same as the system message `configuration_update`: changes reasoning effort from this point in the conversation onward without invalidating the prompt cache for the preceding turns.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatDeveloperMessageConfigurationUpdate? ConfigurationUpdate { get => _explicitNullValueConfigurationUpdate; set { _explicitNullValueConfigurationUpdate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("configuration_update"); else _explicitNullProperties?.Remove("configuration_update"); } }
-        private global::Soenneker.OpenRouter.OpenApiClient.Models.ChatDeveloperMessageConfigurationUpdate? _explicitNullValueConfigurationUpdate = default!;
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ConfigurationUpdate? ConfigurationUpdate { get => _explicitNullValueConfigurationUpdate; set { _explicitNullValueConfigurationUpdate = value; AdditionalData?.Remove("configuration_update"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("configuration_update"); else _explicitNullProperties?.Remove("configuration_update"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ConfigurationUpdate? _explicitNullValueConfigurationUpdate = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatDeveloperMessageConfigurationUpdate ConfigurationUpdate { get => _explicitNullValueConfigurationUpdate; set { _explicitNullValueConfigurationUpdate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("configuration_update"); else _explicitNullProperties?.Remove("configuration_update"); } }
-        private global::Soenneker.OpenRouter.OpenApiClient.Models.ChatDeveloperMessageConfigurationUpdate _explicitNullValueConfigurationUpdate = default!;
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ConfigurationUpdate ConfigurationUpdate { get => _explicitNullValueConfigurationUpdate; set { _explicitNullValueConfigurationUpdate = value; AdditionalData?.Remove("configuration_update"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("configuration_update"); else _explicitNullProperties?.Remove("configuration_update"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ConfigurationUpdate _explicitNullValueConfigurationUpdate = default!;
 #endif
         /// <summary>Developer message content</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatDeveloperMessageContent? Content { get => _explicitNullValueContent; set { _explicitNullValueContent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content"); else _explicitNullProperties?.Remove("content"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatDeveloperMessageContent? Content { get => _explicitNullValueContent; set { _explicitNullValueContent = value; AdditionalData?.Remove("content"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content"); else _explicitNullProperties?.Remove("content"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.ChatDeveloperMessageContent? _explicitNullValueContent = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatDeveloperMessageContent Content { get => _explicitNullValueContent; set { _explicitNullValueContent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content"); else _explicitNullProperties?.Remove("content"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatDeveloperMessageContent Content { get => _explicitNullValueContent; set { _explicitNullValueContent = value; AdditionalData?.Remove("content"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content"); else _explicitNullProperties?.Remove("content"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.ChatDeveloperMessageContent _explicitNullValueContent = default!;
 #endif
         /// <summary>Optional name for the developer message</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; AdditionalData?.Remove("name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
         private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; AdditionalData?.Remove("name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
         private string _explicitNullValueName = default!;
 #endif
         /// <summary>The role property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.DeveloperRole? Role { get => _explicitNullValueRole; set { _explicitNullValueRole = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("role"); else _explicitNullProperties?.Remove("role"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.DeveloperRole? Role { get => _explicitNullValueRole; set { _explicitNullValueRole = value; AdditionalData?.Remove("role"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("role"); else _explicitNullProperties?.Remove("role"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.DeveloperRole? _explicitNullValueRole = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ChatDeveloperMessage"/> and sets the default values.
@@ -84,10 +88,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "configuration_update", n => { ConfigurationUpdate = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatDeveloperMessageConfigurationUpdate>(global::Soenneker.OpenRouter.OpenApiClient.Models.ChatDeveloperMessageConfigurationUpdate.CreateFromDiscriminatorValue); } },
+                { "configuration_update", n => { ConfigurationUpdate = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ConfigurationUpdate>(global::Soenneker.OpenRouter.OpenApiClient.Models.ConfigurationUpdate.CreateFromDiscriminatorValue); } },
                 { "content", n => { Content = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatDeveloperMessageContent>(global::Soenneker.OpenRouter.OpenApiClient.Models.ChatDeveloperMessageContent.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "role", n => { Role = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.DeveloperRole>(); } },
+                { "role", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.DeveloperRole>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueRole = default; _explicitNullProperties?.Remove("role"); AdditionalData["role"] = unknown; } else { Role = parsed; AdditionalData.Remove("role"); } } },
             };
         }
         /// <summary>
@@ -97,7 +101,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatDeveloperMessageConfigurationUpdate>("configuration_update", ConfigurationUpdate);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ConfigurationUpdate>("configuration_update", ConfigurationUpdate);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatDeveloperMessageContent>("content", Content);
             writer.WriteStringValue("name", Name);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.DeveloperRole>("role", Role);

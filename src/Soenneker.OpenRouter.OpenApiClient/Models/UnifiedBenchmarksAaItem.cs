@@ -17,58 +17,65 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("agentic_index") is { } nullNodeAgenticIndex && nullNodeAgenticIndex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AgenticIndex = null;
-            if (parseNode.GetChildNode("coding_index") is { } nullNodeCodingIndex && nullNodeCodingIndex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CodingIndex = null;
-            if (parseNode.GetChildNode("display_name") is { } nullNodeDisplayName && nullNodeDisplayName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DisplayName = null;
-            if (parseNode.GetChildNode("intelligence_index") is { } nullNodeIntelligenceIndex && nullNodeIntelligenceIndex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IntelligenceIndex = null;
-            if (parseNode.GetChildNode("model_permaslug") is { } nullNodeModelPermaslug && nullNodeModelPermaslug.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ModelPermaslug = null;
-            if (parseNode.GetChildNode("pricing") is { } nullNodePricing && nullNodePricing.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Pricing = null;
-            if (parseNode.GetChildNode("source") is { } nullNodeSource && nullNodeSource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Source = null;
+            if (parseNode.GetChildNode("agentic_index") is null) { _explicitNullValueAgenticIndex = default!; _explicitNullProperties?.Remove("agentic_index"); }
+            else if (parseNode.GetChildNode("agentic_index") is { } nullNodeAgenticIndex && nullNodeAgenticIndex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AgenticIndex = null;
+            if (parseNode.GetChildNode("coding_index") is null) { _explicitNullValueCodingIndex = default!; _explicitNullProperties?.Remove("coding_index"); }
+            else if (parseNode.GetChildNode("coding_index") is { } nullNodeCodingIndex && nullNodeCodingIndex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CodingIndex = null;
+            if (parseNode.GetChildNode("display_name") is null) { _explicitNullValueDisplayName = default!; _explicitNullProperties?.Remove("display_name"); }
+            else if (parseNode.GetChildNode("display_name") is { } nullNodeDisplayName && nullNodeDisplayName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DisplayName = null;
+            if (parseNode.GetChildNode("intelligence_index") is null) { _explicitNullValueIntelligenceIndex = default!; _explicitNullProperties?.Remove("intelligence_index"); }
+            else if (parseNode.GetChildNode("intelligence_index") is { } nullNodeIntelligenceIndex && nullNodeIntelligenceIndex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IntelligenceIndex = null;
+            if (parseNode.GetChildNode("model_permaslug") is null) { _explicitNullValueModelPermaslug = default!; _explicitNullProperties?.Remove("model_permaslug"); }
+            else if (parseNode.GetChildNode("model_permaslug") is { } nullNodeModelPermaslug && nullNodeModelPermaslug.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ModelPermaslug = null;
+            if (parseNode.GetChildNode("pricing") is null) { _explicitNullValuePricing = default!; _explicitNullProperties?.Remove("pricing"); }
+            else if (parseNode.GetChildNode("pricing") is { } nullNodePricing && nullNodePricing.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Pricing = null;
+            if (parseNode.GetChildNode("source") is null) { _explicitNullValueSource = default!; _explicitNullProperties?.Remove("source"); }
+            else if (parseNode.GetChildNode("source") is { } nullNodeSource && nullNodeSource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Source = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Artificial Analysis Agentic Index composite score. Higher is better.</summary>
-        public double? AgenticIndex { get => _explicitNullValueAgenticIndex; set { _explicitNullValueAgenticIndex = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agentic_index"); else _explicitNullProperties?.Remove("agentic_index"); } }
+        public double? AgenticIndex { get => _explicitNullValueAgenticIndex; set { _explicitNullValueAgenticIndex = value; AdditionalData?.Remove("agentic_index"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agentic_index"); else _explicitNullProperties?.Remove("agentic_index"); } }
         private double? _explicitNullValueAgenticIndex = default!;
         /// <summary>Artificial Analysis Coding Index composite score. Higher is better.</summary>
-        public double? CodingIndex { get => _explicitNullValueCodingIndex; set { _explicitNullValueCodingIndex = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("coding_index"); else _explicitNullProperties?.Remove("coding_index"); } }
+        public double? CodingIndex { get => _explicitNullValueCodingIndex; set { _explicitNullValueCodingIndex = value; AdditionalData?.Remove("coding_index"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("coding_index"); else _explicitNullProperties?.Remove("coding_index"); } }
         private double? _explicitNullValueCodingIndex = default!;
         /// <summary>Model name as listed on Artificial Analysis.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DisplayName { get => _explicitNullValueDisplayName; set { _explicitNullValueDisplayName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("display_name"); else _explicitNullProperties?.Remove("display_name"); } }
+        public string? DisplayName { get => _explicitNullValueDisplayName; set { _explicitNullValueDisplayName = value; AdditionalData?.Remove("display_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("display_name"); else _explicitNullProperties?.Remove("display_name"); } }
         private string? _explicitNullValueDisplayName = default!;
 #nullable restore
 #else
-        public string DisplayName { get => _explicitNullValueDisplayName; set { _explicitNullValueDisplayName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("display_name"); else _explicitNullProperties?.Remove("display_name"); } }
+        public string DisplayName { get => _explicitNullValueDisplayName; set { _explicitNullValueDisplayName = value; AdditionalData?.Remove("display_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("display_name"); else _explicitNullProperties?.Remove("display_name"); } }
         private string _explicitNullValueDisplayName = default!;
 #endif
         /// <summary>Artificial Analysis Intelligence Index composite score. Higher is better.</summary>
-        public double? IntelligenceIndex { get => _explicitNullValueIntelligenceIndex; set { _explicitNullValueIntelligenceIndex = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("intelligence_index"); else _explicitNullProperties?.Remove("intelligence_index"); } }
+        public double? IntelligenceIndex { get => _explicitNullValueIntelligenceIndex; set { _explicitNullValueIntelligenceIndex = value; AdditionalData?.Remove("intelligence_index"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("intelligence_index"); else _explicitNullProperties?.Remove("intelligence_index"); } }
         private double? _explicitNullValueIntelligenceIndex = default!;
         /// <summary>Stable OpenRouter model identifier.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ModelPermaslug { get => _explicitNullValueModelPermaslug; set { _explicitNullValueModelPermaslug = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_permaslug"); else _explicitNullProperties?.Remove("model_permaslug"); } }
+        public string? ModelPermaslug { get => _explicitNullValueModelPermaslug; set { _explicitNullValueModelPermaslug = value; AdditionalData?.Remove("model_permaslug"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_permaslug"); else _explicitNullProperties?.Remove("model_permaslug"); } }
         private string? _explicitNullValueModelPermaslug = default!;
 #nullable restore
 #else
-        public string ModelPermaslug { get => _explicitNullValueModelPermaslug; set { _explicitNullValueModelPermaslug = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_permaslug"); else _explicitNullProperties?.Remove("model_permaslug"); } }
+        public string ModelPermaslug { get => _explicitNullValueModelPermaslug; set { _explicitNullValueModelPermaslug = value; AdditionalData?.Remove("model_permaslug"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_permaslug"); else _explicitNullProperties?.Remove("model_permaslug"); } }
         private string _explicitNullValueModelPermaslug = default!;
 #endif
         /// <summary>OpenRouter pricing per token for this model. Null if pricing is unavailable.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.UnifiedBenchmarkPricing? Pricing { get => _explicitNullValuePricing; set { _explicitNullValuePricing = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pricing"); else _explicitNullProperties?.Remove("pricing"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.UnifiedBenchmarkPricing? Pricing { get => _explicitNullValuePricing; set { _explicitNullValuePricing = value; AdditionalData?.Remove("pricing"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pricing"); else _explicitNullProperties?.Remove("pricing"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.UnifiedBenchmarkPricing? _explicitNullValuePricing = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.UnifiedBenchmarkPricing Pricing { get => _explicitNullValuePricing; set { _explicitNullValuePricing = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pricing"); else _explicitNullProperties?.Remove("pricing"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.UnifiedBenchmarkPricing Pricing { get => _explicitNullValuePricing; set { _explicitNullValuePricing = value; AdditionalData?.Remove("pricing"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pricing"); else _explicitNullProperties?.Remove("pricing"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.UnifiedBenchmarkPricing _explicitNullValuePricing = default!;
 #endif
         /// <summary>Benchmark source discriminator.</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ArtificialAnalysisSource? Source { get => _explicitNullValueSource; set { _explicitNullValueSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source"); else _explicitNullProperties?.Remove("source"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ArtificialAnalysisSource? Source { get => _explicitNullValueSource; set { _explicitNullValueSource = value; AdditionalData?.Remove("source"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source"); else _explicitNullProperties?.Remove("source"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.ArtificialAnalysisSource? _explicitNullValueSource = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.UnifiedBenchmarksAaItem"/> and sets the default values.
@@ -101,7 +108,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "intelligence_index", n => { IntelligenceIndex = n.GetDoubleValue(); } },
                 { "model_permaslug", n => { ModelPermaslug = n.GetStringValue(); } },
                 { "pricing", n => { Pricing = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.UnifiedBenchmarkPricing>(global::Soenneker.OpenRouter.OpenApiClient.Models.UnifiedBenchmarkPricing.CreateFromDiscriminatorValue); } },
-                { "source", n => { Source = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ArtificialAnalysisSource>(); } },
+                { "source", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ArtificialAnalysisSource>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueSource = default; _explicitNullProperties?.Remove("source"); AdditionalData["source"] = unknown; } else { Source = parsed; AdditionalData.Remove("source"); } } },
             };
         }
         /// <summary>

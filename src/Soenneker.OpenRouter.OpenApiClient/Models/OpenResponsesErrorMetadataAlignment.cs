@@ -18,8 +18,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("calls") is { } nullNodeCalls && nullNodeCalls.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Calls = null;
-            if (parseNode.GetChildNode("rejected") is { } nullNodeRejected && nullNodeRejected.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Rejected = null;
+            if (parseNode.GetChildNode("calls") is null) { _explicitNullValueCalls = default!; _explicitNullProperties?.Remove("calls"); }
+            else if (parseNode.GetChildNode("calls") is { } nullNodeCalls && nullNodeCalls.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Calls = null;
+            if (parseNode.GetChildNode("rejected") is null) { _explicitNullValueRejected = default!; _explicitNullProperties?.Remove("rejected"); }
+            else if (parseNode.GetChildNode("rejected") is { } nullNodeRejected && nullNodeRejected.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Rejected = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -27,21 +29,21 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>One record per evaluated assistant message of the request, in the order the messages were produced. Empty when no message of the request had content to evaluate.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.AlignmentCallRecord>? Calls { get => _explicitNullValueCalls; set { _explicitNullValueCalls = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("calls"); else _explicitNullProperties?.Remove("calls"); } }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.AlignmentCallRecord>? Calls { get => _explicitNullValueCalls; set { _explicitNullValueCalls = value; AdditionalData?.Remove("calls"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("calls"); else _explicitNullProperties?.Remove("calls"); } }
         private List<global::Soenneker.OpenRouter.OpenApiClient.Models.AlignmentCallRecord>? _explicitNullValueCalls = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.AlignmentCallRecord> Calls { get => _explicitNullValueCalls; set { _explicitNullValueCalls = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("calls"); else _explicitNullProperties?.Remove("calls"); } }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.AlignmentCallRecord> Calls { get => _explicitNullValueCalls; set { _explicitNullValueCalls = value; AdditionalData?.Remove("calls"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("calls"); else _explicitNullProperties?.Remove("calls"); } }
         private List<global::Soenneker.OpenRouter.OpenApiClient.Models.AlignmentCallRecord> _explicitNullValueCalls = default!;
 #endif
         /// <summary>The rejected property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.AlignmentRejected? Rejected { get => _explicitNullValueRejected; set { _explicitNullValueRejected = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rejected"); else _explicitNullProperties?.Remove("rejected"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AlignmentRejected? Rejected { get => _explicitNullValueRejected; set { _explicitNullValueRejected = value; AdditionalData?.Remove("rejected"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rejected"); else _explicitNullProperties?.Remove("rejected"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.AlignmentRejected? _explicitNullValueRejected = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.AlignmentRejected Rejected { get => _explicitNullValueRejected; set { _explicitNullValueRejected = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rejected"); else _explicitNullProperties?.Remove("rejected"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AlignmentRejected Rejected { get => _explicitNullValueRejected; set { _explicitNullValueRejected = value; AdditionalData?.Remove("rejected"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rejected"); else _explicitNullProperties?.Remove("rejected"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.AlignmentRejected _explicitNullValueRejected = default!;
 #endif
         /// <summary>

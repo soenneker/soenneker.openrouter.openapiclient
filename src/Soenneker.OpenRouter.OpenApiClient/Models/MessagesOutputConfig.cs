@@ -18,34 +18,37 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("effort") is { } nullNodeEffort && nullNodeEffort.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Effort = null;
-            if (parseNode.GetChildNode("format") is { } nullNodeFormat && nullNodeFormat.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Format = null;
-            if (parseNode.GetChildNode("task_budget") is { } nullNodeTaskBudget && nullNodeTaskBudget.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TaskBudget = null;
+            if (parseNode.GetChildNode("effort") is null) { _explicitNullValueEffort = default!; _explicitNullProperties?.Remove("effort"); }
+            else if (parseNode.GetChildNode("effort") is { } nullNodeEffort && nullNodeEffort.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Effort = null;
+            if (parseNode.GetChildNode("format") is null) { _explicitNullValueFormat = default!; _explicitNullProperties?.Remove("format"); }
+            else if (parseNode.GetChildNode("format") is { } nullNodeFormat && nullNodeFormat.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Format = null;
+            if (parseNode.GetChildNode("task_budget") is null) { _explicitNullValueTaskBudget = default!; _explicitNullProperties?.Remove("task_budget"); }
+            else if (parseNode.GetChildNode("task_budget") is { } nullNodeTaskBudget && nullNodeTaskBudget.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TaskBudget = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>How much effort the model should put into its response. Higher effort levels may result in more thorough analysis but take longer. Valid values are `low`, `medium`, `high`, `xhigh`, or `max`.</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesOutputConfigEffort? Effort { get => _explicitNullValueEffort; set { _explicitNullValueEffort = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("effort"); else _explicitNullProperties?.Remove("effort"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesOutputConfigEffort? Effort { get => _explicitNullValueEffort; set { _explicitNullValueEffort = value; AdditionalData?.Remove("effort"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("effort"); else _explicitNullProperties?.Remove("effort"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesOutputConfigEffort? _explicitNullValueEffort = default!;
         /// <summary>A schema to specify Claude&apos;s output format in responses. See [structured outputs](https://platform.claude.com/docs/en/build-with-claude/structured-outputs).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesOutputConfigFormat? Format { get => _explicitNullValueFormat; set { _explicitNullValueFormat = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("format"); else _explicitNullProperties?.Remove("format"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesOutputConfigFormat? Format { get => _explicitNullValueFormat; set { _explicitNullValueFormat = value; AdditionalData?.Remove("format"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("format"); else _explicitNullProperties?.Remove("format"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesOutputConfigFormat? _explicitNullValueFormat = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesOutputConfigFormat Format { get => _explicitNullValueFormat; set { _explicitNullValueFormat = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("format"); else _explicitNullProperties?.Remove("format"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesOutputConfigFormat Format { get => _explicitNullValueFormat; set { _explicitNullValueFormat = value; AdditionalData?.Remove("format"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("format"); else _explicitNullProperties?.Remove("format"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesOutputConfigFormat _explicitNullValueFormat = default!;
 #endif
         /// <summary>Task budget for an agentic turn. The model sees a countdown of remaining tokens and uses it to prioritize work and wind down gracefully. Advisory — does not enforce a hard cap.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesOutputConfigTaskBudget? TaskBudget { get => _explicitNullValueTaskBudget; set { _explicitNullValueTaskBudget = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("task_budget"); else _explicitNullProperties?.Remove("task_budget"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesOutputConfigTaskBudget? TaskBudget { get => _explicitNullValueTaskBudget; set { _explicitNullValueTaskBudget = value; AdditionalData?.Remove("task_budget"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("task_budget"); else _explicitNullProperties?.Remove("task_budget"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesOutputConfigTaskBudget? _explicitNullValueTaskBudget = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesOutputConfigTaskBudget TaskBudget { get => _explicitNullValueTaskBudget; set { _explicitNullValueTaskBudget = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("task_budget"); else _explicitNullProperties?.Remove("task_budget"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesOutputConfigTaskBudget TaskBudget { get => _explicitNullValueTaskBudget; set { _explicitNullValueTaskBudget = value; AdditionalData?.Remove("task_budget"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("task_budget"); else _explicitNullProperties?.Remove("task_budget"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesOutputConfigTaskBudget _explicitNullValueTaskBudget = default!;
 #endif
         /// <summary>
@@ -73,7 +76,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "effort", n => { Effort = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesOutputConfigEffort>(); } },
+                { "effort", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesOutputConfigEffort>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueEffort = default; _explicitNullProperties?.Remove("effort"); AdditionalData["effort"] = unknown; } else { Effort = parsed; AdditionalData.Remove("effort"); } } },
                 { "format", n => { Format = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesOutputConfigFormat>(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesOutputConfigFormat.CreateFromDiscriminatorValue); } },
                 { "task_budget", n => { TaskBudget = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesOutputConfigTaskBudget>(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesOutputConfigTaskBudget.CreateFromDiscriminatorValue); } },
             };

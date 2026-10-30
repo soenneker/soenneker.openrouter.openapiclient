@@ -18,11 +18,16 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("allowed_domains") is { } nullNodeAllowedDomains && nullNodeAllowedDomains.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AllowedDomains = null;
-            if (parseNode.GetChildNode("blocked_domains") is { } nullNodeBlockedDomains && nullNodeBlockedDomains.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BlockedDomains = null;
-            if (parseNode.GetChildNode("engine") is { } nullNodeEngine && nullNodeEngine.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Engine = null;
-            if (parseNode.GetChildNode("max_content_tokens") is { } nullNodeMaxContentTokens && nullNodeMaxContentTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxContentTokens = null;
-            if (parseNode.GetChildNode("max_uses") is { } nullNodeMaxUses && nullNodeMaxUses.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxUses = null;
+            if (parseNode.GetChildNode("allowed_domains") is null) { _explicitNullValueAllowedDomains = default!; _explicitNullProperties?.Remove("allowed_domains"); }
+            else if (parseNode.GetChildNode("allowed_domains") is { } nullNodeAllowedDomains && nullNodeAllowedDomains.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AllowedDomains = null;
+            if (parseNode.GetChildNode("blocked_domains") is null) { _explicitNullValueBlockedDomains = default!; _explicitNullProperties?.Remove("blocked_domains"); }
+            else if (parseNode.GetChildNode("blocked_domains") is { } nullNodeBlockedDomains && nullNodeBlockedDomains.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BlockedDomains = null;
+            if (parseNode.GetChildNode("engine") is null) { _explicitNullValueEngine = default!; _explicitNullProperties?.Remove("engine"); }
+            else if (parseNode.GetChildNode("engine") is { } nullNodeEngine && nullNodeEngine.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Engine = null;
+            if (parseNode.GetChildNode("max_content_tokens") is null) { _explicitNullValueMaxContentTokens = default!; _explicitNullProperties?.Remove("max_content_tokens"); }
+            else if (parseNode.GetChildNode("max_content_tokens") is { } nullNodeMaxContentTokens && nullNodeMaxContentTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxContentTokens = null;
+            if (parseNode.GetChildNode("max_uses") is null) { _explicitNullValueMaxUses = default!; _explicitNullProperties?.Remove("max_uses"); }
+            else if (parseNode.GetChildNode("max_uses") is { } nullNodeMaxUses && nullNodeMaxUses.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxUses = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -30,31 +35,31 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Only fetch from these domains.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? AllowedDomains { get => _explicitNullValueAllowedDomains; set { _explicitNullValueAllowedDomains = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allowed_domains"); else _explicitNullProperties?.Remove("allowed_domains"); } }
+        public List<string>? AllowedDomains { get => _explicitNullValueAllowedDomains; set { _explicitNullValueAllowedDomains = value; AdditionalData?.Remove("allowed_domains"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allowed_domains"); else _explicitNullProperties?.Remove("allowed_domains"); } }
         private List<string>? _explicitNullValueAllowedDomains = default!;
 #nullable restore
 #else
-        public List<string> AllowedDomains { get => _explicitNullValueAllowedDomains; set { _explicitNullValueAllowedDomains = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allowed_domains"); else _explicitNullProperties?.Remove("allowed_domains"); } }
+        public List<string> AllowedDomains { get => _explicitNullValueAllowedDomains; set { _explicitNullValueAllowedDomains = value; AdditionalData?.Remove("allowed_domains"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allowed_domains"); else _explicitNullProperties?.Remove("allowed_domains"); } }
         private List<string> _explicitNullValueAllowedDomains = default!;
 #endif
         /// <summary>Never fetch from these domains.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? BlockedDomains { get => _explicitNullValueBlockedDomains; set { _explicitNullValueBlockedDomains = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("blocked_domains"); else _explicitNullProperties?.Remove("blocked_domains"); } }
+        public List<string>? BlockedDomains { get => _explicitNullValueBlockedDomains; set { _explicitNullValueBlockedDomains = value; AdditionalData?.Remove("blocked_domains"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("blocked_domains"); else _explicitNullProperties?.Remove("blocked_domains"); } }
         private List<string>? _explicitNullValueBlockedDomains = default!;
 #nullable restore
 #else
-        public List<string> BlockedDomains { get => _explicitNullValueBlockedDomains; set { _explicitNullValueBlockedDomains = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("blocked_domains"); else _explicitNullProperties?.Remove("blocked_domains"); } }
+        public List<string> BlockedDomains { get => _explicitNullValueBlockedDomains; set { _explicitNullValueBlockedDomains = value; AdditionalData?.Remove("blocked_domains"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("blocked_domains"); else _explicitNullProperties?.Remove("blocked_domains"); } }
         private List<string> _explicitNullValueBlockedDomains = default!;
 #endif
         /// <summary>Which fetch engine to use. &quot;auto&quot; (default) uses native if the provider supports it, otherwise Exa. &quot;native&quot; forces the provider&apos;s built-in fetch. &quot;exa&quot; uses Exa Contents API. &quot;openrouter&quot; uses direct HTTP fetch. &quot;firecrawl&quot; uses Firecrawl scrape. &quot;parallel&quot; uses the Parallel extract API.</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.WebFetchEngineEnum? Engine { get => _explicitNullValueEngine; set { _explicitNullValueEngine = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("engine"); else _explicitNullProperties?.Remove("engine"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.WebFetchEngineEnum? Engine { get => _explicitNullValueEngine; set { _explicitNullValueEngine = value; AdditionalData?.Remove("engine"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("engine"); else _explicitNullProperties?.Remove("engine"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.WebFetchEngineEnum? _explicitNullValueEngine = default!;
         /// <summary>Maximum content length in approximate tokens. Content exceeding this limit is truncated.</summary>
-        public int? MaxContentTokens { get => _explicitNullValueMaxContentTokens; set { _explicitNullValueMaxContentTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_content_tokens"); else _explicitNullProperties?.Remove("max_content_tokens"); } }
+        public int? MaxContentTokens { get => _explicitNullValueMaxContentTokens; set { _explicitNullValueMaxContentTokens = value; AdditionalData?.Remove("max_content_tokens"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_content_tokens"); else _explicitNullProperties?.Remove("max_content_tokens"); } }
         private int? _explicitNullValueMaxContentTokens = default!;
         /// <summary>Maximum number of web fetches per request. Once exceeded, the tool returns an error.</summary>
-        public int? MaxUses { get => _explicitNullValueMaxUses; set { _explicitNullValueMaxUses = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_uses"); else _explicitNullProperties?.Remove("max_uses"); } }
+        public int? MaxUses { get => _explicitNullValueMaxUses; set { _explicitNullValueMaxUses = value; AdditionalData?.Remove("max_uses"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_uses"); else _explicitNullProperties?.Remove("max_uses"); } }
         private int? _explicitNullValueMaxUses = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.WebFetchServerToolConfig"/> and sets the default values.
@@ -83,7 +88,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             {
                 { "allowed_domains", n => { AllowedDomains = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "blocked_domains", n => { BlockedDomains = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "engine", n => { Engine = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebFetchEngineEnum>(); } },
+                { "engine", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebFetchEngineEnum>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueEngine = default; _explicitNullProperties?.Remove("engine"); AdditionalData["engine"] = unknown; } else { Engine = parsed; AdditionalData.Remove("engine"); } } },
                 { "max_content_tokens", n => { MaxContentTokens = n.GetIntValue(); } },
                 { "max_uses", n => { MaxUses = n.GetIntValue(); } },
             };

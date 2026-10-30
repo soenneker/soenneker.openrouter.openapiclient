@@ -17,13 +17,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("thinking_tokens") is { } nullNodeThinkingTokens && nullNodeThinkingTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ThinkingTokens = null;
+            if (parseNode.GetChildNode("thinking_tokens") is null) { _explicitNullValueThinkingTokens = default!; _explicitNullProperties?.Remove("thinking_tokens"); }
+            else if (parseNode.GetChildNode("thinking_tokens") is { } nullNodeThinkingTokens && nullNodeThinkingTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ThinkingTokens = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The thinking_tokens property</summary>
-        public int? ThinkingTokens { get => _explicitNullValueThinkingTokens; set { _explicitNullValueThinkingTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("thinking_tokens"); else _explicitNullProperties?.Remove("thinking_tokens"); } }
+        public int? ThinkingTokens { get => _explicitNullValueThinkingTokens; set { _explicitNullValueThinkingTokens = value; AdditionalData?.Remove("thinking_tokens"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("thinking_tokens"); else _explicitNullProperties?.Remove("thinking_tokens"); } }
         private int? _explicitNullValueThinkingTokens = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicOutputTokensDetails"/> and sets the default values.

@@ -17,8 +17,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("input_modalities") is { } nullNodeInputModalities && nullNodeInputModalities.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InputModalities = null;
-            if (parseNode.GetChildNode("output_modalities") is { } nullNodeOutputModalities && nullNodeOutputModalities.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OutputModalities = null;
+            if (parseNode.GetChildNode("input_modalities") is null) { _explicitNullValueInputModalities = default!; _explicitNullProperties?.Remove("input_modalities"); }
+            else if (parseNode.GetChildNode("input_modalities") is { } nullNodeInputModalities && nullNodeInputModalities.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InputModalities = null;
+            if (parseNode.GetChildNode("output_modalities") is null) { _explicitNullValueOutputModalities = default!; _explicitNullProperties?.Remove("output_modalities"); }
+            else if (parseNode.GetChildNode("output_modalities") is { } nullNodeOutputModalities && nullNodeOutputModalities.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OutputModalities = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,21 +28,21 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Supported input modalities</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageInputModality?>? InputModalities { get => _explicitNullValueInputModalities; set { _explicitNullValueInputModalities = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input_modalities"); else _explicitNullProperties?.Remove("input_modalities"); } }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageInputModality?>? InputModalities { get => _explicitNullValueInputModalities; set { _explicitNullValueInputModalities = value; AdditionalData?.Remove("input_modalities"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input_modalities"); else _explicitNullProperties?.Remove("input_modalities"); } }
         private List<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageInputModality?>? _explicitNullValueInputModalities = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageInputModality?> InputModalities { get => _explicitNullValueInputModalities; set { _explicitNullValueInputModalities = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input_modalities"); else _explicitNullProperties?.Remove("input_modalities"); } }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageInputModality?> InputModalities { get => _explicitNullValueInputModalities; set { _explicitNullValueInputModalities = value; AdditionalData?.Remove("input_modalities"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input_modalities"); else _explicitNullProperties?.Remove("input_modalities"); } }
         private List<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageInputModality?> _explicitNullValueInputModalities = default!;
 #endif
         /// <summary>Supported output modalities</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageOutputModality?>? OutputModalities { get => _explicitNullValueOutputModalities; set { _explicitNullValueOutputModalities = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("output_modalities"); else _explicitNullProperties?.Remove("output_modalities"); } }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageOutputModality?>? OutputModalities { get => _explicitNullValueOutputModalities; set { _explicitNullValueOutputModalities = value; AdditionalData?.Remove("output_modalities"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("output_modalities"); else _explicitNullProperties?.Remove("output_modalities"); } }
         private List<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageOutputModality?>? _explicitNullValueOutputModalities = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageOutputModality?> OutputModalities { get => _explicitNullValueOutputModalities; set { _explicitNullValueOutputModalities = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("output_modalities"); else _explicitNullProperties?.Remove("output_modalities"); } }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageOutputModality?> OutputModalities { get => _explicitNullValueOutputModalities; set { _explicitNullValueOutputModalities = value; AdditionalData?.Remove("output_modalities"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("output_modalities"); else _explicitNullProperties?.Remove("output_modalities"); } }
         private List<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageOutputModality?> _explicitNullValueOutputModalities = default!;
 #endif
         /// <summary>

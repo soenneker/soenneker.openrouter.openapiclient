@@ -18,8 +18,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("openrouter") is { } nullNodeOpenrouter && nullNodeOpenrouter.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Openrouter = null;
-            if (parseNode.GetChildNode("upstream") is { } nullNodeUpstream && nullNodeUpstream.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Upstream = null;
+            if (parseNode.GetChildNode("openrouter") is null) { _explicitNullValueOpenrouter = default!; _explicitNullProperties?.Remove("openrouter"); }
+            else if (parseNode.GetChildNode("openrouter") is { } nullNodeOpenrouter && nullNodeOpenrouter.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Openrouter = null;
+            if (parseNode.GetChildNode("upstream") is null) { _explicitNullValueUpstream = default!; _explicitNullProperties?.Remove("upstream"); }
+            else if (parseNode.GetChildNode("upstream") is { } nullNodeUpstream && nullNodeUpstream.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Upstream = null;
         }
 
         /// <summary>OpenRouter-held request and result artifacts were purged.</summary>

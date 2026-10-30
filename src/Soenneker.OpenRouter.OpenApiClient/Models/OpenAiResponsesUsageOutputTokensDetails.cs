@@ -17,13 +17,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("reasoning_tokens") is { } nullNodeReasoningTokens && nullNodeReasoningTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReasoningTokens = null;
+            if (parseNode.GetChildNode("reasoning_tokens") is null) { _explicitNullValueReasoningTokens = default!; _explicitNullProperties?.Remove("reasoning_tokens"); }
+            else if (parseNode.GetChildNode("reasoning_tokens") is { } nullNodeReasoningTokens && nullNodeReasoningTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReasoningTokens = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The reasoning_tokens property</summary>
-        public int? ReasoningTokens { get => _explicitNullValueReasoningTokens; set { _explicitNullValueReasoningTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reasoning_tokens"); else _explicitNullProperties?.Remove("reasoning_tokens"); } }
+        public int? ReasoningTokens { get => _explicitNullValueReasoningTokens; set { _explicitNullValueReasoningTokens = value; AdditionalData?.Remove("reasoning_tokens"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reasoning_tokens"); else _explicitNullProperties?.Remove("reasoning_tokens"); } }
         private int? _explicitNullValueReasoningTokens = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAiResponsesUsageOutputTokensDetails"/> and sets the default values.

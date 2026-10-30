@@ -18,11 +18,16 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("data") is { } nullNodeData && nullNodeData.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Data = null;
-            if (parseNode.GetChildNode("first_id") is { } nullNodeFirstId && nullNodeFirstId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FirstId = null;
-            if (parseNode.GetChildNode("has_more") is { } nullNodeHasMore && nullNodeHasMore.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HasMore = null;
-            if (parseNode.GetChildNode("last_id") is { } nullNodeLastId && nullNodeLastId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LastId = null;
-            if (parseNode.GetChildNode("_shape") is { } nullNodeShape && nullNodeShape.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Shape = null;
+            if (parseNode.GetChildNode("data") is null) { _explicitNullValueData = default!; _explicitNullProperties?.Remove("data"); }
+            else if (parseNode.GetChildNode("data") is { } nullNodeData && nullNodeData.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Data = null;
+            if (parseNode.GetChildNode("first_id") is null) { _explicitNullValueFirstId = default!; _explicitNullProperties?.Remove("first_id"); }
+            else if (parseNode.GetChildNode("first_id") is { } nullNodeFirstId && nullNodeFirstId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FirstId = null;
+            if (parseNode.GetChildNode("has_more") is null) { _explicitNullValueHasMore = default!; _explicitNullProperties?.Remove("has_more"); }
+            else if (parseNode.GetChildNode("has_more") is { } nullNodeHasMore && nullNodeHasMore.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HasMore = null;
+            if (parseNode.GetChildNode("last_id") is null) { _explicitNullValueLastId = default!; _explicitNullProperties?.Remove("last_id"); }
+            else if (parseNode.GetChildNode("last_id") is { } nullNodeLastId && nullNodeLastId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LastId = null;
+            if (parseNode.GetChildNode("_shape") is null) { _explicitNullValueShape = default!; _explicitNullProperties?.Remove("_shape"); }
+            else if (parseNode.GetChildNode("_shape") is { } nullNodeShape && nullNodeShape.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Shape = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -30,38 +35,38 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The data property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicFile>? Data { get => _explicitNullValueData; set { _explicitNullValueData = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data"); else _explicitNullProperties?.Remove("data"); } }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicFile>? Data { get => _explicitNullValueData; set { _explicitNullValueData = value; AdditionalData?.Remove("data"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data"); else _explicitNullProperties?.Remove("data"); } }
         private List<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicFile>? _explicitNullValueData = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicFile> Data { get => _explicitNullValueData; set { _explicitNullValueData = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data"); else _explicitNullProperties?.Remove("data"); } }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicFile> Data { get => _explicitNullValueData; set { _explicitNullValueData = value; AdditionalData?.Remove("data"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data"); else _explicitNullProperties?.Remove("data"); } }
         private List<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicFile> _explicitNullValueData = default!;
 #endif
         /// <summary>The first_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? FirstId { get => _explicitNullValueFirstId; set { _explicitNullValueFirstId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("first_id"); else _explicitNullProperties?.Remove("first_id"); } }
+        public string? FirstId { get => _explicitNullValueFirstId; set { _explicitNullValueFirstId = value; AdditionalData?.Remove("first_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("first_id"); else _explicitNullProperties?.Remove("first_id"); } }
         private string? _explicitNullValueFirstId = default!;
 #nullable restore
 #else
-        public string FirstId { get => _explicitNullValueFirstId; set { _explicitNullValueFirstId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("first_id"); else _explicitNullProperties?.Remove("first_id"); } }
+        public string FirstId { get => _explicitNullValueFirstId; set { _explicitNullValueFirstId = value; AdditionalData?.Remove("first_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("first_id"); else _explicitNullProperties?.Remove("first_id"); } }
         private string _explicitNullValueFirstId = default!;
 #endif
         /// <summary>The has_more property</summary>
-        public bool? HasMore { get => _explicitNullValueHasMore; set { _explicitNullValueHasMore = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("has_more"); else _explicitNullProperties?.Remove("has_more"); } }
+        public bool? HasMore { get => _explicitNullValueHasMore; set { _explicitNullValueHasMore = value; AdditionalData?.Remove("has_more"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("has_more"); else _explicitNullProperties?.Remove("has_more"); } }
         private bool? _explicitNullValueHasMore = default!;
         /// <summary>The last_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? LastId { get => _explicitNullValueLastId; set { _explicitNullValueLastId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_id"); else _explicitNullProperties?.Remove("last_id"); } }
+        public string? LastId { get => _explicitNullValueLastId; set { _explicitNullValueLastId = value; AdditionalData?.Remove("last_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_id"); else _explicitNullProperties?.Remove("last_id"); } }
         private string? _explicitNullValueLastId = default!;
 #nullable restore
 #else
-        public string LastId { get => _explicitNullValueLastId; set { _explicitNullValueLastId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_id"); else _explicitNullProperties?.Remove("last_id"); } }
+        public string LastId { get => _explicitNullValueLastId; set { _explicitNullValueLastId = value; AdditionalData?.Remove("last_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_id"); else _explicitNullProperties?.Remove("last_id"); } }
         private string _explicitNullValueLastId = default!;
 #endif
         /// <summary>The shape property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicShape? Shape { get => _explicitNullValueShape; set { _explicitNullValueShape = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("_shape"); else _explicitNullProperties?.Remove("_shape"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicShape? Shape { get => _explicitNullValueShape; set { _explicitNullValueShape = value; AdditionalData?.Remove("_shape"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("_shape"); else _explicitNullProperties?.Remove("_shape"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicShape? _explicitNullValueShape = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicFileList"/> and sets the default values.
@@ -92,7 +97,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "first_id", n => { FirstId = n.GetStringValue(); } },
                 { "has_more", n => { HasMore = n.GetBoolValue(); } },
                 { "last_id", n => { LastId = n.GetStringValue(); } },
-                { "_shape", n => { Shape = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicShape>(); } },
+                { "_shape", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicShape>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueShape = default; _explicitNullProperties?.Remove("_shape"); AdditionalData["_shape"] = unknown; } else { Shape = parsed; AdditionalData.Remove("_shape"); } } },
             };
         }
         /// <summary>

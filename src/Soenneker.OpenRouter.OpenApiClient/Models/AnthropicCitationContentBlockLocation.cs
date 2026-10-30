@@ -17,13 +17,20 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("cited_text") is { } nullNodeCitedText && nullNodeCitedText.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CitedText = null;
-            if (parseNode.GetChildNode("document_index") is { } nullNodeDocumentIndex && nullNodeDocumentIndex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DocumentIndex = null;
-            if (parseNode.GetChildNode("document_title") is { } nullNodeDocumentTitle && nullNodeDocumentTitle.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DocumentTitle = null;
-            if (parseNode.GetChildNode("end_block_index") is { } nullNodeEndBlockIndex && nullNodeEndBlockIndex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EndBlockIndex = null;
-            if (parseNode.GetChildNode("file_id") is { } nullNodeFileId && nullNodeFileId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FileId = null;
-            if (parseNode.GetChildNode("start_block_index") is { } nullNodeStartBlockIndex && nullNodeStartBlockIndex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StartBlockIndex = null;
-            if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
+            if (parseNode.GetChildNode("cited_text") is null) { _explicitNullValueCitedText = default!; _explicitNullProperties?.Remove("cited_text"); }
+            else if (parseNode.GetChildNode("cited_text") is { } nullNodeCitedText && nullNodeCitedText.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CitedText = null;
+            if (parseNode.GetChildNode("document_index") is null) { _explicitNullValueDocumentIndex = default!; _explicitNullProperties?.Remove("document_index"); }
+            else if (parseNode.GetChildNode("document_index") is { } nullNodeDocumentIndex && nullNodeDocumentIndex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DocumentIndex = null;
+            if (parseNode.GetChildNode("document_title") is null) { _explicitNullValueDocumentTitle = default!; _explicitNullProperties?.Remove("document_title"); }
+            else if (parseNode.GetChildNode("document_title") is { } nullNodeDocumentTitle && nullNodeDocumentTitle.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DocumentTitle = null;
+            if (parseNode.GetChildNode("end_block_index") is null) { _explicitNullValueEndBlockIndex = default!; _explicitNullProperties?.Remove("end_block_index"); }
+            else if (parseNode.GetChildNode("end_block_index") is { } nullNodeEndBlockIndex && nullNodeEndBlockIndex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EndBlockIndex = null;
+            if (parseNode.GetChildNode("file_id") is null) { _explicitNullValueFileId = default!; _explicitNullProperties?.Remove("file_id"); }
+            else if (parseNode.GetChildNode("file_id") is { } nullNodeFileId && nullNodeFileId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FileId = null;
+            if (parseNode.GetChildNode("start_block_index") is null) { _explicitNullValueStartBlockIndex = default!; _explicitNullProperties?.Remove("start_block_index"); }
+            else if (parseNode.GetChildNode("start_block_index") is { } nullNodeStartBlockIndex && nullNodeStartBlockIndex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StartBlockIndex = null;
+            if (parseNode.GetChildNode("type") is null) { _explicitNullValueType = default!; _explicitNullProperties?.Remove("type"); }
+            else if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -31,44 +38,44 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The cited_text property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CitedText { get => _explicitNullValueCitedText; set { _explicitNullValueCitedText = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cited_text"); else _explicitNullProperties?.Remove("cited_text"); } }
+        public string? CitedText { get => _explicitNullValueCitedText; set { _explicitNullValueCitedText = value; AdditionalData?.Remove("cited_text"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cited_text"); else _explicitNullProperties?.Remove("cited_text"); } }
         private string? _explicitNullValueCitedText = default!;
 #nullable restore
 #else
-        public string CitedText { get => _explicitNullValueCitedText; set { _explicitNullValueCitedText = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cited_text"); else _explicitNullProperties?.Remove("cited_text"); } }
+        public string CitedText { get => _explicitNullValueCitedText; set { _explicitNullValueCitedText = value; AdditionalData?.Remove("cited_text"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cited_text"); else _explicitNullProperties?.Remove("cited_text"); } }
         private string _explicitNullValueCitedText = default!;
 #endif
         /// <summary>The document_index property</summary>
-        public int? DocumentIndex { get => _explicitNullValueDocumentIndex; set { _explicitNullValueDocumentIndex = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("document_index"); else _explicitNullProperties?.Remove("document_index"); } }
+        public int? DocumentIndex { get => _explicitNullValueDocumentIndex; set { _explicitNullValueDocumentIndex = value; AdditionalData?.Remove("document_index"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("document_index"); else _explicitNullProperties?.Remove("document_index"); } }
         private int? _explicitNullValueDocumentIndex = default!;
         /// <summary>The document_title property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DocumentTitle { get => _explicitNullValueDocumentTitle; set { _explicitNullValueDocumentTitle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("document_title"); else _explicitNullProperties?.Remove("document_title"); } }
+        public string? DocumentTitle { get => _explicitNullValueDocumentTitle; set { _explicitNullValueDocumentTitle = value; AdditionalData?.Remove("document_title"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("document_title"); else _explicitNullProperties?.Remove("document_title"); } }
         private string? _explicitNullValueDocumentTitle = default!;
 #nullable restore
 #else
-        public string DocumentTitle { get => _explicitNullValueDocumentTitle; set { _explicitNullValueDocumentTitle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("document_title"); else _explicitNullProperties?.Remove("document_title"); } }
+        public string DocumentTitle { get => _explicitNullValueDocumentTitle; set { _explicitNullValueDocumentTitle = value; AdditionalData?.Remove("document_title"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("document_title"); else _explicitNullProperties?.Remove("document_title"); } }
         private string _explicitNullValueDocumentTitle = default!;
 #endif
         /// <summary>The end_block_index property</summary>
-        public int? EndBlockIndex { get => _explicitNullValueEndBlockIndex; set { _explicitNullValueEndBlockIndex = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("end_block_index"); else _explicitNullProperties?.Remove("end_block_index"); } }
+        public int? EndBlockIndex { get => _explicitNullValueEndBlockIndex; set { _explicitNullValueEndBlockIndex = value; AdditionalData?.Remove("end_block_index"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("end_block_index"); else _explicitNullProperties?.Remove("end_block_index"); } }
         private int? _explicitNullValueEndBlockIndex = default!;
         /// <summary>The file_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? FileId { get => _explicitNullValueFileId; set { _explicitNullValueFileId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("file_id"); else _explicitNullProperties?.Remove("file_id"); } }
+        public string? FileId { get => _explicitNullValueFileId; set { _explicitNullValueFileId = value; AdditionalData?.Remove("file_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("file_id"); else _explicitNullProperties?.Remove("file_id"); } }
         private string? _explicitNullValueFileId = default!;
 #nullable restore
 #else
-        public string FileId { get => _explicitNullValueFileId; set { _explicitNullValueFileId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("file_id"); else _explicitNullProperties?.Remove("file_id"); } }
+        public string FileId { get => _explicitNullValueFileId; set { _explicitNullValueFileId = value; AdditionalData?.Remove("file_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("file_id"); else _explicitNullProperties?.Remove("file_id"); } }
         private string _explicitNullValueFileId = default!;
 #endif
         /// <summary>The start_block_index property</summary>
-        public int? StartBlockIndex { get => _explicitNullValueStartBlockIndex; set { _explicitNullValueStartBlockIndex = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("start_block_index"); else _explicitNullProperties?.Remove("start_block_index"); } }
+        public int? StartBlockIndex { get => _explicitNullValueStartBlockIndex; set { _explicitNullValueStartBlockIndex = value; AdditionalData?.Remove("start_block_index"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("start_block_index"); else _explicitNullProperties?.Remove("start_block_index"); } }
         private int? _explicitNullValueStartBlockIndex = default!;
         /// <summary>The type property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ContentBlockLocationType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ContentBlockLocationType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; AdditionalData?.Remove("type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.ContentBlockLocationType? _explicitNullValueType = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCitationContentBlockLocation"/> and sets the default values.
@@ -101,7 +108,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "end_block_index", n => { EndBlockIndex = n.GetIntValue(); } },
                 { "file_id", n => { FileId = n.GetStringValue(); } },
                 { "start_block_index", n => { StartBlockIndex = n.GetIntValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentBlockLocationType>(); } },
+                { "type", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentBlockLocationType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueType = default; _explicitNullProperties?.Remove("type"); AdditionalData["type"] = unknown; } else { Type = parsed; AdditionalData.Remove("type"); } } },
             };
         }
         /// <summary>

@@ -61,7 +61,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             }
             
             var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
-            if (result.DecisionsRequestStateAnyOf2 == null && result.DecisionsRequestStateMember1 == null && result.String == null && unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject) result.DecisionsRequestStateAnyOf2 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.DecisionsRequestStateAnyOf2(), parseNode);
+            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => ((unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject))))();
+            int matchingUnionBranches = 0;
+            if (matchesUnionBranch0) matchingUnionBranches++;
+            bool noSelectedUnionBranch = result.DecisionsRequestStateAnyOf2 == null && result.DecisionsRequestStateMember1 == null && result.String == null;
+            if (noSelectedUnionBranch && matchesUnionBranch0 && matchingUnionBranches == 1) result.DecisionsRequestStateAnyOf2 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.DecisionsRequestStateAnyOf2(), parseNode);
             if (result.DecisionsRequestStateAnyOf2 == null && result.DecisionsRequestStateMember1 == null && result.String == null) result.UnrecognizedValue = unionPayload;
 return result;
         }
@@ -71,6 +75,8 @@ return result;
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
+            if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawFields) { var fields = new global::System.Collections.Generic.Dictionary<string, global::System.Action<IParseNode>>(); foreach (var entry in rawFields.GetValue()) fields[entry.Key] = _ => { }; return fields; }
+
             if(DecisionsRequestStateAnyOf2 != null || DecisionsRequestStateMember1 != null)
             {
                 return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(DecisionsRequestStateAnyOf2, DecisionsRequestStateMember1);
@@ -85,8 +91,12 @@ return result;
         {
             if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
             if (DecisionsRequestStateAnyOf2 == null && DecisionsRequestStateMember1 == null && String == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
-            if (DecisionsRequestStateAnyOf2 != null && DecisionsRequestStateMember1 == null && String == null) { if (DecisionsRequestStateAnyOf2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, DecisionsRequestStateAnyOf2); return; }
-            if (DecisionsRequestStateMember1 != null && DecisionsRequestStateAnyOf2 == null && String == null) { if (DecisionsRequestStateMember1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, DecisionsRequestStateMember1); return; }
+            int selectedUnionBranches = 0;
+            if (DecisionsRequestStateAnyOf2 != null) selectedUnionBranches++;
+            if (DecisionsRequestStateMember1 != null) selectedUnionBranches++;
+            if (String != null) selectedUnionBranches++;
+            if (DecisionsRequestStateAnyOf2 != null && selectedUnionBranches == 1) { if (DecisionsRequestStateAnyOf2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, DecisionsRequestStateAnyOf2); return; }
+            if (DecisionsRequestStateMember1 != null && selectedUnionBranches == 1) { if (DecisionsRequestStateMember1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, DecisionsRequestStateMember1); return; }
 
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             if(String != null)

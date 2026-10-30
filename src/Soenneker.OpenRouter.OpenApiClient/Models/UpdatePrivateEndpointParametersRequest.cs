@@ -17,7 +17,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("declared_parameters") is { } nullNodeDeclaredParameters && nullNodeDeclaredParameters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeclaredParameters = null;
+            if (parseNode.GetChildNode("declared_parameters") is null) { _explicitNullValueDeclaredParameters = default!; _explicitNullProperties?.Remove("declared_parameters"); }
+            else if (parseNode.GetChildNode("declared_parameters") is { } nullNodeDeclaredParameters && nullNodeDeclaredParameters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeclaredParameters = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Parameters the upstream supports beyond the tested ones. Replaces the earlier declaration; tested parameters stay. Order and repeated names are ignored, but the list holds at most as many entries as there are declarable parameters, repeats included. `tool_choice` requires `tools` to be tested or declared.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointDeclaredParameter?>? DeclaredParameters { get => _explicitNullValueDeclaredParameters; set { _explicitNullValueDeclaredParameters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("declared_parameters"); else _explicitNullProperties?.Remove("declared_parameters"); } }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointDeclaredParameter?>? DeclaredParameters { get => _explicitNullValueDeclaredParameters; set { _explicitNullValueDeclaredParameters = value; AdditionalData?.Remove("declared_parameters"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("declared_parameters"); else _explicitNullProperties?.Remove("declared_parameters"); } }
         private List<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointDeclaredParameter?>? _explicitNullValueDeclaredParameters = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointDeclaredParameter?> DeclaredParameters { get => _explicitNullValueDeclaredParameters; set { _explicitNullValueDeclaredParameters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("declared_parameters"); else _explicitNullProperties?.Remove("declared_parameters"); } }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointDeclaredParameter?> DeclaredParameters { get => _explicitNullValueDeclaredParameters; set { _explicitNullValueDeclaredParameters = value; AdditionalData?.Remove("declared_parameters"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("declared_parameters"); else _explicitNullProperties?.Remove("declared_parameters"); } }
         private List<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointDeclaredParameter?> _explicitNullValueDeclaredParameters = default!;
 #endif
         /// <summary>

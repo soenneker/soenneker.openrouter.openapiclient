@@ -18,25 +18,29 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("p50") is { } nullNodeP50 && nullNodeP50.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) P50 = null;
-            if (parseNode.GetChildNode("p75") is { } nullNodeP75 && nullNodeP75.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) P75 = null;
-            if (parseNode.GetChildNode("p90") is { } nullNodeP90 && nullNodeP90.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) P90 = null;
-            if (parseNode.GetChildNode("p99") is { } nullNodeP99 && nullNodeP99.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) P99 = null;
+            if (parseNode.GetChildNode("p50") is null) { _explicitNullValueP50 = default!; _explicitNullProperties?.Remove("p50"); }
+            else if (parseNode.GetChildNode("p50") is { } nullNodeP50 && nullNodeP50.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) P50 = null;
+            if (parseNode.GetChildNode("p75") is null) { _explicitNullValueP75 = default!; _explicitNullProperties?.Remove("p75"); }
+            else if (parseNode.GetChildNode("p75") is { } nullNodeP75 && nullNodeP75.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) P75 = null;
+            if (parseNode.GetChildNode("p90") is null) { _explicitNullValueP90 = default!; _explicitNullProperties?.Remove("p90"); }
+            else if (parseNode.GetChildNode("p90") is { } nullNodeP90 && nullNodeP90.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) P90 = null;
+            if (parseNode.GetChildNode("p99") is null) { _explicitNullValueP99 = default!; _explicitNullProperties?.Remove("p99"); }
+            else if (parseNode.GetChildNode("p99") is { } nullNodeP99 && nullNodeP99.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) P99 = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Median (50th percentile)</summary>
-        public double? P50 { get => _explicitNullValueP50; set { _explicitNullValueP50 = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("p50"); else _explicitNullProperties?.Remove("p50"); } }
+        public double? P50 { get => _explicitNullValueP50; set { _explicitNullValueP50 = value; AdditionalData?.Remove("p50"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("p50"); else _explicitNullProperties?.Remove("p50"); } }
         private double? _explicitNullValueP50 = default!;
         /// <summary>75th percentile</summary>
-        public double? P75 { get => _explicitNullValueP75; set { _explicitNullValueP75 = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("p75"); else _explicitNullProperties?.Remove("p75"); } }
+        public double? P75 { get => _explicitNullValueP75; set { _explicitNullValueP75 = value; AdditionalData?.Remove("p75"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("p75"); else _explicitNullProperties?.Remove("p75"); } }
         private double? _explicitNullValueP75 = default!;
         /// <summary>90th percentile</summary>
-        public double? P90 { get => _explicitNullValueP90; set { _explicitNullValueP90 = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("p90"); else _explicitNullProperties?.Remove("p90"); } }
+        public double? P90 { get => _explicitNullValueP90; set { _explicitNullValueP90 = value; AdditionalData?.Remove("p90"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("p90"); else _explicitNullProperties?.Remove("p90"); } }
         private double? _explicitNullValueP90 = default!;
         /// <summary>99th percentile</summary>
-        public double? P99 { get => _explicitNullValueP99; set { _explicitNullValueP99 = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("p99"); else _explicitNullProperties?.Remove("p99"); } }
+        public double? P99 { get => _explicitNullValueP99; set { _explicitNullValueP99 = value; AdditionalData?.Remove("p99"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("p99"); else _explicitNullProperties?.Remove("p99"); } }
         private double? _explicitNullValueP99 = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkloadTextGenerationThroughput"/> and sets the default values.

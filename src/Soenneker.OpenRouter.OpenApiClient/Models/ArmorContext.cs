@@ -18,8 +18,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("auto_mode") is { } nullNodeAutoMode && nullNodeAutoMode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AutoMode = null;
-            if (parseNode.GetChildNode("v") is { } nullNodeV && nullNodeV.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) V = null;
+            if (parseNode.GetChildNode("auto_mode") is null) { _explicitNullValueAutoMode = default!; _explicitNullProperties?.Remove("auto_mode"); }
+            else if (parseNode.GetChildNode("auto_mode") is { } nullNodeAutoMode && nullNodeAutoMode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AutoMode = null;
+            if (parseNode.GetChildNode("v") is null) { _explicitNullValueV = default!; _explicitNullProperties?.Remove("v"); }
+            else if (parseNode.GetChildNode("v") is { } nullNodeV && nullNodeV.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) V = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -27,15 +29,15 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The auto_mode property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ArmorAutoMode? AutoMode { get => _explicitNullValueAutoMode; set { _explicitNullValueAutoMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("auto_mode"); else _explicitNullProperties?.Remove("auto_mode"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ArmorAutoMode? AutoMode { get => _explicitNullValueAutoMode; set { _explicitNullValueAutoMode = value; AdditionalData?.Remove("auto_mode"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("auto_mode"); else _explicitNullProperties?.Remove("auto_mode"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.ArmorAutoMode? _explicitNullValueAutoMode = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ArmorAutoMode AutoMode { get => _explicitNullValueAutoMode; set { _explicitNullValueAutoMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("auto_mode"); else _explicitNullProperties?.Remove("auto_mode"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ArmorAutoMode AutoMode { get => _explicitNullValueAutoMode; set { _explicitNullValueAutoMode = value; AdditionalData?.Remove("auto_mode"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("auto_mode"); else _explicitNullProperties?.Remove("auto_mode"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.ArmorAutoMode _explicitNullValueAutoMode = default!;
 #endif
         /// <summary>The v property</summary>
-        public double? V { get => _explicitNullValueV; set { _explicitNullValueV = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("v"); else _explicitNullProperties?.Remove("v"); } }
+        public double? V { get => _explicitNullValueV; set { _explicitNullValueV = value; AdditionalData?.Remove("v"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("v"); else _explicitNullProperties?.Remove("v"); } }
         private double? _explicitNullValueV = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ArmorContext"/> and sets the default values.

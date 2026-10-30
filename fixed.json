@@ -15882,7 +15882,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CreatePrivateEndpoint404Response"
+                  "$ref": "#/components/schemas/CreatePrivateEndpoint404ResponseError"
                 }
               }
             }
@@ -15908,7 +15908,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CreatePrivateEndpoint409Response"
+                  "$ref": "#/components/schemas/CreatePrivateEndpoint409ResponseError"
                 }
               }
             }
@@ -15918,7 +15918,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CreatePrivateEndpoint422Response"
+                  "$ref": "#/components/schemas/CreatePrivateEndpoint422ResponseError"
                 }
               }
             }
@@ -15928,7 +15928,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CreatePrivateEndpoint500Response"
+                  "$ref": "#/components/schemas/CreatePrivateEndpoint500ResponseError"
                 }
               }
             }
@@ -15938,7 +15938,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CreatePrivateEndpoint502Response"
+                  "$ref": "#/components/schemas/CreatePrivateEndpoint502ResponseError"
                 }
               }
             }
@@ -30855,13 +30855,13 @@
           "hard_deny": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/ArmorAutoModeHardDenyItem"
+              "$ref": "#/components/schemas/ArmorAutoModeAllowItem"
             }
           },
           "soft_deny": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/ArmorAutoModeSoftDenyItem"
+              "$ref": "#/components/schemas/ArmorAutoModeAllowItem"
             }
           }
         }
@@ -31394,7 +31394,7 @@
             "type": "integer"
           },
           "part": {
-            "$ref": "#/components/schemas/BaseContentPartDoneEventPart"
+            "$ref": "#/components/schemas/BaseContentPartAddedEventPart"
           },
           "sequence_number": {
             "type": "integer"
@@ -32118,7 +32118,7 @@
             "$ref": "#/components/schemas/BaseResponsesResultIncompleteDetails"
           },
           "instructions": {
-            "$ref": "#/components/schemas/BaseResponsesResultInstructions"
+            "$ref": "#/components/schemas/BaseInputs"
           },
           "max_output_tokens": {
             "type": [
@@ -32144,7 +32144,7 @@
           "output": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/BaseResponsesResultOutputItem"
+              "$ref": "#/components/schemas/AlignmentResponsesRejectedItem"
             }
           },
           "output_text": {
@@ -32916,7 +32916,8 @@
               "array"
             ],
             "items": {
-              "$ref": "#/components/schemas/BatchProviderPreferencesOnlyItem"
+              "type": "string",
+              "x-client-inline-scalar": true
             },
             "description": "List of provider slugs to allow. If provided, this list is merged with your account-wide allowed provider settings for this request."
           }
@@ -39137,11 +39138,11 @@
         "type": "object",
         "properties": {
           "deleted": {
-            "const": null,
             "type": "boolean",
             "description": "Confirmation that the BYOK credential was deleted.",
             "default": true,
-            "example": true
+            "example": true,
+            "x-client-original-const": true
           }
         },
         "example": {
@@ -39155,11 +39156,11 @@
         "type": "object",
         "properties": {
           "deleted": {
-            "const": null,
             "type": "boolean",
             "description": "Confirmation that the guardrail was deleted",
             "default": true,
-            "example": true
+            "example": true,
+            "x-client-original-const": true
           }
         },
         "example": {
@@ -39173,10 +39174,10 @@
         "type": "object",
         "properties": {
           "deleted": {
-            "const": null,
             "type": "boolean",
             "description": "Always \u0060true\u0060 on success.",
-            "default": true
+            "default": true,
+            "x-client-original-const": true
           }
         },
         "example": {
@@ -39201,9 +39202,9 @@
         "type": "object",
         "properties": {
           "deleted": {
-            "const": null,
             "type": "boolean",
-            "default": true
+            "default": true,
+            "x-client-original-const": true
           }
         }
       },
@@ -39214,11 +39215,11 @@
         "type": "object",
         "properties": {
           "deleted": {
-            "const": null,
             "type": "boolean",
             "description": "Confirmation that the budget was deleted (or did not exist)",
             "default": true,
-            "example": true
+            "example": true,
+            "x-client-original-const": true
           }
         },
         "example": {
@@ -39232,11 +39233,11 @@
         "type": "object",
         "properties": {
           "deleted": {
-            "const": null,
             "type": "boolean",
             "description": "Confirmation that the workspace was deleted",
             "default": true,
-            "example": true
+            "example": true,
+            "x-client-original-const": true
           }
         },
         "example": {
@@ -40245,7 +40246,7 @@
             "description": "Namespace qualifier for tools registered as part of a namespace tool group (e.g. an MCP server)"
           },
           "status": {
-            "$ref": "#/components/schemas/FunctionCallItemStatus"
+            "$ref": "#/components/schemas/CustomToolCallItemStatus"
           },
           "subagent_id": {
             "type": [
@@ -40299,7 +40300,7 @@
             "$ref": "#/components/schemas/FunctionCallOutputItemOutput"
           },
           "status": {
-            "$ref": "#/components/schemas/OpenAiResponseFunctionToolCallOutputStatus"
+            "$ref": "#/components/schemas/CustomToolCallItemStatus"
           },
           "type": {
             "$ref": "#/components/schemas/FunctionCallOutputType"
@@ -42241,7 +42242,8 @@
               "array"
             ],
             "items": {
-              "$ref": "#/components/schemas/ImageGenerationProviderPreferencesIgnoreItem"
+              "type": "string",
+              "x-client-inline-scalar": true
             },
             "description": "List of provider slugs to ignore. If provided, this list is merged with your account-wide ignored provider settings for this request."
           },
@@ -42251,7 +42253,8 @@
               "array"
             ],
             "items": {
-              "$ref": "#/components/schemas/ImageGenerationProviderPreferencesOnlyItem"
+              "type": "string",
+              "x-client-inline-scalar": true
             },
             "description": "List of provider slugs to allow. If provided, this list is merged with your account-wide allowed provider settings for this request."
           },
@@ -42264,7 +42267,8 @@
               "array"
             ],
             "items": {
-              "$ref": "#/components/schemas/ImageGenerationProviderPreferencesOrderItem"
+              "type": "string",
+              "x-client-inline-scalar": true
             },
             "description": "An ordered list of provider slugs. The router will attempt to use the first provider in the subset of this list that supports your requested model, and fall back to the next if it is unavailable. If no providers are available, the request will fail with an error message."
           },
@@ -42491,7 +42495,7 @@
           }
         },
         "additionalProperties": {
-          "$ref": "#/components/schemas/ImageGenerationServerToolConfigAdditionalProperties"
+          "$ref": "#/components/schemas/ImageConfigAdditionalProperties"
         },
         "description": "Configuration for the openrouter:image_generation server tool. Accepts all image_config params (aspect_ratio, quality, size, background, output_format, output_compression, moderation, etc.) plus a model field.",
         "example": {
@@ -44583,7 +44587,7 @@
             "type": "string"
           },
           "status": {
-            "$ref": "#/components/schemas/LocalShellCallOutputItemStatus"
+            "$ref": "#/components/schemas/CustomToolCallItemStatus"
           },
           "type": {
             "$ref": "#/components/schemas/LocalShellCallOutputType"
@@ -45390,7 +45394,7 @@
           "plugins": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/MessagesRequestPluginsItem"
+              "$ref": "#/components/schemas/ChatRequestPluginsItem"
             },
             "description": "Plugins you want to enable for this request, including their settings."
           },
@@ -49577,9 +49581,9 @@
             "$ref": "#/components/schemas/OpenaiShape"
           },
           "deleted": {
-            "const": null,
             "type": "boolean",
-            "default": true
+            "default": true,
+            "x-client-original-const": true
           },
           "id": {
             "type": "string"
@@ -49792,7 +49796,7 @@
             "$ref": "#/components/schemas/OpenAiResponseFunctionToolCallOutputOutput"
           },
           "status": {
-            "$ref": "#/components/schemas/OpenAiResponseFunctionToolCallOutputStatus"
+            "$ref": "#/components/schemas/CustomToolCallItemStatus"
           },
           "type": {
             "$ref": "#/components/schemas/FunctionCallOutputType"
@@ -49815,7 +49819,7 @@
           "content": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/OpenAiResponseInputMessageItemContentItem"
+              "$ref": "#/components/schemas/BaseInputsAnyOf2ItemAnyOf1ContentAnyOf1Item"
             }
           },
           "id": {
@@ -50633,7 +50637,7 @@
             "$ref": "#/components/schemas/BaseResponsesResultIncompleteDetails"
           },
           "instructions": {
-            "$ref": "#/components/schemas/BaseResponsesResultInstructions"
+            "$ref": "#/components/schemas/BaseInputs"
           },
           "max_output_tokens": {
             "type": [
@@ -52307,7 +52311,7 @@
         "type": "object",
         "properties": {
           "item": {
-            "$ref": "#/components/schemas/OutputItemAddedEventItem"
+            "$ref": "#/components/schemas/AlignmentResponsesRejectedItem"
           },
           "output_index": {
             "type": "integer"
@@ -52480,7 +52484,7 @@
         "type": "object",
         "properties": {
           "item": {
-            "$ref": "#/components/schemas/OutputItemDoneEventItem"
+            "$ref": "#/components/schemas/AlignmentResponsesRejectedItem"
           },
           "output_index": {
             "type": "integer"
@@ -52942,7 +52946,7 @@
           "content": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/OutputMessageContentItem"
+              "$ref": "#/components/schemas/BaseContentPartAddedEventPart"
             }
           },
           "id": {
@@ -52986,7 +52990,7 @@
           "content": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/OutputMessageContentItem"
+              "$ref": "#/components/schemas/BaseContentPartAddedEventPart"
             }
           },
           "id": {
@@ -56684,7 +56688,8 @@
               "array"
             ],
             "items": {
-              "$ref": "#/components/schemas/ProviderPreferencesIgnoreItem"
+              "type": "string",
+              "x-client-inline-scalar": true
             },
             "description": "List of provider slugs to ignore. If provided, this list is merged with your account-wide ignored provider settings for this request."
           },
@@ -56697,7 +56702,8 @@
               "array"
             ],
             "items": {
-              "$ref": "#/components/schemas/ProviderPreferencesOnlyItem"
+              "type": "string",
+              "x-client-inline-scalar": true
             },
             "description": "List of provider slugs to allow. If provided, this list is merged with your account-wide allowed provider settings for this request."
           },
@@ -56711,7 +56717,8 @@
               "array"
             ],
             "items": {
-              "$ref": "#/components/schemas/ProviderPreferencesOrderItem"
+              "type": "string",
+              "x-client-inline-scalar": true
             },
             "description": "An ordered list of provider slugs. The router will attempt to use the first provider in the subset of this list that supports your requested model, and fall back to the next if it is unavailable. If no providers are available, the request will fail with an error message."
           },
@@ -56741,7 +56748,7 @@
             "description": "Whether to filter providers to only those that support the parameters you\u0027ve provided. If this setting is omitted or set to false, then providers will receive only the parameters they support, and ignore the rest."
           },
           "sort": {
-            "$ref": "#/components/schemas/ProviderPreferencesSort"
+            "$ref": "#/components/schemas/ImageGenerationProviderPreferencesSort"
           },
           "zdr": {
             "type": [
@@ -58527,7 +58534,7 @@
           "plugins": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/ResponsesRequestPluginsItem"
+              "$ref": "#/components/schemas/ChatRequestPluginsItem"
             },
             "description": "Plugins you want to enable for this request, including their settings."
           },
@@ -58583,7 +58590,7 @@
             "description": "A unique identifier for grouping related requests (e.g., a conversation or agent workflow). When provided, OpenRouter uses it as the sticky routing key, routing all requests in the session to the same provider to maximize prompt cache hits. Also used for observability grouping. If provided in both the request body and the x-session-id header, the body value takes precedence. Maximum of 256 characters."
           },
           "stop": {
-            "$ref": "#/components/schemas/ResponsesRequestStop"
+            "$ref": "#/components/schemas/ChatRequestStop"
           },
           "stop_server_tools_when": {
             "minItems": 1,
@@ -58604,9 +58611,9 @@
             ]
           },
           "store": {
-            "const": null,
             "type": "boolean",
-            "default": false
+            "default": false,
+            "x-client-original-const": false
           },
           "stream": {
             "type": "boolean",
@@ -59787,7 +59794,7 @@
           "value": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/SetFilterValueItem"
+              "$ref": "#/components/schemas/ScalarFilterValue"
             }
           }
         }
@@ -59845,7 +59852,7 @@
             ]
           },
           "status": {
-            "$ref": "#/components/schemas/ShellCallItemStatus"
+            "$ref": "#/components/schemas/CustomToolCallItemStatus"
           },
           "type": {
             "$ref": "#/components/schemas/ShellCallType"
@@ -59939,7 +59946,7 @@
             }
           },
           "status": {
-            "$ref": "#/components/schemas/ShellCallOutputItemStatus"
+            "$ref": "#/components/schemas/CustomToolCallItemStatus"
           },
           "type": {
             "$ref": "#/components/schemas/ShellCallOutputType"
@@ -66908,7 +66915,13 @@
       "BaseResponsesResultInstructions": {
         "anyOf": [
           {
-            "$ref": "#/components/schemas/BaseInputs"
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BaseInputsAnyOf2Item"
+            }
           },
           {
             "type": "null"
@@ -67076,14 +67089,8 @@
         ]
       },
       "BatchProviderPreferencesOnlyItem": {
-        "anyOf": [
-          {
-            "$ref": "#/components/schemas/ProviderName"
-          },
-          {
-            "type": "string"
-          }
-        ]
+        "type": "string",
+        "x-client-inline-scalar": true
       },
       "ChatAssistantMessageContent": {
         "anyOf": [
@@ -67106,9 +67113,6 @@
         "anyOf": [
           {
             "$ref": "#/components/schemas/ConfigurationUpdate"
-          },
-          {
-            "type": "null"
           },
           {
             "type": "null"
@@ -67340,9 +67344,6 @@
           },
           {
             "type": "null"
-          },
-          {
-            "type": "null"
           }
         ],
         "description": "OpenRouter extension. Changes reasoning effort from this point in the conversation onward without invalidating the prompt cache for the preceding turns. Place it on a content-less system message (\u0060content: \u0022\u0022\u0060) directly before the user message it should apply to, and keep it at that position in later requests. Equivalent to the OpenAI Responses \u0060configuration_update\u0060 input item and the Anthropic Messages per-message \u0060output_config.effort\u0060.",
@@ -67482,7 +67483,7 @@
         "type": "object",
         "properties": {
           "part": {
-            "$ref": "#/components/schemas/ContentPartDoneEventAllOf2Part"
+            "$ref": "#/components/schemas/ContentPartAddedEventAllOf2Part"
           }
         }
       },
@@ -68234,7 +68235,8 @@
               "array"
             ],
             "items": {
-              "$ref": "#/components/schemas/ProviderPreferencesIgnoreItem"
+              "type": "string",
+              "x-client-inline-scalar": true
             },
             "description": "List of provider slugs to ignore. If provided, this list is merged with your account-wide ignored provider settings for this request."
           },
@@ -68247,7 +68249,8 @@
               "array"
             ],
             "items": {
-              "$ref": "#/components/schemas/ProviderPreferencesOnlyItem"
+              "type": "string",
+              "x-client-inline-scalar": true
             },
             "description": "List of provider slugs to allow. If provided, this list is merged with your account-wide allowed provider settings for this request."
           },
@@ -68261,7 +68264,8 @@
               "array"
             ],
             "items": {
-              "$ref": "#/components/schemas/ProviderPreferencesOrderItem"
+              "type": "string",
+              "x-client-inline-scalar": true
             },
             "description": "An ordered list of provider slugs. The router will attempt to use the first provider in the subset of this list that supports your requested model, and fall back to the next if it is unavailable. If no providers are available, the request will fail with an error message."
           },
@@ -68291,7 +68295,7 @@
             "description": "Whether to filter providers to only those that support the parameters you\u0027ve provided. If this setting is omitted or set to false, then providers will receive only the parameters they support, and ignore the rest."
           },
           "sort": {
-            "$ref": "#/components/schemas/ProviderPreferencesSort"
+            "$ref": "#/components/schemas/ImageGenerationProviderPreferencesSort"
           },
           "zdr": {
             "type": [
@@ -68547,9 +68551,6 @@
           },
           {
             "$ref": "#/components/schemas/FusionPluginToolsItemParametersAdditionalPropertiesAnyOf6"
-          },
-          {
-            "type": "null"
           }
         ]
       },
@@ -69243,24 +69244,12 @@
         }
       },
       "ImageGenerationProviderPreferencesIgnoreItem": {
-        "anyOf": [
-          {
-            "$ref": "#/components/schemas/ProviderName"
-          },
-          {
-            "type": "string"
-          }
-        ]
+        "type": "string",
+        "x-client-inline-scalar": true
       },
       "ImageGenerationProviderPreferencesOnlyItem": {
-        "anyOf": [
-          {
-            "$ref": "#/components/schemas/ProviderName"
-          },
-          {
-            "type": "string"
-          }
-        ]
+        "type": "string",
+        "x-client-inline-scalar": true
       },
       "ImageGenerationProviderPreferencesOptions": {
         "type": "object",
@@ -69727,14 +69716,8 @@
         }
       },
       "ImageGenerationProviderPreferencesOrderItem": {
-        "anyOf": [
-          {
-            "$ref": "#/components/schemas/ProviderName"
-          },
-          {
-            "type": "string"
-          }
-        ]
+        "type": "string",
+        "x-client-inline-scalar": true
       },
       "ImageGenerationProviderPreferencesSort": {
         "anyOf": [
@@ -70694,7 +70677,7 @@
           {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/OpenAiResponseFunctionToolCallOutputOutputAnyOf2Item"
+              "$ref": "#/components/schemas/OpenAiResponseCustomToolCallOutputOutputAnyOf2Item"
             }
           }
         ]
@@ -71238,34 +71221,16 @@
         }
       },
       "ProviderPreferencesIgnoreItem": {
-        "anyOf": [
-          {
-            "$ref": "#/components/schemas/ProviderName"
-          },
-          {
-            "type": "string"
-          }
-        ]
+        "type": "string",
+        "x-client-inline-scalar": true
       },
       "ProviderPreferencesOnlyItem": {
-        "anyOf": [
-          {
-            "$ref": "#/components/schemas/ProviderName"
-          },
-          {
-            "type": "string"
-          }
-        ]
+        "type": "string",
+        "x-client-inline-scalar": true
       },
       "ProviderPreferencesOrderItem": {
-        "anyOf": [
-          {
-            "$ref": "#/components/schemas/ProviderName"
-          },
-          {
-            "type": "string"
-          }
-        ]
+        "type": "string",
+        "x-client-inline-scalar": true
       },
       "ProviderPreferencesSort": {
         "anyOf": [
@@ -74467,9 +74432,6 @@
           },
           {
             "type": "null"
-          },
-          {
-            "type": "null"
           }
         ]
       },
@@ -74484,9 +74446,6 @@
           },
           {
             "type": "boolean"
-          },
-          {
-            "type": "null"
           },
           {
             "type": "null"
@@ -75803,9 +75762,6 @@
           },
           {
             "type": "null"
-          },
-          {
-            "type": "null"
           }
         ]
       },
@@ -75931,7 +75887,7 @@
           {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/FileSearchServerToolFiltersAnyOf1ValueAnyOf4Item"
+              "$ref": "#/components/schemas/ClassifierSetFilterValueItem"
             }
           }
         ]
@@ -75962,7 +75918,7 @@
           {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/InputsAnyOf2ItemAnyOf8AllOf2ContentAnyOf1Item"
+              "$ref": "#/components/schemas/BaseContentPartAddedEventPart"
             }
           },
           {
@@ -80979,11 +80935,11 @@
         "type": "object",
         "properties": {
           "success": {
-            "const": null,
             "type": "boolean",
             "description": "Whether the feedback was recorded",
             "default": true,
-            "example": true
+            "example": true,
+            "x-client-original-const": true
           }
         }
       },
@@ -84092,11 +84048,11 @@
         "type": "object",
         "properties": {
           "deleted": {
-            "const": null,
             "type": "boolean",
             "description": "Confirmation that the API key was deleted",
             "default": true,
-            "example": true
+            "example": true,
+            "x-client-original-const": true
           }
         },
         "example": {
@@ -84970,7 +84926,7 @@
             "$ref": "#/components/schemas/BaseResponsesResultIncompleteDetails"
           },
           "instructions": {
-            "$ref": "#/components/schemas/BaseResponsesResultInstructions"
+            "$ref": "#/components/schemas/BaseInputs"
           },
           "max_output_tokens": {
             "type": [
@@ -84996,7 +84952,7 @@
           "output": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/BaseResponsesResultOutputItem"
+              "$ref": "#/components/schemas/AlignmentResponsesRejectedItem"
             }
           },
           "output_text": {
@@ -85156,7 +85112,7 @@
             "$ref": "#/components/schemas/BaseResponsesResultIncompleteDetails"
           },
           "instructions": {
-            "$ref": "#/components/schemas/BaseResponsesResultInstructions"
+            "$ref": "#/components/schemas/BaseInputs"
           },
           "max_output_tokens": {
             "type": [
@@ -85182,7 +85138,7 @@
           "output": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/BaseResponsesResultOutputItem"
+              "$ref": "#/components/schemas/AlignmentResponsesRejectedItem"
             }
           },
           "output_text": {
@@ -85317,7 +85273,7 @@
           {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/BaseResponsesResultOutputItem"
+              "$ref": "#/components/schemas/AlignmentResponsesRejectedItem"
             }
           },
           {
@@ -85482,7 +85438,7 @@
             "$ref": "#/components/schemas/BaseResponsesResultIncompleteDetails"
           },
           "instructions": {
-            "$ref": "#/components/schemas/BaseResponsesResultInstructions"
+            "$ref": "#/components/schemas/BaseInputs"
           },
           "max_output_tokens": {
             "type": [
@@ -85508,7 +85464,7 @@
           "output": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/BaseResponsesResultOutputItem"
+              "$ref": "#/components/schemas/AlignmentResponsesRejectedItem"
             }
           },
           "output_text": {
@@ -85668,7 +85624,7 @@
             "$ref": "#/components/schemas/BaseResponsesResultIncompleteDetails"
           },
           "instructions": {
-            "$ref": "#/components/schemas/BaseResponsesResultInstructions"
+            "$ref": "#/components/schemas/BaseInputs"
           },
           "max_output_tokens": {
             "type": [
@@ -85694,7 +85650,7 @@
           "output": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/BaseResponsesResultOutputItem"
+              "$ref": "#/components/schemas/AlignmentResponsesRejectedItem"
             }
           },
           "output_text": {
@@ -85854,7 +85810,7 @@
             "$ref": "#/components/schemas/BaseResponsesResultIncompleteDetails"
           },
           "instructions": {
-            "$ref": "#/components/schemas/BaseResponsesResultInstructions"
+            "$ref": "#/components/schemas/BaseInputs"
           },
           "max_output_tokens": {
             "type": [
@@ -85880,7 +85836,7 @@
           "output": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/BaseResponsesResultOutputItem"
+              "$ref": "#/components/schemas/AlignmentResponsesRejectedItem"
             }
           },
           "output_text": {
@@ -86407,7 +86363,7 @@
               {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/OutputMessageContentItem"
+                  "$ref": "#/components/schemas/BaseContentPartAddedEventPart"
                 }
               }
             ]
@@ -86890,7 +86846,8 @@
               "array"
             ],
             "items": {
-              "$ref": "#/components/schemas/ProviderPreferencesIgnoreItem"
+              "type": "string",
+              "x-client-inline-scalar": true
             },
             "description": "List of provider slugs to ignore. If provided, this list is merged with your account-wide ignored provider settings for this request."
           },
@@ -86903,7 +86860,8 @@
               "array"
             ],
             "items": {
-              "$ref": "#/components/schemas/ProviderPreferencesOnlyItem"
+              "type": "string",
+              "x-client-inline-scalar": true
             },
             "description": "List of provider slugs to allow. If provided, this list is merged with your account-wide allowed provider settings for this request."
           },
@@ -86917,7 +86875,8 @@
               "array"
             ],
             "items": {
-              "$ref": "#/components/schemas/ProviderPreferencesOrderItem"
+              "type": "string",
+              "x-client-inline-scalar": true
             },
             "description": "An ordered list of provider slugs. The router will attempt to use the first provider in the subset of this list that supports your requested model, and fall back to the next if it is unavailable. If no providers are available, the request will fail with an error message."
           },
@@ -86947,7 +86906,7 @@
             "description": "Whether to filter providers to only those that support the parameters you\u0027ve provided. If this setting is omitted or set to false, then providers will receive only the parameters they support, and ignore the rest."
           },
           "sort": {
-            "$ref": "#/components/schemas/ProviderPreferencesSort"
+            "$ref": "#/components/schemas/ImageGenerationProviderPreferencesSort"
           },
           "zdr": {
             "type": [
@@ -87029,7 +86988,8 @@
               "array"
             ],
             "items": {
-              "$ref": "#/components/schemas/ProviderPreferencesIgnoreItem"
+              "type": "string",
+              "x-client-inline-scalar": true
             },
             "description": "List of provider slugs to ignore. If provided, this list is merged with your account-wide ignored provider settings for this request."
           },
@@ -87042,7 +87002,8 @@
               "array"
             ],
             "items": {
-              "$ref": "#/components/schemas/ProviderPreferencesOnlyItem"
+              "type": "string",
+              "x-client-inline-scalar": true
             },
             "description": "List of provider slugs to allow. If provided, this list is merged with your account-wide allowed provider settings for this request."
           },
@@ -87056,7 +87017,8 @@
               "array"
             ],
             "items": {
-              "$ref": "#/components/schemas/ProviderPreferencesOrderItem"
+              "type": "string",
+              "x-client-inline-scalar": true
             },
             "description": "An ordered list of provider slugs. The router will attempt to use the first provider in the subset of this list that supports your requested model, and fall back to the next if it is unavailable. If no providers are available, the request will fail with an error message."
           },
@@ -87086,7 +87048,7 @@
             "description": "Whether to filter providers to only those that support the parameters you\u0027ve provided. If this setting is omitted or set to false, then providers will receive only the parameters they support, and ignore the rest."
           },
           "sort": {
-            "$ref": "#/components/schemas/ProviderPreferencesSort"
+            "$ref": "#/components/schemas/ImageGenerationProviderPreferencesSort"
           },
           "zdr": {
             "type": [
@@ -90093,7 +90055,7 @@
         "type": "object",
         "properties": {
           "embedding": {
-            "$ref": "#/components/schemas/CreateEmbeddings200ResponseDataItemEmbedding"
+            "$ref": "#/components/schemas/BatchObjectResultsItemResponseBodyAnyOf4DataItemEmbedding"
           },
           "index": {
             "type": "integer",
@@ -116599,7 +116561,7 @@
           "content": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/OutputMessageContentItem"
+              "$ref": "#/components/schemas/BaseContentPartAddedEventPart"
             }
           },
           "id": {
@@ -116868,7 +116830,7 @@
           "content": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/OutputMessageContentItem"
+              "$ref": "#/components/schemas/BaseContentPartAddedEventPart"
             }
           },
           "id": {
@@ -117168,7 +117130,182 @@
       "FusionPluginToolsItemParametersAdditionalPropertiesAnyOf6": {
         "type": "object",
         "additionalProperties": {
-          "$ref": "#/components/schemas/FusionPluginToolsItemParametersAdditionalPropertiesAnyOf6AdditionalProperties"
+          "$ref": "#/components/schemas/FusionPluginToolsItemParametersAdditionalPropertiesAnyOf5Item"
+        }
+      },
+      "CreatePrivateEndpoint404ResponseError": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/CreatePrivateEndpointValidationFailedResponseData"
+          },
+          "error": {
+            "x-client-untyped-value": true,
+            "x-client-original-field-schemas": [
+              {
+                "$ref": "#/components/schemas/CreatePrivateEndpointValidationFailedResponseError"
+              },
+              {
+                "description": "Error data for NotFoundResponse",
+                "$ref": "#/components/schemas/NotFoundResponseErrorData"
+              }
+            ]
+          },
+          "openrouter_metadata": {
+            "$ref": "#/components/schemas/NotFoundResponseOpenrouterMetadataProperty"
+          },
+          "user_id": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        },
+        "required": [
+          "error"
+        ],
+        "x-client-original-error-schema": {
+          "$ref": "#/components/schemas/CreatePrivateEndpoint404Response"
+        }
+      },
+      "CreatePrivateEndpoint409ResponseError": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/CreatePrivateEndpointValidationFailedResponseData"
+          },
+          "error": {
+            "x-client-untyped-value": true,
+            "x-client-original-field-schemas": [
+              {
+                "$ref": "#/components/schemas/CreatePrivateEndpointValidationFailedResponseError"
+              },
+              {
+                "description": "Error data for ConflictResponse",
+                "$ref": "#/components/schemas/ConflictResponseErrorData"
+              }
+            ]
+          },
+          "openrouter_metadata": {
+            "$ref": "#/components/schemas/ConflictResponseOpenrouterMetadataProperty"
+          },
+          "user_id": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        },
+        "required": [
+          "error"
+        ],
+        "x-client-original-error-schema": {
+          "$ref": "#/components/schemas/CreatePrivateEndpoint409Response"
+        }
+      },
+      "CreatePrivateEndpoint422ResponseError": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/CreatePrivateEndpointValidationFailedResponseData"
+          },
+          "error": {
+            "x-client-untyped-value": true,
+            "x-client-original-field-schemas": [
+              {
+                "$ref": "#/components/schemas/CreatePrivateEndpointValidationFailedResponseError"
+              },
+              {
+                "description": "Error data for UnprocessableEntityResponse",
+                "$ref": "#/components/schemas/UnprocessableEntityResponseErrorData"
+              }
+            ]
+          },
+          "openrouter_metadata": {
+            "$ref": "#/components/schemas/UnprocessableEntityResponseOpenrouterMetadataProperty"
+          },
+          "user_id": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        },
+        "required": [
+          "error"
+        ],
+        "x-client-original-error-schema": {
+          "$ref": "#/components/schemas/CreatePrivateEndpoint422Response"
+        }
+      },
+      "CreatePrivateEndpoint500ResponseError": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/CreatePrivateEndpointValidationFailedResponseData"
+          },
+          "error": {
+            "x-client-untyped-value": true,
+            "x-client-original-field-schemas": [
+              {
+                "$ref": "#/components/schemas/CreatePrivateEndpointValidationFailedResponseError"
+              },
+              {
+                "description": "Error data for InternalServerResponse",
+                "$ref": "#/components/schemas/InternalServerResponseErrorData"
+              }
+            ]
+          },
+          "openrouter_metadata": {
+            "$ref": "#/components/schemas/InternalServerResponseOpenrouterMetadataProperty"
+          },
+          "user_id": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        },
+        "required": [
+          "error"
+        ],
+        "x-client-original-error-schema": {
+          "$ref": "#/components/schemas/CreatePrivateEndpoint500Response"
+        }
+      },
+      "CreatePrivateEndpoint502ResponseError": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/CreatePrivateEndpointValidationFailedResponseData"
+          },
+          "error": {
+            "x-client-untyped-value": true,
+            "x-client-original-field-schemas": [
+              {
+                "$ref": "#/components/schemas/CreatePrivateEndpointValidationFailedResponseError"
+              },
+              {
+                "description": "Error data for BadGatewayResponse",
+                "$ref": "#/components/schemas/BadGatewayResponseErrorData"
+              }
+            ]
+          },
+          "openrouter_metadata": {
+            "$ref": "#/components/schemas/BadGatewayResponseOpenrouterMetadataProperty"
+          },
+          "user_id": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        },
+        "required": [
+          "error"
+        ],
+        "x-client-original-error-schema": {
+          "$ref": "#/components/schemas/CreatePrivateEndpoint502Response"
         }
       }
     },

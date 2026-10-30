@@ -18,21 +18,24 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("agentic_index") is { } nullNodeAgenticIndex && nullNodeAgenticIndex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AgenticIndex = null;
-            if (parseNode.GetChildNode("coding_index") is { } nullNodeCodingIndex && nullNodeCodingIndex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CodingIndex = null;
-            if (parseNode.GetChildNode("intelligence_index") is { } nullNodeIntelligenceIndex && nullNodeIntelligenceIndex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IntelligenceIndex = null;
+            if (parseNode.GetChildNode("agentic_index") is null) { _explicitNullValueAgenticIndex = default!; _explicitNullProperties?.Remove("agentic_index"); }
+            else if (parseNode.GetChildNode("agentic_index") is { } nullNodeAgenticIndex && nullNodeAgenticIndex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AgenticIndex = null;
+            if (parseNode.GetChildNode("coding_index") is null) { _explicitNullValueCodingIndex = default!; _explicitNullProperties?.Remove("coding_index"); }
+            else if (parseNode.GetChildNode("coding_index") is { } nullNodeCodingIndex && nullNodeCodingIndex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CodingIndex = null;
+            if (parseNode.GetChildNode("intelligence_index") is null) { _explicitNullValueIntelligenceIndex = default!; _explicitNullProperties?.Remove("intelligence_index"); }
+            else if (parseNode.GetChildNode("intelligence_index") is { } nullNodeIntelligenceIndex && nullNodeIntelligenceIndex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IntelligenceIndex = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Artificial Analysis Agentic Index score</summary>
-        public double? AgenticIndex { get => _explicitNullValueAgenticIndex; set { _explicitNullValueAgenticIndex = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agentic_index"); else _explicitNullProperties?.Remove("agentic_index"); } }
+        public double? AgenticIndex { get => _explicitNullValueAgenticIndex; set { _explicitNullValueAgenticIndex = value; AdditionalData?.Remove("agentic_index"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agentic_index"); else _explicitNullProperties?.Remove("agentic_index"); } }
         private double? _explicitNullValueAgenticIndex = default!;
         /// <summary>Artificial Analysis Coding Index score</summary>
-        public double? CodingIndex { get => _explicitNullValueCodingIndex; set { _explicitNullValueCodingIndex = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("coding_index"); else _explicitNullProperties?.Remove("coding_index"); } }
+        public double? CodingIndex { get => _explicitNullValueCodingIndex; set { _explicitNullValueCodingIndex = value; AdditionalData?.Remove("coding_index"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("coding_index"); else _explicitNullProperties?.Remove("coding_index"); } }
         private double? _explicitNullValueCodingIndex = default!;
         /// <summary>Artificial Analysis Intelligence Index score</summary>
-        public double? IntelligenceIndex { get => _explicitNullValueIntelligenceIndex; set { _explicitNullValueIntelligenceIndex = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("intelligence_index"); else _explicitNullProperties?.Remove("intelligence_index"); } }
+        public double? IntelligenceIndex { get => _explicitNullValueIntelligenceIndex; set { _explicitNullValueIntelligenceIndex = value; AdditionalData?.Remove("intelligence_index"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("intelligence_index"); else _explicitNullProperties?.Remove("intelligence_index"); } }
         private double? _explicitNullValueIntelligenceIndex = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AaBenchmarkEntry"/> and sets the default values.

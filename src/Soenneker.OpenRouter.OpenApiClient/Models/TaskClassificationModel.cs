@@ -17,9 +17,12 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
-            if (parseNode.GetChildNode("tag_token_share") is { } nullNodeTagTokenShare && nullNodeTagTokenShare.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TagTokenShare = null;
-            if (parseNode.GetChildNode("tag_usage_share") is { } nullNodeTagUsageShare && nullNodeTagUsageShare.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TagUsageShare = null;
+            if (parseNode.GetChildNode("id") is null) { _explicitNullValueId = default!; _explicitNullProperties?.Remove("id"); }
+            else if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("tag_token_share") is null) { _explicitNullValueTagTokenShare = default!; _explicitNullProperties?.Remove("tag_token_share"); }
+            else if (parseNode.GetChildNode("tag_token_share") is { } nullNodeTagTokenShare && nullNodeTagTokenShare.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TagTokenShare = null;
+            if (parseNode.GetChildNode("tag_usage_share") is null) { _explicitNullValueTagUsageShare = default!; _explicitNullProperties?.Remove("tag_usage_share"); }
+            else if (parseNode.GetChildNode("tag_usage_share") is { } nullNodeTagUsageShare && nullNodeTagUsageShare.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TagUsageShare = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -27,18 +30,18 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Model identifier (permaslug).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        public string? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; AdditionalData?.Remove("id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
         private string? _explicitNullValueId = default!;
 #nullable restore
 #else
-        public string Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        public string Id { get => _explicitNullValueId; set { _explicitNullValueId = value; AdditionalData?.Remove("id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
         private string _explicitNullValueId = default!;
 #endif
         /// <summary>Fraction of this classification&apos;s sampled token volume attributed to this model (0–1). Sums to ≤1 across the returned models (only top-N are included and unattributed requests are excluded).</summary>
-        public double? TagTokenShare { get => _explicitNullValueTagTokenShare; set { _explicitNullValueTagTokenShare = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tag_token_share"); else _explicitNullProperties?.Remove("tag_token_share"); } }
+        public double? TagTokenShare { get => _explicitNullValueTagTokenShare; set { _explicitNullValueTagTokenShare = value; AdditionalData?.Remove("tag_token_share"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tag_token_share"); else _explicitNullProperties?.Remove("tag_token_share"); } }
         private double? _explicitNullValueTagTokenShare = default!;
         /// <summary>Fraction of this classification&apos;s sampled requests attributed to this model (0–1). Sums to ≤1 across the returned models (only top-N are included and unattributed requests are excluded).</summary>
-        public double? TagUsageShare { get => _explicitNullValueTagUsageShare; set { _explicitNullValueTagUsageShare = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tag_usage_share"); else _explicitNullProperties?.Remove("tag_usage_share"); } }
+        public double? TagUsageShare { get => _explicitNullValueTagUsageShare; set { _explicitNullValueTagUsageShare = value; AdditionalData?.Remove("tag_usage_share"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tag_usage_share"); else _explicitNullProperties?.Remove("tag_usage_share"); } }
         private double? _explicitNullValueTagUsageShare = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.TaskClassificationModel"/> and sets the default values.

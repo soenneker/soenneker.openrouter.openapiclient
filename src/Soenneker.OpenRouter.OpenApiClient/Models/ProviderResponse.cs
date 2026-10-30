@@ -18,14 +18,22 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("endpoint_id") is { } nullNodeEndpointId && nullNodeEndpointId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EndpointId = null;
-            if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
-            if (parseNode.GetChildNode("is_byok") is { } nullNodeIsByok && nullNodeIsByok.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsByok = null;
-            if (parseNode.GetChildNode("latency") is { } nullNodeLatency && nullNodeLatency.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Latency = null;
-            if (parseNode.GetChildNode("model_permaslug") is { } nullNodeModelPermaslug && nullNodeModelPermaslug.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ModelPermaslug = null;
-            if (parseNode.GetChildNode("provider_name") is { } nullNodeProviderName && nullNodeProviderName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProviderName = null;
-            if (parseNode.GetChildNode("routed_service_tier") is { } nullNodeRoutedServiceTier && nullNodeRoutedServiceTier.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RoutedServiceTier = null;
-            if (parseNode.GetChildNode("status") is { } nullNodeStatus && nullNodeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Status = null;
+            if (parseNode.GetChildNode("endpoint_id") is null) { _explicitNullValueEndpointId = default!; _explicitNullProperties?.Remove("endpoint_id"); }
+            else if (parseNode.GetChildNode("endpoint_id") is { } nullNodeEndpointId && nullNodeEndpointId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EndpointId = null;
+            if (parseNode.GetChildNode("id") is null) { _explicitNullValueId = default!; _explicitNullProperties?.Remove("id"); }
+            else if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("is_byok") is null) { _explicitNullValueIsByok = default!; _explicitNullProperties?.Remove("is_byok"); }
+            else if (parseNode.GetChildNode("is_byok") is { } nullNodeIsByok && nullNodeIsByok.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsByok = null;
+            if (parseNode.GetChildNode("latency") is null) { _explicitNullValueLatency = default!; _explicitNullProperties?.Remove("latency"); }
+            else if (parseNode.GetChildNode("latency") is { } nullNodeLatency && nullNodeLatency.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Latency = null;
+            if (parseNode.GetChildNode("model_permaslug") is null) { _explicitNullValueModelPermaslug = default!; _explicitNullProperties?.Remove("model_permaslug"); }
+            else if (parseNode.GetChildNode("model_permaslug") is { } nullNodeModelPermaslug && nullNodeModelPermaslug.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ModelPermaslug = null;
+            if (parseNode.GetChildNode("provider_name") is null) { _explicitNullValueProviderName = default!; _explicitNullProperties?.Remove("provider_name"); }
+            else if (parseNode.GetChildNode("provider_name") is { } nullNodeProviderName && nullNodeProviderName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProviderName = null;
+            if (parseNode.GetChildNode("routed_service_tier") is null) { _explicitNullValueRoutedServiceTier = default!; _explicitNullProperties?.Remove("routed_service_tier"); }
+            else if (parseNode.GetChildNode("routed_service_tier") is { } nullNodeRoutedServiceTier && nullNodeRoutedServiceTier.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RoutedServiceTier = null;
+            if (parseNode.GetChildNode("status") is null) { _explicitNullValueStatus = default!; _explicitNullProperties?.Remove("status"); }
+            else if (parseNode.GetChildNode("status") is { } nullNodeStatus && nullNodeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Status = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -33,47 +41,47 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Internal endpoint identifier</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? EndpointId { get => _explicitNullValueEndpointId; set { _explicitNullValueEndpointId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("endpoint_id"); else _explicitNullProperties?.Remove("endpoint_id"); } }
+        public string? EndpointId { get => _explicitNullValueEndpointId; set { _explicitNullValueEndpointId = value; AdditionalData?.Remove("endpoint_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("endpoint_id"); else _explicitNullProperties?.Remove("endpoint_id"); } }
         private string? _explicitNullValueEndpointId = default!;
 #nullable restore
 #else
-        public string EndpointId { get => _explicitNullValueEndpointId; set { _explicitNullValueEndpointId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("endpoint_id"); else _explicitNullProperties?.Remove("endpoint_id"); } }
+        public string EndpointId { get => _explicitNullValueEndpointId; set { _explicitNullValueEndpointId = value; AdditionalData?.Remove("endpoint_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("endpoint_id"); else _explicitNullProperties?.Remove("endpoint_id"); } }
         private string _explicitNullValueEndpointId = default!;
 #endif
         /// <summary>Upstream provider response identifier</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        public string? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; AdditionalData?.Remove("id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
         private string? _explicitNullValueId = default!;
 #nullable restore
 #else
-        public string Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        public string Id { get => _explicitNullValueId; set { _explicitNullValueId = value; AdditionalData?.Remove("id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
         private string _explicitNullValueId = default!;
 #endif
         /// <summary>Whether the request used a bring-your-own-key</summary>
-        public bool? IsByok { get => _explicitNullValueIsByok; set { _explicitNullValueIsByok = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_byok"); else _explicitNullProperties?.Remove("is_byok"); } }
+        public bool? IsByok { get => _explicitNullValueIsByok; set { _explicitNullValueIsByok = value; AdditionalData?.Remove("is_byok"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_byok"); else _explicitNullProperties?.Remove("is_byok"); } }
         private bool? _explicitNullValueIsByok = default!;
         /// <summary>Response latency in milliseconds</summary>
-        public double? Latency { get => _explicitNullValueLatency; set { _explicitNullValueLatency = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latency"); else _explicitNullProperties?.Remove("latency"); } }
+        public double? Latency { get => _explicitNullValueLatency; set { _explicitNullValueLatency = value; AdditionalData?.Remove("latency"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latency"); else _explicitNullProperties?.Remove("latency"); } }
         private double? _explicitNullValueLatency = default!;
         /// <summary>Canonical model slug</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ModelPermaslug { get => _explicitNullValueModelPermaslug; set { _explicitNullValueModelPermaslug = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_permaslug"); else _explicitNullProperties?.Remove("model_permaslug"); } }
+        public string? ModelPermaslug { get => _explicitNullValueModelPermaslug; set { _explicitNullValueModelPermaslug = value; AdditionalData?.Remove("model_permaslug"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_permaslug"); else _explicitNullProperties?.Remove("model_permaslug"); } }
         private string? _explicitNullValueModelPermaslug = default!;
 #nullable restore
 #else
-        public string ModelPermaslug { get => _explicitNullValueModelPermaslug; set { _explicitNullValueModelPermaslug = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_permaslug"); else _explicitNullProperties?.Remove("model_permaslug"); } }
+        public string ModelPermaslug { get => _explicitNullValueModelPermaslug; set { _explicitNullValueModelPermaslug = value; AdditionalData?.Remove("model_permaslug"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_permaslug"); else _explicitNullProperties?.Remove("model_permaslug"); } }
         private string _explicitNullValueModelPermaslug = default!;
 #endif
         /// <summary>Name of the provider</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderResponseProviderName? ProviderName { get => _explicitNullValueProviderName; set { _explicitNullValueProviderName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("provider_name"); else _explicitNullProperties?.Remove("provider_name"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderResponseProviderName? ProviderName { get => _explicitNullValueProviderName; set { _explicitNullValueProviderName = value; AdditionalData?.Remove("provider_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("provider_name"); else _explicitNullProperties?.Remove("provider_name"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderResponseProviderName? _explicitNullValueProviderName = default!;
         /// <summary>The service tier this request was routed to (e.g. flex, priority). The tier actually applied and billed is determined by the provider response and may differ.</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderResponseRoutedServiceTier? RoutedServiceTier { get => _explicitNullValueRoutedServiceTier; set { _explicitNullValueRoutedServiceTier = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("routed_service_tier"); else _explicitNullProperties?.Remove("routed_service_tier"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderResponseRoutedServiceTier? RoutedServiceTier { get => _explicitNullValueRoutedServiceTier; set { _explicitNullValueRoutedServiceTier = value; AdditionalData?.Remove("routed_service_tier"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("routed_service_tier"); else _explicitNullProperties?.Remove("routed_service_tier"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderResponseRoutedServiceTier? _explicitNullValueRoutedServiceTier = default!;
         /// <summary>HTTP status code from the provider</summary>
-        public int? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        public int? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; AdditionalData?.Remove("status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
         private int? _explicitNullValueStatus = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderResponse"/> and sets the default values.
@@ -105,8 +113,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "is_byok", n => { IsByok = n.GetBoolValue(); } },
                 { "latency", n => { Latency = n.GetDoubleValue(); } },
                 { "model_permaslug", n => { ModelPermaslug = n.GetStringValue(); } },
-                { "provider_name", n => { ProviderName = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderResponseProviderName>(); } },
-                { "routed_service_tier", n => { RoutedServiceTier = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderResponseRoutedServiceTier>(); } },
+                { "provider_name", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderResponseProviderName>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueProviderName = default; _explicitNullProperties?.Remove("provider_name"); AdditionalData["provider_name"] = unknown; } else { ProviderName = parsed; AdditionalData.Remove("provider_name"); } } },
+                { "routed_service_tier", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderResponseRoutedServiceTier>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueRoutedServiceTier = default; _explicitNullProperties?.Remove("routed_service_tier"); AdditionalData["routed_service_tier"] = unknown; } else { RoutedServiceTier = parsed; AdditionalData.Remove("routed_service_tier"); } } },
                 { "status", n => { Status = n.GetIntValue(); } },
             };
         }

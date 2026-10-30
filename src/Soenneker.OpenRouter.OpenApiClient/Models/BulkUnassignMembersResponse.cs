@@ -17,13 +17,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("unassigned_count") is { } nullNodeUnassignedCount && nullNodeUnassignedCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UnassignedCount = null;
+            if (parseNode.GetChildNode("unassigned_count") is null) { _explicitNullValueUnassignedCount = default!; _explicitNullProperties?.Remove("unassigned_count"); }
+            else if (parseNode.GetChildNode("unassigned_count") is { } nullNodeUnassignedCount && nullNodeUnassignedCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UnassignedCount = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Number of members successfully unassigned</summary>
-        public int? UnassignedCount { get => _explicitNullValueUnassignedCount; set { _explicitNullValueUnassignedCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unassigned_count"); else _explicitNullProperties?.Remove("unassigned_count"); } }
+        public int? UnassignedCount { get => _explicitNullValueUnassignedCount; set { _explicitNullValueUnassignedCount = value; AdditionalData?.Remove("unassigned_count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unassigned_count"); else _explicitNullProperties?.Remove("unassigned_count"); } }
         private int? _explicitNullValueUnassignedCount = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BulkUnassignMembersResponse"/> and sets the default values.

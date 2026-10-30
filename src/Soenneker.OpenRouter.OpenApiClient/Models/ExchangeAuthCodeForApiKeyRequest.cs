@@ -17,9 +17,12 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("code") is { } nullNodeCode && nullNodeCode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Code = null;
-            if (parseNode.GetChildNode("code_challenge_method") is { } nullNodeCodeChallengeMethod && nullNodeCodeChallengeMethod.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CodeChallengeMethod = null;
-            if (parseNode.GetChildNode("code_verifier") is { } nullNodeCodeVerifier && nullNodeCodeVerifier.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CodeVerifier = null;
+            if (parseNode.GetChildNode("code") is null) { _explicitNullValueCode = default!; _explicitNullProperties?.Remove("code"); }
+            else if (parseNode.GetChildNode("code") is { } nullNodeCode && nullNodeCode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Code = null;
+            if (parseNode.GetChildNode("code_challenge_method") is null) { _explicitNullValueCodeChallengeMethod = default!; _explicitNullProperties?.Remove("code_challenge_method"); }
+            else if (parseNode.GetChildNode("code_challenge_method") is { } nullNodeCodeChallengeMethod && nullNodeCodeChallengeMethod.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CodeChallengeMethod = null;
+            if (parseNode.GetChildNode("code_verifier") is null) { _explicitNullValueCodeVerifier = default!; _explicitNullProperties?.Remove("code_verifier"); }
+            else if (parseNode.GetChildNode("code_verifier") is { } nullNodeCodeVerifier && nullNodeCodeVerifier.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CodeVerifier = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -27,24 +30,24 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The authorization code received from the OAuth redirect</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Code { get => _explicitNullValueCode; set { _explicitNullValueCode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("code"); else _explicitNullProperties?.Remove("code"); } }
+        public string? Code { get => _explicitNullValueCode; set { _explicitNullValueCode = value; AdditionalData?.Remove("code"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("code"); else _explicitNullProperties?.Remove("code"); } }
         private string? _explicitNullValueCode = default!;
 #nullable restore
 #else
-        public string Code { get => _explicitNullValueCode; set { _explicitNullValueCode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("code"); else _explicitNullProperties?.Remove("code"); } }
+        public string Code { get => _explicitNullValueCode; set { _explicitNullValueCode = value; AdditionalData?.Remove("code"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("code"); else _explicitNullProperties?.Remove("code"); } }
         private string _explicitNullValueCode = default!;
 #endif
         /// <summary>The method used to generate the code challenge</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ExchangeAuthCodeForApiKeyRequestCodeChallengeMethod? CodeChallengeMethod { get => _explicitNullValueCodeChallengeMethod; set { _explicitNullValueCodeChallengeMethod = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("code_challenge_method"); else _explicitNullProperties?.Remove("code_challenge_method"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ExchangeAuthCodeForApiKeyRequestCodeChallengeMethod? CodeChallengeMethod { get => _explicitNullValueCodeChallengeMethod; set { _explicitNullValueCodeChallengeMethod = value; AdditionalData?.Remove("code_challenge_method"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("code_challenge_method"); else _explicitNullProperties?.Remove("code_challenge_method"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.ExchangeAuthCodeForApiKeyRequestCodeChallengeMethod? _explicitNullValueCodeChallengeMethod = default!;
         /// <summary>The code verifier if code_challenge was used in the authorization request</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CodeVerifier { get => _explicitNullValueCodeVerifier; set { _explicitNullValueCodeVerifier = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("code_verifier"); else _explicitNullProperties?.Remove("code_verifier"); } }
+        public string? CodeVerifier { get => _explicitNullValueCodeVerifier; set { _explicitNullValueCodeVerifier = value; AdditionalData?.Remove("code_verifier"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("code_verifier"); else _explicitNullProperties?.Remove("code_verifier"); } }
         private string? _explicitNullValueCodeVerifier = default!;
 #nullable restore
 #else
-        public string CodeVerifier { get => _explicitNullValueCodeVerifier; set { _explicitNullValueCodeVerifier = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("code_verifier"); else _explicitNullProperties?.Remove("code_verifier"); } }
+        public string CodeVerifier { get => _explicitNullValueCodeVerifier; set { _explicitNullValueCodeVerifier = value; AdditionalData?.Remove("code_verifier"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("code_verifier"); else _explicitNullProperties?.Remove("code_verifier"); } }
         private string _explicitNullValueCodeVerifier = default!;
 #endif
         /// <summary>
@@ -73,7 +76,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "code", n => { Code = n.GetStringValue(); } },
-                { "code_challenge_method", n => { CodeChallengeMethod = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ExchangeAuthCodeForApiKeyRequestCodeChallengeMethod>(); } },
+                { "code_challenge_method", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ExchangeAuthCodeForApiKeyRequestCodeChallengeMethod>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueCodeChallengeMethod = default; _explicitNullProperties?.Remove("code_challenge_method"); AdditionalData["code_challenge_method"] = unknown; } else { CodeChallengeMethod = parsed; AdditionalData.Remove("code_challenge_method"); } } },
                 { "code_verifier", n => { CodeVerifier = n.GetStringValue(); } },
             };
         }

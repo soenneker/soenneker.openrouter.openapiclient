@@ -17,27 +17,30 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("quality_floor") is { } nullNodeQualityFloor && nullNodeQualityFloor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QualityFloor = null;
-            if (parseNode.GetChildNode("throughput_floor") is { } nullNodeThroughputFloor && nullNodeThroughputFloor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ThroughputFloor = null;
-            if (parseNode.GetChildNode("version_group") is { } nullNodeVersionGroup && nullNodeVersionGroup.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) VersionGroup = null;
+            if (parseNode.GetChildNode("quality_floor") is null) { _explicitNullValueQualityFloor = default!; _explicitNullProperties?.Remove("quality_floor"); }
+            else if (parseNode.GetChildNode("quality_floor") is { } nullNodeQualityFloor && nullNodeQualityFloor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QualityFloor = null;
+            if (parseNode.GetChildNode("throughput_floor") is null) { _explicitNullValueThroughputFloor = default!; _explicitNullProperties?.Remove("throughput_floor"); }
+            else if (parseNode.GetChildNode("throughput_floor") is { } nullNodeThroughputFloor && nullNodeThroughputFloor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ThroughputFloor = null;
+            if (parseNode.GetChildNode("version_group") is null) { _explicitNullValueVersionGroup = default!; _explicitNullProperties?.Remove("version_group"); }
+            else if (parseNode.GetChildNode("version_group") is { } nullNodeVersionGroup && nullNodeVersionGroup.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) VersionGroup = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The quality_floor property</summary>
-        public double? QualityFloor { get => _explicitNullValueQualityFloor; set { _explicitNullValueQualityFloor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quality_floor"); else _explicitNullProperties?.Remove("quality_floor"); } }
+        public double? QualityFloor { get => _explicitNullValueQualityFloor; set { _explicitNullValueQualityFloor = value; AdditionalData?.Remove("quality_floor"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quality_floor"); else _explicitNullProperties?.Remove("quality_floor"); } }
         private double? _explicitNullValueQualityFloor = default!;
         /// <summary>The throughput_floor property</summary>
-        public double? ThroughputFloor { get => _explicitNullValueThroughputFloor; set { _explicitNullValueThroughputFloor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("throughput_floor"); else _explicitNullProperties?.Remove("throughput_floor"); } }
+        public double? ThroughputFloor { get => _explicitNullValueThroughputFloor; set { _explicitNullValueThroughputFloor = value; AdditionalData?.Remove("throughput_floor"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("throughput_floor"); else _explicitNullProperties?.Remove("throughput_floor"); } }
         private double? _explicitNullValueThroughputFloor = default!;
         /// <summary>The version_group property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? VersionGroup { get => _explicitNullValueVersionGroup; set { _explicitNullValueVersionGroup = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("version_group"); else _explicitNullProperties?.Remove("version_group"); } }
+        public string? VersionGroup { get => _explicitNullValueVersionGroup; set { _explicitNullValueVersionGroup = value; AdditionalData?.Remove("version_group"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("version_group"); else _explicitNullProperties?.Remove("version_group"); } }
         private string? _explicitNullValueVersionGroup = default!;
 #nullable restore
 #else
-        public string VersionGroup { get => _explicitNullValueVersionGroup; set { _explicitNullValueVersionGroup = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("version_group"); else _explicitNullProperties?.Remove("version_group"); } }
+        public string VersionGroup { get => _explicitNullValueVersionGroup; set { _explicitNullValueVersionGroup = value; AdditionalData?.Remove("version_group"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("version_group"); else _explicitNullProperties?.Remove("version_group"); } }
         private string _explicitNullValueVersionGroup = default!;
 #endif
         /// <summary>

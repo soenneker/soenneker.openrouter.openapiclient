@@ -17,7 +17,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("member_user_ids") is { } nullNodeMemberUserIds && nullNodeMemberUserIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MemberUserIds = null;
+            if (parseNode.GetChildNode("member_user_ids") is null) { _explicitNullValueMemberUserIds = default!; _explicitNullProperties?.Remove("member_user_ids"); }
+            else if (parseNode.GetChildNode("member_user_ids") is { } nullNodeMemberUserIds && nullNodeMemberUserIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MemberUserIds = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Array of member user IDs to assign to the guardrail</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? MemberUserIds { get => _explicitNullValueMemberUserIds; set { _explicitNullValueMemberUserIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("member_user_ids"); else _explicitNullProperties?.Remove("member_user_ids"); } }
+        public List<string>? MemberUserIds { get => _explicitNullValueMemberUserIds; set { _explicitNullValueMemberUserIds = value; AdditionalData?.Remove("member_user_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("member_user_ids"); else _explicitNullProperties?.Remove("member_user_ids"); } }
         private List<string>? _explicitNullValueMemberUserIds = default!;
 #nullable restore
 #else
-        public List<string> MemberUserIds { get => _explicitNullValueMemberUserIds; set { _explicitNullValueMemberUserIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("member_user_ids"); else _explicitNullProperties?.Remove("member_user_ids"); } }
+        public List<string> MemberUserIds { get => _explicitNullValueMemberUserIds; set { _explicitNullValueMemberUserIds = value; AdditionalData?.Remove("member_user_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("member_user_ids"); else _explicitNullProperties?.Remove("member_user_ids"); } }
         private List<string> _explicitNullValueMemberUserIds = default!;
 #endif
         /// <summary>

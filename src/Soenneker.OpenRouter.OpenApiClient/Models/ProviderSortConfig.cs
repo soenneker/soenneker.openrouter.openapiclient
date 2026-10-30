@@ -18,17 +18,19 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("by") is { } nullNodeBy && nullNodeBy.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) By = null;
-            if (parseNode.GetChildNode("partition") is { } nullNodePartition && nullNodePartition.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Partition = null;
+            if (parseNode.GetChildNode("by") is null) { _explicitNullValueBy = default!; _explicitNullProperties?.Remove("by"); }
+            else if (parseNode.GetChildNode("by") is { } nullNodeBy && nullNodeBy.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) By = null;
+            if (parseNode.GetChildNode("partition") is null) { _explicitNullValuePartition = default!; _explicitNullProperties?.Remove("partition"); }
+            else if (parseNode.GetChildNode("partition") is { } nullNodePartition && nullNodePartition.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Partition = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The provider sorting strategy (price, throughput, latency)</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderSortConfigBy? By { get => _explicitNullValueBy; set { _explicitNullValueBy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("by"); else _explicitNullProperties?.Remove("by"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderSortConfigBy? By { get => _explicitNullValueBy; set { _explicitNullValueBy = value; AdditionalData?.Remove("by"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("by"); else _explicitNullProperties?.Remove("by"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderSortConfigBy? _explicitNullValueBy = default!;
         /// <summary>Partitioning strategy for sorting: &quot;model&quot; (default) groups endpoints by model before sorting (fallback models remain fallbacks), &quot;none&quot; sorts all endpoints together regardless of model.</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderSortConfigPartition? Partition { get => _explicitNullValuePartition; set { _explicitNullValuePartition = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("partition"); else _explicitNullProperties?.Remove("partition"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderSortConfigPartition? Partition { get => _explicitNullValuePartition; set { _explicitNullValuePartition = value; AdditionalData?.Remove("partition"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("partition"); else _explicitNullProperties?.Remove("partition"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderSortConfigPartition? _explicitNullValuePartition = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderSortConfig"/> and sets the default values.
@@ -55,8 +57,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "by", n => { By = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderSortConfigBy>(); } },
-                { "partition", n => { Partition = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderSortConfigPartition>(); } },
+                { "by", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderSortConfigBy>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueBy = default; _explicitNullProperties?.Remove("by"); AdditionalData["by"] = unknown; } else { By = parsed; AdditionalData.Remove("by"); } } },
+                { "partition", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderSortConfigPartition>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValuePartition = default; _explicitNullProperties?.Remove("partition"); AdditionalData["partition"] = unknown; } else { Partition = parsed; AdditionalData.Remove("partition"); } } },
             };
         }
         /// <summary>

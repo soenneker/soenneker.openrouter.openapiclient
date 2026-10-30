@@ -17,12 +17,18 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("clear_at_least") is { } nullNodeClearAtLeast && nullNodeClearAtLeast.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClearAtLeast = null;
-            if (parseNode.GetChildNode("clear_tool_inputs") is { } nullNodeClearToolInputs && nullNodeClearToolInputs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClearToolInputs = null;
-            if (parseNode.GetChildNode("exclude_tools") is { } nullNodeExcludeTools && nullNodeExcludeTools.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExcludeTools = null;
-            if (parseNode.GetChildNode("keep") is { } nullNodeKeep && nullNodeKeep.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Keep = null;
-            if (parseNode.GetChildNode("trigger") is { } nullNodeTrigger && nullNodeTrigger.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Trigger = null;
-            if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
+            if (parseNode.GetChildNode("clear_at_least") is null) { _explicitNullValueClearAtLeast = default!; _explicitNullProperties?.Remove("clear_at_least"); }
+            else if (parseNode.GetChildNode("clear_at_least") is { } nullNodeClearAtLeast && nullNodeClearAtLeast.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClearAtLeast = null;
+            if (parseNode.GetChildNode("clear_tool_inputs") is null) { _explicitNullValueClearToolInputs = default!; _explicitNullProperties?.Remove("clear_tool_inputs"); }
+            else if (parseNode.GetChildNode("clear_tool_inputs") is { } nullNodeClearToolInputs && nullNodeClearToolInputs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClearToolInputs = null;
+            if (parseNode.GetChildNode("exclude_tools") is null) { _explicitNullValueExcludeTools = default!; _explicitNullProperties?.Remove("exclude_tools"); }
+            else if (parseNode.GetChildNode("exclude_tools") is { } nullNodeExcludeTools && nullNodeExcludeTools.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExcludeTools = null;
+            if (parseNode.GetChildNode("keep") is null) { _explicitNullValueKeep = default!; _explicitNullProperties?.Remove("keep"); }
+            else if (parseNode.GetChildNode("keep") is { } nullNodeKeep && nullNodeKeep.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Keep = null;
+            if (parseNode.GetChildNode("trigger") is null) { _explicitNullValueTrigger = default!; _explicitNullProperties?.Remove("trigger"); }
+            else if (parseNode.GetChildNode("trigger") is { } nullNodeTrigger && nullNodeTrigger.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Trigger = null;
+            if (parseNode.GetChildNode("type") is null) { _explicitNullValueType = default!; _explicitNullProperties?.Remove("type"); }
+            else if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -30,55 +36,55 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The clear_at_least property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicInputTokensClearAtLeast? ClearAtLeast { get => _explicitNullValueClearAtLeast; set { _explicitNullValueClearAtLeast = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("clear_at_least"); else _explicitNullProperties?.Remove("clear_at_least"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicInputTokensClearAtLeast? ClearAtLeast { get => _explicitNullValueClearAtLeast; set { _explicitNullValueClearAtLeast = value; AdditionalData?.Remove("clear_at_least"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("clear_at_least"); else _explicitNullProperties?.Remove("clear_at_least"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicInputTokensClearAtLeast? _explicitNullValueClearAtLeast = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicInputTokensClearAtLeast ClearAtLeast { get => _explicitNullValueClearAtLeast; set { _explicitNullValueClearAtLeast = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("clear_at_least"); else _explicitNullProperties?.Remove("clear_at_least"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicInputTokensClearAtLeast ClearAtLeast { get => _explicitNullValueClearAtLeast; set { _explicitNullValueClearAtLeast = value; AdditionalData?.Remove("clear_at_least"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("clear_at_least"); else _explicitNullProperties?.Remove("clear_at_least"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicInputTokensClearAtLeast _explicitNullValueClearAtLeast = default!;
 #endif
         /// <summary>The clear_tool_inputs property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestContextManagementEditsItemOneOf1ClearToolInputs? ClearToolInputs { get => _explicitNullValueClearToolInputs; set { _explicitNullValueClearToolInputs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("clear_tool_inputs"); else _explicitNullProperties?.Remove("clear_tool_inputs"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestContextManagementEditsItemOneOf1ClearToolInputs? ClearToolInputs { get => _explicitNullValueClearToolInputs; set { _explicitNullValueClearToolInputs = value; AdditionalData?.Remove("clear_tool_inputs"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("clear_tool_inputs"); else _explicitNullProperties?.Remove("clear_tool_inputs"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestContextManagementEditsItemOneOf1ClearToolInputs? _explicitNullValueClearToolInputs = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestContextManagementEditsItemOneOf1ClearToolInputs ClearToolInputs { get => _explicitNullValueClearToolInputs; set { _explicitNullValueClearToolInputs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("clear_tool_inputs"); else _explicitNullProperties?.Remove("clear_tool_inputs"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestContextManagementEditsItemOneOf1ClearToolInputs ClearToolInputs { get => _explicitNullValueClearToolInputs; set { _explicitNullValueClearToolInputs = value; AdditionalData?.Remove("clear_tool_inputs"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("clear_tool_inputs"); else _explicitNullProperties?.Remove("clear_tool_inputs"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestContextManagementEditsItemOneOf1ClearToolInputs _explicitNullValueClearToolInputs = default!;
 #endif
         /// <summary>The exclude_tools property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? ExcludeTools { get => _explicitNullValueExcludeTools; set { _explicitNullValueExcludeTools = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("exclude_tools"); else _explicitNullProperties?.Remove("exclude_tools"); } }
+        public List<string>? ExcludeTools { get => _explicitNullValueExcludeTools; set { _explicitNullValueExcludeTools = value; AdditionalData?.Remove("exclude_tools"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("exclude_tools"); else _explicitNullProperties?.Remove("exclude_tools"); } }
         private List<string>? _explicitNullValueExcludeTools = default!;
 #nullable restore
 #else
-        public List<string> ExcludeTools { get => _explicitNullValueExcludeTools; set { _explicitNullValueExcludeTools = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("exclude_tools"); else _explicitNullProperties?.Remove("exclude_tools"); } }
+        public List<string> ExcludeTools { get => _explicitNullValueExcludeTools; set { _explicitNullValueExcludeTools = value; AdditionalData?.Remove("exclude_tools"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("exclude_tools"); else _explicitNullProperties?.Remove("exclude_tools"); } }
         private List<string> _explicitNullValueExcludeTools = default!;
 #endif
         /// <summary>The keep property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicToolUsesKeep? Keep { get => _explicitNullValueKeep; set { _explicitNullValueKeep = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("keep"); else _explicitNullProperties?.Remove("keep"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicToolUsesKeep? Keep { get => _explicitNullValueKeep; set { _explicitNullValueKeep = value; AdditionalData?.Remove("keep"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("keep"); else _explicitNullProperties?.Remove("keep"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicToolUsesKeep? _explicitNullValueKeep = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicToolUsesKeep Keep { get => _explicitNullValueKeep; set { _explicitNullValueKeep = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("keep"); else _explicitNullProperties?.Remove("keep"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicToolUsesKeep Keep { get => _explicitNullValueKeep; set { _explicitNullValueKeep = value; AdditionalData?.Remove("keep"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("keep"); else _explicitNullProperties?.Remove("keep"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicToolUsesKeep _explicitNullValueKeep = default!;
 #endif
         /// <summary>The trigger property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestContextManagementEditsItemOneOf1Trigger? Trigger { get => _explicitNullValueTrigger; set { _explicitNullValueTrigger = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trigger"); else _explicitNullProperties?.Remove("trigger"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestContextManagementEditsItemOneOf1Trigger? Trigger { get => _explicitNullValueTrigger; set { _explicitNullValueTrigger = value; AdditionalData?.Remove("trigger"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trigger"); else _explicitNullProperties?.Remove("trigger"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestContextManagementEditsItemOneOf1Trigger? _explicitNullValueTrigger = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestContextManagementEditsItemOneOf1Trigger Trigger { get => _explicitNullValueTrigger; set { _explicitNullValueTrigger = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trigger"); else _explicitNullProperties?.Remove("trigger"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestContextManagementEditsItemOneOf1Trigger Trigger { get => _explicitNullValueTrigger; set { _explicitNullValueTrigger = value; AdditionalData?.Remove("trigger"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trigger"); else _explicitNullProperties?.Remove("trigger"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestContextManagementEditsItemOneOf1Trigger _explicitNullValueTrigger = default!;
 #endif
         /// <summary>The type property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ClearToolUses20250919Type? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ClearToolUses20250919Type? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; AdditionalData?.Remove("type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.ClearToolUses20250919Type? _explicitNullValueType = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestContextManagementEditsItemOneOf1"/> and sets the default values.
@@ -110,7 +116,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "exclude_tools", n => { ExcludeTools = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "keep", n => { Keep = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicToolUsesKeep>(global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicToolUsesKeep.CreateFromDiscriminatorValue); } },
                 { "trigger", n => { Trigger = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestContextManagementEditsItemOneOf1Trigger>(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestContextManagementEditsItemOneOf1Trigger.CreateFromDiscriminatorValue); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ClearToolUses20250919Type>(); } },
+                { "type", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ClearToolUses20250919Type>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueType = default; _explicitNullProperties?.Remove("type"); AdditionalData["type"] = unknown; } else { Type = parsed; AdditionalData.Remove("type"); } } },
             };
         }
         /// <summary>

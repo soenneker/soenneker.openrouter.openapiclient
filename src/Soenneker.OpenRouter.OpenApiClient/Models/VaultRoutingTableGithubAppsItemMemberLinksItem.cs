@@ -17,28 +17,31 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("holds_token") is { } nullNodeHoldsToken && nullNodeHoldsToken.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HoldsToken = null;
-            if (parseNode.GetChildNode("login") is { } nullNodeLogin && nullNodeLogin.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Login = null;
-            if (parseNode.GetChildNode("via") is { } nullNodeVia && nullNodeVia.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Via = null;
+            if (parseNode.GetChildNode("holds_token") is null) { _explicitNullValueHoldsToken = default!; _explicitNullProperties?.Remove("holds_token"); }
+            else if (parseNode.GetChildNode("holds_token") is { } nullNodeHoldsToken && nullNodeHoldsToken.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HoldsToken = null;
+            if (parseNode.GetChildNode("login") is null) { _explicitNullValueLogin = default!; _explicitNullProperties?.Remove("login"); }
+            else if (parseNode.GetChildNode("login") is { } nullNodeLogin && nullNodeLogin.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Login = null;
+            if (parseNode.GetChildNode("via") is null) { _explicitNullValueVia = default!; _explicitNullProperties?.Remove("via"); }
+            else if (parseNode.GetChildNode("via") is { } nullNodeVia && nullNodeVia.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Via = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The holds_token property</summary>
-        public bool? HoldsToken { get => _explicitNullValueHoldsToken; set { _explicitNullValueHoldsToken = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("holds_token"); else _explicitNullProperties?.Remove("holds_token"); } }
+        public bool? HoldsToken { get => _explicitNullValueHoldsToken; set { _explicitNullValueHoldsToken = value; AdditionalData?.Remove("holds_token"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("holds_token"); else _explicitNullProperties?.Remove("holds_token"); } }
         private bool? _explicitNullValueHoldsToken = default!;
         /// <summary>The login property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Login { get => _explicitNullValueLogin; set { _explicitNullValueLogin = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("login"); else _explicitNullProperties?.Remove("login"); } }
+        public string? Login { get => _explicitNullValueLogin; set { _explicitNullValueLogin = value; AdditionalData?.Remove("login"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("login"); else _explicitNullProperties?.Remove("login"); } }
         private string? _explicitNullValueLogin = default!;
 #nullable restore
 #else
-        public string Login { get => _explicitNullValueLogin; set { _explicitNullValueLogin = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("login"); else _explicitNullProperties?.Remove("login"); } }
+        public string Login { get => _explicitNullValueLogin; set { _explicitNullValueLogin = value; AdditionalData?.Remove("login"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("login"); else _explicitNullProperties?.Remove("login"); } }
         private string _explicitNullValueLogin = default!;
 #endif
         /// <summary>How the vault picks this link for the App, by the same selection egress uses.</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGithubAppsItemMemberLinksItemVia? Via { get => _explicitNullValueVia; set { _explicitNullValueVia = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("via"); else _explicitNullProperties?.Remove("via"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGithubAppsItemMemberLinksItemVia? Via { get => _explicitNullValueVia; set { _explicitNullValueVia = value; AdditionalData?.Remove("via"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("via"); else _explicitNullProperties?.Remove("via"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGithubAppsItemMemberLinksItemVia? _explicitNullValueVia = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGithubAppsItemMemberLinksItem"/> and sets the default values.
@@ -67,7 +70,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             {
                 { "holds_token", n => { HoldsToken = n.GetBoolValue(); } },
                 { "login", n => { Login = n.GetStringValue(); } },
-                { "via", n => { Via = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGithubAppsItemMemberLinksItemVia>(); } },
+                { "via", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGithubAppsItemMemberLinksItemVia>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueVia = default; _explicitNullProperties?.Remove("via"); AdditionalData["via"] = unknown; } else { Via = parsed; AdditionalData.Remove("via"); } } },
             };
         }
         /// <summary>

@@ -17,8 +17,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("always") is { } nullNodeAlways && nullNodeAlways.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Always = null;
-            if (parseNode.GetChildNode("never") is { } nullNodeNever && nullNodeNever.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Never = null;
+            if (parseNode.GetChildNode("always") is null) { _explicitNullValueAlways = default!; _explicitNullProperties?.Remove("always"); }
+            else if (parseNode.GetChildNode("always") is { } nullNodeAlways && nullNodeAlways.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Always = null;
+            if (parseNode.GetChildNode("never") is null) { _explicitNullValueNever = default!; _explicitNullProperties?.Remove("never"); }
+            else if (parseNode.GetChildNode("never") is { } nullNodeNever && nullNodeNever.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Never = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,21 +28,21 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The always property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolRequireApprovalAnyOf1Always? Always { get => _explicitNullValueAlways; set { _explicitNullValueAlways = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("always"); else _explicitNullProperties?.Remove("always"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolRequireApprovalAnyOf1Always? Always { get => _explicitNullValueAlways; set { _explicitNullValueAlways = value; AdditionalData?.Remove("always"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("always"); else _explicitNullProperties?.Remove("always"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolRequireApprovalAnyOf1Always? _explicitNullValueAlways = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolRequireApprovalAnyOf1Always Always { get => _explicitNullValueAlways; set { _explicitNullValueAlways = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("always"); else _explicitNullProperties?.Remove("always"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolRequireApprovalAnyOf1Always Always { get => _explicitNullValueAlways; set { _explicitNullValueAlways = value; AdditionalData?.Remove("always"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("always"); else _explicitNullProperties?.Remove("always"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolRequireApprovalAnyOf1Always _explicitNullValueAlways = default!;
 #endif
         /// <summary>The never property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolRequireApprovalAnyOf1Never? Never { get => _explicitNullValueNever; set { _explicitNullValueNever = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("never"); else _explicitNullProperties?.Remove("never"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolRequireApprovalAnyOf1Never? Never { get => _explicitNullValueNever; set { _explicitNullValueNever = value; AdditionalData?.Remove("never"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("never"); else _explicitNullProperties?.Remove("never"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolRequireApprovalAnyOf1Never? _explicitNullValueNever = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolRequireApprovalAnyOf1Never Never { get => _explicitNullValueNever; set { _explicitNullValueNever = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("never"); else _explicitNullProperties?.Remove("never"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolRequireApprovalAnyOf1Never Never { get => _explicitNullValueNever; set { _explicitNullValueNever = value; AdditionalData?.Remove("never"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("never"); else _explicitNullProperties?.Remove("never"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.McpServerToolRequireApprovalAnyOf1Never _explicitNullValueNever = default!;
 #endif
         /// <summary>

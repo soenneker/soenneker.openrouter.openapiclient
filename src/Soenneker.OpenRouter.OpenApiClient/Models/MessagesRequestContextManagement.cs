@@ -17,7 +17,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("edits") is { } nullNodeEdits && nullNodeEdits.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Edits = null;
+            if (parseNode.GetChildNode("edits") is null) { _explicitNullValueEdits = default!; _explicitNullProperties?.Remove("edits"); }
+            else if (parseNode.GetChildNode("edits") is { } nullNodeEdits && nullNodeEdits.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Edits = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The edits property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestContextManagementEditsItem>? Edits { get => _explicitNullValueEdits; set { _explicitNullValueEdits = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("edits"); else _explicitNullProperties?.Remove("edits"); } }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestContextManagementEditsItem>? Edits { get => _explicitNullValueEdits; set { _explicitNullValueEdits = value; AdditionalData?.Remove("edits"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("edits"); else _explicitNullProperties?.Remove("edits"); } }
         private List<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestContextManagementEditsItem>? _explicitNullValueEdits = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestContextManagementEditsItem> Edits { get => _explicitNullValueEdits; set { _explicitNullValueEdits = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("edits"); else _explicitNullProperties?.Remove("edits"); } }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestContextManagementEditsItem> Edits { get => _explicitNullValueEdits; set { _explicitNullValueEdits = value; AdditionalData?.Remove("edits"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("edits"); else _explicitNullProperties?.Remove("edits"); } }
         private List<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestContextManagementEditsItem> _explicitNullValueEdits = default!;
 #endif
         /// <summary>

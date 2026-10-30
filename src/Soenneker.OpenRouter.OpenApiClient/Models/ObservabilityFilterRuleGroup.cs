@@ -17,23 +17,25 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("logic") is { } nullNodeLogic && nullNodeLogic.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Logic = null;
-            if (parseNode.GetChildNode("rules") is { } nullNodeRules && nullNodeRules.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Rules = null;
+            if (parseNode.GetChildNode("logic") is null) { _explicitNullValueLogic = default!; _explicitNullProperties?.Remove("logic"); }
+            else if (parseNode.GetChildNode("logic") is { } nullNodeLogic && nullNodeLogic.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Logic = null;
+            if (parseNode.GetChildNode("rules") is null) { _explicitNullValueRules = default!; _explicitNullProperties?.Remove("rules"); }
+            else if (parseNode.GetChildNode("rules") is { } nullNodeRules && nullNodeRules.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Rules = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The logic property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityFilterRuleGroupLogic? Logic { get => _explicitNullValueLogic; set { _explicitNullValueLogic = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("logic"); else _explicitNullProperties?.Remove("logic"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityFilterRuleGroupLogic? Logic { get => _explicitNullValueLogic; set { _explicitNullValueLogic = value; AdditionalData?.Remove("logic"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("logic"); else _explicitNullProperties?.Remove("logic"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityFilterRuleGroupLogic? _explicitNullValueLogic = default!;
         /// <summary>The rules property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityFilterRuleGroupRulesItem>? Rules { get => _explicitNullValueRules; set { _explicitNullValueRules = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rules"); else _explicitNullProperties?.Remove("rules"); } }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityFilterRuleGroupRulesItem>? Rules { get => _explicitNullValueRules; set { _explicitNullValueRules = value; AdditionalData?.Remove("rules"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rules"); else _explicitNullProperties?.Remove("rules"); } }
         private List<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityFilterRuleGroupRulesItem>? _explicitNullValueRules = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityFilterRuleGroupRulesItem> Rules { get => _explicitNullValueRules; set { _explicitNullValueRules = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rules"); else _explicitNullProperties?.Remove("rules"); } }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityFilterRuleGroupRulesItem> Rules { get => _explicitNullValueRules; set { _explicitNullValueRules = value; AdditionalData?.Remove("rules"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rules"); else _explicitNullProperties?.Remove("rules"); } }
         private List<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityFilterRuleGroupRulesItem> _explicitNullValueRules = default!;
 #endif
         /// <summary>
@@ -61,7 +63,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "logic", n => { Logic = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityFilterRuleGroupLogic>(); } },
+                { "logic", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityFilterRuleGroupLogic>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueLogic = default; _explicitNullProperties?.Remove("logic"); AdditionalData["logic"] = unknown; } else { Logic = parsed; AdditionalData.Remove("logic"); } } },
                 { "rules", n => { Rules = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityFilterRuleGroupRulesItem>(global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityFilterRuleGroupRulesItem.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }

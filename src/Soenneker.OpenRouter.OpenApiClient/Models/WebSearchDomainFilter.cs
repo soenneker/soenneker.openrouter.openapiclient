@@ -17,9 +17,12 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("allowed_domains") is { } nullNodeAllowedDomains && nullNodeAllowedDomains.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AllowedDomains = null;
-            if (parseNode.GetChildNode("blocked_domains") is { } nullNodeBlockedDomains && nullNodeBlockedDomains.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BlockedDomains = null;
-            if (parseNode.GetChildNode("excluded_domains") is { } nullNodeExcludedDomains && nullNodeExcludedDomains.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExcludedDomains = null;
+            if (parseNode.GetChildNode("allowed_domains") is null) { _explicitNullValueAllowedDomains = default!; _explicitNullProperties?.Remove("allowed_domains"); }
+            else if (parseNode.GetChildNode("allowed_domains") is { } nullNodeAllowedDomains && nullNodeAllowedDomains.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AllowedDomains = null;
+            if (parseNode.GetChildNode("blocked_domains") is null) { _explicitNullValueBlockedDomains = default!; _explicitNullProperties?.Remove("blocked_domains"); }
+            else if (parseNode.GetChildNode("blocked_domains") is { } nullNodeBlockedDomains && nullNodeBlockedDomains.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BlockedDomains = null;
+            if (parseNode.GetChildNode("excluded_domains") is null) { _explicitNullValueExcludedDomains = default!; _explicitNullProperties?.Remove("excluded_domains"); }
+            else if (parseNode.GetChildNode("excluded_domains") is { } nullNodeExcludedDomains && nullNodeExcludedDomains.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExcludedDomains = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -27,31 +30,31 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The allowed_domains property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? AllowedDomains { get => _explicitNullValueAllowedDomains; set { _explicitNullValueAllowedDomains = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allowed_domains"); else _explicitNullProperties?.Remove("allowed_domains"); } }
+        public List<string>? AllowedDomains { get => _explicitNullValueAllowedDomains; set { _explicitNullValueAllowedDomains = value; AdditionalData?.Remove("allowed_domains"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allowed_domains"); else _explicitNullProperties?.Remove("allowed_domains"); } }
         private List<string>? _explicitNullValueAllowedDomains = default!;
 #nullable restore
 #else
-        public List<string> AllowedDomains { get => _explicitNullValueAllowedDomains; set { _explicitNullValueAllowedDomains = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allowed_domains"); else _explicitNullProperties?.Remove("allowed_domains"); } }
+        public List<string> AllowedDomains { get => _explicitNullValueAllowedDomains; set { _explicitNullValueAllowedDomains = value; AdditionalData?.Remove("allowed_domains"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allowed_domains"); else _explicitNullProperties?.Remove("allowed_domains"); } }
         private List<string> _explicitNullValueAllowedDomains = default!;
 #endif
         /// <summary>The blocked_domains property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? BlockedDomains { get => _explicitNullValueBlockedDomains; set { _explicitNullValueBlockedDomains = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("blocked_domains"); else _explicitNullProperties?.Remove("blocked_domains"); } }
+        public List<string>? BlockedDomains { get => _explicitNullValueBlockedDomains; set { _explicitNullValueBlockedDomains = value; AdditionalData?.Remove("blocked_domains"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("blocked_domains"); else _explicitNullProperties?.Remove("blocked_domains"); } }
         private List<string>? _explicitNullValueBlockedDomains = default!;
 #nullable restore
 #else
-        public List<string> BlockedDomains { get => _explicitNullValueBlockedDomains; set { _explicitNullValueBlockedDomains = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("blocked_domains"); else _explicitNullProperties?.Remove("blocked_domains"); } }
+        public List<string> BlockedDomains { get => _explicitNullValueBlockedDomains; set { _explicitNullValueBlockedDomains = value; AdditionalData?.Remove("blocked_domains"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("blocked_domains"); else _explicitNullProperties?.Remove("blocked_domains"); } }
         private List<string> _explicitNullValueBlockedDomains = default!;
 #endif
         /// <summary>The excluded_domains property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? ExcludedDomains { get => _explicitNullValueExcludedDomains; set { _explicitNullValueExcludedDomains = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("excluded_domains"); else _explicitNullProperties?.Remove("excluded_domains"); } }
+        public List<string>? ExcludedDomains { get => _explicitNullValueExcludedDomains; set { _explicitNullValueExcludedDomains = value; AdditionalData?.Remove("excluded_domains"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("excluded_domains"); else _explicitNullProperties?.Remove("excluded_domains"); } }
         private List<string>? _explicitNullValueExcludedDomains = default!;
 #nullable restore
 #else
-        public List<string> ExcludedDomains { get => _explicitNullValueExcludedDomains; set { _explicitNullValueExcludedDomains = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("excluded_domains"); else _explicitNullProperties?.Remove("excluded_domains"); } }
+        public List<string> ExcludedDomains { get => _explicitNullValueExcludedDomains; set { _explicitNullValueExcludedDomains = value; AdditionalData?.Remove("excluded_domains"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("excluded_domains"); else _explicitNullProperties?.Remove("excluded_domains"); } }
         private List<string> _explicitNullValueExcludedDomains = default!;
 #endif
         /// <summary>

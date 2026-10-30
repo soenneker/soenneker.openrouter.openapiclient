@@ -17,7 +17,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("key_hashes") is { } nullNodeKeyHashes && nullNodeKeyHashes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) KeyHashes = null;
+            if (parseNode.GetChildNode("key_hashes") is null) { _explicitNullValueKeyHashes = default!; _explicitNullProperties?.Remove("key_hashes"); }
+            else if (parseNode.GetChildNode("key_hashes") is { } nullNodeKeyHashes && nullNodeKeyHashes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) KeyHashes = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Array of API key hashes to unassign from the guardrail</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? KeyHashes { get => _explicitNullValueKeyHashes; set { _explicitNullValueKeyHashes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("key_hashes"); else _explicitNullProperties?.Remove("key_hashes"); } }
+        public List<string>? KeyHashes { get => _explicitNullValueKeyHashes; set { _explicitNullValueKeyHashes = value; AdditionalData?.Remove("key_hashes"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("key_hashes"); else _explicitNullProperties?.Remove("key_hashes"); } }
         private List<string>? _explicitNullValueKeyHashes = default!;
 #nullable restore
 #else
-        public List<string> KeyHashes { get => _explicitNullValueKeyHashes; set { _explicitNullValueKeyHashes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("key_hashes"); else _explicitNullProperties?.Remove("key_hashes"); } }
+        public List<string> KeyHashes { get => _explicitNullValueKeyHashes; set { _explicitNullValueKeyHashes = value; AdditionalData?.Remove("key_hashes"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("key_hashes"); else _explicitNullProperties?.Remove("key_hashes"); } }
         private List<string> _explicitNullValueKeyHashes = default!;
 #endif
         /// <summary>

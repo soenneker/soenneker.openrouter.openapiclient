@@ -18,14 +18,15 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("include_usage") is { } nullNodeIncludeUsage && nullNodeIncludeUsage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IncludeUsage = null;
+            if (parseNode.GetChildNode("include_usage") is null) { _explicitNullValueIncludeUsage = default!; _explicitNullProperties?.Remove("include_usage"); }
+            else if (parseNode.GetChildNode("include_usage") is { } nullNodeIncludeUsage && nullNodeIncludeUsage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IncludeUsage = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Deprecated: This field has no effect. Full usage details are always included.</summary>
         [Obsolete("")]
-        public bool? IncludeUsage { get => _explicitNullValueIncludeUsage; set { _explicitNullValueIncludeUsage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("include_usage"); else _explicitNullProperties?.Remove("include_usage"); } }
+        public bool? IncludeUsage { get => _explicitNullValueIncludeUsage; set { _explicitNullValueIncludeUsage = value; AdditionalData?.Remove("include_usage"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("include_usage"); else _explicitNullProperties?.Remove("include_usage"); } }
         private bool? _explicitNullValueIncludeUsage = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ChatStreamOptions"/> and sets the default values.

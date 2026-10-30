@@ -17,8 +17,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("echo_upstream_body") is { } nullNodeEchoUpstreamBody && nullNodeEchoUpstreamBody.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EchoUpstreamBody = null;
-            if (parseNode.GetChildNode("timings") is { } nullNodeTimings && nullNodeTimings.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Timings = null;
+            if (parseNode.GetChildNode("echo_upstream_body") is null) { _explicitNullValueEchoUpstreamBody = default!; _explicitNullProperties?.Remove("echo_upstream_body"); }
+            else if (parseNode.GetChildNode("echo_upstream_body") is { } nullNodeEchoUpstreamBody && nullNodeEchoUpstreamBody.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EchoUpstreamBody = null;
+            if (parseNode.GetChildNode("timings") is null) { _explicitNullValueTimings = default!; _explicitNullProperties?.Remove("timings"); }
+            else if (parseNode.GetChildNode("timings") is { } nullNodeTimings && nullNodeTimings.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Timings = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,21 +28,21 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The echo_upstream_body property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.BatchObjectResultsItemResponseBodyAnyOf1DebugEchoUpstreamBodyProperty? EchoUpstreamBody { get => _explicitNullValueEchoUpstreamBody; set { _explicitNullValueEchoUpstreamBody = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("echo_upstream_body"); else _explicitNullProperties?.Remove("echo_upstream_body"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.BatchObjectResultsItemResponseBodyAnyOf1DebugEchoUpstreamBodyProperty? EchoUpstreamBody { get => _explicitNullValueEchoUpstreamBody; set { _explicitNullValueEchoUpstreamBody = value; AdditionalData?.Remove("echo_upstream_body"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("echo_upstream_body"); else _explicitNullProperties?.Remove("echo_upstream_body"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.BatchObjectResultsItemResponseBodyAnyOf1DebugEchoUpstreamBodyProperty? _explicitNullValueEchoUpstreamBody = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.BatchObjectResultsItemResponseBodyAnyOf1DebugEchoUpstreamBodyProperty EchoUpstreamBody { get => _explicitNullValueEchoUpstreamBody; set { _explicitNullValueEchoUpstreamBody = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("echo_upstream_body"); else _explicitNullProperties?.Remove("echo_upstream_body"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.BatchObjectResultsItemResponseBodyAnyOf1DebugEchoUpstreamBodyProperty EchoUpstreamBody { get => _explicitNullValueEchoUpstreamBody; set { _explicitNullValueEchoUpstreamBody = value; AdditionalData?.Remove("echo_upstream_body"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("echo_upstream_body"); else _explicitNullProperties?.Remove("echo_upstream_body"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.BatchObjectResultsItemResponseBodyAnyOf1DebugEchoUpstreamBodyProperty _explicitNullValueEchoUpstreamBody = default!;
 #endif
         /// <summary>The timings property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.BatchObjectResultsItemResponseBodyAnyOf1DebugTimings? Timings { get => _explicitNullValueTimings; set { _explicitNullValueTimings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("timings"); else _explicitNullProperties?.Remove("timings"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.BatchObjectResultsItemResponseBodyAnyOf1DebugTimings? Timings { get => _explicitNullValueTimings; set { _explicitNullValueTimings = value; AdditionalData?.Remove("timings"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("timings"); else _explicitNullProperties?.Remove("timings"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.BatchObjectResultsItemResponseBodyAnyOf1DebugTimings? _explicitNullValueTimings = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.BatchObjectResultsItemResponseBodyAnyOf1DebugTimings Timings { get => _explicitNullValueTimings; set { _explicitNullValueTimings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("timings"); else _explicitNullProperties?.Remove("timings"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.BatchObjectResultsItemResponseBodyAnyOf1DebugTimings Timings { get => _explicitNullValueTimings; set { _explicitNullValueTimings = value; AdditionalData?.Remove("timings"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("timings"); else _explicitNullProperties?.Remove("timings"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.BatchObjectResultsItemResponseBodyAnyOf1DebugTimings _explicitNullValueTimings = default!;
 #endif
         /// <summary>

@@ -17,8 +17,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("mismatch_behavior") is { } nullNodeMismatchBehavior && nullNodeMismatchBehavior.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MismatchBehavior = null;
-            if (parseNode.GetChildNode("prefix_mismatch_behavior") is { } nullNodePrefixMismatchBehavior && nullNodePrefixMismatchBehavior.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PrefixMismatchBehavior = null;
+            if (parseNode.GetChildNode("mismatch_behavior") is null) { _explicitNullValueMismatchBehavior = default!; _explicitNullProperties?.Remove("mismatch_behavior"); }
+            else if (parseNode.GetChildNode("mismatch_behavior") is { } nullNodeMismatchBehavior && nullNodeMismatchBehavior.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MismatchBehavior = null;
+            if (parseNode.GetChildNode("prefix_mismatch_behavior") is null) { _explicitNullValuePrefixMismatchBehavior = default!; _explicitNullProperties?.Remove("prefix_mismatch_behavior"); }
+            else if (parseNode.GetChildNode("prefix_mismatch_behavior") is { } nullNodePrefixMismatchBehavior && nullNodePrefixMismatchBehavior.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PrefixMismatchBehavior = null;
         }
 
         /// <summary>Deprecated: legacy alias of prefix_mismatch_behavior. Send only one of the two.</summary>

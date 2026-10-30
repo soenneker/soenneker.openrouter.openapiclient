@@ -17,11 +17,16 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("delegated_capabilities") is { } nullNodeDelegatedCapabilities && nullNodeDelegatedCapabilities.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DelegatedCapabilities = null;
-            if (parseNode.GetChildNode("email") is { } nullNodeEmail && nullNodeEmail.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Email = null;
-            if (parseNode.GetChildNode("holds_grant") is { } nullNodeHoldsGrant && nullNodeHoldsGrant.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HoldsGrant = null;
-            if (parseNode.GetChildNode("is_delegated_to_intern") is { } nullNodeIsDelegatedToIntern && nullNodeIsDelegatedToIntern.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsDelegatedToIntern = null;
-            if (parseNode.GetChildNode("scope") is { } nullNodeScope && nullNodeScope.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Scope = null;
+            if (parseNode.GetChildNode("delegated_capabilities") is null) { _explicitNullValueDelegatedCapabilities = default!; _explicitNullProperties?.Remove("delegated_capabilities"); }
+            else if (parseNode.GetChildNode("delegated_capabilities") is { } nullNodeDelegatedCapabilities && nullNodeDelegatedCapabilities.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DelegatedCapabilities = null;
+            if (parseNode.GetChildNode("email") is null) { _explicitNullValueEmail = default!; _explicitNullProperties?.Remove("email"); }
+            else if (parseNode.GetChildNode("email") is { } nullNodeEmail && nullNodeEmail.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Email = null;
+            if (parseNode.GetChildNode("holds_grant") is null) { _explicitNullValueHoldsGrant = default!; _explicitNullProperties?.Remove("holds_grant"); }
+            else if (parseNode.GetChildNode("holds_grant") is { } nullNodeHoldsGrant && nullNodeHoldsGrant.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HoldsGrant = null;
+            if (parseNode.GetChildNode("is_delegated_to_intern") is null) { _explicitNullValueIsDelegatedToIntern = default!; _explicitNullProperties?.Remove("is_delegated_to_intern"); }
+            else if (parseNode.GetChildNode("is_delegated_to_intern") is { } nullNodeIsDelegatedToIntern && nullNodeIsDelegatedToIntern.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsDelegatedToIntern = null;
+            if (parseNode.GetChildNode("scope") is null) { _explicitNullValueScope = default!; _explicitNullProperties?.Remove("scope"); }
+            else if (parseNode.GetChildNode("scope") is { } nullNodeScope && nullNodeScope.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Scope = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -29,31 +34,31 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The delegated_capabilities property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? DelegatedCapabilities { get => _explicitNullValueDelegatedCapabilities; set { _explicitNullValueDelegatedCapabilities = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("delegated_capabilities"); else _explicitNullProperties?.Remove("delegated_capabilities"); } }
+        public List<string>? DelegatedCapabilities { get => _explicitNullValueDelegatedCapabilities; set { _explicitNullValueDelegatedCapabilities = value; AdditionalData?.Remove("delegated_capabilities"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("delegated_capabilities"); else _explicitNullProperties?.Remove("delegated_capabilities"); } }
         private List<string>? _explicitNullValueDelegatedCapabilities = default!;
 #nullable restore
 #else
-        public List<string> DelegatedCapabilities { get => _explicitNullValueDelegatedCapabilities; set { _explicitNullValueDelegatedCapabilities = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("delegated_capabilities"); else _explicitNullProperties?.Remove("delegated_capabilities"); } }
+        public List<string> DelegatedCapabilities { get => _explicitNullValueDelegatedCapabilities; set { _explicitNullValueDelegatedCapabilities = value; AdditionalData?.Remove("delegated_capabilities"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("delegated_capabilities"); else _explicitNullProperties?.Remove("delegated_capabilities"); } }
         private List<string> _explicitNullValueDelegatedCapabilities = default!;
 #endif
         /// <summary>The email property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Email { get => _explicitNullValueEmail; set { _explicitNullValueEmail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email"); else _explicitNullProperties?.Remove("email"); } }
+        public string? Email { get => _explicitNullValueEmail; set { _explicitNullValueEmail = value; AdditionalData?.Remove("email"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email"); else _explicitNullProperties?.Remove("email"); } }
         private string? _explicitNullValueEmail = default!;
 #nullable restore
 #else
-        public string Email { get => _explicitNullValueEmail; set { _explicitNullValueEmail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email"); else _explicitNullProperties?.Remove("email"); } }
+        public string Email { get => _explicitNullValueEmail; set { _explicitNullValueEmail = value; AdditionalData?.Remove("email"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email"); else _explicitNullProperties?.Remove("email"); } }
         private string _explicitNullValueEmail = default!;
 #endif
         /// <summary>The holds_grant property</summary>
-        public bool? HoldsGrant { get => _explicitNullValueHoldsGrant; set { _explicitNullValueHoldsGrant = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("holds_grant"); else _explicitNullProperties?.Remove("holds_grant"); } }
+        public bool? HoldsGrant { get => _explicitNullValueHoldsGrant; set { _explicitNullValueHoldsGrant = value; AdditionalData?.Remove("holds_grant"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("holds_grant"); else _explicitNullProperties?.Remove("holds_grant"); } }
         private bool? _explicitNullValueHoldsGrant = default!;
         /// <summary>The is_delegated_to_intern property</summary>
-        public bool? IsDelegatedToIntern { get => _explicitNullValueIsDelegatedToIntern; set { _explicitNullValueIsDelegatedToIntern = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_delegated_to_intern"); else _explicitNullProperties?.Remove("is_delegated_to_intern"); } }
+        public bool? IsDelegatedToIntern { get => _explicitNullValueIsDelegatedToIntern; set { _explicitNullValueIsDelegatedToIntern = value; AdditionalData?.Remove("is_delegated_to_intern"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_delegated_to_intern"); else _explicitNullProperties?.Remove("is_delegated_to_intern"); } }
         private bool? _explicitNullValueIsDelegatedToIntern = default!;
         /// <summary>`workspace` applies to every intern of the workspace; `intern` to this intern alone.</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGoogleAccountsItemScope? Scope { get => _explicitNullValueScope; set { _explicitNullValueScope = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scope"); else _explicitNullProperties?.Remove("scope"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGoogleAccountsItemScope? Scope { get => _explicitNullValueScope; set { _explicitNullValueScope = value; AdditionalData?.Remove("scope"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scope"); else _explicitNullProperties?.Remove("scope"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGoogleAccountsItemScope? _explicitNullValueScope = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGoogleAccountsItem"/> and sets the default values.
@@ -84,7 +89,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "email", n => { Email = n.GetStringValue(); } },
                 { "holds_grant", n => { HoldsGrant = n.GetBoolValue(); } },
                 { "is_delegated_to_intern", n => { IsDelegatedToIntern = n.GetBoolValue(); } },
-                { "scope", n => { Scope = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGoogleAccountsItemScope>(); } },
+                { "scope", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGoogleAccountsItemScope>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueScope = default; _explicitNullProperties?.Remove("scope"); AdditionalData["scope"] = unknown; } else { Scope = parsed; AdditionalData.Remove("scope"); } } },
             };
         }
         /// <summary>

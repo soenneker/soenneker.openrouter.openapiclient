@@ -17,7 +17,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("member_links") is { } nullNodeMemberLinks && nullNodeMemberLinks.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MemberLinks = null;
+            if (parseNode.GetChildNode("member_links") is null) { _explicitNullValueMemberLinks = default!; _explicitNullProperties?.Remove("member_links"); }
+            else if (parseNode.GetChildNode("member_links") is { } nullNodeMemberLinks && nullNodeMemberLinks.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MemberLinks = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Members whose own Slack account the vault can act as; whether the intern&apos;s own Slack app runs is a runtime fact the `connections` tool reports.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableSlackMemberLinksItem>? MemberLinks { get => _explicitNullValueMemberLinks; set { _explicitNullValueMemberLinks = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("member_links"); else _explicitNullProperties?.Remove("member_links"); } }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableSlackMemberLinksItem>? MemberLinks { get => _explicitNullValueMemberLinks; set { _explicitNullValueMemberLinks = value; AdditionalData?.Remove("member_links"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("member_links"); else _explicitNullProperties?.Remove("member_links"); } }
         private List<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableSlackMemberLinksItem>? _explicitNullValueMemberLinks = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableSlackMemberLinksItem> MemberLinks { get => _explicitNullValueMemberLinks; set { _explicitNullValueMemberLinks = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("member_links"); else _explicitNullProperties?.Remove("member_links"); } }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableSlackMemberLinksItem> MemberLinks { get => _explicitNullValueMemberLinks; set { _explicitNullValueMemberLinks = value; AdditionalData?.Remove("member_links"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("member_links"); else _explicitNullProperties?.Remove("member_links"); } }
         private List<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableSlackMemberLinksItem> _explicitNullValueMemberLinks = default!;
 #endif
         /// <summary>

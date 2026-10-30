@@ -18,11 +18,16 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("input_modalities") is { } nullNodeInputModalities && nullNodeInputModalities.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InputModalities = null;
-            if (parseNode.GetChildNode("instruct_type") is { } nullNodeInstructType && nullNodeInstructType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InstructType = null;
-            if (parseNode.GetChildNode("modality") is { } nullNodeModality && nullNodeModality.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Modality = null;
-            if (parseNode.GetChildNode("output_modalities") is { } nullNodeOutputModalities && nullNodeOutputModalities.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OutputModalities = null;
-            if (parseNode.GetChildNode("tokenizer") is { } nullNodeTokenizer && nullNodeTokenizer.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tokenizer = null;
+            if (parseNode.GetChildNode("input_modalities") is null) { _explicitNullValueInputModalities = default!; _explicitNullProperties?.Remove("input_modalities"); }
+            else if (parseNode.GetChildNode("input_modalities") is { } nullNodeInputModalities && nullNodeInputModalities.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InputModalities = null;
+            if (parseNode.GetChildNode("instruct_type") is null) { _explicitNullValueInstructType = default!; _explicitNullProperties?.Remove("instruct_type"); }
+            else if (parseNode.GetChildNode("instruct_type") is { } nullNodeInstructType && nullNodeInstructType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InstructType = null;
+            if (parseNode.GetChildNode("modality") is null) { _explicitNullValueModality = default!; _explicitNullProperties?.Remove("modality"); }
+            else if (parseNode.GetChildNode("modality") is { } nullNodeModality && nullNodeModality.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Modality = null;
+            if (parseNode.GetChildNode("output_modalities") is null) { _explicitNullValueOutputModalities = default!; _explicitNullProperties?.Remove("output_modalities"); }
+            else if (parseNode.GetChildNode("output_modalities") is { } nullNodeOutputModalities && nullNodeOutputModalities.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OutputModalities = null;
+            if (parseNode.GetChildNode("tokenizer") is null) { _explicitNullValueTokenizer = default!; _explicitNullProperties?.Remove("tokenizer"); }
+            else if (parseNode.GetChildNode("tokenizer") is { } nullNodeTokenizer && nullNodeTokenizer.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tokenizer = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -30,38 +35,38 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Supported input modalities</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.InputModality?>? InputModalities { get => _explicitNullValueInputModalities; set { _explicitNullValueInputModalities = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input_modalities"); else _explicitNullProperties?.Remove("input_modalities"); } }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.InputModality?>? InputModalities { get => _explicitNullValueInputModalities; set { _explicitNullValueInputModalities = value; AdditionalData?.Remove("input_modalities"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input_modalities"); else _explicitNullProperties?.Remove("input_modalities"); } }
         private List<global::Soenneker.OpenRouter.OpenApiClient.Models.InputModality?>? _explicitNullValueInputModalities = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.InputModality?> InputModalities { get => _explicitNullValueInputModalities; set { _explicitNullValueInputModalities = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input_modalities"); else _explicitNullProperties?.Remove("input_modalities"); } }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.InputModality?> InputModalities { get => _explicitNullValueInputModalities; set { _explicitNullValueInputModalities = value; AdditionalData?.Remove("input_modalities"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input_modalities"); else _explicitNullProperties?.Remove("input_modalities"); } }
         private List<global::Soenneker.OpenRouter.OpenApiClient.Models.InputModality?> _explicitNullValueInputModalities = default!;
 #endif
         /// <summary>Instruction format type</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.InstructType? InstructType { get => _explicitNullValueInstructType; set { _explicitNullValueInstructType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("instruct_type"); else _explicitNullProperties?.Remove("instruct_type"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.InstructType? InstructType { get => _explicitNullValueInstructType; set { _explicitNullValueInstructType = value; AdditionalData?.Remove("instruct_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("instruct_type"); else _explicitNullProperties?.Remove("instruct_type"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.InstructType? _explicitNullValueInstructType = default!;
         /// <summary>Primary modality of the model</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Modality { get => _explicitNullValueModality; set { _explicitNullValueModality = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("modality"); else _explicitNullProperties?.Remove("modality"); } }
+        public string? Modality { get => _explicitNullValueModality; set { _explicitNullValueModality = value; AdditionalData?.Remove("modality"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("modality"); else _explicitNullProperties?.Remove("modality"); } }
         private string? _explicitNullValueModality = default!;
 #nullable restore
 #else
-        public string Modality { get => _explicitNullValueModality; set { _explicitNullValueModality = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("modality"); else _explicitNullProperties?.Remove("modality"); } }
+        public string Modality { get => _explicitNullValueModality; set { _explicitNullValueModality = value; AdditionalData?.Remove("modality"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("modality"); else _explicitNullProperties?.Remove("modality"); } }
         private string _explicitNullValueModality = default!;
 #endif
         /// <summary>Supported output modalities</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputModality?>? OutputModalities { get => _explicitNullValueOutputModalities; set { _explicitNullValueOutputModalities = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("output_modalities"); else _explicitNullProperties?.Remove("output_modalities"); } }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputModality?>? OutputModalities { get => _explicitNullValueOutputModalities; set { _explicitNullValueOutputModalities = value; AdditionalData?.Remove("output_modalities"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("output_modalities"); else _explicitNullProperties?.Remove("output_modalities"); } }
         private List<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputModality?>? _explicitNullValueOutputModalities = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputModality?> OutputModalities { get => _explicitNullValueOutputModalities; set { _explicitNullValueOutputModalities = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("output_modalities"); else _explicitNullProperties?.Remove("output_modalities"); } }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputModality?> OutputModalities { get => _explicitNullValueOutputModalities; set { _explicitNullValueOutputModalities = value; AdditionalData?.Remove("output_modalities"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("output_modalities"); else _explicitNullProperties?.Remove("output_modalities"); } }
         private List<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputModality?> _explicitNullValueOutputModalities = default!;
 #endif
         /// <summary>Tokenizer type used by the model</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ModelGroup? Tokenizer { get => _explicitNullValueTokenizer; set { _explicitNullValueTokenizer = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tokenizer"); else _explicitNullProperties?.Remove("tokenizer"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ModelGroup? Tokenizer { get => _explicitNullValueTokenizer; set { _explicitNullValueTokenizer = value; AdditionalData?.Remove("tokenizer"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tokenizer"); else _explicitNullProperties?.Remove("tokenizer"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.ModelGroup? _explicitNullValueTokenizer = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ModelArchitecture"/> and sets the default values.
@@ -89,10 +94,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "input_modalities", n => { InputModalities = n.GetCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.InputModality>()?.AsList(); } },
-                { "instruct_type", n => { InstructType = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.InstructType>(); } },
+                { "instruct_type", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.InstructType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueInstructType = default; _explicitNullProperties?.Remove("instruct_type"); AdditionalData["instruct_type"] = unknown; } else { InstructType = parsed; AdditionalData.Remove("instruct_type"); } } },
                 { "modality", n => { Modality = n.GetStringValue(); } },
                 { "output_modalities", n => { OutputModalities = n.GetCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.OutputModality>()?.AsList(); } },
-                { "tokenizer", n => { Tokenizer = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ModelGroup>(); } },
+                { "tokenizer", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ModelGroup>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueTokenizer = default; _explicitNullProperties?.Remove("tokenizer"); AdditionalData["tokenizer"] = unknown; } else { Tokenizer = parsed; AdditionalData.Remove("tokenizer"); } } },
             };
         }
         /// <summary>

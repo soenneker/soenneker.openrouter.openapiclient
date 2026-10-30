@@ -17,21 +17,24 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("prompt_retention_days") is { } nullNodePromptRetentionDays && nullNodePromptRetentionDays.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PromptRetentionDays = null;
-            if (parseNode.GetChildNode("retains_prompts") is { } nullNodeRetainsPrompts && nullNodeRetainsPrompts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RetainsPrompts = null;
-            if (parseNode.GetChildNode("training") is { } nullNodeTraining && nullNodeTraining.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Training = null;
+            if (parseNode.GetChildNode("prompt_retention_days") is null) { _explicitNullValuePromptRetentionDays = default!; _explicitNullProperties?.Remove("prompt_retention_days"); }
+            else if (parseNode.GetChildNode("prompt_retention_days") is { } nullNodePromptRetentionDays && nullNodePromptRetentionDays.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PromptRetentionDays = null;
+            if (parseNode.GetChildNode("retains_prompts") is null) { _explicitNullValueRetainsPrompts = default!; _explicitNullProperties?.Remove("retains_prompts"); }
+            else if (parseNode.GetChildNode("retains_prompts") is { } nullNodeRetainsPrompts && nullNodeRetainsPrompts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RetainsPrompts = null;
+            if (parseNode.GetChildNode("training") is null) { _explicitNullValueTraining = default!; _explicitNullProperties?.Remove("training"); }
+            else if (parseNode.GetChildNode("training") is { } nullNodeTraining && nullNodeTraining.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Training = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Days prompts are retained. Must be `null` unless `retains_prompts` is true.</summary>
-        public int? PromptRetentionDays { get => _explicitNullValuePromptRetentionDays; set { _explicitNullValuePromptRetentionDays = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("prompt_retention_days"); else _explicitNullProperties?.Remove("prompt_retention_days"); } }
+        public int? PromptRetentionDays { get => _explicitNullValuePromptRetentionDays; set { _explicitNullValuePromptRetentionDays = value; AdditionalData?.Remove("prompt_retention_days"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("prompt_retention_days"); else _explicitNullProperties?.Remove("prompt_retention_days"); } }
         private int? _explicitNullValuePromptRetentionDays = default!;
         /// <summary>Whether the provider retains prompts or completions.</summary>
-        public bool? RetainsPrompts { get => _explicitNullValueRetainsPrompts; set { _explicitNullValueRetainsPrompts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("retains_prompts"); else _explicitNullProperties?.Remove("retains_prompts"); } }
+        public bool? RetainsPrompts { get => _explicitNullValueRetainsPrompts; set { _explicitNullValueRetainsPrompts = value; AdditionalData?.Remove("retains_prompts"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("retains_prompts"); else _explicitNullProperties?.Remove("retains_prompts"); } }
         private bool? _explicitNullValueRetainsPrompts = default!;
         /// <summary>Whether the provider trains on prompts.</summary>
-        public bool? Training { get => _explicitNullValueTraining; set { _explicitNullValueTraining = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("training"); else _explicitNullProperties?.Remove("training"); } }
+        public bool? Training { get => _explicitNullValueTraining; set { _explicitNullValueTraining = value; AdditionalData?.Remove("training"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("training"); else _explicitNullProperties?.Remove("training"); } }
         private bool? _explicitNullValueTraining = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateProviderRequestDataPolicy"/> and sets the default values.

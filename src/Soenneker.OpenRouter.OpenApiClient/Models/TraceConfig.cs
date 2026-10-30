@@ -18,11 +18,16 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("generation_name") is { } nullNodeGenerationName && nullNodeGenerationName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GenerationName = null;
-            if (parseNode.GetChildNode("parent_span_id") is { } nullNodeParentSpanId && nullNodeParentSpanId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ParentSpanId = null;
-            if (parseNode.GetChildNode("span_name") is { } nullNodeSpanName && nullNodeSpanName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SpanName = null;
-            if (parseNode.GetChildNode("trace_id") is { } nullNodeTraceId && nullNodeTraceId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TraceId = null;
-            if (parseNode.GetChildNode("trace_name") is { } nullNodeTraceName && nullNodeTraceName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TraceName = null;
+            if (parseNode.GetChildNode("generation_name") is null) { _explicitNullValueGenerationName = default!; _explicitNullProperties?.Remove("generation_name"); }
+            else if (parseNode.GetChildNode("generation_name") is { } nullNodeGenerationName && nullNodeGenerationName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GenerationName = null;
+            if (parseNode.GetChildNode("parent_span_id") is null) { _explicitNullValueParentSpanId = default!; _explicitNullProperties?.Remove("parent_span_id"); }
+            else if (parseNode.GetChildNode("parent_span_id") is { } nullNodeParentSpanId && nullNodeParentSpanId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ParentSpanId = null;
+            if (parseNode.GetChildNode("span_name") is null) { _explicitNullValueSpanName = default!; _explicitNullProperties?.Remove("span_name"); }
+            else if (parseNode.GetChildNode("span_name") is { } nullNodeSpanName && nullNodeSpanName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SpanName = null;
+            if (parseNode.GetChildNode("trace_id") is null) { _explicitNullValueTraceId = default!; _explicitNullProperties?.Remove("trace_id"); }
+            else if (parseNode.GetChildNode("trace_id") is { } nullNodeTraceId && nullNodeTraceId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TraceId = null;
+            if (parseNode.GetChildNode("trace_name") is null) { _explicitNullValueTraceName = default!; _explicitNullProperties?.Remove("trace_name"); }
+            else if (parseNode.GetChildNode("trace_name") is { } nullNodeTraceName && nullNodeTraceName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TraceName = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -30,51 +35,51 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The generation_name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? GenerationName { get => _explicitNullValueGenerationName; set { _explicitNullValueGenerationName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("generation_name"); else _explicitNullProperties?.Remove("generation_name"); } }
+        public string? GenerationName { get => _explicitNullValueGenerationName; set { _explicitNullValueGenerationName = value; AdditionalData?.Remove("generation_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("generation_name"); else _explicitNullProperties?.Remove("generation_name"); } }
         private string? _explicitNullValueGenerationName = default!;
 #nullable restore
 #else
-        public string GenerationName { get => _explicitNullValueGenerationName; set { _explicitNullValueGenerationName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("generation_name"); else _explicitNullProperties?.Remove("generation_name"); } }
+        public string GenerationName { get => _explicitNullValueGenerationName; set { _explicitNullValueGenerationName = value; AdditionalData?.Remove("generation_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("generation_name"); else _explicitNullProperties?.Remove("generation_name"); } }
         private string _explicitNullValueGenerationName = default!;
 #endif
         /// <summary>The parent_span_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ParentSpanId { get => _explicitNullValueParentSpanId; set { _explicitNullValueParentSpanId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("parent_span_id"); else _explicitNullProperties?.Remove("parent_span_id"); } }
+        public string? ParentSpanId { get => _explicitNullValueParentSpanId; set { _explicitNullValueParentSpanId = value; AdditionalData?.Remove("parent_span_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("parent_span_id"); else _explicitNullProperties?.Remove("parent_span_id"); } }
         private string? _explicitNullValueParentSpanId = default!;
 #nullable restore
 #else
-        public string ParentSpanId { get => _explicitNullValueParentSpanId; set { _explicitNullValueParentSpanId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("parent_span_id"); else _explicitNullProperties?.Remove("parent_span_id"); } }
+        public string ParentSpanId { get => _explicitNullValueParentSpanId; set { _explicitNullValueParentSpanId = value; AdditionalData?.Remove("parent_span_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("parent_span_id"); else _explicitNullProperties?.Remove("parent_span_id"); } }
         private string _explicitNullValueParentSpanId = default!;
 #endif
         /// <summary>The span_name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SpanName { get => _explicitNullValueSpanName; set { _explicitNullValueSpanName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("span_name"); else _explicitNullProperties?.Remove("span_name"); } }
+        public string? SpanName { get => _explicitNullValueSpanName; set { _explicitNullValueSpanName = value; AdditionalData?.Remove("span_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("span_name"); else _explicitNullProperties?.Remove("span_name"); } }
         private string? _explicitNullValueSpanName = default!;
 #nullable restore
 #else
-        public string SpanName { get => _explicitNullValueSpanName; set { _explicitNullValueSpanName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("span_name"); else _explicitNullProperties?.Remove("span_name"); } }
+        public string SpanName { get => _explicitNullValueSpanName; set { _explicitNullValueSpanName = value; AdditionalData?.Remove("span_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("span_name"); else _explicitNullProperties?.Remove("span_name"); } }
         private string _explicitNullValueSpanName = default!;
 #endif
         /// <summary>The trace_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TraceId { get => _explicitNullValueTraceId; set { _explicitNullValueTraceId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trace_id"); else _explicitNullProperties?.Remove("trace_id"); } }
+        public string? TraceId { get => _explicitNullValueTraceId; set { _explicitNullValueTraceId = value; AdditionalData?.Remove("trace_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trace_id"); else _explicitNullProperties?.Remove("trace_id"); } }
         private string? _explicitNullValueTraceId = default!;
 #nullable restore
 #else
-        public string TraceId { get => _explicitNullValueTraceId; set { _explicitNullValueTraceId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trace_id"); else _explicitNullProperties?.Remove("trace_id"); } }
+        public string TraceId { get => _explicitNullValueTraceId; set { _explicitNullValueTraceId = value; AdditionalData?.Remove("trace_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trace_id"); else _explicitNullProperties?.Remove("trace_id"); } }
         private string _explicitNullValueTraceId = default!;
 #endif
         /// <summary>The trace_name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TraceName { get => _explicitNullValueTraceName; set { _explicitNullValueTraceName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trace_name"); else _explicitNullProperties?.Remove("trace_name"); } }
+        public string? TraceName { get => _explicitNullValueTraceName; set { _explicitNullValueTraceName = value; AdditionalData?.Remove("trace_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trace_name"); else _explicitNullProperties?.Remove("trace_name"); } }
         private string? _explicitNullValueTraceName = default!;
 #nullable restore
 #else
-        public string TraceName { get => _explicitNullValueTraceName; set { _explicitNullValueTraceName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trace_name"); else _explicitNullProperties?.Remove("trace_name"); } }
+        public string TraceName { get => _explicitNullValueTraceName; set { _explicitNullValueTraceName = value; AdditionalData?.Remove("trace_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trace_name"); else _explicitNullProperties?.Remove("trace_name"); } }
         private string _explicitNullValueTraceName = default!;
 #endif
         /// <summary>

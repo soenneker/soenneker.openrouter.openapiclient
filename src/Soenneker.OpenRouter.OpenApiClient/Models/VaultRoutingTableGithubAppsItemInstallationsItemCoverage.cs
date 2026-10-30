@@ -18,21 +18,24 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("checked_at") is { } nullNodeCheckedAt && nullNodeCheckedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CheckedAt = null;
-            if (parseNode.GetChildNode("repository_count") is { } nullNodeRepositoryCount && nullNodeRepositoryCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RepositoryCount = null;
-            if (parseNode.GetChildNode("selection") is { } nullNodeSelection && nullNodeSelection.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Selection = null;
+            if (parseNode.GetChildNode("checked_at") is null) { _explicitNullValueCheckedAt = default!; _explicitNullProperties?.Remove("checked_at"); }
+            else if (parseNode.GetChildNode("checked_at") is { } nullNodeCheckedAt && nullNodeCheckedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CheckedAt = null;
+            if (parseNode.GetChildNode("repository_count") is null) { _explicitNullValueRepositoryCount = default!; _explicitNullProperties?.Remove("repository_count"); }
+            else if (parseNode.GetChildNode("repository_count") is { } nullNodeRepositoryCount && nullNodeRepositoryCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RepositoryCount = null;
+            if (parseNode.GetChildNode("selection") is null) { _explicitNullValueSelection = default!; _explicitNullProperties?.Remove("selection"); }
+            else if (parseNode.GetChildNode("selection") is { } nullNodeSelection && nullNodeSelection.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Selection = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>When GitHub answered, through the installation token the vault holds.</summary>
-        public DateTimeOffset? CheckedAt { get => _explicitNullValueCheckedAt; set { _explicitNullValueCheckedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("checked_at"); else _explicitNullProperties?.Remove("checked_at"); } }
+        public DateTimeOffset? CheckedAt { get => _explicitNullValueCheckedAt; set { _explicitNullValueCheckedAt = value; AdditionalData?.Remove("checked_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("checked_at"); else _explicitNullProperties?.Remove("checked_at"); } }
         private DateTimeOffset? _explicitNullValueCheckedAt = default!;
         /// <summary>Repositories the installation covers; null when GitHub did not count them.</summary>
-        public int? RepositoryCount { get => _explicitNullValueRepositoryCount; set { _explicitNullValueRepositoryCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repository_count"); else _explicitNullProperties?.Remove("repository_count"); } }
+        public int? RepositoryCount { get => _explicitNullValueRepositoryCount; set { _explicitNullValueRepositoryCount = value; AdditionalData?.Remove("repository_count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repository_count"); else _explicitNullProperties?.Remove("repository_count"); } }
         private int? _explicitNullValueRepositoryCount = default!;
         /// <summary>The selection property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGithubAppsItemInstallationsItemCoverageSelection? Selection { get => _explicitNullValueSelection; set { _explicitNullValueSelection = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("selection"); else _explicitNullProperties?.Remove("selection"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGithubAppsItemInstallationsItemCoverageSelection? Selection { get => _explicitNullValueSelection; set { _explicitNullValueSelection = value; AdditionalData?.Remove("selection"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("selection"); else _explicitNullProperties?.Remove("selection"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGithubAppsItemInstallationsItemCoverageSelection? _explicitNullValueSelection = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGithubAppsItemInstallationsItemCoverage"/> and sets the default values.
@@ -63,7 +66,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             {
                 { "checked_at", n => { CheckedAt = n.GetDateTimeOffsetValue(); } },
                 { "repository_count", n => { RepositoryCount = n.GetIntValue(); } },
-                { "selection", n => { Selection = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGithubAppsItemInstallationsItemCoverageSelection>(); } },
+                { "selection", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGithubAppsItemInstallationsItemCoverageSelection>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueSelection = default; _explicitNullProperties?.Remove("selection"); AdditionalData["selection"] = unknown; } else { Selection = parsed; AdditionalData.Remove("selection"); } } },
             };
         }
         /// <summary>

@@ -18,17 +18,19 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("endpoint_count") is { } nullNodeEndpointCount && nullNodeEndpointCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EndpointCount = null;
-            if (parseNode.GetChildNode("model_count") is { } nullNodeModelCount && nullNodeModelCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ModelCount = null;
+            if (parseNode.GetChildNode("endpoint_count") is null) { _explicitNullValueEndpointCount = default!; _explicitNullProperties?.Remove("endpoint_count"); }
+            else if (parseNode.GetChildNode("endpoint_count") is { } nullNodeEndpointCount && nullNodeEndpointCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EndpointCount = null;
+            if (parseNode.GetChildNode("model_count") is null) { _explicitNullValueModelCount = default!; _explicitNullProperties?.Remove("model_count"); }
+            else if (parseNode.GetChildNode("model_count") is { } nullNodeModelCount && nullNodeModelCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ModelCount = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The endpoint_count property</summary>
-        public int? EndpointCount { get => _explicitNullValueEndpointCount; set { _explicitNullValueEndpointCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("endpoint_count"); else _explicitNullProperties?.Remove("endpoint_count"); } }
+        public int? EndpointCount { get => _explicitNullValueEndpointCount; set { _explicitNullValueEndpointCount = value; AdditionalData?.Remove("endpoint_count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("endpoint_count"); else _explicitNullProperties?.Remove("endpoint_count"); } }
         private int? _explicitNullValueEndpointCount = default!;
         /// <summary>The model_count property</summary>
-        public int? ModelCount { get => _explicitNullValueModelCount; set { _explicitNullValueModelCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_count"); else _explicitNullProperties?.Remove("model_count"); } }
+        public int? ModelCount { get => _explicitNullValueModelCount; set { _explicitNullValueModelCount = value; AdditionalData?.Remove("model_count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_count"); else _explicitNullProperties?.Remove("model_count"); } }
         private int? _explicitNullValueModelCount = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ServerToolNativeSupport"/> and sets the default values.

@@ -18,29 +18,34 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("first_place") is { } nullNodeFirstPlace && nullNodeFirstPlace.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FirstPlace = null;
-            if (parseNode.GetChildNode("fourth_place") is { } nullNodeFourthPlace && nullNodeFourthPlace.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FourthPlace = null;
-            if (parseNode.GetChildNode("second_place") is { } nullNodeSecondPlace && nullNodeSecondPlace.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SecondPlace = null;
-            if (parseNode.GetChildNode("third_place") is { } nullNodeThirdPlace && nullNodeThirdPlace.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ThirdPlace = null;
-            if (parseNode.GetChildNode("total") is { } nullNodeTotal && nullNodeTotal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Total = null;
+            if (parseNode.GetChildNode("first_place") is null) { _explicitNullValueFirstPlace = default!; _explicitNullProperties?.Remove("first_place"); }
+            else if (parseNode.GetChildNode("first_place") is { } nullNodeFirstPlace && nullNodeFirstPlace.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FirstPlace = null;
+            if (parseNode.GetChildNode("fourth_place") is null) { _explicitNullValueFourthPlace = default!; _explicitNullProperties?.Remove("fourth_place"); }
+            else if (parseNode.GetChildNode("fourth_place") is { } nullNodeFourthPlace && nullNodeFourthPlace.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FourthPlace = null;
+            if (parseNode.GetChildNode("second_place") is null) { _explicitNullValueSecondPlace = default!; _explicitNullProperties?.Remove("second_place"); }
+            else if (parseNode.GetChildNode("second_place") is { } nullNodeSecondPlace && nullNodeSecondPlace.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SecondPlace = null;
+            if (parseNode.GetChildNode("third_place") is null) { _explicitNullValueThirdPlace = default!; _explicitNullProperties?.Remove("third_place"); }
+            else if (parseNode.GetChildNode("third_place") is { } nullNodeThirdPlace && nullNodeThirdPlace.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ThirdPlace = null;
+            if (parseNode.GetChildNode("total") is null) { _explicitNullValueTotal = default!; _explicitNullProperties?.Remove("total"); }
+            else if (parseNode.GetChildNode("total") is { } nullNodeTotal && nullNodeTotal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Total = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The first_place property</summary>
-        public int? FirstPlace { get => _explicitNullValueFirstPlace; set { _explicitNullValueFirstPlace = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("first_place"); else _explicitNullProperties?.Remove("first_place"); } }
+        public int? FirstPlace { get => _explicitNullValueFirstPlace; set { _explicitNullValueFirstPlace = value; AdditionalData?.Remove("first_place"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("first_place"); else _explicitNullProperties?.Remove("first_place"); } }
         private int? _explicitNullValueFirstPlace = default!;
         /// <summary>The fourth_place property</summary>
-        public int? FourthPlace { get => _explicitNullValueFourthPlace; set { _explicitNullValueFourthPlace = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fourth_place"); else _explicitNullProperties?.Remove("fourth_place"); } }
+        public int? FourthPlace { get => _explicitNullValueFourthPlace; set { _explicitNullValueFourthPlace = value; AdditionalData?.Remove("fourth_place"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fourth_place"); else _explicitNullProperties?.Remove("fourth_place"); } }
         private int? _explicitNullValueFourthPlace = default!;
         /// <summary>The second_place property</summary>
-        public int? SecondPlace { get => _explicitNullValueSecondPlace; set { _explicitNullValueSecondPlace = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("second_place"); else _explicitNullProperties?.Remove("second_place"); } }
+        public int? SecondPlace { get => _explicitNullValueSecondPlace; set { _explicitNullValueSecondPlace = value; AdditionalData?.Remove("second_place"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("second_place"); else _explicitNullProperties?.Remove("second_place"); } }
         private int? _explicitNullValueSecondPlace = default!;
         /// <summary>The third_place property</summary>
-        public int? ThirdPlace { get => _explicitNullValueThirdPlace; set { _explicitNullValueThirdPlace = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("third_place"); else _explicitNullProperties?.Remove("third_place"); } }
+        public int? ThirdPlace { get => _explicitNullValueThirdPlace; set { _explicitNullValueThirdPlace = value; AdditionalData?.Remove("third_place"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("third_place"); else _explicitNullProperties?.Remove("third_place"); } }
         private int? _explicitNullValueThirdPlace = default!;
         /// <summary>The total property</summary>
-        public int? Total { get => _explicitNullValueTotal; set { _explicitNullValueTotal = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total"); else _explicitNullProperties?.Remove("total"); } }
+        public int? Total { get => _explicitNullValueTotal; set { _explicitNullValueTotal = value; AdditionalData?.Remove("total"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total"); else _explicitNullProperties?.Remove("total"); } }
         private int? _explicitNullValueTotal = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.UnifiedBenchmarksDaItemTournamentStats"/> and sets the default values.

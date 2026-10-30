@@ -17,11 +17,16 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("content") is { } nullNodeContent && nullNodeContent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Content = null;
-            if (parseNode.GetChildNode("encrypted_stdout") is { } nullNodeEncryptedStdout && nullNodeEncryptedStdout.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EncryptedStdout = null;
-            if (parseNode.GetChildNode("return_code") is { } nullNodeReturnCode && nullNodeReturnCode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReturnCode = null;
-            if (parseNode.GetChildNode("stderr") is { } nullNodeStderr && nullNodeStderr.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Stderr = null;
-            if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
+            if (parseNode.GetChildNode("content") is null) { _explicitNullValueContent = default!; _explicitNullProperties?.Remove("content"); }
+            else if (parseNode.GetChildNode("content") is { } nullNodeContent && nullNodeContent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Content = null;
+            if (parseNode.GetChildNode("encrypted_stdout") is null) { _explicitNullValueEncryptedStdout = default!; _explicitNullProperties?.Remove("encrypted_stdout"); }
+            else if (parseNode.GetChildNode("encrypted_stdout") is { } nullNodeEncryptedStdout && nullNodeEncryptedStdout.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EncryptedStdout = null;
+            if (parseNode.GetChildNode("return_code") is null) { _explicitNullValueReturnCode = default!; _explicitNullProperties?.Remove("return_code"); }
+            else if (parseNode.GetChildNode("return_code") is { } nullNodeReturnCode && nullNodeReturnCode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReturnCode = null;
+            if (parseNode.GetChildNode("stderr") is null) { _explicitNullValueStderr = default!; _explicitNullProperties?.Remove("stderr"); }
+            else if (parseNode.GetChildNode("stderr") is { } nullNodeStderr && nullNodeStderr.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Stderr = null;
+            if (parseNode.GetChildNode("type") is null) { _explicitNullValueType = default!; _explicitNullProperties?.Remove("type"); }
+            else if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -29,38 +34,38 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The content property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCodeExecutionOutput>? Content { get => _explicitNullValueContent; set { _explicitNullValueContent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content"); else _explicitNullProperties?.Remove("content"); } }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCodeExecutionOutput>? Content { get => _explicitNullValueContent; set { _explicitNullValueContent = value; AdditionalData?.Remove("content"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content"); else _explicitNullProperties?.Remove("content"); } }
         private List<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCodeExecutionOutput>? _explicitNullValueContent = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCodeExecutionOutput> Content { get => _explicitNullValueContent; set { _explicitNullValueContent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content"); else _explicitNullProperties?.Remove("content"); } }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCodeExecutionOutput> Content { get => _explicitNullValueContent; set { _explicitNullValueContent = value; AdditionalData?.Remove("content"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content"); else _explicitNullProperties?.Remove("content"); } }
         private List<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCodeExecutionOutput> _explicitNullValueContent = default!;
 #endif
         /// <summary>The encrypted_stdout property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? EncryptedStdout { get => _explicitNullValueEncryptedStdout; set { _explicitNullValueEncryptedStdout = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("encrypted_stdout"); else _explicitNullProperties?.Remove("encrypted_stdout"); } }
+        public string? EncryptedStdout { get => _explicitNullValueEncryptedStdout; set { _explicitNullValueEncryptedStdout = value; AdditionalData?.Remove("encrypted_stdout"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("encrypted_stdout"); else _explicitNullProperties?.Remove("encrypted_stdout"); } }
         private string? _explicitNullValueEncryptedStdout = default!;
 #nullable restore
 #else
-        public string EncryptedStdout { get => _explicitNullValueEncryptedStdout; set { _explicitNullValueEncryptedStdout = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("encrypted_stdout"); else _explicitNullProperties?.Remove("encrypted_stdout"); } }
+        public string EncryptedStdout { get => _explicitNullValueEncryptedStdout; set { _explicitNullValueEncryptedStdout = value; AdditionalData?.Remove("encrypted_stdout"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("encrypted_stdout"); else _explicitNullProperties?.Remove("encrypted_stdout"); } }
         private string _explicitNullValueEncryptedStdout = default!;
 #endif
         /// <summary>The return_code property</summary>
-        public int? ReturnCode { get => _explicitNullValueReturnCode; set { _explicitNullValueReturnCode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("return_code"); else _explicitNullProperties?.Remove("return_code"); } }
+        public int? ReturnCode { get => _explicitNullValueReturnCode; set { _explicitNullValueReturnCode = value; AdditionalData?.Remove("return_code"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("return_code"); else _explicitNullProperties?.Remove("return_code"); } }
         private int? _explicitNullValueReturnCode = default!;
         /// <summary>The stderr property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Stderr { get => _explicitNullValueStderr; set { _explicitNullValueStderr = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("stderr"); else _explicitNullProperties?.Remove("stderr"); } }
+        public string? Stderr { get => _explicitNullValueStderr; set { _explicitNullValueStderr = value; AdditionalData?.Remove("stderr"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("stderr"); else _explicitNullProperties?.Remove("stderr"); } }
         private string? _explicitNullValueStderr = default!;
 #nullable restore
 #else
-        public string Stderr { get => _explicitNullValueStderr; set { _explicitNullValueStderr = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("stderr"); else _explicitNullProperties?.Remove("stderr"); } }
+        public string Stderr { get => _explicitNullValueStderr; set { _explicitNullValueStderr = value; AdditionalData?.Remove("stderr"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("stderr"); else _explicitNullProperties?.Remove("stderr"); } }
         private string _explicitNullValueStderr = default!;
 #endif
         /// <summary>The type property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.EncryptedCodeExecutionResultType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.EncryptedCodeExecutionResultType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; AdditionalData?.Remove("type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.EncryptedCodeExecutionResultType? _explicitNullValueType = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicEncryptedCodeExecutionResult"/> and sets the default values.
@@ -91,7 +96,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "encrypted_stdout", n => { EncryptedStdout = n.GetStringValue(); } },
                 { "return_code", n => { ReturnCode = n.GetIntValue(); } },
                 { "stderr", n => { Stderr = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.EncryptedCodeExecutionResultType>(); } },
+                { "type", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.EncryptedCodeExecutionResultType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueType = default; _explicitNullProperties?.Remove("type"); AdditionalData["type"] = unknown; } else { Type = parsed; AdditionalData.Remove("type"); } } },
             };
         }
         /// <summary>

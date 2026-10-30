@@ -52,9 +52,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             }
             
             var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
-            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("auto".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal)))))();
-            if (result.CodeInterpreterServerToolContainerAnyOf2 == null && result.String == null && matchesUnionBranch0) result.CodeInterpreterServerToolContainerAnyOf2 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.CodeInterpreterServerToolContainerAnyOf2(), parseNode);
-            if (result.CodeInterpreterServerToolContainerAnyOf2 == null && result.String == null && unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject) result.CodeInterpreterServerToolContainerAnyOf2 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.CodeInterpreterServerToolContainerAnyOf2(), parseNode);
+            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => ((unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)) && (unionPayload is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject0 || (shapeObject0.GetValue() is var shapeMembers1 && (shapeMembers1.ContainsKey("type") && (!shapeMembers1.ContainsKey("file_ids") || (((shapeMembers1["file_ids"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedArray)))) && (!shapeMembers1.ContainsKey("memory_limit") || ((((shapeMembers1["memory_limit"] == null || shapeMembers1["memory_limit"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers1["memory_limit"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && ((shapeMembers1["memory_limit"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal4 && "1g".Equals(literal4.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["memory_limit"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal5 && "4g".Equals(literal5.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["memory_limit"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal6 && "16g".Equals(literal6.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["memory_limit"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal7 && "64g".Equals(literal7.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["memory_limit"] == null || shapeMembers1["memory_limit"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)))) && (!shapeMembers1.ContainsKey("type") || (((shapeMembers1["type"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && ((shapeMembers1["type"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal10 && "auto".Equals(literal10.GetValue(), global::System.StringComparison.Ordinal))))))))))();
+            int matchingUnionBranches = 0;
+            if (matchesUnionBranch0) matchingUnionBranches++;
+            bool noSelectedUnionBranch = result.CodeInterpreterServerToolContainerAnyOf2 == null && result.String == null;
+            if (noSelectedUnionBranch && matchesUnionBranch0 && matchingUnionBranches == 1) result.CodeInterpreterServerToolContainerAnyOf2 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.CodeInterpreterServerToolContainerAnyOf2(), parseNode);
             if (result.CodeInterpreterServerToolContainerAnyOf2 == null && result.String == null) result.UnrecognizedValue = unionPayload;
 return result;
         }
@@ -64,6 +66,8 @@ return result;
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
+            if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawFields) { var fields = new global::System.Collections.Generic.Dictionary<string, global::System.Action<IParseNode>>(); foreach (var entry in rawFields.GetValue()) fields[entry.Key] = _ => { }; return fields; }
+
             if(CodeInterpreterServerToolContainerAnyOf2 != null)
             {
                 return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(CodeInterpreterServerToolContainerAnyOf2);
@@ -78,7 +82,10 @@ return result;
         {
             if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
             if (CodeInterpreterServerToolContainerAnyOf2 == null && String == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
-            if (CodeInterpreterServerToolContainerAnyOf2 != null && String == null) { if (CodeInterpreterServerToolContainerAnyOf2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, CodeInterpreterServerToolContainerAnyOf2); return; }
+            int selectedUnionBranches = 0;
+            if (CodeInterpreterServerToolContainerAnyOf2 != null) selectedUnionBranches++;
+            if (String != null) selectedUnionBranches++;
+            if (CodeInterpreterServerToolContainerAnyOf2 != null && selectedUnionBranches == 1) { if (CodeInterpreterServerToolContainerAnyOf2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, CodeInterpreterServerToolContainerAnyOf2); return; }
 
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             if(String != null)

@@ -17,13 +17,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("removed_count") is { } nullNodeRemovedCount && nullNodeRemovedCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RemovedCount = null;
+            if (parseNode.GetChildNode("removed_count") is null) { _explicitNullValueRemovedCount = default!; _explicitNullProperties?.Remove("removed_count"); }
+            else if (parseNode.GetChildNode("removed_count") is { } nullNodeRemovedCount && nullNodeRemovedCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RemovedCount = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Number of members removed</summary>
-        public int? RemovedCount { get => _explicitNullValueRemovedCount; set { _explicitNullValueRemovedCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("removed_count"); else _explicitNullProperties?.Remove("removed_count"); } }
+        public int? RemovedCount { get => _explicitNullValueRemovedCount; set { _explicitNullValueRemovedCount = value; AdditionalData?.Remove("removed_count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("removed_count"); else _explicitNullProperties?.Remove("removed_count"); } }
         private int? _explicitNullValueRemovedCount = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BulkRemoveWorkspaceMembersResponse"/> and sets the default values.

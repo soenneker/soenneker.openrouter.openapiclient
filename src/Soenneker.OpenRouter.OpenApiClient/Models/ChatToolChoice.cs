@@ -67,10 +67,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             }
             
             var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
-            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("function".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("function") != null))();
-            bool matchesUnionBranch1 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("type") != null))();
-            if (result.ChatNamedToolChoice == null && result.ChatServerToolChoice == null && result.ChatToolChoiceAnyOf1 == null && result.ChatToolChoiceAnyOf2 == null && result.ChatToolChoiceAnyOf3 == null && matchesUnionBranch0 && !matchesUnionBranch1) result.ChatNamedToolChoice = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.ChatNamedToolChoice(), parseNode);
-            if (result.ChatNamedToolChoice == null && result.ChatServerToolChoice == null && result.ChatToolChoiceAnyOf1 == null && result.ChatToolChoiceAnyOf2 == null && result.ChatToolChoiceAnyOf3 == null && matchesUnionBranch1 && !matchesUnionBranch0) result.ChatServerToolChoice = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.ChatServerToolChoice(), parseNode);
+            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => ((unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)) && (unionPayload is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject0 || (shapeObject0.GetValue() is var shapeMembers1 && (shapeMembers1.ContainsKey("type") && shapeMembers1.ContainsKey("function") && (!shapeMembers1.ContainsKey("function") || (((shapeMembers1["function"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)) && (shapeMembers1["function"] is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject2 || (shapeObject2.GetValue() is var shapeMembers3 && (shapeMembers3.ContainsKey("name") && (!shapeMembers3.ContainsKey("name") || (((shapeMembers3["name"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString))))))))) && (!shapeMembers1.ContainsKey("type") || (((shapeMembers1["type"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && ((shapeMembers1["type"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal6 && "function".Equals(literal6.GetValue(), global::System.StringComparison.Ordinal))))))))))();
+            bool matchesUnionBranch1 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => ((unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)) && (unionPayload is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject0 || (shapeObject0.GetValue() is var shapeMembers1 && (shapeMembers1.ContainsKey("type") && (!shapeMembers1.ContainsKey("type") || (((shapeMembers1["type"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))))))))();
+            int matchingUnionBranches = 0;
+            if (matchesUnionBranch0) matchingUnionBranches++;
+            if (matchesUnionBranch1) matchingUnionBranches++;
+            bool noSelectedUnionBranch = result.ChatNamedToolChoice == null && result.ChatServerToolChoice == null && result.ChatToolChoiceAnyOf1 == null && result.ChatToolChoiceAnyOf2 == null && result.ChatToolChoiceAnyOf3 == null;
+            if (noSelectedUnionBranch && matchesUnionBranch0 && matchingUnionBranches == 1) result.ChatNamedToolChoice = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.ChatNamedToolChoice(), parseNode);
+            if (noSelectedUnionBranch && matchesUnionBranch1 && matchingUnionBranches == 1) result.ChatServerToolChoice = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.ChatServerToolChoice(), parseNode);
             if (result.ChatNamedToolChoice == null && result.ChatServerToolChoice == null && result.ChatToolChoiceAnyOf1 == null && result.ChatToolChoiceAnyOf2 == null && result.ChatToolChoiceAnyOf3 == null) result.UnrecognizedValue = unionPayload;
 return result;
         }
@@ -80,6 +84,8 @@ return result;
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
+            if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawFields) { var fields = new global::System.Collections.Generic.Dictionary<string, global::System.Action<IParseNode>>(); foreach (var entry in rawFields.GetValue()) fields[entry.Key] = _ => { }; return fields; }
+
             if(ChatNamedToolChoice != null || ChatServerToolChoice != null)
             {
                 return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(ChatNamedToolChoice, ChatServerToolChoice);
@@ -94,8 +100,14 @@ return result;
         {
             if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
             if (ChatNamedToolChoice == null && ChatServerToolChoice == null && ChatToolChoiceAnyOf1 == null && ChatToolChoiceAnyOf2 == null && ChatToolChoiceAnyOf3 == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
-            if (ChatNamedToolChoice != null && ChatServerToolChoice == null && ChatToolChoiceAnyOf1 == null && ChatToolChoiceAnyOf2 == null && ChatToolChoiceAnyOf3 == null) { if (ChatNamedToolChoice is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, ChatNamedToolChoice); return; }
-            if (ChatServerToolChoice != null && ChatNamedToolChoice == null && ChatToolChoiceAnyOf1 == null && ChatToolChoiceAnyOf2 == null && ChatToolChoiceAnyOf3 == null) { if (ChatServerToolChoice is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, ChatServerToolChoice); return; }
+            int selectedUnionBranches = 0;
+            if (ChatNamedToolChoice != null) selectedUnionBranches++;
+            if (ChatServerToolChoice != null) selectedUnionBranches++;
+            if (ChatToolChoiceAnyOf1 != null) selectedUnionBranches++;
+            if (ChatToolChoiceAnyOf2 != null) selectedUnionBranches++;
+            if (ChatToolChoiceAnyOf3 != null) selectedUnionBranches++;
+            if (ChatNamedToolChoice != null && selectedUnionBranches == 1) { if (ChatNamedToolChoice is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, ChatNamedToolChoice); return; }
+            if (ChatServerToolChoice != null && selectedUnionBranches == 1) { if (ChatServerToolChoice is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, ChatServerToolChoice); return; }
 
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             if(ChatToolChoiceAnyOf1 != null)

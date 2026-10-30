@@ -17,11 +17,16 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("app_id") is { } nullNodeAppId && nullNodeAppId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AppId = null;
-            if (parseNode.GetChildNode("app_slug") is { } nullNodeAppSlug && nullNodeAppSlug.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AppSlug = null;
-            if (parseNode.GetChildNode("installations") is { } nullNodeInstallations && nullNodeInstallations.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Installations = null;
-            if (parseNode.GetChildNode("member_links") is { } nullNodeMemberLinks && nullNodeMemberLinks.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MemberLinks = null;
-            if (parseNode.GetChildNode("scope") is { } nullNodeScope && nullNodeScope.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Scope = null;
+            if (parseNode.GetChildNode("app_id") is null) { _explicitNullValueAppId = default!; _explicitNullProperties?.Remove("app_id"); }
+            else if (parseNode.GetChildNode("app_id") is { } nullNodeAppId && nullNodeAppId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AppId = null;
+            if (parseNode.GetChildNode("app_slug") is null) { _explicitNullValueAppSlug = default!; _explicitNullProperties?.Remove("app_slug"); }
+            else if (parseNode.GetChildNode("app_slug") is { } nullNodeAppSlug && nullNodeAppSlug.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AppSlug = null;
+            if (parseNode.GetChildNode("installations") is null) { _explicitNullValueInstallations = default!; _explicitNullProperties?.Remove("installations"); }
+            else if (parseNode.GetChildNode("installations") is { } nullNodeInstallations && nullNodeInstallations.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Installations = null;
+            if (parseNode.GetChildNode("member_links") is null) { _explicitNullValueMemberLinks = default!; _explicitNullProperties?.Remove("member_links"); }
+            else if (parseNode.GetChildNode("member_links") is { } nullNodeMemberLinks && nullNodeMemberLinks.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MemberLinks = null;
+            if (parseNode.GetChildNode("scope") is null) { _explicitNullValueScope = default!; _explicitNullProperties?.Remove("scope"); }
+            else if (parseNode.GetChildNode("scope") is { } nullNodeScope && nullNodeScope.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Scope = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -29,45 +34,45 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The app_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AppId { get => _explicitNullValueAppId; set { _explicitNullValueAppId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("app_id"); else _explicitNullProperties?.Remove("app_id"); } }
+        public string? AppId { get => _explicitNullValueAppId; set { _explicitNullValueAppId = value; AdditionalData?.Remove("app_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("app_id"); else _explicitNullProperties?.Remove("app_id"); } }
         private string? _explicitNullValueAppId = default!;
 #nullable restore
 #else
-        public string AppId { get => _explicitNullValueAppId; set { _explicitNullValueAppId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("app_id"); else _explicitNullProperties?.Remove("app_id"); } }
+        public string AppId { get => _explicitNullValueAppId; set { _explicitNullValueAppId = value; AdditionalData?.Remove("app_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("app_id"); else _explicitNullProperties?.Remove("app_id"); } }
         private string _explicitNullValueAppId = default!;
 #endif
         /// <summary>The app_slug property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AppSlug { get => _explicitNullValueAppSlug; set { _explicitNullValueAppSlug = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("app_slug"); else _explicitNullProperties?.Remove("app_slug"); } }
+        public string? AppSlug { get => _explicitNullValueAppSlug; set { _explicitNullValueAppSlug = value; AdditionalData?.Remove("app_slug"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("app_slug"); else _explicitNullProperties?.Remove("app_slug"); } }
         private string? _explicitNullValueAppSlug = default!;
 #nullable restore
 #else
-        public string AppSlug { get => _explicitNullValueAppSlug; set { _explicitNullValueAppSlug = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("app_slug"); else _explicitNullProperties?.Remove("app_slug"); } }
+        public string AppSlug { get => _explicitNullValueAppSlug; set { _explicitNullValueAppSlug = value; AdditionalData?.Remove("app_slug"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("app_slug"); else _explicitNullProperties?.Remove("app_slug"); } }
         private string _explicitNullValueAppSlug = default!;
 #endif
         /// <summary>The installations property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGithubAppsItemInstallationsItem>? Installations { get => _explicitNullValueInstallations; set { _explicitNullValueInstallations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("installations"); else _explicitNullProperties?.Remove("installations"); } }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGithubAppsItemInstallationsItem>? Installations { get => _explicitNullValueInstallations; set { _explicitNullValueInstallations = value; AdditionalData?.Remove("installations"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("installations"); else _explicitNullProperties?.Remove("installations"); } }
         private List<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGithubAppsItemInstallationsItem>? _explicitNullValueInstallations = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGithubAppsItemInstallationsItem> Installations { get => _explicitNullValueInstallations; set { _explicitNullValueInstallations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("installations"); else _explicitNullProperties?.Remove("installations"); } }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGithubAppsItemInstallationsItem> Installations { get => _explicitNullValueInstallations; set { _explicitNullValueInstallations = value; AdditionalData?.Remove("installations"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("installations"); else _explicitNullProperties?.Remove("installations"); } }
         private List<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGithubAppsItemInstallationsItem> _explicitNullValueInstallations = default!;
 #endif
         /// <summary>Members whose own account the vault would act as on this App&apos;s accounts; GitHub still limits a member&apos;s token to what that member can reach.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGithubAppsItemMemberLinksItem>? MemberLinks { get => _explicitNullValueMemberLinks; set { _explicitNullValueMemberLinks = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("member_links"); else _explicitNullProperties?.Remove("member_links"); } }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGithubAppsItemMemberLinksItem>? MemberLinks { get => _explicitNullValueMemberLinks; set { _explicitNullValueMemberLinks = value; AdditionalData?.Remove("member_links"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("member_links"); else _explicitNullProperties?.Remove("member_links"); } }
         private List<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGithubAppsItemMemberLinksItem>? _explicitNullValueMemberLinks = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGithubAppsItemMemberLinksItem> MemberLinks { get => _explicitNullValueMemberLinks; set { _explicitNullValueMemberLinks = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("member_links"); else _explicitNullProperties?.Remove("member_links"); } }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGithubAppsItemMemberLinksItem> MemberLinks { get => _explicitNullValueMemberLinks; set { _explicitNullValueMemberLinks = value; AdditionalData?.Remove("member_links"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("member_links"); else _explicitNullProperties?.Remove("member_links"); } }
         private List<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGithubAppsItemMemberLinksItem> _explicitNullValueMemberLinks = default!;
 #endif
         /// <summary>`workspace` applies to every intern of the workspace; `intern` to this intern alone.</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGithubAppsItemScope? Scope { get => _explicitNullValueScope; set { _explicitNullValueScope = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scope"); else _explicitNullProperties?.Remove("scope"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGithubAppsItemScope? Scope { get => _explicitNullValueScope; set { _explicitNullValueScope = value; AdditionalData?.Remove("scope"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scope"); else _explicitNullProperties?.Remove("scope"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGithubAppsItemScope? _explicitNullValueScope = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGithubAppsItem"/> and sets the default values.
@@ -98,7 +103,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "app_slug", n => { AppSlug = n.GetStringValue(); } },
                 { "installations", n => { Installations = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGithubAppsItemInstallationsItem>(global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGithubAppsItemInstallationsItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "member_links", n => { MemberLinks = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGithubAppsItemMemberLinksItem>(global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGithubAppsItemMemberLinksItem.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "scope", n => { Scope = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGithubAppsItemScope>(); } },
+                { "scope", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGithubAppsItemScope>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueScope = default; _explicitNullProperties?.Remove("scope"); AdditionalData["scope"] = unknown; } else { Scope = parsed; AdditionalData.Remove("scope"); } } },
             };
         }
         /// <summary>

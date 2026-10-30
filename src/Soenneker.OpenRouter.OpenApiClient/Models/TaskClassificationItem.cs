@@ -17,69 +17,77 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("category_token_share") is { } nullNodeCategoryTokenShare && nullNodeCategoryTokenShare.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CategoryTokenShare = null;
-            if (parseNode.GetChildNode("category_usage_share") is { } nullNodeCategoryUsageShare && nullNodeCategoryUsageShare.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CategoryUsageShare = null;
-            if (parseNode.GetChildNode("display_name") is { } nullNodeDisplayName && nullNodeDisplayName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DisplayName = null;
-            if (parseNode.GetChildNode("macro_category") is { } nullNodeMacroCategory && nullNodeMacroCategory.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MacroCategory = null;
-            if (parseNode.GetChildNode("models") is { } nullNodeModels && nullNodeModels.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Models = null;
-            if (parseNode.GetChildNode("tag") is { } nullNodeTag && nullNodeTag.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tag = null;
-            if (parseNode.GetChildNode("token_share") is { } nullNodeTokenShare && nullNodeTokenShare.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TokenShare = null;
-            if (parseNode.GetChildNode("usage_share") is { } nullNodeUsageShare && nullNodeUsageShare.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UsageShare = null;
+            if (parseNode.GetChildNode("category_token_share") is null) { _explicitNullValueCategoryTokenShare = default!; _explicitNullProperties?.Remove("category_token_share"); }
+            else if (parseNode.GetChildNode("category_token_share") is { } nullNodeCategoryTokenShare && nullNodeCategoryTokenShare.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CategoryTokenShare = null;
+            if (parseNode.GetChildNode("category_usage_share") is null) { _explicitNullValueCategoryUsageShare = default!; _explicitNullProperties?.Remove("category_usage_share"); }
+            else if (parseNode.GetChildNode("category_usage_share") is { } nullNodeCategoryUsageShare && nullNodeCategoryUsageShare.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CategoryUsageShare = null;
+            if (parseNode.GetChildNode("display_name") is null) { _explicitNullValueDisplayName = default!; _explicitNullProperties?.Remove("display_name"); }
+            else if (parseNode.GetChildNode("display_name") is { } nullNodeDisplayName && nullNodeDisplayName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DisplayName = null;
+            if (parseNode.GetChildNode("macro_category") is null) { _explicitNullValueMacroCategory = default!; _explicitNullProperties?.Remove("macro_category"); }
+            else if (parseNode.GetChildNode("macro_category") is { } nullNodeMacroCategory && nullNodeMacroCategory.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MacroCategory = null;
+            if (parseNode.GetChildNode("models") is null) { _explicitNullValueModels = default!; _explicitNullProperties?.Remove("models"); }
+            else if (parseNode.GetChildNode("models") is { } nullNodeModels && nullNodeModels.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Models = null;
+            if (parseNode.GetChildNode("tag") is null) { _explicitNullValueTag = default!; _explicitNullProperties?.Remove("tag"); }
+            else if (parseNode.GetChildNode("tag") is { } nullNodeTag && nullNodeTag.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tag = null;
+            if (parseNode.GetChildNode("token_share") is null) { _explicitNullValueTokenShare = default!; _explicitNullProperties?.Remove("token_share"); }
+            else if (parseNode.GetChildNode("token_share") is { } nullNodeTokenShare && nullNodeTokenShare.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TokenShare = null;
+            if (parseNode.GetChildNode("usage_share") is null) { _explicitNullValueUsageShare = default!; _explicitNullProperties?.Remove("usage_share"); }
+            else if (parseNode.GetChildNode("usage_share") is { } nullNodeUsageShare && nullNodeUsageShare.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UsageShare = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Fraction of this classification&apos;s token volume within its macro-category (0–1). Sums to 1 across all classifications sharing the same `macro_category`.</summary>
-        public double? CategoryTokenShare { get => _explicitNullValueCategoryTokenShare; set { _explicitNullValueCategoryTokenShare = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("category_token_share"); else _explicitNullProperties?.Remove("category_token_share"); } }
+        public double? CategoryTokenShare { get => _explicitNullValueCategoryTokenShare; set { _explicitNullValueCategoryTokenShare = value; AdditionalData?.Remove("category_token_share"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("category_token_share"); else _explicitNullProperties?.Remove("category_token_share"); } }
         private double? _explicitNullValueCategoryTokenShare = default!;
         /// <summary>Fraction of this classification&apos;s usage within its macro-category (0–1). Sums to 1 across all classifications sharing the same `macro_category`.</summary>
-        public double? CategoryUsageShare { get => _explicitNullValueCategoryUsageShare; set { _explicitNullValueCategoryUsageShare = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("category_usage_share"); else _explicitNullProperties?.Remove("category_usage_share"); } }
+        public double? CategoryUsageShare { get => _explicitNullValueCategoryUsageShare; set { _explicitNullValueCategoryUsageShare = value; AdditionalData?.Remove("category_usage_share"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("category_usage_share"); else _explicitNullProperties?.Remove("category_usage_share"); } }
         private double? _explicitNullValueCategoryUsageShare = default!;
         /// <summary>Human-readable label for the classification.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DisplayName { get => _explicitNullValueDisplayName; set { _explicitNullValueDisplayName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("display_name"); else _explicitNullProperties?.Remove("display_name"); } }
+        public string? DisplayName { get => _explicitNullValueDisplayName; set { _explicitNullValueDisplayName = value; AdditionalData?.Remove("display_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("display_name"); else _explicitNullProperties?.Remove("display_name"); } }
         private string? _explicitNullValueDisplayName = default!;
 #nullable restore
 #else
-        public string DisplayName { get => _explicitNullValueDisplayName; set { _explicitNullValueDisplayName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("display_name"); else _explicitNullProperties?.Remove("display_name"); } }
+        public string DisplayName { get => _explicitNullValueDisplayName; set { _explicitNullValueDisplayName = value; AdditionalData?.Remove("display_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("display_name"); else _explicitNullProperties?.Remove("display_name"); } }
         private string _explicitNullValueDisplayName = default!;
 #endif
         /// <summary>Coarse grouping derived from the tag prefix: `code`, `data`, `agent`, or `general`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MacroCategory { get => _explicitNullValueMacroCategory; set { _explicitNullValueMacroCategory = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("macro_category"); else _explicitNullProperties?.Remove("macro_category"); } }
+        public string? MacroCategory { get => _explicitNullValueMacroCategory; set { _explicitNullValueMacroCategory = value; AdditionalData?.Remove("macro_category"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("macro_category"); else _explicitNullProperties?.Remove("macro_category"); } }
         private string? _explicitNullValueMacroCategory = default!;
 #nullable restore
 #else
-        public string MacroCategory { get => _explicitNullValueMacroCategory; set { _explicitNullValueMacroCategory = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("macro_category"); else _explicitNullProperties?.Remove("macro_category"); } }
+        public string MacroCategory { get => _explicitNullValueMacroCategory; set { _explicitNullValueMacroCategory = value; AdditionalData?.Remove("macro_category"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("macro_category"); else _explicitNullProperties?.Remove("macro_category"); } }
         private string _explicitNullValueMacroCategory = default!;
 #endif
         /// <summary>Top models for this classification by request volume, sorted descending. Each entry reports the model&apos;s share of this classification&apos;s requests and tokens.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.TaskClassificationModel>? Models { get => _explicitNullValueModels; set { _explicitNullValueModels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("models"); else _explicitNullProperties?.Remove("models"); } }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.TaskClassificationModel>? Models { get => _explicitNullValueModels; set { _explicitNullValueModels = value; AdditionalData?.Remove("models"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("models"); else _explicitNullProperties?.Remove("models"); } }
         private List<global::Soenneker.OpenRouter.OpenApiClient.Models.TaskClassificationModel>? _explicitNullValueModels = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.TaskClassificationModel> Models { get => _explicitNullValueModels; set { _explicitNullValueModels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("models"); else _explicitNullProperties?.Remove("models"); } }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.TaskClassificationModel> Models { get => _explicitNullValueModels; set { _explicitNullValueModels = value; AdditionalData?.Remove("models"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("models"); else _explicitNullProperties?.Remove("models"); } }
         private List<global::Soenneker.OpenRouter.OpenApiClient.Models.TaskClassificationModel> _explicitNullValueModels = default!;
 #endif
         /// <summary>Classification tag identifier (e.g. `code:general_impl`, `agent:web_search`).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Tag { get => _explicitNullValueTag; set { _explicitNullValueTag = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tag"); else _explicitNullProperties?.Remove("tag"); } }
+        public string? Tag { get => _explicitNullValueTag; set { _explicitNullValueTag = value; AdditionalData?.Remove("tag"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tag"); else _explicitNullProperties?.Remove("tag"); } }
         private string? _explicitNullValueTag = default!;
 #nullable restore
 #else
-        public string Tag { get => _explicitNullValueTag; set { _explicitNullValueTag = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tag"); else _explicitNullProperties?.Remove("tag"); } }
+        public string Tag { get => _explicitNullValueTag; set { _explicitNullValueTag = value; AdditionalData?.Remove("tag"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tag"); else _explicitNullProperties?.Remove("tag"); } }
         private string _explicitNullValueTag = default!;
 #endif
         /// <summary>Fraction of classified sampled token volume (prompt + completion) attributed to this classification (0–1). The unclassified `other` bucket is excluded from the denominator.</summary>
-        public double? TokenShare { get => _explicitNullValueTokenShare; set { _explicitNullValueTokenShare = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("token_share"); else _explicitNullProperties?.Remove("token_share"); } }
+        public double? TokenShare { get => _explicitNullValueTokenShare; set { _explicitNullValueTokenShare = value; AdditionalData?.Remove("token_share"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("token_share"); else _explicitNullProperties?.Remove("token_share"); } }
         private double? _explicitNullValueTokenShare = default!;
         /// <summary>Fraction of classified sampled requests attributed to this classification (0–1). The unclassified `other` bucket is excluded from the denominator.</summary>
-        public double? UsageShare { get => _explicitNullValueUsageShare; set { _explicitNullValueUsageShare = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("usage_share"); else _explicitNullProperties?.Remove("usage_share"); } }
+        public double? UsageShare { get => _explicitNullValueUsageShare; set { _explicitNullValueUsageShare = value; AdditionalData?.Remove("usage_share"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("usage_share"); else _explicitNullProperties?.Remove("usage_share"); } }
         private double? _explicitNullValueUsageShare = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.TaskClassificationItem"/> and sets the default values.

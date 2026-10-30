@@ -17,17 +17,19 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("ephemeral_1h_input_tokens") is { } nullNodeEphemeral1hInputTokens && nullNodeEphemeral1hInputTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Ephemeral1hInputTokens = null;
-            if (parseNode.GetChildNode("ephemeral_5m_input_tokens") is { } nullNodeEphemeral5mInputTokens && nullNodeEphemeral5mInputTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Ephemeral5mInputTokens = null;
+            if (parseNode.GetChildNode("ephemeral_1h_input_tokens") is null) { _explicitNullValueEphemeral1hInputTokens = default!; _explicitNullProperties?.Remove("ephemeral_1h_input_tokens"); }
+            else if (parseNode.GetChildNode("ephemeral_1h_input_tokens") is { } nullNodeEphemeral1hInputTokens && nullNodeEphemeral1hInputTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Ephemeral1hInputTokens = null;
+            if (parseNode.GetChildNode("ephemeral_5m_input_tokens") is null) { _explicitNullValueEphemeral5mInputTokens = default!; _explicitNullProperties?.Remove("ephemeral_5m_input_tokens"); }
+            else if (parseNode.GetChildNode("ephemeral_5m_input_tokens") is { } nullNodeEphemeral5mInputTokens && nullNodeEphemeral5mInputTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Ephemeral5mInputTokens = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The ephemeral_1h_input_tokens property</summary>
-        public int? Ephemeral1hInputTokens { get => _explicitNullValueEphemeral1hInputTokens; set { _explicitNullValueEphemeral1hInputTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ephemeral_1h_input_tokens"); else _explicitNullProperties?.Remove("ephemeral_1h_input_tokens"); } }
+        public int? Ephemeral1hInputTokens { get => _explicitNullValueEphemeral1hInputTokens; set { _explicitNullValueEphemeral1hInputTokens = value; AdditionalData?.Remove("ephemeral_1h_input_tokens"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ephemeral_1h_input_tokens"); else _explicitNullProperties?.Remove("ephemeral_1h_input_tokens"); } }
         private int? _explicitNullValueEphemeral1hInputTokens = default!;
         /// <summary>The ephemeral_5m_input_tokens property</summary>
-        public int? Ephemeral5mInputTokens { get => _explicitNullValueEphemeral5mInputTokens; set { _explicitNullValueEphemeral5mInputTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ephemeral_5m_input_tokens"); else _explicitNullProperties?.Remove("ephemeral_5m_input_tokens"); } }
+        public int? Ephemeral5mInputTokens { get => _explicitNullValueEphemeral5mInputTokens; set { _explicitNullValueEphemeral5mInputTokens = value; AdditionalData?.Remove("ephemeral_5m_input_tokens"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ephemeral_5m_input_tokens"); else _explicitNullProperties?.Remove("ephemeral_5m_input_tokens"); } }
         private int? _explicitNullValueEphemeral5mInputTokens = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicIterationCacheCreation"/> and sets the default values.

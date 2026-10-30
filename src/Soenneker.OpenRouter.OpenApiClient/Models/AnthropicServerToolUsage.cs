@@ -17,17 +17,19 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("web_fetch_requests") is { } nullNodeWebFetchRequests && nullNodeWebFetchRequests.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WebFetchRequests = null;
-            if (parseNode.GetChildNode("web_search_requests") is { } nullNodeWebSearchRequests && nullNodeWebSearchRequests.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WebSearchRequests = null;
+            if (parseNode.GetChildNode("web_fetch_requests") is null) { _explicitNullValueWebFetchRequests = default!; _explicitNullProperties?.Remove("web_fetch_requests"); }
+            else if (parseNode.GetChildNode("web_fetch_requests") is { } nullNodeWebFetchRequests && nullNodeWebFetchRequests.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WebFetchRequests = null;
+            if (parseNode.GetChildNode("web_search_requests") is null) { _explicitNullValueWebSearchRequests = default!; _explicitNullProperties?.Remove("web_search_requests"); }
+            else if (parseNode.GetChildNode("web_search_requests") is { } nullNodeWebSearchRequests && nullNodeWebSearchRequests.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WebSearchRequests = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The web_fetch_requests property</summary>
-        public int? WebFetchRequests { get => _explicitNullValueWebFetchRequests; set { _explicitNullValueWebFetchRequests = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("web_fetch_requests"); else _explicitNullProperties?.Remove("web_fetch_requests"); } }
+        public int? WebFetchRequests { get => _explicitNullValueWebFetchRequests; set { _explicitNullValueWebFetchRequests = value; AdditionalData?.Remove("web_fetch_requests"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("web_fetch_requests"); else _explicitNullProperties?.Remove("web_fetch_requests"); } }
         private int? _explicitNullValueWebFetchRequests = default!;
         /// <summary>The web_search_requests property</summary>
-        public int? WebSearchRequests { get => _explicitNullValueWebSearchRequests; set { _explicitNullValueWebSearchRequests = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("web_search_requests"); else _explicitNullProperties?.Remove("web_search_requests"); } }
+        public int? WebSearchRequests { get => _explicitNullValueWebSearchRequests; set { _explicitNullValueWebSearchRequests = value; AdditionalData?.Remove("web_search_requests"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("web_search_requests"); else _explicitNullProperties?.Remove("web_search_requests"); } }
         private int? _explicitNullValueWebSearchRequests = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicServerToolUsage"/> and sets the default values.

@@ -17,17 +17,19 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("total_credits") is { } nullNodeTotalCredits && nullNodeTotalCredits.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalCredits = null;
-            if (parseNode.GetChildNode("total_usage") is { } nullNodeTotalUsage && nullNodeTotalUsage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalUsage = null;
+            if (parseNode.GetChildNode("total_credits") is null) { _explicitNullValueTotalCredits = default!; _explicitNullProperties?.Remove("total_credits"); }
+            else if (parseNode.GetChildNode("total_credits") is { } nullNodeTotalCredits && nullNodeTotalCredits.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalCredits = null;
+            if (parseNode.GetChildNode("total_usage") is null) { _explicitNullValueTotalUsage = default!; _explicitNullProperties?.Remove("total_usage"); }
+            else if (parseNode.GetChildNode("total_usage") is { } nullNodeTotalUsage && nullNodeTotalUsage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalUsage = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Total credits purchased</summary>
-        public double? TotalCredits { get => _explicitNullValueTotalCredits; set { _explicitNullValueTotalCredits = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_credits"); else _explicitNullProperties?.Remove("total_credits"); } }
+        public double? TotalCredits { get => _explicitNullValueTotalCredits; set { _explicitNullValueTotalCredits = value; AdditionalData?.Remove("total_credits"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_credits"); else _explicitNullProperties?.Remove("total_credits"); } }
         private double? _explicitNullValueTotalCredits = default!;
         /// <summary>Total credits used</summary>
-        public double? TotalUsage { get => _explicitNullValueTotalUsage; set { _explicitNullValueTotalUsage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_usage"); else _explicitNullProperties?.Remove("total_usage"); } }
+        public double? TotalUsage { get => _explicitNullValueTotalUsage; set { _explicitNullValueTotalUsage = value; AdditionalData?.Remove("total_usage"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_usage"); else _explicitNullProperties?.Remove("total_usage"); } }
         private double? _explicitNullValueTotalUsage = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.GetCredits200ResponseData"/> and sets the default values.

@@ -18,15 +18,24 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("agent_id") is { } nullNodeAgentId && nullNodeAgentId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AgentId = null;
-            if (parseNode.GetChildNode("custom_origins") is { } nullNodeCustomOrigins && nullNodeCustomOrigins.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CustomOrigins = null;
-            if (parseNode.GetChildNode("github") is { } nullNodeGithub && nullNodeGithub.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Github = null;
-            if (parseNode.GetChildNode("google") is { } nullNodeGoogle && nullNodeGoogle.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Google = null;
-            if (parseNode.GetChildNode("host_rules") is { } nullNodeHostRules && nullNodeHostRules.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HostRules = null;
-            if (parseNode.GetChildNode("mcp_origins") is { } nullNodeMcpOrigins && nullNodeMcpOrigins.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) McpOrigins = null;
-            if (parseNode.GetChildNode("read_at") is { } nullNodeReadAt && nullNodeReadAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReadAt = null;
-            if (parseNode.GetChildNode("secrets") is { } nullNodeSecrets && nullNodeSecrets.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Secrets = null;
-            if (parseNode.GetChildNode("slack") is { } nullNodeSlack && nullNodeSlack.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Slack = null;
+            if (parseNode.GetChildNode("agent_id") is null) { _explicitNullValueAgentId = default!; _explicitNullProperties?.Remove("agent_id"); }
+            else if (parseNode.GetChildNode("agent_id") is { } nullNodeAgentId && nullNodeAgentId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AgentId = null;
+            if (parseNode.GetChildNode("custom_origins") is null) { _explicitNullValueCustomOrigins = default!; _explicitNullProperties?.Remove("custom_origins"); }
+            else if (parseNode.GetChildNode("custom_origins") is { } nullNodeCustomOrigins && nullNodeCustomOrigins.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CustomOrigins = null;
+            if (parseNode.GetChildNode("github") is null) { _explicitNullValueGithub = default!; _explicitNullProperties?.Remove("github"); }
+            else if (parseNode.GetChildNode("github") is { } nullNodeGithub && nullNodeGithub.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Github = null;
+            if (parseNode.GetChildNode("google") is null) { _explicitNullValueGoogle = default!; _explicitNullProperties?.Remove("google"); }
+            else if (parseNode.GetChildNode("google") is { } nullNodeGoogle && nullNodeGoogle.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Google = null;
+            if (parseNode.GetChildNode("host_rules") is null) { _explicitNullValueHostRules = default!; _explicitNullProperties?.Remove("host_rules"); }
+            else if (parseNode.GetChildNode("host_rules") is { } nullNodeHostRules && nullNodeHostRules.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HostRules = null;
+            if (parseNode.GetChildNode("mcp_origins") is null) { _explicitNullValueMcpOrigins = default!; _explicitNullProperties?.Remove("mcp_origins"); }
+            else if (parseNode.GetChildNode("mcp_origins") is { } nullNodeMcpOrigins && nullNodeMcpOrigins.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) McpOrigins = null;
+            if (parseNode.GetChildNode("read_at") is null) { _explicitNullValueReadAt = default!; _explicitNullProperties?.Remove("read_at"); }
+            else if (parseNode.GetChildNode("read_at") is { } nullNodeReadAt && nullNodeReadAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReadAt = null;
+            if (parseNode.GetChildNode("secrets") is null) { _explicitNullValueSecrets = default!; _explicitNullProperties?.Remove("secrets"); }
+            else if (parseNode.GetChildNode("secrets") is { } nullNodeSecrets && nullNodeSecrets.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Secrets = null;
+            if (parseNode.GetChildNode("slack") is null) { _explicitNullValueSlack = default!; _explicitNullProperties?.Remove("slack"); }
+            else if (parseNode.GetChildNode("slack") is { } nullNodeSlack && nullNodeSlack.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Slack = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -34,84 +43,84 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The agent_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AgentId { get => _explicitNullValueAgentId; set { _explicitNullValueAgentId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_id"); else _explicitNullProperties?.Remove("agent_id"); } }
+        public string? AgentId { get => _explicitNullValueAgentId; set { _explicitNullValueAgentId = value; AdditionalData?.Remove("agent_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_id"); else _explicitNullProperties?.Remove("agent_id"); } }
         private string? _explicitNullValueAgentId = default!;
 #nullable restore
 #else
-        public string AgentId { get => _explicitNullValueAgentId; set { _explicitNullValueAgentId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_id"); else _explicitNullProperties?.Remove("agent_id"); } }
+        public string AgentId { get => _explicitNullValueAgentId; set { _explicitNullValueAgentId = value; AdditionalData?.Remove("agent_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_id"); else _explicitNullProperties?.Remove("agent_id"); } }
         private string _explicitNullValueAgentId = default!;
 #endif
         /// <summary>The custom_origins property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableCustomOriginsItem>? CustomOrigins { get => _explicitNullValueCustomOrigins; set { _explicitNullValueCustomOrigins = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_origins"); else _explicitNullProperties?.Remove("custom_origins"); } }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableCustomOriginsItem>? CustomOrigins { get => _explicitNullValueCustomOrigins; set { _explicitNullValueCustomOrigins = value; AdditionalData?.Remove("custom_origins"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_origins"); else _explicitNullProperties?.Remove("custom_origins"); } }
         private List<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableCustomOriginsItem>? _explicitNullValueCustomOrigins = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableCustomOriginsItem> CustomOrigins { get => _explicitNullValueCustomOrigins; set { _explicitNullValueCustomOrigins = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_origins"); else _explicitNullProperties?.Remove("custom_origins"); } }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableCustomOriginsItem> CustomOrigins { get => _explicitNullValueCustomOrigins; set { _explicitNullValueCustomOrigins = value; AdditionalData?.Remove("custom_origins"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_origins"); else _explicitNullProperties?.Remove("custom_origins"); } }
         private List<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableCustomOriginsItem> _explicitNullValueCustomOrigins = default!;
 #endif
         /// <summary>The github property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGithub? Github { get => _explicitNullValueGithub; set { _explicitNullValueGithub = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("github"); else _explicitNullProperties?.Remove("github"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGithub? Github { get => _explicitNullValueGithub; set { _explicitNullValueGithub = value; AdditionalData?.Remove("github"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("github"); else _explicitNullProperties?.Remove("github"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGithub? _explicitNullValueGithub = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGithub Github { get => _explicitNullValueGithub; set { _explicitNullValueGithub = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("github"); else _explicitNullProperties?.Remove("github"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGithub Github { get => _explicitNullValueGithub; set { _explicitNullValueGithub = value; AdditionalData?.Remove("github"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("github"); else _explicitNullProperties?.Remove("github"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGithub _explicitNullValueGithub = default!;
 #endif
         /// <summary>The google property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGoogle? Google { get => _explicitNullValueGoogle; set { _explicitNullValueGoogle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("google"); else _explicitNullProperties?.Remove("google"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGoogle? Google { get => _explicitNullValueGoogle; set { _explicitNullValueGoogle = value; AdditionalData?.Remove("google"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("google"); else _explicitNullProperties?.Remove("google"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGoogle? _explicitNullValueGoogle = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGoogle Google { get => _explicitNullValueGoogle; set { _explicitNullValueGoogle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("google"); else _explicitNullProperties?.Remove("google"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGoogle Google { get => _explicitNullValueGoogle; set { _explicitNullValueGoogle = value; AdditionalData?.Remove("google"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("google"); else _explicitNullProperties?.Remove("google"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGoogle _explicitNullValueGoogle = default!;
 #endif
         /// <summary>Built-in hosts the vault injects a named secret for, and whether that secret is stored.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableHostRulesItem>? HostRules { get => _explicitNullValueHostRules; set { _explicitNullValueHostRules = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("host_rules"); else _explicitNullProperties?.Remove("host_rules"); } }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableHostRulesItem>? HostRules { get => _explicitNullValueHostRules; set { _explicitNullValueHostRules = value; AdditionalData?.Remove("host_rules"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("host_rules"); else _explicitNullProperties?.Remove("host_rules"); } }
         private List<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableHostRulesItem>? _explicitNullValueHostRules = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableHostRulesItem> HostRules { get => _explicitNullValueHostRules; set { _explicitNullValueHostRules = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("host_rules"); else _explicitNullProperties?.Remove("host_rules"); } }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableHostRulesItem> HostRules { get => _explicitNullValueHostRules; set { _explicitNullValueHostRules = value; AdditionalData?.Remove("host_rules"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("host_rules"); else _explicitNullProperties?.Remove("host_rules"); } }
         private List<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableHostRulesItem> _explicitNullValueHostRules = default!;
 #endif
         /// <summary>The mcp_origins property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableMcpOriginsItem>? McpOrigins { get => _explicitNullValueMcpOrigins; set { _explicitNullValueMcpOrigins = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mcp_origins"); else _explicitNullProperties?.Remove("mcp_origins"); } }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableMcpOriginsItem>? McpOrigins { get => _explicitNullValueMcpOrigins; set { _explicitNullValueMcpOrigins = value; AdditionalData?.Remove("mcp_origins"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mcp_origins"); else _explicitNullProperties?.Remove("mcp_origins"); } }
         private List<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableMcpOriginsItem>? _explicitNullValueMcpOrigins = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableMcpOriginsItem> McpOrigins { get => _explicitNullValueMcpOrigins; set { _explicitNullValueMcpOrigins = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mcp_origins"); else _explicitNullProperties?.Remove("mcp_origins"); } }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableMcpOriginsItem> McpOrigins { get => _explicitNullValueMcpOrigins; set { _explicitNullValueMcpOrigins = value; AdditionalData?.Remove("mcp_origins"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mcp_origins"); else _explicitNullProperties?.Remove("mcp_origins"); } }
         private List<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableMcpOriginsItem> _explicitNullValueMcpOrigins = default!;
 #endif
         /// <summary>The read_at property</summary>
-        public DateTimeOffset? ReadAt { get => _explicitNullValueReadAt; set { _explicitNullValueReadAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("read_at"); else _explicitNullProperties?.Remove("read_at"); } }
+        public DateTimeOffset? ReadAt { get => _explicitNullValueReadAt; set { _explicitNullValueReadAt = value; AdditionalData?.Remove("read_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("read_at"); else _explicitNullProperties?.Remove("read_at"); } }
         private DateTimeOffset? _explicitNullValueReadAt = default!;
         /// <summary>The secrets property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableSecretsItem>? Secrets { get => _explicitNullValueSecrets; set { _explicitNullValueSecrets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("secrets"); else _explicitNullProperties?.Remove("secrets"); } }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableSecretsItem>? Secrets { get => _explicitNullValueSecrets; set { _explicitNullValueSecrets = value; AdditionalData?.Remove("secrets"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("secrets"); else _explicitNullProperties?.Remove("secrets"); } }
         private List<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableSecretsItem>? _explicitNullValueSecrets = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableSecretsItem> Secrets { get => _explicitNullValueSecrets; set { _explicitNullValueSecrets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("secrets"); else _explicitNullProperties?.Remove("secrets"); } }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableSecretsItem> Secrets { get => _explicitNullValueSecrets; set { _explicitNullValueSecrets = value; AdditionalData?.Remove("secrets"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("secrets"); else _explicitNullProperties?.Remove("secrets"); } }
         private List<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableSecretsItem> _explicitNullValueSecrets = default!;
 #endif
         /// <summary>The slack property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableSlack? Slack { get => _explicitNullValueSlack; set { _explicitNullValueSlack = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slack"); else _explicitNullProperties?.Remove("slack"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableSlack? Slack { get => _explicitNullValueSlack; set { _explicitNullValueSlack = value; AdditionalData?.Remove("slack"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slack"); else _explicitNullProperties?.Remove("slack"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableSlack? _explicitNullValueSlack = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableSlack Slack { get => _explicitNullValueSlack; set { _explicitNullValueSlack = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slack"); else _explicitNullProperties?.Remove("slack"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableSlack Slack { get => _explicitNullValueSlack; set { _explicitNullValueSlack = value; AdditionalData?.Remove("slack"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slack"); else _explicitNullProperties?.Remove("slack"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableSlack _explicitNullValueSlack = default!;
 #endif
         /// <summary>

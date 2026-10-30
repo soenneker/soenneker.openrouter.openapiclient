@@ -17,13 +17,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("assigned_count") is { } nullNodeAssignedCount && nullNodeAssignedCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AssignedCount = null;
+            if (parseNode.GetChildNode("assigned_count") is null) { _explicitNullValueAssignedCount = default!; _explicitNullProperties?.Remove("assigned_count"); }
+            else if (parseNode.GetChildNode("assigned_count") is { } nullNodeAssignedCount && nullNodeAssignedCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AssignedCount = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Number of members successfully assigned</summary>
-        public int? AssignedCount { get => _explicitNullValueAssignedCount; set { _explicitNullValueAssignedCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("assigned_count"); else _explicitNullProperties?.Remove("assigned_count"); } }
+        public int? AssignedCount { get => _explicitNullValueAssignedCount; set { _explicitNullValueAssignedCount = value; AdditionalData?.Remove("assigned_count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("assigned_count"); else _explicitNullProperties?.Remove("assigned_count"); } }
         private int? _explicitNullValueAssignedCount = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BulkAssignMembersResponse"/> and sets the default values.

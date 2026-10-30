@@ -18,28 +18,31 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("data_collection") is { } nullNodeDataCollection && nullNodeDataCollection.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DataCollection = null;
-            if (parseNode.GetChildNode("options") is { } nullNodeOptions && nullNodeOptions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Options = null;
-            if (parseNode.GetChildNode("zdr") is { } nullNodeZdr && nullNodeZdr.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Zdr = null;
+            if (parseNode.GetChildNode("data_collection") is null) { _explicitNullValueDataCollection = default!; _explicitNullProperties?.Remove("data_collection"); }
+            else if (parseNode.GetChildNode("data_collection") is { } nullNodeDataCollection && nullNodeDataCollection.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DataCollection = null;
+            if (parseNode.GetChildNode("options") is null) { _explicitNullValueOptions = default!; _explicitNullProperties?.Remove("options"); }
+            else if (parseNode.GetChildNode("options") is { } nullNodeOptions && nullNodeOptions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Options = null;
+            if (parseNode.GetChildNode("zdr") is null) { _explicitNullValueZdr = default!; _explicitNullProperties?.Remove("zdr"); }
+            else if (parseNode.GetChildNode("zdr") is { } nullNodeZdr && nullNodeZdr.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Zdr = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Data collection setting. If no available model provider meets the requirement, your request will return an error.- allow: (default) allow providers which store user data non-transiently and may train on it- deny: use only providers which do not collect user data.</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequestProviderDataCollection? DataCollection { get => _explicitNullValueDataCollection; set { _explicitNullValueDataCollection = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data_collection"); else _explicitNullProperties?.Remove("data_collection"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequestProviderDataCollection? DataCollection { get => _explicitNullValueDataCollection; set { _explicitNullValueDataCollection = value; AdditionalData?.Remove("data_collection"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data_collection"); else _explicitNullProperties?.Remove("data_collection"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequestProviderDataCollection? _explicitNullValueDataCollection = default!;
         /// <summary>Provider-specific options keyed by provider slug. Only options for the matched provider are forwarded; the rest are ignored. Unrecognized keys are silently dropped.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions? Options { get => _explicitNullValueOptions; set { _explicitNullValueOptions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("options"); else _explicitNullProperties?.Remove("options"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions? Options { get => _explicitNullValueOptions; set { _explicitNullValueOptions = value; AdditionalData?.Remove("options"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("options"); else _explicitNullProperties?.Remove("options"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions? _explicitNullValueOptions = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions Options { get => _explicitNullValueOptions; set { _explicitNullValueOptions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("options"); else _explicitNullProperties?.Remove("options"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions Options { get => _explicitNullValueOptions; set { _explicitNullValueOptions = value; AdditionalData?.Remove("options"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("options"); else _explicitNullProperties?.Remove("options"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions _explicitNullValueOptions = default!;
 #endif
         /// <summary>Whether to restrict routing to only ZDR (Zero Data Retention) endpoints. When true, only endpoints that do not retain prompts will be used.</summary>
-        public bool? Zdr { get => _explicitNullValueZdr; set { _explicitNullValueZdr = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("zdr"); else _explicitNullProperties?.Remove("zdr"); } }
+        public bool? Zdr { get => _explicitNullValueZdr; set { _explicitNullValueZdr = value; AdditionalData?.Remove("zdr"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("zdr"); else _explicitNullProperties?.Remove("zdr"); } }
         private bool? _explicitNullValueZdr = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequestProvider"/> and sets the default values.
@@ -66,7 +69,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "data_collection", n => { DataCollection = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequestProviderDataCollection>(); } },
+                { "data_collection", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequestProviderDataCollection>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueDataCollection = default; _explicitNullProperties?.Remove("data_collection"); AdditionalData["data_collection"] = unknown; } else { DataCollection = parsed; AdditionalData.Remove("data_collection"); } } },
                 { "options", n => { Options = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions.CreateFromDiscriminatorValue); } },
                 { "zdr", n => { Zdr = n.GetBoolValue(); } },
             };

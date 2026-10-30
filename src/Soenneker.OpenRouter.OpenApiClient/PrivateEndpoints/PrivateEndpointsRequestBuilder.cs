@@ -87,7 +87,12 @@ namespace Soenneker.OpenRouter.OpenApiClient.PrivateEndpoints
         /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BadRequestResponse">When receiving a 400 status code</exception>
         /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.UnauthorizedResponse">When receiving a 401 status code</exception>
         /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ForbiddenResponse">When receiving a 403 status code</exception>
+        /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.CreatePrivateEndpoint404ResponseError">When receiving a 404 status code</exception>
         /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.RequestTimeoutResponse">When receiving a 408 status code</exception>
+        /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.CreatePrivateEndpoint409ResponseError">When receiving a 409 status code</exception>
+        /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.CreatePrivateEndpoint422ResponseError">When receiving a 422 status code</exception>
+        /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.CreatePrivateEndpoint500ResponseError">When receiving a 500 status code</exception>
+        /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.CreatePrivateEndpoint502ResponseError">When receiving a 502 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.OpenRouter.OpenApiClient.Models.ManagedPrivateEndpointResponse?> PostAsync(global::Soenneker.OpenRouter.OpenApiClient.Models.CreatePrivateEndpointRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -104,7 +109,12 @@ namespace Soenneker.OpenRouter.OpenApiClient.PrivateEndpoints
                 { "400", global::Soenneker.OpenRouter.OpenApiClient.Models.BadRequestResponse.CreateFromDiscriminatorValue },
                 { "401", global::Soenneker.OpenRouter.OpenApiClient.Models.UnauthorizedResponse.CreateFromDiscriminatorValue },
                 { "403", global::Soenneker.OpenRouter.OpenApiClient.Models.ForbiddenResponse.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.OpenRouter.OpenApiClient.Models.CreatePrivateEndpoint404ResponseError.CreateFromDiscriminatorValue },
                 { "408", global::Soenneker.OpenRouter.OpenApiClient.Models.RequestTimeoutResponse.CreateFromDiscriminatorValue },
+                { "409", global::Soenneker.OpenRouter.OpenApiClient.Models.CreatePrivateEndpoint409ResponseError.CreateFromDiscriminatorValue },
+                { "422", global::Soenneker.OpenRouter.OpenApiClient.Models.CreatePrivateEndpoint422ResponseError.CreateFromDiscriminatorValue },
+                { "500", global::Soenneker.OpenRouter.OpenApiClient.Models.CreatePrivateEndpoint500ResponseError.CreateFromDiscriminatorValue },
+                { "502", global::Soenneker.OpenRouter.OpenApiClient.Models.CreatePrivateEndpoint502ResponseError.CreateFromDiscriminatorValue },
                 { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
                 { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
@@ -124,7 +134,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.PrivateEndpoints
         public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
+            var requestInfo = new RequestInformation(Method.GET, global::Soenneker.OpenApi.Generated.OpenApiServiceRoutes.Resolve(UrlTemplate, RequestAdapter.BaseUrl, "https://openrouter.ai/api/v1", "/private-endpoints", PathParameters.ContainsKey("request-raw-url")), PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
@@ -145,7 +155,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.PrivateEndpoints
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
-            var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
+            var requestInfo = new RequestInformation(Method.POST, global::Soenneker.OpenApi.Generated.OpenApiServiceRoutes.Resolve(UrlTemplate, RequestAdapter.BaseUrl, "https://openrouter.ai/api/v1", "/private-endpoints", PathParameters.ContainsKey("request-raw-url")), PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);

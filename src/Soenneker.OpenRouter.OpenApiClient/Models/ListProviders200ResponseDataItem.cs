@@ -17,13 +17,20 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("datacenters") is { } nullNodeDatacenters && nullNodeDatacenters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Datacenters = null;
-            if (parseNode.GetChildNode("headquarters") is { } nullNodeHeadquarters && nullNodeHeadquarters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Headquarters = null;
-            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
-            if (parseNode.GetChildNode("privacy_policy_url") is { } nullNodePrivacyPolicyUrl && nullNodePrivacyPolicyUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PrivacyPolicyUrl = null;
-            if (parseNode.GetChildNode("slug") is { } nullNodeSlug && nullNodeSlug.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Slug = null;
-            if (parseNode.GetChildNode("status_page_url") is { } nullNodeStatusPageUrl && nullNodeStatusPageUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StatusPageUrl = null;
-            if (parseNode.GetChildNode("terms_of_service_url") is { } nullNodeTermsOfServiceUrl && nullNodeTermsOfServiceUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TermsOfServiceUrl = null;
+            if (parseNode.GetChildNode("datacenters") is null) { _explicitNullValueDatacenters = default!; _explicitNullProperties?.Remove("datacenters"); }
+            else if (parseNode.GetChildNode("datacenters") is { } nullNodeDatacenters && nullNodeDatacenters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Datacenters = null;
+            if (parseNode.GetChildNode("headquarters") is null) { _explicitNullValueHeadquarters = default!; _explicitNullProperties?.Remove("headquarters"); }
+            else if (parseNode.GetChildNode("headquarters") is { } nullNodeHeadquarters && nullNodeHeadquarters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Headquarters = null;
+            if (parseNode.GetChildNode("name") is null) { _explicitNullValueName = default!; _explicitNullProperties?.Remove("name"); }
+            else if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("privacy_policy_url") is null) { _explicitNullValuePrivacyPolicyUrl = default!; _explicitNullProperties?.Remove("privacy_policy_url"); }
+            else if (parseNode.GetChildNode("privacy_policy_url") is { } nullNodePrivacyPolicyUrl && nullNodePrivacyPolicyUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PrivacyPolicyUrl = null;
+            if (parseNode.GetChildNode("slug") is null) { _explicitNullValueSlug = default!; _explicitNullProperties?.Remove("slug"); }
+            else if (parseNode.GetChildNode("slug") is { } nullNodeSlug && nullNodeSlug.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Slug = null;
+            if (parseNode.GetChildNode("status_page_url") is null) { _explicitNullValueStatusPageUrl = default!; _explicitNullProperties?.Remove("status_page_url"); }
+            else if (parseNode.GetChildNode("status_page_url") is { } nullNodeStatusPageUrl && nullNodeStatusPageUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StatusPageUrl = null;
+            if (parseNode.GetChildNode("terms_of_service_url") is null) { _explicitNullValueTermsOfServiceUrl = default!; _explicitNullProperties?.Remove("terms_of_service_url"); }
+            else if (parseNode.GetChildNode("terms_of_service_url") is { } nullNodeTermsOfServiceUrl && nullNodeTermsOfServiceUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TermsOfServiceUrl = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -31,64 +38,64 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>ISO 3166-1 Alpha-2 country codes of the provider datacenter locations</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ListProviders200ResponseDataItemDatacentersItem?>? Datacenters { get => _explicitNullValueDatacenters; set { _explicitNullValueDatacenters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("datacenters"); else _explicitNullProperties?.Remove("datacenters"); } }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ListProviders200ResponseDataItemDatacentersItem?>? Datacenters { get => _explicitNullValueDatacenters; set { _explicitNullValueDatacenters = value; AdditionalData?.Remove("datacenters"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("datacenters"); else _explicitNullProperties?.Remove("datacenters"); } }
         private List<global::Soenneker.OpenRouter.OpenApiClient.Models.ListProviders200ResponseDataItemDatacentersItem?>? _explicitNullValueDatacenters = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ListProviders200ResponseDataItemDatacentersItem?> Datacenters { get => _explicitNullValueDatacenters; set { _explicitNullValueDatacenters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("datacenters"); else _explicitNullProperties?.Remove("datacenters"); } }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ListProviders200ResponseDataItemDatacentersItem?> Datacenters { get => _explicitNullValueDatacenters; set { _explicitNullValueDatacenters = value; AdditionalData?.Remove("datacenters"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("datacenters"); else _explicitNullProperties?.Remove("datacenters"); } }
         private List<global::Soenneker.OpenRouter.OpenApiClient.Models.ListProviders200ResponseDataItemDatacentersItem?> _explicitNullValueDatacenters = default!;
 #endif
         /// <summary>ISO 3166-1 Alpha-2 country code of the provider headquarters</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ListProviders200ResponseDataItemHeadquarters? Headquarters { get => _explicitNullValueHeadquarters; set { _explicitNullValueHeadquarters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("headquarters"); else _explicitNullProperties?.Remove("headquarters"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ListProviders200ResponseDataItemHeadquarters? Headquarters { get => _explicitNullValueHeadquarters; set { _explicitNullValueHeadquarters = value; AdditionalData?.Remove("headquarters"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("headquarters"); else _explicitNullProperties?.Remove("headquarters"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.ListProviders200ResponseDataItemHeadquarters? _explicitNullValueHeadquarters = default!;
         /// <summary>Display name of the provider</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; AdditionalData?.Remove("name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
         private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; AdditionalData?.Remove("name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
         private string _explicitNullValueName = default!;
 #endif
         /// <summary>URL to the provider&apos;s privacy policy</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? PrivacyPolicyUrl { get => _explicitNullValuePrivacyPolicyUrl; set { _explicitNullValuePrivacyPolicyUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("privacy_policy_url"); else _explicitNullProperties?.Remove("privacy_policy_url"); } }
+        public string? PrivacyPolicyUrl { get => _explicitNullValuePrivacyPolicyUrl; set { _explicitNullValuePrivacyPolicyUrl = value; AdditionalData?.Remove("privacy_policy_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("privacy_policy_url"); else _explicitNullProperties?.Remove("privacy_policy_url"); } }
         private string? _explicitNullValuePrivacyPolicyUrl = default!;
 #nullable restore
 #else
-        public string PrivacyPolicyUrl { get => _explicitNullValuePrivacyPolicyUrl; set { _explicitNullValuePrivacyPolicyUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("privacy_policy_url"); else _explicitNullProperties?.Remove("privacy_policy_url"); } }
+        public string PrivacyPolicyUrl { get => _explicitNullValuePrivacyPolicyUrl; set { _explicitNullValuePrivacyPolicyUrl = value; AdditionalData?.Remove("privacy_policy_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("privacy_policy_url"); else _explicitNullProperties?.Remove("privacy_policy_url"); } }
         private string _explicitNullValuePrivacyPolicyUrl = default!;
 #endif
         /// <summary>URL-friendly identifier for the provider</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Slug { get => _explicitNullValueSlug; set { _explicitNullValueSlug = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slug"); else _explicitNullProperties?.Remove("slug"); } }
+        public string? Slug { get => _explicitNullValueSlug; set { _explicitNullValueSlug = value; AdditionalData?.Remove("slug"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slug"); else _explicitNullProperties?.Remove("slug"); } }
         private string? _explicitNullValueSlug = default!;
 #nullable restore
 #else
-        public string Slug { get => _explicitNullValueSlug; set { _explicitNullValueSlug = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slug"); else _explicitNullProperties?.Remove("slug"); } }
+        public string Slug { get => _explicitNullValueSlug; set { _explicitNullValueSlug = value; AdditionalData?.Remove("slug"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slug"); else _explicitNullProperties?.Remove("slug"); } }
         private string _explicitNullValueSlug = default!;
 #endif
         /// <summary>URL to the provider&apos;s status page</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? StatusPageUrl { get => _explicitNullValueStatusPageUrl; set { _explicitNullValueStatusPageUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status_page_url"); else _explicitNullProperties?.Remove("status_page_url"); } }
+        public string? StatusPageUrl { get => _explicitNullValueStatusPageUrl; set { _explicitNullValueStatusPageUrl = value; AdditionalData?.Remove("status_page_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status_page_url"); else _explicitNullProperties?.Remove("status_page_url"); } }
         private string? _explicitNullValueStatusPageUrl = default!;
 #nullable restore
 #else
-        public string StatusPageUrl { get => _explicitNullValueStatusPageUrl; set { _explicitNullValueStatusPageUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status_page_url"); else _explicitNullProperties?.Remove("status_page_url"); } }
+        public string StatusPageUrl { get => _explicitNullValueStatusPageUrl; set { _explicitNullValueStatusPageUrl = value; AdditionalData?.Remove("status_page_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status_page_url"); else _explicitNullProperties?.Remove("status_page_url"); } }
         private string _explicitNullValueStatusPageUrl = default!;
 #endif
         /// <summary>URL to the provider&apos;s terms of service</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TermsOfServiceUrl { get => _explicitNullValueTermsOfServiceUrl; set { _explicitNullValueTermsOfServiceUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("terms_of_service_url"); else _explicitNullProperties?.Remove("terms_of_service_url"); } }
+        public string? TermsOfServiceUrl { get => _explicitNullValueTermsOfServiceUrl; set { _explicitNullValueTermsOfServiceUrl = value; AdditionalData?.Remove("terms_of_service_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("terms_of_service_url"); else _explicitNullProperties?.Remove("terms_of_service_url"); } }
         private string? _explicitNullValueTermsOfServiceUrl = default!;
 #nullable restore
 #else
-        public string TermsOfServiceUrl { get => _explicitNullValueTermsOfServiceUrl; set { _explicitNullValueTermsOfServiceUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("terms_of_service_url"); else _explicitNullProperties?.Remove("terms_of_service_url"); } }
+        public string TermsOfServiceUrl { get => _explicitNullValueTermsOfServiceUrl; set { _explicitNullValueTermsOfServiceUrl = value; AdditionalData?.Remove("terms_of_service_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("terms_of_service_url"); else _explicitNullProperties?.Remove("terms_of_service_url"); } }
         private string _explicitNullValueTermsOfServiceUrl = default!;
 #endif
         /// <summary>
@@ -117,7 +124,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "datacenters", n => { Datacenters = n.GetCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ListProviders200ResponseDataItemDatacentersItem>()?.AsList(); } },
-                { "headquarters", n => { Headquarters = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ListProviders200ResponseDataItemHeadquarters>(); } },
+                { "headquarters", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ListProviders200ResponseDataItemHeadquarters>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueHeadquarters = default; _explicitNullProperties?.Remove("headquarters"); AdditionalData["headquarters"] = unknown; } else { Headquarters = parsed; AdditionalData.Remove("headquarters"); } } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "privacy_policy_url", n => { PrivacyPolicyUrl = n.GetStringValue(); } },
                 { "slug", n => { Slug = n.GetStringValue(); } },

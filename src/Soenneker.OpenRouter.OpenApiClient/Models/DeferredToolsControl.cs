@@ -18,32 +18,36 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("profile") is { } nullNodeProfile && nullNodeProfile.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Profile = null;
-            if (parseNode.GetChildNode("protocol") is { } nullNodeProtocol && nullNodeProtocol.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Protocol = null;
-            if (parseNode.GetChildNode("search") is { } nullNodeSearch && nullNodeSearch.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Search = null;
-            if (parseNode.GetChildNode("validation") is { } nullNodeValidation && nullNodeValidation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Validation = null;
+            if (parseNode.GetChildNode("profile") is null) { _explicitNullValueProfile = default!; _explicitNullProperties?.Remove("profile"); }
+            else if (parseNode.GetChildNode("profile") is { } nullNodeProfile && nullNodeProfile.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Profile = null;
+            if (parseNode.GetChildNode("protocol") is null) { _explicitNullValueProtocol = default!; _explicitNullProperties?.Remove("protocol"); }
+            else if (parseNode.GetChildNode("protocol") is { } nullNodeProtocol && nullNodeProtocol.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Protocol = null;
+            if (parseNode.GetChildNode("search") is null) { _explicitNullValueSearch = default!; _explicitNullProperties?.Remove("search"); }
+            else if (parseNode.GetChildNode("search") is { } nullNodeSearch && nullNodeSearch.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Search = null;
+            if (parseNode.GetChildNode("validation") is null) { _explicitNullValueValidation = default!; _explicitNullProperties?.Remove("validation"); }
+            else if (parseNode.GetChildNode("validation") is { } nullNodeValidation && nullNodeValidation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Validation = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Loading profile. Only `portable` is available in this release: OpenRouter serves deferral with router-built search and call wrappers on any model.</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.PortableProfile? Profile { get => _explicitNullValueProfile; set { _explicitNullValueProfile = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("profile"); else _explicitNullProperties?.Remove("profile"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PortableProfile? Profile { get => _explicitNullValueProfile; set { _explicitNullValueProfile = value; AdditionalData?.Remove("profile"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("profile"); else _explicitNullProperties?.Remove("profile"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.PortableProfile? _explicitNullValueProfile = default!;
         /// <summary>The protocol property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.V1Protocol? Protocol { get => _explicitNullValueProtocol; set { _explicitNullValueProtocol = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("protocol"); else _explicitNullProperties?.Remove("protocol"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.V1Protocol? Protocol { get => _explicitNullValueProtocol; set { _explicitNullValueProtocol = value; AdditionalData?.Remove("protocol"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("protocol"); else _explicitNullProperties?.Remove("protocol"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.V1Protocol? _explicitNullValueProtocol = default!;
         /// <summary>Router-local regex/BM25 or caller-owned custom search.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.DeferredToolsSearchStrategy? Search { get => _explicitNullValueSearch; set { _explicitNullValueSearch = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("search"); else _explicitNullProperties?.Remove("search"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.DeferredToolsSearchStrategy? Search { get => _explicitNullValueSearch; set { _explicitNullValueSearch = value; AdditionalData?.Remove("search"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("search"); else _explicitNullProperties?.Remove("search"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.DeferredToolsSearchStrategy? _explicitNullValueSearch = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.DeferredToolsSearchStrategy Search { get => _explicitNullValueSearch; set { _explicitNullValueSearch = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("search"); else _explicitNullProperties?.Remove("search"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.DeferredToolsSearchStrategy Search { get => _explicitNullValueSearch; set { _explicitNullValueSearch = value; AdditionalData?.Remove("search"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("search"); else _explicitNullProperties?.Remove("search"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.DeferredToolsSearchStrategy _explicitNullValueSearch = default!;
 #endif
         /// <summary>Where tool-call arguments are checked against the original schema. Only `runtime` (in OpenRouter) is available in this release.</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.RuntimeValidation? Validation { get => _explicitNullValueValidation; set { _explicitNullValueValidation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("validation"); else _explicitNullProperties?.Remove("validation"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.RuntimeValidation? Validation { get => _explicitNullValueValidation; set { _explicitNullValueValidation = value; AdditionalData?.Remove("validation"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("validation"); else _explicitNullProperties?.Remove("validation"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.RuntimeValidation? _explicitNullValueValidation = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.DeferredToolsControl"/> and sets the default values.
@@ -70,10 +74,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "profile", n => { Profile = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PortableProfile>(); } },
-                { "protocol", n => { Protocol = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.V1Protocol>(); } },
+                { "profile", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PortableProfile>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueProfile = default; _explicitNullProperties?.Remove("profile"); AdditionalData["profile"] = unknown; } else { Profile = parsed; AdditionalData.Remove("profile"); } } },
+                { "protocol", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.V1Protocol>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueProtocol = default; _explicitNullProperties?.Remove("protocol"); AdditionalData["protocol"] = unknown; } else { Protocol = parsed; AdditionalData.Remove("protocol"); } } },
                 { "search", n => { Search = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.DeferredToolsSearchStrategy>(global::Soenneker.OpenRouter.OpenApiClient.Models.DeferredToolsSearchStrategy.CreateFromDiscriminatorValue); } },
-                { "validation", n => { Validation = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.RuntimeValidation>(); } },
+                { "validation", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.RuntimeValidation>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueValidation = default; _explicitNullProperties?.Remove("validation"); AdditionalData["validation"] = unknown; } else { Validation = parsed; AdditionalData.Remove("validation"); } } },
             };
         }
         /// <summary>

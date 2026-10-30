@@ -18,8 +18,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("allow_fallbacks") is { } nullNodeAllowFallbacks && nullNodeAllowFallbacks.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AllowFallbacks = null;
-            if (parseNode.GetChildNode("only") is { } nullNodeOnly && nullNodeOnly.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Only = null;
+            if (parseNode.GetChildNode("allow_fallbacks") is null) { _explicitNullValueAllowFallbacks = default!; _explicitNullProperties?.Remove("allow_fallbacks"); }
+            else if (parseNode.GetChildNode("allow_fallbacks") is { } nullNodeAllowFallbacks && nullNodeAllowFallbacks.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AllowFallbacks = null;
+            if (parseNode.GetChildNode("only") is null) { _explicitNullValueOnly = default!; _explicitNullProperties?.Remove("only"); }
+            else if (parseNode.GetChildNode("only") is { } nullNodeOnly && nullNodeOnly.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Only = null;
         }
 
         /// <summary>Whether to allow backup providers to serve requests- true: (default) when the primary provider (or your custom providers in &quot;order&quot;) is unavailable, use the next best provider.- false: use only the primary/custom provider, and return the upstream error if it&apos;s unavailable.</summary>

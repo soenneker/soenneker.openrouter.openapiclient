@@ -18,8 +18,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("input_audio") is { } nullNodeInputAudio && nullNodeInputAudio.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InputAudio = null;
-            if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
+            if (parseNode.GetChildNode("input_audio") is null) { _explicitNullValueInputAudio = default!; _explicitNullProperties?.Remove("input_audio"); }
+            else if (parseNode.GetChildNode("input_audio") is { } nullNodeInputAudio && nullNodeInputAudio.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InputAudio = null;
+            if (parseNode.GetChildNode("type") is null) { _explicitNullValueType = default!; _explicitNullProperties?.Remove("type"); }
+            else if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -27,15 +29,15 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Reference audio input object</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechInputReferenceAudioInput? InputAudio { get => _explicitNullValueInputAudio; set { _explicitNullValueInputAudio = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input_audio"); else _explicitNullProperties?.Remove("input_audio"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechInputReferenceAudioInput? InputAudio { get => _explicitNullValueInputAudio; set { _explicitNullValueInputAudio = value; AdditionalData?.Remove("input_audio"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input_audio"); else _explicitNullProperties?.Remove("input_audio"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechInputReferenceAudioInput? _explicitNullValueInputAudio = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechInputReferenceAudioInput InputAudio { get => _explicitNullValueInputAudio; set { _explicitNullValueInputAudio = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input_audio"); else _explicitNullProperties?.Remove("input_audio"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechInputReferenceAudioInput InputAudio { get => _explicitNullValueInputAudio; set { _explicitNullValueInputAudio = value; AdditionalData?.Remove("input_audio"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input_audio"); else _explicitNullProperties?.Remove("input_audio"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechInputReferenceAudioInput _explicitNullValueInputAudio = default!;
 #endif
         /// <summary>The type property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.InputAudioType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.InputAudioType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; AdditionalData?.Remove("type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.InputAudioType? _explicitNullValueType = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechInputReferenceAudio"/> and sets the default values.
@@ -63,7 +65,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "input_audio", n => { InputAudio = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechInputReferenceAudioInput>(global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechInputReferenceAudioInput.CreateFromDiscriminatorValue); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.InputAudioType>(); } },
+                { "type", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.InputAudioType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueType = default; _explicitNullProperties?.Remove("type"); AdditionalData["type"] = unknown; } else { Type = parsed; AdditionalData.Remove("type"); } } },
             };
         }
         /// <summary>

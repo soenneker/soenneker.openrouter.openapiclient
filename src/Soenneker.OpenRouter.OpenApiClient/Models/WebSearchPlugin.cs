@@ -17,87 +17,98 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("enabled") is { } nullNodeEnabled && nullNodeEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Enabled = null;
-            if (parseNode.GetChildNode("engine") is { } nullNodeEngine && nullNodeEngine.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Engine = null;
-            if (parseNode.GetChildNode("exclude_domains") is { } nullNodeExcludeDomains && nullNodeExcludeDomains.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExcludeDomains = null;
-            if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
-            if (parseNode.GetChildNode("include_domains") is { } nullNodeIncludeDomains && nullNodeIncludeDomains.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IncludeDomains = null;
-            if (parseNode.GetChildNode("max_results") is { } nullNodeMaxResults && nullNodeMaxResults.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxResults = null;
-            if (parseNode.GetChildNode("max_uses") is { } nullNodeMaxUses && nullNodeMaxUses.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxUses = null;
-            if (parseNode.GetChildNode("mode") is { } nullNodeMode && nullNodeMode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Mode = null;
-            if (parseNode.GetChildNode("search_prompt") is { } nullNodeSearchPrompt && nullNodeSearchPrompt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SearchPrompt = null;
-            if (parseNode.GetChildNode("user_location") is { } nullNodeUserLocation && nullNodeUserLocation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UserLocation = null;
-            if (parseNode.GetChildNode("x_search") is { } nullNodeXSearch && nullNodeXSearch.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) XSearch = null;
+            if (parseNode.GetChildNode("enabled") is null) { _explicitNullValueEnabled = default!; _explicitNullProperties?.Remove("enabled"); }
+            else if (parseNode.GetChildNode("enabled") is { } nullNodeEnabled && nullNodeEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Enabled = null;
+            if (parseNode.GetChildNode("engine") is null) { _explicitNullValueEngine = default!; _explicitNullProperties?.Remove("engine"); }
+            else if (parseNode.GetChildNode("engine") is { } nullNodeEngine && nullNodeEngine.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Engine = null;
+            if (parseNode.GetChildNode("exclude_domains") is null) { _explicitNullValueExcludeDomains = default!; _explicitNullProperties?.Remove("exclude_domains"); }
+            else if (parseNode.GetChildNode("exclude_domains") is { } nullNodeExcludeDomains && nullNodeExcludeDomains.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExcludeDomains = null;
+            if (parseNode.GetChildNode("id") is null) { _explicitNullValueId = default!; _explicitNullProperties?.Remove("id"); }
+            else if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("include_domains") is null) { _explicitNullValueIncludeDomains = default!; _explicitNullProperties?.Remove("include_domains"); }
+            else if (parseNode.GetChildNode("include_domains") is { } nullNodeIncludeDomains && nullNodeIncludeDomains.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IncludeDomains = null;
+            if (parseNode.GetChildNode("max_results") is null) { _explicitNullValueMaxResults = default!; _explicitNullProperties?.Remove("max_results"); }
+            else if (parseNode.GetChildNode("max_results") is { } nullNodeMaxResults && nullNodeMaxResults.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxResults = null;
+            if (parseNode.GetChildNode("max_uses") is null) { _explicitNullValueMaxUses = default!; _explicitNullProperties?.Remove("max_uses"); }
+            else if (parseNode.GetChildNode("max_uses") is { } nullNodeMaxUses && nullNodeMaxUses.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxUses = null;
+            if (parseNode.GetChildNode("mode") is null) { _explicitNullValueMode = default!; _explicitNullProperties?.Remove("mode"); }
+            else if (parseNode.GetChildNode("mode") is { } nullNodeMode && nullNodeMode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Mode = null;
+            if (parseNode.GetChildNode("search_prompt") is null) { _explicitNullValueSearchPrompt = default!; _explicitNullProperties?.Remove("search_prompt"); }
+            else if (parseNode.GetChildNode("search_prompt") is { } nullNodeSearchPrompt && nullNodeSearchPrompt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SearchPrompt = null;
+            if (parseNode.GetChildNode("user_location") is null) { _explicitNullValueUserLocation = default!; _explicitNullProperties?.Remove("user_location"); }
+            else if (parseNode.GetChildNode("user_location") is { } nullNodeUserLocation && nullNodeUserLocation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UserLocation = null;
+            if (parseNode.GetChildNode("x_search") is null) { _explicitNullValueXSearch = default!; _explicitNullProperties?.Remove("x_search"); }
+            else if (parseNode.GetChildNode("x_search") is { } nullNodeXSearch && nullNodeXSearch.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) XSearch = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Set to false to disable the web-search plugin for this request. Defaults to true.</summary>
-        public bool? Enabled { get => _explicitNullValueEnabled; set { _explicitNullValueEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enabled"); else _explicitNullProperties?.Remove("enabled"); } }
+        public bool? Enabled { get => _explicitNullValueEnabled; set { _explicitNullValueEnabled = value; AdditionalData?.Remove("enabled"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enabled"); else _explicitNullProperties?.Remove("enabled"); } }
         private bool? _explicitNullValueEnabled = default!;
         /// <summary>The search engine to use for web search.</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchEngine? Engine { get => _explicitNullValueEngine; set { _explicitNullValueEngine = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("engine"); else _explicitNullProperties?.Remove("engine"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchEngine? Engine { get => _explicitNullValueEngine; set { _explicitNullValueEngine = value; AdditionalData?.Remove("engine"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("engine"); else _explicitNullProperties?.Remove("engine"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchEngine? _explicitNullValueEngine = default!;
         /// <summary>A list of domains to exclude from web search results. Supports wildcards (e.g. &quot;*.substack.com&quot;) and path filtering (e.g. &quot;openai.com/blog&quot;).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? ExcludeDomains { get => _explicitNullValueExcludeDomains; set { _explicitNullValueExcludeDomains = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("exclude_domains"); else _explicitNullProperties?.Remove("exclude_domains"); } }
+        public List<string>? ExcludeDomains { get => _explicitNullValueExcludeDomains; set { _explicitNullValueExcludeDomains = value; AdditionalData?.Remove("exclude_domains"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("exclude_domains"); else _explicitNullProperties?.Remove("exclude_domains"); } }
         private List<string>? _explicitNullValueExcludeDomains = default!;
 #nullable restore
 #else
-        public List<string> ExcludeDomains { get => _explicitNullValueExcludeDomains; set { _explicitNullValueExcludeDomains = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("exclude_domains"); else _explicitNullProperties?.Remove("exclude_domains"); } }
+        public List<string> ExcludeDomains { get => _explicitNullValueExcludeDomains; set { _explicitNullValueExcludeDomains = value; AdditionalData?.Remove("exclude_domains"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("exclude_domains"); else _explicitNullProperties?.Remove("exclude_domains"); } }
         private List<string> _explicitNullValueExcludeDomains = default!;
 #endif
         /// <summary>The id property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.WebId? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.WebId? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; AdditionalData?.Remove("id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.WebId? _explicitNullValueId = default!;
         /// <summary>A list of domains to restrict web search results to. Supports wildcards (e.g. &quot;*.substack.com&quot;) and path filtering (e.g. &quot;openai.com/blog&quot;).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? IncludeDomains { get => _explicitNullValueIncludeDomains; set { _explicitNullValueIncludeDomains = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("include_domains"); else _explicitNullProperties?.Remove("include_domains"); } }
+        public List<string>? IncludeDomains { get => _explicitNullValueIncludeDomains; set { _explicitNullValueIncludeDomains = value; AdditionalData?.Remove("include_domains"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("include_domains"); else _explicitNullProperties?.Remove("include_domains"); } }
         private List<string>? _explicitNullValueIncludeDomains = default!;
 #nullable restore
 #else
-        public List<string> IncludeDomains { get => _explicitNullValueIncludeDomains; set { _explicitNullValueIncludeDomains = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("include_domains"); else _explicitNullProperties?.Remove("include_domains"); } }
+        public List<string> IncludeDomains { get => _explicitNullValueIncludeDomains; set { _explicitNullValueIncludeDomains = value; AdditionalData?.Remove("include_domains"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("include_domains"); else _explicitNullProperties?.Remove("include_domains"); } }
         private List<string> _explicitNullValueIncludeDomains = default!;
 #endif
         /// <summary>The max_results property</summary>
-        public int? MaxResults { get => _explicitNullValueMaxResults; set { _explicitNullValueMaxResults = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_results"); else _explicitNullProperties?.Remove("max_results"); } }
+        public int? MaxResults { get => _explicitNullValueMaxResults; set { _explicitNullValueMaxResults = value; AdditionalData?.Remove("max_results"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_results"); else _explicitNullProperties?.Remove("max_results"); } }
         private int? _explicitNullValueMaxResults = default!;
         /// <summary>Maximum number of times the model can invoke web search in a single turn. Passed through to native providers that support it (e.g. Anthropic).</summary>
-        public int? MaxUses { get => _explicitNullValueMaxUses; set { _explicitNullValueMaxUses = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_uses"); else _explicitNullProperties?.Remove("max_uses"); } }
+        public int? MaxUses { get => _explicitNullValueMaxUses; set { _explicitNullValueMaxUses = value; AdditionalData?.Remove("max_uses"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_uses"); else _explicitNullProperties?.Remove("max_uses"); } }
         private int? _explicitNullValueMaxUses = default!;
         /// <summary>Engine-native search mode. Exa supports instant, fast, auto (default), deep-lite, deep, and deep-reasoning. Parallel supports turbo, fast, basic (default), and advanced. Modes unsupported by the selected engine are ignored.</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchMode? Mode { get => _explicitNullValueMode; set { _explicitNullValueMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mode"); else _explicitNullProperties?.Remove("mode"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchMode? Mode { get => _explicitNullValueMode; set { _explicitNullValueMode = value; AdditionalData?.Remove("mode"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mode"); else _explicitNullProperties?.Remove("mode"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchMode? _explicitNullValueMode = default!;
         /// <summary>The search_prompt property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SearchPrompt { get => _explicitNullValueSearchPrompt; set { _explicitNullValueSearchPrompt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("search_prompt"); else _explicitNullProperties?.Remove("search_prompt"); } }
+        public string? SearchPrompt { get => _explicitNullValueSearchPrompt; set { _explicitNullValueSearchPrompt = value; AdditionalData?.Remove("search_prompt"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("search_prompt"); else _explicitNullProperties?.Remove("search_prompt"); } }
         private string? _explicitNullValueSearchPrompt = default!;
 #nullable restore
 #else
-        public string SearchPrompt { get => _explicitNullValueSearchPrompt; set { _explicitNullValueSearchPrompt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("search_prompt"); else _explicitNullProperties?.Remove("search_prompt"); } }
+        public string SearchPrompt { get => _explicitNullValueSearchPrompt; set { _explicitNullValueSearchPrompt = value; AdditionalData?.Remove("search_prompt"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("search_prompt"); else _explicitNullProperties?.Remove("search_prompt"); } }
         private string _explicitNullValueSearchPrompt = default!;
 #endif
         /// <summary>Approximate user location for location-biased search results. Passed through to native providers that support it (e.g. Anthropic).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchPluginUserLocation? UserLocation { get => _explicitNullValueUserLocation; set { _explicitNullValueUserLocation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_location"); else _explicitNullProperties?.Remove("user_location"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchPluginUserLocation? UserLocation { get => _explicitNullValueUserLocation; set { _explicitNullValueUserLocation = value; AdditionalData?.Remove("user_location"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_location"); else _explicitNullProperties?.Remove("user_location"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchPluginUserLocation? _explicitNullValueUserLocation = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchPluginUserLocation UserLocation { get => _explicitNullValueUserLocation; set { _explicitNullValueUserLocation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_location"); else _explicitNullProperties?.Remove("user_location"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchPluginUserLocation UserLocation { get => _explicitNullValueUserLocation; set { _explicitNullValueUserLocation = value; AdditionalData?.Remove("user_location"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_location"); else _explicitNullProperties?.Remove("user_location"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchPluginUserLocation _explicitNullValueUserLocation = default!;
 #endif
         /// <summary>Enable SpaceXAI X (Twitter) search alongside native web search, with optional filters. Only applies to SpaceXAI endpoints with native search; omit to search the web only. X search is billed separately by SpaceXAI, per post and per user profile fetched.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.XSearchOptions? XSearch { get => _explicitNullValueXSearch; set { _explicitNullValueXSearch = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("x_search"); else _explicitNullProperties?.Remove("x_search"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.XSearchOptions? XSearch { get => _explicitNullValueXSearch; set { _explicitNullValueXSearch = value; AdditionalData?.Remove("x_search"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("x_search"); else _explicitNullProperties?.Remove("x_search"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.XSearchOptions? _explicitNullValueXSearch = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.XSearchOptions XSearch { get => _explicitNullValueXSearch; set { _explicitNullValueXSearch = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("x_search"); else _explicitNullProperties?.Remove("x_search"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.XSearchOptions XSearch { get => _explicitNullValueXSearch; set { _explicitNullValueXSearch = value; AdditionalData?.Remove("x_search"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("x_search"); else _explicitNullProperties?.Remove("x_search"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.XSearchOptions _explicitNullValueXSearch = default!;
 #endif
         /// <summary>
@@ -126,13 +137,13 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
-                { "engine", n => { Engine = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchEngine>(); } },
+                { "engine", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchEngine>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueEngine = default; _explicitNullProperties?.Remove("engine"); AdditionalData["engine"] = unknown; } else { Engine = parsed; AdditionalData.Remove("engine"); } } },
                 { "exclude_domains", n => { ExcludeDomains = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "id", n => { Id = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebId>(); } },
+                { "id", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebId>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueId = default; _explicitNullProperties?.Remove("id"); AdditionalData["id"] = unknown; } else { Id = parsed; AdditionalData.Remove("id"); } } },
                 { "include_domains", n => { IncludeDomains = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "max_results", n => { MaxResults = n.GetIntValue(); } },
                 { "max_uses", n => { MaxUses = n.GetIntValue(); } },
-                { "mode", n => { Mode = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchMode>(); } },
+                { "mode", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchMode>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueMode = default; _explicitNullProperties?.Remove("mode"); AdditionalData["mode"] = unknown; } else { Mode = parsed; AdditionalData.Remove("mode"); } } },
                 { "search_prompt", n => { SearchPrompt = n.GetStringValue(); } },
                 { "user_location", n => { UserLocation = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchPluginUserLocation>(global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchPluginUserLocation.CreateFromDiscriminatorValue); } },
                 { "x_search", n => { XSearch = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.XSearchOptions>(global::Soenneker.OpenRouter.OpenApiClient.Models.XSearchOptions.CreateFromDiscriminatorValue); } },

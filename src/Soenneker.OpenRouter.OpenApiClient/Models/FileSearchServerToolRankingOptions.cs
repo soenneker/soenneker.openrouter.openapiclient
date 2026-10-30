@@ -17,17 +17,19 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("ranker") is { } nullNodeRanker && nullNodeRanker.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Ranker = null;
-            if (parseNode.GetChildNode("score_threshold") is { } nullNodeScoreThreshold && nullNodeScoreThreshold.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScoreThreshold = null;
+            if (parseNode.GetChildNode("ranker") is null) { _explicitNullValueRanker = default!; _explicitNullProperties?.Remove("ranker"); }
+            else if (parseNode.GetChildNode("ranker") is { } nullNodeRanker && nullNodeRanker.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Ranker = null;
+            if (parseNode.GetChildNode("score_threshold") is null) { _explicitNullValueScoreThreshold = default!; _explicitNullProperties?.Remove("score_threshold"); }
+            else if (parseNode.GetChildNode("score_threshold") is { } nullNodeScoreThreshold && nullNodeScoreThreshold.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScoreThreshold = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The ranker property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.FileSearchServerToolRankingOptionsRanker? Ranker { get => _explicitNullValueRanker; set { _explicitNullValueRanker = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ranker"); else _explicitNullProperties?.Remove("ranker"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.FileSearchServerToolRankingOptionsRanker? Ranker { get => _explicitNullValueRanker; set { _explicitNullValueRanker = value; AdditionalData?.Remove("ranker"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ranker"); else _explicitNullProperties?.Remove("ranker"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.FileSearchServerToolRankingOptionsRanker? _explicitNullValueRanker = default!;
         /// <summary>The score_threshold property</summary>
-        public double? ScoreThreshold { get => _explicitNullValueScoreThreshold; set { _explicitNullValueScoreThreshold = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("score_threshold"); else _explicitNullProperties?.Remove("score_threshold"); } }
+        public double? ScoreThreshold { get => _explicitNullValueScoreThreshold; set { _explicitNullValueScoreThreshold = value; AdditionalData?.Remove("score_threshold"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("score_threshold"); else _explicitNullProperties?.Remove("score_threshold"); } }
         private double? _explicitNullValueScoreThreshold = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.FileSearchServerToolRankingOptions"/> and sets the default values.
@@ -54,7 +56,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "ranker", n => { Ranker = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.FileSearchServerToolRankingOptionsRanker>(); } },
+                { "ranker", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.FileSearchServerToolRankingOptionsRanker>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueRanker = default; _explicitNullProperties?.Remove("ranker"); AdditionalData["ranker"] = unknown; } else { Ranker = parsed; AdditionalData.Remove("ranker"); } } },
                 { "score_threshold", n => { ScoreThreshold = n.GetDoubleValue(); } },
             };
         }

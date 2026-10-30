@@ -17,17 +17,19 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("return_mechanism") is { } nullNodeReturnMechanism && nullNodeReturnMechanism.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReturnMechanism = null;
-            if (parseNode.GetChildNode("supported") is { } nullNodeSupported && nullNodeSupported.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Supported = null;
+            if (parseNode.GetChildNode("return_mechanism") is null) { _explicitNullValueReturnMechanism = default!; _explicitNullProperties?.Remove("return_mechanism"); }
+            else if (parseNode.GetChildNode("return_mechanism") is { } nullNodeReturnMechanism && nullNodeReturnMechanism.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReturnMechanism = null;
+            if (parseNode.GetChildNode("supported") is null) { _explicitNullValueSupported = default!; _explicitNullProperties?.Remove("supported"); }
+            else if (parseNode.GetChildNode("supported") is { } nullNodeSupported && nullNodeSupported.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Supported = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Where the upstream puts reasoning tokens in its response: `reasoning` and `reasoning-content` are response fields, `content-string` is inline in the message, `none` returns no reasoning. `null` uses the provider default.</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointReasoningReturnMechanism? ReturnMechanism { get => _explicitNullValueReturnMechanism; set { _explicitNullValueReturnMechanism = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("return_mechanism"); else _explicitNullProperties?.Remove("return_mechanism"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointReasoningReturnMechanism? ReturnMechanism { get => _explicitNullValueReturnMechanism; set { _explicitNullValueReturnMechanism = value; AdditionalData?.Remove("return_mechanism"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("return_mechanism"); else _explicitNullProperties?.Remove("return_mechanism"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointReasoningReturnMechanism? _explicitNullValueReturnMechanism = default!;
         /// <summary>Whether requests with `reasoning` route to this endpoint.</summary>
-        public bool? Supported { get => _explicitNullValueSupported; set { _explicitNullValueSupported = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supported"); else _explicitNullProperties?.Remove("supported"); } }
+        public bool? Supported { get => _explicitNullValueSupported; set { _explicitNullValueSupported = value; AdditionalData?.Remove("supported"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supported"); else _explicitNullProperties?.Remove("supported"); } }
         private bool? _explicitNullValueSupported = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateEndpointSettingsRequestReasoning"/> and sets the default values.
@@ -54,7 +56,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "return_mechanism", n => { ReturnMechanism = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointReasoningReturnMechanism>(); } },
+                { "return_mechanism", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointReasoningReturnMechanism>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueReturnMechanism = default; _explicitNullProperties?.Remove("return_mechanism"); AdditionalData["return_mechanism"] = unknown; } else { ReturnMechanism = parsed; AdditionalData.Remove("return_mechanism"); } } },
                 { "supported", n => { Supported = n.GetBoolValue(); } },
             };
         }

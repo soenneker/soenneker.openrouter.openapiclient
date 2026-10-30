@@ -17,7 +17,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("is_filtered_model_catalog_enabled") is { } nullNodeIsFilteredModelCatalogEnabled && nullNodeIsFilteredModelCatalogEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsFilteredModelCatalogEnabled = null;
+            if (parseNode.GetChildNode("is_filtered_model_catalog_enabled") is null) { _explicitNullValueIsFilteredModelCatalogEnabled = default!; _explicitNullProperties?.Remove("is_filtered_model_catalog_enabled"); }
+            else if (parseNode.GetChildNode("is_filtered_model_catalog_enabled") is { } nullNodeIsFilteredModelCatalogEnabled && nullNodeIsFilteredModelCatalogEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsFilteredModelCatalogEnabled = null;
         }
 
         /// <summary>When true, the signed-in dashboard lists only the models the organization can use. `GET /api/v1/models` called with an API key always returns only the models that key can use, whatever this setting says; anonymous requests receive the public catalog.</summary>

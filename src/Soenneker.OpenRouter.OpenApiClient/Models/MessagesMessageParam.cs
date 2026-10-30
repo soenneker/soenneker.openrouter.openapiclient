@@ -18,39 +18,43 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("clear_at") is { } nullNodeClearAt && nullNodeClearAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClearAt = null;
-            if (parseNode.GetChildNode("content") is { } nullNodeContent && nullNodeContent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Content = null;
-            if (parseNode.GetChildNode("output_config") is { } nullNodeOutputConfig && nullNodeOutputConfig.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OutputConfig = null;
-            if (parseNode.GetChildNode("role") is { } nullNodeRole && nullNodeRole.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Role = null;
+            if (parseNode.GetChildNode("clear_at") is null) { _explicitNullValueClearAt = default!; _explicitNullProperties?.Remove("clear_at"); }
+            else if (parseNode.GetChildNode("clear_at") is { } nullNodeClearAt && nullNodeClearAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClearAt = null;
+            if (parseNode.GetChildNode("content") is null) { _explicitNullValueContent = default!; _explicitNullProperties?.Remove("content"); }
+            else if (parseNode.GetChildNode("content") is { } nullNodeContent && nullNodeContent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Content = null;
+            if (parseNode.GetChildNode("output_config") is null) { _explicitNullValueOutputConfig = default!; _explicitNullProperties?.Remove("output_config"); }
+            else if (parseNode.GetChildNode("output_config") is { } nullNodeOutputConfig && nullNodeOutputConfig.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OutputConfig = null;
+            if (parseNode.GetChildNode("role") is null) { _explicitNullValueRole = default!; _explicitNullProperties?.Remove("role"); }
+            else if (parseNode.GetChildNode("role") is { } nullNodeRole && nullNodeRole.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Role = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The clear_at property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicSystemClearAt? ClearAt { get => _explicitNullValueClearAt; set { _explicitNullValueClearAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("clear_at"); else _explicitNullProperties?.Remove("clear_at"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicSystemClearAt? ClearAt { get => _explicitNullValueClearAt; set { _explicitNullValueClearAt = value; AdditionalData?.Remove("clear_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("clear_at"); else _explicitNullProperties?.Remove("clear_at"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicSystemClearAt? _explicitNullValueClearAt = default!;
         /// <summary>The content property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesMessageParamContent? Content { get => _explicitNullValueContent; set { _explicitNullValueContent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content"); else _explicitNullProperties?.Remove("content"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesMessageParamContent? Content { get => _explicitNullValueContent; set { _explicitNullValueContent = value; AdditionalData?.Remove("content"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content"); else _explicitNullProperties?.Remove("content"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesMessageParamContent? _explicitNullValueContent = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesMessageParamContent Content { get => _explicitNullValueContent; set { _explicitNullValueContent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content"); else _explicitNullProperties?.Remove("content"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesMessageParamContent Content { get => _explicitNullValueContent; set { _explicitNullValueContent = value; AdditionalData?.Remove("content"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content"); else _explicitNullProperties?.Remove("content"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesMessageParamContent _explicitNullValueContent = default!;
 #endif
         /// <summary>The output_config property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicMessageOutputConfig? OutputConfig { get => _explicitNullValueOutputConfig; set { _explicitNullValueOutputConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("output_config"); else _explicitNullProperties?.Remove("output_config"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicMessageOutputConfig? OutputConfig { get => _explicitNullValueOutputConfig; set { _explicitNullValueOutputConfig = value; AdditionalData?.Remove("output_config"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("output_config"); else _explicitNullProperties?.Remove("output_config"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicMessageOutputConfig? _explicitNullValueOutputConfig = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicMessageOutputConfig OutputConfig { get => _explicitNullValueOutputConfig; set { _explicitNullValueOutputConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("output_config"); else _explicitNullProperties?.Remove("output_config"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicMessageOutputConfig OutputConfig { get => _explicitNullValueOutputConfig; set { _explicitNullValueOutputConfig = value; AdditionalData?.Remove("output_config"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("output_config"); else _explicitNullProperties?.Remove("output_config"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicMessageOutputConfig _explicitNullValueOutputConfig = default!;
 #endif
         /// <summary>The role property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesMessageParamRole? Role { get => _explicitNullValueRole; set { _explicitNullValueRole = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("role"); else _explicitNullProperties?.Remove("role"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesMessageParamRole? Role { get => _explicitNullValueRole; set { _explicitNullValueRole = value; AdditionalData?.Remove("role"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("role"); else _explicitNullProperties?.Remove("role"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesMessageParamRole? _explicitNullValueRole = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesMessageParam"/> and sets the default values.
@@ -77,10 +81,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "clear_at", n => { ClearAt = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicSystemClearAt>(); } },
+                { "clear_at", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicSystemClearAt>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueClearAt = default; _explicitNullProperties?.Remove("clear_at"); AdditionalData["clear_at"] = unknown; } else { ClearAt = parsed; AdditionalData.Remove("clear_at"); } } },
                 { "content", n => { Content = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesMessageParamContent>(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesMessageParamContent.CreateFromDiscriminatorValue); } },
                 { "output_config", n => { OutputConfig = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicMessageOutputConfig>(global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicMessageOutputConfig.CreateFromDiscriminatorValue); } },
-                { "role", n => { Role = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesMessageParamRole>(); } },
+                { "role", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesMessageParamRole>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueRole = default; _explicitNullProperties?.Remove("role"); AdditionalData["role"] = unknown; } else { Role = parsed; AdditionalData.Remove("role"); } } },
             };
         }
         /// <summary>

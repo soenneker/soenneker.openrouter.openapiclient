@@ -17,7 +17,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("tool_names") is { } nullNodeToolNames && nullNodeToolNames.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ToolNames = null;
+            if (parseNode.GetChildNode("tool_names") is null) { _explicitNullValueToolNames = default!; _explicitNullProperties?.Remove("tool_names"); }
+            else if (parseNode.GetChildNode("tool_names") is { } nullNodeToolNames && nullNodeToolNames.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ToolNames = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The tool_names property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? ToolNames { get => _explicitNullValueToolNames; set { _explicitNullValueToolNames = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tool_names"); else _explicitNullProperties?.Remove("tool_names"); } }
+        public List<string>? ToolNames { get => _explicitNullValueToolNames; set { _explicitNullValueToolNames = value; AdditionalData?.Remove("tool_names"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tool_names"); else _explicitNullProperties?.Remove("tool_names"); } }
         private List<string>? _explicitNullValueToolNames = default!;
 #nullable restore
 #else
-        public List<string> ToolNames { get => _explicitNullValueToolNames; set { _explicitNullValueToolNames = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tool_names"); else _explicitNullProperties?.Remove("tool_names"); } }
+        public List<string> ToolNames { get => _explicitNullValueToolNames; set { _explicitNullValueToolNames = value; AdditionalData?.Remove("tool_names"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tool_names"); else _explicitNullProperties?.Remove("tool_names"); } }
         private List<string> _explicitNullValueToolNames = default!;
 #endif
         /// <summary>

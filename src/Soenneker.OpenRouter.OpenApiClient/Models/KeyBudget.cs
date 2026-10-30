@@ -18,15 +18,24 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("budget_id") is { } nullNodeBudgetId && nullNodeBudgetId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BudgetId = null;
-            if (parseNode.GetChildNode("guardrail_id") is { } nullNodeGuardrailId && nullNodeGuardrailId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GuardrailId = null;
-            if (parseNode.GetChildNode("include_byok") is { } nullNodeIncludeByok && nullNodeIncludeByok.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IncludeByok = null;
-            if (parseNode.GetChildNode("limit_usd") is { } nullNodeLimitUsd && nullNodeLimitUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LimitUsd = null;
-            if (parseNode.GetChildNode("remaining_usd") is { } nullNodeRemainingUsd && nullNodeRemainingUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RemainingUsd = null;
-            if (parseNode.GetChildNode("reset_interval") is { } nullNodeResetInterval && nullNodeResetInterval.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResetInterval = null;
-            if (parseNode.GetChildNode("resets_at") is { } nullNodeResetsAt && nullNodeResetsAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResetsAt = null;
-            if (parseNode.GetChildNode("scope") is { } nullNodeScope && nullNodeScope.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Scope = null;
-            if (parseNode.GetChildNode("spend_usd") is { } nullNodeSpendUsd && nullNodeSpendUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SpendUsd = null;
+            if (parseNode.GetChildNode("budget_id") is null) { _explicitNullValueBudgetId = default!; _explicitNullProperties?.Remove("budget_id"); }
+            else if (parseNode.GetChildNode("budget_id") is { } nullNodeBudgetId && nullNodeBudgetId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BudgetId = null;
+            if (parseNode.GetChildNode("guardrail_id") is null) { _explicitNullValueGuardrailId = default!; _explicitNullProperties?.Remove("guardrail_id"); }
+            else if (parseNode.GetChildNode("guardrail_id") is { } nullNodeGuardrailId && nullNodeGuardrailId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GuardrailId = null;
+            if (parseNode.GetChildNode("include_byok") is null) { _explicitNullValueIncludeByok = default!; _explicitNullProperties?.Remove("include_byok"); }
+            else if (parseNode.GetChildNode("include_byok") is { } nullNodeIncludeByok && nullNodeIncludeByok.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IncludeByok = null;
+            if (parseNode.GetChildNode("limit_usd") is null) { _explicitNullValueLimitUsd = default!; _explicitNullProperties?.Remove("limit_usd"); }
+            else if (parseNode.GetChildNode("limit_usd") is { } nullNodeLimitUsd && nullNodeLimitUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LimitUsd = null;
+            if (parseNode.GetChildNode("remaining_usd") is null) { _explicitNullValueRemainingUsd = default!; _explicitNullProperties?.Remove("remaining_usd"); }
+            else if (parseNode.GetChildNode("remaining_usd") is { } nullNodeRemainingUsd && nullNodeRemainingUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RemainingUsd = null;
+            if (parseNode.GetChildNode("reset_interval") is null) { _explicitNullValueResetInterval = default!; _explicitNullProperties?.Remove("reset_interval"); }
+            else if (parseNode.GetChildNode("reset_interval") is { } nullNodeResetInterval && nullNodeResetInterval.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResetInterval = null;
+            if (parseNode.GetChildNode("resets_at") is null) { _explicitNullValueResetsAt = default!; _explicitNullProperties?.Remove("resets_at"); }
+            else if (parseNode.GetChildNode("resets_at") is { } nullNodeResetsAt && nullNodeResetsAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResetsAt = null;
+            if (parseNode.GetChildNode("scope") is null) { _explicitNullValueScope = default!; _explicitNullProperties?.Remove("scope"); }
+            else if (parseNode.GetChildNode("scope") is { } nullNodeScope && nullNodeScope.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Scope = null;
+            if (parseNode.GetChildNode("spend_usd") is null) { _explicitNullValueSpendUsd = default!; _explicitNullProperties?.Remove("spend_usd"); }
+            else if (parseNode.GetChildNode("spend_usd") is { } nullNodeSpendUsd && nullNodeSpendUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SpendUsd = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -34,43 +43,43 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>ID of the workspace budget for the `workspace` scope; null for other scopes.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? BudgetId { get => _explicitNullValueBudgetId; set { _explicitNullValueBudgetId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("budget_id"); else _explicitNullProperties?.Remove("budget_id"); } }
+        public string? BudgetId { get => _explicitNullValueBudgetId; set { _explicitNullValueBudgetId = value; AdditionalData?.Remove("budget_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("budget_id"); else _explicitNullProperties?.Remove("budget_id"); } }
         private string? _explicitNullValueBudgetId = default!;
 #nullable restore
 #else
-        public string BudgetId { get => _explicitNullValueBudgetId; set { _explicitNullValueBudgetId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("budget_id"); else _explicitNullProperties?.Remove("budget_id"); } }
+        public string BudgetId { get => _explicitNullValueBudgetId; set { _explicitNullValueBudgetId = value; AdditionalData?.Remove("budget_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("budget_id"); else _explicitNullProperties?.Remove("budget_id"); } }
         private string _explicitNullValueBudgetId = default!;
 #endif
         /// <summary>ID of the guardrail that carries this budget; null for other scopes.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? GuardrailId { get => _explicitNullValueGuardrailId; set { _explicitNullValueGuardrailId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("guardrail_id"); else _explicitNullProperties?.Remove("guardrail_id"); } }
+        public string? GuardrailId { get => _explicitNullValueGuardrailId; set { _explicitNullValueGuardrailId = value; AdditionalData?.Remove("guardrail_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("guardrail_id"); else _explicitNullProperties?.Remove("guardrail_id"); } }
         private string? _explicitNullValueGuardrailId = default!;
 #nullable restore
 #else
-        public string GuardrailId { get => _explicitNullValueGuardrailId; set { _explicitNullValueGuardrailId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("guardrail_id"); else _explicitNullProperties?.Remove("guardrail_id"); } }
+        public string GuardrailId { get => _explicitNullValueGuardrailId; set { _explicitNullValueGuardrailId = value; AdditionalData?.Remove("guardrail_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("guardrail_id"); else _explicitNullProperties?.Remove("guardrail_id"); } }
         private string _explicitNullValueGuardrailId = default!;
 #endif
         /// <summary>Whether external BYOK inference spend counts toward this budget.</summary>
-        public bool? IncludeByok { get => _explicitNullValueIncludeByok; set { _explicitNullValueIncludeByok = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("include_byok"); else _explicitNullProperties?.Remove("include_byok"); } }
+        public bool? IncludeByok { get => _explicitNullValueIncludeByok; set { _explicitNullValueIncludeByok = value; AdditionalData?.Remove("include_byok"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("include_byok"); else _explicitNullProperties?.Remove("include_byok"); } }
         private bool? _explicitNullValueIncludeByok = default!;
         /// <summary>Budget limit in USD for the current window.</summary>
-        public double? LimitUsd { get => _explicitNullValueLimitUsd; set { _explicitNullValueLimitUsd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("limit_usd"); else _explicitNullProperties?.Remove("limit_usd"); } }
+        public double? LimitUsd { get => _explicitNullValueLimitUsd; set { _explicitNullValueLimitUsd = value; AdditionalData?.Remove("limit_usd"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("limit_usd"); else _explicitNullProperties?.Remove("limit_usd"); } }
         private double? _explicitNullValueLimitUsd = default!;
         /// <summary>`limit_usd - spend_usd`. Zero or negative means this layer rejects requests with a 403 until it resets.</summary>
-        public double? RemainingUsd { get => _explicitNullValueRemainingUsd; set { _explicitNullValueRemainingUsd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("remaining_usd"); else _explicitNullProperties?.Remove("remaining_usd"); } }
+        public double? RemainingUsd { get => _explicitNullValueRemainingUsd; set { _explicitNullValueRemainingUsd = value; AdditionalData?.Remove("remaining_usd"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("remaining_usd"); else _explicitNullProperties?.Remove("remaining_usd"); } }
         private double? _explicitNullValueRemainingUsd = default!;
         /// <summary>UTC window the spend is counted over (weeks start Monday); null for a lifetime budget that never resets.</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.KeyBudgetResetInterval? ResetInterval { get => _explicitNullValueResetInterval; set { _explicitNullValueResetInterval = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reset_interval"); else _explicitNullProperties?.Remove("reset_interval"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.KeyBudgetResetInterval? ResetInterval { get => _explicitNullValueResetInterval; set { _explicitNullValueResetInterval = value; AdditionalData?.Remove("reset_interval"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reset_interval"); else _explicitNullProperties?.Remove("reset_interval"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.KeyBudgetResetInterval? _explicitNullValueResetInterval = default!;
         /// <summary>ISO 8601 UTC instant at which the window rolls over and spend returns to zero; null for a lifetime budget.</summary>
-        public DateTimeOffset? ResetsAt { get => _explicitNullValueResetsAt; set { _explicitNullValueResetsAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resets_at"); else _explicitNullProperties?.Remove("resets_at"); } }
+        public DateTimeOffset? ResetsAt { get => _explicitNullValueResetsAt; set { _explicitNullValueResetsAt = value; AdditionalData?.Remove("resets_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resets_at"); else _explicitNullProperties?.Remove("resets_at"); } }
         private DateTimeOffset? _explicitNullValueResetsAt = default!;
         /// <summary>Which budget layer this is, in the order enforcement checks them: the workspace default guardrail against the member aggregate (`workspace_default_member`) and against this key (`workspace_default_key`), the member guardrail (`member`), the API key guardrail (`api_key`), a workspace budget (`workspace`), or the key&apos;s own limit (`key_limit`).</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.KeyBudgetScope? Scope { get => _explicitNullValueScope; set { _explicitNullValueScope = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scope"); else _explicitNullProperties?.Remove("scope"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.KeyBudgetScope? Scope { get => _explicitNullValueScope; set { _explicitNullValueScope = value; AdditionalData?.Remove("scope"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scope"); else _explicitNullProperties?.Remove("scope"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.KeyBudgetScope? _explicitNullValueScope = default!;
         /// <summary>Spend in USD that enforcement counts against this limit in the current window: the member aggregate for member-scoped layers, otherwise this key or workspace.</summary>
-        public double? SpendUsd { get => _explicitNullValueSpendUsd; set { _explicitNullValueSpendUsd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("spend_usd"); else _explicitNullProperties?.Remove("spend_usd"); } }
+        public double? SpendUsd { get => _explicitNullValueSpendUsd; set { _explicitNullValueSpendUsd = value; AdditionalData?.Remove("spend_usd"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("spend_usd"); else _explicitNullProperties?.Remove("spend_usd"); } }
         private double? _explicitNullValueSpendUsd = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.KeyBudget"/> and sets the default values.
@@ -102,9 +111,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "include_byok", n => { IncludeByok = n.GetBoolValue(); } },
                 { "limit_usd", n => { LimitUsd = n.GetDoubleValue(); } },
                 { "remaining_usd", n => { RemainingUsd = n.GetDoubleValue(); } },
-                { "reset_interval", n => { ResetInterval = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.KeyBudgetResetInterval>(); } },
+                { "reset_interval", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.KeyBudgetResetInterval>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueResetInterval = default; _explicitNullProperties?.Remove("reset_interval"); AdditionalData["reset_interval"] = unknown; } else { ResetInterval = parsed; AdditionalData.Remove("reset_interval"); } } },
                 { "resets_at", n => { ResetsAt = n.GetDateTimeOffsetValue(); } },
-                { "scope", n => { Scope = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.KeyBudgetScope>(); } },
+                { "scope", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.KeyBudgetScope>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueScope = default; _explicitNullProperties?.Remove("scope"); AdditionalData["scope"] = unknown; } else { Scope = parsed; AdditionalData.Remove("scope"); } } },
                 { "spend_usd", n => { SpendUsd = n.GetDoubleValue(); } },
             };
         }

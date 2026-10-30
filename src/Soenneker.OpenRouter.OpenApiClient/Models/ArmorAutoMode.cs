@@ -17,10 +17,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("allow") is { } nullNodeAllow && nullNodeAllow.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Allow = null;
-            if (parseNode.GetChildNode("environment") is { } nullNodeEnvironment && nullNodeEnvironment.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Environment = null;
-            if (parseNode.GetChildNode("hard_deny") is { } nullNodeHardDeny && nullNodeHardDeny.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HardDeny = null;
-            if (parseNode.GetChildNode("soft_deny") is { } nullNodeSoftDeny && nullNodeSoftDeny.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SoftDeny = null;
+            if (parseNode.GetChildNode("allow") is null) { _explicitNullValueAllow = default!; _explicitNullProperties?.Remove("allow"); }
+            else if (parseNode.GetChildNode("allow") is { } nullNodeAllow && nullNodeAllow.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Allow = null;
+            if (parseNode.GetChildNode("environment") is null) { _explicitNullValueEnvironment = default!; _explicitNullProperties?.Remove("environment"); }
+            else if (parseNode.GetChildNode("environment") is { } nullNodeEnvironment && nullNodeEnvironment.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Environment = null;
+            if (parseNode.GetChildNode("hard_deny") is null) { _explicitNullValueHardDeny = default!; _explicitNullProperties?.Remove("hard_deny"); }
+            else if (parseNode.GetChildNode("hard_deny") is { } nullNodeHardDeny && nullNodeHardDeny.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HardDeny = null;
+            if (parseNode.GetChildNode("soft_deny") is null) { _explicitNullValueSoftDeny = default!; _explicitNullProperties?.Remove("soft_deny"); }
+            else if (parseNode.GetChildNode("soft_deny") is { } nullNodeSoftDeny && nullNodeSoftDeny.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SoftDeny = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -28,41 +32,41 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The allow property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>? Allow { get => _explicitNullValueAllow; set { _explicitNullValueAllow = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allow"); else _explicitNullProperties?.Remove("allow"); } }
+        public List<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>? Allow { get => _explicitNullValueAllow; set { _explicitNullValueAllow = value; AdditionalData?.Remove("allow"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allow"); else _explicitNullProperties?.Remove("allow"); } }
         private List<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>? _explicitNullValueAllow = default!;
 #nullable restore
 #else
-        public List<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode> Allow { get => _explicitNullValueAllow; set { _explicitNullValueAllow = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allow"); else _explicitNullProperties?.Remove("allow"); } }
+        public List<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode> Allow { get => _explicitNullValueAllow; set { _explicitNullValueAllow = value; AdditionalData?.Remove("allow"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allow"); else _explicitNullProperties?.Remove("allow"); } }
         private List<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode> _explicitNullValueAllow = default!;
 #endif
         /// <summary>The environment property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>? Environment { get => _explicitNullValueEnvironment; set { _explicitNullValueEnvironment = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("environment"); else _explicitNullProperties?.Remove("environment"); } }
+        public List<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>? Environment { get => _explicitNullValueEnvironment; set { _explicitNullValueEnvironment = value; AdditionalData?.Remove("environment"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("environment"); else _explicitNullProperties?.Remove("environment"); } }
         private List<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>? _explicitNullValueEnvironment = default!;
 #nullable restore
 #else
-        public List<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode> Environment { get => _explicitNullValueEnvironment; set { _explicitNullValueEnvironment = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("environment"); else _explicitNullProperties?.Remove("environment"); } }
+        public List<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode> Environment { get => _explicitNullValueEnvironment; set { _explicitNullValueEnvironment = value; AdditionalData?.Remove("environment"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("environment"); else _explicitNullProperties?.Remove("environment"); } }
         private List<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode> _explicitNullValueEnvironment = default!;
 #endif
         /// <summary>The hard_deny property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>? HardDeny { get => _explicitNullValueHardDeny; set { _explicitNullValueHardDeny = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hard_deny"); else _explicitNullProperties?.Remove("hard_deny"); } }
+        public List<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>? HardDeny { get => _explicitNullValueHardDeny; set { _explicitNullValueHardDeny = value; AdditionalData?.Remove("hard_deny"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hard_deny"); else _explicitNullProperties?.Remove("hard_deny"); } }
         private List<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>? _explicitNullValueHardDeny = default!;
 #nullable restore
 #else
-        public List<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode> HardDeny { get => _explicitNullValueHardDeny; set { _explicitNullValueHardDeny = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hard_deny"); else _explicitNullProperties?.Remove("hard_deny"); } }
+        public List<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode> HardDeny { get => _explicitNullValueHardDeny; set { _explicitNullValueHardDeny = value; AdditionalData?.Remove("hard_deny"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hard_deny"); else _explicitNullProperties?.Remove("hard_deny"); } }
         private List<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode> _explicitNullValueHardDeny = default!;
 #endif
         /// <summary>The soft_deny property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>? SoftDeny { get => _explicitNullValueSoftDeny; set { _explicitNullValueSoftDeny = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("soft_deny"); else _explicitNullProperties?.Remove("soft_deny"); } }
+        public List<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>? SoftDeny { get => _explicitNullValueSoftDeny; set { _explicitNullValueSoftDeny = value; AdditionalData?.Remove("soft_deny"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("soft_deny"); else _explicitNullProperties?.Remove("soft_deny"); } }
         private List<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>? _explicitNullValueSoftDeny = default!;
 #nullable restore
 #else
-        public List<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode> SoftDeny { get => _explicitNullValueSoftDeny; set { _explicitNullValueSoftDeny = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("soft_deny"); else _explicitNullProperties?.Remove("soft_deny"); } }
+        public List<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode> SoftDeny { get => _explicitNullValueSoftDeny; set { _explicitNullValueSoftDeny = value; AdditionalData?.Remove("soft_deny"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("soft_deny"); else _explicitNullProperties?.Remove("soft_deny"); } }
         private List<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode> _explicitNullValueSoftDeny = default!;
 #endif
         /// <summary>

@@ -17,13 +17,20 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("allowed_models") is { } nullNodeAllowedModels && nullNodeAllowedModels.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AllowedModels = null;
-            if (parseNode.GetChildNode("cost_quality_tradeoff") is { } nullNodeCostQualityTradeoff && nullNodeCostQualityTradeoff.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CostQualityTradeoff = null;
-            if (parseNode.GetChildNode("cost_tier") is { } nullNodeCostTier && nullNodeCostTier.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CostTier = null;
-            if (parseNode.GetChildNode("enabled") is { } nullNodeEnabled && nullNodeEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Enabled = null;
-            if (parseNode.GetChildNode("excluded_models") is { } nullNodeExcludedModels && nullNodeExcludedModels.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExcludedModels = null;
-            if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
-            if (parseNode.GetChildNode("pin_model") is { } nullNodePinModel && nullNodePinModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PinModel = null;
+            if (parseNode.GetChildNode("allowed_models") is null) { _explicitNullValueAllowedModels = default!; _explicitNullProperties?.Remove("allowed_models"); }
+            else if (parseNode.GetChildNode("allowed_models") is { } nullNodeAllowedModels && nullNodeAllowedModels.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AllowedModels = null;
+            if (parseNode.GetChildNode("cost_quality_tradeoff") is null) { _explicitNullValueCostQualityTradeoff = default!; _explicitNullProperties?.Remove("cost_quality_tradeoff"); }
+            else if (parseNode.GetChildNode("cost_quality_tradeoff") is { } nullNodeCostQualityTradeoff && nullNodeCostQualityTradeoff.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CostQualityTradeoff = null;
+            if (parseNode.GetChildNode("cost_tier") is null) { _explicitNullValueCostTier = default!; _explicitNullProperties?.Remove("cost_tier"); }
+            else if (parseNode.GetChildNode("cost_tier") is { } nullNodeCostTier && nullNodeCostTier.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CostTier = null;
+            if (parseNode.GetChildNode("enabled") is null) { _explicitNullValueEnabled = default!; _explicitNullProperties?.Remove("enabled"); }
+            else if (parseNode.GetChildNode("enabled") is { } nullNodeEnabled && nullNodeEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Enabled = null;
+            if (parseNode.GetChildNode("excluded_models") is null) { _explicitNullValueExcludedModels = default!; _explicitNullProperties?.Remove("excluded_models"); }
+            else if (parseNode.GetChildNode("excluded_models") is { } nullNodeExcludedModels && nullNodeExcludedModels.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExcludedModels = null;
+            if (parseNode.GetChildNode("id") is null) { _explicitNullValueId = default!; _explicitNullProperties?.Remove("id"); }
+            else if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("pin_model") is null) { _explicitNullValuePinModel = default!; _explicitNullProperties?.Remove("pin_model"); }
+            else if (parseNode.GetChildNode("pin_model") is { } nullNodePinModel && nullNodePinModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PinModel = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -31,38 +38,38 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>List of model patterns to filter which models the auto-router can route between. Supports wildcards (e.g., &quot;anthropic/*&quot; matches all Anthropic models). Up to 1024 patterns, each at most 1024 characters, with 65536 total characters across all patterns. When not specified, every model ranked for the classified task type is a candidate, falling back to a default model set when rankings are unavailable.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? AllowedModels { get => _explicitNullValueAllowedModels; set { _explicitNullValueAllowedModels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allowed_models"); else _explicitNullProperties?.Remove("allowed_models"); } }
+        public List<string>? AllowedModels { get => _explicitNullValueAllowedModels; set { _explicitNullValueAllowedModels = value; AdditionalData?.Remove("allowed_models"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allowed_models"); else _explicitNullProperties?.Remove("allowed_models"); } }
         private List<string>? _explicitNullValueAllowedModels = default!;
 #nullable restore
 #else
-        public List<string> AllowedModels { get => _explicitNullValueAllowedModels; set { _explicitNullValueAllowedModels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allowed_models"); else _explicitNullProperties?.Remove("allowed_models"); } }
+        public List<string> AllowedModels { get => _explicitNullValueAllowedModels; set { _explicitNullValueAllowedModels = value; AdditionalData?.Remove("allowed_models"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allowed_models"); else _explicitNullProperties?.Remove("allowed_models"); } }
         private List<string> _explicitNullValueAllowedModels = default!;
 #endif
         /// <summary>Deprecated: Use cost_tier instead. Balances routing between cost and quality on a 0-10 scale. The auto-router ranks models for the classified task type by community spend share, then filters candidates by their average cost per generation for that task. Higher values favor cheaper models: 10 keeps only models around the cheapest 10th percentile, while 0 permits models up to the 90th percentile for cost. Defaults to 9 when no cost setting is provided. It remains supported and retains ceiling behavior, but cost_tier takes precedence when both are provided.</summary>
         [Obsolete("")]
-        public int? CostQualityTradeoff { get => _explicitNullValueCostQualityTradeoff; set { _explicitNullValueCostQualityTradeoff = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cost_quality_tradeoff"); else _explicitNullProperties?.Remove("cost_quality_tradeoff"); } }
+        public int? CostQualityTradeoff { get => _explicitNullValueCostQualityTradeoff; set { _explicitNullValueCostQualityTradeoff = value; AdditionalData?.Remove("cost_quality_tradeoff"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cost_quality_tradeoff"); else _explicitNullProperties?.Remove("cost_quality_tradeoff"); } }
         private int? _explicitNullValueCostQualityTradeoff = default!;
         /// <summary>Named cost/quality setting. Tiers select cost-percentile bands: low = [0, 20), medium = [20, 40), high = [40, 60), xhigh = [60, 80), and max = [80, 100]. Takes precedence over the deprecated numeric cost_quality_tradeoff when both are provided.</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.AutoRouterPluginCostTier? CostTier { get => _explicitNullValueCostTier; set { _explicitNullValueCostTier = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cost_tier"); else _explicitNullProperties?.Remove("cost_tier"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AutoRouterPluginCostTier? CostTier { get => _explicitNullValueCostTier; set { _explicitNullValueCostTier = value; AdditionalData?.Remove("cost_tier"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cost_tier"); else _explicitNullProperties?.Remove("cost_tier"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.AutoRouterPluginCostTier? _explicitNullValueCostTier = default!;
         /// <summary>Set to false to disable the auto-router plugin for this request. Defaults to true.</summary>
-        public bool? Enabled { get => _explicitNullValueEnabled; set { _explicitNullValueEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enabled"); else _explicitNullProperties?.Remove("enabled"); } }
+        public bool? Enabled { get => _explicitNullValueEnabled; set { _explicitNullValueEnabled = value; AdditionalData?.Remove("enabled"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enabled"); else _explicitNullProperties?.Remove("enabled"); } }
         private bool? _explicitNullValueEnabled = default!;
         /// <summary>List of model patterns to exclude from auto-router selection. Supports wildcards (e.g., &quot;meta-llama/*&quot; excludes all Llama models). Up to 1024 patterns, each at most 1024 characters, with 65536 total characters across all patterns. Applied after allowed_models, so an excluded pattern always wins over an allowed one.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? ExcludedModels { get => _explicitNullValueExcludedModels; set { _explicitNullValueExcludedModels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("excluded_models"); else _explicitNullProperties?.Remove("excluded_models"); } }
+        public List<string>? ExcludedModels { get => _explicitNullValueExcludedModels; set { _explicitNullValueExcludedModels = value; AdditionalData?.Remove("excluded_models"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("excluded_models"); else _explicitNullProperties?.Remove("excluded_models"); } }
         private List<string>? _explicitNullValueExcludedModels = default!;
 #nullable restore
 #else
-        public List<string> ExcludedModels { get => _explicitNullValueExcludedModels; set { _explicitNullValueExcludedModels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("excluded_models"); else _explicitNullProperties?.Remove("excluded_models"); } }
+        public List<string> ExcludedModels { get => _explicitNullValueExcludedModels; set { _explicitNullValueExcludedModels = value; AdditionalData?.Remove("excluded_models"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("excluded_models"); else _explicitNullProperties?.Remove("excluded_models"); } }
         private List<string> _explicitNullValueExcludedModels = default!;
 #endif
         /// <summary>The id property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.AutoRouterId? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AutoRouterId? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; AdditionalData?.Remove("id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.AutoRouterId? _explicitNullValueId = default!;
         /// <summary>When true, reuses the model from the most recent assistant message&apos;s `model` attribute for subsequent turns. Defaults to false.</summary>
-        public bool? PinModel { get => _explicitNullValuePinModel; set { _explicitNullValuePinModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pin_model"); else _explicitNullProperties?.Remove("pin_model"); } }
+        public bool? PinModel { get => _explicitNullValuePinModel; set { _explicitNullValuePinModel = value; AdditionalData?.Remove("pin_model"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pin_model"); else _explicitNullProperties?.Remove("pin_model"); } }
         private bool? _explicitNullValuePinModel = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AutoRouterPlugin"/> and sets the default values.
@@ -91,10 +98,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             {
                 { "allowed_models", n => { AllowedModels = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "cost_quality_tradeoff", n => { CostQualityTradeoff = n.GetIntValue(); } },
-                { "cost_tier", n => { CostTier = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AutoRouterPluginCostTier>(); } },
+                { "cost_tier", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AutoRouterPluginCostTier>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueCostTier = default; _explicitNullProperties?.Remove("cost_tier"); AdditionalData["cost_tier"] = unknown; } else { CostTier = parsed; AdditionalData.Remove("cost_tier"); } } },
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
                 { "excluded_models", n => { ExcludedModels = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "id", n => { Id = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AutoRouterId>(); } },
+                { "id", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AutoRouterId>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueId = default; _explicitNullProperties?.Remove("id"); AdditionalData["id"] = unknown; } else { Id = parsed; AdditionalData.Remove("id"); } } },
                 { "pin_model", n => { PinModel = n.GetBoolValue(); } },
             };
         }
