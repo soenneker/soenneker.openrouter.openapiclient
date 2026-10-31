@@ -65,6 +65,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "instructions", n => { Instructions = n.GetStringValue(); } },
                 { "text", n => { Text = n.GetStringValue(); } },
                 { "voice", n => { Voice = n.GetStringValue(); } },
+
             };
         }
         /// <summary>

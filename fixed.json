@@ -1948,16 +1948,7 @@
                   "type": "string"
                 },
                 {
-                  "anyOf": [
-                    {
-                      "type": "string",
-                      "format": "date"
-                    },
-                    {
-                      "type": "string",
-                      "format": "date-time"
-                    }
-                  ]
+                  "$ref": "#/components/schemas/BatchListTimestampAnyOf2"
                 }
               ],
               "description": "Only include batches created strictly before this timestamp.",
@@ -2358,6 +2349,17 @@
                 }
               }
             }
+          },
+          "200": {
+            "description": "Batch payload durably persisted and queued for asynchronous validation and provider submission (\u0060status: \u0022validating\u0022\u0060).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BatchObject"
+                }
+              }
+            },
+            "x-client-success-response-status": "202"
           }
         },
         "x-speakeasy-retries": {
@@ -3173,6 +3175,37 @@
                 }
               }
             }
+          },
+          "200": {
+            "description": "BYOK credential created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateByokKeyResponse"
+                },
+                "example": {
+                  "data": {
+                    "allowed_api_key_hashes": null,
+                    "allowed_models": null,
+                    "allowed_user_ids": null,
+                    "created_at": "2025-08-24T10:30:00Z",
+                    "declared_region": null,
+                    "declared_zdr": null,
+                    "disabled": false,
+                    "id": "11111111-2222-3333-4444-555555555555",
+                    "is_byok_only": false,
+                    "is_fallback": false,
+                    "is_required": false,
+                    "label": "sk-...AbCd",
+                    "name": "Production OpenAI Key",
+                    "provider": "openai",
+                    "sort_order": 0,
+                    "workspace_id": "550e8400-e29b-41d4-a716-446655440000"
+                  }
+                }
+              }
+            },
+            "x-client-success-response-status": "201"
           }
         },
         "x-speakeasy-name-override": "create"
@@ -3638,8 +3671,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "string",
-                  "format": "binary"
+                  "$ref": "#/components/schemas/ChatResult"
                 },
                 "example": {
                   "choices": [
@@ -3662,15 +3694,13 @@
                     "prompt_tokens": 25,
                     "total_tokens": 35
                   }
-                },
-                "x-client-original-success-schema": {
-                  "$ref": "#/components/schemas/ChatResult"
                 }
-              },
+              }
+            },
+            "x-client-original-non-json-content": {
               "text/event-stream": {
                 "schema": {
-                  "type": "string",
-                  "format": "binary"
+                  "$ref": "#/components/schemas/ChatStreamingResponse"
                 },
                 "example": {
                   "data": {
@@ -3690,10 +3720,7 @@
                     "object": "chat.completion.chunk"
                   }
                 },
-                "x-speakeasy-sse-sentinel": "[DONE]",
-                "x-client-original-success-schema": {
-                  "$ref": "#/components/schemas/ChatStreamingResponse"
-                }
+                "x-speakeasy-sse-sentinel": "[DONE]"
               }
             }
           },
@@ -5626,23 +5653,17 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "string",
-                  "format": "binary"
-                },
-                "x-client-original-success-schema": {
                   "$ref": "#/components/schemas/CreateEmbeddings200Response"
                 }
-              },
+              }
+            },
+            "x-client-original-non-json-content": {
               "text/event-stream": {
                 "schema": {
-                  "type": "string",
-                  "format": "binary"
+                  "$ref": "#/components/schemas/CreateEmbeddings200EventStreamResponseSchema"
                 },
                 "example": "data: [DONE]",
-                "x-speakeasy-sse-sentinel": "[DONE]",
-                "x-client-original-success-schema": {
-                  "$ref": "#/components/schemas/CreateEmbeddings200EventStreamResponseSchema"
-                }
+                "x-speakeasy-sse-sentinel": "[DONE]"
               }
             }
           },
@@ -6496,6 +6517,25 @@
                 }
               }
             }
+          },
+          "200": {
+            "description": "The registered external user. No generated public identifier is returned.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExternalUserResponse"
+                },
+                "example": {
+                  "data": {
+                    "created_at": "2026-09-16T12:00:00Z",
+                    "is_active": true,
+                    "updated_at": "2026-09-16T12:00:00Z",
+                    "user": "employee_123"
+                  }
+                }
+              }
+            },
+            "x-client-success-response-status": "201"
           }
         },
         "x-speakeasy-name-override": "create"
@@ -8848,6 +8888,44 @@
                 }
               }
             }
+          },
+          "200": {
+            "description": "Guardrail created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateGuardrailResponse"
+                },
+                "example": {
+                  "data": {
+                    "allowed_models": null,
+                    "allowed_providers": [
+                      "openai",
+                      "anthropic",
+                      "google"
+                    ],
+                    "created_at": "2025-08-24T10:30:00Z",
+                    "description": "A guardrail for limiting API usage",
+                    "enforce_zdr": null,
+                    "enforce_zdr_anthropic": true,
+                    "enforce_zdr_google": false,
+                    "enforce_zdr_openai": true,
+                    "enforce_zdr_other": false,
+                    "enforce_zdr_xai": false,
+                    "id": "550e8400-e29b-41d4-a716-446655440000",
+                    "ignored_models": null,
+                    "ignored_providers": null,
+                    "include_byok_in_budgets": false,
+                    "limit_usd": 50,
+                    "name": "My New Guardrail",
+                    "reset_interval": "monthly",
+                    "updated_at": null,
+                    "workspace_id": "0df9e665-d932-5740-b2c7-b52af166bc11"
+                  }
+                }
+              }
+            },
+            "x-client-success-response-status": "201"
           }
         },
         "x-speakeasy-name-override": "create"
@@ -10554,8 +10632,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "string",
-                  "format": "binary"
+                  "$ref": "#/components/schemas/ImageGenerationResponse"
                 },
                 "example": {
                   "created": 1748372400,
@@ -10570,15 +10647,13 @@
                     "prompt_tokens": 0,
                     "total_tokens": 4175
                   }
-                },
-                "x-client-original-success-schema": {
-                  "$ref": "#/components/schemas/ImageGenerationResponse"
                 }
-              },
+              }
+            },
+            "x-client-original-non-json-content": {
               "text/event-stream": {
                 "schema": {
-                  "type": "string",
-                  "format": "binary"
+                  "$ref": "#/components/schemas/ImageStreamingResponse"
                 },
                 "example": {
                   "data": {
@@ -10587,10 +10662,7 @@
                     "type": "image_generation.partial_image"
                   }
                 },
-                "x-speakeasy-sse-sentinel": "[DONE]",
-                "x-client-original-success-schema": {
-                  "$ref": "#/components/schemas/ImageStreamingResponse"
-                }
+                "x-speakeasy-sse-sentinel": "[DONE]"
               }
             }
           },
@@ -11450,6 +11522,45 @@
                 }
               }
             }
+          },
+          "200": {
+            "description": "API key created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateKeys201Response"
+                },
+                "example": {
+                  "data": {
+                    "byok_usage": 0,
+                    "byok_usage_daily": 0,
+                    "byok_usage_monthly": 0,
+                    "byok_usage_weekly": 0,
+                    "created_at": "2025-08-24T10:30:00Z",
+                    "creator_user_id": "user_2dHFtVWx2n56w6HkM0000000000",
+                    "disabled": false,
+                    "expires_at": "2027-12-31T23:59:59Z",
+                    "external_user": null,
+                    "hash": "f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943",
+                    "include_byok_in_limit": true,
+                    "label": "My New API Key",
+                    "last_used_at": null,
+                    "limit": 50,
+                    "limit_remaining": 50,
+                    "limit_reset": "monthly",
+                    "name": "My New API Key",
+                    "updated_at": null,
+                    "usage": 0,
+                    "usage_daily": 0,
+                    "usage_monthly": 0,
+                    "usage_weekly": 0,
+                    "workspace_id": "0df9e665-d932-5740-b2c7-b52af166bc11"
+                  },
+                  "key": "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"
+                }
+              }
+            },
+            "x-client-success-response-status": "201"
           }
         },
         "x-speakeasy-name-override": "create"
@@ -11985,8 +12096,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "string",
-                  "format": "binary"
+                  "$ref": "#/components/schemas/MessagesResult"
                 },
                 "example": {
                   "container": null,
@@ -12015,15 +12125,13 @@
                     "server_tool_use": null,
                     "service_tier": "standard"
                   }
-                },
-                "x-client-original-success-schema": {
-                  "$ref": "#/components/schemas/MessagesResult"
                 }
-              },
+              }
+            },
+            "x-client-original-non-json-content": {
               "text/event-stream": {
                 "schema": {
-                  "type": "string",
-                  "format": "binary"
+                  "$ref": "#/components/schemas/MessagesStreamingResponse"
                 },
                 "example": {
                   "data": {
@@ -12035,9 +12143,6 @@
                     "type": "content_block_delta"
                   },
                   "event": "content_block_delta"
-                },
-                "x-client-original-success-schema": {
-                  "$ref": "#/components/schemas/MessagesStreamingResponse"
                 }
               }
             }
@@ -13959,6 +14064,44 @@
                 }
               }
             }
+          },
+          "200": {
+            "description": "Destination created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateObservabilityDestinationResponse"
+                },
+                "example": {
+                  "data": {
+                    "api_key_hashes": null,
+                    "broadcast_generation_cost": false,
+                    "broadcast_generation_cost_allocation": false,
+                    "broadcast_generation_identity": false,
+                    "broadcast_generation_request_context": false,
+                    "config": {
+                      "baseUrl": "https://us.cloud.langfuse.com",
+                      "publicKey": "pk-l...EfGh",
+                      "secretKey": "sk-l...AbCd"
+                    },
+                    "created_at": "2025-08-24T10:30:00Z",
+                    "enabled": true,
+                    "filter_rules": null,
+                    "id": "99999999-aaaa-bbbb-cccc-dddddddddddd",
+                    "name": "Production Langfuse",
+                    "privacy_mode": false,
+                    "regions": [
+                      "global"
+                    ],
+                    "sampling_rate": 1,
+                    "type": "langfuse",
+                    "updated_at": "2025-08-24T15:45:00Z",
+                    "workspace_id": "550e8400-e29b-41d4-a716-446655440000"
+                  }
+                }
+              }
+            },
+            "x-client-success-response-status": "201"
           }
         },
         "x-speakeasy-name-override": "create"
@@ -16349,6 +16492,17 @@
                 }
               }
             }
+          },
+          "200": {
+            "description": "The created endpoint: a draft, or active when \u0060activate\u0060 was passed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ManagedPrivateEndpointResponse"
+                }
+              }
+            },
+            "x-client-success-response-status": "201"
           }
         },
         "x-speakeasy-name-override": "create"
@@ -18310,6 +18464,17 @@
                 }
               }
             }
+          },
+          "200": {
+            "description": "The provider was created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreatePrivateProvider201Response"
+                }
+              }
+            },
+            "x-client-success-response-status": "201"
           }
         },
         "x-speakeasy-name-override": "create"
@@ -18918,23 +19083,17 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "string",
-                  "format": "binary"
-                },
-                "x-client-original-success-schema": {
                   "$ref": "#/components/schemas/CreateRerank200Response"
                 }
-              },
+              }
+            },
+            "x-client-original-non-json-content": {
               "text/event-stream": {
                 "schema": {
-                  "type": "string",
-                  "format": "binary"
+                  "$ref": "#/components/schemas/CreateRerank200EventStreamResponseSchema"
                 },
                 "example": "data: [DONE]",
-                "x-speakeasy-sse-sentinel": "[DONE]",
-                "x-client-original-success-schema": {
-                  "$ref": "#/components/schemas/CreateRerank200EventStreamResponseSchema"
-                }
+                "x-speakeasy-sse-sentinel": "[DONE]"
               }
             }
           },
@@ -19185,8 +19344,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "string",
-                  "format": "binary"
+                  "$ref": "#/components/schemas/OpenResponsesResult"
                 },
                 "example": {
                   "completed_at": 1700000010,
@@ -19233,15 +19391,13 @@
                     },
                     "total_tokens": 30
                   }
-                },
-                "x-client-original-success-schema": {
-                  "$ref": "#/components/schemas/OpenResponsesResult"
                 }
-              },
+              }
+            },
+            "x-client-original-non-json-content": {
               "text/event-stream": {
                 "schema": {
-                  "type": "string",
-                  "format": "binary"
+                  "$ref": "#/components/schemas/ResponsesStreamingResponse"
                 },
                 "example": {
                   "data": {
@@ -19254,10 +19410,7 @@
                     "type": "response.output_text.delta"
                   }
                 },
-                "x-speakeasy-sse-sentinel": "[DONE]",
-                "x-client-original-success-schema": {
-                  "$ref": "#/components/schemas/ResponsesStreamingResponse"
-                }
+                "x-speakeasy-sse-sentinel": "[DONE]"
               }
             }
           },
@@ -19814,6 +19967,17 @@
                 }
               }
             }
+          },
+          "200": {
+            "description": "SCIM group mapping created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateScimGroupMappingResponse"
+                }
+              }
+            },
+            "x-client-success-response-status": "201"
           }
         },
         "x-speakeasy-name-override": "create"
@@ -20449,6 +20613,27 @@
                 }
               }
             }
+          },
+          "200": {
+            "description": "SCIM directory sync job queued",
+            "headers": {
+              "Location": {
+                "description": "Poll URL for the created sync job.",
+                "required": true,
+                "schema": {
+                  "type": "string",
+                  "description": "Poll URL for the created sync job."
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateScimSyncJobResponse"
+                }
+              }
+            },
+            "x-client-success-response-status": "202"
           }
         },
         "x-speakeasy-name-override": "createSyncJob"
@@ -24493,6 +24678,23 @@
                 }
               }
             }
+          },
+          "200": {
+            "description": "Video generation request accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VideoGenerationResponse"
+                },
+                "example": {
+                  "generation_id": "gen-xyz789",
+                  "id": "job-abc123",
+                  "polling_url": "/api/v1/videos/job-abc123",
+                  "status": "pending"
+                }
+              }
+            },
+            "x-client-success-response-status": "202"
           }
         },
         "x-speakeasy-name-override": "generate"
@@ -25180,6 +25382,39 @@
                 }
               }
             }
+          },
+          "200": {
+            "description": "Workspace created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateWorkspaceResponse"
+                },
+                "example": {
+                  "data": {
+                    "created_at": "2025-08-24T10:30:00Z",
+                    "created_by": "user_abc123",
+                    "default_guardrail_id": "595d5849-7e86-51fd-a7c0-705c34e4afff",
+                    "default_image_model": "openai/dall-e-3",
+                    "default_provider_sort": "price",
+                    "default_text_model": "openai/gpt-4o",
+                    "description": "Production environment workspace",
+                    "disabled_server_tools": null,
+                    "id": "550e8400-e29b-41d4-a716-446655440000",
+                    "include_byok_in_budgets": false,
+                    "io_logging_api_key_ids": null,
+                    "io_logging_sampling_rate": 1,
+                    "is_data_discount_logging_enabled": true,
+                    "is_observability_broadcast_enabled": false,
+                    "is_observability_io_logging_enabled": false,
+                    "name": "Production",
+                    "slug": "production",
+                    "updated_at": null
+                  }
+                }
+              }
+            },
+            "x-client-success-response-status": "201"
           }
         },
         "x-speakeasy-name-override": "create"
@@ -33133,16 +33368,7 @@
             "type": "string"
           },
           {
-            "anyOf": [
-              {
-                "type": "string",
-                "format": "date"
-              },
-              {
-                "type": "string",
-                "format": "date-time"
-              }
-            ]
+            "$ref": "#/components/schemas/BatchListTimestampAnyOf2"
           }
         ],
         "description": "Only include batches created strictly after this timestamp.",
@@ -86860,60 +87086,20 @@
       "ContentPartAddedEventPart": {
         "anyOf": [
           {
-            "anyOf": [
-              {
-                "$ref": "#/components/schemas/ContentPartAddedEventPartAnyOf1"
-              },
-              {
-                "$ref": "#/components/schemas/ContentPartAddedEventPartAnyOf2"
-              },
-              {
-                "$ref": "#/components/schemas/ContentPartAddedEventPartAnyOf3"
-              }
-            ]
+            "$ref": "#/components/schemas/ContentPartAddedEventPartAnyOf1"
           },
           {
-            "anyOf": [
-              {
-                "$ref": "#/components/schemas/ContentPartAddedEventPartAnyOf1Branch"
-              },
-              {
-                "$ref": "#/components/schemas/ContentPartAddedEventPartAnyOf2Branch"
-              },
-              {
-                "$ref": "#/components/schemas/ContentPartAddedEventPartAnyOf3Branch"
-              }
-            ]
+            "$ref": "#/components/schemas/ContentPartAddedEventPartAnyOf2"
           }
         ]
       },
       "ContentPartDoneEventPart": {
         "anyOf": [
           {
-            "anyOf": [
-              {
-                "$ref": "#/components/schemas/ContentPartDoneEventPartAnyOf1"
-              },
-              {
-                "$ref": "#/components/schemas/ContentPartDoneEventPartAnyOf2"
-              },
-              {
-                "$ref": "#/components/schemas/ContentPartDoneEventPartAnyOf3"
-              }
-            ]
+            "$ref": "#/components/schemas/ContentPartAddedEventPartAnyOf1"
           },
           {
-            "anyOf": [
-              {
-                "$ref": "#/components/schemas/ContentPartDoneEventPartAnyOf1Branch"
-              },
-              {
-                "$ref": "#/components/schemas/ContentPartDoneEventPartAnyOf2Branch"
-              },
-              {
-                "$ref": "#/components/schemas/ContentPartDoneEventPartAnyOf3Branch"
-              }
-            ]
+            "$ref": "#/components/schemas/ContentPartAddedEventPartAnyOf2"
           }
         ]
       },
@@ -112894,6 +113080,18 @@
         "x-speakeasy-unknown-values": "allow",
         "not": {}
       },
+      "BatchListTimestampAnyOf2": {
+        "anyOf": [
+          {
+            "type": "string",
+            "format": "date"
+          },
+          {
+            "type": "string",
+            "format": "date-time"
+          }
+        ]
+      },
       "CreateObservabilityDestinationResponseDataOneOf1": {
         "type": "object",
         "properties": {
@@ -119117,311 +119315,327 @@
         ]
       },
       "ContentPartAddedEventPartAnyOf1": {
-        "type": "object",
-        "properties": {
-          "annotations": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/OpenAiResponsesAnnotation"
-            }
+        "anyOf": [
+          {
+            "type": "object",
+            "properties": {
+              "annotations": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/OpenAiResponsesAnnotation"
+                }
+              },
+              "logprobs": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ResponseOutputTextLogprobsItem"
+                }
+              },
+              "text": {
+                "type": "string"
+              },
+              "type": {
+                "$ref": "#/components/schemas/OutputTextType"
+              }
+            },
+            "required": [
+              "type",
+              "text"
+            ]
           },
-          "logprobs": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ResponseOutputTextLogprobsItem"
-            }
+          {
+            "type": "object",
+            "properties": {
+              "text": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string",
+                "not": {}
+              },
+              "annotations": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/OpenAiResponsesAnnotation"
+                }
+              },
+              "logprobs": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ResponseOutputTextLogprobsItem"
+                }
+              }
+            },
+            "required": [
+              "type",
+              "text"
+            ]
           },
-          "text": {
-            "type": "string"
-          },
-          "type": {
-            "$ref": "#/components/schemas/OutputTextType"
+          {
+            "type": "object",
+            "properties": {
+              "refusal": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string",
+                "not": {}
+              },
+              "annotations": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/OpenAiResponsesAnnotation"
+                }
+              },
+              "logprobs": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ResponseOutputTextLogprobsItem"
+                }
+              },
+              "text": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "type",
+              "refusal",
+              "text"
+            ]
           }
-        },
-        "required": [
-          "type",
-          "text"
         ]
       },
       "ContentPartAddedEventPartAnyOf2": {
-        "type": "object",
-        "properties": {
-          "text": {
-            "type": "string"
+        "anyOf": [
+          {
+            "type": "object",
+            "properties": {
+              "annotations": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/OpenAiResponsesAnnotation"
+                }
+              },
+              "logprobs": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ResponseOutputTextLogprobsItem"
+                }
+              },
+              "text": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string",
+                "not": {}
+              },
+              "refusal": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "type",
+              "text",
+              "refusal"
+            ]
           },
-          "type": {
-            "type": "string",
-            "not": {}
+          {
+            "type": "object",
+            "properties": {
+              "text": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string",
+                "not": {}
+              },
+              "refusal": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "type",
+              "text",
+              "refusal"
+            ]
           },
-          "annotations": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/OpenAiResponsesAnnotation"
-            }
-          },
-          "logprobs": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ResponseOutputTextLogprobsItem"
-            }
+          {
+            "type": "object",
+            "properties": {
+              "refusal": {
+                "type": "string"
+              },
+              "type": {
+                "$ref": "#/components/schemas/RefusalType"
+              }
+            },
+            "required": [
+              "type",
+              "refusal"
+            ]
           }
-        },
-        "required": [
-          "type",
-          "text"
-        ]
-      },
-      "ContentPartAddedEventPartAnyOf3": {
-        "type": "object",
-        "properties": {
-          "refusal": {
-            "type": "string"
-          },
-          "type": {
-            "type": "string",
-            "not": {}
-          },
-          "annotations": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/OpenAiResponsesAnnotation"
-            }
-          },
-          "logprobs": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ResponseOutputTextLogprobsItem"
-            }
-          },
-          "text": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "type",
-          "refusal",
-          "text"
-        ]
-      },
-      "ContentPartAddedEventPartAnyOf1Branch": {
-        "type": "object",
-        "properties": {
-          "annotations": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/OpenAiResponsesAnnotation"
-            }
-          },
-          "logprobs": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ResponseOutputTextLogprobsItem"
-            }
-          },
-          "text": {
-            "type": "string"
-          },
-          "type": {
-            "type": "string",
-            "not": {}
-          },
-          "refusal": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "type",
-          "text",
-          "refusal"
-        ]
-      },
-      "ContentPartAddedEventPartAnyOf2Branch": {
-        "type": "object",
-        "properties": {
-          "text": {
-            "type": "string"
-          },
-          "type": {
-            "type": "string",
-            "not": {}
-          },
-          "refusal": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "type",
-          "text",
-          "refusal"
-        ]
-      },
-      "ContentPartAddedEventPartAnyOf3Branch": {
-        "type": "object",
-        "properties": {
-          "refusal": {
-            "type": "string"
-          },
-          "type": {
-            "$ref": "#/components/schemas/RefusalType"
-          }
-        },
-        "required": [
-          "type",
-          "refusal"
         ]
       },
       "ContentPartDoneEventPartAnyOf1": {
-        "type": "object",
-        "properties": {
-          "annotations": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/OpenAiResponsesAnnotation"
-            }
+        "anyOf": [
+          {
+            "type": "object",
+            "properties": {
+              "annotations": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/OpenAiResponsesAnnotation"
+                }
+              },
+              "logprobs": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ResponseOutputTextLogprobsItem"
+                }
+              },
+              "text": {
+                "type": "string"
+              },
+              "type": {
+                "$ref": "#/components/schemas/OutputTextType"
+              }
+            },
+            "required": [
+              "type",
+              "text"
+            ]
           },
-          "logprobs": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ResponseOutputTextLogprobsItem"
-            }
+          {
+            "type": "object",
+            "properties": {
+              "text": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string",
+                "not": {}
+              },
+              "annotations": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/OpenAiResponsesAnnotation"
+                }
+              },
+              "logprobs": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ResponseOutputTextLogprobsItem"
+                }
+              }
+            },
+            "required": [
+              "type",
+              "text"
+            ]
           },
-          "text": {
-            "type": "string"
-          },
-          "type": {
-            "$ref": "#/components/schemas/OutputTextType"
+          {
+            "type": "object",
+            "properties": {
+              "refusal": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string",
+                "not": {}
+              },
+              "annotations": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/OpenAiResponsesAnnotation"
+                }
+              },
+              "logprobs": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ResponseOutputTextLogprobsItem"
+                }
+              },
+              "text": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "type",
+              "refusal",
+              "text"
+            ]
           }
-        },
-        "required": [
-          "type",
-          "text"
         ]
       },
       "ContentPartDoneEventPartAnyOf2": {
-        "type": "object",
-        "properties": {
-          "text": {
-            "type": "string"
+        "anyOf": [
+          {
+            "type": "object",
+            "properties": {
+              "annotations": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/OpenAiResponsesAnnotation"
+                }
+              },
+              "logprobs": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ResponseOutputTextLogprobsItem"
+                }
+              },
+              "text": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string",
+                "not": {}
+              },
+              "refusal": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "type",
+              "text",
+              "refusal"
+            ]
           },
-          "type": {
-            "type": "string",
-            "not": {}
+          {
+            "type": "object",
+            "properties": {
+              "text": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string",
+                "not": {}
+              },
+              "refusal": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "type",
+              "text",
+              "refusal"
+            ]
           },
-          "annotations": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/OpenAiResponsesAnnotation"
-            }
-          },
-          "logprobs": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ResponseOutputTextLogprobsItem"
-            }
+          {
+            "type": "object",
+            "properties": {
+              "refusal": {
+                "type": "string"
+              },
+              "type": {
+                "$ref": "#/components/schemas/RefusalType"
+              }
+            },
+            "required": [
+              "type",
+              "refusal"
+            ]
           }
-        },
-        "required": [
-          "type",
-          "text"
-        ]
-      },
-      "ContentPartDoneEventPartAnyOf3": {
-        "type": "object",
-        "properties": {
-          "refusal": {
-            "type": "string"
-          },
-          "type": {
-            "type": "string",
-            "not": {}
-          },
-          "annotations": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/OpenAiResponsesAnnotation"
-            }
-          },
-          "logprobs": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ResponseOutputTextLogprobsItem"
-            }
-          },
-          "text": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "type",
-          "refusal",
-          "text"
-        ]
-      },
-      "ContentPartDoneEventPartAnyOf1Branch": {
-        "type": "object",
-        "properties": {
-          "annotations": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/OpenAiResponsesAnnotation"
-            }
-          },
-          "logprobs": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ResponseOutputTextLogprobsItem"
-            }
-          },
-          "text": {
-            "type": "string"
-          },
-          "type": {
-            "type": "string",
-            "not": {}
-          },
-          "refusal": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "type",
-          "text",
-          "refusal"
-        ]
-      },
-      "ContentPartDoneEventPartAnyOf2Branch": {
-        "type": "object",
-        "properties": {
-          "text": {
-            "type": "string"
-          },
-          "type": {
-            "type": "string",
-            "not": {}
-          },
-          "refusal": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "type",
-          "text",
-          "refusal"
-        ]
-      },
-      "ContentPartDoneEventPartAnyOf3Branch": {
-        "type": "object",
-        "properties": {
-          "refusal": {
-            "type": "string"
-          },
-          "type": {
-            "$ref": "#/components/schemas/RefusalType"
-          }
-        },
-        "required": [
-          "type",
-          "refusal"
         ]
       },
       "StreamEventsResponseOutputItemAddedItemOneOf1": {
@@ -119960,6 +120174,18 @@
           "call_id",
           "operation",
           "status"
+        ]
+      },
+      "CreatedBeforeAnyOf2": {
+        "anyOf": [
+          {
+            "type": "string",
+            "format": "date"
+          },
+          {
+            "type": "string",
+            "format": "date-time"
+          }
         ]
       },
       "DecisionsBoxQuestionInstructionsAnyOf2": {

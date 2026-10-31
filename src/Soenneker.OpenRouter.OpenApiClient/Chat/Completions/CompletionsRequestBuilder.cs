@@ -36,7 +36,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Chat.Completions
         /// <summary>
         /// Sends a request for a model response for the given chat conversation. Supports both streaming and non-streaming modes.
         /// </summary>
-        /// <returns>A <see cref="Stream"/></returns>
+        /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ChatResult"/></returns>
         /// <param name="body">Chat completion request parameters</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -56,11 +56,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Chat.Completions
         /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOverloadedResponse">When receiving a 529 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Stream?> PostAsync(global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatResult?> PostAsync(global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<Stream> PostAsync(global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatResult> PostAsync(global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -84,7 +84,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Chat.Completions
                 { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
                 { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatResult>(requestInfo, global::Soenneker.OpenRouter.OpenApiClient.Models.ChatResult.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Sends a request for a model response for the given chat conversation. Supports both streaming and non-streaming modes.
