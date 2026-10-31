@@ -79,7 +79,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; AdditionalData?.Remove("name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
         private string _explicitNullValueName = default!;
 #endif
-        /// <summary>The workspace to create the API key in. Defaults to the default workspace if not provided.</summary>
+        /// <summary>The workspace to create the API key in. Defaults to the default workspace for an organization-scoped management key, or to the management key&apos;s own workspace for a workspace-scoped one, which cannot create keys elsewhere.</summary>
         public Guid? WorkspaceId { get => _explicitNullValueWorkspaceId; set { _explicitNullValueWorkspaceId = value; AdditionalData?.Remove("workspace_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("workspace_id"); else _explicitNullProperties?.Remove("workspace_id"); } }
         private Guid? _explicitNullValueWorkspaceId = default!;
         /// <summary>

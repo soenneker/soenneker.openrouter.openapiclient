@@ -18,6 +18,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
+            if (parseNode.GetChildNode("access_programs") is null) { _explicitNullValueAccessPrograms = default!; _explicitNullProperties?.Remove("access_programs"); }
+            else if (parseNode.GetChildNode("access_programs") is { } nullNodeAccessPrograms && nullNodeAccessPrograms.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AccessPrograms = null;
             if (parseNode.GetChildNode("alignment") is null) { _explicitNullValueAlignment = default!; _explicitNullProperties?.Remove("alignment"); }
             else if (parseNode.GetChildNode("alignment") is { } nullNodeAlignment && nullNodeAlignment.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Alignment = null;
             if (parseNode.GetChildNode("background") is null) { _explicitNullValueBackground = default!; _explicitNullProperties?.Remove("background"); }
@@ -98,6 +100,16 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             else if (parseNode.GetChildNode("user") is { } nullNodeUser && nullNodeUser.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) User = null;
         }
 
+        /// <summary>Access program the upstream provider reported for this response (OpenAI `access_programs`). `null` when the provider reported none, including OpenAI&apos;s implicit Standard program.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.OpenResponsesResultAllOf2AccessPrograms? AccessPrograms { get => _explicitNullValueAccessPrograms; set { _explicitNullValueAccessPrograms = value; AdditionalData?.Remove("access_programs"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("access_programs"); else _explicitNullProperties?.Remove("access_programs"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.OpenResponsesResultAllOf2AccessPrograms? _explicitNullValueAccessPrograms = default!;
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.OpenResponsesResultAllOf2AccessPrograms AccessPrograms { get => _explicitNullValueAccessPrograms; set { _explicitNullValueAccessPrograms = value; AdditionalData?.Remove("access_programs"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("access_programs"); else _explicitNullProperties?.Remove("access_programs"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.OpenResponsesResultAllOf2AccessPrograms _explicitNullValueAccessPrograms = default!;
+#endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Beta. The result of the alignment plugin for this request; the shape may change.</summary>
@@ -396,6 +408,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "access_programs", n => { AccessPrograms = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OpenResponsesResultAllOf2AccessPrograms>(global::Soenneker.OpenRouter.OpenApiClient.Models.OpenResponsesResultAllOf2AccessPrograms.CreateFromDiscriminatorValue); } },
                 { "alignment", n => { Alignment = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.Alignment>(global::Soenneker.OpenRouter.OpenApiClient.Models.Alignment.CreateFromDiscriminatorValue); } },
                 { "background", n => { Background = n.GetBoolValue(); } },
                 { "completed_at", n => { CompletedAt = n.GetIntValue(); } },
@@ -444,6 +457,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OpenResponsesResultAllOf2AccessPrograms>("access_programs", AccessPrograms);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.Alignment>("alignment", Alignment);
             writer.WriteBoolValue("background", Background);
             writer.WriteIntValue("completed_at", CompletedAt);

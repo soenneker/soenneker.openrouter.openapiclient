@@ -18,6 +18,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
+            if (parseNode.GetChildNode("access_programs") is null) { _explicitNullValueAccessPrograms = default!; _explicitNullProperties?.Remove("access_programs"); }
+            else if (parseNode.GetChildNode("access_programs") is { } nullNodeAccessPrograms && nullNodeAccessPrograms.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AccessPrograms = null;
             if (parseNode.GetChildNode("background") is null) { _explicitNullValueBackground = default!; _explicitNullProperties?.Remove("background"); }
             else if (parseNode.GetChildNode("background") is { } nullNodeBackground && nullNodeBackground.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Background = null;
             if (parseNode.GetChildNode("cache_control") is null) { _explicitNullValueCacheControl = default!; _explicitNullProperties?.Remove("cache_control"); }
@@ -104,6 +106,16 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             else if (parseNode.GetChildNode("user") is { } nullNodeUser && nullNodeUser.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) User = null;
         }
 
+        /// <summary>OpenAI access programs for this request. `cyber` selects the Cyber access program: `standard`, `daybreak_blue`, or `daybreak_red`. A program other than `standard` is supported only on BYOK requests that run on your own OpenAI key enrolled in that program; any other endpoint, including OpenRouter&apos;s own OpenAI credentials, rejects it with a 400 error. Requests on OpenRouter&apos;s OpenAI credentials always run `standard`. Omit the field unless your key is enrolled in a Daybreak program.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesRequestAccessPrograms? AccessPrograms { get => _explicitNullValueAccessPrograms; set { _explicitNullValueAccessPrograms = value; AdditionalData?.Remove("access_programs"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("access_programs"); else _explicitNullProperties?.Remove("access_programs"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesRequestAccessPrograms? _explicitNullValueAccessPrograms = default!;
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesRequestAccessPrograms AccessPrograms { get => _explicitNullValueAccessPrograms; set { _explicitNullValueAccessPrograms = value; AdditionalData?.Remove("access_programs"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("access_programs"); else _explicitNullProperties?.Remove("access_programs"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesRequestAccessPrograms _explicitNullValueAccessPrograms = default!;
+#endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The background property</summary>
@@ -449,6 +461,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "access_programs", n => { AccessPrograms = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesRequestAccessPrograms>(global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesRequestAccessPrograms.CreateFromDiscriminatorValue); } },
                 { "background", n => { Background = n.GetBoolValue(); } },
                 { "cache_control", n => { CacheControl = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective>(global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective.CreateFromDiscriminatorValue); } },
                 { "debug", n => { Debug = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatDebugOptions>(global::Soenneker.OpenRouter.OpenApiClient.Models.ChatDebugOptions.CreateFromDiscriminatorValue); } },
@@ -500,6 +513,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesRequestAccessPrograms>("access_programs", AccessPrograms);
             writer.WriteBoolValue("background", Background);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective>("cache_control", CacheControl);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatDebugOptions>("debug", Debug);

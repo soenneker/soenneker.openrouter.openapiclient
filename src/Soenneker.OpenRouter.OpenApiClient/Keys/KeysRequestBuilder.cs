@@ -54,6 +54,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Keys
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BadRequestResponse">When receiving a 400 status code</exception>
         /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.UnauthorizedResponse">When receiving a 401 status code</exception>
+        /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ForbiddenResponse">When receiving a 403 status code</exception>
         /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.NotFoundResponse">When receiving a 404 status code</exception>
         /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.TooManyRequestsResponse">When receiving a 429 status code</exception>
         /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.InternalServerResponse">When receiving a 500 status code</exception>
@@ -71,6 +72,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Keys
             {
                 { "400", global::Soenneker.OpenRouter.OpenApiClient.Models.BadRequestResponse.CreateFromDiscriminatorValue },
                 { "401", global::Soenneker.OpenRouter.OpenApiClient.Models.UnauthorizedResponse.CreateFromDiscriminatorValue },
+                { "403", global::Soenneker.OpenRouter.OpenApiClient.Models.ForbiddenResponse.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.OpenRouter.OpenApiClient.Models.NotFoundResponse.CreateFromDiscriminatorValue },
                 { "429", global::Soenneker.OpenRouter.OpenApiClient.Models.TooManyRequestsResponse.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.OpenRouter.OpenApiClient.Models.InternalServerResponse.CreateFromDiscriminatorValue },
@@ -128,7 +130,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Keys
         public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.OpenRouter.OpenApiClient.Keys.KeysRequestBuilder.KeysRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.GET, global::Soenneker.OpenApi.Generated.OpenApiServiceRoutes.Resolve(UrlTemplate, RequestAdapter.BaseUrl, "https://openrouter.ai/api/v1", "/keys", PathParameters.ContainsKey("request-raw-url")), PathParameters);
+            var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
@@ -149,7 +151,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Keys
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
-            var requestInfo = new RequestInformation(Method.POST, global::Soenneker.OpenApi.Generated.OpenApiServiceRoutes.Resolve(UrlTemplate, RequestAdapter.BaseUrl, "https://openrouter.ai/api/v1", "/keys", PathParameters.ContainsKey("request-raw-url")), PathParameters);
+            var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
@@ -179,7 +181,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Keys
             /// <summary>Number of API keys to skip for pagination</summary>
             [QueryParameter("offset")]
             public int? Offset { get; set; }
-            /// <summary>Filter API keys by workspace ID. By default, keys in the default workspace are returned.</summary>
+            /// <summary>Filter API keys by workspace ID. By default an organization-scoped management key gets the default workspace; a workspace-scoped management key always gets its own workspace and cannot list another.</summary>
             [QueryParameter("workspace_id")]
             public Guid? WorkspaceId { get; set; }
         }

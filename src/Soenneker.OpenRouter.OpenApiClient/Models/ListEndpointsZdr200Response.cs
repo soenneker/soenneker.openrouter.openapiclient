@@ -26,12 +26,12 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The data property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpoint>? Data { get => _explicitNullValueData; set { _explicitNullValueData = value; AdditionalData?.Remove("data"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data"); else _explicitNullProperties?.Remove("data"); } }
-        private List<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpoint>? _explicitNullValueData = default!;
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicZdrEndpoint>? Data { get => _explicitNullValueData; set { _explicitNullValueData = value; AdditionalData?.Remove("data"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data"); else _explicitNullProperties?.Remove("data"); } }
+        private List<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicZdrEndpoint>? _explicitNullValueData = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpoint> Data { get => _explicitNullValueData; set { _explicitNullValueData = value; AdditionalData?.Remove("data"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data"); else _explicitNullProperties?.Remove("data"); } }
-        private List<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpoint> _explicitNullValueData = default!;
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicZdrEndpoint> Data { get => _explicitNullValueData; set { _explicitNullValueData = value; AdditionalData?.Remove("data"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data"); else _explicitNullProperties?.Remove("data"); } }
+        private List<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicZdrEndpoint> _explicitNullValueData = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ListEndpointsZdr200Response"/> and sets the default values.
@@ -58,7 +58,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "data", n => { Data = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpoint>(global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpoint.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "data", n => { Data = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicZdrEndpoint>(global::Soenneker.OpenRouter.OpenApiClient.Models.PublicZdrEndpoint.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -68,7 +68,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpoint>("data", Data);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicZdrEndpoint>("data", Data);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }

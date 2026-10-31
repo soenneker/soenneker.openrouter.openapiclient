@@ -34,6 +34,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             else if (parseNode.GetChildNode("default_parameters") is { } nullNodeDefaultParameters && nullNodeDefaultParameters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefaultParameters = null;
             if (parseNode.GetChildNode("description") is null) { _explicitNullValueDescription = default!; _explicitNullProperties?.Remove("description"); }
             else if (parseNode.GetChildNode("description") is { } nullNodeDescription && nullNodeDescription.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Description = null;
+            if (parseNode.GetChildNode("endpoints") is null) { _explicitNullValueEndpoints = default!; _explicitNullProperties?.Remove("endpoints"); }
+            else if (parseNode.GetChildNode("endpoints") is { } nullNodeEndpoints && nullNodeEndpoints.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Endpoints = null;
             if (parseNode.GetChildNode("expiration_date") is null) { _explicitNullValueExpirationDate = default!; _explicitNullProperties?.Remove("expiration_date"); }
             else if (parseNode.GetChildNode("expiration_date") is { } nullNodeExpirationDate && nullNodeExpirationDate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExpirationDate = null;
             if (parseNode.GetChildNode("hugging_face_id") is null) { _explicitNullValueHuggingFaceId = default!; _explicitNullProperties?.Remove("hugging_face_id"); }
@@ -127,6 +129,16 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public string Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; AdditionalData?.Remove("description"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
         private string _explicitNullValueDescription = default!;
+#endif
+        /// <summary>Request API paths that serve this model, derived from the same modality and adapter rules the routers use. A model served only through an alpha surface lists only that path.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? Endpoints { get => _explicitNullValueEndpoints; set { _explicitNullValueEndpoints = value; AdditionalData?.Remove("endpoints"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("endpoints"); else _explicitNullProperties?.Remove("endpoints"); } }
+        private List<string>? _explicitNullValueEndpoints = default!;
+#nullable restore
+#else
+        public List<string> Endpoints { get => _explicitNullValueEndpoints; set { _explicitNullValueEndpoints = value; AdditionalData?.Remove("endpoints"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("endpoints"); else _explicitNullProperties?.Remove("endpoints"); } }
+        private List<string> _explicitNullValueEndpoints = default!;
 #endif
         /// <summary>The date after which the model may be removed. ISO 8601 date string (YYYY-MM-DD) or null if no expiration.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -281,6 +293,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "created", n => { Created = n.GetIntValue(); } },
                 { "default_parameters", n => { DefaultParameters = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.DefaultParameters>(global::Soenneker.OpenRouter.OpenApiClient.Models.DefaultParameters.CreateFromDiscriminatorValue); } },
                 { "description", n => { Description = n.GetStringValue(); } },
+                { "endpoints", n => { Endpoints = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "expiration_date", n => { ExpirationDate = n.GetStringValue(); } },
                 { "hugging_face_id", n => { HuggingFaceId = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
@@ -310,6 +323,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteIntValue("created", Created);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.DefaultParameters>("default_parameters", DefaultParameters);
             writer.WriteStringValue("description", Description);
+            writer.WriteCollectionOfPrimitiveValues<string>("endpoints", Endpoints);
             writer.WriteStringValue("expiration_date", ExpirationDate);
             writer.WriteStringValue("hugging_face_id", HuggingFaceId);
             writer.WriteStringValue("id", Id);

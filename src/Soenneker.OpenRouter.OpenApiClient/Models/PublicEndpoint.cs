@@ -136,22 +136,22 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Endpoint performance over the last 30 minutes, keyed by the kind of request served (e.g. `text_generation`, `image_generation`). Additive to the legacy singular latency and throughput fields; image and video generation report end-to-end latency. Only visible when authenticated with an API key or cookie.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkload? PerfLast30mByWorkload { get => _explicitNullValuePerfLast30mByWorkload; set { _explicitNullValuePerfLast30mByWorkload = value; AdditionalData?.Remove("perf_last_30m_by_workload"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("perf_last_30m_by_workload"); else _explicitNullProperties?.Remove("perf_last_30m_by_workload"); } }
-        private global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkload? _explicitNullValuePerfLast30mByWorkload = default!;
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PerfLast30MByWorkload? PerfLast30mByWorkload { get => _explicitNullValuePerfLast30mByWorkload; set { _explicitNullValuePerfLast30mByWorkload = value; AdditionalData?.Remove("perf_last_30m_by_workload"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("perf_last_30m_by_workload"); else _explicitNullProperties?.Remove("perf_last_30m_by_workload"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.PerfLast30MByWorkload? _explicitNullValuePerfLast30mByWorkload = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkload PerfLast30mByWorkload { get => _explicitNullValuePerfLast30mByWorkload; set { _explicitNullValuePerfLast30mByWorkload = value; AdditionalData?.Remove("perf_last_30m_by_workload"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("perf_last_30m_by_workload"); else _explicitNullProperties?.Remove("perf_last_30m_by_workload"); } }
-        private global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkload _explicitNullValuePerfLast30mByWorkload = default!;
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PerfLast30MByWorkload PerfLast30mByWorkload { get => _explicitNullValuePerfLast30mByWorkload; set { _explicitNullValuePerfLast30mByWorkload = value; AdditionalData?.Remove("perf_last_30m_by_workload"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("perf_last_30m_by_workload"); else _explicitNullProperties?.Remove("perf_last_30m_by_workload"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.PerfLast30MByWorkload _explicitNullValuePerfLast30mByWorkload = default!;
 #endif
         /// <summary>The pricing property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPricing? Pricing { get => _explicitNullValuePricing; set { _explicitNullValuePricing = value; AdditionalData?.Remove("pricing"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pricing"); else _explicitNullProperties?.Remove("pricing"); } }
-        private global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPricing? _explicitNullValuePricing = default!;
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.Pricing? Pricing { get => _explicitNullValuePricing; set { _explicitNullValuePricing = value; AdditionalData?.Remove("pricing"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pricing"); else _explicitNullProperties?.Remove("pricing"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.Pricing? _explicitNullValuePricing = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPricing Pricing { get => _explicitNullValuePricing; set { _explicitNullValuePricing = value; AdditionalData?.Remove("pricing"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pricing"); else _explicitNullProperties?.Remove("pricing"); } }
-        private global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPricing _explicitNullValuePricing = default!;
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.Pricing Pricing { get => _explicitNullValuePricing; set { _explicitNullValuePricing = value; AdditionalData?.Remove("pricing"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pricing"); else _explicitNullProperties?.Remove("pricing"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.Pricing _explicitNullValuePricing = default!;
 #endif
         /// <summary>The provider_name property</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderName? ProviderName { get => _explicitNullValueProviderName; set { _explicitNullValueProviderName = value; AdditionalData?.Remove("provider_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("provider_name"); else _explicitNullProperties?.Remove("provider_name"); } }
@@ -265,8 +265,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "model_name", n => { ModelName = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "native_tools", n => { NativeTools = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointNativeToolsProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointNativeToolsProperty.CreateFromDiscriminatorValue); } },
-                { "perf_last_30m_by_workload", n => { PerfLast30mByWorkload = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkload>(global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkload.CreateFromDiscriminatorValue); } },
-                { "pricing", n => { Pricing = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPricing>(global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPricing.CreateFromDiscriminatorValue); } },
+                { "perf_last_30m_by_workload", n => { PerfLast30mByWorkload = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PerfLast30MByWorkload>(global::Soenneker.OpenRouter.OpenApiClient.Models.PerfLast30MByWorkload.CreateFromDiscriminatorValue); } },
+                { "pricing", n => { Pricing = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.Pricing>(global::Soenneker.OpenRouter.OpenApiClient.Models.Pricing.CreateFromDiscriminatorValue); } },
                 { "provider_name", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderName>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueProviderName = default; _explicitNullProperties?.Remove("provider_name"); AdditionalData["provider_name"] = unknown; } else { ProviderName = parsed; AdditionalData.Remove("provider_name"); } } },
                 { "quantization", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.Quantization>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueQuantization = default; _explicitNullProperties?.Remove("quantization"); AdditionalData["quantization"] = unknown; } else { Quantization = parsed; AdditionalData.Remove("quantization"); } } },
                 { "service_tier", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicServiceTier>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueServiceTier = default; _explicitNullProperties?.Remove("service_tier"); AdditionalData["service_tier"] = unknown; } else { ServiceTier = parsed; AdditionalData.Remove("service_tier"); } } },
@@ -300,8 +300,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteStringValue("model_name", ModelName);
             writer.WriteStringValue("name", Name);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointNativeToolsProperty>("native_tools", NativeTools);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPerfLast30MByWorkload>("perf_last_30m_by_workload", PerfLast30mByWorkload);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicEndpointPricing>("pricing", Pricing);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PerfLast30MByWorkload>("perf_last_30m_by_workload", PerfLast30mByWorkload);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.Pricing>("pricing", Pricing);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderName>("provider_name", ProviderName);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.Quantization>("quantization", Quantization);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicServiceTier>("service_tier", ServiceTier);

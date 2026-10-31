@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
-    /// <summary>Return only the models and presets the named harness offers: those that support tool calling, and, when one of your guardrails sets `enforce_first_party_harness_models`, only the harness vendor&apos;s own models (OpenAI for codex, Anthropic for claude_code and claude_desktop). One of: claude_code, claude_desktop, codex. Omit it to get every model you can use.</summary>
+    /// <summary>Filter models and presets by the named harness&apos;s eligibility policy: tool calling is required, and when one of your guardrails sets `enforce_first_party_harness_models`, only the harness vendor&apos;s own models remain (OpenAI for codex, Anthropic for claude_code and claude_desktop). When your workspace&apos;s Managed Machines policy sets a model list for that harness, only the listed models remain, and a preset remains only while every model it routes to is listed. This filter doesn&apos;t apply the harness&apos;s ranking, caps or Claude Desktop model ID aliases, so returned IDs stay routable. One of: claude_code, claude_desktop, codex. Omit it to get every model you can use.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum ListModelsUserClientParameter
     {

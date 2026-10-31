@@ -87,7 +87,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public List<string> Only { get => _explicitNullValueOnly; set { _explicitNullValueOnly = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("only"); else _explicitNullProperties?.Remove("only"); } }
         private List<string> _explicitNullValueOnly = default!;
 #endif
-        /// <summary>Provider-specific options keyed by provider slug. Only options for the matched provider are forwarded; the rest are ignored. Unrecognized keys are silently dropped.</summary>
+        /// <summary>Provider-specific options keyed by provider slug. The provider segment is case-insensitive; an endpoint tag after `/` must match the endpoint slug exactly. Only options for the matched provider are forwarded; the rest are ignored. Unrecognized keys are silently dropped.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions? Options { get => _explicitNullValueOptions; set { _explicitNullValueOptions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("options"); else _explicitNullProperties?.Remove("options"); } }

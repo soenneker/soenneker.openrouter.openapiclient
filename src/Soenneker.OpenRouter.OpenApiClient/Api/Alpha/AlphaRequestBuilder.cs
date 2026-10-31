@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.OpenRouter.OpenApiClient.Api.Alpha.Decisions;
+using Soenneker.OpenRouter.OpenApiClient.Api.Alpha.Extractions;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -19,6 +20,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Api.Alpha
         public global::Soenneker.OpenRouter.OpenApiClient.Api.Alpha.Decisions.DecisionsRequestBuilder Decisions
         {
             get => new global::Soenneker.OpenRouter.OpenApiClient.Api.Alpha.Decisions.DecisionsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The extractions property</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Api.Alpha.Extractions.ExtractionsRequestBuilder Extractions
+        {
+            get => new global::Soenneker.OpenRouter.OpenApiClient.Api.Alpha.Extractions.ExtractionsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Api.Alpha.AlphaRequestBuilder"/> and sets the default values.

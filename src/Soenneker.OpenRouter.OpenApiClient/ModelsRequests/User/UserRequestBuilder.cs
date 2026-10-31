@@ -86,7 +86,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.ModelsRequests.User
         public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.OpenRouter.OpenApiClient.ModelsRequests.User.UserRequestBuilder.UserRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.GET, global::Soenneker.OpenApi.Generated.OpenApiServiceRoutes.Resolve(UrlTemplate, RequestAdapter.BaseUrl, "https://openrouter.ai/api/v1", "/models/user", PathParameters.ContainsKey("request-raw-url")), PathParameters);
+            var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
@@ -106,7 +106,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.ModelsRequests.User
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class UserRequestBuilderGetQueryParameters 
         {
-            /// <summary>Return only the models and presets the named harness offers: those that support tool calling, and, when one of your guardrails sets `enforce_first_party_harness_models`, only the harness vendor&apos;s own models (OpenAI for codex, Anthropic for claude_code and claude_desktop). One of: claude_code, claude_desktop, codex. Omit it to get every model you can use.</summary>
+            /// <summary>Filter models and presets by the named harness&apos;s eligibility policy: tool calling is required, and when one of your guardrails sets `enforce_first_party_harness_models`, only the harness vendor&apos;s own models remain (OpenAI for codex, Anthropic for claude_code and claude_desktop). When your workspace&apos;s Managed Machines policy sets a model list for that harness, only the listed models remain, and a preset remains only while every model it routes to is listed. This filter doesn&apos;t apply the harness&apos;s ranking, caps or Claude Desktop model ID aliases, so returned IDs stay routable. One of: claude_code, claude_desktop, codex. Omit it to get every model you can use.</summary>
             [QueryParameter("client")]
             public global::Soenneker.OpenRouter.OpenApiClient.Models.ListModelsUserClientParameter? Client { get; set; }
             /// <summary>Maximum number of records to return (max 1000). When both offset and limit are omitted, the full list is returned</summary>

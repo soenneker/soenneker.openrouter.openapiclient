@@ -23,6 +23,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning disable CS1591
         Decisions,
         #pragma warning restore CS1591
+        [EnumMember(Value = "extractions")]
+        #pragma warning disable CS1591
+        Extractions,
+        #pragma warning restore CS1591
         [EnumMember(Value = "video")]
         #pragma warning disable CS1591
         Video,
