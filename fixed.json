@@ -6215,8 +6215,7 @@
     "/external-users": {
       "get": {
         "tags": [
-          "External Users",
-          "End Users"
+          "External Users"
         ],
         "summary": "List registered external users",
         "description": "List registrations belonging to the authenticated organization. Inactive registrations are excluded by default. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
@@ -6378,6 +6377,7 @@
             }
           }
         },
+        "x-speakeasy-group": "externalUsers",
         "x-speakeasy-name-override": "list",
         "x-speakeasy-pagination": {
           "inputs": [
@@ -6400,8 +6400,7 @@
       },
       "post": {
         "tags": [
-          "External Users",
-          "End Users"
+          "External Users"
         ],
         "summary": "Register an external user",
         "description": "Register a caller-supplied tracking ID under the authenticated organization. No login account, policy, or credentials are created. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
@@ -6538,6 +6537,7 @@
             "x-client-success-response-status": "201"
           }
         },
+        "x-speakeasy-group": "externalUsers",
         "x-speakeasy-name-override": "create"
       },
       "parameters": [
@@ -6555,8 +6555,7 @@
     "/external-users/{user}": {
       "delete": {
         "tags": [
-          "External Users",
-          "End Users"
+          "External Users"
         ],
         "summary": "Deactivate a registered external user",
         "description": "Soft-deactivate a registration while retaining its tracking ID. Repeat deactivation succeeds. This does not block inference; reactivate through PATCH. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
@@ -6646,12 +6645,12 @@
             }
           }
         },
+        "x-speakeasy-group": "externalUsers",
         "x-speakeasy-name-override": "delete"
       },
       "get": {
         "tags": [
-          "External Users",
-          "End Users"
+          "External Users"
         ],
         "summary": "Get a registered external user",
         "description": "Retrieve an active or inactive registration by its URL-encoded, caller-supplied tracking ID. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
@@ -6772,12 +6771,12 @@
             }
           }
         },
+        "x-speakeasy-group": "externalUsers",
         "x-speakeasy-name-override": "get"
       },
       "patch": {
         "tags": [
-          "External Users",
-          "End Users"
+          "External Users"
         ],
         "summary": "Update a registered external user",
         "description": "Update registration state without changing identity. State changes do not enforce inference access. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
@@ -6895,6 +6894,7 @@
             }
           }
         },
+        "x-speakeasy-group": "externalUsers",
         "x-speakeasy-name-override": "update"
       },
       "parameters": [
@@ -18785,7 +18785,7 @@
           "Private Providers"
         ],
         "summary": "Update a private provider",
-        "description": "Update a private provider\u2019s details or declared data policy. The name and slug cannot change. Refuses (409) a data-policy change while OpenRouter pins the declared policy on one of its endpoints. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
+        "description": "Update a private provider\u2019s display name or base URL. The name and slug cannot change, and the data policy is fixed by OpenRouter, so a body with no editable field is rejected (400). [Management key](/docs/guides/overview/auth/management-api-keys) required.",
         "operationId": "UpdatePrivateProvider",
         "parameters": [
           {
@@ -32744,7 +32744,8 @@
             "type": "integer"
           },
           "error": {
-            "$ref": "#/components/schemas/BaseResponsesResultError"
+            "description": "Error information returned from the API",
+            "$ref": "#/components/schemas/ResponsesErrorField"
           },
           "frequency_penalty": {
             "type": [
@@ -32757,7 +32758,7 @@
             "type": "string"
           },
           "incomplete_details": {
-            "$ref": "#/components/schemas/BaseResponsesResultIncompleteDetails"
+            "$ref": "#/components/schemas/IncompleteDetails"
           },
           "instructions": {
             "$ref": "#/components/schemas/BaseInputs"
@@ -32822,7 +32823,7 @@
             "$ref": "#/components/schemas/PromptCacheOptions"
           },
           "reasoning": {
-            "$ref": "#/components/schemas/BaseResponsesResultReasoning"
+            "$ref": "#/components/schemas/BaseReasoningConfig"
           },
           "safety_identifier": {
             "type": [
@@ -32847,7 +32848,8 @@
             "format": "double"
           },
           "text": {
-            "$ref": "#/components/schemas/BaseResponsesResultText"
+            "description": "Text output configuration including format and verbosity",
+            "$ref": "#/components/schemas/TextConfig"
           },
           "tool_choice": {
             "$ref": "#/components/schemas/OpenAiResponsesToolChoice"
@@ -32859,10 +32861,7 @@
             }
           },
           "top_logprobs": {
-            "type": [
-              "null",
-              "integer"
-            ]
+            "type": "integer"
           },
           "top_p": {
             "type": [
@@ -32872,7 +32871,7 @@
             "format": "double"
           },
           "truncation": {
-            "$ref": "#/components/schemas/BaseResponsesResultTruncation"
+            "$ref": "#/components/schemas/Truncation"
           },
           "usage": {
             "$ref": "#/components/schemas/OpenAiResponsesUsage"
@@ -38819,10 +38818,6 @@
             "description": "HTTPS base URL of an OpenAI-compatible API, used by private endpoints under this provider that set no URL of their own. Without it, each endpoint must set its own. Private, internal, metadata and OpenRouter hosts are rejected.",
             "example": "https://inference.example.com/v1"
           },
-          "data_policy": {
-            "description": "Defaults to training on and retaining prompts, the most conservative declaration. Your own declaration; it applies to your own traffic and OpenRouter does not verify it.",
-            "$ref": "#/components/schemas/PrivateProviderDataPolicy"
-          },
           "display_name": {
             "maxLength": 80,
             "minLength": 1,
@@ -38846,6 +38841,13 @@
             "description": "2-64 lowercase letters and numbers, separated by single hyphens. Cannot be changed later. Defaults to the name lowercased, with every run of other characters replaced by a hyphen (\u0060Acme Inference\u0060 becomes \u0060acme-inference\u0060).",
             "example": "acme"
           }
+        },
+        "description": "A private provider serves only your organization, so its endpoints are recorded as retaining no prompts, training on none and publishing none, and pass every data-policy filter your account or guardrails apply.",
+        "example": {
+          "base_url": "https://inference.example.com/v1",
+          "display_name": "Acme",
+          "name": "Acme",
+          "slug": "acme"
         }
       },
       "CreateScimGroupMappingRequest": {
@@ -52331,7 +52333,7 @@
             "type": "string"
           },
           "incomplete_details": {
-            "$ref": "#/components/schemas/BaseResponsesResultIncompleteDetails"
+            "$ref": "#/components/schemas/IncompleteDetails"
           },
           "instructions": {
             "$ref": "#/components/schemas/BaseInputs"
@@ -52393,7 +52395,7 @@
             "$ref": "#/components/schemas/PromptCacheOptions"
           },
           "reasoning": {
-            "$ref": "#/components/schemas/BaseResponsesResultReasoning"
+            "$ref": "#/components/schemas/BaseReasoningConfig"
           },
           "safety_identifier": {
             "type": [
@@ -52430,10 +52432,7 @@
             }
           },
           "top_logprobs": {
-            "type": [
-              "null",
-              "integer"
-            ]
+            "type": "integer"
           },
           "top_p": {
             "type": [
@@ -52443,7 +52442,7 @@
             "format": "double"
           },
           "truncation": {
-            "$ref": "#/components/schemas/BaseResponsesResultTruncation"
+            "$ref": "#/components/schemas/Truncation"
           },
           "usage": {
             "$ref": "#/components/schemas/OpenResponsesResultUsage"
@@ -57558,7 +57557,6 @@
           "slug",
           "display_name",
           "base_url",
-          "data_policy",
           "created_at"
         ],
         "type": "object",
@@ -57574,9 +57572,6 @@
           },
           "created_at": {
             "type": "string"
-          },
-          "data_policy": {
-            "$ref": "#/components/schemas/PrivateProviderDataPolicyProperty"
           },
           "display_name": {
             "type": "string",
@@ -57597,47 +57592,9 @@
         "example": {
           "base_url": "https://inference.example.com/v1",
           "created_at": "2026-10-06T12:00:00.000Z",
-          "data_policy": {
-            "prompt_retention_days": null,
-            "retains_prompts": false,
-            "training": false
-          },
           "display_name": "Acme",
           "name": "Acme",
           "slug": "acme"
-        }
-      },
-      "PrivateProviderDataPolicy": {
-        "required": [
-          "training",
-          "retains_prompts",
-          "prompt_retention_days"
-        ],
-        "type": "object",
-        "properties": {
-          "prompt_retention_days": {
-            "maximum": 3650,
-            "minimum": 1,
-            "type": [
-              "null",
-              "integer"
-            ],
-            "description": "Days prompts are retained. Must be \u0060null\u0060 unless \u0060retains_prompts\u0060 is true."
-          },
-          "retains_prompts": {
-            "type": "boolean",
-            "description": "Whether the provider retains prompts or completions."
-          },
-          "training": {
-            "type": "boolean",
-            "description": "Whether the provider trains on prompts."
-          }
-        },
-        "description": "Defaults to training on and retaining prompts, the most conservative declaration. Your own declaration; it applies to your own traffic and OpenRouter does not verify it.",
-        "example": {
-          "prompt_retention_days": null,
-          "retains_prompts": false,
-          "training": false
         }
       },
       "PromptCacheBreakpoint": {
@@ -65946,9 +65903,6 @@
             "description": "HTTPS base URL of an OpenAI-compatible API, used by private endpoints under this provider that set no URL of their own. Without it, each endpoint must set its own. Private, internal, metadata and OpenRouter hosts are rejected.",
             "example": "https://inference.example.com/v1"
           },
-          "data_policy": {
-            "$ref": "#/components/schemas/UpdatePrivateProviderRequestDataPolicy"
-          },
           "display_name": {
             "maxLength": 80,
             "minLength": 1,
@@ -69035,42 +68989,6 @@
           "service_tier": "standard"
         }
       },
-      "BaseResponsesResultError": {
-        "anyOf": [
-          {
-            "$ref": "#/components/schemas/ResponsesErrorField"
-          },
-          {
-            "type": "null"
-          }
-        ]
-      },
-      "BaseResponsesResultIncompleteDetails": {
-        "anyOf": [
-          {
-            "$ref": "#/components/schemas/IncompleteDetails"
-          },
-          {
-            "type": "null"
-          }
-        ]
-      },
-      "BaseResponsesResultInstructions": {
-        "anyOf": [
-          {
-            "type": "string"
-          },
-          {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/BaseInputsAnyOf2Item"
-            }
-          },
-          {
-            "type": "null"
-          }
-        ]
-      },
       "BaseResponsesResultOutputItem": {
         "oneOf": [
           {
@@ -69115,26 +69033,6 @@
             "web_search_call": "#/components/schemas/OutputItemWebSearchCall"
           }
         }
-      },
-      "BaseResponsesResultReasoning": {
-        "anyOf": [
-          {
-            "$ref": "#/components/schemas/BaseReasoningConfig"
-          },
-          {
-            "type": "null"
-          }
-        ]
-      },
-      "BaseResponsesResultText": {
-        "anyOf": [
-          {
-            "$ref": "#/components/schemas/TextConfig"
-          },
-          {
-            "type": "null"
-          }
-        ]
       },
       "BaseResponsesResultToolsItem": {
         "oneOf": [
@@ -69204,16 +69102,6 @@
             "namespace": "#/components/schemas/NamespaceTool"
           }
         }
-      },
-      "BaseResponsesResultTruncation": {
-        "anyOf": [
-          {
-            "$ref": "#/components/schemas/Truncation"
-          },
-          {
-            "type": "null"
-          }
-        ]
       },
       "BatchObjectResultsItemResponseBody": {
         "anyOf": [
@@ -82617,37 +82505,6 @@
           }
         }
       },
-      "PrivateProviderDataPolicyProperty": {
-        "required": [
-          "training",
-          "retains_prompts",
-          "prompt_retention_days"
-        ],
-        "type": [
-          "null",
-          "object"
-        ],
-        "properties": {
-          "prompt_retention_days": {
-            "maximum": 3650,
-            "minimum": 1,
-            "type": [
-              "null",
-              "integer"
-            ],
-            "description": "Days prompts are retained. Must be \u0060null\u0060 unless \u0060retains_prompts\u0060 is true."
-          },
-          "retains_prompts": {
-            "type": "boolean",
-            "description": "Whether the provider retains prompts or completions."
-          },
-          "training": {
-            "type": "boolean",
-            "description": "Whether the provider trains on prompts."
-          }
-        },
-        "description": "Your declared data policy, or \u0060null\u0060 when none was declared."
-      },
       "ProviderOptions01Ai": {
         "type": "object",
         "additionalProperties": {}
@@ -83756,28 +83613,6 @@
           "required": {
             "type": "boolean",
             "description": "Accepts \u0060tool_choice: \u0022required\u0022\u0060."
-          }
-        }
-      },
-      "UpdatePrivateProviderRequestDataPolicy": {
-        "type": "object",
-        "properties": {
-          "prompt_retention_days": {
-            "maximum": 3650,
-            "minimum": 1,
-            "type": [
-              "null",
-              "integer"
-            ],
-            "description": "Days prompts are retained. Must be \u0060null\u0060 unless \u0060retains_prompts\u0060 is true."
-          },
-          "retains_prompts": {
-            "type": "boolean",
-            "description": "Whether the provider retains prompts or completions."
-          },
-          "training": {
-            "type": "boolean",
-            "description": "Whether the provider trains on prompts."
           }
         }
       },
@@ -87259,7 +87094,8 @@
             "type": "integer"
           },
           "error": {
-            "$ref": "#/components/schemas/BaseResponsesResultError"
+            "description": "Error information returned from the API",
+            "$ref": "#/components/schemas/ResponsesErrorField"
           },
           "frequency_penalty": {
             "type": [
@@ -87272,7 +87108,7 @@
             "type": "string"
           },
           "incomplete_details": {
-            "$ref": "#/components/schemas/BaseResponsesResultIncompleteDetails"
+            "$ref": "#/components/schemas/IncompleteDetails"
           },
           "instructions": {
             "$ref": "#/components/schemas/BaseInputs"
@@ -87337,7 +87173,7 @@
             "$ref": "#/components/schemas/PromptCacheOptions"
           },
           "reasoning": {
-            "$ref": "#/components/schemas/BaseResponsesResultReasoning"
+            "$ref": "#/components/schemas/BaseReasoningConfig"
           },
           "safety_identifier": {
             "type": [
@@ -87362,7 +87198,8 @@
             "format": "double"
           },
           "text": {
-            "$ref": "#/components/schemas/BaseResponsesResultText"
+            "description": "Text output configuration including format and verbosity",
+            "$ref": "#/components/schemas/TextConfig"
           },
           "tool_choice": {
             "$ref": "#/components/schemas/OpenAiResponsesToolChoice"
@@ -87374,10 +87211,7 @@
             }
           },
           "top_logprobs": {
-            "type": [
-              "null",
-              "integer"
-            ]
+            "type": "integer"
           },
           "top_p": {
             "type": [
@@ -87387,7 +87221,7 @@
             "format": "double"
           },
           "truncation": {
-            "$ref": "#/components/schemas/BaseResponsesResultTruncation"
+            "$ref": "#/components/schemas/Truncation"
           },
           "usage": {
             "$ref": "#/components/schemas/OpenAiResponsesUsage"
@@ -87445,7 +87279,8 @@
             "type": "integer"
           },
           "error": {
-            "$ref": "#/components/schemas/BaseResponsesResultError"
+            "description": "Error information returned from the API",
+            "$ref": "#/components/schemas/ResponsesErrorField"
           },
           "frequency_penalty": {
             "type": [
@@ -87458,7 +87293,7 @@
             "type": "string"
           },
           "incomplete_details": {
-            "$ref": "#/components/schemas/BaseResponsesResultIncompleteDetails"
+            "$ref": "#/components/schemas/IncompleteDetails"
           },
           "instructions": {
             "$ref": "#/components/schemas/BaseInputs"
@@ -87523,7 +87358,7 @@
             "$ref": "#/components/schemas/PromptCacheOptions"
           },
           "reasoning": {
-            "$ref": "#/components/schemas/BaseResponsesResultReasoning"
+            "$ref": "#/components/schemas/BaseReasoningConfig"
           },
           "safety_identifier": {
             "type": [
@@ -87548,7 +87383,8 @@
             "format": "double"
           },
           "text": {
-            "$ref": "#/components/schemas/BaseResponsesResultText"
+            "description": "Text output configuration including format and verbosity",
+            "$ref": "#/components/schemas/TextConfig"
           },
           "tool_choice": {
             "$ref": "#/components/schemas/OpenAiResponsesToolChoice"
@@ -87560,10 +87396,7 @@
             }
           },
           "top_logprobs": {
-            "type": [
-              "null",
-              "integer"
-            ]
+            "type": "integer"
           },
           "top_p": {
             "type": [
@@ -87573,7 +87406,7 @@
             "format": "double"
           },
           "truncation": {
-            "$ref": "#/components/schemas/BaseResponsesResultTruncation"
+            "$ref": "#/components/schemas/Truncation"
           },
           "usage": {
             "$ref": "#/components/schemas/OpenAiResponsesUsage"
@@ -87609,7 +87442,8 @@
       "OpenResponsesResultError": {
         "allOf": [
           {
-            "$ref": "#/components/schemas/BaseResponsesResultError"
+            "description": "Error information returned from the API",
+            "$ref": "#/components/schemas/ResponsesErrorField"
           },
           {
             "description": "Error of a failed response; \u0060metadata\u0060 carries OpenRouter-specific details.",
@@ -87637,19 +87471,13 @@
         "allOf": [
           {
             "description": "Text output configuration including format and verbosity",
+            "$ref": "#/components/schemas/TextConfig"
+          },
+          {
+            "description": "Text output configuration including format and verbosity",
             "$ref": "#/components/schemas/TextExtendedConfig"
           }
-        ],
-        "type": "object",
-        "properties": {
-          "format": {
-            "description": "Text response format configuration",
-            "$ref": "#/components/schemas/Formats"
-          },
-          "verbosity": {
-            "$ref": "#/components/schemas/TextConfigVerbosity"
-          }
-        }
+        ]
       },
       "OpenResponsesResultUsage": {
         "allOf": [
@@ -87771,7 +87599,8 @@
             "type": "integer"
           },
           "error": {
-            "$ref": "#/components/schemas/BaseResponsesResultError"
+            "description": "Error information returned from the API",
+            "$ref": "#/components/schemas/ResponsesErrorField"
           },
           "frequency_penalty": {
             "type": [
@@ -87784,7 +87613,7 @@
             "type": "string"
           },
           "incomplete_details": {
-            "$ref": "#/components/schemas/BaseResponsesResultIncompleteDetails"
+            "$ref": "#/components/schemas/IncompleteDetails"
           },
           "instructions": {
             "$ref": "#/components/schemas/BaseInputs"
@@ -87849,7 +87678,7 @@
             "$ref": "#/components/schemas/PromptCacheOptions"
           },
           "reasoning": {
-            "$ref": "#/components/schemas/BaseResponsesResultReasoning"
+            "$ref": "#/components/schemas/BaseReasoningConfig"
           },
           "safety_identifier": {
             "type": [
@@ -87874,7 +87703,8 @@
             "format": "double"
           },
           "text": {
-            "$ref": "#/components/schemas/BaseResponsesResultText"
+            "description": "Text output configuration including format and verbosity",
+            "$ref": "#/components/schemas/TextConfig"
           },
           "tool_choice": {
             "$ref": "#/components/schemas/OpenAiResponsesToolChoice"
@@ -87886,10 +87716,7 @@
             }
           },
           "top_logprobs": {
-            "type": [
-              "null",
-              "integer"
-            ]
+            "type": "integer"
           },
           "top_p": {
             "type": [
@@ -87899,7 +87726,7 @@
             "format": "double"
           },
           "truncation": {
-            "$ref": "#/components/schemas/BaseResponsesResultTruncation"
+            "$ref": "#/components/schemas/Truncation"
           },
           "usage": {
             "$ref": "#/components/schemas/OpenAiResponsesUsage"
@@ -87957,7 +87784,8 @@
             "type": "integer"
           },
           "error": {
-            "$ref": "#/components/schemas/BaseResponsesResultError"
+            "description": "Error information returned from the API",
+            "$ref": "#/components/schemas/ResponsesErrorField"
           },
           "frequency_penalty": {
             "type": [
@@ -87970,7 +87798,7 @@
             "type": "string"
           },
           "incomplete_details": {
-            "$ref": "#/components/schemas/BaseResponsesResultIncompleteDetails"
+            "$ref": "#/components/schemas/IncompleteDetails"
           },
           "instructions": {
             "$ref": "#/components/schemas/BaseInputs"
@@ -88035,7 +87863,7 @@
             "$ref": "#/components/schemas/PromptCacheOptions"
           },
           "reasoning": {
-            "$ref": "#/components/schemas/BaseResponsesResultReasoning"
+            "$ref": "#/components/schemas/BaseReasoningConfig"
           },
           "safety_identifier": {
             "type": [
@@ -88060,7 +87888,8 @@
             "format": "double"
           },
           "text": {
-            "$ref": "#/components/schemas/BaseResponsesResultText"
+            "description": "Text output configuration including format and verbosity",
+            "$ref": "#/components/schemas/TextConfig"
           },
           "tool_choice": {
             "$ref": "#/components/schemas/OpenAiResponsesToolChoice"
@@ -88072,10 +87901,7 @@
             }
           },
           "top_logprobs": {
-            "type": [
-              "null",
-              "integer"
-            ]
+            "type": "integer"
           },
           "top_p": {
             "type": [
@@ -88085,7 +87911,7 @@
             "format": "double"
           },
           "truncation": {
-            "$ref": "#/components/schemas/BaseResponsesResultTruncation"
+            "$ref": "#/components/schemas/Truncation"
           },
           "usage": {
             "$ref": "#/components/schemas/OpenAiResponsesUsage"
@@ -88143,7 +87969,8 @@
             "type": "integer"
           },
           "error": {
-            "$ref": "#/components/schemas/BaseResponsesResultError"
+            "description": "Error information returned from the API",
+            "$ref": "#/components/schemas/ResponsesErrorField"
           },
           "frequency_penalty": {
             "type": [
@@ -88156,7 +87983,7 @@
             "type": "string"
           },
           "incomplete_details": {
-            "$ref": "#/components/schemas/BaseResponsesResultIncompleteDetails"
+            "$ref": "#/components/schemas/IncompleteDetails"
           },
           "instructions": {
             "$ref": "#/components/schemas/BaseInputs"
@@ -88221,7 +88048,7 @@
             "$ref": "#/components/schemas/PromptCacheOptions"
           },
           "reasoning": {
-            "$ref": "#/components/schemas/BaseResponsesResultReasoning"
+            "$ref": "#/components/schemas/BaseReasoningConfig"
           },
           "safety_identifier": {
             "type": [
@@ -88246,7 +88073,8 @@
             "format": "double"
           },
           "text": {
-            "$ref": "#/components/schemas/BaseResponsesResultText"
+            "description": "Text output configuration including format and verbosity",
+            "$ref": "#/components/schemas/TextConfig"
           },
           "tool_choice": {
             "$ref": "#/components/schemas/OpenAiResponsesToolChoice"
@@ -88258,10 +88086,7 @@
             }
           },
           "top_logprobs": {
-            "type": [
-              "null",
-              "integer"
-            ]
+            "type": "integer"
           },
           "top_p": {
             "type": [
@@ -88271,7 +88096,7 @@
             "format": "double"
           },
           "truncation": {
-            "$ref": "#/components/schemas/BaseResponsesResultTruncation"
+            "$ref": "#/components/schemas/Truncation"
           },
           "usage": {
             "$ref": "#/components/schemas/OpenAiResponsesUsage"
@@ -120425,8 +120250,7 @@
         "description": "The app display name allows you to customize how your app appears in OpenRouter\u0027s dashboard.\n",
         "schema": {
           "type": "string"
-        },
-        "x-speakeasy-name-override": "appTitle"
+        }
       },
       "AppCategories": {
         "name": "X-OpenRouter-Categories",
@@ -120434,8 +120258,7 @@
         "description": "Comma-separated list of app categories (e.g. \u0022cli-agent,cloud-agent\u0022). Used for marketplace rankings.\n",
         "schema": {
           "type": "string"
-        },
-        "x-speakeasy-name-override": "appCategories"
+        }
       }
     },
     "securitySchemes": {
@@ -120614,11 +120437,7 @@
     },
     {
       "name": "beta.responses",
-      "description": "Deprecated alias of responses. Use responses instead; scheduled for removal (sunset date TBD)."
-    },
-    {
-      "name": "End Users",
-      "description": "Deprecated alias of externalUsers. Use externalUsers instead; scheduled for removal (sunset date TBD)."
+      "description": "Deprecated alias for responses endpoints. Use responses instead. Scheduled for removal (sunset date TBD)."
     }
   ],
   "externalDocs": {

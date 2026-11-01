@@ -21,8 +21,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             else if (parseNode.GetChildNode("base_url") is { } nullNodeBaseUrl && nullNodeBaseUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BaseUrl = null;
             if (parseNode.GetChildNode("created_at") is null) { _explicitNullValueCreatedAt = default!; _explicitNullProperties?.Remove("created_at"); }
             else if (parseNode.GetChildNode("created_at") is { } nullNodeCreatedAt && nullNodeCreatedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CreatedAt = null;
-            if (parseNode.GetChildNode("data_policy") is null) { _explicitNullValueDataPolicy = default!; _explicitNullProperties?.Remove("data_policy"); }
-            else if (parseNode.GetChildNode("data_policy") is { } nullNodeDataPolicy && nullNodeDataPolicy.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DataPolicy = null;
             if (parseNode.GetChildNode("display_name") is null) { _explicitNullValueDisplayName = default!; _explicitNullProperties?.Remove("display_name"); }
             else if (parseNode.GetChildNode("display_name") is { } nullNodeDisplayName && nullNodeDisplayName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DisplayName = null;
             if (parseNode.GetChildNode("name") is null) { _explicitNullValueName = default!; _explicitNullProperties?.Remove("name"); }
@@ -52,16 +50,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public string CreatedAt { get => _explicitNullValueCreatedAt; set { _explicitNullValueCreatedAt = value; AdditionalData?.Remove("created_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_at"); else _explicitNullProperties?.Remove("created_at"); } }
         private string _explicitNullValueCreatedAt = default!;
-#endif
-        /// <summary>Your declared data policy, or `null` when none was declared.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateProviderDataPolicyProperty? DataPolicy { get => _explicitNullValueDataPolicy; set { _explicitNullValueDataPolicy = value; AdditionalData?.Remove("data_policy"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data_policy"); else _explicitNullProperties?.Remove("data_policy"); } }
-        private global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateProviderDataPolicyProperty? _explicitNullValueDataPolicy = default!;
-#nullable restore
-#else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateProviderDataPolicyProperty DataPolicy { get => _explicitNullValueDataPolicy; set { _explicitNullValueDataPolicy = value; AdditionalData?.Remove("data_policy"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data_policy"); else _explicitNullProperties?.Remove("data_policy"); } }
-        private global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateProviderDataPolicyProperty _explicitNullValueDataPolicy = default!;
 #endif
         /// <summary>Human-readable provider name shown in the UI.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -120,7 +108,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             {
                 { "base_url", n => { BaseUrl = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetStringValue(); } },
-                { "data_policy", n => { DataPolicy = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateProviderDataPolicyProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateProviderDataPolicyProperty.CreateFromDiscriminatorValue); } },
                 { "display_name", n => { DisplayName = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "slug", n => { Slug = n.GetStringValue(); } },
@@ -135,7 +122,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("base_url", BaseUrl);
             writer.WriteStringValue("created_at", CreatedAt);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateProviderDataPolicyProperty>("data_policy", DataPolicy);
             writer.WriteStringValue("display_name", DisplayName);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("slug", Slug);

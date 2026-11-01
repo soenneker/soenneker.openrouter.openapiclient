@@ -19,8 +19,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if (parseNode.GetChildNode("base_url") is null) { _explicitNullValueBaseUrl = default!; _explicitNullProperties?.Remove("base_url"); }
             else if (parseNode.GetChildNode("base_url") is { } nullNodeBaseUrl && nullNodeBaseUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BaseUrl = null;
-            if (parseNode.GetChildNode("data_policy") is null) { _explicitNullValueDataPolicy = default!; _explicitNullProperties?.Remove("data_policy"); }
-            else if (parseNode.GetChildNode("data_policy") is { } nullNodeDataPolicy && nullNodeDataPolicy.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DataPolicy = null;
             if (parseNode.GetChildNode("display_name") is null) { _explicitNullValueDisplayName = default!; _explicitNullProperties?.Remove("display_name"); }
             else if (parseNode.GetChildNode("display_name") is { } nullNodeDisplayName && nullNodeDisplayName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DisplayName = null;
         }
@@ -36,16 +34,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public string BaseUrl { get => _explicitNullValueBaseUrl; set { _explicitNullValueBaseUrl = value; AdditionalData?.Remove("base_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("base_url"); else _explicitNullProperties?.Remove("base_url"); } }
         private string _explicitNullValueBaseUrl = default!;
-#endif
-        /// <summary>The data_policy property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateProviderRequestDataPolicy? DataPolicy { get => _explicitNullValueDataPolicy; set { _explicitNullValueDataPolicy = value; AdditionalData?.Remove("data_policy"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data_policy"); else _explicitNullProperties?.Remove("data_policy"); } }
-        private global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateProviderRequestDataPolicy? _explicitNullValueDataPolicy = default!;
-#nullable restore
-#else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateProviderRequestDataPolicy DataPolicy { get => _explicitNullValueDataPolicy; set { _explicitNullValueDataPolicy = value; AdditionalData?.Remove("data_policy"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data_policy"); else _explicitNullProperties?.Remove("data_policy"); } }
-        private global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateProviderRequestDataPolicy _explicitNullValueDataPolicy = default!;
 #endif
         /// <summary>The display_name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -83,7 +71,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "base_url", n => { BaseUrl = n.GetStringValue(); } },
-                { "data_policy", n => { DataPolicy = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateProviderRequestDataPolicy>(global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateProviderRequestDataPolicy.CreateFromDiscriminatorValue); } },
                 { "display_name", n => { DisplayName = n.GetStringValue(); } },
             };
         }
@@ -95,7 +82,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("base_url", BaseUrl);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateProviderRequestDataPolicy>("data_policy", DataPolicy);
             writer.WriteStringValue("display_name", DisplayName);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);

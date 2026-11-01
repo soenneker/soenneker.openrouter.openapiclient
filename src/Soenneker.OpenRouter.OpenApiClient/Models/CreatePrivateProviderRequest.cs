@@ -7,10 +7,11 @@ using System.IO;
 using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
+    /// <summary>
+    /// A private provider serves only your organization, so its endpoints are recorded as retaining no prompts, training on none and publishing none, and pass every data-policy filter your account or guardrails apply.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public partial class CreatePrivateProviderRequest : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
     , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
         // Track explicitly assigned nulls separately from absent properties.
         private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
@@ -19,8 +20,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if (parseNode.GetChildNode("base_url") is null) { _explicitNullValueBaseUrl = default!; _explicitNullProperties?.Remove("base_url"); }
             else if (parseNode.GetChildNode("base_url") is { } nullNodeBaseUrl && nullNodeBaseUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BaseUrl = null;
-            if (parseNode.GetChildNode("data_policy") is null) { _explicitNullValueDataPolicy = default!; _explicitNullProperties?.Remove("data_policy"); }
-            else if (parseNode.GetChildNode("data_policy") is { } nullNodeDataPolicy && nullNodeDataPolicy.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DataPolicy = null;
             if (parseNode.GetChildNode("display_name") is null) { _explicitNullValueDisplayName = default!; _explicitNullProperties?.Remove("display_name"); }
             else if (parseNode.GetChildNode("display_name") is { } nullNodeDisplayName && nullNodeDisplayName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DisplayName = null;
             if (parseNode.GetChildNode("name") is null) { _explicitNullValueName = default!; _explicitNullProperties?.Remove("name"); }
@@ -40,16 +39,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public string BaseUrl { get => _explicitNullValueBaseUrl; set { _explicitNullValueBaseUrl = value; AdditionalData?.Remove("base_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("base_url"); else _explicitNullProperties?.Remove("base_url"); } }
         private string _explicitNullValueBaseUrl = default!;
-#endif
-        /// <summary>Defaults to training on and retaining prompts, the most conservative declaration. Your own declaration; it applies to your own traffic and OpenRouter does not verify it.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateProviderDataPolicy? DataPolicy { get => _explicitNullValueDataPolicy; set { _explicitNullValueDataPolicy = value; AdditionalData?.Remove("data_policy"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data_policy"); else _explicitNullProperties?.Remove("data_policy"); } }
-        private global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateProviderDataPolicy? _explicitNullValueDataPolicy = default!;
-#nullable restore
-#else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateProviderDataPolicy DataPolicy { get => _explicitNullValueDataPolicy; set { _explicitNullValueDataPolicy = value; AdditionalData?.Remove("data_policy"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data_policy"); else _explicitNullProperties?.Remove("data_policy"); } }
-        private global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateProviderDataPolicy _explicitNullValueDataPolicy = default!;
 #endif
         /// <summary>Defaults to `name`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -107,7 +96,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "base_url", n => { BaseUrl = n.GetStringValue(); } },
-                { "data_policy", n => { DataPolicy = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateProviderDataPolicy>(global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateProviderDataPolicy.CreateFromDiscriminatorValue); } },
                 { "display_name", n => { DisplayName = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "slug", n => { Slug = n.GetStringValue(); } },
@@ -121,7 +109,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("base_url", BaseUrl);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateProviderDataPolicy>("data_policy", DataPolicy);
             writer.WriteStringValue("display_name", DisplayName);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("slug", Slug);

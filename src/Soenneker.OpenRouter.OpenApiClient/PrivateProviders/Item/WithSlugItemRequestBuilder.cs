@@ -108,7 +108,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.PrivateProviders.Item
             return await RequestAdapter.SendAsync<global::Soenneker.OpenRouter.OpenApiClient.Models.GetPrivateProvider200Response>(requestInfo, global::Soenneker.OpenRouter.OpenApiClient.Models.GetPrivateProvider200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Update a private provider’s details or declared data policy. The name and slug cannot change. Refuses (409) a data-policy change while OpenRouter pins the declared policy on one of its endpoints. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+        /// Update a private provider’s display name or base URL. The name and slug cannot change, and the data policy is fixed by OpenRouter, so a body with no editable field is rejected (400). [Management key](/docs/guides/overview/auth/management-api-keys) required.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.UpdatePrivateProvider200Response"/></returns>
         /// <param name="body">The request body</param>
@@ -191,7 +191,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.PrivateProviders.Item
             return requestInfo;
         }
         /// <summary>
-        /// Update a private provider’s details or declared data policy. The name and slug cannot change. Refuses (409) a data-policy change while OpenRouter pins the declared policy on one of its endpoints. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+        /// Update a private provider’s display name or base URL. The name and slug cannot change, and the data policy is fixed by OpenRouter, so a body with no editable field is rejected (400). [Management key](/docs/guides/overview/auth/management-api-keys) required.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

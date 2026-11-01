@@ -9,23 +9,48 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class OpenResponsesResultText : global::Soenneker.OpenRouter.OpenApiClient.Models.TextExtendedConfig, IParsable
+    public partial class OpenResponsesResultText : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
         // Track explicitly assigned nulls separately from absent properties.
         private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
 
-        public override void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            base.CaptureExplicitNulls(parseNode);
+            if (parseNode.GetChildNode("format") is null) { _explicitNullValueFormat = default!; _explicitNullProperties?.Remove("format"); }
+            else if (parseNode.GetChildNode("format") is { } nullNodeFormat && nullNodeFormat.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Format = null;
+            if (parseNode.GetChildNode("verbosity") is null) { _explicitNullValueVerbosity = default!; _explicitNullProperties?.Remove("verbosity"); }
+            else if (parseNode.GetChildNode("verbosity") is { } nullNodeVerbosity && nullNodeVerbosity.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Verbosity = null;
         }
 
+        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
+        public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Text response format configuration</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.Formats? Format { get => _explicitNullValueFormat; set { _explicitNullValueFormat = value; AdditionalData?.Remove("format"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("format"); else _explicitNullProperties?.Remove("format"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.Formats? _explicitNullValueFormat = default!;
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.Formats Format { get => _explicitNullValueFormat; set { _explicitNullValueFormat = value; AdditionalData?.Remove("format"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("format"); else _explicitNullProperties?.Remove("format"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.Formats _explicitNullValueFormat = default!;
+#endif
+        /// <summary>The verbosity property</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.TextConfigVerbosity? Verbosity { get => _explicitNullValueVerbosity; set { _explicitNullValueVerbosity = value; AdditionalData?.Remove("verbosity"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("verbosity"); else _explicitNullProperties?.Remove("verbosity"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.TextConfigVerbosity? _explicitNullValueVerbosity = default!;
+        /// <summary>
+        /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OpenResponsesResultText"/> and sets the default values.
+        /// </summary>
+        public OpenResponsesResultText()
+        {
+            AdditionalData = new Dictionary<string, object>();
+        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OpenResponsesResultText"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static new global::Soenneker.OpenRouter.OpenApiClient.Models.OpenResponsesResultText CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.OpenRouter.OpenApiClient.Models.OpenResponsesResultText CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.OpenResponsesResultText(), parseNode);
@@ -34,21 +59,25 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public override IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>(base.GetFieldDeserializers())
+            return new Dictionary<string, Action<IParseNode>>
             {
+                { "format", n => { Format = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.Formats>(global::Soenneker.OpenRouter.OpenApiClient.Models.Formats.CreateFromDiscriminatorValue); } },
+                { "verbosity", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.TextConfigVerbosity>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueVerbosity = default; _explicitNullProperties?.Remove("verbosity"); AdditionalData["verbosity"] = unknown; } else { Verbosity = parsed; AdditionalData.Remove("verbosity"); } } },
             };
         }
         /// <summary>
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public override void Serialize(ISerializationWriter writer)
+        public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            base.Serialize(writer);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
-            
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.Formats>("format", Format);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.TextConfigVerbosity>("verbosity", Verbosity);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }
