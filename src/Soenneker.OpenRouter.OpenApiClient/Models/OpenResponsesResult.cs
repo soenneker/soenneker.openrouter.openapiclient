@@ -313,8 +313,15 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         private string _explicitNullValueSafetyIdentifier = default!;
 #endif
         /// <summary>The service_tier property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.OpenRouter.OpenApiClient.Models.OpenResponsesResultServiceTier? ServiceTier { get => _explicitNullValueServiceTier; set { _explicitNullValueServiceTier = value; AdditionalData?.Remove("service_tier"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("service_tier"); else _explicitNullProperties?.Remove("service_tier"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.OpenResponsesResultServiceTier? _explicitNullValueServiceTier = default!;
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.OpenResponsesResultServiceTier ServiceTier { get => _explicitNullValueServiceTier; set { _explicitNullValueServiceTier = value; AdditionalData?.Remove("service_tier"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("service_tier"); else _explicitNullProperties?.Remove("service_tier"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.OpenResponsesResultServiceTier _explicitNullValueServiceTier = default!;
+#endif
         /// <summary>The status property</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAiResponsesResponseStatus? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; AdditionalData?.Remove("status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAiResponsesResponseStatus? _explicitNullValueStatus = default!;
@@ -361,8 +368,15 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public double? TopP { get => _explicitNullValueTopP; set { _explicitNullValueTopP = value; AdditionalData?.Remove("top_p"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("top_p"); else _explicitNullProperties?.Remove("top_p"); } }
         private double? _explicitNullValueTopP = default!;
         /// <summary>The truncation property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.OpenRouter.OpenApiClient.Models.Truncation? Truncation { get => _explicitNullValueTruncation; set { _explicitNullValueTruncation = value; AdditionalData?.Remove("truncation"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("truncation"); else _explicitNullProperties?.Remove("truncation"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.Truncation? _explicitNullValueTruncation = default!;
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.Truncation Truncation { get => _explicitNullValueTruncation; set { _explicitNullValueTruncation = value; AdditionalData?.Remove("truncation"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("truncation"); else _explicitNullProperties?.Remove("truncation"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.Truncation _explicitNullValueTruncation = default!;
+#endif
         /// <summary>The usage property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -436,7 +450,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "reasoning", n => { Reasoning = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.BaseReasoningConfig>(global::Soenneker.OpenRouter.OpenApiClient.Models.BaseReasoningConfig.CreateFromDiscriminatorValue); } },
                 { "safeguard_results", n => { SafeguardResults = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ArmorSafeguardResult>(global::Soenneker.OpenRouter.OpenApiClient.Models.ArmorSafeguardResult.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "safety_identifier", n => { SafetyIdentifier = n.GetStringValue(); } },
-                { "service_tier", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OpenResponsesResultServiceTier>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueServiceTier = default; _explicitNullProperties?.Remove("service_tier"); AdditionalData["service_tier"] = unknown; } else { ServiceTier = parsed; AdditionalData.Remove("service_tier"); } } },
+                { "service_tier", n => { ServiceTier = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OpenResponsesResultServiceTier>(global::Soenneker.OpenRouter.OpenApiClient.Models.OpenResponsesResultServiceTier.CreateFromDiscriminatorValue); } },
                 { "status", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAiResponsesResponseStatus>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueStatus = default; _explicitNullProperties?.Remove("status"); AdditionalData["status"] = unknown; } else { Status = parsed; AdditionalData.Remove("status"); } } },
                 { "store", n => { Store = n.GetBoolValue(); } },
                 { "temperature", n => { Temperature = n.GetDoubleValue(); } },
@@ -445,7 +459,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "tools", n => { Tools = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.BaseResponsesResultToolsItem>(global::Soenneker.OpenRouter.OpenApiClient.Models.BaseResponsesResultToolsItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "top_logprobs", n => { TopLogprobs = n.GetIntValue(); } },
                 { "top_p", n => { TopP = n.GetDoubleValue(); } },
-                { "truncation", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.Truncation>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueTruncation = default; _explicitNullProperties?.Remove("truncation"); AdditionalData["truncation"] = unknown; } else { Truncation = parsed; AdditionalData.Remove("truncation"); } } },
+                { "truncation", n => { Truncation = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.Truncation>(global::Soenneker.OpenRouter.OpenApiClient.Models.Truncation.CreateFromDiscriminatorValue); } },
                 { "usage", n => { Usage = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OpenResponsesResultUsage>(global::Soenneker.OpenRouter.OpenApiClient.Models.OpenResponsesResultUsage.CreateFromDiscriminatorValue); } },
                 { "user", n => { User = n.GetStringValue(); } },
             };
@@ -485,7 +499,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.BaseReasoningConfig>("reasoning", Reasoning);
             writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ArmorSafeguardResult>("safeguard_results", SafeguardResults);
             writer.WriteStringValue("safety_identifier", SafetyIdentifier);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OpenResponsesResultServiceTier>("service_tier", ServiceTier);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OpenResponsesResultServiceTier>("service_tier", ServiceTier);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAiResponsesResponseStatus>("status", Status);
             writer.WriteBoolValue("store", Store);
             writer.WriteDoubleValue("temperature", Temperature);
@@ -494,7 +508,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.BaseResponsesResultToolsItem>("tools", Tools);
             writer.WriteIntValue("top_logprobs", TopLogprobs);
             writer.WriteDoubleValue("top_p", TopP);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.Truncation>("truncation", Truncation);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.Truncation>("truncation", Truncation);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OpenResponsesResultUsage>("usage", Usage);
             writer.WriteStringValue("user", User);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);

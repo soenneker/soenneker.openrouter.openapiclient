@@ -59,8 +59,15 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public int? ModelCount { get => _explicitNullValueModelCount; set { _explicitNullValueModelCount = value; AdditionalData?.Remove("model_count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_count"); else _explicitNullProperties?.Remove("model_count"); } }
         private int? _explicitNullValueModelCount = default!;
         /// <summary>The source filter applied, or null when all sources are returned.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.OpenRouter.OpenApiClient.Models.UnifiedBenchmarksMetaSource? Source { get => _explicitNullValueSource; set { _explicitNullValueSource = value; AdditionalData?.Remove("source"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source"); else _explicitNullProperties?.Remove("source"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.UnifiedBenchmarksMetaSource? _explicitNullValueSource = default!;
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.UnifiedBenchmarksMetaSource Source { get => _explicitNullValueSource; set { _explicitNullValueSource = value; AdditionalData?.Remove("source"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source"); else _explicitNullProperties?.Remove("source"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.UnifiedBenchmarksMetaSource _explicitNullValueSource = default!;
+#endif
         /// <summary>URL of the upstream data source, or null when results span multiple sources.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -112,7 +119,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "as_of", n => { AsOf = n.GetStringValue(); } },
                 { "citation", n => { Citation = n.GetStringValue(); } },
                 { "model_count", n => { ModelCount = n.GetIntValue(); } },
-                { "source", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.UnifiedBenchmarksMetaSource>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueSource = default; _explicitNullProperties?.Remove("source"); AdditionalData["source"] = unknown; } else { Source = parsed; AdditionalData.Remove("source"); } } },
+                { "source", n => { Source = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.UnifiedBenchmarksMetaSource>(global::Soenneker.OpenRouter.OpenApiClient.Models.UnifiedBenchmarksMetaSource.CreateFromDiscriminatorValue); } },
                 { "source_url", n => { SourceUrl = n.GetStringValue(); } },
                 { "task_type", n => { TaskType = n.GetStringValue(); } },
                 { "version", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.V1Version>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueVersion = default; _explicitNullProperties?.Remove("version"); AdditionalData["version"] = unknown; } else { Version = parsed; AdditionalData.Remove("version"); } } },
@@ -128,7 +135,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteStringValue("as_of", AsOf);
             writer.WriteStringValue("citation", Citation);
             writer.WriteIntValue("model_count", ModelCount);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.UnifiedBenchmarksMetaSource>("source", Source);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.UnifiedBenchmarksMetaSource>("source", Source);
             writer.WriteStringValue("source_url", SourceUrl);
             writer.WriteStringValue("task_type", TaskType);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.V1Version>("version", Version);

@@ -130,8 +130,15 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         private string _explicitNullValueServiceTier = default!;
 #endif
         /// <summary>The speed property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicSpeed? Speed { get => _explicitNullValueSpeed; set { _explicitNullValueSpeed = value; AdditionalData?.Remove("speed"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("speed"); else _explicitNullProperties?.Remove("speed"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicSpeed? _explicitNullValueSpeed = default!;
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicSpeed Speed { get => _explicitNullValueSpeed; set { _explicitNullValueSpeed = value; AdditionalData?.Remove("speed"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("speed"); else _explicitNullProperties?.Remove("speed"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicSpeed _explicitNullValueSpeed = default!;
+#endif
         /// <summary>Sum of the above two fields</summary>
         public int? TotalTokens { get => _explicitNullValueTotalTokens; set { _explicitNullValueTotalTokens = value; AdditionalData?.Remove("total_tokens"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_tokens"); else _explicitNullProperties?.Remove("total_tokens"); } }
         private int? _explicitNullValueTotalTokens = default!;
@@ -173,7 +180,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "prompt_tokens_details", n => { PromptTokensDetails = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.BatchListItemUsagePromptTokensDetails>(global::Soenneker.OpenRouter.OpenApiClient.Models.BatchListItemUsagePromptTokensDetails.CreateFromDiscriminatorValue); } },
                 { "server_tool_use", n => { ServerToolUse = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.BatchListItemUsageServerToolUse>(global::Soenneker.OpenRouter.OpenApiClient.Models.BatchListItemUsageServerToolUse.CreateFromDiscriminatorValue); } },
                 { "service_tier", n => { ServiceTier = n.GetStringValue(); } },
-                { "speed", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicSpeed>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueSpeed = default; _explicitNullProperties?.Remove("speed"); AdditionalData["speed"] = unknown; } else { Speed = parsed; AdditionalData.Remove("speed"); } } },
+                { "speed", n => { Speed = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicSpeed>(global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicSpeed.CreateFromDiscriminatorValue); } },
                 { "total_tokens", n => { TotalTokens = n.GetIntValue(); } },
             };
         }
@@ -195,7 +202,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.BatchListItemUsagePromptTokensDetails>("prompt_tokens_details", PromptTokensDetails);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.BatchListItemUsageServerToolUse>("server_tool_use", ServerToolUse);
             writer.WriteStringValue("service_tier", ServiceTier);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicSpeed>("speed", Speed);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicSpeed>("speed", Speed);
             writer.WriteIntValue("total_tokens", TotalTokens);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);

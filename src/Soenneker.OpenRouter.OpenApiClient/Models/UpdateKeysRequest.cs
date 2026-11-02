@@ -43,8 +43,15 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public double? Limit { get => _explicitNullValueLimit; set { _explicitNullValueLimit = value; AdditionalData?.Remove("limit"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("limit"); else _explicitNullProperties?.Remove("limit"); } }
         private double? _explicitNullValueLimit = default!;
         /// <summary>New limit reset type for the API key (daily, weekly, monthly, or null for no reset). Resets happen automatically at midnight UTC, and weeks are Monday through Sunday.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.OpenRouter.OpenApiClient.Models.UpdateKeysRequestLimitReset? LimitReset { get => _explicitNullValueLimitReset; set { _explicitNullValueLimitReset = value; AdditionalData?.Remove("limit_reset"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("limit_reset"); else _explicitNullProperties?.Remove("limit_reset"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.UpdateKeysRequestLimitReset? _explicitNullValueLimitReset = default!;
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.UpdateKeysRequestLimitReset LimitReset { get => _explicitNullValueLimitReset; set { _explicitNullValueLimitReset = value; AdditionalData?.Remove("limit_reset"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("limit_reset"); else _explicitNullProperties?.Remove("limit_reset"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.UpdateKeysRequestLimitReset _explicitNullValueLimitReset = default!;
+#endif
         /// <summary>New name for the API key</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -86,7 +93,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "disabled", n => { Disabled = n.GetBoolValue(); } },
                 { "include_byok_in_limit", n => { IncludeByokInLimit = n.GetBoolValue(); } },
                 { "limit", n => { Limit = n.GetDoubleValue(); } },
-                { "limit_reset", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.UpdateKeysRequestLimitReset>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueLimitReset = default; _explicitNullProperties?.Remove("limit_reset"); AdditionalData["limit_reset"] = unknown; } else { LimitReset = parsed; AdditionalData.Remove("limit_reset"); } } },
+                { "limit_reset", n => { LimitReset = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.UpdateKeysRequestLimitReset>(global::Soenneker.OpenRouter.OpenApiClient.Models.UpdateKeysRequestLimitReset.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "workspace_id", n => { WorkspaceId = n.GetGuidValue(); } },
             };
@@ -101,7 +108,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteBoolValue("disabled", Disabled);
             writer.WriteBoolValue("include_byok_in_limit", IncludeByokInLimit);
             writer.WriteDoubleValue("limit", Limit);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.UpdateKeysRequestLimitReset>("limit_reset", LimitReset);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.UpdateKeysRequestLimitReset>("limit_reset", LimitReset);
             writer.WriteStringValue("name", Name);
             writer.WriteGuidValue("workspace_id", WorkspaceId);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);

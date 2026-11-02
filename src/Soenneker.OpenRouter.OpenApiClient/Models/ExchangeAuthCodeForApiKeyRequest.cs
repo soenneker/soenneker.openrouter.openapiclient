@@ -38,8 +38,15 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         private string _explicitNullValueCode = default!;
 #endif
         /// <summary>The method used to generate the code challenge</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ExchangeAuthCodeForApiKeyRequestCodeChallengeMethod? CodeChallengeMethod { get => _explicitNullValueCodeChallengeMethod; set { _explicitNullValueCodeChallengeMethod = value; AdditionalData?.Remove("code_challenge_method"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("code_challenge_method"); else _explicitNullProperties?.Remove("code_challenge_method"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.ExchangeAuthCodeForApiKeyRequestCodeChallengeMethod? _explicitNullValueCodeChallengeMethod = default!;
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ExchangeAuthCodeForApiKeyRequestCodeChallengeMethod CodeChallengeMethod { get => _explicitNullValueCodeChallengeMethod; set { _explicitNullValueCodeChallengeMethod = value; AdditionalData?.Remove("code_challenge_method"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("code_challenge_method"); else _explicitNullProperties?.Remove("code_challenge_method"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ExchangeAuthCodeForApiKeyRequestCodeChallengeMethod _explicitNullValueCodeChallengeMethod = default!;
+#endif
         /// <summary>The code verifier if code_challenge was used in the authorization request</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -76,7 +83,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "code", n => { Code = n.GetStringValue(); } },
-                { "code_challenge_method", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ExchangeAuthCodeForApiKeyRequestCodeChallengeMethod>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueCodeChallengeMethod = default; _explicitNullProperties?.Remove("code_challenge_method"); AdditionalData["code_challenge_method"] = unknown; } else { CodeChallengeMethod = parsed; AdditionalData.Remove("code_challenge_method"); } } },
+                { "code_challenge_method", n => { CodeChallengeMethod = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ExchangeAuthCodeForApiKeyRequestCodeChallengeMethod>(global::Soenneker.OpenRouter.OpenApiClient.Models.ExchangeAuthCodeForApiKeyRequestCodeChallengeMethod.CreateFromDiscriminatorValue); } },
                 { "code_verifier", n => { CodeVerifier = n.GetStringValue(); } },
             };
         }
@@ -88,7 +95,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("code", Code);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ExchangeAuthCodeForApiKeyRequestCodeChallengeMethod>("code_challenge_method", CodeChallengeMethod);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ExchangeAuthCodeForApiKeyRequestCodeChallengeMethod>("code_challenge_method", CodeChallengeMethod);
             writer.WriteStringValue("code_verifier", CodeVerifier);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);

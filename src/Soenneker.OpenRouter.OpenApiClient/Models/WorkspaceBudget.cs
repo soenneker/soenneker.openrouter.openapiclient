@@ -50,8 +50,15 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public double? LimitUsd { get => _explicitNullValueLimitUsd; set { _explicitNullValueLimitUsd = value; AdditionalData?.Remove("limit_usd"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("limit_usd"); else _explicitNullProperties?.Remove("limit_usd"); } }
         private double? _explicitNullValueLimitUsd = default!;
         /// <summary>Interval at which spend resets. Null means a lifetime (one-time) budget.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.OpenRouter.OpenApiClient.Models.WorkspaceBudgetResetInterval? ResetInterval { get => _explicitNullValueResetInterval; set { _explicitNullValueResetInterval = value; AdditionalData?.Remove("reset_interval"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reset_interval"); else _explicitNullProperties?.Remove("reset_interval"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.WorkspaceBudgetResetInterval? _explicitNullValueResetInterval = default!;
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.WorkspaceBudgetResetInterval ResetInterval { get => _explicitNullValueResetInterval; set { _explicitNullValueResetInterval = value; AdditionalData?.Remove("reset_interval"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reset_interval"); else _explicitNullProperties?.Remove("reset_interval"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.WorkspaceBudgetResetInterval _explicitNullValueResetInterval = default!;
+#endif
         /// <summary>ISO 8601 timestamp of when the budget was last updated</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -93,7 +100,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "created_at", n => { CreatedAt = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "limit_usd", n => { LimitUsd = n.GetDoubleValue(); } },
-                { "reset_interval", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WorkspaceBudgetResetInterval>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueResetInterval = default; _explicitNullProperties?.Remove("reset_interval"); AdditionalData["reset_interval"] = unknown; } else { ResetInterval = parsed; AdditionalData.Remove("reset_interval"); } } },
+                { "reset_interval", n => { ResetInterval = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WorkspaceBudgetResetInterval>(global::Soenneker.OpenRouter.OpenApiClient.Models.WorkspaceBudgetResetInterval.CreateFromDiscriminatorValue); } },
                 { "updated_at", n => { UpdatedAt = n.GetStringValue(); } },
                 { "workspace_id", n => { WorkspaceId = n.GetGuidValue(); } },
             };
@@ -108,7 +115,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteStringValue("created_at", CreatedAt);
             writer.WriteGuidValue("id", Id);
             writer.WriteDoubleValue("limit_usd", LimitUsd);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WorkspaceBudgetResetInterval>("reset_interval", ResetInterval);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.WorkspaceBudgetResetInterval>("reset_interval", ResetInterval);
             writer.WriteStringValue("updated_at", UpdatedAt);
             writer.WriteGuidValue("workspace_id", WorkspaceId);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);

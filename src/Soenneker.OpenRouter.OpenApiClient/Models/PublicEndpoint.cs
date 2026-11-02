@@ -160,8 +160,15 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public global::Soenneker.OpenRouter.OpenApiClient.Models.Quantization? Quantization { get => _explicitNullValueQuantization; set { _explicitNullValueQuantization = value; AdditionalData?.Remove("quantization"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quantization"); else _explicitNullProperties?.Remove("quantization"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.Quantization? _explicitNullValueQuantization = default!;
         /// <summary>The service tier this endpoint sells, or null for a standard endpoint. The same value whether the provider selects the tier with a request parameter or with a dedicated model id. Always the canonical tier: priority covers the fast request alias and the turbo, highspeed, and prime provider model-id spellings, none of which this field reports.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicServiceTier? ServiceTier { get => _explicitNullValueServiceTier; set { _explicitNullValueServiceTier = value; AdditionalData?.Remove("service_tier"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("service_tier"); else _explicitNullProperties?.Remove("service_tier"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.PublicServiceTier? _explicitNullValueServiceTier = default!;
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PublicServiceTier ServiceTier { get => _explicitNullValueServiceTier; set { _explicitNullValueServiceTier = value; AdditionalData?.Remove("service_tier"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("service_tier"); else _explicitNullProperties?.Remove("service_tier"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.PublicServiceTier _explicitNullValueServiceTier = default!;
+#endif
         /// <summary>The status property</summary>
         public int? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; AdditionalData?.Remove("status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
         private int? _explicitNullValueStatus = default!;
@@ -269,7 +276,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "pricing", n => { Pricing = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.Pricing>(global::Soenneker.OpenRouter.OpenApiClient.Models.Pricing.CreateFromDiscriminatorValue); } },
                 { "provider_name", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderName>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueProviderName = default; _explicitNullProperties?.Remove("provider_name"); AdditionalData["provider_name"] = unknown; } else { ProviderName = parsed; AdditionalData.Remove("provider_name"); } } },
                 { "quantization", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.Quantization>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueQuantization = default; _explicitNullProperties?.Remove("quantization"); AdditionalData["quantization"] = unknown; } else { Quantization = parsed; AdditionalData.Remove("quantization"); } } },
-                { "service_tier", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicServiceTier>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueServiceTier = default; _explicitNullProperties?.Remove("service_tier"); AdditionalData["service_tier"] = unknown; } else { ServiceTier = parsed; AdditionalData.Remove("service_tier"); } } },
+                { "service_tier", n => { ServiceTier = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicServiceTier>(global::Soenneker.OpenRouter.OpenApiClient.Models.PublicServiceTier.CreateFromDiscriminatorValue); } },
                 { "status", n => { Status = n.GetIntValue(); } },
                 { "supported_parameters", n => { SupportedParameters = n.GetCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.Parameter>()?.AsList(); } },
                 { "supports_diarization", n => { SupportsDiarization = n.GetBoolValue(); } },
@@ -304,7 +311,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.Pricing>("pricing", Pricing);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderName>("provider_name", ProviderName);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.Quantization>("quantization", Quantization);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicServiceTier>("service_tier", ServiceTier);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PublicServiceTier>("service_tier", ServiceTier);
             writer.WriteIntValue("status", Status);
             writer.WriteCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.Parameter>("supported_parameters", SupportedParameters);
             writer.WriteBoolValue("supports_diarization", SupportsDiarization);

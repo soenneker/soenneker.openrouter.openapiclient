@@ -205,8 +205,15 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         private string _explicitNullValueName = default!;
 #endif
         /// <summary>Interval at which the limit resets (daily, weekly, monthly)</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.OpenRouter.OpenApiClient.Models.GuardrailInterval? ResetInterval { get => _explicitNullValueResetInterval; set { _explicitNullValueResetInterval = value; AdditionalData?.Remove("reset_interval"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reset_interval"); else _explicitNullProperties?.Remove("reset_interval"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.GuardrailInterval? _explicitNullValueResetInterval = default!;
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.GuardrailInterval ResetInterval { get => _explicitNullValueResetInterval; set { _explicitNullValueResetInterval = value; AdditionalData?.Remove("reset_interval"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reset_interval"); else _explicitNullProperties?.Remove("reset_interval"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.GuardrailInterval _explicitNullValueResetInterval = default!;
+#endif
         /// <summary>The workspace to create the guardrail in. When omitted, the guardrail is created in the default workspace; if that default has been deleted, the request returns a 400 and you must pass `workspace_id` explicitly. This only places the guardrail in the workspace; the created guardrail enforces nothing for that workspace&apos;s traffic until it is assigned to API keys or members. To restrict all traffic in a workspace, update the workspace&apos;s default guardrail instead.</summary>
         public Guid? WorkspaceId { get => _explicitNullValueWorkspaceId; set { _explicitNullValueWorkspaceId = value; AdditionalData?.Remove("workspace_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("workspace_id"); else _explicitNullProperties?.Remove("workspace_id"); } }
         private Guid? _explicitNullValueWorkspaceId = default!;
@@ -258,7 +265,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "include_byok_in_budgets", n => { IncludeByokInBudgets = n.GetBoolValue(); } },
                 { "limit_usd", n => { LimitUsd = n.GetDoubleValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "reset_interval", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.GuardrailInterval>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueResetInterval = default; _explicitNullProperties?.Remove("reset_interval"); AdditionalData["reset_interval"] = unknown; } else { ResetInterval = parsed; AdditionalData.Remove("reset_interval"); } } },
+                { "reset_interval", n => { ResetInterval = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.GuardrailInterval>(global::Soenneker.OpenRouter.OpenApiClient.Models.GuardrailInterval.CreateFromDiscriminatorValue); } },
                 { "workspace_id", n => { WorkspaceId = n.GetGuidValue(); } },
             };
         }
@@ -292,7 +299,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteBoolValue("include_byok_in_budgets", IncludeByokInBudgets);
             writer.WriteDoubleValue("limit_usd", LimitUsd);
             writer.WriteStringValue("name", Name);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.GuardrailInterval>("reset_interval", ResetInterval);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.GuardrailInterval>("reset_interval", ResetInterval);
             writer.WriteGuidValue("workspace_id", WorkspaceId);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);

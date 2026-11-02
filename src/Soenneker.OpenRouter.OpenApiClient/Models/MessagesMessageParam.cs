@@ -31,8 +31,15 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The clear_at property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicSystemClearAt? ClearAt { get => _explicitNullValueClearAt; set { _explicitNullValueClearAt = value; AdditionalData?.Remove("clear_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("clear_at"); else _explicitNullProperties?.Remove("clear_at"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicSystemClearAt? _explicitNullValueClearAt = default!;
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicSystemClearAt ClearAt { get => _explicitNullValueClearAt; set { _explicitNullValueClearAt = value; AdditionalData?.Remove("clear_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("clear_at"); else _explicitNullProperties?.Remove("clear_at"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicSystemClearAt _explicitNullValueClearAt = default!;
+#endif
         /// <summary>The content property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -81,7 +88,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "clear_at", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicSystemClearAt>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueClearAt = default; _explicitNullProperties?.Remove("clear_at"); AdditionalData["clear_at"] = unknown; } else { ClearAt = parsed; AdditionalData.Remove("clear_at"); } } },
+                { "clear_at", n => { ClearAt = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicSystemClearAt>(global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicSystemClearAt.CreateFromDiscriminatorValue); } },
                 { "content", n => { Content = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesMessageParamContent>(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesMessageParamContent.CreateFromDiscriminatorValue); } },
                 { "output_config", n => { OutputConfig = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicMessageOutputConfig>(global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicMessageOutputConfig.CreateFromDiscriminatorValue); } },
                 { "role", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesMessageParamRole>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueRole = default; _explicitNullProperties?.Remove("role"); AdditionalData["role"] = unknown; } else { Role = parsed; AdditionalData.Remove("role"); } } },
@@ -94,7 +101,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicSystemClearAt>("clear_at", ClearAt);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicSystemClearAt>("clear_at", ClearAt);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesMessageParamContent>("content", Content);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicMessageOutputConfig>("output_config", OutputConfig);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesMessageParamRole>("role", Role);

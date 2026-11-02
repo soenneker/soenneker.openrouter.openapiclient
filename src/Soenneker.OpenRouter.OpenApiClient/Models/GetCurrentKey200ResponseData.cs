@@ -114,15 +114,15 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public string CreatorUserId { get => _explicitNullValueCreatorUserId; set { _explicitNullValueCreatorUserId = value; AdditionalData?.Remove("creator_user_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("creator_user_id"); else _explicitNullProperties?.Remove("creator_user_id"); } }
         private string _explicitNullValueCreatorUserId = default!;
 #endif
-        /// <summary>The effective_budget property</summary>
+        /// <summary>One budget layer that applies to requests made with this key, with the spend enforcement compares against it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.KeyBudget? EffectiveBudget { get => _explicitNullValueEffectiveBudget; set { _explicitNullValueEffectiveBudget = value; AdditionalData?.Remove("effective_budget"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("effective_budget"); else _explicitNullProperties?.Remove("effective_budget"); } }
-        private global::Soenneker.OpenRouter.OpenApiClient.Models.KeyBudget? _explicitNullValueEffectiveBudget = default!;
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.GetCurrentKey200ResponseDataEffectiveBudget? EffectiveBudget { get => _explicitNullValueEffectiveBudget; set { _explicitNullValueEffectiveBudget = value; AdditionalData?.Remove("effective_budget"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("effective_budget"); else _explicitNullProperties?.Remove("effective_budget"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.GetCurrentKey200ResponseDataEffectiveBudget? _explicitNullValueEffectiveBudget = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.KeyBudget EffectiveBudget { get => _explicitNullValueEffectiveBudget; set { _explicitNullValueEffectiveBudget = value; AdditionalData?.Remove("effective_budget"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("effective_budget"); else _explicitNullProperties?.Remove("effective_budget"); } }
-        private global::Soenneker.OpenRouter.OpenApiClient.Models.KeyBudget _explicitNullValueEffectiveBudget = default!;
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.GetCurrentKey200ResponseDataEffectiveBudget EffectiveBudget { get => _explicitNullValueEffectiveBudget; set { _explicitNullValueEffectiveBudget = value; AdditionalData?.Remove("effective_budget"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("effective_budget"); else _explicitNullProperties?.Remove("effective_budget"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.GetCurrentKey200ResponseDataEffectiveBudget _explicitNullValueEffectiveBudget = default!;
 #endif
         /// <summary>ISO 8601 UTC timestamp when the API key expires, or null if no expiration</summary>
         public DateTimeOffset? ExpiresAt { get => _explicitNullValueExpiresAt; set { _explicitNullValueExpiresAt = value; AdditionalData?.Remove("expires_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expires_at"); else _explicitNullProperties?.Remove("expires_at"); } }
@@ -251,7 +251,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "byok_usage_monthly", n => { ByokUsageMonthly = n.GetDoubleValue(); } },
                 { "byok_usage_weekly", n => { ByokUsageWeekly = n.GetDoubleValue(); } },
                 { "creator_user_id", n => { CreatorUserId = n.GetStringValue(); } },
-                { "effective_budget", n => { EffectiveBudget = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.KeyBudget>(global::Soenneker.OpenRouter.OpenApiClient.Models.KeyBudget.CreateFromDiscriminatorValue); } },
+                { "effective_budget", n => { EffectiveBudget = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.GetCurrentKey200ResponseDataEffectiveBudget>(global::Soenneker.OpenRouter.OpenApiClient.Models.GetCurrentKey200ResponseDataEffectiveBudget.CreateFromDiscriminatorValue); } },
                 { "expires_at", n => { ExpiresAt = n.GetDateTimeOffsetValue(); } },
                 { "free_model_daily_requests", n => { FreeModelDailyRequests = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.FreeModelDailyRequests>(global::Soenneker.OpenRouter.OpenApiClient.Models.FreeModelDailyRequests.CreateFromDiscriminatorValue); } },
                 { "include_byok_in_limit", n => { IncludeByokInLimit = n.GetBoolValue(); } },
@@ -285,7 +285,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteDoubleValue("byok_usage_monthly", ByokUsageMonthly);
             writer.WriteDoubleValue("byok_usage_weekly", ByokUsageWeekly);
             writer.WriteStringValue("creator_user_id", CreatorUserId);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.KeyBudget>("effective_budget", EffectiveBudget);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.GetCurrentKey200ResponseDataEffectiveBudget>("effective_budget", EffectiveBudget);
             writer.WriteDateTimeOffsetValue("expires_at", ExpiresAt);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.FreeModelDailyRequests>("free_model_daily_requests", FreeModelDailyRequests);
             writer.WriteBoolValue("include_byok_in_limit", IncludeByokInLimit);

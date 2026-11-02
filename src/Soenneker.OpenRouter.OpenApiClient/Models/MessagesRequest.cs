@@ -195,8 +195,15 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #endif
         /// <summary>**DEPRECATED** Use providers.sort.partition instead. Backwards-compatible alias for providers.sort.partition. Accepts legacy values: &quot;fallback&quot; (maps to &quot;model&quot;), &quot;sort&quot; (maps to &quot;none&quot;).</summary>
         [Obsolete("")]
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.OpenRouter.OpenApiClient.Models.DeprecatedRoute? Route { get => _explicitNullValueRoute; set { _explicitNullValueRoute = value; AdditionalData?.Remove("route"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("route"); else _explicitNullProperties?.Remove("route"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.DeprecatedRoute? _explicitNullValueRoute = default!;
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.DeprecatedRoute Route { get => _explicitNullValueRoute; set { _explicitNullValueRoute = value; AdditionalData?.Remove("route"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("route"); else _explicitNullProperties?.Remove("route"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.DeprecatedRoute _explicitNullValueRoute = default!;
+#endif
         /// <summary>The safeguards property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -228,8 +235,15 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         private string _explicitNullValueSessionId = default!;
 #endif
         /// <summary>Controls output generation speed. When set to `fast`, uses a higher-speed inference configuration at premium pricing. Defaults to `standard` when omitted.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestSpeed? Speed { get => _explicitNullValueSpeed; set { _explicitNullValueSpeed = value; AdditionalData?.Remove("speed"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("speed"); else _explicitNullProperties?.Remove("speed"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestSpeed? _explicitNullValueSpeed = default!;
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestSpeed Speed { get => _explicitNullValueSpeed; set { _explicitNullValueSpeed = value; AdditionalData?.Remove("speed"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("speed"); else _explicitNullProperties?.Remove("speed"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestSpeed _explicitNullValueSpeed = default!;
+#endif
         /// <summary>The stop_sequences property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -359,11 +373,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "output_config", n => { OutputConfig = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesOutputConfig>(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesOutputConfig.CreateFromDiscriminatorValue); } },
                 { "plugins", n => { Plugins = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequestPluginsItem>(global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequestPluginsItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "provider", n => { Provider = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferences>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferences.CreateFromDiscriminatorValue); } },
-                { "route", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.DeprecatedRoute>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueRoute = default; _explicitNullProperties?.Remove("route"); AdditionalData["route"] = unknown; } else { Route = parsed; AdditionalData.Remove("route"); } } },
+                { "route", n => { Route = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.DeprecatedRoute>(global::Soenneker.OpenRouter.OpenApiClient.Models.DeprecatedRoute.CreateFromDiscriminatorValue); } },
                 { "safeguards", n => { Safeguards = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicSafeguard>(global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicSafeguard.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "service_tier", n => { ServiceTier = n.GetStringValue(); } },
                 { "session_id", n => { SessionId = n.GetStringValue(); } },
-                { "speed", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestSpeed>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueSpeed = default; _explicitNullProperties?.Remove("speed"); AdditionalData["speed"] = unknown; } else { Speed = parsed; AdditionalData.Remove("speed"); } } },
+                { "speed", n => { Speed = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestSpeed>(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestSpeed.CreateFromDiscriminatorValue); } },
                 { "stop_sequences", n => { StopSequences = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "stop_server_tools_when", n => { StopServerToolsWhen = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.StopServerToolsWhenCondition>(global::Soenneker.OpenRouter.OpenApiClient.Models.StopServerToolsWhenCondition.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "stream", n => { Stream = n.GetBoolValue(); } },
@@ -397,11 +411,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesOutputConfig>("output_config", OutputConfig);
             writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequestPluginsItem>("plugins", Plugins);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferences>("provider", Provider);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.DeprecatedRoute>("route", Route);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.DeprecatedRoute>("route", Route);
             writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicSafeguard>("safeguards", Safeguards);
             writer.WriteStringValue("service_tier", ServiceTier);
             writer.WriteStringValue("session_id", SessionId);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestSpeed>("speed", Speed);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestSpeed>("speed", Speed);
             writer.WriteCollectionOfPrimitiveValues<string>("stop_sequences", StopSequences);
             writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.StopServerToolsWhenCondition>("stop_server_tools_when", StopServerToolsWhen);
             writer.WriteBoolValue("stream", Stream);

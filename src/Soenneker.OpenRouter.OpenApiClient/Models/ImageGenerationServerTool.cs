@@ -48,8 +48,15 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerToolBackground? Background { get => _explicitNullValueBackground; set { _explicitNullValueBackground = value; AdditionalData?.Remove("background"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("background"); else _explicitNullProperties?.Remove("background"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerToolBackground? _explicitNullValueBackground = default!;
         /// <summary>The input_fidelity property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerToolInputFidelity? InputFidelity { get => _explicitNullValueInputFidelity; set { _explicitNullValueInputFidelity = value; AdditionalData?.Remove("input_fidelity"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input_fidelity"); else _explicitNullProperties?.Remove("input_fidelity"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerToolInputFidelity? _explicitNullValueInputFidelity = default!;
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerToolInputFidelity InputFidelity { get => _explicitNullValueInputFidelity; set { _explicitNullValueInputFidelity = value; AdditionalData?.Remove("input_fidelity"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input_fidelity"); else _explicitNullProperties?.Remove("input_fidelity"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerToolInputFidelity _explicitNullValueInputFidelity = default!;
+#endif
         /// <summary>The input_image_mask property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -124,7 +131,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "background", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerToolBackground>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueBackground = default; _explicitNullProperties?.Remove("background"); AdditionalData["background"] = unknown; } else { Background = parsed; AdditionalData.Remove("background"); } } },
-                { "input_fidelity", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerToolInputFidelity>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueInputFidelity = default; _explicitNullProperties?.Remove("input_fidelity"); AdditionalData["input_fidelity"] = unknown; } else { InputFidelity = parsed; AdditionalData.Remove("input_fidelity"); } } },
+                { "input_fidelity", n => { InputFidelity = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerToolInputFidelity>(global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerToolInputFidelity.CreateFromDiscriminatorValue); } },
                 { "input_image_mask", n => { InputImageMask = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerToolInputImageMask>(global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerToolInputImageMask.CreateFromDiscriminatorValue); } },
                 { "model", n => { Model = n.GetStringValue(); } },
                 { "moderation", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerToolModeration>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueModeration = default; _explicitNullProperties?.Remove("moderation"); AdditionalData["moderation"] = unknown; } else { Moderation = parsed; AdditionalData.Remove("moderation"); } } },
@@ -144,7 +151,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerToolBackground>("background", Background);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerToolInputFidelity>("input_fidelity", InputFidelity);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerToolInputFidelity>("input_fidelity", InputFidelity);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerToolInputImageMask>("input_image_mask", InputImageMask);
             writer.WriteStringValue("model", Model);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerToolModeration>("moderation", Moderation);

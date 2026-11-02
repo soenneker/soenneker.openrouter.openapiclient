@@ -35,11 +35,25 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Controls which reasoning is available to the model. `auto` uses the model default (same as omitting); `all_turns` includes reasoning from earlier turns passed in input; `current_turn` limits to the current turn only. Only supported by OpenAI GPT-5.6 and newer.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningContext? Context { get => _explicitNullValueContext; set { _explicitNullValueContext = value; AdditionalData?.Remove("context"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("context"); else _explicitNullProperties?.Remove("context"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningContext? _explicitNullValueContext = default!;
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningContext Context { get => _explicitNullValueContext; set { _explicitNullValueContext = value; AdditionalData?.Remove("context"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("context"); else _explicitNullProperties?.Remove("context"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningContext _explicitNullValueContext = default!;
+#endif
         /// <summary>The effort property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningEffort? Effort { get => _explicitNullValueEffort; set { _explicitNullValueEffort = value; AdditionalData?.Remove("effort"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("effort"); else _explicitNullProperties?.Remove("effort"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningEffort? _explicitNullValueEffort = default!;
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningEffort Effort { get => _explicitNullValueEffort; set { _explicitNullValueEffort = value; AdditionalData?.Remove("effort"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("effort"); else _explicitNullProperties?.Remove("effort"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningEffort _explicitNullValueEffort = default!;
+#endif
         /// <summary>The enabled property</summary>
         public bool? Enabled { get => _explicitNullValueEnabled; set { _explicitNullValueEnabled = value; AdditionalData?.Remove("enabled"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enabled"); else _explicitNullProperties?.Remove("enabled"); } }
         private bool? _explicitNullValueEnabled = default!;
@@ -47,11 +61,25 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public int? MaxTokens { get => _explicitNullValueMaxTokens; set { _explicitNullValueMaxTokens = value; AdditionalData?.Remove("max_tokens"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_tokens"); else _explicitNullProperties?.Remove("max_tokens"); } }
         private int? _explicitNullValueMaxTokens = default!;
         /// <summary>Selects the reasoning mode. `standard` is the default; `pro` engages deeper reasoning on models that support it, billed at standard token rates. Only supported by OpenAI GPT-5.6 and newer.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningMode? Mode { get => _explicitNullValueMode; set { _explicitNullValueMode = value; AdditionalData?.Remove("mode"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mode"); else _explicitNullProperties?.Remove("mode"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningMode? _explicitNullValueMode = default!;
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningMode Mode { get => _explicitNullValueMode; set { _explicitNullValueMode = value; AdditionalData?.Remove("mode"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mode"); else _explicitNullProperties?.Remove("mode"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningMode _explicitNullValueMode = default!;
+#endif
         /// <summary>The summary property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningSummaryVerbosity? Summary { get => _explicitNullValueSummary; set { _explicitNullValueSummary = value; AdditionalData?.Remove("summary"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary"); else _explicitNullProperties?.Remove("summary"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningSummaryVerbosity? _explicitNullValueSummary = default!;
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningSummaryVerbosity Summary { get => _explicitNullValueSummary; set { _explicitNullValueSummary = value; AdditionalData?.Remove("summary"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary"); else _explicitNullProperties?.Remove("summary"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningSummaryVerbosity _explicitNullValueSummary = default!;
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningConfig"/> and sets the default values.
         /// </summary>
@@ -77,12 +105,12 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "context", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningContext>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueContext = default; _explicitNullProperties?.Remove("context"); AdditionalData["context"] = unknown; } else { Context = parsed; AdditionalData.Remove("context"); } } },
-                { "effort", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningEffort>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueEffort = default; _explicitNullProperties?.Remove("effort"); AdditionalData["effort"] = unknown; } else { Effort = parsed; AdditionalData.Remove("effort"); } } },
+                { "context", n => { Context = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningContext>(global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningContext.CreateFromDiscriminatorValue); } },
+                { "effort", n => { Effort = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningEffort>(global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningEffort.CreateFromDiscriminatorValue); } },
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
                 { "max_tokens", n => { MaxTokens = n.GetIntValue(); } },
-                { "mode", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningMode>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueMode = default; _explicitNullProperties?.Remove("mode"); AdditionalData["mode"] = unknown; } else { Mode = parsed; AdditionalData.Remove("mode"); } } },
-                { "summary", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningSummaryVerbosity>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueSummary = default; _explicitNullProperties?.Remove("summary"); AdditionalData["summary"] = unknown; } else { Summary = parsed; AdditionalData.Remove("summary"); } } },
+                { "mode", n => { Mode = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningMode>(global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningMode.CreateFromDiscriminatorValue); } },
+                { "summary", n => { Summary = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningSummaryVerbosity>(global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningSummaryVerbosity.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -92,12 +120,12 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningContext>("context", Context);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningEffort>("effort", Effort);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningContext>("context", Context);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningEffort>("effort", Effort);
             writer.WriteBoolValue("enabled", Enabled);
             writer.WriteIntValue("max_tokens", MaxTokens);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningMode>("mode", Mode);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningSummaryVerbosity>("summary", Summary);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningMode>("mode", Mode);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningSummaryVerbosity>("summary", Summary);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }

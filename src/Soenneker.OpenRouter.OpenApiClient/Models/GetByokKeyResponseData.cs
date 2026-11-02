@@ -95,8 +95,15 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         private string _explicitNullValueCreatedAt = default!;
 #endif
         /// <summary>Your declaration of the data region in which the upstream provider account behind this credential processes requests, used for routing eligibility on OpenRouter&apos;s regional hosts. `null` means undeclared and `global` is behaviorally identical: the credential follows the region OpenRouter records for the endpoint. `europe` or `us` lets requests to `eu.openrouter.ai` or `us.openrouter.ai` use this credential for that provider (private endpoints, endpoints pinned to another cloud region, cross-region inference profiles and video models are excluded). Self-declared and not verified by OpenRouter. For OpenAI and Fireworks the region comes from the key material (a `{&quot;api_key&quot;: ..., &quot;region&quot;: ...}` key), so the value must match the key&apos;s region. Among other providers, Azure accepts `europe` or `us` and Anthropic accepts `us` only.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ByokKeyDeclaredRegion? DeclaredRegion { get => _explicitNullValueDeclaredRegion; set { _explicitNullValueDeclaredRegion = value; AdditionalData?.Remove("declared_region"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("declared_region"); else _explicitNullProperties?.Remove("declared_region"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.ByokKeyDeclaredRegion? _explicitNullValueDeclaredRegion = default!;
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ByokKeyDeclaredRegion DeclaredRegion { get => _explicitNullValueDeclaredRegion; set { _explicitNullValueDeclaredRegion = value; AdditionalData?.Remove("declared_region"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("declared_region"); else _explicitNullProperties?.Remove("declared_region"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ByokKeyDeclaredRegion _explicitNullValueDeclaredRegion = default!;
+#endif
         /// <summary>Your declaration of whether the upstream provider account behind this credential has zero data retention (ZDR). `null` inherits OpenRouter&apos;s data policy for the provider&apos;s endpoint; `true` declares the account ZDR so requests that require ZDR may route to this credential even when the shared endpoint retains data; `false` declares it non-ZDR so such requests never route to it. Self-declared and not verified by OpenRouter.</summary>
         public bool? DeclaredZdr { get => _explicitNullValueDeclaredZdr; set { _explicitNullValueDeclaredZdr = value; AdditionalData?.Remove("declared_zdr"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("declared_zdr"); else _explicitNullProperties?.Remove("declared_zdr"); } }
         private bool? _explicitNullValueDeclaredZdr = default!;
@@ -173,7 +180,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "allowed_models", n => { AllowedModels = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "allowed_user_ids", n => { AllowedUserIds = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "created_at", n => { CreatedAt = n.GetStringValue(); } },
-                { "declared_region", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ByokKeyDeclaredRegion>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueDeclaredRegion = default; _explicitNullProperties?.Remove("declared_region"); AdditionalData["declared_region"] = unknown; } else { DeclaredRegion = parsed; AdditionalData.Remove("declared_region"); } } },
+                { "declared_region", n => { DeclaredRegion = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ByokKeyDeclaredRegion>(global::Soenneker.OpenRouter.OpenApiClient.Models.ByokKeyDeclaredRegion.CreateFromDiscriminatorValue); } },
                 { "declared_zdr", n => { DeclaredZdr = n.GetBoolValue(); } },
                 { "disabled", n => { Disabled = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
@@ -198,7 +205,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("allowed_models", AllowedModels);
             writer.WriteCollectionOfPrimitiveValues<string>("allowed_user_ids", AllowedUserIds);
             writer.WriteStringValue("created_at", CreatedAt);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ByokKeyDeclaredRegion>("declared_region", DeclaredRegion);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ByokKeyDeclaredRegion>("declared_region", DeclaredRegion);
             writer.WriteBoolValue("declared_zdr", DeclaredZdr);
             writer.WriteBoolValue("disabled", Disabled);
             writer.WriteGuidValue("id", Id);

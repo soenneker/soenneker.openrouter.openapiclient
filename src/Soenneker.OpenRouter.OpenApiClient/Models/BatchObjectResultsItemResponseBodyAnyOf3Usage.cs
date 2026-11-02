@@ -106,11 +106,25 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         private global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicServerToolUsage _explicitNullValueServerToolUse = default!;
 #endif
         /// <summary>The service_tier property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicServiceTier? ServiceTier { get => _explicitNullValueServiceTier; set { _explicitNullValueServiceTier = value; AdditionalData?.Remove("service_tier"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("service_tier"); else _explicitNullProperties?.Remove("service_tier"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicServiceTier? _explicitNullValueServiceTier = default!;
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicServiceTier ServiceTier { get => _explicitNullValueServiceTier; set { _explicitNullValueServiceTier = value; AdditionalData?.Remove("service_tier"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("service_tier"); else _explicitNullProperties?.Remove("service_tier"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicServiceTier _explicitNullValueServiceTier = default!;
+#endif
         /// <summary>The speed property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicSpeed? Speed { get => _explicitNullValueSpeed; set { _explicitNullValueSpeed = value; AdditionalData?.Remove("speed"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("speed"); else _explicitNullProperties?.Remove("speed"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicSpeed? _explicitNullValueSpeed = default!;
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicSpeed Speed { get => _explicitNullValueSpeed; set { _explicitNullValueSpeed = value; AdditionalData?.Remove("speed"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("speed"); else _explicitNullProperties?.Remove("speed"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicSpeed _explicitNullValueSpeed = default!;
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BatchObjectResultsItemResponseBodyAnyOf3Usage"/> and sets the default values.
         /// </summary>
@@ -145,8 +159,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "output_tokens", n => { OutputTokens = n.GetIntValue(); } },
                 { "output_tokens_details", n => { OutputTokensDetails = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicOutputTokensDetails>(global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicOutputTokensDetails.CreateFromDiscriminatorValue); } },
                 { "server_tool_use", n => { ServerToolUse = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicServerToolUsage>(global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicServerToolUsage.CreateFromDiscriminatorValue); } },
-                { "service_tier", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicServiceTier>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueServiceTier = default; _explicitNullProperties?.Remove("service_tier"); AdditionalData["service_tier"] = unknown; } else { ServiceTier = parsed; AdditionalData.Remove("service_tier"); } } },
-                { "speed", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicSpeed>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueSpeed = default; _explicitNullProperties?.Remove("speed"); AdditionalData["speed"] = unknown; } else { Speed = parsed; AdditionalData.Remove("speed"); } } },
+                { "service_tier", n => { ServiceTier = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicServiceTier>(global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicServiceTier.CreateFromDiscriminatorValue); } },
+                { "speed", n => { Speed = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicSpeed>(global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicSpeed.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -165,8 +179,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteIntValue("output_tokens", OutputTokens);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicOutputTokensDetails>("output_tokens_details", OutputTokensDetails);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicServerToolUsage>("server_tool_use", ServerToolUse);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicServiceTier>("service_tier", ServiceTier);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicSpeed>("speed", Speed);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicServiceTier>("service_tier", ServiceTier);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicSpeed>("speed", Speed);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }

@@ -318,8 +318,15 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #endif
         /// <summary>**DEPRECATED** Use providers.sort.partition instead. Backwards-compatible alias for providers.sort.partition. Accepts legacy values: &quot;fallback&quot; (maps to &quot;model&quot;), &quot;sort&quot; (maps to &quot;none&quot;).</summary>
         [Obsolete("")]
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.OpenRouter.OpenApiClient.Models.DeprecatedRoute? Route { get => _explicitNullValueRoute; set { _explicitNullValueRoute = value; AdditionalData?.Remove("route"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("route"); else _explicitNullProperties?.Remove("route"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.DeprecatedRoute? _explicitNullValueRoute = default!;
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.DeprecatedRoute Route { get => _explicitNullValueRoute; set { _explicitNullValueRoute = value; AdditionalData?.Remove("route"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("route"); else _explicitNullProperties?.Remove("route"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.DeprecatedRoute _explicitNullValueRoute = default!;
+#endif
         /// <summary>Recommended per-end-user identifier for abuse isolation. Use a stable ID, hash, or pseudonym. When a provider requires a user identity, OpenRouter folds it into the hashed identity sent upstream and never forwards it raw. If omitted, requests use an account-level identity, so provider policy blocks can affect the whole account.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -331,8 +338,15 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         private string _explicitNullValueSafetyIdentifier = default!;
 #endif
         /// <summary>The service tier to use for processing this request. `fast` is accepted as an alias for `priority`. `ultrafast` prefers ultrafast endpoints and falls back to `priority`, then default endpoints.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesRequestServiceTier? ServiceTier { get => _explicitNullValueServiceTier; set { _explicitNullValueServiceTier = value; AdditionalData?.Remove("service_tier"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("service_tier"); else _explicitNullProperties?.Remove("service_tier"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesRequestServiceTier? _explicitNullValueServiceTier = default!;
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesRequestServiceTier ServiceTier { get => _explicitNullValueServiceTier; set { _explicitNullValueServiceTier = value; AdditionalData?.Remove("service_tier"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("service_tier"); else _explicitNullProperties?.Remove("service_tier"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesRequestServiceTier _explicitNullValueServiceTier = default!;
+#endif
         /// <summary>A unique identifier for grouping related requests (e.g., a conversation or agent workflow). When provided, OpenRouter uses it as the sticky routing key, routing all requests in the session to the same provider to maximize prompt cache hits. Also used for observability grouping. If provided in both the request body and the x-session-id header, the body value takes precedence. Maximum of 256 characters.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -422,8 +436,15 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         private global::Soenneker.OpenRouter.OpenApiClient.Models.TraceConfig _explicitNullValueTrace = default!;
 #endif
         /// <summary>The truncation property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAiResponsesTruncation? Truncation { get => _explicitNullValueTruncation; set { _explicitNullValueTruncation = value; AdditionalData?.Remove("truncation"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("truncation"); else _explicitNullProperties?.Remove("truncation"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAiResponsesTruncation? _explicitNullValueTruncation = default!;
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAiResponsesTruncation Truncation { get => _explicitNullValueTruncation; set { _explicitNullValueTruncation = value; AdditionalData?.Remove("truncation"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("truncation"); else _explicitNullProperties?.Remove("truncation"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAiResponsesTruncation _explicitNullValueTruncation = default!;
+#endif
         /// <summary>A unique identifier representing your end-user, which helps distinguish between different users of your app. This allows your app to identify specific users in case of abuse reports, preventing your entire app from being affected by the actions of individual users. Maximum of 256 characters.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -486,9 +507,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "prompt_cache_options", n => { PromptCacheOptions = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PromptCacheOptions>(global::Soenneker.OpenRouter.OpenApiClient.Models.PromptCacheOptions.CreateFromDiscriminatorValue); } },
                 { "provider", n => { Provider = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferences>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferences.CreateFromDiscriminatorValue); } },
                 { "reasoning", n => { Reasoning = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningConfig>(global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningConfig.CreateFromDiscriminatorValue); } },
-                { "route", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.DeprecatedRoute>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueRoute = default; _explicitNullProperties?.Remove("route"); AdditionalData["route"] = unknown; } else { Route = parsed; AdditionalData.Remove("route"); } } },
+                { "route", n => { Route = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.DeprecatedRoute>(global::Soenneker.OpenRouter.OpenApiClient.Models.DeprecatedRoute.CreateFromDiscriminatorValue); } },
                 { "safety_identifier", n => { SafetyIdentifier = n.GetStringValue(); } },
-                { "service_tier", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesRequestServiceTier>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueServiceTier = default; _explicitNullProperties?.Remove("service_tier"); AdditionalData["service_tier"] = unknown; } else { ServiceTier = parsed; AdditionalData.Remove("service_tier"); } } },
+                { "service_tier", n => { ServiceTier = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesRequestServiceTier>(global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesRequestServiceTier.CreateFromDiscriminatorValue); } },
                 { "session_id", n => { SessionId = n.GetStringValue(); } },
                 { "stop", n => { Stop = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequestStop>(global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequestStop.CreateFromDiscriminatorValue); } },
                 { "stop_server_tools_when", n => { StopServerToolsWhen = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.StopServerToolsWhenCondition>(global::Soenneker.OpenRouter.OpenApiClient.Models.StopServerToolsWhenCondition.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -502,7 +523,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "top_logprobs", n => { TopLogprobs = n.GetIntValue(); } },
                 { "top_p", n => { TopP = n.GetDoubleValue(); } },
                 { "trace", n => { Trace = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.TraceConfig>(global::Soenneker.OpenRouter.OpenApiClient.Models.TraceConfig.CreateFromDiscriminatorValue); } },
-                { "truncation", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAiResponsesTruncation>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueTruncation = default; _explicitNullProperties?.Remove("truncation"); AdditionalData["truncation"] = unknown; } else { Truncation = parsed; AdditionalData.Remove("truncation"); } } },
+                { "truncation", n => { Truncation = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAiResponsesTruncation>(global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAiResponsesTruncation.CreateFromDiscriminatorValue); } },
                 { "user", n => { User = n.GetStringValue(); } },
             };
         }
@@ -538,9 +559,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PromptCacheOptions>("prompt_cache_options", PromptCacheOptions);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferences>("provider", Provider);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningConfig>("reasoning", Reasoning);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.DeprecatedRoute>("route", Route);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.DeprecatedRoute>("route", Route);
             writer.WriteStringValue("safety_identifier", SafetyIdentifier);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesRequestServiceTier>("service_tier", ServiceTier);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesRequestServiceTier>("service_tier", ServiceTier);
             writer.WriteStringValue("session_id", SessionId);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequestStop>("stop", Stop);
             writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.StopServerToolsWhenCondition>("stop_server_tools_when", StopServerToolsWhen);
@@ -554,7 +575,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteIntValue("top_logprobs", TopLogprobs);
             writer.WriteDoubleValue("top_p", TopP);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.TraceConfig>("trace", Trace);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAiResponsesTruncation>("truncation", Truncation);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAiResponsesTruncation>("truncation", Truncation);
             writer.WriteStringValue("user", User);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);

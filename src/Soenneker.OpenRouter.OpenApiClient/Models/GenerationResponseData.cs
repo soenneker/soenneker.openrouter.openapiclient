@@ -113,8 +113,15 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Type of API used for the generation</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.OpenRouter.OpenApiClient.Models.GenerationResponseDataApiType? ApiType { get => _explicitNullValueApiType; set { _explicitNullValueApiType = value; AdditionalData?.Remove("api_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("api_type"); else _explicitNullProperties?.Remove("api_type"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.GenerationResponseDataApiType? _explicitNullValueApiType = default!;
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.GenerationResponseDataApiType ApiType { get => _explicitNullValueApiType; set { _explicitNullValueApiType = value; AdditionalData?.Remove("api_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("api_type"); else _explicitNullProperties?.Remove("api_type"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.GenerationResponseDataApiType _explicitNullValueApiType = default!;
+#endif
         /// <summary>ID of the app that made the request</summary>
         public int? AppId { get => _explicitNullValueAppId; set { _explicitNullValueAppId = value; AdditionalData?.Remove("app_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("app_id"); else _explicitNullProperties?.Remove("app_id"); } }
         private int? _explicitNullValueAppId = default!;
@@ -412,7 +419,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "api_type", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.GenerationResponseDataApiType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueApiType = default; _explicitNullProperties?.Remove("api_type"); AdditionalData["api_type"] = unknown; } else { ApiType = parsed; AdditionalData.Remove("api_type"); } } },
+                { "api_type", n => { ApiType = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.GenerationResponseDataApiType>(global::Soenneker.OpenRouter.OpenApiClient.Models.GenerationResponseDataApiType.CreateFromDiscriminatorValue); } },
                 { "app_id", n => { AppId = n.GetIntValue(); } },
                 { "cache_discount", n => { CacheDiscount = n.GetDoubleValue(); } },
                 { "cancelled", n => { Cancelled = n.GetBoolValue(); } },
@@ -466,7 +473,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.GenerationResponseDataApiType>("api_type", ApiType);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.GenerationResponseDataApiType>("api_type", ApiType);
             writer.WriteIntValue("app_id", AppId);
             writer.WriteDoubleValue("cache_discount", CacheDiscount);
             writer.WriteBoolValue("cancelled", Cancelled);

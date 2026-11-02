@@ -38,8 +38,15 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         private List<string> _explicitNullValueFileIds = default!;
 #endif
         /// <summary>The memory_limit property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.OpenRouter.OpenApiClient.Models.CodeInterpreterServerToolContainerAnyOf2MemoryLimit? MemoryLimit { get => _explicitNullValueMemoryLimit; set { _explicitNullValueMemoryLimit = value; AdditionalData?.Remove("memory_limit"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("memory_limit"); else _explicitNullProperties?.Remove("memory_limit"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.CodeInterpreterServerToolContainerAnyOf2MemoryLimit? _explicitNullValueMemoryLimit = default!;
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.CodeInterpreterServerToolContainerAnyOf2MemoryLimit MemoryLimit { get => _explicitNullValueMemoryLimit; set { _explicitNullValueMemoryLimit = value; AdditionalData?.Remove("memory_limit"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("memory_limit"); else _explicitNullProperties?.Remove("memory_limit"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.CodeInterpreterServerToolContainerAnyOf2MemoryLimit _explicitNullValueMemoryLimit = default!;
+#endif
         /// <summary>The type property</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.AutoType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; AdditionalData?.Remove("type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.AutoType? _explicitNullValueType = default!;
@@ -69,7 +76,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "file_ids", n => { FileIds = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "memory_limit", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.CodeInterpreterServerToolContainerAnyOf2MemoryLimit>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueMemoryLimit = default; _explicitNullProperties?.Remove("memory_limit"); AdditionalData["memory_limit"] = unknown; } else { MemoryLimit = parsed; AdditionalData.Remove("memory_limit"); } } },
+                { "memory_limit", n => { MemoryLimit = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.CodeInterpreterServerToolContainerAnyOf2MemoryLimit>(global::Soenneker.OpenRouter.OpenApiClient.Models.CodeInterpreterServerToolContainerAnyOf2MemoryLimit.CreateFromDiscriminatorValue); } },
                 { "type", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AutoType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueType = default; _explicitNullProperties?.Remove("type"); AdditionalData["type"] = unknown; } else { Type = parsed; AdditionalData.Remove("type"); } } },
             };
         }
@@ -81,7 +88,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<string>("file_ids", FileIds);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.CodeInterpreterServerToolContainerAnyOf2MemoryLimit>("memory_limit", MemoryLimit);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.CodeInterpreterServerToolContainerAnyOf2MemoryLimit>("memory_limit", MemoryLimit);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AutoType>("type", Type);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);

@@ -46,8 +46,15 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         private List<global::Soenneker.OpenRouter.OpenApiClient.Models.ListProviders200ResponseDataItemDatacentersItem?> _explicitNullValueDatacenters = default!;
 #endif
         /// <summary>ISO 3166-1 Alpha-2 country code of the provider headquarters</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ListProviders200ResponseDataItemHeadquarters? Headquarters { get => _explicitNullValueHeadquarters; set { _explicitNullValueHeadquarters = value; AdditionalData?.Remove("headquarters"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("headquarters"); else _explicitNullProperties?.Remove("headquarters"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.ListProviders200ResponseDataItemHeadquarters? _explicitNullValueHeadquarters = default!;
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ListProviders200ResponseDataItemHeadquarters Headquarters { get => _explicitNullValueHeadquarters; set { _explicitNullValueHeadquarters = value; AdditionalData?.Remove("headquarters"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("headquarters"); else _explicitNullProperties?.Remove("headquarters"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ListProviders200ResponseDataItemHeadquarters _explicitNullValueHeadquarters = default!;
+#endif
         /// <summary>Display name of the provider</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -124,7 +131,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "datacenters", n => { Datacenters = n.GetCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ListProviders200ResponseDataItemDatacentersItem>()?.AsList(); } },
-                { "headquarters", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ListProviders200ResponseDataItemHeadquarters>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueHeadquarters = default; _explicitNullProperties?.Remove("headquarters"); AdditionalData["headquarters"] = unknown; } else { Headquarters = parsed; AdditionalData.Remove("headquarters"); } } },
+                { "headquarters", n => { Headquarters = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ListProviders200ResponseDataItemHeadquarters>(global::Soenneker.OpenRouter.OpenApiClient.Models.ListProviders200ResponseDataItemHeadquarters.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "privacy_policy_url", n => { PrivacyPolicyUrl = n.GetStringValue(); } },
                 { "slug", n => { Slug = n.GetStringValue(); } },
@@ -140,7 +147,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ListProviders200ResponseDataItemDatacentersItem>("datacenters", Datacenters);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ListProviders200ResponseDataItemHeadquarters>("headquarters", Headquarters);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ListProviders200ResponseDataItemHeadquarters>("headquarters", Headquarters);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("privacy_policy_url", PrivacyPolicyUrl);
             writer.WriteStringValue("slug", Slug);

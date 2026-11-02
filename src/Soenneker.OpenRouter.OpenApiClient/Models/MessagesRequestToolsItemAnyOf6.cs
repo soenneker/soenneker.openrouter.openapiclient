@@ -57,15 +57,15 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective CacheControl { get => _explicitNullValueCacheControl; set { _explicitNullValueCacheControl = value; AdditionalData?.Remove("cache_control"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cache_control"); else _explicitNullProperties?.Remove("cache_control"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective _explicitNullValueCacheControl = default!;
 #endif
-        /// <summary>The caching property</summary>
+        /// <summary>Enable automatic prompt caching. When set at the top level, the system automatically applies cache breakpoints to the last cacheable block in the request. When set on an individual content block, it marks an explicit cache breakpoint; block-level markers also work on OpenAI models that support explicit prompt caching — OpenRouter converts them to the provider&apos;s native format.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective? Caching { get => _explicitNullValueCaching; set { _explicitNullValueCaching = value; AdditionalData?.Remove("caching"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("caching"); else _explicitNullProperties?.Remove("caching"); } }
-        private global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective? _explicitNullValueCaching = default!;
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolsItemAnyOf6Caching? Caching { get => _explicitNullValueCaching; set { _explicitNullValueCaching = value; AdditionalData?.Remove("caching"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("caching"); else _explicitNullProperties?.Remove("caching"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolsItemAnyOf6Caching? _explicitNullValueCaching = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective Caching { get => _explicitNullValueCaching; set { _explicitNullValueCaching = value; AdditionalData?.Remove("caching"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("caching"); else _explicitNullProperties?.Remove("caching"); } }
-        private global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective _explicitNullValueCaching = default!;
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolsItemAnyOf6Caching Caching { get => _explicitNullValueCaching; set { _explicitNullValueCaching = value; AdditionalData?.Remove("caching"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("caching"); else _explicitNullProperties?.Remove("caching"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolsItemAnyOf6Caching _explicitNullValueCaching = default!;
 #endif
         /// <summary>The defer_loading property</summary>
         public bool? DeferLoading { get => _explicitNullValueDeferLoading; set { _explicitNullValueDeferLoading = value; AdditionalData?.Remove("defer_loading"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("defer_loading"); else _explicitNullProperties?.Remove("defer_loading"); } }
@@ -116,7 +116,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             {
                 { "allowed_callers", n => { AllowedCallers = n.GetCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolsItemAnyOf6AllowedCallersItem>()?.AsList(); } },
                 { "cache_control", n => { CacheControl = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective>(global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective.CreateFromDiscriminatorValue); } },
-                { "caching", n => { Caching = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective>(global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective.CreateFromDiscriminatorValue); } },
+                { "caching", n => { Caching = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolsItemAnyOf6Caching>(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolsItemAnyOf6Caching.CreateFromDiscriminatorValue); } },
                 { "defer_loading", n => { DeferLoading = n.GetBoolValue(); } },
                 { "max_uses", n => { MaxUses = n.GetIntValue(); } },
                 { "model", n => { Model = n.GetStringValue(); } },
@@ -133,7 +133,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolsItemAnyOf6AllowedCallersItem>("allowed_callers", AllowedCallers);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective>("cache_control", CacheControl);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective>("caching", Caching);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolsItemAnyOf6Caching>("caching", Caching);
             writer.WriteBoolValue("defer_loading", DeferLoading);
             writer.WriteIntValue("max_uses", MaxUses);
             writer.WriteStringValue("model", Model);

@@ -22,8 +22,15 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         }
 
         /// <summary>The effort property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicOutputEffort? Effort { get => _explicitNullValueEffort; set { _explicitNullValueEffort = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("effort"); else _explicitNullProperties?.Remove("effort"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicOutputEffort? _explicitNullValueEffort = default!;
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicOutputEffort Effort { get => _explicitNullValueEffort; set { _explicitNullValueEffort = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("effort"); else _explicitNullProperties?.Remove("effort"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicOutputEffort _explicitNullValueEffort = default!;
+#endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -44,7 +51,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "effort", n => { Effort = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicOutputEffort>(); } },
+                { "effort", n => { Effort = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicOutputEffort>(global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicOutputEffort.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -54,7 +61,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicOutputEffort>("effort", Effort);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicOutputEffort>("effort", Effort);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             
         }
     }

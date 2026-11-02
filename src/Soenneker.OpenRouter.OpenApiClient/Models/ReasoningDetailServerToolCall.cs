@@ -49,8 +49,15 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         private string _explicitNullValueArguments = default!;
 #endif
         /// <summary>The format property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningFormat? Format { get => _explicitNullValueFormat; set { _explicitNullValueFormat = value; AdditionalData?.Remove("format"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("format"); else _explicitNullProperties?.Remove("format"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningFormat? _explicitNullValueFormat = default!;
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningFormat Format { get => _explicitNullValueFormat; set { _explicitNullValueFormat = value; AdditionalData?.Remove("format"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("format"); else _explicitNullProperties?.Remove("format"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningFormat _explicitNullValueFormat = default!;
+#endif
         /// <summary>The id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -123,7 +130,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "arguments", n => { Arguments = n.GetStringValue(); } },
-                { "format", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningFormat>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueFormat = default; _explicitNullProperties?.Remove("format"); AdditionalData["format"] = unknown; } else { Format = parsed; AdditionalData.Remove("format"); } } },
+                { "format", n => { Format = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningFormat>(global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningFormat.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "index", n => { Index = n.GetIntValue(); } },
                 { "result", n => { Result = n.GetStringValue(); } },
@@ -140,7 +147,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("arguments", Arguments);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningFormat>("format", Format);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningFormat>("format", Format);
             writer.WriteStringValue("id", Id);
             writer.WriteIntValue("index", Index);
             writer.WriteStringValue("result", Result);

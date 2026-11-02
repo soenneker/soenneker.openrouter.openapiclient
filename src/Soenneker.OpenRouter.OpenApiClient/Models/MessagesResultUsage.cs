@@ -128,11 +128,25 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         private global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResultUsage_server_tool_use _explicitNullValueServerToolUse = default!;
 #endif
         /// <summary>The service_tier property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResultUsage_service_tier? ServiceTier { get => _explicitNullValueServiceTier; set { _explicitNullValueServiceTier = value; AdditionalData?.Remove("service_tier"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("service_tier"); else _explicitNullProperties?.Remove("service_tier"); } }
-        private global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResultUsage_service_tier? _explicitNullValueServiceTier = default!;
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode? ServiceTier { get => _explicitNullValueServiceTier; set { _explicitNullValueServiceTier = value; AdditionalData?.Remove("service_tier"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("service_tier"); else _explicitNullProperties?.Remove("service_tier"); } }
+        private global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode? _explicitNullValueServiceTier = default!;
+#nullable restore
+#else
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode ServiceTier { get => _explicitNullValueServiceTier; set { _explicitNullValueServiceTier = value; AdditionalData?.Remove("service_tier"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("service_tier"); else _explicitNullProperties?.Remove("service_tier"); } }
+        private global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode _explicitNullValueServiceTier = default!;
+#endif
         /// <summary>The speed property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicSpeed? Speed { get => _explicitNullValueSpeed; set { _explicitNullValueSpeed = value; AdditionalData?.Remove("speed"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("speed"); else _explicitNullProperties?.Remove("speed"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicSpeed? _explicitNullValueSpeed = default!;
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicSpeed Speed { get => _explicitNullValueSpeed; set { _explicitNullValueSpeed = value; AdditionalData?.Remove("speed"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("speed"); else _explicitNullProperties?.Remove("speed"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicSpeed _explicitNullValueSpeed = default!;
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResultUsage"/> and sets the default values.
         /// </summary>
@@ -170,8 +184,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "output_tokens", n => { OutputTokens = n.GetIntValue(); } },
                 { "output_tokens_details", n => { OutputTokensDetails = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicOutputTokensDetails>(global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicOutputTokensDetails.CreateFromDiscriminatorValue); } },
                 { "server_tool_use", n => { ServerToolUse = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResultUsage_server_tool_use>(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResultUsage_server_tool_use.CreateFromDiscriminatorValue); } },
-                { "service_tier", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResultUsage_service_tier>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueServiceTier = default; _explicitNullProperties?.Remove("service_tier"); AdditionalData["service_tier"] = unknown; } else { ServiceTier = parsed; AdditionalData.Remove("service_tier"); } } },
-                { "speed", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicSpeed>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueSpeed = default; _explicitNullProperties?.Remove("speed"); AdditionalData["speed"] = unknown; } else { Speed = parsed; AdditionalData.Remove("speed"); } } },
+                { "service_tier", n => { ServiceTier = n.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue); } },
+                { "speed", n => { Speed = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicSpeed>(global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicSpeed.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -193,10 +207,86 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteIntValue("output_tokens", OutputTokens);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicOutputTokensDetails>("output_tokens_details", OutputTokensDetails);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResultUsage_server_tool_use>("server_tool_use", ServerToolUse);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResultUsage_service_tier>("service_tier", ServiceTier);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicSpeed>("speed", Speed);
+            writer.WriteObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>("service_tier", ServiceTier);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicSpeed>("speed", Speed);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
+        }
+        /// <summary>
+        /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResultUsage_service_tierMember1"/>, <see cref="string"/>
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+        public partial class MessagesResultUsage_service_tier : IComposedTypeWrapper, IParsable
+        {
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResultUsage_service_tierMember1"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResultUsage_service_tierMember1? MessagesResultUsageServiceTierMember1 { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResultUsage_service_tierMember1 MessagesResultUsageServiceTierMember1 { get; set; }
+#endif
+            /// <summary>Composed type representation for type <see cref="string"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public string? String { get; set; }
+#nullable restore
+#else
+            public string String { get; set; }
+#endif
+            /// <summary>
+            /// Creates a new instance of the appropriate class based on discriminator value
+            /// </summary>
+            /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResultUsage.MessagesResultUsage_service_tier"/></returns>
+            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
+            public static global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResultUsage.MessagesResultUsage_service_tier CreateFromDiscriminatorValue(IParseNode parseNode)
+            {
+            // A null union input must not initialize an object branch.
+            if (global::System.Object.ReferenceEquals(parseNode, null)) throw new global::System.ArgumentNullException(nameof(parseNode));
+            if (parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) return new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResultUsage.MessagesResultUsage_service_tier();
+
+                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
+                var result = new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResultUsage.MessagesResultUsage_service_tier();
+                if(parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString && parseNode.GetStringValue() is string stringValue)
+                {
+                    result.String = stringValue;
+                }
+                else {
+                    result.MessagesResultUsageServiceTierMember1 = new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResultUsage_service_tierMember1();
+                }
+                return result;
+            }
+            /// <summary>
+            /// The deserialization information for the current model
+            /// </summary>
+            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
+            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+            {
+                if(MessagesResultUsageServiceTierMember1 != null)
+                {
+                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(MessagesResultUsageServiceTierMember1);
+                }
+                return new Dictionary<string, Action<IParseNode>>();
+            }
+            /// <summary>
+            /// Serializes information the current object
+            /// </summary>
+            /// <param name="writer">Serialization writer to use to serialize this model</param>
+            public virtual void Serialize(ISerializationWriter writer)
+            {
+            // Empty composed wrappers serialize as JSON null.
+            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
+            if (MessagesResultUsageServiceTierMember1 == null && String == null) { writer.WriteNullValue(null); return; }
+
+                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+                if(String != null)
+                {
+                    writer.WriteStringValue(null, String);
+                }
+                else {
+                    writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResultUsage_service_tierMember1>(null, MessagesResultUsageServiceTierMember1);
+                }
+            }
         }
     }
 }

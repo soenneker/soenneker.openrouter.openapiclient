@@ -290,8 +290,15 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         private global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequestReasoning _explicitNullValueReasoning = default!;
 #endif
         /// <summary>Shorthand for setting reasoning effort. Equivalent to setting reasoning.effort. Cannot be used simultaneously with reasoning.effort if they differ.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequestReasoningEffort? ReasoningEffort { get => _explicitNullValueReasoningEffort; set { _explicitNullValueReasoningEffort = value; AdditionalData?.Remove("reasoning_effort"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reasoning_effort"); else _explicitNullProperties?.Remove("reasoning_effort"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequestReasoningEffort? _explicitNullValueReasoningEffort = default!;
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequestReasoningEffort ReasoningEffort { get => _explicitNullValueReasoningEffort; set { _explicitNullValueReasoningEffort = value; AdditionalData?.Remove("reasoning_effort"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reasoning_effort"); else _explicitNullProperties?.Remove("reasoning_effort"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequestReasoningEffort _explicitNullValueReasoningEffort = default!;
+#endif
         /// <summary>Penalizes tokens based on how much they have already appeared in the text. A value of 1.0 means no penalty. Values above 1.0 penalize repeated tokens more strongly. Not all providers support this parameter.</summary>
         public double? RepetitionPenalty { get => _explicitNullValueRepetitionPenalty; set { _explicitNullValueRepetitionPenalty = value; AdditionalData?.Remove("repetition_penalty"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repetition_penalty"); else _explicitNullProperties?.Remove("repetition_penalty"); } }
         private double? _explicitNullValueRepetitionPenalty = default!;
@@ -307,14 +314,28 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #endif
         /// <summary>**DEPRECATED** Use providers.sort.partition instead. Backwards-compatible alias for providers.sort.partition. Accepts legacy values: &quot;fallback&quot; (maps to &quot;model&quot;), &quot;sort&quot; (maps to &quot;none&quot;).</summary>
         [Obsolete("")]
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.OpenRouter.OpenApiClient.Models.DeprecatedRoute? Route { get => _explicitNullValueRoute; set { _explicitNullValueRoute = value; AdditionalData?.Remove("route"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("route"); else _explicitNullProperties?.Remove("route"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.DeprecatedRoute? _explicitNullValueRoute = default!;
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.DeprecatedRoute Route { get => _explicitNullValueRoute; set { _explicitNullValueRoute = value; AdditionalData?.Remove("route"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("route"); else _explicitNullProperties?.Remove("route"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.DeprecatedRoute _explicitNullValueRoute = default!;
+#endif
         /// <summary>Random seed for deterministic outputs</summary>
         public int? Seed { get => _explicitNullValueSeed; set { _explicitNullValueSeed = value; AdditionalData?.Remove("seed"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("seed"); else _explicitNullProperties?.Remove("seed"); } }
         private int? _explicitNullValueSeed = default!;
         /// <summary>The service tier to use for processing this request. `fast` is accepted as an alias for `priority`. `ultrafast` prefers ultrafast endpoints and falls back to `priority`, then default endpoints.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequestServiceTier? ServiceTier { get => _explicitNullValueServiceTier; set { _explicitNullValueServiceTier = value; AdditionalData?.Remove("service_tier"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("service_tier"); else _explicitNullProperties?.Remove("service_tier"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequestServiceTier? _explicitNullValueServiceTier = default!;
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequestServiceTier ServiceTier { get => _explicitNullValueServiceTier; set { _explicitNullValueServiceTier = value; AdditionalData?.Remove("service_tier"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("service_tier"); else _explicitNullProperties?.Remove("service_tier"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequestServiceTier _explicitNullValueServiceTier = default!;
+#endif
         /// <summary>A unique identifier for grouping related requests (e.g., a conversation or agent workflow). When provided, OpenRouter uses it as the sticky routing key, routing all requests in the session to the same provider to maximize prompt cache hits. Also used for observability grouping. If provided in both the request body and the x-session-id header, the body value takes precedence. Maximum of 256 characters.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -462,12 +483,12 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "prompt_cache_options", n => { PromptCacheOptions = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PromptCacheOptions>(global::Soenneker.OpenRouter.OpenApiClient.Models.PromptCacheOptions.CreateFromDiscriminatorValue); } },
                 { "provider", n => { Provider = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferences>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferences.CreateFromDiscriminatorValue); } },
                 { "reasoning", n => { Reasoning = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequestReasoning>(global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequestReasoning.CreateFromDiscriminatorValue); } },
-                { "reasoning_effort", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequestReasoningEffort>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueReasoningEffort = default; _explicitNullProperties?.Remove("reasoning_effort"); AdditionalData["reasoning_effort"] = unknown; } else { ReasoningEffort = parsed; AdditionalData.Remove("reasoning_effort"); } } },
+                { "reasoning_effort", n => { ReasoningEffort = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequestReasoningEffort>(global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequestReasoningEffort.CreateFromDiscriminatorValue); } },
                 { "repetition_penalty", n => { RepetitionPenalty = n.GetDoubleValue(); } },
                 { "response_format", n => { ResponseFormat = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequestResponseFormat>(global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequestResponseFormat.CreateFromDiscriminatorValue); } },
-                { "route", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.DeprecatedRoute>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueRoute = default; _explicitNullProperties?.Remove("route"); AdditionalData["route"] = unknown; } else { Route = parsed; AdditionalData.Remove("route"); } } },
+                { "route", n => { Route = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.DeprecatedRoute>(global::Soenneker.OpenRouter.OpenApiClient.Models.DeprecatedRoute.CreateFromDiscriminatorValue); } },
                 { "seed", n => { Seed = n.GetIntValue(); } },
-                { "service_tier", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequestServiceTier>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueServiceTier = default; _explicitNullProperties?.Remove("service_tier"); AdditionalData["service_tier"] = unknown; } else { ServiceTier = parsed; AdditionalData.Remove("service_tier"); } } },
+                { "service_tier", n => { ServiceTier = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequestServiceTier>(global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequestServiceTier.CreateFromDiscriminatorValue); } },
                 { "session_id", n => { SessionId = n.GetStringValue(); } },
                 { "stop", n => { Stop = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequestStop>(global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequestStop.CreateFromDiscriminatorValue); } },
                 { "stop_server_tools_when", n => { StopServerToolsWhen = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.StopServerToolsWhenCondition>(global::Soenneker.OpenRouter.OpenApiClient.Models.StopServerToolsWhenCondition.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -514,12 +535,12 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PromptCacheOptions>("prompt_cache_options", PromptCacheOptions);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferences>("provider", Provider);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequestReasoning>("reasoning", Reasoning);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequestReasoningEffort>("reasoning_effort", ReasoningEffort);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequestReasoningEffort>("reasoning_effort", ReasoningEffort);
             writer.WriteDoubleValue("repetition_penalty", RepetitionPenalty);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequestResponseFormat>("response_format", ResponseFormat);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.DeprecatedRoute>("route", Route);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.DeprecatedRoute>("route", Route);
             writer.WriteIntValue("seed", Seed);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequestServiceTier>("service_tier", ServiceTier);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequestServiceTier>("service_tier", ServiceTier);
             writer.WriteStringValue("session_id", SessionId);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequestStop>("stop", Stop);
             writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.StopServerToolsWhenCondition>("stop_server_tools_when", StopServerToolsWhen);

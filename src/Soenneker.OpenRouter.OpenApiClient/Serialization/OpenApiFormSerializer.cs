@@ -15,6 +15,11 @@ namespace Soenneker.OpenApi.Generated;
 
 internal static class OpenApiFormSerializer
 {
+    public static void SetContent(RequestInformation request, string body, string encodingJson)
+    {
+        request.SetStreamContent(new MemoryStream(Encoding.UTF8.GetBytes(body)), "application/x-www-form-urlencoded");
+    }
+
     public static void SetContent(RequestInformation request, IParsable body, string encodingJson)
     {
         using var writer = new JsonSerializationWriter();

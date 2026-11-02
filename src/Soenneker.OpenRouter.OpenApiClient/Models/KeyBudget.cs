@@ -70,8 +70,15 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public double? RemainingUsd { get => _explicitNullValueRemainingUsd; set { _explicitNullValueRemainingUsd = value; AdditionalData?.Remove("remaining_usd"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("remaining_usd"); else _explicitNullProperties?.Remove("remaining_usd"); } }
         private double? _explicitNullValueRemainingUsd = default!;
         /// <summary>UTC window the spend is counted over (weeks start Monday); null for a lifetime budget that never resets.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.OpenRouter.OpenApiClient.Models.KeyBudgetResetInterval? ResetInterval { get => _explicitNullValueResetInterval; set { _explicitNullValueResetInterval = value; AdditionalData?.Remove("reset_interval"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reset_interval"); else _explicitNullProperties?.Remove("reset_interval"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.KeyBudgetResetInterval? _explicitNullValueResetInterval = default!;
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.KeyBudgetResetInterval ResetInterval { get => _explicitNullValueResetInterval; set { _explicitNullValueResetInterval = value; AdditionalData?.Remove("reset_interval"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reset_interval"); else _explicitNullProperties?.Remove("reset_interval"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.KeyBudgetResetInterval _explicitNullValueResetInterval = default!;
+#endif
         /// <summary>ISO 8601 UTC instant at which the window rolls over and spend returns to zero; null for a lifetime budget.</summary>
         public DateTimeOffset? ResetsAt { get => _explicitNullValueResetsAt; set { _explicitNullValueResetsAt = value; AdditionalData?.Remove("resets_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resets_at"); else _explicitNullProperties?.Remove("resets_at"); } }
         private DateTimeOffset? _explicitNullValueResetsAt = default!;
@@ -111,7 +118,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "include_byok", n => { IncludeByok = n.GetBoolValue(); } },
                 { "limit_usd", n => { LimitUsd = n.GetDoubleValue(); } },
                 { "remaining_usd", n => { RemainingUsd = n.GetDoubleValue(); } },
-                { "reset_interval", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.KeyBudgetResetInterval>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueResetInterval = default; _explicitNullProperties?.Remove("reset_interval"); AdditionalData["reset_interval"] = unknown; } else { ResetInterval = parsed; AdditionalData.Remove("reset_interval"); } } },
+                { "reset_interval", n => { ResetInterval = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.KeyBudgetResetInterval>(global::Soenneker.OpenRouter.OpenApiClient.Models.KeyBudgetResetInterval.CreateFromDiscriminatorValue); } },
                 { "resets_at", n => { ResetsAt = n.GetDateTimeOffsetValue(); } },
                 { "scope", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.KeyBudgetScope>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueScope = default; _explicitNullProperties?.Remove("scope"); AdditionalData["scope"] = unknown; } else { Scope = parsed; AdditionalData.Remove("scope"); } } },
                 { "spend_usd", n => { SpendUsd = n.GetDoubleValue(); } },
@@ -129,7 +136,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteBoolValue("include_byok", IncludeByok);
             writer.WriteDoubleValue("limit_usd", LimitUsd);
             writer.WriteDoubleValue("remaining_usd", RemainingUsd);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.KeyBudgetResetInterval>("reset_interval", ResetInterval);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.KeyBudgetResetInterval>("reset_interval", ResetInterval);
             writer.WriteDateTimeOffsetValue("resets_at", ResetsAt);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.KeyBudgetScope>("scope", Scope);
             writer.WriteDoubleValue("spend_usd", SpendUsd);

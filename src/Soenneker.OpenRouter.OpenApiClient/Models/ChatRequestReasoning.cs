@@ -27,11 +27,25 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Constrains effort on reasoning for reasoning models</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequestReasoningEffortEnum? Effort { get => _explicitNullValueEffort; set { _explicitNullValueEffort = value; AdditionalData?.Remove("effort"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("effort"); else _explicitNullProperties?.Remove("effort"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequestReasoningEffortEnum? _explicitNullValueEffort = default!;
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequestReasoningEffortEnum Effort { get => _explicitNullValueEffort; set { _explicitNullValueEffort = value; AdditionalData?.Remove("effort"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("effort"); else _explicitNullProperties?.Remove("effort"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequestReasoningEffortEnum _explicitNullValueEffort = default!;
+#endif
         /// <summary>The summary property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatReasoningSummaryVerbosityEnum? Summary { get => _explicitNullValueSummary; set { _explicitNullValueSummary = value; AdditionalData?.Remove("summary"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary"); else _explicitNullProperties?.Remove("summary"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.ChatReasoningSummaryVerbosityEnum? _explicitNullValueSummary = default!;
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatReasoningSummaryVerbosityEnum Summary { get => _explicitNullValueSummary; set { _explicitNullValueSummary = value; AdditionalData?.Remove("summary"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary"); else _explicitNullProperties?.Remove("summary"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ChatReasoningSummaryVerbosityEnum _explicitNullValueSummary = default!;
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequestReasoning"/> and sets the default values.
         /// </summary>
@@ -57,8 +71,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "effort", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequestReasoningEffortEnum>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueEffort = default; _explicitNullProperties?.Remove("effort"); AdditionalData["effort"] = unknown; } else { Effort = parsed; AdditionalData.Remove("effort"); } } },
-                { "summary", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatReasoningSummaryVerbosityEnum>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueSummary = default; _explicitNullProperties?.Remove("summary"); AdditionalData["summary"] = unknown; } else { Summary = parsed; AdditionalData.Remove("summary"); } } },
+                { "effort", n => { Effort = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequestReasoningEffortEnum>(global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequestReasoningEffortEnum.CreateFromDiscriminatorValue); } },
+                { "summary", n => { Summary = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatReasoningSummaryVerbosityEnum>(global::Soenneker.OpenRouter.OpenApiClient.Models.ChatReasoningSummaryVerbosityEnum.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -68,8 +82,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequestReasoningEffortEnum>("effort", Effort);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatReasoningSummaryVerbosityEnum>("summary", Summary);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequestReasoningEffortEnum>("effort", Effort);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatReasoningSummaryVerbosityEnum>("summary", Summary);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }

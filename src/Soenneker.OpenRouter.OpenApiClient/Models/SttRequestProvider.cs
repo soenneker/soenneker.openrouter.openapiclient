@@ -29,8 +29,15 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Data collection setting. If no available model provider meets the requirement, your request will return an error.- allow: (default) allow providers which store user data non-transiently and may train on it- deny: use only providers which do not collect user data.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.OpenRouter.OpenApiClient.Models.SttRequestProviderDataCollection? DataCollection { get => _explicitNullValueDataCollection; set { _explicitNullValueDataCollection = value; AdditionalData?.Remove("data_collection"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data_collection"); else _explicitNullProperties?.Remove("data_collection"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.SttRequestProviderDataCollection? _explicitNullValueDataCollection = default!;
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.SttRequestProviderDataCollection DataCollection { get => _explicitNullValueDataCollection; set { _explicitNullValueDataCollection = value; AdditionalData?.Remove("data_collection"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data_collection"); else _explicitNullProperties?.Remove("data_collection"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.SttRequestProviderDataCollection _explicitNullValueDataCollection = default!;
+#endif
         /// <summary>Provider-specific options keyed by provider slug. The provider segment is case-insensitive; an endpoint tag after `/` must match the endpoint slug exactly. Only options for the matched provider are forwarded; the rest are ignored. Unrecognized keys are silently dropped.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -69,7 +76,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "data_collection", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SttRequestProviderDataCollection>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueDataCollection = default; _explicitNullProperties?.Remove("data_collection"); AdditionalData["data_collection"] = unknown; } else { DataCollection = parsed; AdditionalData.Remove("data_collection"); } } },
+                { "data_collection", n => { DataCollection = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SttRequestProviderDataCollection>(global::Soenneker.OpenRouter.OpenApiClient.Models.SttRequestProviderDataCollection.CreateFromDiscriminatorValue); } },
                 { "options", n => { Options = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions.CreateFromDiscriminatorValue); } },
                 { "zdr", n => { Zdr = n.GetBoolValue(); } },
             };
@@ -81,7 +88,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SttRequestProviderDataCollection>("data_collection", DataCollection);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SttRequestProviderDataCollection>("data_collection", DataCollection);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptions>("options", Options);
             writer.WriteBoolValue("zdr", Zdr);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);

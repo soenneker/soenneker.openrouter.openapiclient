@@ -107,8 +107,15 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         private global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicRefusalStopDetails _explicitNullValueStopDetails = default!;
 #endif
         /// <summary>The stop_reason property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.OpenRouter.OpenApiClient.Models.OrAnthropicStopReason? StopReason { get => _explicitNullValueStopReason; set { _explicitNullValueStopReason = value; AdditionalData?.Remove("stop_reason"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("stop_reason"); else _explicitNullProperties?.Remove("stop_reason"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.OrAnthropicStopReason? _explicitNullValueStopReason = default!;
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.OrAnthropicStopReason StopReason { get => _explicitNullValueStopReason; set { _explicitNullValueStopReason = value; AdditionalData?.Remove("stop_reason"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("stop_reason"); else _explicitNullProperties?.Remove("stop_reason"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.OrAnthropicStopReason _explicitNullValueStopReason = default!;
+#endif
         /// <summary>The stop_sequence property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -164,7 +171,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "model", n => { Model = n.GetStringValue(); } },
                 { "role", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AssistantRole>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueRole = default; _explicitNullProperties?.Remove("role"); AdditionalData["role"] = unknown; } else { Role = parsed; AdditionalData.Remove("role"); } } },
                 { "stop_details", n => { StopDetails = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicRefusalStopDetails>(global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicRefusalStopDetails.CreateFromDiscriminatorValue); } },
-                { "stop_reason", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OrAnthropicStopReason>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueStopReason = default; _explicitNullProperties?.Remove("stop_reason"); AdditionalData["stop_reason"] = unknown; } else { StopReason = parsed; AdditionalData.Remove("stop_reason"); } } },
+                { "stop_reason", n => { StopReason = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OrAnthropicStopReason>(global::Soenneker.OpenRouter.OpenApiClient.Models.OrAnthropicStopReason.CreateFromDiscriminatorValue); } },
                 { "stop_sequence", n => { StopSequence = n.GetStringValue(); } },
                 { "type", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessageType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueType = default; _explicitNullProperties?.Remove("type"); AdditionalData["type"] = unknown; } else { Type = parsed; AdditionalData.Remove("type"); } } },
                 { "usage", n => { Usage = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.BatchObjectResultsItemResponseBodyAnyOf3Usage>(global::Soenneker.OpenRouter.OpenApiClient.Models.BatchObjectResultsItemResponseBodyAnyOf3Usage.CreateFromDiscriminatorValue); } },
@@ -184,7 +191,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteStringValue("model", Model);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AssistantRole>("role", Role);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicRefusalStopDetails>("stop_details", StopDetails);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OrAnthropicStopReason>("stop_reason", StopReason);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OrAnthropicStopReason>("stop_reason", StopReason);
             writer.WriteStringValue("stop_sequence", StopSequence);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessageType>("type", Type);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.BatchObjectResultsItemResponseBodyAnyOf3Usage>("usage", Usage);

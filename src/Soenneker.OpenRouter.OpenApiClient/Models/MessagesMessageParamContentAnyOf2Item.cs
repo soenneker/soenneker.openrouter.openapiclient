@@ -17,10 +17,22 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
+            if (parseNode.GetChildNode("type") is null) { _explicitNullValueType = default!; _explicitNullProperties?.Remove("type"); }
+            else if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>The type property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; AdditionalData?.Remove("type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        private string? _explicitNullValueType = default!;
+#nullable restore
+#else
+        public string Type { get => _explicitNullValueType; set { _explicitNullValueType = value; AdditionalData?.Remove("type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        private string _explicitNullValueType = default!;
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesMessageParamContentAnyOf2Item"/> and sets the default values.
         /// </summary>
@@ -36,7 +48,28 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public static global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesMessageParamContentAnyOf2Item CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesMessageParamContentAnyOf2Item(), parseNode);
+            var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
+            return mappingValue switch
+            {
+                "advisor_tool_result" => new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesMessageParamContentAnyOf2ItemMessagesAdvisorToolResultBlock(),
+                "compaction" => new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesMessageParamContentAnyOf2ItemMessagesMessageParamContentAnyOf2ItemOneOf11(),
+                "document" => new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesMessageParamContentAnyOf2ItemAnthropicDocumentBlockParam(),
+                "image" => new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesMessageParamContentAnyOf2ItemAnthropicImageBlockParam(),
+                "openrouter_bash_tool_result" => new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesMessageParamContentAnyOf2ItemMessagesBashToolResultBlock(),
+                "openrouter_shell_tool_result" => new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesMessageParamContentAnyOf2ItemMessagesShellToolResultBlock(),
+                "openrouter_tool_search_result" => new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesMessageParamContentAnyOf2ItemOrAnthropicToolSearchResultParam(),
+                "redacted_thinking" => new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesMessageParamContentAnyOf2ItemMessagesMessageParamContentAnyOf2ItemOneOf7(),
+                "search_result" => new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesMessageParamContentAnyOf2ItemAnthropicSearchResultBlockParam(),
+                "server_tool_use" => new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesMessageParamContentAnyOf2ItemMessagesMessageParamContentAnyOf2ItemOneOf8(),
+                "text" => new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesMessageParamContentAnyOf2ItemAnthropicTextBlockParam(),
+                "thinking" => new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesMessageParamContentAnyOf2ItemMessagesMessageParamContentAnyOf2ItemOneOf6(),
+                "tool_addition" => new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesMessageParamContentAnyOf2ItemMessagesToolAdditionBlock(),
+                "tool_removal" => new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesMessageParamContentAnyOf2ItemMessagesToolRemovalBlock(),
+                "tool_result" => new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesMessageParamContentAnyOf2ItemMessagesMessageParamContentAnyOf2ItemOneOf5(),
+                "tool_use" => new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesMessageParamContentAnyOf2ItemMessagesMessageParamContentAnyOf2ItemOneOf4(),
+                "web_search_tool_result" => new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesMessageParamContentAnyOf2ItemMessagesMessageParamContentAnyOf2ItemOneOf9(),
+                _ => new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesMessageParamContentAnyOf2Item(),
+            };
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -46,6 +79,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "type", n => { Type = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -55,6 +89,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteStringValue("type", Type);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }

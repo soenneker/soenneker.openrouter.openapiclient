@@ -31,8 +31,15 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The finish_reason property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatFinishReasonEnum? FinishReason { get => _explicitNullValueFinishReason; set { _explicitNullValueFinishReason = value; AdditionalData?.Remove("finish_reason"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("finish_reason"); else _explicitNullProperties?.Remove("finish_reason"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.ChatFinishReasonEnum? _explicitNullValueFinishReason = default!;
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatFinishReasonEnum FinishReason { get => _explicitNullValueFinishReason; set { _explicitNullValueFinishReason = value; AdditionalData?.Remove("finish_reason"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("finish_reason"); else _explicitNullProperties?.Remove("finish_reason"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ChatFinishReasonEnum _explicitNullValueFinishReason = default!;
+#endif
         /// <summary>Choice index</summary>
         public int? Index { get => _explicitNullValueIndex; set { _explicitNullValueIndex = value; AdditionalData?.Remove("index"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("index"); else _explicitNullProperties?.Remove("index"); } }
         private int? _explicitNullValueIndex = default!;
@@ -81,7 +88,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "finish_reason", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatFinishReasonEnum>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueFinishReason = default; _explicitNullProperties?.Remove("finish_reason"); AdditionalData["finish_reason"] = unknown; } else { FinishReason = parsed; AdditionalData.Remove("finish_reason"); } } },
+                { "finish_reason", n => { FinishReason = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatFinishReasonEnum>(global::Soenneker.OpenRouter.OpenApiClient.Models.ChatFinishReasonEnum.CreateFromDiscriminatorValue); } },
                 { "index", n => { Index = n.GetIntValue(); } },
                 { "logprobs", n => { Logprobs = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatTokenLogprobs>(global::Soenneker.OpenRouter.OpenApiClient.Models.ChatTokenLogprobs.CreateFromDiscriminatorValue); } },
                 { "message", n => { Message = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatAssistantMessage>(global::Soenneker.OpenRouter.OpenApiClient.Models.ChatAssistantMessage.CreateFromDiscriminatorValue); } },
@@ -94,7 +101,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatFinishReasonEnum>("finish_reason", FinishReason);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatFinishReasonEnum>("finish_reason", FinishReason);
             writer.WriteIntValue("index", Index);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatTokenLogprobs>("logprobs", Logprobs);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatAssistantMessage>("message", Message);

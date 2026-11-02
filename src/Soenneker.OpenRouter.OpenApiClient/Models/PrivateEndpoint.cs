@@ -74,8 +74,15 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         private List<string> _explicitNullValueDeclaredParameters = default!;
 #endif
         /// <summary>Where you attest this deployment processes data. `global` means not regional; `null` means undeclared.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointDeclaredRegion? DeclaredRegion { get => _explicitNullValueDeclaredRegion; set { _explicitNullValueDeclaredRegion = value; AdditionalData?.Remove("declared_region"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("declared_region"); else _explicitNullProperties?.Remove("declared_region"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointDeclaredRegion? _explicitNullValueDeclaredRegion = default!;
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointDeclaredRegion DeclaredRegion { get => _explicitNullValueDeclaredRegion; set { _explicitNullValueDeclaredRegion = value; AdditionalData?.Remove("declared_region"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("declared_region"); else _explicitNullProperties?.Remove("declared_region"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointDeclaredRegion _explicitNullValueDeclaredRegion = default!;
+#endif
         /// <summary>Whether you attest this deployment retains no prompt or completion data. `null` means undeclared.</summary>
         public bool? DeclaredZdr { get => _explicitNullValueDeclaredZdr; set { _explicitNullValueDeclaredZdr = value; AdditionalData?.Remove("declared_zdr"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("declared_zdr"); else _explicitNullProperties?.Remove("declared_zdr"); } }
         private bool? _explicitNullValueDeclaredZdr = default!;
@@ -205,7 +212,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             {
                 { "base_url", n => { BaseUrl = n.GetStringValue(); } },
                 { "declared_parameters", n => { DeclaredParameters = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "declared_region", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointDeclaredRegion>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueDeclaredRegion = default; _explicitNullProperties?.Remove("declared_region"); AdditionalData["declared_region"] = unknown; } else { DeclaredRegion = parsed; AdditionalData.Remove("declared_region"); } } },
+                { "declared_region", n => { DeclaredRegion = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointDeclaredRegion>(global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointDeclaredRegion.CreateFromDiscriminatorValue); } },
                 { "declared_zdr", n => { DeclaredZdr = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "max_completion_tokens", n => { MaxCompletionTokens = n.GetIntValue(); } },
@@ -230,7 +237,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("base_url", BaseUrl);
             writer.WriteCollectionOfPrimitiveValues<string>("declared_parameters", DeclaredParameters);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointDeclaredRegion>("declared_region", DeclaredRegion);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointDeclaredRegion>("declared_region", DeclaredRegion);
             writer.WriteBoolValue("declared_zdr", DeclaredZdr);
             writer.WriteGuidValue("id", Id);
             writer.WriteIntValue("max_completion_tokens", MaxCompletionTokens);

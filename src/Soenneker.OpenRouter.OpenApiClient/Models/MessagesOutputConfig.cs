@@ -29,8 +29,15 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>How much effort the model should put into its response. Higher effort levels may result in more thorough analysis but take longer. Valid values are `low`, `medium`, `high`, `xhigh`, or `max`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesOutputConfigEffort? Effort { get => _explicitNullValueEffort; set { _explicitNullValueEffort = value; AdditionalData?.Remove("effort"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("effort"); else _explicitNullProperties?.Remove("effort"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesOutputConfigEffort? _explicitNullValueEffort = default!;
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesOutputConfigEffort Effort { get => _explicitNullValueEffort; set { _explicitNullValueEffort = value; AdditionalData?.Remove("effort"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("effort"); else _explicitNullProperties?.Remove("effort"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesOutputConfigEffort _explicitNullValueEffort = default!;
+#endif
         /// <summary>A schema to specify Claude&apos;s output format in responses. See [structured outputs](https://platform.claude.com/docs/en/build-with-claude/structured-outputs).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -76,7 +83,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "effort", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesOutputConfigEffort>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueEffort = default; _explicitNullProperties?.Remove("effort"); AdditionalData["effort"] = unknown; } else { Effort = parsed; AdditionalData.Remove("effort"); } } },
+                { "effort", n => { Effort = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesOutputConfigEffort>(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesOutputConfigEffort.CreateFromDiscriminatorValue); } },
                 { "format", n => { Format = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesOutputConfigFormat>(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesOutputConfigFormat.CreateFromDiscriminatorValue); } },
                 { "task_budget", n => { TaskBudget = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesOutputConfigTaskBudget>(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesOutputConfigTaskBudget.CreateFromDiscriminatorValue); } },
             };
@@ -88,7 +95,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesOutputConfigEffort>("effort", Effort);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesOutputConfigEffort>("effort", Effort);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesOutputConfigFormat>("format", Format);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesOutputConfigTaskBudget>("task_budget", TaskBudget);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);

@@ -33,12 +33,12 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>OpenRouter extension. Same as the system message `configuration_update`: changes reasoning effort from this point in the conversation onward without invalidating the prompt cache for the preceding turns.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ConfigurationUpdate? ConfigurationUpdate { get => _explicitNullValueConfigurationUpdate; set { _explicitNullValueConfigurationUpdate = value; AdditionalData?.Remove("configuration_update"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("configuration_update"); else _explicitNullProperties?.Remove("configuration_update"); } }
-        private global::Soenneker.OpenRouter.OpenApiClient.Models.ConfigurationUpdate? _explicitNullValueConfigurationUpdate = default!;
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatDeveloperMessageConfigurationUpdate? ConfigurationUpdate { get => _explicitNullValueConfigurationUpdate; set { _explicitNullValueConfigurationUpdate = value; AdditionalData?.Remove("configuration_update"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("configuration_update"); else _explicitNullProperties?.Remove("configuration_update"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ChatDeveloperMessageConfigurationUpdate? _explicitNullValueConfigurationUpdate = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.ConfigurationUpdate ConfigurationUpdate { get => _explicitNullValueConfigurationUpdate; set { _explicitNullValueConfigurationUpdate = value; AdditionalData?.Remove("configuration_update"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("configuration_update"); else _explicitNullProperties?.Remove("configuration_update"); } }
-        private global::Soenneker.OpenRouter.OpenApiClient.Models.ConfigurationUpdate _explicitNullValueConfigurationUpdate = default!;
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatDeveloperMessageConfigurationUpdate ConfigurationUpdate { get => _explicitNullValueConfigurationUpdate; set { _explicitNullValueConfigurationUpdate = value; AdditionalData?.Remove("configuration_update"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("configuration_update"); else _explicitNullProperties?.Remove("configuration_update"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ChatDeveloperMessageConfigurationUpdate _explicitNullValueConfigurationUpdate = default!;
 #endif
         /// <summary>Developer message content</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -88,7 +88,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "configuration_update", n => { ConfigurationUpdate = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ConfigurationUpdate>(global::Soenneker.OpenRouter.OpenApiClient.Models.ConfigurationUpdate.CreateFromDiscriminatorValue); } },
+                { "configuration_update", n => { ConfigurationUpdate = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatDeveloperMessageConfigurationUpdate>(global::Soenneker.OpenRouter.OpenApiClient.Models.ChatDeveloperMessageConfigurationUpdate.CreateFromDiscriminatorValue); } },
                 { "content", n => { Content = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatDeveloperMessageContent>(global::Soenneker.OpenRouter.OpenApiClient.Models.ChatDeveloperMessageContent.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "role", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.DeveloperRole>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueRole = default; _explicitNullProperties?.Remove("role"); AdditionalData["role"] = unknown; } else { Role = parsed; AdditionalData.Remove("role"); } } },
@@ -101,7 +101,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ConfigurationUpdate>("configuration_update", ConfigurationUpdate);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatDeveloperMessageConfigurationUpdate>("configuration_update", ConfigurationUpdate);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatDeveloperMessageContent>("content", Content);
             writer.WriteStringValue("name", Name);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.DeveloperRole>("role", Role);

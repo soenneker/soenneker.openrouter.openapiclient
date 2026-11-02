@@ -25,11 +25,25 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         /// <summary>Deprecated: legacy alias of prefix_mismatch_behavior. Send only one of the two.</summary>
         [Obsolete("")]
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicThinkingBlockBindingMismatchBehavior? MismatchBehavior { get => _explicitNullValueMismatchBehavior; set { _explicitNullValueMismatchBehavior = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mismatch_behavior"); else _explicitNullProperties?.Remove("mismatch_behavior"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicThinkingBlockBindingMismatchBehavior? _explicitNullValueMismatchBehavior = default!;
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicThinkingBlockBindingMismatchBehavior MismatchBehavior { get => _explicitNullValueMismatchBehavior; set { _explicitNullValueMismatchBehavior = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mismatch_behavior"); else _explicitNullProperties?.Remove("mismatch_behavior"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicThinkingBlockBindingMismatchBehavior _explicitNullValueMismatchBehavior = default!;
+#endif
         /// <summary>The prefix_mismatch_behavior property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicThinkingBlockBindingPrefixMismatchBehavior? PrefixMismatchBehavior { get => _explicitNullValuePrefixMismatchBehavior; set { _explicitNullValuePrefixMismatchBehavior = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("prefix_mismatch_behavior"); else _explicitNullProperties?.Remove("prefix_mismatch_behavior"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicThinkingBlockBindingPrefixMismatchBehavior? _explicitNullValuePrefixMismatchBehavior = default!;
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicThinkingBlockBindingPrefixMismatchBehavior PrefixMismatchBehavior { get => _explicitNullValuePrefixMismatchBehavior; set { _explicitNullValuePrefixMismatchBehavior = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("prefix_mismatch_behavior"); else _explicitNullProperties?.Remove("prefix_mismatch_behavior"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicThinkingBlockBindingPrefixMismatchBehavior _explicitNullValuePrefixMismatchBehavior = default!;
+#endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -50,8 +64,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "mismatch_behavior", n => { MismatchBehavior = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicThinkingBlockBindingMismatchBehavior>(); } },
-                { "prefix_mismatch_behavior", n => { PrefixMismatchBehavior = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicThinkingBlockBindingPrefixMismatchBehavior>(); } },
+                { "mismatch_behavior", n => { MismatchBehavior = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicThinkingBlockBindingMismatchBehavior>(global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicThinkingBlockBindingMismatchBehavior.CreateFromDiscriminatorValue); } },
+                { "prefix_mismatch_behavior", n => { PrefixMismatchBehavior = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicThinkingBlockBindingPrefixMismatchBehavior>(global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicThinkingBlockBindingPrefixMismatchBehavior.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -61,8 +75,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicThinkingBlockBindingMismatchBehavior>("mismatch_behavior", MismatchBehavior);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicThinkingBlockBindingPrefixMismatchBehavior>("prefix_mismatch_behavior", PrefixMismatchBehavior);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicThinkingBlockBindingMismatchBehavior>("mismatch_behavior", MismatchBehavior);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicThinkingBlockBindingPrefixMismatchBehavior>("prefix_mismatch_behavior", PrefixMismatchBehavior);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             
         }
     }

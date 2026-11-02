@@ -46,8 +46,15 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         private string _explicitNullValueAccount = default!;
 #endif
         /// <summary>The account_type property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGithubAppsItemInstallationsItemAccountType? AccountType { get => _explicitNullValueAccountType; set { _explicitNullValueAccountType = value; AdditionalData?.Remove("account_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("account_type"); else _explicitNullProperties?.Remove("account_type"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGithubAppsItemInstallationsItemAccountType? _explicitNullValueAccountType = default!;
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGithubAppsItemInstallationsItemAccountType AccountType { get => _explicitNullValueAccountType; set { _explicitNullValueAccountType = value; AdditionalData?.Remove("account_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("account_type"); else _explicitNullProperties?.Remove("account_type"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGithubAppsItemInstallationsItemAccountType _explicitNullValueAccountType = default!;
+#endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>What GitHub says the installation covers; null until read.</summary>
@@ -80,8 +87,15 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public bool? IsOffForIntern { get => _explicitNullValueIsOffForIntern; set { _explicitNullValueIsOffForIntern = value; AdditionalData?.Remove("is_off_for_intern"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_off_for_intern"); else _explicitNullProperties?.Remove("is_off_for_intern"); } }
         private bool? _explicitNullValueIsOffForIntern = default!;
         /// <summary>What egress uses instead of this installation for a request to its account: an earlier installation on the same account, or a token pinned to the account. Null when this installation answers.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGithubAppsItemInstallationsItemShadowedBy? ShadowedBy { get => _explicitNullValueShadowedBy; set { _explicitNullValueShadowedBy = value; AdditionalData?.Remove("shadowed_by"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("shadowed_by"); else _explicitNullProperties?.Remove("shadowed_by"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGithubAppsItemInstallationsItemShadowedBy? _explicitNullValueShadowedBy = default!;
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGithubAppsItemInstallationsItemShadowedBy ShadowedBy { get => _explicitNullValueShadowedBy; set { _explicitNullValueShadowedBy = value; AdditionalData?.Remove("shadowed_by"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("shadowed_by"); else _explicitNullProperties?.Remove("shadowed_by"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGithubAppsItemInstallationsItemShadowedBy _explicitNullValueShadowedBy = default!;
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGithubAppsItemInstallationsItem"/> and sets the default values.
         /// </summary>
@@ -108,13 +122,13 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "account", n => { Account = n.GetStringValue(); } },
-                { "account_type", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGithubAppsItemInstallationsItemAccountType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueAccountType = default; _explicitNullProperties?.Remove("account_type"); AdditionalData["account_type"] = unknown; } else { AccountType = parsed; AdditionalData.Remove("account_type"); } } },
+                { "account_type", n => { AccountType = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGithubAppsItemInstallationsItemAccountType>(global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGithubAppsItemInstallationsItemAccountType.CreateFromDiscriminatorValue); } },
                 { "coverage", n => { Coverage = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGithubAppsItemInstallationsItemCoverage>(global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGithubAppsItemInstallationsItemCoverage.CreateFromDiscriminatorValue); } },
                 { "credential_id", n => { CredentialId = n.GetStringValue(); } },
                 { "holds_token", n => { HoldsToken = n.GetBoolValue(); } },
                 { "is_enabled", n => { IsEnabled = n.GetBoolValue(); } },
                 { "is_off_for_intern", n => { IsOffForIntern = n.GetBoolValue(); } },
-                { "shadowed_by", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGithubAppsItemInstallationsItemShadowedBy>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueShadowedBy = default; _explicitNullProperties?.Remove("shadowed_by"); AdditionalData["shadowed_by"] = unknown; } else { ShadowedBy = parsed; AdditionalData.Remove("shadowed_by"); } } },
+                { "shadowed_by", n => { ShadowedBy = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGithubAppsItemInstallationsItemShadowedBy>(global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGithubAppsItemInstallationsItemShadowedBy.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -125,13 +139,13 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("account", Account);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGithubAppsItemInstallationsItemAccountType>("account_type", AccountType);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGithubAppsItemInstallationsItemAccountType>("account_type", AccountType);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGithubAppsItemInstallationsItemCoverage>("coverage", Coverage);
             writer.WriteStringValue("credential_id", CredentialId);
             writer.WriteBoolValue("holds_token", HoldsToken);
             writer.WriteBoolValue("is_enabled", IsEnabled);
             writer.WriteBoolValue("is_off_for_intern", IsOffForIntern);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGithubAppsItemInstallationsItemShadowedBy>("shadowed_by", ShadowedBy);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableGithubAppsItemInstallationsItemShadowedBy>("shadowed_by", ShadowedBy);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }

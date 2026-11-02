@@ -52,8 +52,15 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public bool? AllowFallbacks { get => _explicitNullValueAllowFallbacks; set { _explicitNullValueAllowFallbacks = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allow_fallbacks"); else _explicitNullProperties?.Remove("allow_fallbacks"); } }
         private bool? _explicitNullValueAllowFallbacks = default!;
         /// <summary>Data collection setting. If no available model provider meets the requirement, your request will return an error.- allow: (default) allow providers which store user data non-transiently and may train on it- deny: use only providers which do not collect user data.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferencesDataCollection? DataCollection { get => _explicitNullValueDataCollection; set { _explicitNullValueDataCollection = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data_collection"); else _explicitNullProperties?.Remove("data_collection"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferencesDataCollection? _explicitNullValueDataCollection = default!;
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferencesDataCollection DataCollection { get => _explicitNullValueDataCollection; set { _explicitNullValueDataCollection = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data_collection"); else _explicitNullProperties?.Remove("data_collection"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferencesDataCollection _explicitNullValueDataCollection = default!;
+#endif
         /// <summary>Whether to restrict routing to only models that allow text distillation. When true, only models where the author has allowed distillation will be used.</summary>
         public bool? EnforceDistillableText { get => _explicitNullValueEnforceDistillableText; set { _explicitNullValueEnforceDistillableText = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enforce_distillable_text"); else _explicitNullProperties?.Remove("enforce_distillable_text"); } }
         private bool? _explicitNullValueEnforceDistillableText = default!;
@@ -172,7 +179,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "allow_fallbacks", n => { AllowFallbacks = n.GetBoolValue(); } },
-                { "data_collection", n => { DataCollection = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferencesDataCollection>(); } },
+                { "data_collection", n => { DataCollection = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferencesDataCollection>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferencesDataCollection.CreateFromDiscriminatorValue); } },
                 { "enforce_distillable_text", n => { EnforceDistillableText = n.GetBoolValue(); } },
                 { "ignore", n => { Ignore = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "max_price", n => { MaxPrice = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferencesMaxPrice>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferencesMaxPrice.CreateFromDiscriminatorValue); } },
@@ -195,7 +202,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("allow_fallbacks", AllowFallbacks);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferencesDataCollection>("data_collection", DataCollection);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferencesDataCollection>("data_collection", DataCollection);
             writer.WriteBoolValue("enforce_distillable_text", EnforceDistillableText);
             writer.WriteCollectionOfPrimitiveValues<string>("ignore", Ignore);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderPreferencesMaxPrice>("max_price", MaxPrice);

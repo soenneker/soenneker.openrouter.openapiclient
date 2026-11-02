@@ -42,8 +42,15 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         private global::Soenneker.OpenRouter.OpenApiClient.Models.ListEndpointsResponseArchitectureInputModalities _explicitNullValueInputModalities = default!;
 #endif
         /// <summary>Instruction format type</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.OpenRouter.OpenApiClient.Models.InstructType? InstructType { get => _explicitNullValueInstructType; set { _explicitNullValueInstructType = value; AdditionalData?.Remove("instruct_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("instruct_type"); else _explicitNullProperties?.Remove("instruct_type"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.InstructType? _explicitNullValueInstructType = default!;
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.InstructType InstructType { get => _explicitNullValueInstructType; set { _explicitNullValueInstructType = value; AdditionalData?.Remove("instruct_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("instruct_type"); else _explicitNullProperties?.Remove("instruct_type"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.InstructType _explicitNullValueInstructType = default!;
+#endif
         /// <summary>Primary modality of the model</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -100,7 +107,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "input_modalities", n => { InputModalities = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ListEndpointsResponseArchitectureInputModalities>(global::Soenneker.OpenRouter.OpenApiClient.Models.ListEndpointsResponseArchitectureInputModalities.CreateFromDiscriminatorValue); } },
-                { "instruct_type", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.InstructType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueInstructType = default; _explicitNullProperties?.Remove("instruct_type"); AdditionalData["instruct_type"] = unknown; } else { InstructType = parsed; AdditionalData.Remove("instruct_type"); } } },
+                { "instruct_type", n => { InstructType = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.InstructType>(global::Soenneker.OpenRouter.OpenApiClient.Models.InstructType.CreateFromDiscriminatorValue); } },
                 { "modality", n => { Modality = n.GetStringValue(); } },
                 { "output_modalities", n => { OutputModalities = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ListEndpointsResponseArchitectureOutputModalities>(global::Soenneker.OpenRouter.OpenApiClient.Models.ListEndpointsResponseArchitectureOutputModalities.CreateFromDiscriminatorValue); } },
                 { "tokenizer", n => { Tokenizer = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ListEndpointsResponseArchitectureTokenizer>(global::Soenneker.OpenRouter.OpenApiClient.Models.ListEndpointsResponseArchitectureTokenizer.CreateFromDiscriminatorValue); } },
@@ -114,7 +121,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ListEndpointsResponseArchitectureInputModalities>("input_modalities", InputModalities);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.InstructType>("instruct_type", InstructType);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.InstructType>("instruct_type", InstructType);
             writer.WriteStringValue("modality", Modality);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ListEndpointsResponseArchitectureOutputModalities>("output_modalities", OutputModalities);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ListEndpointsResponseArchitectureTokenizer>("tokenizer", Tokenizer);

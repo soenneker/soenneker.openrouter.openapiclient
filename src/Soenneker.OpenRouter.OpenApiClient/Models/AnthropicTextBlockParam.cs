@@ -27,20 +27,41 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             else if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
         }
 
-        // Restore fields omitted by the generator's model-depth limit.
+        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
+        public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Enable automatic prompt caching. When set at the top level, the system automatically applies cache breakpoints to the last cacheable block in the request. When set on an individual content block, it marks an explicit cache breakpoint; block-level markers also work on OpenAI models that support explicit prompt caching — OpenRouter converts them to the provider&apos;s native format.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective? CacheControl { get => _explicitNullValueCacheControl; set { _explicitNullValueCacheControl = value; AdditionalData?.Remove("cache_control"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cache_control"); else _explicitNullProperties?.Remove("cache_control"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective? _explicitNullValueCacheControl = default!;
-        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode? Citations { get => _explicitNullValueCitations; set { _explicitNullValueCitations = value; AdditionalData?.Remove("citations"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("citations"); else _explicitNullProperties?.Remove("citations"); } }
-        private global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode? _explicitNullValueCitations = default!;
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective CacheControl { get => _explicitNullValueCacheControl; set { _explicitNullValueCacheControl = value; AdditionalData?.Remove("cache_control"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cache_control"); else _explicitNullProperties?.Remove("cache_control"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective _explicitNullValueCacheControl = default!;
+#endif
+        /// <summary>The citations property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextBlockParamCitationsItem>? Citations { get => _explicitNullValueCitations; set { _explicitNullValueCitations = value; AdditionalData?.Remove("citations"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("citations"); else _explicitNullProperties?.Remove("citations"); } }
+        private List<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextBlockParamCitationsItem>? _explicitNullValueCitations = default!;
+#nullable restore
+#else
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextBlockParamCitationsItem> Citations { get => _explicitNullValueCitations; set { _explicitNullValueCitations = value; AdditionalData?.Remove("citations"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("citations"); else _explicitNullProperties?.Remove("citations"); } }
+        private List<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextBlockParamCitationsItem> _explicitNullValueCitations = default!;
+#endif
+        /// <summary>The text property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public string? Text { get => _explicitNullValueText; set { _explicitNullValueText = value; AdditionalData?.Remove("text"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("text"); else _explicitNullProperties?.Remove("text"); } }
         private string? _explicitNullValueText = default!;
+#nullable restore
+#else
+        public string Text { get => _explicitNullValueText; set { _explicitNullValueText = value; AdditionalData?.Remove("text"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("text"); else _explicitNullProperties?.Remove("text"); } }
+        private string _explicitNullValueText = default!;
+#endif
+        /// <summary>The type property</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.TextType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; AdditionalData?.Remove("type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.TextType? _explicitNullValueType = default!;
-#nullable restore
-
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextBlockParam"/> and sets the default values.
         /// </summary>
@@ -67,10 +88,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "cache_control", n => { CacheControl = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective>(global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective.CreateFromDiscriminatorValue); } },
-                { "citations", n => { Citations = n.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue); } },
+                { "citations", n => { Citations = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextBlockParamCitationsItem>(global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextBlockParamCitationsItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "text", n => { Text = n.GetStringValue(); } },
                 { "type", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.TextType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueType = default; _explicitNullProperties?.Remove("type"); AdditionalData["type"] = unknown; } else { Type = parsed; AdditionalData.Remove("type"); } } },
-
             };
         }
         /// <summary>
@@ -81,7 +101,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective>("cache_control", CacheControl);
-            writer.WriteObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>("citations", Citations);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicTextBlockParamCitationsItem>("citations", Citations);
             writer.WriteStringValue("text", Text);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.TextType>("type", Type);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
