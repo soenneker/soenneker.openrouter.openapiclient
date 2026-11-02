@@ -6215,7 +6215,8 @@
     "/external-users": {
       "get": {
         "tags": [
-          "External Users"
+          "External Users",
+          "End Users"
         ],
         "summary": "List registered external users",
         "description": "List registrations belonging to the authenticated organization. Inactive registrations are excluded by default. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
@@ -6377,7 +6378,6 @@
             }
           }
         },
-        "x-speakeasy-group": "externalUsers",
         "x-speakeasy-name-override": "list",
         "x-speakeasy-pagination": {
           "inputs": [
@@ -6400,7 +6400,8 @@
       },
       "post": {
         "tags": [
-          "External Users"
+          "External Users",
+          "End Users"
         ],
         "summary": "Register an external user",
         "description": "Register a caller-supplied tracking ID under the authenticated organization. No login account, policy, or credentials are created. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
@@ -6537,7 +6538,6 @@
             "x-client-success-response-status": "201"
           }
         },
-        "x-speakeasy-group": "externalUsers",
         "x-speakeasy-name-override": "create"
       },
       "parameters": [
@@ -6555,7 +6555,8 @@
     "/external-users/{user}": {
       "delete": {
         "tags": [
-          "External Users"
+          "External Users",
+          "End Users"
         ],
         "summary": "Deactivate a registered external user",
         "description": "Soft-deactivate a registration while retaining its tracking ID. Repeat deactivation succeeds. This does not block inference; reactivate through PATCH. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
@@ -6645,12 +6646,12 @@
             }
           }
         },
-        "x-speakeasy-group": "externalUsers",
         "x-speakeasy-name-override": "delete"
       },
       "get": {
         "tags": [
-          "External Users"
+          "External Users",
+          "End Users"
         ],
         "summary": "Get a registered external user",
         "description": "Retrieve an active or inactive registration by its URL-encoded, caller-supplied tracking ID. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
@@ -6771,12 +6772,12 @@
             }
           }
         },
-        "x-speakeasy-group": "externalUsers",
         "x-speakeasy-name-override": "get"
       },
       "patch": {
         "tags": [
-          "External Users"
+          "External Users",
+          "End Users"
         ],
         "summary": "Update a registered external user",
         "description": "Update registration state without changing identity. State changes do not enforce inference access. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
@@ -6894,7 +6895,6 @@
             }
           }
         },
-        "x-speakeasy-group": "externalUsers",
         "x-speakeasy-name-override": "update"
       },
       "parameters": [
@@ -32744,8 +32744,7 @@
             "type": "integer"
           },
           "error": {
-            "description": "Error information returned from the API",
-            "$ref": "#/components/schemas/ResponsesErrorField"
+            "$ref": "#/components/schemas/BaseResponsesResultError"
           },
           "frequency_penalty": {
             "type": [
@@ -32758,7 +32757,7 @@
             "type": "string"
           },
           "incomplete_details": {
-            "$ref": "#/components/schemas/IncompleteDetails"
+            "$ref": "#/components/schemas/BaseResponsesResultIncompleteDetails"
           },
           "instructions": {
             "$ref": "#/components/schemas/BaseInputs"
@@ -32823,7 +32822,7 @@
             "$ref": "#/components/schemas/PromptCacheOptions"
           },
           "reasoning": {
-            "$ref": "#/components/schemas/BaseReasoningConfig"
+            "$ref": "#/components/schemas/BaseResponsesResultReasoning"
           },
           "safety_identifier": {
             "type": [
@@ -32848,8 +32847,7 @@
             "format": "double"
           },
           "text": {
-            "description": "Text output configuration including format and verbosity",
-            "$ref": "#/components/schemas/TextConfig"
+            "$ref": "#/components/schemas/BaseResponsesResultText"
           },
           "tool_choice": {
             "$ref": "#/components/schemas/OpenAiResponsesToolChoice"
@@ -32861,7 +32859,10 @@
             }
           },
           "top_logprobs": {
-            "type": "integer"
+            "type": [
+              "null",
+              "integer"
+            ]
           },
           "top_p": {
             "type": [
@@ -32871,7 +32872,7 @@
             "format": "double"
           },
           "truncation": {
-            "$ref": "#/components/schemas/Truncation"
+            "$ref": "#/components/schemas/BaseResponsesResultTruncation"
           },
           "usage": {
             "$ref": "#/components/schemas/OpenAiResponsesUsage"
@@ -52333,7 +52334,7 @@
             "type": "string"
           },
           "incomplete_details": {
-            "$ref": "#/components/schemas/IncompleteDetails"
+            "$ref": "#/components/schemas/BaseResponsesResultIncompleteDetails"
           },
           "instructions": {
             "$ref": "#/components/schemas/BaseInputs"
@@ -52395,7 +52396,7 @@
             "$ref": "#/components/schemas/PromptCacheOptions"
           },
           "reasoning": {
-            "$ref": "#/components/schemas/BaseReasoningConfig"
+            "$ref": "#/components/schemas/BaseResponsesResultReasoning"
           },
           "safety_identifier": {
             "type": [
@@ -52432,7 +52433,10 @@
             }
           },
           "top_logprobs": {
-            "type": "integer"
+            "type": [
+              "null",
+              "integer"
+            ]
           },
           "top_p": {
             "type": [
@@ -52442,7 +52446,7 @@
             "format": "double"
           },
           "truncation": {
-            "$ref": "#/components/schemas/Truncation"
+            "$ref": "#/components/schemas/BaseResponsesResultTruncation"
           },
           "usage": {
             "$ref": "#/components/schemas/OpenResponsesResultUsage"
@@ -68989,6 +68993,42 @@
           "service_tier": "standard"
         }
       },
+      "BaseResponsesResultError": {
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/ResponsesErrorField"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "BaseResponsesResultIncompleteDetails": {
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/IncompleteDetails"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "BaseResponsesResultInstructions": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BaseInputsAnyOf2Item"
+            }
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
       "BaseResponsesResultOutputItem": {
         "oneOf": [
           {
@@ -69033,6 +69073,26 @@
             "web_search_call": "#/components/schemas/OutputItemWebSearchCall"
           }
         }
+      },
+      "BaseResponsesResultReasoning": {
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/BaseReasoningConfig"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "BaseResponsesResultText": {
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/TextConfig"
+          },
+          {
+            "type": "null"
+          }
+        ]
       },
       "BaseResponsesResultToolsItem": {
         "oneOf": [
@@ -69102,6 +69162,16 @@
             "namespace": "#/components/schemas/NamespaceTool"
           }
         }
+      },
+      "BaseResponsesResultTruncation": {
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/Truncation"
+          },
+          {
+            "type": "null"
+          }
+        ]
       },
       "BatchObjectResultsItemResponseBody": {
         "anyOf": [
@@ -87094,8 +87164,7 @@
             "type": "integer"
           },
           "error": {
-            "description": "Error information returned from the API",
-            "$ref": "#/components/schemas/ResponsesErrorField"
+            "$ref": "#/components/schemas/BaseResponsesResultError"
           },
           "frequency_penalty": {
             "type": [
@@ -87108,7 +87177,7 @@
             "type": "string"
           },
           "incomplete_details": {
-            "$ref": "#/components/schemas/IncompleteDetails"
+            "$ref": "#/components/schemas/BaseResponsesResultIncompleteDetails"
           },
           "instructions": {
             "$ref": "#/components/schemas/BaseInputs"
@@ -87173,7 +87242,7 @@
             "$ref": "#/components/schemas/PromptCacheOptions"
           },
           "reasoning": {
-            "$ref": "#/components/schemas/BaseReasoningConfig"
+            "$ref": "#/components/schemas/BaseResponsesResultReasoning"
           },
           "safety_identifier": {
             "type": [
@@ -87198,8 +87267,7 @@
             "format": "double"
           },
           "text": {
-            "description": "Text output configuration including format and verbosity",
-            "$ref": "#/components/schemas/TextConfig"
+            "$ref": "#/components/schemas/BaseResponsesResultText"
           },
           "tool_choice": {
             "$ref": "#/components/schemas/OpenAiResponsesToolChoice"
@@ -87211,7 +87279,10 @@
             }
           },
           "top_logprobs": {
-            "type": "integer"
+            "type": [
+              "null",
+              "integer"
+            ]
           },
           "top_p": {
             "type": [
@@ -87221,7 +87292,7 @@
             "format": "double"
           },
           "truncation": {
-            "$ref": "#/components/schemas/Truncation"
+            "$ref": "#/components/schemas/BaseResponsesResultTruncation"
           },
           "usage": {
             "$ref": "#/components/schemas/OpenAiResponsesUsage"
@@ -87279,8 +87350,7 @@
             "type": "integer"
           },
           "error": {
-            "description": "Error information returned from the API",
-            "$ref": "#/components/schemas/ResponsesErrorField"
+            "$ref": "#/components/schemas/BaseResponsesResultError"
           },
           "frequency_penalty": {
             "type": [
@@ -87293,7 +87363,7 @@
             "type": "string"
           },
           "incomplete_details": {
-            "$ref": "#/components/schemas/IncompleteDetails"
+            "$ref": "#/components/schemas/BaseResponsesResultIncompleteDetails"
           },
           "instructions": {
             "$ref": "#/components/schemas/BaseInputs"
@@ -87358,7 +87428,7 @@
             "$ref": "#/components/schemas/PromptCacheOptions"
           },
           "reasoning": {
-            "$ref": "#/components/schemas/BaseReasoningConfig"
+            "$ref": "#/components/schemas/BaseResponsesResultReasoning"
           },
           "safety_identifier": {
             "type": [
@@ -87383,8 +87453,7 @@
             "format": "double"
           },
           "text": {
-            "description": "Text output configuration including format and verbosity",
-            "$ref": "#/components/schemas/TextConfig"
+            "$ref": "#/components/schemas/BaseResponsesResultText"
           },
           "tool_choice": {
             "$ref": "#/components/schemas/OpenAiResponsesToolChoice"
@@ -87396,7 +87465,10 @@
             }
           },
           "top_logprobs": {
-            "type": "integer"
+            "type": [
+              "null",
+              "integer"
+            ]
           },
           "top_p": {
             "type": [
@@ -87406,7 +87478,7 @@
             "format": "double"
           },
           "truncation": {
-            "$ref": "#/components/schemas/Truncation"
+            "$ref": "#/components/schemas/BaseResponsesResultTruncation"
           },
           "usage": {
             "$ref": "#/components/schemas/OpenAiResponsesUsage"
@@ -87442,8 +87514,7 @@
       "OpenResponsesResultError": {
         "allOf": [
           {
-            "description": "Error information returned from the API",
-            "$ref": "#/components/schemas/ResponsesErrorField"
+            "$ref": "#/components/schemas/BaseResponsesResultError"
           },
           {
             "description": "Error of a failed response; \u0060metadata\u0060 carries OpenRouter-specific details.",
@@ -87471,13 +87542,19 @@
         "allOf": [
           {
             "description": "Text output configuration including format and verbosity",
-            "$ref": "#/components/schemas/TextConfig"
-          },
-          {
-            "description": "Text output configuration including format and verbosity",
             "$ref": "#/components/schemas/TextExtendedConfig"
           }
-        ]
+        ],
+        "type": "object",
+        "properties": {
+          "format": {
+            "description": "Text response format configuration",
+            "$ref": "#/components/schemas/Formats"
+          },
+          "verbosity": {
+            "$ref": "#/components/schemas/TextConfigVerbosity"
+          }
+        }
       },
       "OpenResponsesResultUsage": {
         "allOf": [
@@ -87599,8 +87676,7 @@
             "type": "integer"
           },
           "error": {
-            "description": "Error information returned from the API",
-            "$ref": "#/components/schemas/ResponsesErrorField"
+            "$ref": "#/components/schemas/BaseResponsesResultError"
           },
           "frequency_penalty": {
             "type": [
@@ -87613,7 +87689,7 @@
             "type": "string"
           },
           "incomplete_details": {
-            "$ref": "#/components/schemas/IncompleteDetails"
+            "$ref": "#/components/schemas/BaseResponsesResultIncompleteDetails"
           },
           "instructions": {
             "$ref": "#/components/schemas/BaseInputs"
@@ -87678,7 +87754,7 @@
             "$ref": "#/components/schemas/PromptCacheOptions"
           },
           "reasoning": {
-            "$ref": "#/components/schemas/BaseReasoningConfig"
+            "$ref": "#/components/schemas/BaseResponsesResultReasoning"
           },
           "safety_identifier": {
             "type": [
@@ -87703,8 +87779,7 @@
             "format": "double"
           },
           "text": {
-            "description": "Text output configuration including format and verbosity",
-            "$ref": "#/components/schemas/TextConfig"
+            "$ref": "#/components/schemas/BaseResponsesResultText"
           },
           "tool_choice": {
             "$ref": "#/components/schemas/OpenAiResponsesToolChoice"
@@ -87716,7 +87791,10 @@
             }
           },
           "top_logprobs": {
-            "type": "integer"
+            "type": [
+              "null",
+              "integer"
+            ]
           },
           "top_p": {
             "type": [
@@ -87726,7 +87804,7 @@
             "format": "double"
           },
           "truncation": {
-            "$ref": "#/components/schemas/Truncation"
+            "$ref": "#/components/schemas/BaseResponsesResultTruncation"
           },
           "usage": {
             "$ref": "#/components/schemas/OpenAiResponsesUsage"
@@ -87784,8 +87862,7 @@
             "type": "integer"
           },
           "error": {
-            "description": "Error information returned from the API",
-            "$ref": "#/components/schemas/ResponsesErrorField"
+            "$ref": "#/components/schemas/BaseResponsesResultError"
           },
           "frequency_penalty": {
             "type": [
@@ -87798,7 +87875,7 @@
             "type": "string"
           },
           "incomplete_details": {
-            "$ref": "#/components/schemas/IncompleteDetails"
+            "$ref": "#/components/schemas/BaseResponsesResultIncompleteDetails"
           },
           "instructions": {
             "$ref": "#/components/schemas/BaseInputs"
@@ -87863,7 +87940,7 @@
             "$ref": "#/components/schemas/PromptCacheOptions"
           },
           "reasoning": {
-            "$ref": "#/components/schemas/BaseReasoningConfig"
+            "$ref": "#/components/schemas/BaseResponsesResultReasoning"
           },
           "safety_identifier": {
             "type": [
@@ -87888,8 +87965,7 @@
             "format": "double"
           },
           "text": {
-            "description": "Text output configuration including format and verbosity",
-            "$ref": "#/components/schemas/TextConfig"
+            "$ref": "#/components/schemas/BaseResponsesResultText"
           },
           "tool_choice": {
             "$ref": "#/components/schemas/OpenAiResponsesToolChoice"
@@ -87901,7 +87977,10 @@
             }
           },
           "top_logprobs": {
-            "type": "integer"
+            "type": [
+              "null",
+              "integer"
+            ]
           },
           "top_p": {
             "type": [
@@ -87911,7 +87990,7 @@
             "format": "double"
           },
           "truncation": {
-            "$ref": "#/components/schemas/Truncation"
+            "$ref": "#/components/schemas/BaseResponsesResultTruncation"
           },
           "usage": {
             "$ref": "#/components/schemas/OpenAiResponsesUsage"
@@ -87969,8 +88048,7 @@
             "type": "integer"
           },
           "error": {
-            "description": "Error information returned from the API",
-            "$ref": "#/components/schemas/ResponsesErrorField"
+            "$ref": "#/components/schemas/BaseResponsesResultError"
           },
           "frequency_penalty": {
             "type": [
@@ -87983,7 +88061,7 @@
             "type": "string"
           },
           "incomplete_details": {
-            "$ref": "#/components/schemas/IncompleteDetails"
+            "$ref": "#/components/schemas/BaseResponsesResultIncompleteDetails"
           },
           "instructions": {
             "$ref": "#/components/schemas/BaseInputs"
@@ -88048,7 +88126,7 @@
             "$ref": "#/components/schemas/PromptCacheOptions"
           },
           "reasoning": {
-            "$ref": "#/components/schemas/BaseReasoningConfig"
+            "$ref": "#/components/schemas/BaseResponsesResultReasoning"
           },
           "safety_identifier": {
             "type": [
@@ -88073,8 +88151,7 @@
             "format": "double"
           },
           "text": {
-            "description": "Text output configuration including format and verbosity",
-            "$ref": "#/components/schemas/TextConfig"
+            "$ref": "#/components/schemas/BaseResponsesResultText"
           },
           "tool_choice": {
             "$ref": "#/components/schemas/OpenAiResponsesToolChoice"
@@ -88086,7 +88163,10 @@
             }
           },
           "top_logprobs": {
-            "type": "integer"
+            "type": [
+              "null",
+              "integer"
+            ]
           },
           "top_p": {
             "type": [
@@ -88096,7 +88176,7 @@
             "format": "double"
           },
           "truncation": {
-            "$ref": "#/components/schemas/Truncation"
+            "$ref": "#/components/schemas/BaseResponsesResultTruncation"
           },
           "usage": {
             "$ref": "#/components/schemas/OpenAiResponsesUsage"
@@ -120250,7 +120330,8 @@
         "description": "The app display name allows you to customize how your app appears in OpenRouter\u0027s dashboard.\n",
         "schema": {
           "type": "string"
-        }
+        },
+        "x-speakeasy-name-override": "appTitle"
       },
       "AppCategories": {
         "name": "X-OpenRouter-Categories",
@@ -120258,7 +120339,8 @@
         "description": "Comma-separated list of app categories (e.g. \u0022cli-agent,cloud-agent\u0022). Used for marketplace rankings.\n",
         "schema": {
           "type": "string"
-        }
+        },
+        "x-speakeasy-name-override": "appCategories"
       }
     },
     "securitySchemes": {
@@ -120437,7 +120519,11 @@
     },
     {
       "name": "beta.responses",
-      "description": "Deprecated alias for responses endpoints. Use responses instead. Scheduled for removal (sunset date TBD)."
+      "description": "Deprecated alias of responses. Use responses instead; scheduled for removal (sunset date TBD)."
+    },
+    {
+      "name": "End Users",
+      "description": "Deprecated alias of externalUsers. Use externalUsers instead; scheduled for removal (sunset date TBD)."
     }
   ],
   "externalDocs": {
