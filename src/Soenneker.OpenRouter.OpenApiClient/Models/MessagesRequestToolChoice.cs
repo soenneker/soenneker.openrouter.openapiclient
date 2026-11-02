@@ -51,10 +51,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
             return mappingValue switch
             {
-                "any" => new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolChoiceMessagesRequestToolChoiceOneOf2(),
-                "auto" => new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolChoiceMessagesRequestToolChoiceOneOf1(),
-                "none" => new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolChoiceMessagesRequestToolChoiceOneOf3(),
-                "tool" => new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolChoiceMessagesRequestToolChoiceOneOf4(),
+                "any" => new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolChoiceOneOf2Variant(),
+                "auto" => new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolChoiceOneOf1Variant(),
+                "none" => new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolChoiceOneOf3Variant(),
+                "tool" => new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolChoiceOneOf4Variant(),
                 _ => new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestToolChoice(),
             };
         }

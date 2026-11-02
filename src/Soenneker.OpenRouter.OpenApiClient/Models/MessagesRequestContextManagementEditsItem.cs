@@ -51,9 +51,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
             return mappingValue switch
             {
-                "clear_thinking_20251015" => new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestContextManagementEditsItemMessagesRequestContextManagementEditsItemOneOf2(),
-                "clear_tool_uses_20250919" => new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestContextManagementEditsItemMessagesRequestContextManagementEditsItemOneOf1(),
-                "compact_20260112" => new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestContextManagementEditsItemMessagesRequestContextManagementEditsItemOneOf3(),
+                "clear_thinking_20251015" => new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestContextManagementEditsItemOneOf2Variant(),
+                "clear_tool_uses_20250919" => new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestContextManagementEditsItemOneOf1Variant(),
+                "compact_20260112" => new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestContextManagementEditsItemOneOf3Variant(),
                 _ => new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequestContextManagementEditsItem(),
             };
         }

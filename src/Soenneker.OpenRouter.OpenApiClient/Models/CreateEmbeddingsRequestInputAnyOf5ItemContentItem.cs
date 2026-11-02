@@ -51,11 +51,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
             return mappingValue switch
             {
-                "image_url" => new global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInputAnyOf5ItemContentItemCreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf2(),
+                "image_url" => new global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf2Variant(),
                 "input_audio" => new global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInputAnyOf5ItemContentItemContentPartInputAudio(),
                 "input_file" => new global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInputAnyOf5ItemContentItemContentPartInputFile(),
                 "input_video" => new global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInputAnyOf5ItemContentItemContentPartInputVideo(),
-                "text" => new global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInputAnyOf5ItemContentItemCreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf1(),
+                "text" => new global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf1Variant(),
                 _ => new global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInputAnyOf5ItemContentItem(),
             };
         }

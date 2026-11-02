@@ -56,7 +56,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 "computer_use_preview" => new global::Soenneker.OpenRouter.OpenApiClient.Models.BaseResponsesResultToolsItemComputerUseServerTool(),
                 "custom" => new global::Soenneker.OpenRouter.OpenApiClient.Models.BaseResponsesResultToolsItemCustomTool(),
                 "file_search" => new global::Soenneker.OpenRouter.OpenApiClient.Models.BaseResponsesResultToolsItemFileSearchServerTool(),
-                "function" => new global::Soenneker.OpenRouter.OpenApiClient.Models.BaseResponsesResultToolsItemBaseResponsesResultToolsItemOneOf1(),
+                "function" => new global::Soenneker.OpenRouter.OpenApiClient.Models.BaseResponsesResultToolsItemOneOf1Variant(),
                 "image_generation" => new global::Soenneker.OpenRouter.OpenApiClient.Models.BaseResponsesResultToolsItemImageGenerationServerTool(),
                 "local_shell" => new global::Soenneker.OpenRouter.OpenApiClient.Models.BaseResponsesResultToolsItemCodexLocalShellTool(),
                 "mcp" => new global::Soenneker.OpenRouter.OpenApiClient.Models.BaseResponsesResultToolsItemMcpServerTool(),

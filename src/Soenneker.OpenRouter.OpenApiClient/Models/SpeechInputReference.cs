@@ -52,9 +52,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
             return mappingValue switch
             {
-                "image_url" => new global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechInputReferenceSpeechInputReferenceImage(),
-                "input_audio" => new global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechInputReferenceSpeechInputReferenceAudio(),
-                "text" => new global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechInputReferenceSpeechInputReferenceText(),
+                "image_url" => new global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechInputReferenceImageVariant(),
+                "input_audio" => new global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechInputReferenceAudioVariant(),
+                "text" => new global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechInputReferenceTextVariant(),
                 _ => new global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechInputReference(),
             };
         }

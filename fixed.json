@@ -55586,9 +55586,9 @@
         "discriminator": {
           "propertyName": "type",
           "mapping": {
-            "input_audio": "#/components/schemas/SpeechInputReferenceSpeechInputReferenceAudio",
-            "text": "#/components/schemas/SpeechInputReferenceSpeechInputReferenceText",
-            "image_url": "#/components/schemas/SpeechInputReferenceSpeechInputReferenceImage"
+            "input_audio": "#/components/schemas/SpeechInputReferenceAudioVariant",
+            "text": "#/components/schemas/SpeechInputReferenceTextVariant",
+            "image_url": "#/components/schemas/SpeechInputReferenceImageVariant"
           }
         },
         "x-client-original-tagged-union": {
@@ -60953,8 +60953,8 @@
           "propertyName": "type",
           "mapping": {
             "input_text": "#/components/schemas/AgentMessageItemContentItemInputText",
-            "input_image": "#/components/schemas/AgentMessageItemContentItemAgentMessageItemContentItemOneOf2",
-            "encrypted_content": "#/components/schemas/AgentMessageItemContentItemAgentMessageItemContentItemOneOf3"
+            "input_image": "#/components/schemas/AgentMessageItemContentItemOneOf2Variant",
+            "encrypted_content": "#/components/schemas/AgentMessageItemContentItemOneOf3Variant"
           }
         },
         "x-client-original-tagged-union": {
@@ -61487,9 +61487,9 @@
         "discriminator": {
           "propertyName": "type",
           "mapping": {
-            "evaluated": "#/components/schemas/ArmorSafeguardResultStatusToolUsesAdditionalPropertiesArmorSafeguardResultStatusToolUsesAdditionalPropertiesOneOf1",
-            "skipped": "#/components/schemas/ArmorSafeguardResultStatusToolUsesAdditionalPropertiesArmorSafeguardResultStatusToolUsesAdditionalPropertiesOneOf2",
-            "unavailable": "#/components/schemas/ArmorSafeguardResultStatusToolUsesAdditionalPropertiesArmorSafeguardResultStatusToolUsesAdditionalPropertiesOneOf3"
+            "evaluated": "#/components/schemas/ArmorSafeguardResultStatusToolUsesAdditionalPropertiesOneOf1Variant",
+            "skipped": "#/components/schemas/ArmorSafeguardResultStatusToolUsesAdditionalPropertiesOneOf2Variant",
+            "unavailable": "#/components/schemas/ArmorSafeguardResultStatusToolUsesAdditionalPropertiesOneOf3Variant"
           }
         },
         "x-client-original-tagged-union": {
@@ -61629,7 +61629,7 @@
         "discriminator": {
           "propertyName": "type",
           "mapping": {
-            "function": "#/components/schemas/BaseResponsesResultToolsItemBaseResponsesResultToolsItemOneOf1",
+            "function": "#/components/schemas/BaseResponsesResultToolsItemOneOf1Variant",
             "web_search_preview": "#/components/schemas/BaseResponsesResultToolsItemPreviewWebSearchServerTool",
             "web_search_preview_2025_03_11": "#/components/schemas/BaseResponsesResultToolsItemPreview20250311WebSearchServerTool",
             "web_search": "#/components/schemas/BaseResponsesResultToolsItemLegacyWebSearchServerTool",
@@ -62566,23 +62566,23 @@
         "discriminator": {
           "propertyName": "type",
           "mapping": {
-            "arize": "#/components/schemas/CreateObservabilityDestinationResponseDataCreateObservabilityDestinationResponseDataOneOf1",
-            "braintrust": "#/components/schemas/CreateObservabilityDestinationResponseDataCreateObservabilityDestinationResponseDataOneOf2",
-            "clickhouse": "#/components/schemas/CreateObservabilityDestinationResponseDataCreateObservabilityDestinationResponseDataOneOf3",
-            "datadog": "#/components/schemas/CreateObservabilityDestinationResponseDataCreateObservabilityDestinationResponseDataOneOf4",
-            "grafana": "#/components/schemas/CreateObservabilityDestinationResponseDataCreateObservabilityDestinationResponseDataOneOf5",
-            "langfuse": "#/components/schemas/CreateObservabilityDestinationResponseDataCreateObservabilityDestinationResponseDataOneOf6",
-            "langsmith": "#/components/schemas/CreateObservabilityDestinationResponseDataCreateObservabilityDestinationResponseDataOneOf7",
-            "newrelic": "#/components/schemas/CreateObservabilityDestinationResponseDataCreateObservabilityDestinationResponseDataOneOf8",
-            "opik": "#/components/schemas/CreateObservabilityDestinationResponseDataCreateObservabilityDestinationResponseDataOneOf9",
-            "otel-collector": "#/components/schemas/CreateObservabilityDestinationResponseDataCreateObservabilityDestinationResponseDataOneOf10",
-            "posthog": "#/components/schemas/CreateObservabilityDestinationResponseDataCreateObservabilityDestinationResponseDataOneOf11",
-            "ramp": "#/components/schemas/CreateObservabilityDestinationResponseDataCreateObservabilityDestinationResponseDataOneOf12",
-            "s3": "#/components/schemas/CreateObservabilityDestinationResponseDataCreateObservabilityDestinationResponseDataOneOf13",
-            "sentry": "#/components/schemas/CreateObservabilityDestinationResponseDataCreateObservabilityDestinationResponseDataOneOf14",
-            "snowflake": "#/components/schemas/CreateObservabilityDestinationResponseDataCreateObservabilityDestinationResponseDataOneOf15",
-            "weave": "#/components/schemas/CreateObservabilityDestinationResponseDataCreateObservabilityDestinationResponseDataOneOf16",
-            "webhook": "#/components/schemas/CreateObservabilityDestinationResponseDataCreateObservabilityDestinationResponseDataOneOf17"
+            "arize": "#/components/schemas/CreateObservabilityDestinationResponseDataOneOf1Variant",
+            "braintrust": "#/components/schemas/CreateObservabilityDestinationResponseDataOneOf2Variant",
+            "clickhouse": "#/components/schemas/CreateObservabilityDestinationResponseDataOneOf3Variant",
+            "datadog": "#/components/schemas/CreateObservabilityDestinationResponseDataOneOf4Variant",
+            "grafana": "#/components/schemas/CreateObservabilityDestinationResponseDataOneOf5Variant",
+            "langfuse": "#/components/schemas/CreateObservabilityDestinationResponseDataOneOf6Variant",
+            "langsmith": "#/components/schemas/CreateObservabilityDestinationResponseDataOneOf7Variant",
+            "newrelic": "#/components/schemas/CreateObservabilityDestinationResponseDataOneOf8Variant",
+            "opik": "#/components/schemas/CreateObservabilityDestinationResponseDataOneOf9Variant",
+            "otel-collector": "#/components/schemas/CreateObservabilityDestinationResponseDataOneOf10Variant",
+            "posthog": "#/components/schemas/CreateObservabilityDestinationResponseDataOneOf11Variant",
+            "ramp": "#/components/schemas/CreateObservabilityDestinationResponseDataOneOf12Variant",
+            "s3": "#/components/schemas/CreateObservabilityDestinationResponseDataOneOf13Variant",
+            "sentry": "#/components/schemas/CreateObservabilityDestinationResponseDataOneOf14Variant",
+            "snowflake": "#/components/schemas/CreateObservabilityDestinationResponseDataOneOf15Variant",
+            "weave": "#/components/schemas/CreateObservabilityDestinationResponseDataOneOf16Variant",
+            "webhook": "#/components/schemas/CreateObservabilityDestinationResponseDataOneOf17Variant"
           }
         },
         "x-client-original-tagged-union": {
@@ -62824,8 +62824,8 @@
         "discriminator": {
           "propertyName": "type",
           "mapping": {
-            "text": "#/components/schemas/CustomToolFormatCustomToolFormatAnyOf1",
-            "grammar": "#/components/schemas/CustomToolFormatCustomToolFormatAnyOf2"
+            "text": "#/components/schemas/CustomToolFormatAnyOf1Variant",
+            "grammar": "#/components/schemas/CustomToolFormatAnyOf2Variant"
           }
         },
         "x-client-original-tagged-union": {
@@ -64276,23 +64276,23 @@
         "discriminator": {
           "propertyName": "type",
           "mapping": {
-            "arize": "#/components/schemas/GetObservabilityDestinationResponseDataGetObservabilityDestinationResponseDataOneOf1",
-            "braintrust": "#/components/schemas/GetObservabilityDestinationResponseDataGetObservabilityDestinationResponseDataOneOf2",
-            "clickhouse": "#/components/schemas/GetObservabilityDestinationResponseDataGetObservabilityDestinationResponseDataOneOf3",
-            "datadog": "#/components/schemas/GetObservabilityDestinationResponseDataGetObservabilityDestinationResponseDataOneOf4",
-            "grafana": "#/components/schemas/GetObservabilityDestinationResponseDataGetObservabilityDestinationResponseDataOneOf5",
-            "langfuse": "#/components/schemas/GetObservabilityDestinationResponseDataGetObservabilityDestinationResponseDataOneOf6",
-            "langsmith": "#/components/schemas/GetObservabilityDestinationResponseDataGetObservabilityDestinationResponseDataOneOf7",
-            "newrelic": "#/components/schemas/GetObservabilityDestinationResponseDataGetObservabilityDestinationResponseDataOneOf8",
-            "opik": "#/components/schemas/GetObservabilityDestinationResponseDataGetObservabilityDestinationResponseDataOneOf9",
-            "otel-collector": "#/components/schemas/GetObservabilityDestinationResponseDataGetObservabilityDestinationResponseDataOneOf10",
-            "posthog": "#/components/schemas/GetObservabilityDestinationResponseDataGetObservabilityDestinationResponseDataOneOf11",
-            "ramp": "#/components/schemas/GetObservabilityDestinationResponseDataGetObservabilityDestinationResponseDataOneOf12",
-            "s3": "#/components/schemas/GetObservabilityDestinationResponseDataGetObservabilityDestinationResponseDataOneOf13",
-            "sentry": "#/components/schemas/GetObservabilityDestinationResponseDataGetObservabilityDestinationResponseDataOneOf14",
-            "snowflake": "#/components/schemas/GetObservabilityDestinationResponseDataGetObservabilityDestinationResponseDataOneOf15",
-            "weave": "#/components/schemas/GetObservabilityDestinationResponseDataGetObservabilityDestinationResponseDataOneOf16",
-            "webhook": "#/components/schemas/GetObservabilityDestinationResponseDataGetObservabilityDestinationResponseDataOneOf17"
+            "arize": "#/components/schemas/GetObservabilityDestinationResponseDataOneOf1Variant",
+            "braintrust": "#/components/schemas/GetObservabilityDestinationResponseDataOneOf2Variant",
+            "clickhouse": "#/components/schemas/GetObservabilityDestinationResponseDataOneOf3Variant",
+            "datadog": "#/components/schemas/GetObservabilityDestinationResponseDataOneOf4Variant",
+            "grafana": "#/components/schemas/GetObservabilityDestinationResponseDataOneOf5Variant",
+            "langfuse": "#/components/schemas/GetObservabilityDestinationResponseDataOneOf6Variant",
+            "langsmith": "#/components/schemas/GetObservabilityDestinationResponseDataOneOf7Variant",
+            "newrelic": "#/components/schemas/GetObservabilityDestinationResponseDataOneOf8Variant",
+            "opik": "#/components/schemas/GetObservabilityDestinationResponseDataOneOf9Variant",
+            "otel-collector": "#/components/schemas/GetObservabilityDestinationResponseDataOneOf10Variant",
+            "posthog": "#/components/schemas/GetObservabilityDestinationResponseDataOneOf11Variant",
+            "ramp": "#/components/schemas/GetObservabilityDestinationResponseDataOneOf12Variant",
+            "s3": "#/components/schemas/GetObservabilityDestinationResponseDataOneOf13Variant",
+            "sentry": "#/components/schemas/GetObservabilityDestinationResponseDataOneOf14Variant",
+            "snowflake": "#/components/schemas/GetObservabilityDestinationResponseDataOneOf15Variant",
+            "weave": "#/components/schemas/GetObservabilityDestinationResponseDataOneOf16Variant",
+            "webhook": "#/components/schemas/GetObservabilityDestinationResponseDataOneOf17Variant"
           }
         },
         "x-client-original-tagged-union": {
@@ -65482,14 +65482,14 @@
                 "text": "#/components/schemas/MessagesMessageParamContentAnyOf2ItemAnthropicTextBlockParam",
                 "image": "#/components/schemas/MessagesMessageParamContentAnyOf2ItemAnthropicImageBlockParam",
                 "document": "#/components/schemas/MessagesMessageParamContentAnyOf2ItemAnthropicDocumentBlockParam",
-                "tool_use": "#/components/schemas/MessagesMessageParamContentAnyOf2ItemMessagesMessageParamContentAnyOf2ItemOneOf4",
-                "tool_result": "#/components/schemas/MessagesMessageParamContentAnyOf2ItemMessagesMessageParamContentAnyOf2ItemOneOf5",
-                "thinking": "#/components/schemas/MessagesMessageParamContentAnyOf2ItemMessagesMessageParamContentAnyOf2ItemOneOf6",
-                "redacted_thinking": "#/components/schemas/MessagesMessageParamContentAnyOf2ItemMessagesMessageParamContentAnyOf2ItemOneOf7",
-                "server_tool_use": "#/components/schemas/MessagesMessageParamContentAnyOf2ItemMessagesMessageParamContentAnyOf2ItemOneOf8",
-                "web_search_tool_result": "#/components/schemas/MessagesMessageParamContentAnyOf2ItemMessagesMessageParamContentAnyOf2ItemOneOf9",
+                "tool_use": "#/components/schemas/MessagesMessageParamContentAnyOf2ItemOneOf4Variant",
+                "tool_result": "#/components/schemas/MessagesMessageParamContentAnyOf2ItemOneOf5Variant",
+                "thinking": "#/components/schemas/MessagesMessageParamContentAnyOf2ItemOneOf6Variant",
+                "redacted_thinking": "#/components/schemas/MessagesMessageParamContentAnyOf2ItemOneOf7Variant",
+                "server_tool_use": "#/components/schemas/MessagesMessageParamContentAnyOf2ItemOneOf8Variant",
+                "web_search_tool_result": "#/components/schemas/MessagesMessageParamContentAnyOf2ItemOneOf9Variant",
                 "search_result": "#/components/schemas/MessagesMessageParamContentAnyOf2ItemAnthropicSearchResultBlockParam",
-                "compaction": "#/components/schemas/MessagesMessageParamContentAnyOf2ItemMessagesMessageParamContentAnyOf2ItemOneOf11",
+                "compaction": "#/components/schemas/MessagesMessageParamContentAnyOf2ItemOneOf11Variant",
                 "advisor_tool_result": "#/components/schemas/MessagesMessageParamContentAnyOf2ItemMessagesAdvisorToolResultBlock",
                 "tool_addition": "#/components/schemas/MessagesMessageParamContentAnyOf2ItemMessagesToolAdditionBlock",
                 "tool_removal": "#/components/schemas/MessagesMessageParamContentAnyOf2ItemMessagesToolRemovalBlock",
@@ -65506,9 +65506,9 @@
         "discriminator": {
           "propertyName": "type",
           "mapping": {
-            "clear_tool_uses_20250919": "#/components/schemas/MessagesRequestContextManagementEditsItemMessagesRequestContextManagementEditsItemOneOf1",
-            "clear_thinking_20251015": "#/components/schemas/MessagesRequestContextManagementEditsItemMessagesRequestContextManagementEditsItemOneOf2",
-            "compact_20260112": "#/components/schemas/MessagesRequestContextManagementEditsItemMessagesRequestContextManagementEditsItemOneOf3"
+            "clear_tool_uses_20250919": "#/components/schemas/MessagesRequestContextManagementEditsItemOneOf1Variant",
+            "clear_thinking_20251015": "#/components/schemas/MessagesRequestContextManagementEditsItemOneOf2Variant",
+            "compact_20260112": "#/components/schemas/MessagesRequestContextManagementEditsItemOneOf3Variant"
           }
         },
         "x-client-original-tagged-union": {
@@ -65593,10 +65593,10 @@
         "discriminator": {
           "propertyName": "type",
           "mapping": {
-            "enabled": "#/components/schemas/MessagesRequestThinkingMessagesRequestThinkingOneOf1",
-            "disabled": "#/components/schemas/MessagesRequestThinkingMessagesRequestThinkingOneOf2",
-            "adaptive": "#/components/schemas/MessagesRequestThinkingMessagesRequestThinkingOneOf3",
-            "between_tools": "#/components/schemas/MessagesRequestThinkingMessagesRequestThinkingOneOf4"
+            "enabled": "#/components/schemas/MessagesRequestThinkingOneOf1Variant",
+            "disabled": "#/components/schemas/MessagesRequestThinkingOneOf2Variant",
+            "adaptive": "#/components/schemas/MessagesRequestThinkingOneOf3Variant",
+            "between_tools": "#/components/schemas/MessagesRequestThinkingOneOf4Variant"
           }
         },
         "x-client-original-tagged-union": {
@@ -65638,10 +65638,10 @@
         "discriminator": {
           "propertyName": "type",
           "mapping": {
-            "auto": "#/components/schemas/MessagesRequestToolChoiceMessagesRequestToolChoiceOneOf1",
-            "any": "#/components/schemas/MessagesRequestToolChoiceMessagesRequestToolChoiceOneOf2",
-            "none": "#/components/schemas/MessagesRequestToolChoiceMessagesRequestToolChoiceOneOf3",
-            "tool": "#/components/schemas/MessagesRequestToolChoiceMessagesRequestToolChoiceOneOf4"
+            "auto": "#/components/schemas/MessagesRequestToolChoiceOneOf1Variant",
+            "any": "#/components/schemas/MessagesRequestToolChoiceOneOf2Variant",
+            "none": "#/components/schemas/MessagesRequestToolChoiceOneOf3Variant",
+            "tool": "#/components/schemas/MessagesRequestToolChoiceOneOf4Variant"
           }
         },
         "x-client-original-tagged-union": {
@@ -65738,10 +65738,10 @@
         "discriminator": {
           "propertyName": "type",
           "mapping": {
-            "tool_reference": "#/components/schemas/MessagesToolAdditionBlockToolMessagesToolAdditionBlockToolOneOf1",
-            "mcp_tool_reference": "#/components/schemas/MessagesToolAdditionBlockToolMessagesToolAdditionBlockToolOneOf2",
-            "mcp_toolset_reference": "#/components/schemas/MessagesToolAdditionBlockToolMessagesToolAdditionBlockToolOneOf3",
-            "tool_definition": "#/components/schemas/MessagesToolAdditionBlockToolMessagesToolAdditionBlockToolOneOf4"
+            "tool_reference": "#/components/schemas/MessagesToolAdditionBlockToolOneOf1Variant",
+            "mcp_tool_reference": "#/components/schemas/MessagesToolAdditionBlockToolOneOf2Variant",
+            "mcp_toolset_reference": "#/components/schemas/MessagesToolAdditionBlockToolOneOf3Variant",
+            "tool_definition": "#/components/schemas/MessagesToolAdditionBlockToolOneOf4Variant"
           }
         },
         "x-client-original-tagged-union": {
@@ -65783,9 +65783,9 @@
         "discriminator": {
           "propertyName": "type",
           "mapping": {
-            "tool_reference": "#/components/schemas/MessagesToolRemovalBlockToolMessagesToolRemovalBlockToolOneOf1",
-            "mcp_tool_reference": "#/components/schemas/MessagesToolRemovalBlockToolMessagesToolRemovalBlockToolOneOf2",
-            "mcp_toolset_reference": "#/components/schemas/MessagesToolRemovalBlockToolMessagesToolRemovalBlockToolOneOf3"
+            "tool_reference": "#/components/schemas/MessagesToolRemovalBlockToolOneOf1Variant",
+            "mcp_tool_reference": "#/components/schemas/MessagesToolRemovalBlockToolOneOf2Variant",
+            "mcp_toolset_reference": "#/components/schemas/MessagesToolRemovalBlockToolOneOf3Variant"
           }
         },
         "x-client-original-tagged-union": {
@@ -66200,9 +66200,9 @@
         "discriminator": {
           "propertyName": "type",
           "mapping": {
-            "search": "#/components/schemas/OutputItemWebSearchCallActionOutputItemWebSearchCallActionOneOf1",
-            "open_page": "#/components/schemas/OutputItemWebSearchCallActionOutputItemWebSearchCallActionOneOf2",
-            "find_in_page": "#/components/schemas/OutputItemWebSearchCallActionOutputItemWebSearchCallActionOneOf3"
+            "search": "#/components/schemas/OutputItemWebSearchCallActionOneOf1Variant",
+            "open_page": "#/components/schemas/OutputItemWebSearchCallActionOneOf2Variant",
+            "find_in_page": "#/components/schemas/OutputItemWebSearchCallActionOneOf3Variant"
           }
         },
         "x-client-original-tagged-union": {
@@ -66562,8 +66562,8 @@
         "discriminator": {
           "propertyName": "type",
           "mapping": {
-            "exit": "#/components/schemas/ShellCallOutputContentOutcomeShellCallOutputContentOutcomeOneOf1",
-            "timeout": "#/components/schemas/ShellCallOutputContentOutcomeShellCallOutputContentOutcomeOneOf2"
+            "exit": "#/components/schemas/ShellCallOutputContentOutcomeOneOf1Variant",
+            "timeout": "#/components/schemas/ShellCallOutputContentOutcomeOneOf2Variant"
           }
         },
         "x-client-original-tagged-union": {
@@ -67466,23 +67466,23 @@
         "discriminator": {
           "propertyName": "type",
           "mapping": {
-            "arize": "#/components/schemas/UpdateObservabilityDestinationResponseDataUpdateObservabilityDestinationResponseDataOneOf1",
-            "braintrust": "#/components/schemas/UpdateObservabilityDestinationResponseDataUpdateObservabilityDestinationResponseDataOneOf2",
-            "clickhouse": "#/components/schemas/UpdateObservabilityDestinationResponseDataUpdateObservabilityDestinationResponseDataOneOf3",
-            "datadog": "#/components/schemas/UpdateObservabilityDestinationResponseDataUpdateObservabilityDestinationResponseDataOneOf4",
-            "grafana": "#/components/schemas/UpdateObservabilityDestinationResponseDataUpdateObservabilityDestinationResponseDataOneOf5",
-            "langfuse": "#/components/schemas/UpdateObservabilityDestinationResponseDataUpdateObservabilityDestinationResponseDataOneOf6",
-            "langsmith": "#/components/schemas/UpdateObservabilityDestinationResponseDataUpdateObservabilityDestinationResponseDataOneOf7",
-            "newrelic": "#/components/schemas/UpdateObservabilityDestinationResponseDataUpdateObservabilityDestinationResponseDataOneOf8",
-            "opik": "#/components/schemas/UpdateObservabilityDestinationResponseDataUpdateObservabilityDestinationResponseDataOneOf9",
-            "otel-collector": "#/components/schemas/UpdateObservabilityDestinationResponseDataUpdateObservabilityDestinationResponseDataOneOf10",
-            "posthog": "#/components/schemas/UpdateObservabilityDestinationResponseDataUpdateObservabilityDestinationResponseDataOneOf11",
-            "ramp": "#/components/schemas/UpdateObservabilityDestinationResponseDataUpdateObservabilityDestinationResponseDataOneOf12",
-            "s3": "#/components/schemas/UpdateObservabilityDestinationResponseDataUpdateObservabilityDestinationResponseDataOneOf13",
-            "sentry": "#/components/schemas/UpdateObservabilityDestinationResponseDataUpdateObservabilityDestinationResponseDataOneOf14",
-            "snowflake": "#/components/schemas/UpdateObservabilityDestinationResponseDataUpdateObservabilityDestinationResponseDataOneOf15",
-            "weave": "#/components/schemas/UpdateObservabilityDestinationResponseDataUpdateObservabilityDestinationResponseDataOneOf16",
-            "webhook": "#/components/schemas/UpdateObservabilityDestinationResponseDataUpdateObservabilityDestinationResponseDataOneOf17"
+            "arize": "#/components/schemas/UpdateObservabilityDestinationResponseDataOneOf1Variant",
+            "braintrust": "#/components/schemas/UpdateObservabilityDestinationResponseDataOneOf2Variant",
+            "clickhouse": "#/components/schemas/UpdateObservabilityDestinationResponseDataOneOf3Variant",
+            "datadog": "#/components/schemas/UpdateObservabilityDestinationResponseDataOneOf4Variant",
+            "grafana": "#/components/schemas/UpdateObservabilityDestinationResponseDataOneOf5Variant",
+            "langfuse": "#/components/schemas/UpdateObservabilityDestinationResponseDataOneOf6Variant",
+            "langsmith": "#/components/schemas/UpdateObservabilityDestinationResponseDataOneOf7Variant",
+            "newrelic": "#/components/schemas/UpdateObservabilityDestinationResponseDataOneOf8Variant",
+            "opik": "#/components/schemas/UpdateObservabilityDestinationResponseDataOneOf9Variant",
+            "otel-collector": "#/components/schemas/UpdateObservabilityDestinationResponseDataOneOf10Variant",
+            "posthog": "#/components/schemas/UpdateObservabilityDestinationResponseDataOneOf11Variant",
+            "ramp": "#/components/schemas/UpdateObservabilityDestinationResponseDataOneOf12Variant",
+            "s3": "#/components/schemas/UpdateObservabilityDestinationResponseDataOneOf13Variant",
+            "sentry": "#/components/schemas/UpdateObservabilityDestinationResponseDataOneOf14Variant",
+            "snowflake": "#/components/schemas/UpdateObservabilityDestinationResponseDataOneOf15Variant",
+            "weave": "#/components/schemas/UpdateObservabilityDestinationResponseDataOneOf16Variant",
+            "webhook": "#/components/schemas/UpdateObservabilityDestinationResponseDataOneOf17Variant"
           }
         },
         "x-client-original-tagged-union": {
@@ -68866,14 +68866,14 @@
             "text": "#/components/schemas/MessagesMessageParamContentAnyOf2ItemAnthropicTextBlockParam",
             "image": "#/components/schemas/MessagesMessageParamContentAnyOf2ItemAnthropicImageBlockParam",
             "document": "#/components/schemas/MessagesMessageParamContentAnyOf2ItemAnthropicDocumentBlockParam",
-            "tool_use": "#/components/schemas/MessagesMessageParamContentAnyOf2ItemMessagesMessageParamContentAnyOf2ItemOneOf4",
-            "tool_result": "#/components/schemas/MessagesMessageParamContentAnyOf2ItemMessagesMessageParamContentAnyOf2ItemOneOf5",
-            "thinking": "#/components/schemas/MessagesMessageParamContentAnyOf2ItemMessagesMessageParamContentAnyOf2ItemOneOf6",
-            "redacted_thinking": "#/components/schemas/MessagesMessageParamContentAnyOf2ItemMessagesMessageParamContentAnyOf2ItemOneOf7",
-            "server_tool_use": "#/components/schemas/MessagesMessageParamContentAnyOf2ItemMessagesMessageParamContentAnyOf2ItemOneOf8",
-            "web_search_tool_result": "#/components/schemas/MessagesMessageParamContentAnyOf2ItemMessagesMessageParamContentAnyOf2ItemOneOf9",
+            "tool_use": "#/components/schemas/MessagesMessageParamContentAnyOf2ItemOneOf4Variant",
+            "tool_result": "#/components/schemas/MessagesMessageParamContentAnyOf2ItemOneOf5Variant",
+            "thinking": "#/components/schemas/MessagesMessageParamContentAnyOf2ItemOneOf6Variant",
+            "redacted_thinking": "#/components/schemas/MessagesMessageParamContentAnyOf2ItemOneOf7Variant",
+            "server_tool_use": "#/components/schemas/MessagesMessageParamContentAnyOf2ItemOneOf8Variant",
+            "web_search_tool_result": "#/components/schemas/MessagesMessageParamContentAnyOf2ItemOneOf9Variant",
             "search_result": "#/components/schemas/MessagesMessageParamContentAnyOf2ItemAnthropicSearchResultBlockParam",
-            "compaction": "#/components/schemas/MessagesMessageParamContentAnyOf2ItemMessagesMessageParamContentAnyOf2ItemOneOf11",
+            "compaction": "#/components/schemas/MessagesMessageParamContentAnyOf2ItemOneOf11Variant",
             "advisor_tool_result": "#/components/schemas/MessagesMessageParamContentAnyOf2ItemMessagesAdvisorToolResultBlock",
             "tool_addition": "#/components/schemas/MessagesMessageParamContentAnyOf2ItemMessagesToolAdditionBlock",
             "tool_removal": "#/components/schemas/MessagesMessageParamContentAnyOf2ItemMessagesToolRemovalBlock",
@@ -69337,9 +69337,9 @@
         "discriminator": {
           "propertyName": "type",
           "mapping": {
-            "file": "#/components/schemas/BatchObjectResultsItemResponseBodyAnyOf1ChoicesItemMessageAnnotationsItemBatchObjectResultsItemResponseBodyAnyOf1ChoicesItemMessageAnnotationsItemOneOf1",
-            "url_citation": "#/components/schemas/BatchObjectResultsItemResponseBodyAnyOf1ChoicesItemMessageAnnotationsItemBatchObjectResultsItemResponseBodyAnyOf1ChoicesItemMessageAnnotationsItemOneOf2",
-            "web_search_citation": "#/components/schemas/BatchObjectResultsItemResponseBodyAnyOf1ChoicesItemMessageAnnotationsItemBatchObjectResultsItemResponseBodyAnyOf1ChoicesItemMessageAnnotationsItemOneOf3"
+            "file": "#/components/schemas/BatchObjectResultsItemResponseBodyAnyOf1ChoicesItemMessageAnnotationsItemOneOf1Variant",
+            "url_citation": "#/components/schemas/BatchObjectResultsItemResponseBodyAnyOf1ChoicesItemMessageAnnotationsItemOneOf2Variant",
+            "web_search_citation": "#/components/schemas/BatchObjectResultsItemResponseBodyAnyOf1ChoicesItemMessageAnnotationsItemOneOf3Variant"
           }
         },
         "x-client-original-tagged-union": {
@@ -69809,8 +69809,8 @@
         "discriminator": {
           "propertyName": "type",
           "mapping": {
-            "text": "#/components/schemas/BatchObjectResultsItemResponseBodyAnyOf1ChoicesItemMessageAnnotationsItemOneOf1FileContentItemBatchObjectResultsItemResponseBodyAnyOf1ChoicesItemMessageAnnotationsItemOneOf1FileContentItemOneOf1",
-            "image_url": "#/components/schemas/BatchObjectResultsItemResponseBodyAnyOf1ChoicesItemMessageAnnotationsItemOneOf1FileContentItemBatchObjectResultsItemResponseBodyAnyOf1ChoicesItemMessageAnnotationsItemOneOf1FileContentItemOneOf2"
+            "text": "#/components/schemas/TaggedTextVariant1F39BD67DBF47C87",
+            "image_url": "#/components/schemas/TaggedImageUrlVariant8DE0A00FF8217958"
           }
         },
         "x-client-original-tagged-union": {
@@ -77233,8 +77233,8 @@
         "discriminator": {
           "propertyName": "type",
           "mapping": {
-            "text": "#/components/schemas/CreateEmbeddingsRequestInputAnyOf5ItemContentItemCreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf1",
-            "image_url": "#/components/schemas/CreateEmbeddingsRequestInputAnyOf5ItemContentItemCreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf2",
+            "text": "#/components/schemas/CreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf1Variant",
+            "image_url": "#/components/schemas/CreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf2Variant",
             "input_audio": "#/components/schemas/CreateEmbeddingsRequestInputAnyOf5ItemContentItemContentPartInputAudio",
             "input_video": "#/components/schemas/CreateEmbeddingsRequestInputAnyOf5ItemContentItemContentPartInputVideo",
             "input_file": "#/components/schemas/CreateEmbeddingsRequestInputAnyOf5ItemContentItemContentPartInputFile"
@@ -99460,7 +99460,7 @@
           }
         ]
       },
-      "SpeechInputReferenceSpeechInputReferenceAudio": {
+      "SpeechInputReferenceAudioVariant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/SpeechInputReference"
@@ -99490,7 +99490,7 @@
           }
         ]
       },
-      "SpeechInputReferenceSpeechInputReferenceText": {
+      "SpeechInputReferenceTextVariant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/SpeechInputReference"
@@ -99520,7 +99520,7 @@
           }
         ]
       },
-      "SpeechInputReferenceSpeechInputReferenceImage": {
+      "SpeechInputReferenceImageVariant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/SpeechInputReference"
@@ -99581,7 +99581,7 @@
           }
         ]
       },
-      "AgentMessageItemContentItemAgentMessageItemContentItemOneOf2": {
+      "AgentMessageItemContentItemOneOf2Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/AgentMessageItemContentItem"
@@ -99621,7 +99621,7 @@
           }
         ]
       },
-      "AgentMessageItemContentItemAgentMessageItemContentItemOneOf3": {
+      "AgentMessageItemContentItemOneOf3Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/AgentMessageItemContentItem"
@@ -100469,7 +100469,7 @@
           }
         ]
       },
-      "ArmorSafeguardResultStatusToolUsesAdditionalPropertiesArmorSafeguardResultStatusToolUsesAdditionalPropertiesOneOf1": {
+      "ArmorSafeguardResultStatusToolUsesAdditionalPropertiesOneOf1Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/ArmorSafeguardResultStatusToolUsesAdditionalProperties"
@@ -100494,7 +100494,7 @@
           }
         ]
       },
-      "ArmorSafeguardResultStatusToolUsesAdditionalPropertiesArmorSafeguardResultStatusToolUsesAdditionalPropertiesOneOf2": {
+      "ArmorSafeguardResultStatusToolUsesAdditionalPropertiesOneOf2Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/ArmorSafeguardResultStatusToolUsesAdditionalProperties"
@@ -100512,7 +100512,7 @@
           }
         ]
       },
-      "ArmorSafeguardResultStatusToolUsesAdditionalPropertiesArmorSafeguardResultStatusToolUsesAdditionalPropertiesOneOf3": {
+      "ArmorSafeguardResultStatusToolUsesAdditionalPropertiesOneOf3Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/ArmorSafeguardResultStatusToolUsesAdditionalProperties"
@@ -100607,7 +100607,7 @@
           }
         ]
       },
-      "BaseResponsesResultToolsItemBaseResponsesResultToolsItemOneOf1": {
+      "BaseResponsesResultToolsItemOneOf1Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseResponsesResultToolsItem"
@@ -102029,7 +102029,7 @@
           }
         ]
       },
-      "CreateObservabilityDestinationResponseDataCreateObservabilityDestinationResponseDataOneOf1": {
+      "CreateObservabilityDestinationResponseDataOneOf1Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/CreateObservabilityDestinationResponseData"
@@ -102158,7 +102158,7 @@
           }
         ]
       },
-      "CreateObservabilityDestinationResponseDataCreateObservabilityDestinationResponseDataOneOf2": {
+      "CreateObservabilityDestinationResponseDataOneOf2Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/CreateObservabilityDestinationResponseData"
@@ -102287,7 +102287,7 @@
           }
         ]
       },
-      "CreateObservabilityDestinationResponseDataCreateObservabilityDestinationResponseDataOneOf3": {
+      "CreateObservabilityDestinationResponseDataOneOf3Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/CreateObservabilityDestinationResponseData"
@@ -102416,7 +102416,7 @@
           }
         ]
       },
-      "CreateObservabilityDestinationResponseDataCreateObservabilityDestinationResponseDataOneOf4": {
+      "CreateObservabilityDestinationResponseDataOneOf4Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/CreateObservabilityDestinationResponseData"
@@ -102545,7 +102545,7 @@
           }
         ]
       },
-      "CreateObservabilityDestinationResponseDataCreateObservabilityDestinationResponseDataOneOf5": {
+      "CreateObservabilityDestinationResponseDataOneOf5Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/CreateObservabilityDestinationResponseData"
@@ -102674,7 +102674,7 @@
           }
         ]
       },
-      "CreateObservabilityDestinationResponseDataCreateObservabilityDestinationResponseDataOneOf6": {
+      "CreateObservabilityDestinationResponseDataOneOf6Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/CreateObservabilityDestinationResponseData"
@@ -102803,7 +102803,7 @@
           }
         ]
       },
-      "CreateObservabilityDestinationResponseDataCreateObservabilityDestinationResponseDataOneOf7": {
+      "CreateObservabilityDestinationResponseDataOneOf7Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/CreateObservabilityDestinationResponseData"
@@ -102932,7 +102932,7 @@
           }
         ]
       },
-      "CreateObservabilityDestinationResponseDataCreateObservabilityDestinationResponseDataOneOf8": {
+      "CreateObservabilityDestinationResponseDataOneOf8Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/CreateObservabilityDestinationResponseData"
@@ -103061,7 +103061,7 @@
           }
         ]
       },
-      "CreateObservabilityDestinationResponseDataCreateObservabilityDestinationResponseDataOneOf9": {
+      "CreateObservabilityDestinationResponseDataOneOf9Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/CreateObservabilityDestinationResponseData"
@@ -103190,7 +103190,7 @@
           }
         ]
       },
-      "CreateObservabilityDestinationResponseDataCreateObservabilityDestinationResponseDataOneOf10": {
+      "CreateObservabilityDestinationResponseDataOneOf10Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/CreateObservabilityDestinationResponseData"
@@ -103319,7 +103319,7 @@
           }
         ]
       },
-      "CreateObservabilityDestinationResponseDataCreateObservabilityDestinationResponseDataOneOf11": {
+      "CreateObservabilityDestinationResponseDataOneOf11Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/CreateObservabilityDestinationResponseData"
@@ -103448,7 +103448,7 @@
           }
         ]
       },
-      "CreateObservabilityDestinationResponseDataCreateObservabilityDestinationResponseDataOneOf12": {
+      "CreateObservabilityDestinationResponseDataOneOf12Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/CreateObservabilityDestinationResponseData"
@@ -103577,7 +103577,7 @@
           }
         ]
       },
-      "CreateObservabilityDestinationResponseDataCreateObservabilityDestinationResponseDataOneOf13": {
+      "CreateObservabilityDestinationResponseDataOneOf13Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/CreateObservabilityDestinationResponseData"
@@ -103706,7 +103706,7 @@
           }
         ]
       },
-      "CreateObservabilityDestinationResponseDataCreateObservabilityDestinationResponseDataOneOf14": {
+      "CreateObservabilityDestinationResponseDataOneOf14Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/CreateObservabilityDestinationResponseData"
@@ -103835,7 +103835,7 @@
           }
         ]
       },
-      "CreateObservabilityDestinationResponseDataCreateObservabilityDestinationResponseDataOneOf15": {
+      "CreateObservabilityDestinationResponseDataOneOf15Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/CreateObservabilityDestinationResponseData"
@@ -103964,7 +103964,7 @@
           }
         ]
       },
-      "CreateObservabilityDestinationResponseDataCreateObservabilityDestinationResponseDataOneOf16": {
+      "CreateObservabilityDestinationResponseDataOneOf16Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/CreateObservabilityDestinationResponseData"
@@ -104093,7 +104093,7 @@
           }
         ]
       },
-      "CreateObservabilityDestinationResponseDataCreateObservabilityDestinationResponseDataOneOf17": {
+      "CreateObservabilityDestinationResponseDataOneOf17Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/CreateObservabilityDestinationResponseData"
@@ -104222,7 +104222,7 @@
           }
         ]
       },
-      "CustomToolFormatCustomToolFormatAnyOf1": {
+      "CustomToolFormatAnyOf1Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/CustomToolFormat"
@@ -104240,7 +104240,7 @@
           }
         ]
       },
-      "CustomToolFormatCustomToolFormatAnyOf2": {
+      "CustomToolFormatAnyOf2Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/CustomToolFormat"
@@ -105393,7 +105393,7 @@
           }
         ]
       },
-      "GetObservabilityDestinationResponseDataGetObservabilityDestinationResponseDataOneOf1": {
+      "GetObservabilityDestinationResponseDataOneOf1Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/GetObservabilityDestinationResponseData"
@@ -105522,7 +105522,7 @@
           }
         ]
       },
-      "GetObservabilityDestinationResponseDataGetObservabilityDestinationResponseDataOneOf2": {
+      "GetObservabilityDestinationResponseDataOneOf2Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/GetObservabilityDestinationResponseData"
@@ -105651,7 +105651,7 @@
           }
         ]
       },
-      "GetObservabilityDestinationResponseDataGetObservabilityDestinationResponseDataOneOf3": {
+      "GetObservabilityDestinationResponseDataOneOf3Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/GetObservabilityDestinationResponseData"
@@ -105780,7 +105780,7 @@
           }
         ]
       },
-      "GetObservabilityDestinationResponseDataGetObservabilityDestinationResponseDataOneOf4": {
+      "GetObservabilityDestinationResponseDataOneOf4Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/GetObservabilityDestinationResponseData"
@@ -105909,7 +105909,7 @@
           }
         ]
       },
-      "GetObservabilityDestinationResponseDataGetObservabilityDestinationResponseDataOneOf5": {
+      "GetObservabilityDestinationResponseDataOneOf5Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/GetObservabilityDestinationResponseData"
@@ -106038,7 +106038,7 @@
           }
         ]
       },
-      "GetObservabilityDestinationResponseDataGetObservabilityDestinationResponseDataOneOf6": {
+      "GetObservabilityDestinationResponseDataOneOf6Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/GetObservabilityDestinationResponseData"
@@ -106167,7 +106167,7 @@
           }
         ]
       },
-      "GetObservabilityDestinationResponseDataGetObservabilityDestinationResponseDataOneOf7": {
+      "GetObservabilityDestinationResponseDataOneOf7Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/GetObservabilityDestinationResponseData"
@@ -106296,7 +106296,7 @@
           }
         ]
       },
-      "GetObservabilityDestinationResponseDataGetObservabilityDestinationResponseDataOneOf8": {
+      "GetObservabilityDestinationResponseDataOneOf8Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/GetObservabilityDestinationResponseData"
@@ -106425,7 +106425,7 @@
           }
         ]
       },
-      "GetObservabilityDestinationResponseDataGetObservabilityDestinationResponseDataOneOf9": {
+      "GetObservabilityDestinationResponseDataOneOf9Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/GetObservabilityDestinationResponseData"
@@ -106554,7 +106554,7 @@
           }
         ]
       },
-      "GetObservabilityDestinationResponseDataGetObservabilityDestinationResponseDataOneOf10": {
+      "GetObservabilityDestinationResponseDataOneOf10Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/GetObservabilityDestinationResponseData"
@@ -106683,7 +106683,7 @@
           }
         ]
       },
-      "GetObservabilityDestinationResponseDataGetObservabilityDestinationResponseDataOneOf11": {
+      "GetObservabilityDestinationResponseDataOneOf11Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/GetObservabilityDestinationResponseData"
@@ -106812,7 +106812,7 @@
           }
         ]
       },
-      "GetObservabilityDestinationResponseDataGetObservabilityDestinationResponseDataOneOf12": {
+      "GetObservabilityDestinationResponseDataOneOf12Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/GetObservabilityDestinationResponseData"
@@ -106941,7 +106941,7 @@
           }
         ]
       },
-      "GetObservabilityDestinationResponseDataGetObservabilityDestinationResponseDataOneOf13": {
+      "GetObservabilityDestinationResponseDataOneOf13Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/GetObservabilityDestinationResponseData"
@@ -107070,7 +107070,7 @@
           }
         ]
       },
-      "GetObservabilityDestinationResponseDataGetObservabilityDestinationResponseDataOneOf14": {
+      "GetObservabilityDestinationResponseDataOneOf14Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/GetObservabilityDestinationResponseData"
@@ -107199,7 +107199,7 @@
           }
         ]
       },
-      "GetObservabilityDestinationResponseDataGetObservabilityDestinationResponseDataOneOf15": {
+      "GetObservabilityDestinationResponseDataOneOf15Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/GetObservabilityDestinationResponseData"
@@ -107328,7 +107328,7 @@
           }
         ]
       },
-      "GetObservabilityDestinationResponseDataGetObservabilityDestinationResponseDataOneOf16": {
+      "GetObservabilityDestinationResponseDataOneOf16Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/GetObservabilityDestinationResponseData"
@@ -107457,7 +107457,7 @@
           }
         ]
       },
-      "GetObservabilityDestinationResponseDataGetObservabilityDestinationResponseDataOneOf17": {
+      "GetObservabilityDestinationResponseDataOneOf17Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/GetObservabilityDestinationResponseData"
@@ -107586,7 +107586,7 @@
           }
         ]
       },
-      "MessagesRequestContextManagementEditsItemMessagesRequestContextManagementEditsItemOneOf1": {
+      "MessagesRequestContextManagementEditsItemOneOf1Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/MessagesRequestContextManagementEditsItem"
@@ -107625,7 +107625,7 @@
           }
         ]
       },
-      "MessagesRequestContextManagementEditsItemMessagesRequestContextManagementEditsItemOneOf2": {
+      "MessagesRequestContextManagementEditsItemOneOf2Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/MessagesRequestContextManagementEditsItem"
@@ -107646,7 +107646,7 @@
           }
         ]
       },
-      "MessagesRequestContextManagementEditsItemMessagesRequestContextManagementEditsItemOneOf3": {
+      "MessagesRequestContextManagementEditsItemOneOf3Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/MessagesRequestContextManagementEditsItem"
@@ -107676,7 +107676,7 @@
           }
         ]
       },
-      "MessagesRequestThinkingMessagesRequestThinkingOneOf1": {
+      "MessagesRequestThinkingOneOf1Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/MessagesRequestThinking"
@@ -107704,7 +107704,7 @@
           }
         ]
       },
-      "MessagesRequestThinkingMessagesRequestThinkingOneOf2": {
+      "MessagesRequestThinkingOneOf2Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/MessagesRequestThinking"
@@ -107722,7 +107722,7 @@
           }
         ]
       },
-      "MessagesRequestThinkingMessagesRequestThinkingOneOf3": {
+      "MessagesRequestThinkingOneOf3Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/MessagesRequestThinking"
@@ -107746,7 +107746,7 @@
           }
         ]
       },
-      "MessagesRequestThinkingMessagesRequestThinkingOneOf4": {
+      "MessagesRequestThinkingOneOf4Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/MessagesRequestThinking"
@@ -107765,7 +107765,7 @@
           }
         ]
       },
-      "MessagesRequestToolChoiceMessagesRequestToolChoiceOneOf1": {
+      "MessagesRequestToolChoiceOneOf1Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/MessagesRequestToolChoice"
@@ -107786,7 +107786,7 @@
           }
         ]
       },
-      "MessagesRequestToolChoiceMessagesRequestToolChoiceOneOf2": {
+      "MessagesRequestToolChoiceOneOf2Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/MessagesRequestToolChoice"
@@ -107807,7 +107807,7 @@
           }
         ]
       },
-      "MessagesRequestToolChoiceMessagesRequestToolChoiceOneOf3": {
+      "MessagesRequestToolChoiceOneOf3Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/MessagesRequestToolChoice"
@@ -107825,7 +107825,7 @@
           }
         ]
       },
-      "MessagesRequestToolChoiceMessagesRequestToolChoiceOneOf4": {
+      "MessagesRequestToolChoiceOneOf4Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/MessagesRequestToolChoice"
@@ -107850,7 +107850,7 @@
           }
         ]
       },
-      "MessagesToolAdditionBlockToolMessagesToolAdditionBlockToolOneOf1": {
+      "MessagesToolAdditionBlockToolOneOf1Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/MessagesToolAdditionBlockTool"
@@ -107872,7 +107872,7 @@
           }
         ]
       },
-      "MessagesToolAdditionBlockToolMessagesToolAdditionBlockToolOneOf2": {
+      "MessagesToolAdditionBlockToolOneOf2Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/MessagesToolAdditionBlockTool"
@@ -107898,7 +107898,7 @@
           }
         ]
       },
-      "MessagesToolAdditionBlockToolMessagesToolAdditionBlockToolOneOf3": {
+      "MessagesToolAdditionBlockToolOneOf3Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/MessagesToolAdditionBlockTool"
@@ -107920,7 +107920,7 @@
           }
         ]
       },
-      "MessagesToolAdditionBlockToolMessagesToolAdditionBlockToolOneOf4": {
+      "MessagesToolAdditionBlockToolOneOf4Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/MessagesToolAdditionBlockTool"
@@ -107943,7 +107943,7 @@
           }
         ]
       },
-      "MessagesToolRemovalBlockToolMessagesToolRemovalBlockToolOneOf1": {
+      "MessagesToolRemovalBlockToolOneOf1Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/MessagesToolRemovalBlockTool"
@@ -107965,7 +107965,7 @@
           }
         ]
       },
-      "MessagesToolRemovalBlockToolMessagesToolRemovalBlockToolOneOf2": {
+      "MessagesToolRemovalBlockToolOneOf2Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/MessagesToolRemovalBlockTool"
@@ -107991,7 +107991,7 @@
           }
         ]
       },
-      "MessagesToolRemovalBlockToolMessagesToolRemovalBlockToolOneOf3": {
+      "MessagesToolRemovalBlockToolOneOf3Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/MessagesToolRemovalBlockTool"
@@ -108214,7 +108214,7 @@
           }
         ]
       },
-      "OutputItemWebSearchCallActionOutputItemWebSearchCallActionOneOf1": {
+      "OutputItemWebSearchCallActionOneOf1Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/OutputItemWebSearchCallAction"
@@ -108248,7 +108248,7 @@
           }
         ]
       },
-      "OutputItemWebSearchCallActionOutputItemWebSearchCallActionOneOf2": {
+      "OutputItemWebSearchCallActionOneOf2Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/OutputItemWebSearchCallAction"
@@ -108272,7 +108272,7 @@
           }
         ]
       },
-      "OutputItemWebSearchCallActionOutputItemWebSearchCallActionOneOf3": {
+      "OutputItemWebSearchCallActionOneOf3Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/OutputItemWebSearchCallAction"
@@ -108298,7 +108298,7 @@
           }
         ]
       },
-      "ShellCallOutputContentOutcomeShellCallOutputContentOutcomeOneOf1": {
+      "ShellCallOutputContentOutcomeOneOf1Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/ShellCallOutputContentOutcome"
@@ -108321,7 +108321,7 @@
           }
         ]
       },
-      "ShellCallOutputContentOutcomeShellCallOutputContentOutcomeOneOf2": {
+      "ShellCallOutputContentOutcomeOneOf2Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/ShellCallOutputContentOutcome"
@@ -108340,7 +108340,7 @@
           }
         ]
       },
-      "UpdateObservabilityDestinationResponseDataUpdateObservabilityDestinationResponseDataOneOf1": {
+      "UpdateObservabilityDestinationResponseDataOneOf1Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/UpdateObservabilityDestinationResponseData"
@@ -108469,7 +108469,7 @@
           }
         ]
       },
-      "UpdateObservabilityDestinationResponseDataUpdateObservabilityDestinationResponseDataOneOf2": {
+      "UpdateObservabilityDestinationResponseDataOneOf2Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/UpdateObservabilityDestinationResponseData"
@@ -108598,7 +108598,7 @@
           }
         ]
       },
-      "UpdateObservabilityDestinationResponseDataUpdateObservabilityDestinationResponseDataOneOf3": {
+      "UpdateObservabilityDestinationResponseDataOneOf3Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/UpdateObservabilityDestinationResponseData"
@@ -108727,7 +108727,7 @@
           }
         ]
       },
-      "UpdateObservabilityDestinationResponseDataUpdateObservabilityDestinationResponseDataOneOf4": {
+      "UpdateObservabilityDestinationResponseDataOneOf4Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/UpdateObservabilityDestinationResponseData"
@@ -108856,7 +108856,7 @@
           }
         ]
       },
-      "UpdateObservabilityDestinationResponseDataUpdateObservabilityDestinationResponseDataOneOf5": {
+      "UpdateObservabilityDestinationResponseDataOneOf5Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/UpdateObservabilityDestinationResponseData"
@@ -108985,7 +108985,7 @@
           }
         ]
       },
-      "UpdateObservabilityDestinationResponseDataUpdateObservabilityDestinationResponseDataOneOf6": {
+      "UpdateObservabilityDestinationResponseDataOneOf6Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/UpdateObservabilityDestinationResponseData"
@@ -109114,7 +109114,7 @@
           }
         ]
       },
-      "UpdateObservabilityDestinationResponseDataUpdateObservabilityDestinationResponseDataOneOf7": {
+      "UpdateObservabilityDestinationResponseDataOneOf7Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/UpdateObservabilityDestinationResponseData"
@@ -109243,7 +109243,7 @@
           }
         ]
       },
-      "UpdateObservabilityDestinationResponseDataUpdateObservabilityDestinationResponseDataOneOf8": {
+      "UpdateObservabilityDestinationResponseDataOneOf8Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/UpdateObservabilityDestinationResponseData"
@@ -109372,7 +109372,7 @@
           }
         ]
       },
-      "UpdateObservabilityDestinationResponseDataUpdateObservabilityDestinationResponseDataOneOf9": {
+      "UpdateObservabilityDestinationResponseDataOneOf9Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/UpdateObservabilityDestinationResponseData"
@@ -109501,7 +109501,7 @@
           }
         ]
       },
-      "UpdateObservabilityDestinationResponseDataUpdateObservabilityDestinationResponseDataOneOf10": {
+      "UpdateObservabilityDestinationResponseDataOneOf10Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/UpdateObservabilityDestinationResponseData"
@@ -109630,7 +109630,7 @@
           }
         ]
       },
-      "UpdateObservabilityDestinationResponseDataUpdateObservabilityDestinationResponseDataOneOf11": {
+      "UpdateObservabilityDestinationResponseDataOneOf11Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/UpdateObservabilityDestinationResponseData"
@@ -109759,7 +109759,7 @@
           }
         ]
       },
-      "UpdateObservabilityDestinationResponseDataUpdateObservabilityDestinationResponseDataOneOf12": {
+      "UpdateObservabilityDestinationResponseDataOneOf12Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/UpdateObservabilityDestinationResponseData"
@@ -109888,7 +109888,7 @@
           }
         ]
       },
-      "UpdateObservabilityDestinationResponseDataUpdateObservabilityDestinationResponseDataOneOf13": {
+      "UpdateObservabilityDestinationResponseDataOneOf13Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/UpdateObservabilityDestinationResponseData"
@@ -110017,7 +110017,7 @@
           }
         ]
       },
-      "UpdateObservabilityDestinationResponseDataUpdateObservabilityDestinationResponseDataOneOf14": {
+      "UpdateObservabilityDestinationResponseDataOneOf14Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/UpdateObservabilityDestinationResponseData"
@@ -110146,7 +110146,7 @@
           }
         ]
       },
-      "UpdateObservabilityDestinationResponseDataUpdateObservabilityDestinationResponseDataOneOf15": {
+      "UpdateObservabilityDestinationResponseDataOneOf15Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/UpdateObservabilityDestinationResponseData"
@@ -110275,7 +110275,7 @@
           }
         ]
       },
-      "UpdateObservabilityDestinationResponseDataUpdateObservabilityDestinationResponseDataOneOf16": {
+      "UpdateObservabilityDestinationResponseDataOneOf16Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/UpdateObservabilityDestinationResponseData"
@@ -110404,7 +110404,7 @@
           }
         ]
       },
-      "UpdateObservabilityDestinationResponseDataUpdateObservabilityDestinationResponseDataOneOf17": {
+      "UpdateObservabilityDestinationResponseDataOneOf17Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/UpdateObservabilityDestinationResponseData"
@@ -110655,7 +110655,7 @@
           }
         ]
       },
-      "MessagesMessageParamContentAnyOf2ItemMessagesMessageParamContentAnyOf2ItemOneOf4": {
+      "MessagesMessageParamContentAnyOf2ItemOneOf4Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/MessagesMessageParamContentAnyOf2Item"
@@ -110686,7 +110686,7 @@
           }
         ]
       },
-      "MessagesMessageParamContentAnyOf2ItemMessagesMessageParamContentAnyOf2ItemOneOf5": {
+      "MessagesMessageParamContentAnyOf2ItemOneOf5Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/MessagesMessageParamContentAnyOf2Item"
@@ -110718,7 +110718,7 @@
           }
         ]
       },
-      "MessagesMessageParamContentAnyOf2ItemMessagesMessageParamContentAnyOf2ItemOneOf6": {
+      "MessagesMessageParamContentAnyOf2ItemOneOf6Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/MessagesMessageParamContentAnyOf2Item"
@@ -110744,7 +110744,7 @@
           }
         ]
       },
-      "MessagesMessageParamContentAnyOf2ItemMessagesMessageParamContentAnyOf2ItemOneOf7": {
+      "MessagesMessageParamContentAnyOf2ItemOneOf7Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/MessagesMessageParamContentAnyOf2Item"
@@ -110766,7 +110766,7 @@
           }
         ]
       },
-      "MessagesMessageParamContentAnyOf2ItemMessagesMessageParamContentAnyOf2ItemOneOf8": {
+      "MessagesMessageParamContentAnyOf2ItemOneOf8Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/MessagesMessageParamContentAnyOf2Item"
@@ -110797,7 +110797,7 @@
           }
         ]
       },
-      "MessagesMessageParamContentAnyOf2ItemMessagesMessageParamContentAnyOf2ItemOneOf9": {
+      "MessagesMessageParamContentAnyOf2ItemOneOf9Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/MessagesMessageParamContentAnyOf2Item"
@@ -110878,7 +110878,7 @@
           }
         ]
       },
-      "MessagesMessageParamContentAnyOf2ItemMessagesMessageParamContentAnyOf2ItemOneOf11": {
+      "MessagesMessageParamContentAnyOf2ItemOneOf11Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/MessagesMessageParamContentAnyOf2Item"
@@ -111152,7 +111152,7 @@
           }
         ]
       },
-      "BatchObjectResultsItemResponseBodyAnyOf1ChoicesItemMessageAnnotationsItemBatchObjectResultsItemResponseBodyAnyOf1ChoicesItemMessageAnnotationsItemOneOf1": {
+      "BatchObjectResultsItemResponseBodyAnyOf1ChoicesItemMessageAnnotationsItemOneOf1Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BatchObjectResultsItemResponseBodyAnyOf1ChoicesItemMessageAnnotationsItem"
@@ -111174,7 +111174,7 @@
           }
         ]
       },
-      "BatchObjectResultsItemResponseBodyAnyOf1ChoicesItemMessageAnnotationsItemBatchObjectResultsItemResponseBodyAnyOf1ChoicesItemMessageAnnotationsItemOneOf2": {
+      "BatchObjectResultsItemResponseBodyAnyOf1ChoicesItemMessageAnnotationsItemOneOf2Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BatchObjectResultsItemResponseBodyAnyOf1ChoicesItemMessageAnnotationsItem"
@@ -111196,7 +111196,7 @@
           }
         ]
       },
-      "BatchObjectResultsItemResponseBodyAnyOf1ChoicesItemMessageAnnotationsItemBatchObjectResultsItemResponseBodyAnyOf1ChoicesItemMessageAnnotationsItemOneOf3": {
+      "BatchObjectResultsItemResponseBodyAnyOf1ChoicesItemMessageAnnotationsItemOneOf3Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BatchObjectResultsItemResponseBodyAnyOf1ChoicesItemMessageAnnotationsItem"
@@ -111270,7 +111270,7 @@
           }
         ]
       },
-      "BatchObjectResultsItemResponseBodyAnyOf1ChoicesItemMessageAnnotationsItemOneOf1FileContentItemBatchObjectResultsItemResponseBodyAnyOf1ChoicesItemMessageAnnotationsItemOneOf1FileContentItemOneOf1": {
+      "TaggedTextVariant1F39BD67DBF47C87": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BatchObjectResultsItemResponseBodyAnyOf1ChoicesItemMessageAnnotationsItemOneOf1FileContentItem"
@@ -111292,7 +111292,7 @@
           }
         ]
       },
-      "BatchObjectResultsItemResponseBodyAnyOf1ChoicesItemMessageAnnotationsItemOneOf1FileContentItemBatchObjectResultsItemResponseBodyAnyOf1ChoicesItemMessageAnnotationsItemOneOf1FileContentItemOneOf2": {
+      "TaggedImageUrlVariant8DE0A00FF8217958": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BatchObjectResultsItemResponseBodyAnyOf1ChoicesItemMessageAnnotationsItemOneOf1FileContentItem"
@@ -111314,7 +111314,7 @@
           }
         ]
       },
-      "CreateEmbeddingsRequestInputAnyOf5ItemContentItemCreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf1": {
+      "CreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf1Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/CreateEmbeddingsRequestInputAnyOf5ItemContentItem"
@@ -111337,7 +111337,7 @@
           }
         ]
       },
-      "CreateEmbeddingsRequestInputAnyOf5ItemContentItemCreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf2": {
+      "CreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf2Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/CreateEmbeddingsRequestInputAnyOf5ItemContentItem"
@@ -120438,12 +120438,12 @@
       "discriminator": {
         "propertyName": "type",
         "mapping": {
-          "text_delta": "#/components/schemas/MessagesContentBlockDeltaEventDeltaMessagesContentBlockDeltaEventDeltaOneOf1",
-          "input_json_delta": "#/components/schemas/MessagesContentBlockDeltaEventDeltaMessagesContentBlockDeltaEventDeltaOneOf2",
-          "thinking_delta": "#/components/schemas/MessagesContentBlockDeltaEventDeltaMessagesContentBlockDeltaEventDeltaOneOf3",
-          "signature_delta": "#/components/schemas/MessagesContentBlockDeltaEventDeltaMessagesContentBlockDeltaEventDeltaOneOf4",
-          "citations_delta": "#/components/schemas/MessagesContentBlockDeltaEventDeltaMessagesContentBlockDeltaEventDeltaOneOf5",
-          "compaction_delta": "#/components/schemas/MessagesContentBlockDeltaEventDeltaMessagesContentBlockDeltaEventDeltaOneOf6"
+          "text_delta": "#/components/schemas/MessagesContentBlockDeltaEventDeltaOneOf1Variant",
+          "input_json_delta": "#/components/schemas/MessagesContentBlockDeltaEventDeltaOneOf2Variant",
+          "thinking_delta": "#/components/schemas/MessagesContentBlockDeltaEventDeltaOneOf3Variant",
+          "signature_delta": "#/components/schemas/MessagesContentBlockDeltaEventDeltaOneOf4Variant",
+          "citations_delta": "#/components/schemas/MessagesContentBlockDeltaEventDeltaOneOf5Variant",
+          "compaction_delta": "#/components/schemas/MessagesContentBlockDeltaEventDeltaOneOf6Variant"
         }
       },
       "x-client-original-tagged-union": {
@@ -135070,7 +135070,7 @@
         }
       ]
     },
-    "MessagesContentBlockDeltaEventDeltaMessagesContentBlockDeltaEventDeltaOneOf1": {
+    "MessagesContentBlockDeltaEventDeltaOneOf1Variant": {
       "allOf": [
         {
           "$ref": "#/components/schemas/MessagesContentBlockDeltaEventDelta"
@@ -135092,7 +135092,7 @@
         }
       ]
     },
-    "MessagesContentBlockDeltaEventDeltaMessagesContentBlockDeltaEventDeltaOneOf2": {
+    "MessagesContentBlockDeltaEventDeltaOneOf2Variant": {
       "allOf": [
         {
           "$ref": "#/components/schemas/MessagesContentBlockDeltaEventDelta"
@@ -135114,7 +135114,7 @@
         }
       ]
     },
-    "MessagesContentBlockDeltaEventDeltaMessagesContentBlockDeltaEventDeltaOneOf3": {
+    "MessagesContentBlockDeltaEventDeltaOneOf3Variant": {
       "allOf": [
         {
           "$ref": "#/components/schemas/MessagesContentBlockDeltaEventDelta"
@@ -135136,7 +135136,7 @@
         }
       ]
     },
-    "MessagesContentBlockDeltaEventDeltaMessagesContentBlockDeltaEventDeltaOneOf4": {
+    "MessagesContentBlockDeltaEventDeltaOneOf4Variant": {
       "allOf": [
         {
           "$ref": "#/components/schemas/MessagesContentBlockDeltaEventDelta"
@@ -135158,7 +135158,7 @@
         }
       ]
     },
-    "MessagesContentBlockDeltaEventDeltaMessagesContentBlockDeltaEventDeltaOneOf5": {
+    "MessagesContentBlockDeltaEventDeltaOneOf5Variant": {
       "allOf": [
         {
           "$ref": "#/components/schemas/MessagesContentBlockDeltaEventDelta"
@@ -135180,7 +135180,7 @@
         }
       ]
     },
-    "MessagesContentBlockDeltaEventDeltaMessagesContentBlockDeltaEventDeltaOneOf6": {
+    "MessagesContentBlockDeltaEventDeltaOneOf6Variant": {
       "allOf": [
         {
           "$ref": "#/components/schemas/MessagesContentBlockDeltaEventDelta"

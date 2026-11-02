@@ -51,9 +51,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
             return mappingValue switch
             {
-                "find_in_page" => new global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemWebSearchCallActionOutputItemWebSearchCallActionOneOf3(),
-                "open_page" => new global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemWebSearchCallActionOutputItemWebSearchCallActionOneOf2(),
-                "search" => new global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemWebSearchCallActionOutputItemWebSearchCallActionOneOf1(),
+                "find_in_page" => new global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemWebSearchCallActionOneOf3Variant(),
+                "open_page" => new global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemWebSearchCallActionOneOf2Variant(),
+                "search" => new global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemWebSearchCallActionOneOf1Variant(),
                 _ => new global::Soenneker.OpenRouter.OpenApiClient.Models.OutputItemWebSearchCallAction(),
             };
         }

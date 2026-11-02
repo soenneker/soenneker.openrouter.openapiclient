@@ -51,9 +51,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
             return mappingValue switch
             {
-                "file" => new global::Soenneker.OpenRouter.OpenApiClient.Models.BatchObjectResultsItemResponseBodyAnyOf1ChoicesItemMessageAnnotationsItemBatchObjectResultsItemResponseBodyAnyOf1ChoicesItemMessageAnnotationsItemOneOf1(),
-                "url_citation" => new global::Soenneker.OpenRouter.OpenApiClient.Models.BatchObjectResultsItemResponseBodyAnyOf1ChoicesItemMessageAnnotationsItemBatchObjectResultsItemResponseBodyAnyOf1ChoicesItemMessageAnnotationsItemOneOf2(),
-                "web_search_citation" => new global::Soenneker.OpenRouter.OpenApiClient.Models.BatchObjectResultsItemResponseBodyAnyOf1ChoicesItemMessageAnnotationsItemBatchObjectResultsItemResponseBodyAnyOf1ChoicesItemMessageAnnotationsItemOneOf3(),
+                "file" => new global::Soenneker.OpenRouter.OpenApiClient.Models.BatchObjectResultsItemResponseBodyAnyOf1ChoicesItemMessageAnnotationsItemOneOf1Variant(),
+                "url_citation" => new global::Soenneker.OpenRouter.OpenApiClient.Models.BatchObjectResultsItemResponseBodyAnyOf1ChoicesItemMessageAnnotationsItemOneOf2Variant(),
+                "web_search_citation" => new global::Soenneker.OpenRouter.OpenApiClient.Models.BatchObjectResultsItemResponseBodyAnyOf1ChoicesItemMessageAnnotationsItemOneOf3Variant(),
                 _ => new global::Soenneker.OpenRouter.OpenApiClient.Models.BatchObjectResultsItemResponseBodyAnyOf1ChoicesItemMessageAnnotationsItem(),
             };
         }

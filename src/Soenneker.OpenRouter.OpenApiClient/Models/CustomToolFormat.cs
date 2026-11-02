@@ -51,8 +51,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
             return mappingValue switch
             {
-                "grammar" => new global::Soenneker.OpenRouter.OpenApiClient.Models.CustomToolFormatCustomToolFormatAnyOf2(),
-                "text" => new global::Soenneker.OpenRouter.OpenApiClient.Models.CustomToolFormatCustomToolFormatAnyOf1(),
+                "grammar" => new global::Soenneker.OpenRouter.OpenApiClient.Models.CustomToolFormatAnyOf2Variant(),
+                "text" => new global::Soenneker.OpenRouter.OpenApiClient.Models.CustomToolFormatAnyOf1Variant(),
                 _ => new global::Soenneker.OpenRouter.OpenApiClient.Models.CustomToolFormat(),
             };
         }
