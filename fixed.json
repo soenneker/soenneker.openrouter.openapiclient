@@ -52509,6 +52509,12 @@
           "provider_name": {
             "$ref": "#/components/schemas/ProviderResponseProviderName"
           },
+          "provider_sort_order_mode": {
+            "$ref": "#/components/schemas/ProviderResponseProviderSortOrderMode"
+          },
+          "provider_sort_order_rank": {
+            "$ref": "#/components/schemas/ProviderResponseProviderSortOrderRank"
+          },
           "routed_service_tier": {
             "$ref": "#/components/schemas/ProviderResponseRoutedServiceTier"
           },
@@ -66288,6 +66294,19 @@
             }
           }
         ]
+      },
+      "ProviderResponseProviderSortOrderRank": {
+        "anyOf": [
+          {
+            "exclusiveMinimum": 0,
+            "type": "integer"
+          },
+          {
+            "$ref": "#/components/schemas/ProviderResponseProviderSortOrderRankAnyOf2"
+          }
+        ],
+        "description": "Position of this attempt\u0027s provider in the workspace\u0027s saved provider order (1 is first), \u0027order\u0027 when the request\u0027s provider.order or a session pin placed it, or \u0027unlisted\u0027 when the saved order does not name it; only present when the workspace has a saved order",
+        "example": 1
       },
       "PublicEndpointQuantization": {
         "anyOf": [
@@ -89503,6 +89522,30 @@
           ]
         }
       },
+      "ProviderResponseProviderSortOrderMode": {
+        "enum": [
+          "shadow",
+          "enforce"
+        ],
+        "type": "string",
+        "description": "Whether the workspace\u0027s saved provider order was applied (\u0027enforce\u0027) or only logged (\u0027shadow\u0027) for the request this attempt belongs to; only present when the workspace has a saved order",
+        "example": "shadow",
+        "x-speakeasy-unknown-values": "allow",
+        "x-ms-enum": {
+          "name": "ProviderResponseProviderSortOrderMode",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "shadow",
+              "name": "Shadow"
+            },
+            {
+              "value": "enforce",
+              "name": "Enforce"
+            }
+          ]
+        }
+      },
       "ProviderResponseRoutedServiceTier": {
         "enum": [
           "flex",
@@ -92547,6 +92590,28 @@
             {
               "value": "final_answer",
               "name": "FinalAnswer"
+            }
+          ]
+        }
+      },
+      "ProviderResponseProviderSortOrderRankAnyOf2": {
+        "enum": [
+          "order",
+          "unlisted"
+        ],
+        "type": "string",
+        "x-speakeasy-unknown-values": "allow",
+        "x-ms-enum": {
+          "name": "ProviderResponseProviderSortOrderRankAnyOf2",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "order",
+              "name": "Order"
+            },
+            {
+              "value": "unlisted",
+              "name": "Unlisted"
             }
           ]
         }
