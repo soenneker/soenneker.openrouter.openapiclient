@@ -34,7 +34,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Api.Alpha.Decisions
         {
         }
         /// <summary>
-        /// Submits a Decisions request to the Decisions router
+        /// Asks a Decisions model typed questions (`noul`, `choice`, `score`, `box`) about the content in `state` and returns one typed answer per question with its probabilities. Images, audio and video go in `state` as `image_url`, `input_audio` and `video_url` parts; PNG and JPEG images can instead go once in `assets` and be referenced by key. Which question types, media parts and asset references an endpoint accepts depends on the provider; a request an endpoint cannot serve fails with `400` before anything is sent upstream. See the [Multimodal Decisions guide](/docs/guides/community/multimodal-decisions) for the per-provider table. Typed fields (text, numbers, dates, lists, estimates, forecasts) come from [`POST /api/alpha/extractions`](/docs/guides/community/extractions), which takes the same envelope with `fields` in place of `questions` (text `state` only; images and PDFs go in `assets`). Alpha: the shape may change.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.DecisionsResponse"/></returns>
         /// <param name="body">The request body</param>
@@ -83,7 +83,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Api.Alpha.Decisions
             return await RequestAdapter.SendAsync<global::Soenneker.OpenRouter.OpenApiClient.Models.DecisionsResponse>(requestInfo, global::Soenneker.OpenRouter.OpenApiClient.Models.DecisionsResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Submits a Decisions request to the Decisions router
+        /// Asks a Decisions model typed questions (`noul`, `choice`, `score`, `box`) about the content in `state` and returns one typed answer per question with its probabilities. Images, audio and video go in `state` as `image_url`, `input_audio` and `video_url` parts; PNG and JPEG images can instead go once in `assets` and be referenced by key. Which question types, media parts and asset references an endpoint accepts depends on the provider; a request an endpoint cannot serve fails with `400` before anything is sent upstream. See the [Multimodal Decisions guide](/docs/guides/community/multimodal-decisions) for the per-provider table. Typed fields (text, numbers, dates, lists, estimates, forecasts) come from [`POST /api/alpha/extractions`](/docs/guides/community/extractions), which takes the same envelope with `fields` in place of `questions` (text `state` only; images and PDFs go in `assets`). Alpha: the shape may change.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

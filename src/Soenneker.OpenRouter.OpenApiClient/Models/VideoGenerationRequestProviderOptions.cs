@@ -33,6 +33,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             else if (parseNode.GetChildNode("amazon-nova") is { } nullNodeAmazonNova && nullNodeAmazonNova.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AmazonNova = null;
             if (parseNode.GetChildNode("ambient") is null) { _explicitNullValueAmbient = default!; _explicitNullProperties?.Remove("ambient"); }
             else if (parseNode.GetChildNode("ambient") is { } nullNodeAmbient && nullNodeAmbient.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Ambient = null;
+            if (parseNode.GetChildNode("antdigital") is null) { _explicitNullValueAntdigital = default!; _explicitNullProperties?.Remove("antdigital"); }
+            else if (parseNode.GetChildNode("antdigital") is { } nullNodeAntdigital && nullNodeAntdigital.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Antdigital = null;
             if (parseNode.GetChildNode("anthropic") is null) { _explicitNullValueAnthropic = default!; _explicitNullProperties?.Remove("anthropic"); }
             else if (parseNode.GetChildNode("anthropic") is { } nullNodeAnthropic && nullNodeAnthropic.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Anthropic = null;
             if (parseNode.GetChildNode("anthropic/2") is null) { _explicitNullValueAnthropic2 = default!; _explicitNullProperties?.Remove("anthropic/2"); }
@@ -215,12 +217,16 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             else if (parseNode.GetChildNode("openai") is { } nullNodeOpenai && nullNodeOpenai.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Openai = null;
             if (parseNode.GetChildNode("open-inference") is null) { _explicitNullValueOpenInference = default!; _explicitNullProperties?.Remove("open-inference"); }
             else if (parseNode.GetChildNode("open-inference") is { } nullNodeOpenInference && nullNodeOpenInference.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OpenInference = null;
+            if (parseNode.GetChildNode("parallel") is null) { _explicitNullValueParallel = default!; _explicitNullProperties?.Remove("parallel"); }
+            else if (parseNode.GetChildNode("parallel") is { } nullNodeParallel && nullNodeParallel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Parallel = null;
             if (parseNode.GetChildNode("parasail") is null) { _explicitNullValueParasail = default!; _explicitNullProperties?.Remove("parasail"); }
             else if (parseNode.GetChildNode("parasail") is { } nullNodeParasail && nullNodeParasail.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Parasail = null;
             if (parseNode.GetChildNode("pareto-alpha") is null) { _explicitNullValueParetoAlpha = default!; _explicitNullProperties?.Remove("pareto-alpha"); }
             else if (parseNode.GetChildNode("pareto-alpha") is { } nullNodeParetoAlpha && nullNodeParetoAlpha.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ParetoAlpha = null;
             if (parseNode.GetChildNode("particle-ai") is null) { _explicitNullValueParticleAi = default!; _explicitNullProperties?.Remove("particle-ai"); }
             else if (parseNode.GetChildNode("particle-ai") is { } nullNodeParticleAi && nullNodeParticleAi.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ParticleAi = null;
+            if (parseNode.GetChildNode("pearl-research") is null) { _explicitNullValuePearlResearch = default!; _explicitNullProperties?.Remove("pearl-research"); }
+            else if (parseNode.GetChildNode("pearl-research") is { } nullNodePearlResearch && nullNodePearlResearch.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PearlResearch = null;
             if (parseNode.GetChildNode("perceptron") is null) { _explicitNullValuePerceptron = default!; _explicitNullProperties?.Remove("perceptron"); }
             else if (parseNode.GetChildNode("perceptron") is { } nullNodePerceptron && nullNodePerceptron.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Perceptron = null;
             if (parseNode.GetChildNode("perplexity") is null) { _explicitNullValuePerplexity = default!; _explicitNullProperties?.Remove("perplexity"); }
@@ -402,6 +408,16 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAmbient Ambient { get => _explicitNullValueAmbient; set { _explicitNullValueAmbient = value; AdditionalData?.Remove("ambient"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ambient"); else _explicitNullProperties?.Remove("ambient"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAmbient _explicitNullValueAmbient = default!;
+#endif
+        /// <summary>The antdigital property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAntdigital? Antdigital { get => _explicitNullValueAntdigital; set { _explicitNullValueAntdigital = value; AdditionalData?.Remove("antdigital"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("antdigital"); else _explicitNullProperties?.Remove("antdigital"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAntdigital? _explicitNullValueAntdigital = default!;
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAntdigital Antdigital { get => _explicitNullValueAntdigital; set { _explicitNullValueAntdigital = value; AdditionalData?.Remove("antdigital"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("antdigital"); else _explicitNullProperties?.Remove("antdigital"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAntdigital _explicitNullValueAntdigital = default!;
 #endif
         /// <summary>The anthropic property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -1313,6 +1329,16 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsOpenInference OpenInference { get => _explicitNullValueOpenInference; set { _explicitNullValueOpenInference = value; AdditionalData?.Remove("open-inference"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("open-inference"); else _explicitNullProperties?.Remove("open-inference"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsOpenInference _explicitNullValueOpenInference = default!;
 #endif
+        /// <summary>The parallel property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsParallel? Parallel { get => _explicitNullValueParallel; set { _explicitNullValueParallel = value; AdditionalData?.Remove("parallel"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("parallel"); else _explicitNullProperties?.Remove("parallel"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsParallel? _explicitNullValueParallel = default!;
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsParallel Parallel { get => _explicitNullValueParallel; set { _explicitNullValueParallel = value; AdditionalData?.Remove("parallel"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("parallel"); else _explicitNullProperties?.Remove("parallel"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsParallel _explicitNullValueParallel = default!;
+#endif
         /// <summary>The parasail property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -1342,6 +1368,16 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsParticleAi ParticleAi { get => _explicitNullValueParticleAi; set { _explicitNullValueParticleAi = value; AdditionalData?.Remove("particle-ai"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("particle-ai"); else _explicitNullProperties?.Remove("particle-ai"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsParticleAi _explicitNullValueParticleAi = default!;
+#endif
+        /// <summary>The pearlResearch property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPearlResearch? PearlResearch { get => _explicitNullValuePearlResearch; set { _explicitNullValuePearlResearch = value; AdditionalData?.Remove("pearl-research"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pearl-research"); else _explicitNullProperties?.Remove("pearl-research"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPearlResearch? _explicitNullValuePearlResearch = default!;
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPearlResearch PearlResearch { get => _explicitNullValuePearlResearch; set { _explicitNullValuePearlResearch = value; AdditionalData?.Remove("pearl-research"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pearl-research"); else _explicitNullProperties?.Remove("pearl-research"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPearlResearch _explicitNullValuePearlResearch = default!;
 #endif
         /// <summary>The perceptron property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -1866,6 +1902,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "amazon-bedrock/claude-on-aws", n => { AmazonBedrockClaudeOnAws = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAmazonBedrockClaudeOnAws>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAmazonBedrockClaudeOnAws.CreateFromDiscriminatorValue); } },
                 { "amazon-nova", n => { AmazonNova = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAmazonNova>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAmazonNova.CreateFromDiscriminatorValue); } },
                 { "ambient", n => { Ambient = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAmbient>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAmbient.CreateFromDiscriminatorValue); } },
+                { "antdigital", n => { Antdigital = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAntdigital>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAntdigital.CreateFromDiscriminatorValue); } },
                 { "anthropic", n => { Anthropic = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAnthropic>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAnthropic.CreateFromDiscriminatorValue); } },
                 { "anthropic/2", n => { Anthropic2 = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAnthropic2>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAnthropic2.CreateFromDiscriminatorValue); } },
                 { "anyscale", n => { Anyscale = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAnyscale>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAnyscale.CreateFromDiscriminatorValue); } },
@@ -1957,9 +1994,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "ollama", n => { Ollama = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsOllama>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsOllama.CreateFromDiscriminatorValue); } },
                 { "open-inference", n => { OpenInference = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsOpenInference>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsOpenInference.CreateFromDiscriminatorValue); } },
                 { "openai", n => { Openai = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsOpenai>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsOpenai.CreateFromDiscriminatorValue); } },
+                { "parallel", n => { Parallel = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsParallel>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsParallel.CreateFromDiscriminatorValue); } },
                 { "parasail", n => { Parasail = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsParasail>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsParasail.CreateFromDiscriminatorValue); } },
                 { "pareto-alpha", n => { ParetoAlpha = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsParetoAlpha>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsParetoAlpha.CreateFromDiscriminatorValue); } },
                 { "particle-ai", n => { ParticleAi = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsParticleAi>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsParticleAi.CreateFromDiscriminatorValue); } },
+                { "pearl-research", n => { PearlResearch = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPearlResearch>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPearlResearch.CreateFromDiscriminatorValue); } },
                 { "perceptron", n => { Perceptron = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPerceptron>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPerceptron.CreateFromDiscriminatorValue); } },
                 { "perplexity", n => { Perplexity = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPerplexity>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPerplexity.CreateFromDiscriminatorValue); } },
                 { "phala", n => { Phala = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPhala>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPhala.CreateFromDiscriminatorValue); } },
@@ -2026,6 +2065,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAmazonBedrockClaudeOnAws>("amazon-bedrock/claude-on-aws", AmazonBedrockClaudeOnAws);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAmazonNova>("amazon-nova", AmazonNova);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAmbient>("ambient", Ambient);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAntdigital>("antdigital", Antdigital);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAnthropic>("anthropic", Anthropic);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAnthropic2>("anthropic/2", Anthropic2);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAnyscale>("anyscale", Anyscale);
@@ -2117,9 +2157,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsOllama>("ollama", Ollama);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsOpenai>("openai", Openai);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsOpenInference>("open-inference", OpenInference);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsParallel>("parallel", Parallel);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsParasail>("parasail", Parasail);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsParetoAlpha>("pareto-alpha", ParetoAlpha);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsParticleAi>("particle-ai", ParticleAi);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPearlResearch>("pearl-research", PearlResearch);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPerceptron>("perceptron", Perceptron);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPerplexity>("perplexity", Perplexity);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPhala>("phala", Phala);

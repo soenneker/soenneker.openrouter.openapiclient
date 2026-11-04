@@ -76,7 +76,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.PrivateProviders
             return await RequestAdapter.SendAsync<global::Soenneker.OpenRouter.OpenApiClient.Models.ListPrivateProviders200Response>(requestInfo, global::Soenneker.OpenRouter.OpenApiClient.Models.ListPrivateProviders200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Create a private, bring-your-own-key provider visible only to your organization. Use its slug as `provider_slug` when creating private endpoints. Requires both the private endpoints and the private providers entitlements. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+        /// Create a private, bring-your-own-key provider visible only to your organization. Use its slug as `provider_slug` when creating private endpoints. Requires the private endpoints entitlement. [Management key](/docs/guides/overview/auth/management-api-keys) required.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.CreatePrivateProvider201Response"/></returns>
         /// <param name="body">A private provider serves only your organization, so its endpoints are recorded as retaining no prompts, training on none and publishing none, and pass every data-policy filter your account or guardrails apply.</param>
@@ -140,7 +140,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.PrivateProviders
             return requestInfo;
         }
         /// <summary>
-        /// Create a private, bring-your-own-key provider visible only to your organization. Use its slug as `provider_slug` when creating private endpoints. Requires both the private endpoints and the private providers entitlements. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+        /// Create a private, bring-your-own-key provider visible only to your organization. Use its slug as `provider_slug` when creating private endpoints. Requires the private endpoints entitlement. [Management key](/docs/guides/overview/auth/management-api-keys) required.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">A private provider serves only your organization, so its endpoints are recorded as retaining no prompts, training on none and publishing none, and pass every data-policy filter your account or guardrails apply.</param>

@@ -10169,6 +10169,7 @@
           "amazon-bedrock/claude-on-aws",
           "amazon-nova",
           "ambient",
+          "antdigital",
           "anthropic",
           "anthropic/2",
           "arcee-ai",
@@ -10239,9 +10240,11 @@
           "ollama",
           "open-inference",
           "openai",
+          "parallel",
           "parasail",
           "pareto-alpha",
           "particle-ai",
+          "pearl-research",
           "perceptron",
           "perplexity",
           "phala",
@@ -14509,7 +14512,7 @@
         },
         "properties": {
           "allow_safety_retention_google": {
-            "description": "Whether ZDR-only requests to google/* models may use endpoints that may retain prompts for safety monitoring. false allows only zero-retention endpoints. A guardrail can only be more restrictive than the account setting. Inherits the account setting when not provided.",
+            "description": "Whether ZDR-only requests to google/* models may also use Safety Retention endpoints, which may retain prompts and responses from any request, only to prevent abuse, and do not use them for training. false allows only ZDR endpoints. A guardrail can only be more restrictive than the account setting. Inherits the account setting when not provided.",
             "example": true,
             "type": [
               "boolean",
@@ -14517,7 +14520,7 @@
             ]
           },
           "allow_safety_retention_other": {
-            "description": "Whether ZDR-only requests to models outside the named providers (for example open-weight models on Vertex) may use endpoints that may retain prompts for safety monitoring. false allows only zero-retention endpoints. A guardrail can only be more restrictive than the account setting. Inherits the account setting when not provided.",
+            "description": "Whether ZDR-only requests to models outside the named providers (for example open-weight models on Vertex) may also use Safety Retention endpoints, which may retain prompts and responses from any request, only to prevent abuse, and do not use them for training. false allows only ZDR endpoints. A guardrail can only be more restrictive than the account setting. Inherits the account setting when not provided.",
             "example": true,
             "type": [
               "boolean",
@@ -15078,13 +15081,6 @@
               "boolean",
               "null"
             ]
-          },
-          "max_completion_tokens": {
-            "description": "Cap on completion tokens per request. Requests asking for more skip this endpoint, and the default output length stays within it. When omitted, the cap is copied from the public endpoint for the same model and provider, if there is one.",
-            "example": 131072,
-            "maximum": 2147483647,
-            "minimum": 1,
-            "type": "integer"
           },
           "model_permaslug": {
             "description": "Permanent slug of the model this endpoint serves.",
@@ -15887,6 +15883,7 @@
         "type": "object"
       },
       "DecisionsBoxQuestion": {
+        "description": "Finds one target in an image in `state` and answers with one bounding box (`top`, `bottom`, `left`, `right` as fractions of the image). Served by TypeSafe Jev endpoints only; every other provider rejects a box question with `400` before anything is sent upstream.",
         "properties": {
           "instructions": {
             "anyOf": [
@@ -15902,7 +15899,7 @@
                 "type": "array"
               }
             ],
-            "description": "A plain string, or a JSON object or array of structured guidance."
+            "description": "A description of the target to find, naming the image in `state` it is in; not a command, and no `criteria`."
           },
           "type": {
             "enum": [
@@ -16128,7 +16125,7 @@
             "additionalProperties": {
               "$ref": "#/components/schemas/DecisionsImageAsset"
             },
-            "description": "Images keyed by reference string, as in TypeSafe's API. Write a reference wherever the image belongs in `state`, `instructions`, or `criteria`; every asset must be referenced at least once. Jev reads a reference as a whole string value or inside longer text. Other Decisions models read a whole-string reference wherever they read an `image_url` part and reject a reference inside longer text.",
+            "description": "Images keyed by reference string, as in TypeSafe's API. Write a reference wherever the image belongs in `state`, `instructions`, or `criteria`; every asset must be referenced at least once, or the request fails with `400` naming the unused key. TypeSafe Jev endpoints receive `assets` as written and read a reference as a whole string value or inside longer text. Every other provider has each whole-string reference resolved to an `image_url` part before the request is sent, so it is accepted only where that provider reads `image_url` parts (top-level `state` items), and a reference inside longer text fails with `400`. `image_url` parts and `assets` can be mixed in one request.",
             "type": "object"
           },
           "model": {
@@ -16259,6 +16256,9 @@
               "input_tokens": {
                 "type": "integer"
               },
+              "input_tokens_details": {
+                "$ref": "#/components/schemas/DecisionsUsageInputTokensDetails"
+              },
               "output_tokens": {
                 "type": "integer"
               }
@@ -16375,6 +16375,18 @@
           "type",
           "instructions",
           "criteria"
+        ],
+        "type": "object"
+      },
+      "DecisionsUsageInputTokensDetails": {
+        "description": "Of `input_tokens`, those the provider served from its prompt cache.",
+        "properties": {
+          "cached_tokens": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "cached_tokens"
         ],
         "type": "object"
       },
@@ -20645,6 +20657,7 @@
                   "tts",
                   "stt",
                   "image",
+                  "tools_invoke",
                   null
                 ],
                 "type": [
@@ -21456,7 +21469,7 @@
         },
         "properties": {
           "allow_safety_retention_google": {
-            "description": "Whether ZDR-only requests to google/* models may use endpoints that may retain prompts for safety monitoring. false allows only zero-retention endpoints. A guardrail can only be more restrictive than the account setting. Inherits the account setting when not provided.",
+            "description": "Whether ZDR-only requests to google/* models may also use Safety Retention endpoints, which may retain prompts and responses from any request, only to prevent abuse, and do not use them for training. false allows only ZDR endpoints. A guardrail can only be more restrictive than the account setting. Inherits the account setting when not provided.",
             "example": true,
             "type": [
               "boolean",
@@ -21464,7 +21477,7 @@
             ]
           },
           "allow_safety_retention_other": {
-            "description": "Whether ZDR-only requests to models outside the named providers (for example open-weight models on Vertex) may use endpoints that may retain prompts for safety monitoring. false allows only zero-retention endpoints. A guardrail can only be more restrictive than the account setting. Inherits the account setting when not provided.",
+            "description": "Whether ZDR-only requests to models outside the named providers (for example open-weight models on Vertex) may also use Safety Retention endpoints, which may retain prompts and responses from any request, only to prevent abuse, and do not use them for training. false allows only ZDR endpoints. A guardrail can only be more restrictive than the account setting. Inherits the account setting when not provided.",
             "example": true,
             "type": [
               "boolean",
@@ -27800,6 +27813,7 @@
                   "AionLabs",
                   "Alibaba",
                   "Ambient",
+                  "Ant Digital",
                   "Baidu",
                   "Amazon Bedrock",
                   "Amazon Nova",
@@ -27872,9 +27886,11 @@
                   "Ollama",
                   "OpenAI",
                   "OpenInference",
+                  "Parallel",
                   "Parasail",
                   "ParetoAlpha",
                   "Particle AI",
+                  "Pearl Research",
                   "Poolside",
                   "PrimaLabs",
                   "PrimeIntellect",
@@ -39529,6 +39545,7 @@
           "AionLabs",
           "Alibaba",
           "Ambient",
+          "Ant Digital",
           "Baidu",
           "Amazon Bedrock",
           "Amazon Nova",
@@ -39601,9 +39618,11 @@
           "Ollama",
           "OpenAI",
           "OpenInference",
+          "Parallel",
           "Parasail",
           "ParetoAlpha",
           "Particle AI",
+          "Pearl Research",
           "Poolside",
           "PrimaLabs",
           "PrimeIntellect",
@@ -39688,6 +39707,10 @@
             "type": "object"
           },
           "ambient": {
+            "additionalProperties": {},
+            "type": "object"
+          },
+          "antdigital": {
             "additionalProperties": {},
             "type": "object"
           },
@@ -40055,6 +40078,10 @@
             "additionalProperties": {},
             "type": "object"
           },
+          "parallel": {
+            "additionalProperties": {},
+            "type": "object"
+          },
           "parasail": {
             "additionalProperties": {},
             "type": "object"
@@ -40064,6 +40091,10 @@
             "type": "object"
           },
           "particle-ai": {
+            "additionalProperties": {},
+            "type": "object"
+          },
+          "pearl-research": {
             "additionalProperties": {},
             "type": "object"
           },
@@ -40575,6 +40606,7 @@
               "AionLabs",
               "Alibaba",
               "Ambient",
+              "Ant Digital",
               "Baidu",
               "Amazon Bedrock",
               "Amazon Nova",
@@ -40647,9 +40679,11 @@
               "Ollama",
               "OpenAI",
               "OpenInference",
+              "Parallel",
               "Parasail",
               "ParetoAlpha",
               "Particle AI",
+              "Pearl Research",
               "Poolside",
               "PrimaLabs",
               "PrimeIntellect",
@@ -40692,35 +40726,6 @@
             "example": "OpenAI",
             "type": "string",
             "x-speakeasy-unknown-values": "allow"
-          },
-          "provider_sort_order_mode": {
-            "description": "Whether the workspace's saved provider order was applied ('enforce') or only logged ('shadow') for the request this attempt belongs to; only present when the workspace has a saved order",
-            "enum": [
-              "shadow",
-              "enforce"
-            ],
-            "example": "shadow",
-            "type": "string",
-            "x-speakeasy-unknown-values": "allow"
-          },
-          "provider_sort_order_rank": {
-            "anyOf": [
-              {
-                "exclusiveMinimum": true,
-                "minimum": 0,
-                "type": "integer"
-              },
-              {
-                "enum": [
-                  "order",
-                  "unlisted"
-                ],
-                "type": "string",
-                "x-speakeasy-unknown-values": "allow"
-              }
-            ],
-            "description": "Position of this attempt's provider in the workspace's saved provider order (1 is first), 'order' when the request's provider.order or a session pin placed it, or 'unlisted' when the saved order does not name it; only present when the workspace has a saved order",
-            "example": 1
           },
           "routed_service_tier": {
             "description": "The service tier this request was routed to (e.g. flex, priority). The tier actually applied and billed is determined by the provider response and may differ.",
@@ -41224,9 +41229,11 @@
         },
         "properties": {
           "max": {
+            "format": "double",
             "type": "number"
           },
           "min": {
+            "format": "double",
             "type": "number"
           },
           "type": {
@@ -41665,6 +41672,7 @@
           "bedrock-xai-responses-v1",
           "xai-responses-v1",
           "meta-responses-v1",
+          "openrouter-stealth-v1",
           "anthropic-claude-v1",
           "google-gemini-v1",
           null
@@ -42053,6 +42061,7 @@
           "message.input_image.image_url",
           "computer_call_output.output.image_url",
           "reasoning.encrypted_content",
+          "output.encrypted_content",
           "code_interpreter_call.outputs"
         ],
         "example": "file_search_call.results",
@@ -47904,7 +47913,7 @@
         },
         "properties": {
           "allow_safety_retention_google": {
-            "description": "Whether ZDR-only requests to google/* models may use endpoints that may retain prompts for safety monitoring. false allows only zero-retention endpoints. A guardrail can only be more restrictive than the account setting. Inherits the account setting when not provided.",
+            "description": "Whether ZDR-only requests to google/* models may also use Safety Retention endpoints, which may retain prompts and responses from any request, only to prevent abuse, and do not use them for training. false allows only ZDR endpoints. A guardrail can only be more restrictive than the account setting. Inherits the account setting when not provided.",
             "example": false,
             "type": [
               "boolean",
@@ -47912,7 +47921,7 @@
             ]
           },
           "allow_safety_retention_other": {
-            "description": "Whether ZDR-only requests to models outside the named providers (for example open-weight models on Vertex) may use endpoints that may retain prompts for safety monitoring. false allows only zero-retention endpoints. A guardrail can only be more restrictive than the account setting. Inherits the account setting when not provided.",
+            "description": "Whether ZDR-only requests to models outside the named providers (for example open-weight models on Vertex) may also use Safety Retention endpoints, which may retain prompts and responses from any request, only to prevent abuse, and do not use them for training. false allows only ZDR endpoints. A guardrail can only be more restrictive than the account setting. Inherits the account setting when not provided.",
             "example": false,
             "type": [
               "boolean",
@@ -48338,37 +48347,6 @@
         },
         "required": [
           "is_filtered_model_catalog_enabled"
-        ],
-        "type": "object"
-      },
-      "UpdatePrivateEndpointParametersRequest": {
-        "properties": {
-          "declared_parameters": {
-            "description": "Parameters the upstream supports beyond the tested ones. Replaces the earlier declaration; tested parameters stay. Order and repeated names are ignored, but the list holds at most as many entries as there are declarable parameters, repeats included. `tool_choice` requires `tools` to be tested or declared.",
-            "example": [
-              "temperature",
-              "seed"
-            ],
-            "items": {
-              "$ref": "#/components/schemas/PrivateEndpointDeclaredParameter"
-            },
-            "maxItems": 25,
-            "type": "array"
-          }
-        },
-        "required": [
-          "declared_parameters"
-        ],
-        "type": "object"
-      },
-      "UpdatePrivateEndpointPricingRequest": {
-        "properties": {
-          "pricing": {
-            "$ref": "#/components/schemas/PrivateEndpointPricing"
-          }
-        },
-        "required": [
-          "pricing"
         ],
         "type": "object"
       },
@@ -52268,7 +52246,7 @@
     },
     "/api/alpha/decisions": {
       "post": {
-        "description": "Submits a Decisions request to the Decisions router",
+        "description": "Asks a Decisions model typed questions (`noul`, `choice`, `score`, `box`) about the content in `state` and returns one typed answer per question with its probabilities. Images, audio and video go in `state` as `image_url`, `input_audio` and `video_url` parts; PNG and JPEG images can instead go once in `assets` and be referenced by key. Which question types, media parts and asset references an endpoint accepts depends on the provider; a request an endpoint cannot serve fails with `400` before anything is sent upstream. See the [Multimodal Decisions guide](/docs/guides/community/multimodal-decisions) for the per-provider table. Typed fields (text, numbers, dates, lists, estimates, forecasts) come from [`POST /api/alpha/extractions`](/docs/guides/community/extractions), which takes the same envelope with `fields` in place of `questions` (text `state` only; images and PDFs go in `assets`). Alpha: the shape may change.",
         "operationId": "createApiAlphaDecisions",
         "requestBody": {
           "content": {
@@ -55058,6 +55036,7 @@
                 "amazon-bedrock/claude-on-aws",
                 "amazon-nova",
                 "ambient",
+                "antdigital",
                 "anthropic",
                 "anthropic/2",
                 "arcee-ai",
@@ -55128,9 +55107,11 @@
                 "ollama",
                 "open-inference",
                 "openai",
+                "parallel",
                 "parasail",
                 "pareto-alpha",
                 "particle-ai",
+                "pearl-research",
                 "perceptron",
                 "perplexity",
                 "phala",
@@ -66851,6 +66832,17 @@
             }
           },
           {
+            "description": "Filter models by the request API paths they serve, as listed in each model's `endpoints` field. Comma-separated; a model must serve every listed path. Valid values: /api/v1/chat/completions, /api/v1/completions, /api/v1/messages, /api/v1/responses, /api/v1/embeddings, /api/v1/rerank, /api/alpha/decisions, /api/alpha/extractions, /api/v1/videos, /api/v1/audio/speech, /api/v1/audio/transcriptions, /api/v1/images, /api/v1/batches. When set without `output_modalities`, models of every output modality are considered (the companion `/api/alpha/extractions` route is served by text and decisions models alike).",
+            "in": "query",
+            "name": "endpoints",
+            "required": false,
+            "schema": {
+              "description": "Filter models by the request API paths they serve, as listed in each model's `endpoints` field. Comma-separated; a model must serve every listed path. Valid values: /api/v1/chat/completions, /api/v1/completions, /api/v1/messages, /api/v1/responses, /api/v1/embeddings, /api/v1/rerank, /api/alpha/decisions, /api/alpha/extractions, /api/v1/videos, /api/v1/audio/speech, /api/v1/audio/transcriptions, /api/v1/images, /api/v1/batches. When set without `output_modalities`, models of every output modality are considered (the companion `/api/alpha/extractions` route is served by text and decisions models alike).",
+              "example": "/api/alpha/extractions",
+              "type": "string"
+            }
+          },
+          {
             "description": "Minimum context length (tokens). Models with smaller context are excluded.",
             "in": "query",
             "name": "context",
@@ -70805,12 +70797,12 @@
         "operationId": "createPrivateEndpoint",
         "parameters": [
           {
-            "description": "Retry-safe create: a repeated create with the same key from the same organization returns the endpoint the first request created instead of creating another. The endpoint is returned as it is now. Reusing a key with a different request body (model, provider, base URL, upstream model ID, declared ZDR or region, pricing, or declared parameters) is rejected with 422 `idempotency_key_reused`. Declared parameters are compared as a set, so a retry that reorders or repeats a name replays the endpoint. `activate` and `max_completion_tokens` are not compared, and later edits to the endpoint do not affect the comparison.",
+            "description": "Retry-safe create: a repeated create with the same key from the same organization returns the endpoint the first request created instead of creating another. The endpoint is returned as it is now. Reusing a key with a different request body (model, provider, base URL, upstream model ID, declared ZDR or region, pricing, or declared parameters) is rejected with 422 `idempotency_key_reused`. Declared parameters are compared as a set, so a retry that reorders or repeats a name replays the endpoint. `activate` and `settings` are not compared, and later edits to the endpoint do not affect the comparison. `settings` is still validated before the replay, so a retry with invalid settings returns 400 `settings_invalid` instead of the endpoint.",
             "in": "header",
             "name": "idempotency-key",
             "required": false,
             "schema": {
-              "description": "Retry-safe create: a repeated create with the same key from the same organization returns the endpoint the first request created instead of creating another. The endpoint is returned as it is now. Reusing a key with a different request body (model, provider, base URL, upstream model ID, declared ZDR or region, pricing, or declared parameters) is rejected with 422 `idempotency_key_reused`. Declared parameters are compared as a set, so a retry that reorders or repeats a name replays the endpoint. `activate` and `max_completion_tokens` are not compared, and later edits to the endpoint do not affect the comparison.",
+              "description": "Retry-safe create: a repeated create with the same key from the same organization returns the endpoint the first request created instead of creating another. The endpoint is returned as it is now. Reusing a key with a different request body (model, provider, base URL, upstream model ID, declared ZDR or region, pricing, or declared parameters) is rejected with 422 `idempotency_key_reused`. Declared parameters are compared as a set, so a retry that reorders or repeats a name replays the endpoint. `activate` and `settings` are not compared, and later edits to the endpoint do not affect the comparison. `settings` is still validated before the replay, so a retry with invalid settings returns 400 `settings_invalid` instead of the endpoint.",
               "example": "wayfair-gpt-4o-eastus-2026-09",
               "maxLength": 255,
               "minLength": 1,
@@ -72094,412 +72086,6 @@
         }
       ]
     },
-    "/private-endpoints/{id}/parameters": {
-      "put": {
-        "deprecated": true,
-        "description": "Deprecated: send `declared_parameters` to `PATCH /private-endpoints/{id}` instead; this route behaves exactly like that call and will be removed. The body replaces the earlier declaration and is read as a set; `tested_parameters` stay. Returns 400 `parameters_invalid` when `tool_choice` is declared without `tools` being tested or declared. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
-        "operationId": "updatePrivateEndpointParameters",
-        "parameters": [
-          {
-            "description": "Stable identifier of the private endpoint.",
-            "in": "path",
-            "name": "id",
-            "required": true,
-            "schema": {
-              "description": "Stable identifier of the private endpoint.",
-              "example": "5b1c4c4e-7d0a-4a8e-9f3a-2d6c1b0e8a11",
-              "format": "uuid",
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdatePrivateEndpointParametersRequest"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PrivateEndpointResponse"
-                }
-              }
-            },
-            "description": "The endpoint with its new declared parameters"
-          },
-          "400": {
-            "content": {
-              "application/json": {
-                "example": {
-                  "error": {
-                    "code": 400,
-                    "message": "Invalid request parameters"
-                  }
-                },
-                "schema": {
-                  "$ref": "#/components/schemas/BadRequestResponse"
-                }
-              }
-            },
-            "description": "Bad Request - Invalid request parameters or malformed input"
-          },
-          "401": {
-            "content": {
-              "application/json": {
-                "example": {
-                  "error": {
-                    "code": 401,
-                    "message": "Missing Authentication header"
-                  }
-                },
-                "schema": {
-                  "$ref": "#/components/schemas/UnauthorizedResponse"
-                }
-              }
-            },
-            "description": "Unauthorized - Authentication required or invalid credentials"
-          },
-          "403": {
-            "content": {
-              "application/json": {
-                "example": {
-                  "error": {
-                    "code": 403,
-                    "message": "Only management keys can perform this operation"
-                  }
-                },
-                "schema": {
-                  "$ref": "#/components/schemas/ForbiddenResponse"
-                }
-              }
-            },
-            "description": "Forbidden - Authentication successful but insufficient permissions"
-          },
-          "404": {
-            "content": {
-              "application/json": {
-                "example": {
-                  "error": {
-                    "code": 404,
-                    "message": "Resource not found"
-                  }
-                },
-                "schema": {
-                  "$ref": "#/components/schemas/NotFoundResponse"
-                }
-              }
-            },
-            "description": "Not Found - Resource does not exist"
-          },
-          "408": {
-            "content": {
-              "application/json": {
-                "example": {
-                  "error": {
-                    "code": 408,
-                    "message": "Operation timed out. Please try again later."
-                  }
-                },
-                "schema": {
-                  "$ref": "#/components/schemas/RequestTimeoutResponse"
-                }
-              }
-            },
-            "description": "Request Timeout - Operation exceeded time limit"
-          },
-          "409": {
-            "content": {
-              "application/json": {
-                "example": {
-                  "error": {
-                    "code": 409,
-                    "message": "Resource conflict. Please try again later."
-                  }
-                },
-                "schema": {
-                  "$ref": "#/components/schemas/ConflictResponse"
-                }
-              }
-            },
-            "description": "Conflict - Resource conflict or concurrent modification"
-          },
-          "422": {
-            "content": {
-              "application/json": {
-                "example": {
-                  "error": {
-                    "code": 422,
-                    "message": "Invalid argument"
-                  }
-                },
-                "schema": {
-                  "$ref": "#/components/schemas/UnprocessableEntityResponse"
-                }
-              }
-            },
-            "description": "Unprocessable Entity - Semantic validation failure"
-          },
-          "500": {
-            "content": {
-              "application/json": {
-                "example": {
-                  "error": {
-                    "code": 500,
-                    "message": "Internal Server Error"
-                  }
-                },
-                "schema": {
-                  "$ref": "#/components/schemas/InternalServerResponse"
-                }
-              }
-            },
-            "description": "Internal Server Error - Unexpected server error"
-          },
-          "502": {
-            "content": {
-              "application/json": {
-                "example": {
-                  "error": {
-                    "code": 502,
-                    "message": "Provider returned error"
-                  }
-                },
-                "schema": {
-                  "$ref": "#/components/schemas/BadGatewayResponse"
-                }
-              }
-            },
-            "description": "Bad Gateway - Provider/upstream API failure"
-          }
-        },
-        "summary": "Set private endpoint supported parameters (deprecated)",
-        "tags": [
-          "Private Endpoints"
-        ],
-        "x-speakeasy-name-override": "updateParameters"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
-    },
-    "/private-endpoints/{id}/pricing": {
-      "put": {
-        "deprecated": true,
-        "description": "Deprecated: send `pricing` to `PATCH /private-endpoints/{id}` instead; this route behaves exactly like that call and will be removed. The body replaces the whole pricing object: omitting `cache_read` or `cache_write` reverts that rate to the provider pricing strategy default. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
-        "operationId": "updatePrivateEndpointPricing",
-        "parameters": [
-          {
-            "description": "Stable identifier of the private endpoint.",
-            "in": "path",
-            "name": "id",
-            "required": true,
-            "schema": {
-              "description": "Stable identifier of the private endpoint.",
-              "example": "5b1c4c4e-7d0a-4a8e-9f3a-2d6c1b0e8a11",
-              "format": "uuid",
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdatePrivateEndpointPricingRequest"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PrivateEndpointResponse"
-                }
-              }
-            },
-            "description": "The endpoint with its new pricing"
-          },
-          "400": {
-            "content": {
-              "application/json": {
-                "example": {
-                  "error": {
-                    "code": 400,
-                    "message": "Invalid request parameters"
-                  }
-                },
-                "schema": {
-                  "$ref": "#/components/schemas/BadRequestResponse"
-                }
-              }
-            },
-            "description": "Bad Request - Invalid request parameters or malformed input"
-          },
-          "401": {
-            "content": {
-              "application/json": {
-                "example": {
-                  "error": {
-                    "code": 401,
-                    "message": "Missing Authentication header"
-                  }
-                },
-                "schema": {
-                  "$ref": "#/components/schemas/UnauthorizedResponse"
-                }
-              }
-            },
-            "description": "Unauthorized - Authentication required or invalid credentials"
-          },
-          "403": {
-            "content": {
-              "application/json": {
-                "example": {
-                  "error": {
-                    "code": 403,
-                    "message": "Only management keys can perform this operation"
-                  }
-                },
-                "schema": {
-                  "$ref": "#/components/schemas/ForbiddenResponse"
-                }
-              }
-            },
-            "description": "Forbidden - Authentication successful but insufficient permissions"
-          },
-          "404": {
-            "content": {
-              "application/json": {
-                "example": {
-                  "error": {
-                    "code": 404,
-                    "message": "Resource not found"
-                  }
-                },
-                "schema": {
-                  "$ref": "#/components/schemas/NotFoundResponse"
-                }
-              }
-            },
-            "description": "Not Found - Resource does not exist"
-          },
-          "408": {
-            "content": {
-              "application/json": {
-                "example": {
-                  "error": {
-                    "code": 408,
-                    "message": "Operation timed out. Please try again later."
-                  }
-                },
-                "schema": {
-                  "$ref": "#/components/schemas/RequestTimeoutResponse"
-                }
-              }
-            },
-            "description": "Request Timeout - Operation exceeded time limit"
-          },
-          "409": {
-            "content": {
-              "application/json": {
-                "example": {
-                  "error": {
-                    "code": 409,
-                    "message": "Resource conflict. Please try again later."
-                  }
-                },
-                "schema": {
-                  "$ref": "#/components/schemas/ConflictResponse"
-                }
-              }
-            },
-            "description": "Conflict - Resource conflict or concurrent modification"
-          },
-          "422": {
-            "content": {
-              "application/json": {
-                "example": {
-                  "error": {
-                    "code": 422,
-                    "message": "Invalid argument"
-                  }
-                },
-                "schema": {
-                  "$ref": "#/components/schemas/UnprocessableEntityResponse"
-                }
-              }
-            },
-            "description": "Unprocessable Entity - Semantic validation failure"
-          },
-          "500": {
-            "content": {
-              "application/json": {
-                "example": {
-                  "error": {
-                    "code": 500,
-                    "message": "Internal Server Error"
-                  }
-                },
-                "schema": {
-                  "$ref": "#/components/schemas/InternalServerResponse"
-                }
-              }
-            },
-            "description": "Internal Server Error - Unexpected server error"
-          },
-          "502": {
-            "content": {
-              "application/json": {
-                "example": {
-                  "error": {
-                    "code": 502,
-                    "message": "Provider returned error"
-                  }
-                },
-                "schema": {
-                  "$ref": "#/components/schemas/BadGatewayResponse"
-                }
-              }
-            },
-            "description": "Bad Gateway - Provider/upstream API failure"
-          }
-        },
-        "summary": "Set private endpoint pricing (deprecated)",
-        "tags": [
-          "Private Endpoints"
-        ],
-        "x-speakeasy-name-override": "updatePricing"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
-    },
     "/private-endpoints/{id}/validate": {
       "post": {
         "description": "Send a live test request to the draft endpoint using the given workspace's BYOK credential for its provider. A passing validation is required before activation. Failed checks return 200 with `passed: false`. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
@@ -72784,7 +72370,7 @@
         "x-speakeasy-name-override": "list"
       },
       "post": {
-        "description": "Create a private, bring-your-own-key provider visible only to your organization. Use its slug as `provider_slug` when creating private endpoints. Requires both the private endpoints and the private providers entitlements. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
+        "description": "Create a private, bring-your-own-key provider visible only to your organization. Use its slug as `provider_slug` when creating private endpoints. Requires the private endpoints entitlement. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
         "operationId": "createPrivateProvider",
         "requestBody": {
           "content": {

@@ -24,6 +24,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning disable CS1591
         ReasoningEncryptedContent,
         #pragma warning restore CS1591
+        [EnumMember(Value = "output.encrypted_content")]
+        #pragma warning disable CS1591
+        OutputEncryptedContent,
+        #pragma warning restore CS1591
         [EnumMember(Value = "code_interpreter_call.outputs")]
         #pragma warning disable CS1591
         CodeInterpreterCallOutputs,

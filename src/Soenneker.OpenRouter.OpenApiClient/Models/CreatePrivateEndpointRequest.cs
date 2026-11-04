@@ -27,8 +27,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             else if (parseNode.GetChildNode("declared_region") is { } nullNodeDeclaredRegion && nullNodeDeclaredRegion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeclaredRegion = null;
             if (parseNode.GetChildNode("declared_zdr") is null) { _explicitNullValueDeclaredZdr = default!; _explicitNullProperties?.Remove("declared_zdr"); }
             else if (parseNode.GetChildNode("declared_zdr") is { } nullNodeDeclaredZdr && nullNodeDeclaredZdr.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeclaredZdr = null;
-            if (parseNode.GetChildNode("max_completion_tokens") is null) { _explicitNullValueMaxCompletionTokens = default!; _explicitNullProperties?.Remove("max_completion_tokens"); }
-            else if (parseNode.GetChildNode("max_completion_tokens") is { } nullNodeMaxCompletionTokens && nullNodeMaxCompletionTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxCompletionTokens = null;
             if (parseNode.GetChildNode("model_permaslug") is null) { _explicitNullValueModelPermaslug = default!; _explicitNullProperties?.Remove("model_permaslug"); }
             else if (parseNode.GetChildNode("model_permaslug") is { } nullNodeModelPermaslug && nullNodeModelPermaslug.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ModelPermaslug = null;
             if (parseNode.GetChildNode("pricing") is null) { _explicitNullValuePricing = default!; _explicitNullProperties?.Remove("pricing"); }
@@ -86,9 +84,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Attest that this deployment retains no prompt or completion data.</summary>
         public bool? DeclaredZdr { get => _explicitNullValueDeclaredZdr; set { _explicitNullValueDeclaredZdr = value; AdditionalData?.Remove("declared_zdr"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("declared_zdr"); else _explicitNullProperties?.Remove("declared_zdr"); } }
         private bool? _explicitNullValueDeclaredZdr = default!;
-        /// <summary>Cap on completion tokens per request. Requests asking for more skip this endpoint, and the default output length stays within it. When omitted, the cap is copied from the public endpoint for the same model and provider, if there is one.</summary>
-        public int? MaxCompletionTokens { get => _explicitNullValueMaxCompletionTokens; set { _explicitNullValueMaxCompletionTokens = value; AdditionalData?.Remove("max_completion_tokens"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_completion_tokens"); else _explicitNullProperties?.Remove("max_completion_tokens"); } }
-        private int? _explicitNullValueMaxCompletionTokens = default!;
         /// <summary>Permanent slug of the model this endpoint serves.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -169,7 +164,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "declared_parameters", n => { DeclaredParameters = n.GetCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointDeclaredParameter>()?.AsList(); } },
                 { "declared_region", n => { DeclaredRegion = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.CreatePrivateEndpointRequestDeclaredRegion>(global::Soenneker.OpenRouter.OpenApiClient.Models.CreatePrivateEndpointRequestDeclaredRegion.CreateFromDiscriminatorValue); } },
                 { "declared_zdr", n => { DeclaredZdr = n.GetBoolValue(); } },
-                { "max_completion_tokens", n => { MaxCompletionTokens = n.GetIntValue(); } },
                 { "model_permaslug", n => { ModelPermaslug = n.GetStringValue(); } },
                 { "pricing", n => { Pricing = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointPricing>(global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointPricing.CreateFromDiscriminatorValue); } },
                 { "provider_slug", n => { ProviderSlug = n.GetStringValue(); } },
@@ -189,7 +183,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointDeclaredParameter>("declared_parameters", DeclaredParameters);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.CreatePrivateEndpointRequestDeclaredRegion>("declared_region", DeclaredRegion);
             writer.WriteBoolValue("declared_zdr", DeclaredZdr);
-            writer.WriteIntValue("max_completion_tokens", MaxCompletionTokens);
             writer.WriteStringValue("model_permaslug", ModelPermaslug);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointPricing>("pricing", Pricing);
             writer.WriteStringValue("provider_slug", ProviderSlug);

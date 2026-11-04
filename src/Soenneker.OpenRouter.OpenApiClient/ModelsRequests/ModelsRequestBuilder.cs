@@ -47,7 +47,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.ModelsRequests
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ModelsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/models{?arch*,category*,context*,distillable*,input_modalities*,limit*,max_age_days*,max_agentic_index*,max_coding_index*,max_intelligence_index*,max_output_price*,max_price*,max_tool_success_rate*,min_age_days*,min_agentic_index*,min_coding_index*,min_intelligence_index*,min_output_price*,min_price*,min_tool_success_rate*,model_authors*,offset*,output_modalities*,providers*,q*,region*,sort*,supported_parameters*,zdr*}", pathParameters)
+        public ModelsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/models{?arch*,category*,context*,distillable*,endpoints*,input_modalities*,limit*,max_age_days*,max_agentic_index*,max_coding_index*,max_intelligence_index*,max_output_price*,max_price*,max_tool_success_rate*,min_age_days*,min_agentic_index*,min_coding_index*,min_intelligence_index*,min_output_price*,min_price*,min_tool_success_rate*,model_authors*,offset*,output_modalities*,providers*,q*,region*,sort*,supported_parameters*,zdr*}", pathParameters)
         {
         }
         /// <summary>
@@ -55,7 +55,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.ModelsRequests
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ModelsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/models{?arch*,category*,context*,distillable*,input_modalities*,limit*,max_age_days*,max_agentic_index*,max_coding_index*,max_intelligence_index*,max_output_price*,max_price*,max_tool_success_rate*,min_age_days*,min_agentic_index*,min_coding_index*,min_intelligence_index*,min_output_price*,min_price*,min_tool_success_rate*,model_authors*,offset*,output_modalities*,providers*,q*,region*,sort*,supported_parameters*,zdr*}", rawUrl)
+        public ModelsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/models{?arch*,category*,context*,distillable*,endpoints*,input_modalities*,limit*,max_age_days*,max_agentic_index*,max_coding_index*,max_intelligence_index*,max_output_price*,max_price*,max_tool_success_rate*,min_age_days*,min_agentic_index*,min_coding_index*,min_intelligence_index*,min_output_price*,min_price*,min_tool_success_rate*,model_authors*,offset*,output_modalities*,providers*,q*,region*,sort*,supported_parameters*,zdr*}", rawUrl)
         {
         }
         /// <summary>
@@ -152,6 +152,16 @@ namespace Soenneker.OpenRouter.OpenApiClient.ModelsRequests
             /// <summary>Filter by distillation capability. &quot;true&quot; returns only distillable models, &quot;false&quot; excludes them.</summary>
             [QueryParameter("distillable")]
             public global::Soenneker.OpenRouter.OpenApiClient.Models.GetModelsDistillableParameter? Distillable { get; set; }
+            /// <summary>Filter models by the request API paths they serve, as listed in each model&apos;s `endpoints` field. Comma-separated; a model must serve every listed path. Valid values: /api/v1/chat/completions, /api/v1/completions, /api/v1/messages, /api/v1/responses, /api/v1/embeddings, /api/v1/rerank, /api/alpha/decisions, /api/alpha/extractions, /api/v1/videos, /api/v1/audio/speech, /api/v1/audio/transcriptions, /api/v1/images, /api/v1/batches. When set without `output_modalities`, models of every output modality are considered (the companion `/api/alpha/extractions` route is served by text and decisions models alike).</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("endpoints")]
+            public string? Endpoints { get; set; }
+#nullable restore
+#else
+            [QueryParameter("endpoints")]
+            public string Endpoints { get; set; }
+#endif
             /// <summary>Filter models by input modality. Comma-separated list of: text, image, audio, file.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

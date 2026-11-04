@@ -39,6 +39,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning disable CS1591
         Ambient,
         #pragma warning restore CS1591
+        [EnumMember(Value = "antdigital")]
+        #pragma warning disable CS1591
+        Antdigital,
+        #pragma warning restore CS1591
         [EnumMember(Value = "anthropic")]
         #pragma warning disable CS1591
         Anthropic,
@@ -319,6 +323,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning disable CS1591
         Openai,
         #pragma warning restore CS1591
+        [EnumMember(Value = "parallel")]
+        #pragma warning disable CS1591
+        Parallel,
+        #pragma warning restore CS1591
         [EnumMember(Value = "parasail")]
         #pragma warning disable CS1591
         Parasail,
@@ -330,6 +338,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         [EnumMember(Value = "particle-ai")]
         #pragma warning disable CS1591
         ParticleAi,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "pearl-research")]
+        #pragma warning disable CS1591
+        PearlResearch,
         #pragma warning restore CS1591
         [EnumMember(Value = "perceptron")]
         #pragma warning disable CS1591
