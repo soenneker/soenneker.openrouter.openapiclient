@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
-    /// <summary>Role of the member in the workspace</summary>
+    /// <summary>Role of the member in the workspace. `viewer` and `restricted_viewer` are read-only: `viewer` can view the whole workspace, and `restricted_viewer` can view only their own activity.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum WorkspaceMemberRole
     {
@@ -14,6 +14,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         [EnumMember(Value = "member")]
         #pragma warning disable CS1591
         Member,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "viewer")]
+        #pragma warning disable CS1591
+        Viewer,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "restricted_viewer")]
+        #pragma warning disable CS1591
+        RestrictedViewer,
         #pragma warning restore CS1591
     }
 }

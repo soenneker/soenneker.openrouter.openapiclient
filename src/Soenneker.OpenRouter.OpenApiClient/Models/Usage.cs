@@ -22,6 +22,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             else if (parseNode.GetChildNode("cost") is { } nullNodeCost && nullNodeCost.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Cost = null;
             if (parseNode.GetChildNode("cost_details") is null) { _explicitNullValueCostDetails = default!; _explicitNullProperties?.Remove("cost_details"); }
             else if (parseNode.GetChildNode("cost_details") is { } nullNodeCostDetails && nullNodeCostDetails.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CostDetails = null;
+            if (parseNode.GetChildNode("deferred_tools_details") is null) { _explicitNullValueDeferredToolsDetails = default!; _explicitNullProperties?.Remove("deferred_tools_details"); }
+            else if (parseNode.GetChildNode("deferred_tools_details") is { } nullNodeDeferredToolsDetails && nullNodeDeferredToolsDetails.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeferredToolsDetails = null;
             if (parseNode.GetChildNode("input_tokens") is null) { _explicitNullValueInputTokens = default!; _explicitNullProperties?.Remove("input_tokens"); }
             else if (parseNode.GetChildNode("input_tokens") is { } nullNodeInputTokens && nullNodeInputTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InputTokens = null;
             if (parseNode.GetChildNode("input_tokens_details") is null) { _explicitNullValueInputTokensDetails = default!; _explicitNullProperties?.Remove("input_tokens_details"); }
@@ -52,6 +54,16 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public global::Soenneker.OpenRouter.OpenApiClient.Models.UsageAllOf2CostDetails CostDetails { get => _explicitNullValueCostDetails; set { _explicitNullValueCostDetails = value; AdditionalData?.Remove("cost_details"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cost_details"); else _explicitNullProperties?.Remove("cost_details"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.UsageAllOf2CostDetails _explicitNullValueCostDetails = default!;
+#endif
+        /// <summary>Totals across every upstream model call of a deferred-tools run. The native usage fields report only the final call; cost covers every call.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.DeferredToolsDetails? DeferredToolsDetails { get => _explicitNullValueDeferredToolsDetails; set { _explicitNullValueDeferredToolsDetails = value; AdditionalData?.Remove("deferred_tools_details"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deferred_tools_details"); else _explicitNullProperties?.Remove("deferred_tools_details"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.DeferredToolsDetails? _explicitNullValueDeferredToolsDetails = default!;
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.DeferredToolsDetails DeferredToolsDetails { get => _explicitNullValueDeferredToolsDetails; set { _explicitNullValueDeferredToolsDetails = value; AdditionalData?.Remove("deferred_tools_details"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deferred_tools_details"); else _explicitNullProperties?.Remove("deferred_tools_details"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.DeferredToolsDetails _explicitNullValueDeferredToolsDetails = default!;
 #endif
         /// <summary>The input_tokens property</summary>
         public int? InputTokens { get => _explicitNullValueInputTokens; set { _explicitNullValueInputTokens = value; AdditionalData?.Remove("input_tokens"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input_tokens"); else _explicitNullProperties?.Remove("input_tokens"); } }
@@ -122,6 +134,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             {
                 { "cost", n => { Cost = n.GetDoubleValue(); } },
                 { "cost_details", n => { CostDetails = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.UsageAllOf2CostDetails>(global::Soenneker.OpenRouter.OpenApiClient.Models.UsageAllOf2CostDetails.CreateFromDiscriminatorValue); } },
+                { "deferred_tools_details", n => { DeferredToolsDetails = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.DeferredToolsDetails>(global::Soenneker.OpenRouter.OpenApiClient.Models.DeferredToolsDetails.CreateFromDiscriminatorValue); } },
                 { "input_tokens", n => { InputTokens = n.GetIntValue(); } },
                 { "input_tokens_details", n => { InputTokensDetails = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAiResponsesUsageInputTokensDetails>(global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAiResponsesUsageInputTokensDetails.CreateFromDiscriminatorValue); } },
                 { "is_byok", n => { IsByok = n.GetBoolValue(); } },
@@ -140,6 +153,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDoubleValue("cost", Cost);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.UsageAllOf2CostDetails>("cost_details", CostDetails);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.DeferredToolsDetails>("deferred_tools_details", DeferredToolsDetails);
             writer.WriteIntValue("input_tokens", InputTokens);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAiResponsesUsageInputTokensDetails>("input_tokens_details", InputTokensDetails);
             writer.WriteBoolValue("is_byok", IsByok);

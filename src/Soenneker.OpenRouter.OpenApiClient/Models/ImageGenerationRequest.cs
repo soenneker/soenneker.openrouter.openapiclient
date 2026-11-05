@@ -22,8 +22,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             else if (parseNode.GetChildNode("aspect_ratio") is { } nullNodeAspectRatio && nullNodeAspectRatio.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AspectRatio = null;
             if (parseNode.GetChildNode("background") is null) { _explicitNullValueBackground = default!; _explicitNullProperties?.Remove("background"); }
             else if (parseNode.GetChildNode("background") is { } nullNodeBackground && nullNodeBackground.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Background = null;
+            if (parseNode.GetChildNode("frame_count") is null) { _explicitNullValueFrameCount = default!; _explicitNullProperties?.Remove("frame_count"); }
+            else if (parseNode.GetChildNode("frame_count") is { } nullNodeFrameCount && nullNodeFrameCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FrameCount = null;
+            if (parseNode.GetChildNode("frame_duration_ms") is null) { _explicitNullValueFrameDurationMs = default!; _explicitNullProperties?.Remove("frame_duration_ms"); }
+            else if (parseNode.GetChildNode("frame_duration_ms") is { } nullNodeFrameDurationMs && nullNodeFrameDurationMs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FrameDurationMs = null;
             if (parseNode.GetChildNode("input_references") is null) { _explicitNullValueInputReferences = default!; _explicitNullProperties?.Remove("input_references"); }
             else if (parseNode.GetChildNode("input_references") is { } nullNodeInputReferences && nullNodeInputReferences.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InputReferences = null;
+            if (parseNode.GetChildNode("markup") is null) { _explicitNullValueMarkup = default!; _explicitNullProperties?.Remove("markup"); }
+            else if (parseNode.GetChildNode("markup") is { } nullNodeMarkup && nullNodeMarkup.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Markup = null;
             if (parseNode.GetChildNode("model") is null) { _explicitNullValueModel = default!; _explicitNullProperties?.Remove("model"); }
             else if (parseNode.GetChildNode("model") is { } nullNodeModel && nullNodeModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Model = null;
             if (parseNode.GetChildNode("n") is null) { _explicitNullValueN = default!; _explicitNullProperties?.Remove("n"); }
@@ -62,6 +68,12 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Background treatment. `transparent` requires an output_format that supports alpha (png or webp).</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationRequestBackground? Background { get => _explicitNullValueBackground; set { _explicitNullValueBackground = value; AdditionalData?.Remove("background"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("background"); else _explicitNullProperties?.Remove("background"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationRequestBackground? _explicitNullValueBackground = default!;
+        /// <summary>Number of animation frames (2-64) when `output_format` is `gif`. Only honored by models that produce animations (OpenAI gpt-image-2.6, generations only); ignored otherwise.</summary>
+        public int? FrameCount { get => _explicitNullValueFrameCount; set { _explicitNullValueFrameCount = value; AdditionalData?.Remove("frame_count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("frame_count"); else _explicitNullProperties?.Remove("frame_count"); } }
+        private int? _explicitNullValueFrameCount = default!;
+        /// <summary>Display time of each animation frame in milliseconds (20-2000) when `output_format` is `gif`. Ignored by models that do not produce animations.</summary>
+        public int? FrameDurationMs { get => _explicitNullValueFrameDurationMs; set { _explicitNullValueFrameDurationMs = value; AdditionalData?.Remove("frame_duration_ms"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("frame_duration_ms"); else _explicitNullProperties?.Remove("frame_duration_ms"); } }
+        private int? _explicitNullValueFrameDurationMs = default!;
         /// <summary>Reference images to guide image-to-image generation, as base64 data URLs or HTTP(S) URLs.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -71,6 +83,16 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentPartImage> InputReferences { get => _explicitNullValueInputReferences; set { _explicitNullValueInputReferences = value; AdditionalData?.Remove("input_references"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input_references"); else _explicitNullProperties?.Remove("input_references"); } }
         private List<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentPartImage> _explicitNullValueInputReferences = default!;
+#endif
+        /// <summary>A transparent PNG overlay (arrows, circles, annotations) with the same dimensions as the first reference image, as a base64 data URL or HTTP(S) URL, guiding where an edit applies. Image-to-image requests only; honored by models with markup-guided editing (OpenAI gpt-image-2.6) and ignored otherwise.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationRequestMarkup? Markup { get => _explicitNullValueMarkup; set { _explicitNullValueMarkup = value; AdditionalData?.Remove("markup"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("markup"); else _explicitNullProperties?.Remove("markup"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationRequestMarkup? _explicitNullValueMarkup = default!;
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationRequestMarkup Markup { get => _explicitNullValueMarkup; set { _explicitNullValueMarkup = value; AdditionalData?.Remove("markup"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("markup"); else _explicitNullProperties?.Remove("markup"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationRequestMarkup _explicitNullValueMarkup = default!;
 #endif
         /// <summary>The image generation model to use</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -88,7 +110,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Compression level (0-100) for jpeg/webp output. Ignored by providers without a compression knob; providers that honor it may reject it with other output formats (e.g. OpenAI requires output_format &quot;jpeg&quot; or &quot;webp&quot;).</summary>
         public int? OutputCompression { get => _explicitNullValueOutputCompression; set { _explicitNullValueOutputCompression = value; AdditionalData?.Remove("output_compression"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("output_compression"); else _explicitNullProperties?.Remove("output_compression"); } }
         private int? _explicitNullValueOutputCompression = default!;
-        /// <summary>Encoding of the returned image bytes. Most models produce raster formats (png, jpeg, webp). SVG is supported by vectorization models (e.g. Quiver) — the SVG markup is UTF-8 base64-encoded in `b64_json`.</summary>
+        /// <summary>Encoding of the returned image bytes. Most models produce raster formats (png, jpeg, webp). SVG is supported by vectorization models (e.g. Quiver) — the SVG markup is UTF-8 base64-encoded in `b64_json`. GIF produces an animation on models that support it (OpenAI gpt-image-2.6; see `frame_count`).</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationRequestOutputFormat? OutputFormat { get => _explicitNullValueOutputFormat; set { _explicitNullValueOutputFormat = value; AdditionalData?.Remove("output_format"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("output_format"); else _explicitNullProperties?.Remove("output_format"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationRequestOutputFormat? _explicitNullValueOutputFormat = default!;
         /// <summary>Text description of the desired image</summary>
@@ -190,7 +212,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             {
                 { "aspect_ratio", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationRequestAspectRatio>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueAspectRatio = default; _explicitNullProperties?.Remove("aspect_ratio"); AdditionalData["aspect_ratio"] = unknown; } else { AspectRatio = parsed; AdditionalData.Remove("aspect_ratio"); } } },
                 { "background", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationRequestBackground>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueBackground = default; _explicitNullProperties?.Remove("background"); AdditionalData["background"] = unknown; } else { Background = parsed; AdditionalData.Remove("background"); } } },
+                { "frame_count", n => { FrameCount = n.GetIntValue(); } },
+                { "frame_duration_ms", n => { FrameDurationMs = n.GetIntValue(); } },
                 { "input_references", n => { InputReferences = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentPartImage>(global::Soenneker.OpenRouter.OpenApiClient.Models.ContentPartImage.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "markup", n => { Markup = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationRequestMarkup>(global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationRequestMarkup.CreateFromDiscriminatorValue); } },
                 { "model", n => { Model = n.GetStringValue(); } },
                 { "n", n => { N = n.GetIntValue(); } },
                 { "output_compression", n => { OutputCompression = n.GetIntValue(); } },
@@ -216,7 +241,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationRequestAspectRatio>("aspect_ratio", AspectRatio);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationRequestBackground>("background", Background);
+            writer.WriteIntValue("frame_count", FrameCount);
+            writer.WriteIntValue("frame_duration_ms", FrameDurationMs);
             writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentPartImage>("input_references", InputReferences);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationRequestMarkup>("markup", Markup);
             writer.WriteStringValue("model", Model);
             writer.WriteIntValue("n", N);
             writer.WriteIntValue("output_compression", OutputCompression);

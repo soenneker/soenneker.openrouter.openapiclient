@@ -84,7 +84,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public string Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; AdditionalData?.Remove("model"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
         private string _explicitNullValueModel = default!;
 #endif
-        /// <summary>Provider configuration: data policy routing preferences (`zdr`, `data_collection`) and provider-specific passthrough options</summary>
+        /// <summary>Provider configuration: provider routing preferences (`order`, `only`, `ignore`, `allow_fallbacks`), data policy routing preferences (`zdr`, `data_collection`) and provider-specific passthrough options</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequestProvider? Provider { get => _explicitNullValueProvider; set { _explicitNullValueProvider = value; AdditionalData?.Remove("provider"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("provider"); else _explicitNullProperties?.Remove("provider"); } }

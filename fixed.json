@@ -27077,7 +27077,8 @@
                 "file_search_call": "#/components/schemas/AlignmentResponsesRejectedItemOutputItemFileSearchCall",
                 "image_generation_call": "#/components/schemas/AlignmentResponsesRejectedItemOutputItemImageGenerationCall",
                 "apply_patch_call": "#/components/schemas/AlignmentResponsesRejectedItemOutputItemApplyPatchCall",
-                "code_interpreter_call": "#/components/schemas/AlignmentResponsesRejectedItemOutputItemCodeInterpreterCall"
+                "code_interpreter_call": "#/components/schemas/AlignmentResponsesRejectedItemOutputItemCodeInterpreterCall",
+                "compaction": "#/components/schemas/AlignmentResponsesRejectedItemOutputItemCompaction"
               }
             },
             "x-client-array-item-dispatch": true
@@ -31980,6 +31981,7 @@
           "perplexity",
           "phala",
           "poolside",
+          "primalabs",
           "primeintellect",
           "quiver",
           "recraft",
@@ -32374,6 +32376,10 @@
             {
               "value": "poolside",
               "name": "Poolside"
+            },
+            {
+              "value": "primalabs",
+              "name": "Primalabs"
             },
             {
               "value": "primeintellect",
@@ -34026,6 +34032,10 @@
             "description": "Breakdown of upstream inference costs",
             "$ref": "#/components/schemas/CostDetails"
           },
+          "deferred_tools_details": {
+            "description": "Totals across every upstream model call of a deferred-tools run. The native usage fields report only the final call; cost covers every call.",
+            "$ref": "#/components/schemas/DeferredToolsDetails"
+          },
           "is_byok": {
             "type": "boolean",
             "description": "Whether a request was made using a Bring Your Own Key configuration"
@@ -34391,6 +34401,21 @@
         "example": {
           "encrypted_content": "enc_abc123...",
           "type": "compaction"
+        }
+      },
+      "CompactionTriggerItem": {
+        "required": [
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/CompactionTriggerType"
+          }
+        },
+        "description": "Asks the model to compact the preceding input into a compaction item",
+        "example": {
+          "type": "compaction_trigger"
         }
       },
       "CompoundFilter": {
@@ -36325,6 +36350,13 @@
         ],
         "type": "object",
         "properties": {
+          "annotations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DecisionsUrlCitationAnnotation"
+            },
+            "description": "Sources for the request as a whole, when the provider returns them. Not attributed to individual answers."
+          },
           "answers": {
             "$ref": "#/components/schemas/DecisionsResponseAnswersProperty"
           },
@@ -36341,6 +36373,22 @@
             "$ref": "#/components/schemas/DecisionsResponseUsage"
           }
         }
+      },
+      "DecisionsUrlCitationAnnotation": {
+        "required": [
+          "type",
+          "url_citation"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/UrlCitationType"
+          },
+          "url_citation": {
+            "$ref": "#/components/schemas/DecisionsUrlCitationAnnotationUrlCitation"
+          }
+        },
+        "description": "A web source the provider used for this request. Applies to the whole request, not to a specific answer."
       },
       "DecisionsUsageInputTokensDetails": {
         "required": [
@@ -36492,7 +36540,7 @@
         "type": "object",
         "properties": {
           "profile": {
-            "$ref": "#/components/schemas/PortableProfile"
+            "$ref": "#/components/schemas/DeferredToolsControlProfile"
           },
           "protocol": {
             "$ref": "#/components/schemas/V1Protocol"
@@ -36514,6 +36562,41 @@
             "type": "bm25"
           },
           "validation": "runtime"
+        }
+      },
+      "DeferredToolsDetails": {
+        "required": [
+          "turns",
+          "prompt_tokens",
+          "completion_tokens",
+          "total_tokens"
+        ],
+        "type": "object",
+        "properties": {
+          "completion_tokens": {
+            "type": "integer",
+            "description": "Completion tokens summed over every upstream call"
+          },
+          "prompt_tokens": {
+            "type": "integer",
+            "description": "Prompt tokens summed over every upstream call"
+          },
+          "total_tokens": {
+            "type": "integer",
+            "description": "Sum of the above two fields"
+          },
+          "turns": {
+            "exclusiveMinimum": 0,
+            "type": "integer",
+            "description": "Upstream model calls the run made"
+          }
+        },
+        "description": "Totals across every upstream model call of a deferred-tools run. The native usage fields report only the final call; cost covers every call.",
+        "example": {
+          "completion_tokens": 180,
+          "prompt_tokens": 2400,
+          "total_tokens": 2580,
+          "turns": 2
         }
       },
       "DeferredToolsSearchStrategy": {
@@ -37016,6 +37099,29 @@
           },
           "value": {
             "$ref": "#/components/schemas/ExtractionEstimateAnswerValue"
+          }
+        }
+      },
+      "Extractions": {
+        "required": [
+          "latency",
+          "throughput",
+          "request_count"
+        ],
+        "type": "object",
+        "properties": {
+          "latency": {
+            "$ref": "#/components/schemas/ExtractionsLatency"
+          },
+          "request_count": {
+            "type": [
+              "null",
+              "integer"
+            ],
+            "description": "Total requests admitted for this workload in the window."
+          },
+          "throughput": {
+            "$ref": "#/components/schemas/ExtractionsThroughput"
           }
         }
       },
@@ -39166,6 +39272,16 @@
           "background": {
             "$ref": "#/components/schemas/ImageGenerationRequestBackground"
           },
+          "frame_count": {
+            "type": "integer",
+            "description": "Number of animation frames (2-64) when \u0060output_format\u0060 is \u0060gif\u0060. Only honored by models that produce animations (OpenAI gpt-image-2.6, generations only); ignored otherwise.",
+            "example": 8
+          },
+          "frame_duration_ms": {
+            "type": "integer",
+            "description": "Display time of each animation frame in milliseconds (20-2000) when \u0060output_format\u0060 is \u0060gif\u0060. Ignored by models that do not produce animations.",
+            "example": 100
+          },
           "input_references": {
             "maxItems": 16,
             "type": "array",
@@ -39173,6 +39289,9 @@
               "$ref": "#/components/schemas/ContentPartImage"
             },
             "description": "Reference images to guide image-to-image generation, as base64 data URLs or HTTP(S) URLs."
+          },
+          "markup": {
+            "$ref": "#/components/schemas/ImageGenerationRequestMarkup"
           },
           "model": {
             "type": "string",
@@ -47426,6 +47545,34 @@
           "type": "openrouter:code_interpreter"
         }
       },
+      "OutputCompactionItem": {
+        "required": [
+          "type",
+          "id",
+          "encrypted_content"
+        ],
+        "type": "object",
+        "properties": {
+          "created_by": {
+            "type": "string"
+          },
+          "encrypted_content": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "type": {
+            "$ref": "#/components/schemas/CompactionType"
+          }
+        },
+        "description": "A compaction output item carrying the encrypted summary of the compacted conversation. Emitted in reply to a \u0060compaction_trigger\u0060 input item.",
+        "example": {
+          "encrypted_content": "enc_abc123...",
+          "id": "cmp_abc123",
+          "type": "compaction"
+        }
+      },
       "OutputComputerCallItem": {
         "required": [
           "type",
@@ -48026,6 +48173,9 @@
             "$ref": "#/components/schemas/OutputApplyPatchCallItem"
           },
           {
+            "$ref": "#/components/schemas/OutputCompactionItem"
+          },
+          {
             "$ref": "#/components/schemas/OutputShellCallItem"
           },
           {
@@ -48044,7 +48194,10 @@
             "$ref": "#/components/schemas/OutputMemoryServerToolItem"
           },
           {
-            "$ref": "#/components/schemas/OutputMcpServerToolItem"
+            "$ref": "#/components/schemas/McpListToolsItem"
+          },
+          {
+            "$ref": "#/components/schemas/McpCallItem"
           },
           {
             "$ref": "#/components/schemas/OutputSearchModelsServerToolItem"
@@ -48082,11 +48235,14 @@
           "mapping": {
             "apply_patch_call": "#/components/schemas/OutputApplyPatchCallItem",
             "code_interpreter_call": "#/components/schemas/OutputCodeInterpreterCallItem",
+            "compaction": "#/components/schemas/OutputCompactionItem",
             "computer_call": "#/components/schemas/OutputComputerCallItem",
             "custom_tool_call": "#/components/schemas/OutputCustomToolCallItem",
             "file_search_call": "#/components/schemas/OutputFileSearchCallItem",
             "function_call": "#/components/schemas/OutputFunctionCallItem",
             "image_generation_call": "#/components/schemas/OutputImageGenerationCallItem",
+            "mcp_call": "#/components/schemas/McpCallItem",
+            "mcp_list_tools": "#/components/schemas/McpListToolsItem",
             "message": "#/components/schemas/OutputMessageItem",
             "openrouter:advisor": "#/components/schemas/OutputAdvisorServerToolItem",
             "openrouter:apply_patch": "#/components/schemas/OutputApplyPatchServerToolItem",
@@ -48100,7 +48256,6 @@
             "openrouter:files": "#/components/schemas/OutputFilesServerToolItem",
             "openrouter:fusion": "#/components/schemas/OutputFusionServerToolItem",
             "openrouter:image_generation": "#/components/schemas/OutputImageGenerationServerToolItem",
-            "openrouter:mcp": "#/components/schemas/OutputMcpServerToolItem",
             "openrouter:memory": "#/components/schemas/OutputMemoryServerToolItem",
             "openrouter:shell": "#/components/schemas/OutputShellServerToolItem",
             "openrouter:subagent": "#/components/schemas/OutputSubagentServerToolItem",
@@ -48158,38 +48313,6 @@
           "id": "search-abc123",
           "status": "completed",
           "type": "web_search_call"
-        }
-      },
-      "OutputMcpServerToolItem": {
-        "required": [
-          "status",
-          "type"
-        ],
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "serverLabel": {
-            "type": "string"
-          },
-          "status": {
-            "$ref": "#/components/schemas/ToolCallStatus"
-          },
-          "toolName": {
-            "type": "string"
-          },
-          "type": {
-            "$ref": "#/components/schemas/OpenrouterColonMcpType"
-          }
-        },
-        "description": "An openrouter:mcp server tool output item",
-        "example": {
-          "id": "mcp_tmp_abc123",
-          "serverLabel": "my-server",
-          "status": "completed",
-          "toolName": "get_data",
-          "type": "openrouter:mcp"
         }
       },
       "OutputMemoryServerToolItem": {
@@ -48831,10 +48954,33 @@
         ],
         "type": "object",
         "properties": {
+          "arguments": {
+            "type": "string",
+            "description": "The JSON arguments of the model call, verbatim. Replaying the item reuses them.",
+            "example": "{\u0022query\u0022:\u0022weather tools\u0022}"
+          },
+          "call_id": {
+            "type": "string",
+            "description": "The ID of the model call that ran the search. Replaying the item reuses it.",
+            "example": "call_search_1"
+          },
+          "catalog_index": {
+            "type": "string",
+            "description": "The deferred-tool index the router showed the model with a pre-search, listing tool sources and names. Replaying the item shows the same index.",
+            "example": "Deferred tools, found with tool_search and called with tool_exec:\nSources: mcp__sentry (12)."
+          },
           "error": {
             "type": "string",
             "description": "The error message when the tool call failed before producing a result. Set together with \u0060status: \u0027failed\u0027\u0060; absent on a successful call.",
             "example": "Tool execution failed"
+          },
+          "format": {
+            "$ref": "#/components/schemas/CompactFormat"
+          },
+          "hint": {
+            "type": "string",
+            "description": "The guidance the model got when the search matched no tools.",
+            "example": "No tools matched. Search again with other keywords, or load tools by exact name with \u0022select:Name1,Name2\u0022."
           },
           "id": {
             "type": "string"
@@ -48850,6 +48996,17 @@
           },
           "status": {
             "$ref": "#/components/schemas/FailableToolCallStatus"
+          },
+          "turn_call_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The IDs of every tool call in the model response that ran the search, in order. Replaying the item keeps those calls in one turn.",
+            "example": [
+              "call_search_1",
+              "call_exec_1"
+            ]
           },
           "type": {
             "$ref": "#/components/schemas/OpenrouterColonToolSearchType"
@@ -49387,6 +49544,9 @@
           },
           "embeddings": {
             "$ref": "#/components/schemas/Embeddings"
+          },
+          "extractions": {
+            "$ref": "#/components/schemas/Extractions"
           },
           "image_generation": {
             "$ref": "#/components/schemas/ImageGeneration"
@@ -50370,7 +50530,8 @@
               "null",
               "string"
             ],
-            "description": "Model the upstream reported serving, when it differs from the request."
+            "description": "Deprecated: validation no longer compares the model the upstream reports, so this field is never returned.",
+            "deprecated": true
           },
           "name": {
             "type": "string",
@@ -55230,7 +55391,24 @@
         "example": "Hello world"
       },
       "SpeechInputReference": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/SpeechInputReferenceAudio"
+          },
+          {
+            "$ref": "#/components/schemas/SpeechInputReferenceText"
+          },
+          {
+            "$ref": "#/components/schemas/SpeechInputReferenceImage"
+          }
+        ],
         "description": "Reference content part for stateless voice cloning or voice design",
+        "example": {
+          "input_audio": {
+            "data": "data:audio/wav;base64,UklGRuQXDABXQVZF..."
+          },
+          "type": "input_audio"
+        },
         "x-client-original-discriminator": {
           "propertyName": "type",
           "mapping": {
@@ -55242,50 +55420,34 @@
         "discriminator": {
           "propertyName": "type",
           "mapping": {
-            "input_audio": "#/components/schemas/SpeechInputReferenceAudioVariant",
-            "text": "#/components/schemas/SpeechInputReferenceTextVariant",
-            "image_url": "#/components/schemas/SpeechInputReferenceImageVariant"
+            "input_audio": "#/components/schemas/SpeechInputReferenceAudio",
+            "text": "#/components/schemas/SpeechInputReferenceText",
+            "image_url": "#/components/schemas/SpeechInputReferenceImage"
           }
-        },
-        "x-client-original-tagged-union": {
-          "oneOf": [
-            {
-              "$ref": "#/components/schemas/SpeechInputReferenceAudio"
-            },
-            {
-              "$ref": "#/components/schemas/SpeechInputReferenceText"
-            },
-            {
-              "$ref": "#/components/schemas/SpeechInputReferenceImage"
-            }
-          ],
-          "description": "Reference content part for stateless voice cloning or voice design",
-          "x-client-original-discriminator": {
-            "propertyName": "type",
-            "mapping": {
-              "image_url": "#/components/schemas/SpeechInputReferenceImage",
-              "input_audio": "#/components/schemas/SpeechInputReferenceAudio",
-              "text": "#/components/schemas/SpeechInputReferenceText"
-            }
-          },
-          "discriminator": {
-            "propertyName": "type",
-            "mapping": {
-              "input_audio": "#/components/schemas/SpeechInputReferenceAudio",
-              "text": "#/components/schemas/SpeechInputReferenceText",
-              "image_url": "#/components/schemas/SpeechInputReferenceImage"
-            }
-          }
-        },
+        }
+      },
+      "SpeechInputReferenceAudio": {
+        "required": [
+          "type",
+          "input_audio"
+        ],
         "type": "object",
         "properties": {
+          "input_audio": {
+            "description": "Reference audio input object",
+            "$ref": "#/components/schemas/SpeechInputReferenceAudioInput"
+          },
           "type": {
-            "type": "string"
+            "$ref": "#/components/schemas/InputAudioType"
           }
         },
-        "required": [
-          "type"
-        ]
+        "description": "Reference audio input for stateless voice cloning. Up to three parts per request; the Nth audio part is addressable from \u0060input\u0060 as \u0060@AudioN\u0060 on providers that support multiple references.",
+        "example": {
+          "input_audio": {
+            "data": "data:audio/wav;base64,UklGRuQXDABXQVZF..."
+          },
+          "type": "input_audio"
+        }
       },
       "SpeechInputReferenceAudioInput": {
         "type": "object",
@@ -55310,7 +55472,33 @@
             "x-client-original-format": "uri"
           }
         },
-        "description": "Reference audio input object"
+        "description": "Reference audio input object",
+        "example": {
+          "data": "data:audio/wav;base64,UklGRuQXDABXQVZF..."
+        }
+      },
+      "SpeechInputReferenceImage": {
+        "required": [
+          "type",
+          "image_url"
+        ],
+        "type": "object",
+        "properties": {
+          "image_url": {
+            "description": "Reference image input object",
+            "$ref": "#/components/schemas/SpeechInputReferenceImageInput"
+          },
+          "type": {
+            "$ref": "#/components/schemas/ImageUrlType"
+          }
+        },
+        "description": "Reference image. On its own it describes the desired voice (voice design); alongside an \u0060input_audio\u0060 part it is a scene image describing the setting the cloned voice speaks in. At most one per request. Only routed to endpoints that support image references.",
+        "example": {
+          "image_url": {
+            "url": "data:image/png;base64,iVBORw0KGgo..."
+          },
+          "type": "image_url"
+        }
       },
       "SpeechInputReferenceImageInput": {
         "required": [
@@ -55326,7 +55514,33 @@
             "example": "data:image/png;base64,iVBORw0KGgo..."
           }
         },
-        "description": "Reference image input object"
+        "description": "Reference image input object",
+        "example": {
+          "url": "data:image/png;base64,iVBORw0KGgo..."
+        }
+      },
+      "SpeechInputReferenceText": {
+        "required": [
+          "type",
+          "text"
+        ],
+        "type": "object",
+        "properties": {
+          "text": {
+            "maxLength": 10000,
+            "type": "string",
+            "description": "Transcript of an \u0060input_audio\u0060 part. With a single clip it may appear before or after the clip; with multiple clips it must immediately follow the clip it transcribes.",
+            "example": "I used to rule the world."
+          },
+          "type": {
+            "$ref": "#/components/schemas/TextType"
+          }
+        },
+        "description": "Transcript of an \u0060input_audio\u0060 part",
+        "example": {
+          "text": "I used to rule the world.",
+          "type": "text"
+        }
       },
       "SpeechRequest": {
         "required": [
@@ -58576,6 +58790,10 @@
           "cost_details": {
             "$ref": "#/components/schemas/UsageAllOf2CostDetails"
           },
+          "deferred_tools_details": {
+            "description": "Totals across every upstream model call of a deferred-tools run. The native usage fields report only the final call; cost covers every call.",
+            "$ref": "#/components/schemas/DeferredToolsDetails"
+          },
           "is_byok": {
             "type": "boolean",
             "description": "Whether a request was made using a Bring Your Own Key configuration"
@@ -59101,6 +59319,7 @@
             "exclusiveMinimum": 0,
             "type": "number",
             "description": "Upscale factor for video upscaling models only. This parameter is not supported by video generation models.",
+            "format": "double",
             "example": 2
           },
           "user": {
@@ -60618,6 +60837,7 @@
           "mapping": {
             "apply_patch_call": "#/components/schemas/OutputItemApplyPatchCall",
             "code_interpreter_call": "#/components/schemas/OutputItemCodeInterpreterCall",
+            "compaction": "#/components/schemas/OutputItemCompaction",
             "custom_tool_call": "#/components/schemas/OutputItemCustomToolCall",
             "file_search_call": "#/components/schemas/OutputItemFileSearchCall",
             "function_call": "#/components/schemas/OutputItemFunctionCall",
@@ -60638,7 +60858,8 @@
             "file_search_call": "#/components/schemas/AlignmentResponsesRejectedItemOutputItemFileSearchCall",
             "image_generation_call": "#/components/schemas/AlignmentResponsesRejectedItemOutputItemImageGenerationCall",
             "apply_patch_call": "#/components/schemas/AlignmentResponsesRejectedItemOutputItemApplyPatchCall",
-            "code_interpreter_call": "#/components/schemas/AlignmentResponsesRejectedItemOutputItemCodeInterpreterCall"
+            "code_interpreter_call": "#/components/schemas/AlignmentResponsesRejectedItemOutputItemCodeInterpreterCall",
+            "compaction": "#/components/schemas/AlignmentResponsesRejectedItemOutputItemCompaction"
           }
         },
         "x-client-original-tagged-union": {
@@ -60669,6 +60890,9 @@
             },
             {
               "$ref": "#/components/schemas/OutputItemCodeInterpreterCall"
+            },
+            {
+              "$ref": "#/components/schemas/OutputItemCompaction"
             }
           ],
           "x-client-original-discriminator": {
@@ -60676,6 +60900,7 @@
             "mapping": {
               "apply_patch_call": "#/components/schemas/OutputItemApplyPatchCall",
               "code_interpreter_call": "#/components/schemas/OutputItemCodeInterpreterCall",
+              "compaction": "#/components/schemas/OutputItemCompaction",
               "custom_tool_call": "#/components/schemas/OutputItemCustomToolCall",
               "file_search_call": "#/components/schemas/OutputItemFileSearchCall",
               "function_call": "#/components/schemas/OutputItemFunctionCall",
@@ -60696,7 +60921,8 @@
               "file_search_call": "#/components/schemas/OutputItemFileSearchCall",
               "image_generation_call": "#/components/schemas/OutputItemImageGenerationCall",
               "apply_patch_call": "#/components/schemas/OutputItemApplyPatchCall",
-              "code_interpreter_call": "#/components/schemas/OutputItemCodeInterpreterCall"
+              "code_interpreter_call": "#/components/schemas/OutputItemCodeInterpreterCall",
+              "compaction": "#/components/schemas/OutputItemCompaction"
             }
           }
         },
@@ -62617,6 +62843,9 @@
           {
             "type": "array",
             "items": {}
+          },
+          {
+            "type": "null"
           }
         ],
         "description": "A plain string, or a JSON object or array of structured guidance."
@@ -62632,6 +62861,9 @@
           {
             "type": "array",
             "items": {}
+          },
+          {
+            "type": "null"
           }
         ],
         "description": "A plain string, or a JSON object or array of structured guidance."
@@ -62647,6 +62879,9 @@
           {
             "type": "array",
             "items": {}
+          },
+          {
+            "type": "null"
           }
         ],
         "description": "A plain string, or a JSON object or array of structured guidance."
@@ -62662,6 +62897,9 @@
           {
             "type": "array",
             "items": {}
+          },
+          {
+            "type": "null"
           }
         ],
         "description": "A plain string, or a JSON object or array of structured guidance."
@@ -62851,13 +63089,14 @@
         "description": "The content to evaluate: a plain string, or a JSON object or array of related context."
       },
       "DecisionsResponseAnswersAdditionalProperties": {
-        "description": "A Decisions answer using a boolean, choice, score, or image bounding-box evaluation.",
+        "description": "A Decisions answer using a boolean, choice, score, or image bounding-box evaluation, or a refusal of that question.",
         "x-client-original-discriminator": {
           "propertyName": "type",
           "mapping": {
             "box": "#/components/schemas/DecisionsBoxAnswer",
             "choice": "#/components/schemas/DecisionsChoiceAnswer",
             "noul": "#/components/schemas/DecisionsNoulAnswer",
+            "refusal": "#/components/schemas/DecisionsRefusalAnswer",
             "score": "#/components/schemas/DecisionsScoreAnswer"
           }
         },
@@ -62867,7 +63106,8 @@
             "noul": "#/components/schemas/DecisionsResponseAnswersAdditionalPropertiesDecisionsNoulAnswer",
             "choice": "#/components/schemas/DecisionsResponseAnswersAdditionalPropertiesDecisionsChoiceAnswer",
             "score": "#/components/schemas/DecisionsResponseAnswersAdditionalPropertiesDecisionsScoreAnswer",
-            "box": "#/components/schemas/DecisionsResponseAnswersAdditionalPropertiesDecisionsBoxAnswer"
+            "box": "#/components/schemas/DecisionsResponseAnswersAdditionalPropertiesDecisionsBoxAnswer",
+            "refusal": "#/components/schemas/DecisionsResponseAnswersAdditionalPropertiesDecisionsRefusalAnswer"
           }
         },
         "x-client-original-tagged-union": {
@@ -62883,15 +63123,19 @@
             },
             {
               "$ref": "#/components/schemas/DecisionsBoxAnswer"
+            },
+            {
+              "$ref": "#/components/schemas/DecisionsRefusalAnswer"
             }
           ],
-          "description": "A Decisions answer using a boolean, choice, score, or image bounding-box evaluation.",
+          "description": "A Decisions answer using a boolean, choice, score, or image bounding-box evaluation, or a refusal of that question.",
           "x-client-original-discriminator": {
             "propertyName": "type",
             "mapping": {
               "box": "#/components/schemas/DecisionsBoxAnswer",
               "choice": "#/components/schemas/DecisionsChoiceAnswer",
               "noul": "#/components/schemas/DecisionsNoulAnswer",
+              "refusal": "#/components/schemas/DecisionsRefusalAnswer",
               "score": "#/components/schemas/DecisionsScoreAnswer"
             }
           },
@@ -62901,7 +63145,8 @@
               "noul": "#/components/schemas/DecisionsNoulAnswer",
               "choice": "#/components/schemas/DecisionsChoiceAnswer",
               "score": "#/components/schemas/DecisionsScoreAnswer",
-              "box": "#/components/schemas/DecisionsBoxAnswer"
+              "box": "#/components/schemas/DecisionsBoxAnswer",
+              "refusal": "#/components/schemas/DecisionsRefusalAnswer"
             }
           }
         },
@@ -62956,6 +63201,9 @@
           {
             "type": "array",
             "items": {}
+          },
+          {
+            "type": "null"
           }
         ],
         "description": "A plain string, or a JSON object or array of structured guidance."
@@ -63172,6 +63420,90 @@
             "$ref": "#/components/schemas/ExtractionForecastFieldStepAnyOf3"
           }
         ]
+      },
+      "ExtractionsLatency": {
+        "required": [
+          "p50",
+          "p75",
+          "p90",
+          "p99"
+        ],
+        "type": "object",
+        "properties": {
+          "p50": {
+            "type": "number",
+            "description": "Median (50th percentile)",
+            "format": "double",
+            "example": 25.5
+          },
+          "p75": {
+            "type": "number",
+            "description": "75th percentile",
+            "format": "double",
+            "example": 35.2
+          },
+          "p90": {
+            "type": "number",
+            "description": "90th percentile",
+            "format": "double",
+            "example": 48.7
+          },
+          "p99": {
+            "type": "number",
+            "description": "99th percentile",
+            "format": "double",
+            "example": 85.3
+          }
+        },
+        "description": "Latency percentiles in milliseconds for this workload. Image and video generation report full end-to-end generation time, because their raw latency only measures request acknowledgement; every other workload reports time to first token or result.",
+        "example": {
+          "p50": 25.5,
+          "p75": 35.2,
+          "p90": 48.7,
+          "p99": 85.3
+        }
+      },
+      "ExtractionsThroughput": {
+        "required": [
+          "p50",
+          "p75",
+          "p90",
+          "p99"
+        ],
+        "type": "object",
+        "properties": {
+          "p50": {
+            "type": "number",
+            "description": "Median (50th percentile)",
+            "format": "double",
+            "example": 25.5
+          },
+          "p75": {
+            "type": "number",
+            "description": "75th percentile",
+            "format": "double",
+            "example": 35.2
+          },
+          "p90": {
+            "type": "number",
+            "description": "90th percentile",
+            "format": "double",
+            "example": 48.7
+          },
+          "p99": {
+            "type": "number",
+            "description": "99th percentile",
+            "format": "double",
+            "example": 85.3
+          }
+        },
+        "description": "Throughput percentiles in tokens per second; pN is the speed that N% of requests reached or exceeded, so p90 is lower than p50. Only meaningful for text generation; null for workloads without token throughput.",
+        "example": {
+          "p50": 25.5,
+          "p75": 35.2,
+          "p90": 48.7,
+          "p99": 85.3
+        }
       },
       "ExtractionsRequestFieldsAdditionalProperties": {
         "description": "A typed field to extract, compute, estimate or forecast from the state. Which types a model answers is model-specific; unsupported types are rejected with 400.",
@@ -64811,6 +65143,28 @@
         "description": "The sorting strategy to use for this request, if \u0022order\u0022 is not specified. When set, no load balancing is performed.",
         "example": "price"
       },
+      "ImageGenerationRequestMarkup": {
+        "required": [
+          "type",
+          "image_url"
+        ],
+        "type": "object",
+        "properties": {
+          "image_url": {
+            "$ref": "#/components/schemas/ContentPartImageImageUrl"
+          },
+          "type": {
+            "$ref": "#/components/schemas/ImageUrlType"
+          }
+        },
+        "description": "A transparent PNG overlay (arrows, circles, annotations) with the same dimensions as the first reference image, as a base64 data URL or HTTP(S) URL, guiding where an edit applies. Image-to-image requests only; honored by models with markup-guided editing (OpenAI gpt-image-2.6) and ignored otherwise.",
+        "example": {
+          "image_url": {
+            "url": "https://example.com/image.png"
+          },
+          "type": "image_url"
+        }
+      },
       "InputMessageItemContentItem": {
         "oneOf": [
           {
@@ -64950,9 +65304,6 @@
             "$ref": "#/components/schemas/OutputArmorBlockedItem"
           },
           {
-            "$ref": "#/components/schemas/OutputMcpServerToolItem"
-          },
-          {
             "$ref": "#/components/schemas/OutputSearchModelsServerToolItem"
           },
           {
@@ -64999,6 +65350,9 @@
           },
           {
             "$ref": "#/components/schemas/CustomToolCallOutputItem"
+          },
+          {
+            "$ref": "#/components/schemas/CompactionTriggerItem"
           },
           {
             "$ref": "#/components/schemas/CompactionItem"
@@ -70300,10 +70654,6 @@
         }
       },
       "DecisionsNoulQuestionCriteria": {
-        "required": [
-          "true",
-          "false"
-        ],
         "type": "object",
         "properties": {
           "false": {
@@ -70334,6 +70684,23 @@
           },
           "output_tokens": {
             "type": "integer"
+          }
+        }
+      },
+      "DecisionsUrlCitationAnnotationUrlCitation": {
+        "required": [
+          "url"
+        ],
+        "type": "object",
+        "properties": {
+          "content": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
           }
         }
       },
@@ -72448,12 +72815,52 @@
       "SpeechRequestProvider": {
         "type": "object",
         "properties": {
+          "allow_fallbacks": {
+            "type": [
+              "null",
+              "boolean"
+            ],
+            "description": "Whether to allow backup providers to serve requests\n- true: (default) when the primary provider (or your custom providers in \u0022order\u0022) is unavailable, use the next best provider.\n- false: use only the primary/custom provider, and return the upstream error if it\u0027s unavailable.\n"
+          },
           "data_collection": {
             "$ref": "#/components/schemas/SpeechRequestProviderDataCollection"
+          },
+          "ignore": {
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "type": "string",
+              "x-client-inline-scalar": true
+            },
+            "description": "List of provider slugs to ignore. If provided, this list is merged with your account-wide ignored provider settings for this request."
+          },
+          "only": {
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "type": "string",
+              "x-client-inline-scalar": true
+            },
+            "description": "List of provider slugs to allow. If provided, this list is merged with your account-wide allowed provider settings for this request."
           },
           "options": {
             "description": "Provider-specific options keyed by provider slug. The provider segment is case-insensitive; an endpoint tag after \u0060/\u0060 must match the endpoint slug exactly. Only options for the matched provider are forwarded; the rest are ignored. Unrecognized keys are silently dropped.",
             "$ref": "#/components/schemas/ProviderOptions"
+          },
+          "order": {
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "type": "string",
+              "x-client-inline-scalar": true
+            },
+            "description": "An ordered list of provider slugs. The router will attempt to use the first provider in the subset of this list that supports your requested model, and fall back to the next if it is unavailable. If no providers are available, the request will fail with an error message."
           },
           "zdr": {
             "type": [
@@ -72464,17 +72871,57 @@
             "example": true
           }
         },
-        "description": "Provider configuration: data policy routing preferences (\u0060zdr\u0060, \u0060data_collection\u0060) and provider-specific passthrough options"
+        "description": "Provider configuration: provider routing preferences (\u0060order\u0060, \u0060only\u0060, \u0060ignore\u0060, \u0060allow_fallbacks\u0060), data policy routing preferences (\u0060zdr\u0060, \u0060data_collection\u0060) and provider-specific passthrough options"
       },
       "SttRequestProvider": {
         "type": "object",
         "properties": {
+          "allow_fallbacks": {
+            "type": [
+              "null",
+              "boolean"
+            ],
+            "description": "Whether to allow backup providers to serve requests\n- true: (default) when the primary provider (or your custom providers in \u0022order\u0022) is unavailable, use the next best provider.\n- false: use only the primary/custom provider, and return the upstream error if it\u0027s unavailable.\n"
+          },
           "data_collection": {
             "$ref": "#/components/schemas/SttRequestProviderDataCollection"
+          },
+          "ignore": {
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "type": "string",
+              "x-client-inline-scalar": true
+            },
+            "description": "List of provider slugs to ignore. If provided, this list is merged with your account-wide ignored provider settings for this request."
+          },
+          "only": {
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "type": "string",
+              "x-client-inline-scalar": true
+            },
+            "description": "List of provider slugs to allow. If provided, this list is merged with your account-wide allowed provider settings for this request."
           },
           "options": {
             "description": "Provider-specific options keyed by provider slug. The provider segment is case-insensitive; an endpoint tag after \u0060/\u0060 must match the endpoint slug exactly. Only options for the matched provider are forwarded; the rest are ignored. Unrecognized keys are silently dropped.",
             "$ref": "#/components/schemas/ProviderOptions"
+          },
+          "order": {
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "type": "string",
+              "x-client-inline-scalar": true
+            },
+            "description": "An ordered list of provider slugs. The router will attempt to use the first provider in the subset of this list that supports your requested model, and fall back to the next if it is unavailable. If no providers are available, the request will fail with an error message."
           },
           "zdr": {
             "type": [
@@ -72485,7 +72932,7 @@
             "example": true
           }
         },
-        "description": "Provider configuration: data policy routing preferences (\u0060zdr\u0060, \u0060data_collection\u0060) and provider-specific passthrough options"
+        "description": "Provider configuration: provider routing preferences (\u0060order\u0060, \u0060only\u0060, \u0060ignore\u0060, \u0060allow_fallbacks\u0060), data policy routing preferences (\u0060zdr\u0060, \u0060data_collection\u0060) and provider-specific passthrough options"
       },
       "SubmitGenerationFeedbackResponseData": {
         "required": [
@@ -72831,11 +73278,44 @@
       "VideoGenerationRequestProvider": {
         "type": "object",
         "properties": {
+          "ignore": {
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "type": "string",
+              "x-client-inline-scalar": true
+            },
+            "description": "List of provider slugs to ignore. If provided, this list is merged with your account-wide ignored provider settings for this request."
+          },
+          "only": {
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "type": "string",
+              "x-client-inline-scalar": true
+            },
+            "description": "List of provider slugs to allow. If provided, this list is merged with your account-wide allowed provider settings for this request."
+          },
           "options": {
             "$ref": "#/components/schemas/VideoGenerationRequestProviderOptions"
+          },
+          "order": {
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "type": "string",
+              "x-client-inline-scalar": true
+            },
+            "description": "An ordered list of provider slugs. The router will attempt to use the first provider in the subset of this list that supports your requested model, and fall back to the next if it is unavailable. If no providers are available, the request will fail with an error message."
           }
         },
-        "description": "Provider-specific passthrough configuration"
+        "description": "Provider routing preferences (order, only, ignore) and provider-specific passthrough configuration"
       },
       "VideoModelUpscaleFactor": {
         "type": [
@@ -73212,6 +73692,34 @@
           }
         },
         "additionalProperties": {}
+      },
+      "MessagesResultAllOf2UsageAllOf2DeferredToolsDetails": {
+        "required": [
+          "turns",
+          "prompt_tokens",
+          "completion_tokens",
+          "total_tokens"
+        ],
+        "type": "object",
+        "properties": {
+          "completion_tokens": {
+            "type": "integer",
+            "description": "Completion tokens summed over every upstream call"
+          },
+          "prompt_tokens": {
+            "type": "integer",
+            "description": "Prompt tokens summed over every upstream call"
+          },
+          "total_tokens": {
+            "type": "integer",
+            "description": "Sum of the above two fields"
+          },
+          "turns": {
+            "exclusiveMinimum": 0,
+            "type": "integer",
+            "description": "Upstream model calls the run made"
+          }
+        }
       },
       "BatchObjectResultsItemResponseBodyAnyOf1ChoicesItemMessageAnnotationsItemOneOf1File": {
         "required": [
@@ -74945,7 +75453,7 @@
               "null",
               "string"
             ],
-            "description": "Optional user ID of the key creator. Only meaningful for organization-owned keys where a specific member is creating the key.",
+            "description": "Optional user ID of the key creator. Only meaningful for organization-owned keys where a specific member is creating the key. A workspace-scoped management key may only name a member of its own workspace.",
             "example": "user_2dHFtVWx2n56w6HkM0000000000"
           },
           "expires_at": {
@@ -75740,6 +76248,9 @@
           "cost_details": {
             "description": "Breakdown of upstream inference costs",
             "$ref": "#/components/schemas/CostDetails"
+          },
+          "deferred_tools_details": {
+            "$ref": "#/components/schemas/MessagesResultAllOf2UsageAllOf2DeferredToolsDetails"
           },
           "is_byok": {
             "type": "boolean"
@@ -84423,6 +84934,22 @@
           ]
         }
       },
+      "CompactionTriggerType": {
+        "enum": [
+          "compaction_trigger"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "CompactionTriggerType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "compaction_trigger",
+              "name": "CompactionTrigger"
+            }
+          ]
+        }
+      },
       "CompoundFilterType": {
         "enum": [
           "and",
@@ -85136,6 +85663,22 @@
           ]
         }
       },
+      "UrlCitationType": {
+        "enum": [
+          "url_citation"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "UrlCitationType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "url_citation",
+              "name": "UrlCitation"
+            }
+          ]
+        }
+      },
       "Bm25Type": {
         "enum": [
           "bm25"
@@ -85168,19 +85711,25 @@
           ]
         }
       },
-      "PortableProfile": {
+      "DeferredToolsControlProfile": {
         "enum": [
-          "portable"
+          "portable",
+          "universal"
         ],
         "type": "string",
-        "description": "Loading profile. Only \u0060portable\u0060 is available in this release: OpenRouter serves deferral with router-built search and call wrappers on any model.",
+        "description": "Loading profile. \u0060portable\u0060 serves the \u0060defer_loading\u0060 tools with router-built search and call wrappers on any model and keeps the catalog fixed. \u0060universal\u0060 defers every wrappable tool behind the same wrappers so the provider-facing tool list never changes, and rebuilds the catalog from each request so tools can be added or removed mid-conversation.",
+        "x-speakeasy-unknown-values": "allow",
         "x-ms-enum": {
-          "name": "PortableProfile",
+          "name": "DeferredToolsControlProfile",
           "modelAsString": false,
           "values": [
             {
               "value": "portable",
               "name": "Portable"
+            },
+            {
+              "value": "universal",
+              "name": "Universal"
             }
           ]
         }
@@ -86166,10 +86715,11 @@
           "png",
           "jpeg",
           "webp",
-          "svg"
+          "svg",
+          "gif"
         ],
         "type": "string",
-        "description": "Encoding of the returned image bytes. Most models produce raster formats (png, jpeg, webp). SVG is supported by vectorization models (e.g. Quiver) \u2014 the SVG markup is UTF-8 base64-encoded in \u0060b64_json\u0060.",
+        "description": "Encoding of the returned image bytes. Most models produce raster formats (png, jpeg, webp). SVG is supported by vectorization models (e.g. Quiver) \u2014 the SVG markup is UTF-8 base64-encoded in \u0060b64_json\u0060. GIF produces an animation on models that support it (OpenAI gpt-image-2.6; see \u0060frame_count\u0060).",
         "example": "png",
         "x-speakeasy-unknown-values": "allow",
         "x-ms-enum": {
@@ -86191,6 +86741,10 @@
             {
               "value": "svg",
               "name": "Svg"
+            },
+            {
+              "value": "gif",
+              "name": "Gif"
             }
           ]
         }
@@ -88319,22 +88873,6 @@
           ]
         }
       },
-      "OpenrouterColonMcpType": {
-        "enum": [
-          "openrouter:mcp"
-        ],
-        "type": "string",
-        "x-ms-enum": {
-          "name": "OpenrouterColonMcpType",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "openrouter:mcp",
-              "name": "OpenrouterColonMcp"
-            }
-          ]
-        }
-      },
       "OutputMemoryServerToolItemAction": {
         "enum": [
           "read",
@@ -88518,6 +89056,24 @@
             {
               "value": "tool_search_call",
               "name": "ToolSearchCall"
+            }
+          ]
+        }
+      },
+      "CompactFormat": {
+        "enum": [
+          "compact"
+        ],
+        "type": "string",
+        "description": "How the model saw the matches. \u0060compact\u0060 means each tool by name, description, and input shape, plus a call example. Replaying the item renders the same result.",
+        "example": "compact",
+        "x-ms-enum": {
+          "name": "CompactFormat",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "compact",
+              "name": "Compact"
             }
           ]
         }
@@ -91048,22 +91604,6 @@
           ]
         }
       },
-      "UrlCitationType": {
-        "enum": [
-          "url_citation"
-        ],
-        "type": "string",
-        "x-ms-enum": {
-          "name": "UrlCitationType",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "url_citation",
-              "name": "UrlCitation"
-            }
-          ]
-        }
-      },
       "VaultEffectiveSecretScope": {
         "enum": [
           "intern",
@@ -91845,10 +92385,12 @@
       "WorkspaceMemberRole": {
         "enum": [
           "admin",
-          "member"
+          "member",
+          "viewer",
+          "restricted_viewer"
         ],
         "type": "string",
-        "description": "Role of the member in the workspace",
+        "description": "Role of the member in the workspace. \u0060viewer\u0060 and \u0060restricted_viewer\u0060 are read-only: \u0060viewer\u0060 can view the whole workspace, and \u0060restricted_viewer\u0060 can view only their own activity.",
         "example": "member",
         "x-speakeasy-unknown-values": "allow",
         "x-ms-enum": {
@@ -91862,6 +92404,14 @@
             {
               "value": "member",
               "name": "Member"
+            },
+            {
+              "value": "viewer",
+              "name": "Viewer"
+            },
+            {
+              "value": "restricted_viewer",
+              "name": "RestrictedViewer"
             }
           ]
         }
@@ -94457,10 +95007,11 @@
       "ListOrganizationMembers200ResponseDataItemRole": {
         "enum": [
           "org:admin",
-          "org:member"
+          "org:member",
+          "org:viewer"
         ],
         "type": "string",
-        "description": "Role of the member in the organization",
+        "description": "Role of the member in the organization. \u0060org:viewer\u0060 is coming soon and not yet available. Once launched, it has read-only organization access: it can view organization settings, billing and workspaces but not change them. Workspace roles can still grant write access in specific workspaces.",
         "example": "org:member",
         "x-speakeasy-unknown-values": "allow",
         "x-ms-enum": {
@@ -94474,6 +95025,10 @@
             {
               "value": "org:member",
               "name": "OrgColonMember"
+            },
+            {
+              "value": "org:viewer",
+              "name": "OrgColonViewer"
             }
           ]
         }
@@ -97350,6 +97905,7 @@
           "perplexity",
           "phala",
           "poolside",
+          "primalabs",
           "primeintellect",
           "quiver",
           "recraft",
@@ -97744,6 +98300,10 @@
             {
               "value": "poolside",
               "name": "Poolside"
+            },
+            {
+              "value": "primalabs",
+              "name": "Primalabs"
             },
             {
               "value": "primeintellect",
@@ -99173,96 +99733,6 @@
           }
         ]
       },
-      "SpeechInputReferenceAudioVariant": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/SpeechInputReference"
-          },
-          {
-            "required": [
-              "type",
-              "input_audio"
-            ],
-            "type": "object",
-            "properties": {
-              "input_audio": {
-                "description": "Reference audio input object",
-                "$ref": "#/components/schemas/SpeechInputReferenceAudioInput"
-              },
-              "type": {
-                "$ref": "#/components/schemas/InputAudioType"
-              }
-            },
-            "description": "Reference audio input for stateless voice cloning. Up to three parts per request; the Nth audio part is addressable from \u0060input\u0060 as \u0060@AudioN\u0060 on providers that support multiple references.",
-            "example": {
-              "input_audio": {
-                "data": "data:audio/wav;base64,UklGRuQXDABXQVZF..."
-              },
-              "type": "input_audio"
-            }
-          }
-        ]
-      },
-      "SpeechInputReferenceTextVariant": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/SpeechInputReference"
-          },
-          {
-            "required": [
-              "type",
-              "text"
-            ],
-            "type": "object",
-            "properties": {
-              "text": {
-                "maxLength": 10000,
-                "type": "string",
-                "description": "Transcript of an \u0060input_audio\u0060 part. With a single clip it may appear before or after the clip; with multiple clips it must immediately follow the clip it transcribes.",
-                "example": "I used to rule the world."
-              },
-              "type": {
-                "$ref": "#/components/schemas/TextType"
-              }
-            },
-            "description": "Transcript of an \u0060input_audio\u0060 part",
-            "example": {
-              "text": "I used to rule the world.",
-              "type": "text"
-            }
-          }
-        ]
-      },
-      "SpeechInputReferenceImageVariant": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/SpeechInputReference"
-          },
-          {
-            "required": [
-              "type",
-              "image_url"
-            ],
-            "type": "object",
-            "properties": {
-              "image_url": {
-                "description": "Reference image input object",
-                "$ref": "#/components/schemas/SpeechInputReferenceImageInput"
-              },
-              "type": {
-                "$ref": "#/components/schemas/ImageUrlType"
-              }
-            },
-            "description": "Reference image. On its own it describes the desired voice (voice design); alongside an \u0060input_audio\u0060 part it is a scene image describing the setting the cloned voice speaks in. At most one per request. Only routed to endpoints that support image references.",
-            "example": {
-              "image_url": {
-                "url": "data:image/png;base64,iVBORw0KGgo..."
-              },
-              "type": "image_url"
-            }
-          }
-        ]
-      },
       "AgentMessageItemContentItemInputText": {
         "allOf": [
           {
@@ -99788,6 +100258,40 @@
               ],
               "status": "completed",
               "type": "code_interpreter_call"
+            }
+          }
+        ]
+      },
+      "AlignmentResponsesRejectedItemOutputItemCompaction": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/AlignmentResponsesRejectedItem"
+          },
+          {
+            "required": [
+              "type",
+              "id",
+              "encrypted_content"
+            ],
+            "type": "object",
+            "properties": {
+              "created_by": {
+                "type": "string"
+              },
+              "encrypted_content": {
+                "type": "string"
+              },
+              "id": {
+                "type": "string"
+              },
+              "type": {
+                "$ref": "#/components/schemas/CompactionType"
+              }
+            },
+            "example": {
+              "encrypted_content": "enc_abc123...",
+              "id": "cmp_abc123",
+              "type": "compaction"
             }
           }
         ]
@@ -103986,8 +104490,7 @@
           },
           {
             "required": [
-              "type",
-              "instructions"
+              "type"
             ],
             "type": "object",
             "properties": {
@@ -104012,7 +104515,6 @@
           {
             "required": [
               "type",
-              "instructions",
               "criteria"
             ],
             "type": "object",
@@ -104038,7 +104540,6 @@
           {
             "required": [
               "type",
-              "instructions",
               "criteria"
             ],
             "type": "object",
@@ -104191,6 +104692,25 @@
                 "$ref": "#/components/schemas/BoxType"
               }
             }
+          }
+        ]
+      },
+      "DecisionsResponseAnswersAdditionalPropertiesDecisionsRefusalAnswer": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/DecisionsResponseAnswersAdditionalProperties"
+          },
+          {
+            "required": [
+              "type"
+            ],
+            "type": "object",
+            "properties": {
+              "type": {
+                "$ref": "#/components/schemas/RefusalType"
+              }
+            },
+            "description": "The provider declined to answer this question; no value or probabilities are returned. Other questions in the same request can still have answers."
           }
         ]
       },
@@ -114405,7 +114925,6 @@
     "DecisionsChoiceQuestion": {
       "required": [
         "type",
-        "instructions",
         "criteria"
       ],
       "type": "object",
@@ -114439,8 +114958,7 @@
     },
     "DecisionsNoulQuestion": {
       "required": [
-        "type",
-        "instructions"
+        "type"
       ],
       "type": "object",
       "properties": {
@@ -114454,6 +114972,18 @@
           "$ref": "#/components/schemas/NoulType"
         }
       }
+    },
+    "DecisionsRefusalAnswer": {
+      "required": [
+        "type"
+      ],
+      "type": "object",
+      "properties": {
+        "type": {
+          "$ref": "#/components/schemas/RefusalType"
+        }
+      },
+      "description": "The provider declined to answer this question; no value or probabilities are returned. Other questions in the same request can still have answers."
     },
     "DecisionsScoreAnswer": {
       "required": [
@@ -114484,7 +115014,6 @@
     "DecisionsScoreQuestion": {
       "required": [
         "type",
-        "instructions",
         "criteria"
       ],
       "type": "object",
@@ -116392,6 +116921,256 @@
         ]
       }
     },
+    "McpCallArgumentsDeltaEvent": {
+      "required": [
+        "type",
+        "delta",
+        "item_id",
+        "output_index",
+        "sequence_number"
+      ],
+      "type": "object",
+      "properties": {
+        "delta": {
+          "type": "string"
+        },
+        "item_id": {
+          "type": "string"
+        },
+        "output_index": {
+          "type": "integer"
+        },
+        "sequence_number": {
+          "type": "integer"
+        },
+        "type": {
+          "$ref": "#/components/schemas/ResponseMcpCallArgumentsDeltaType"
+        }
+      },
+      "description": "A partial update to the JSON-encoded arguments of an MCP tool call.",
+      "example": {
+        "delta": "{\u0022query\u0022:\u0022text-to-image\u0022}",
+        "item_id": "mcp_abc123",
+        "output_index": 1,
+        "sequence_number": 6,
+        "type": "response.mcp_call_arguments.delta"
+      }
+    },
+    "McpCallArgumentsDoneEvent": {
+      "required": [
+        "type",
+        "arguments",
+        "item_id",
+        "output_index",
+        "sequence_number"
+      ],
+      "type": "object",
+      "properties": {
+        "arguments": {
+          "type": "string"
+        },
+        "item_id": {
+          "type": "string"
+        },
+        "output_index": {
+          "type": "integer"
+        },
+        "sequence_number": {
+          "type": "integer"
+        },
+        "type": {
+          "$ref": "#/components/schemas/ResponseMcpCallArgumentsDoneType"
+        }
+      },
+      "description": "Emitted when the JSON-encoded arguments of an MCP tool call are finalized.",
+      "example": {
+        "arguments": "{\u0022query\u0022:\u0022text-to-image\u0022}",
+        "item_id": "mcp_abc123",
+        "output_index": 1,
+        "sequence_number": 7,
+        "type": "response.mcp_call_arguments.done"
+      }
+    },
+    "McpCallCompletedEvent": {
+      "required": [
+        "type",
+        "item_id",
+        "output_index",
+        "sequence_number"
+      ],
+      "type": "object",
+      "properties": {
+        "item_id": {
+          "type": "string"
+        },
+        "output_index": {
+          "type": "integer"
+        },
+        "sequence_number": {
+          "type": "integer"
+        },
+        "type": {
+          "$ref": "#/components/schemas/ResponseMcpCallCompletedType"
+        }
+      },
+      "description": "Emitted when an MCP tool call completes successfully.",
+      "example": {
+        "item_id": "mcp_abc123",
+        "output_index": 1,
+        "sequence_number": 8,
+        "type": "response.mcp_call.completed"
+      }
+    },
+    "McpCallFailedEvent": {
+      "required": [
+        "type",
+        "item_id",
+        "output_index",
+        "sequence_number"
+      ],
+      "type": "object",
+      "properties": {
+        "item_id": {
+          "type": "string"
+        },
+        "output_index": {
+          "type": "integer"
+        },
+        "sequence_number": {
+          "type": "integer"
+        },
+        "type": {
+          "$ref": "#/components/schemas/ResponseMcpCallFailedType"
+        }
+      },
+      "description": "Emitted when an MCP tool call fails.",
+      "example": {
+        "item_id": "mcp_abc123",
+        "output_index": 1,
+        "sequence_number": 8,
+        "type": "response.mcp_call.failed"
+      }
+    },
+    "McpCallInProgressEvent": {
+      "required": [
+        "type",
+        "item_id",
+        "output_index",
+        "sequence_number"
+      ],
+      "type": "object",
+      "properties": {
+        "item_id": {
+          "type": "string"
+        },
+        "output_index": {
+          "type": "integer"
+        },
+        "sequence_number": {
+          "type": "integer"
+        },
+        "type": {
+          "$ref": "#/components/schemas/ResponseMcpCallInProgressType"
+        }
+      },
+      "description": "Emitted when an MCP tool call begins executing.",
+      "example": {
+        "item_id": "mcp_abc123",
+        "output_index": 1,
+        "sequence_number": 5,
+        "type": "response.mcp_call.in_progress"
+      }
+    },
+    "McpListToolsCompletedEvent": {
+      "required": [
+        "type",
+        "item_id",
+        "output_index",
+        "sequence_number"
+      ],
+      "type": "object",
+      "properties": {
+        "item_id": {
+          "type": "string"
+        },
+        "output_index": {
+          "type": "integer"
+        },
+        "sequence_number": {
+          "type": "integer"
+        },
+        "type": {
+          "$ref": "#/components/schemas/ResponseMcpListToolsCompletedType"
+        }
+      },
+      "description": "Emitted when tool discovery against an MCP server succeeds.",
+      "example": {
+        "item_id": "mcpl_abc123",
+        "output_index": 0,
+        "sequence_number": 2,
+        "type": "response.mcp_list_tools.completed"
+      }
+    },
+    "McpListToolsFailedEvent": {
+      "required": [
+        "type",
+        "item_id",
+        "output_index",
+        "sequence_number"
+      ],
+      "type": "object",
+      "properties": {
+        "item_id": {
+          "type": "string"
+        },
+        "output_index": {
+          "type": "integer"
+        },
+        "sequence_number": {
+          "type": "integer"
+        },
+        "type": {
+          "$ref": "#/components/schemas/ResponseMcpListToolsFailedType"
+        }
+      },
+      "description": "Emitted when tool discovery against an MCP server fails.",
+      "example": {
+        "item_id": "mcpl_abc123",
+        "output_index": 0,
+        "sequence_number": 2,
+        "type": "response.mcp_list_tools.failed"
+      }
+    },
+    "McpListToolsInProgressEvent": {
+      "required": [
+        "type",
+        "item_id",
+        "output_index",
+        "sequence_number"
+      ],
+      "type": "object",
+      "properties": {
+        "item_id": {
+          "type": "string"
+        },
+        "output_index": {
+          "type": "integer"
+        },
+        "sequence_number": {
+          "type": "integer"
+        },
+        "type": {
+          "$ref": "#/components/schemas/ResponseMcpListToolsInProgressType"
+        }
+      },
+      "description": "Emitted when tool discovery against an MCP server begins.",
+      "example": {
+        "item_id": "mcpl_abc123",
+        "output_index": 0,
+        "sequence_number": 1,
+        "type": "response.mcp_list_tools.in_progress"
+      }
+    },
     "MessagesAdvisorToolResultBlock": {
       "required": [
         "type",
@@ -117619,6 +118398,33 @@
         "type": "apply_patch_call"
       }
     },
+    "OutputItemCompaction": {
+      "required": [
+        "type",
+        "id",
+        "encrypted_content"
+      ],
+      "type": "object",
+      "properties": {
+        "created_by": {
+          "type": "string"
+        },
+        "encrypted_content": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/components/schemas/CompactionType"
+        }
+      },
+      "example": {
+        "encrypted_content": "enc_abc123...",
+        "id": "cmp_abc123",
+        "type": "compaction"
+      }
+    },
     "OutputItemCustomToolCall": {
       "required": [
         "type",
@@ -118399,75 +119205,6 @@
         }
       }
     },
-    "SpeechInputReferenceAudio": {
-      "required": [
-        "type",
-        "input_audio"
-      ],
-      "type": "object",
-      "properties": {
-        "input_audio": {
-          "description": "Reference audio input object",
-          "$ref": "#/components/schemas/SpeechInputReferenceAudioInput"
-        },
-        "type": {
-          "$ref": "#/components/schemas/InputAudioType"
-        }
-      },
-      "description": "Reference audio input for stateless voice cloning. Up to three parts per request; the Nth audio part is addressable from \u0060input\u0060 as \u0060@AudioN\u0060 on providers that support multiple references.",
-      "example": {
-        "input_audio": {
-          "data": "data:audio/wav;base64,UklGRuQXDABXQVZF..."
-        },
-        "type": "input_audio"
-      }
-    },
-    "SpeechInputReferenceImage": {
-      "required": [
-        "type",
-        "image_url"
-      ],
-      "type": "object",
-      "properties": {
-        "image_url": {
-          "description": "Reference image input object",
-          "$ref": "#/components/schemas/SpeechInputReferenceImageInput"
-        },
-        "type": {
-          "$ref": "#/components/schemas/ImageUrlType"
-        }
-      },
-      "description": "Reference image. On its own it describes the desired voice (voice design); alongside an \u0060input_audio\u0060 part it is a scene image describing the setting the cloned voice speaks in. At most one per request. Only routed to endpoints that support image references.",
-      "example": {
-        "image_url": {
-          "url": "data:image/png;base64,iVBORw0KGgo..."
-        },
-        "type": "image_url"
-      }
-    },
-    "SpeechInputReferenceText": {
-      "required": [
-        "type",
-        "text"
-      ],
-      "type": "object",
-      "properties": {
-        "text": {
-          "maxLength": 10000,
-          "type": "string",
-          "description": "Transcript of an \u0060input_audio\u0060 part. With a single clip it may appear before or after the clip; with multiple clips it must immediately follow the clip it transcribes.",
-          "example": "I used to rule the world."
-        },
-        "type": {
-          "$ref": "#/components/schemas/TextType"
-        }
-      },
-      "description": "Transcript of an \u0060input_audio\u0060 part",
-      "example": {
-        "text": "I used to rule the world.",
-        "type": "text"
-      }
-    },
     "StopServerToolsWhen": {
       "minItems": 1,
       "type": "array",
@@ -118633,6 +119370,30 @@
           "$ref": "#/components/schemas/FusionCallCompletedEvent"
         },
         {
+          "$ref": "#/components/schemas/McpListToolsInProgressEvent"
+        },
+        {
+          "$ref": "#/components/schemas/McpListToolsCompletedEvent"
+        },
+        {
+          "$ref": "#/components/schemas/McpListToolsFailedEvent"
+        },
+        {
+          "$ref": "#/components/schemas/McpCallInProgressEvent"
+        },
+        {
+          "$ref": "#/components/schemas/McpCallArgumentsDeltaEvent"
+        },
+        {
+          "$ref": "#/components/schemas/McpCallArgumentsDoneEvent"
+        },
+        {
+          "$ref": "#/components/schemas/McpCallCompletedEvent"
+        },
+        {
+          "$ref": "#/components/schemas/McpCallFailedEvent"
+        },
+        {
           "$ref": "#/components/schemas/DebugEvent"
         }
       ],
@@ -118698,6 +119459,14 @@
           "response.image_generation_call.partial_image": "#/components/schemas/ImageGenCallPartialImageEvent",
           "response.in_progress": "#/components/schemas/OpenResponsesInProgressEvent",
           "response.incomplete": "#/components/schemas/StreamEventsResponseIncomplete",
+          "response.mcp_call_arguments.delta": "#/components/schemas/McpCallArgumentsDeltaEvent",
+          "response.mcp_call_arguments.done": "#/components/schemas/McpCallArgumentsDoneEvent",
+          "response.mcp_call.completed": "#/components/schemas/McpCallCompletedEvent",
+          "response.mcp_call.failed": "#/components/schemas/McpCallFailedEvent",
+          "response.mcp_call.in_progress": "#/components/schemas/McpCallInProgressEvent",
+          "response.mcp_list_tools.completed": "#/components/schemas/McpListToolsCompletedEvent",
+          "response.mcp_list_tools.failed": "#/components/schemas/McpListToolsFailedEvent",
+          "response.mcp_list_tools.in_progress": "#/components/schemas/McpListToolsInProgressEvent",
           "response.output_item.added": "#/components/schemas/StreamEventsResponseOutputItemAdded",
           "response.output_item.done": "#/components/schemas/StreamEventsResponseOutputItemDone",
           "response.output_text.annotation.added": "#/components/schemas/AnnotationAddedEvent",
@@ -118767,6 +119536,14 @@
           "response.fusion_call.analysis.in_progress": "#/components/schemas/FusionCallAnalysisInProgressEvent",
           "response.fusion_call.analysis.completed": "#/components/schemas/FusionCallAnalysisCompletedEvent",
           "response.fusion_call.completed": "#/components/schemas/FusionCallCompletedEvent",
+          "response.mcp_list_tools.in_progress": "#/components/schemas/McpListToolsInProgressEvent",
+          "response.mcp_list_tools.completed": "#/components/schemas/McpListToolsCompletedEvent",
+          "response.mcp_list_tools.failed": "#/components/schemas/McpListToolsFailedEvent",
+          "response.mcp_call.in_progress": "#/components/schemas/McpCallInProgressEvent",
+          "response.mcp_call_arguments.delta": "#/components/schemas/McpCallArgumentsDeltaEvent",
+          "response.mcp_call_arguments.done": "#/components/schemas/McpCallArgumentsDoneEvent",
+          "response.mcp_call.completed": "#/components/schemas/McpCallCompletedEvent",
+          "response.mcp_call.failed": "#/components/schemas/McpCallFailedEvent",
           "response.debug": "#/components/schemas/DebugEvent"
         }
       }
@@ -119614,6 +120391,9 @@
         },
         {
           "$ref": "#/components/schemas/OutputItemCodeInterpreterCall"
+        },
+        {
+          "$ref": "#/components/schemas/OutputItemCompaction"
         }
       ],
       "x-client-original-discriminator": {
@@ -119621,6 +120401,7 @@
         "mapping": {
           "apply_patch_call": "#/components/schemas/OutputItemApplyPatchCall",
           "code_interpreter_call": "#/components/schemas/OutputItemCodeInterpreterCall",
+          "compaction": "#/components/schemas/OutputItemCompaction",
           "custom_tool_call": "#/components/schemas/OutputItemCustomToolCall",
           "file_search_call": "#/components/schemas/OutputItemFileSearchCall",
           "function_call": "#/components/schemas/OutputItemFunctionCall",
@@ -119641,7 +120422,8 @@
           "file_search_call": "#/components/schemas/OutputItemFileSearchCall",
           "image_generation_call": "#/components/schemas/OutputItemImageGenerationCall",
           "apply_patch_call": "#/components/schemas/OutputItemApplyPatchCall",
-          "code_interpreter_call": "#/components/schemas/OutputItemCodeInterpreterCall"
+          "code_interpreter_call": "#/components/schemas/OutputItemCodeInterpreterCall",
+          "compaction": "#/components/schemas/OutputItemCompaction"
         }
       }
     },
@@ -120612,6 +121394,9 @@
         },
         {
           "$ref": "#/components/schemas/OutputItemCodeInterpreterCall"
+        },
+        {
+          "$ref": "#/components/schemas/OutputItemCompaction"
         }
       ],
       "x-client-original-discriminator": {
@@ -120619,6 +121404,7 @@
         "mapping": {
           "apply_patch_call": "#/components/schemas/OutputItemApplyPatchCall",
           "code_interpreter_call": "#/components/schemas/OutputItemCodeInterpreterCall",
+          "compaction": "#/components/schemas/OutputItemCompaction",
           "custom_tool_call": "#/components/schemas/OutputItemCustomToolCall",
           "file_search_call": "#/components/schemas/OutputItemFileSearchCall",
           "function_call": "#/components/schemas/OutputItemFunctionCall",
@@ -120639,7 +121425,8 @@
           "file_search_call": "#/components/schemas/OutputItemFileSearchCall",
           "image_generation_call": "#/components/schemas/OutputItemImageGenerationCall",
           "apply_patch_call": "#/components/schemas/OutputItemApplyPatchCall",
-          "code_interpreter_call": "#/components/schemas/OutputItemCodeInterpreterCall"
+          "code_interpreter_call": "#/components/schemas/OutputItemCodeInterpreterCall",
+          "compaction": "#/components/schemas/OutputItemCompaction"
         }
       }
     },
@@ -120671,6 +121458,9 @@
         },
         {
           "$ref": "#/components/schemas/OutputItemCodeInterpreterCall"
+        },
+        {
+          "$ref": "#/components/schemas/OutputItemCompaction"
         }
       ],
       "x-client-original-discriminator": {
@@ -120678,6 +121468,7 @@
         "mapping": {
           "apply_patch_call": "#/components/schemas/OutputItemApplyPatchCall",
           "code_interpreter_call": "#/components/schemas/OutputItemCodeInterpreterCall",
+          "compaction": "#/components/schemas/OutputItemCompaction",
           "custom_tool_call": "#/components/schemas/OutputItemCustomToolCall",
           "file_search_call": "#/components/schemas/OutputItemFileSearchCall",
           "function_call": "#/components/schemas/OutputItemFunctionCall",
@@ -120698,7 +121489,8 @@
           "file_search_call": "#/components/schemas/OutputItemFileSearchCall",
           "image_generation_call": "#/components/schemas/OutputItemImageGenerationCall",
           "apply_patch_call": "#/components/schemas/OutputItemApplyPatchCall",
-          "code_interpreter_call": "#/components/schemas/OutputItemCodeInterpreterCall"
+          "code_interpreter_call": "#/components/schemas/OutputItemCodeInterpreterCall",
+          "compaction": "#/components/schemas/OutputItemCompaction"
         }
       }
     },
@@ -120978,6 +121770,18 @@
         }
       ]
     },
+    "SpeechRequestProviderIgnoreItem": {
+      "type": "string",
+      "x-client-inline-scalar": true
+    },
+    "SpeechRequestProviderOnlyItem": {
+      "type": "string",
+      "x-client-inline-scalar": true
+    },
+    "SpeechRequestProviderOrderItem": {
+      "type": "string",
+      "x-client-inline-scalar": true
+    },
     "StreamEventsResponseCompletedAllOf2": {
       "type": "object",
       "properties": {
@@ -121034,6 +121838,18 @@
         }
       }
     },
+    "SttRequestProviderIgnoreItem": {
+      "type": "string",
+      "x-client-inline-scalar": true
+    },
+    "SttRequestProviderOnlyItem": {
+      "type": "string",
+      "x-client-inline-scalar": true
+    },
+    "SttRequestProviderOrderItem": {
+      "type": "string",
+      "x-client-inline-scalar": true
+    },
     "TextDeltaEventAllOf2": {
       "type": "object",
       "properties": {
@@ -121078,6 +121894,10 @@
         "cost_details": {
           "$ref": "#/components/schemas/UsageAllOf2CostDetails"
         },
+        "deferred_tools_details": {
+          "description": "Totals across every upstream model call of a deferred-tools run. The native usage fields report only the final call; cost covers every call.",
+          "$ref": "#/components/schemas/DeferredToolsDetails"
+        },
         "is_byok": {
           "type": "boolean",
           "description": "Whether a request was made using a Bring Your Own Key configuration"
@@ -121087,6 +121907,18 @@
           "$ref": "#/components/schemas/ServerToolUseDetails"
         }
       }
+    },
+    "VideoGenerationRequestProviderIgnoreItem": {
+      "type": "string",
+      "x-client-inline-scalar": true
+    },
+    "VideoGenerationRequestProviderOnlyItem": {
+      "type": "string",
+      "x-client-inline-scalar": true
+    },
+    "VideoGenerationRequestProviderOrderItem": {
+      "type": "string",
+      "x-client-inline-scalar": true
     },
     "AdditionalToolsItemToolsItemAnyOf1AllOf2": {
       "type": "object",
@@ -121742,6 +122574,9 @@
           "description": "Breakdown of upstream inference costs",
           "$ref": "#/components/schemas/CostDetails"
         },
+        "deferred_tools_details": {
+          "$ref": "#/components/schemas/MessagesResultAllOf2UsageAllOf2DeferredToolsDetails"
+        },
         "is_byok": {
           "type": "boolean"
         },
@@ -122339,6 +123174,9 @@
         "cost_details": {
           "description": "Breakdown of upstream inference costs",
           "$ref": "#/components/schemas/CostDetails"
+        },
+        "deferred_tools_details": {
+          "$ref": "#/components/schemas/MessagesResultAllOf2UsageAllOf2DeferredToolsDetails"
         },
         "is_byok": {
           "type": "boolean"
@@ -125254,6 +126092,9 @@
               "$ref": "#/components/schemas/OutputItemCodeInterpreterCall"
             }
           ]
+        },
+        {
+          "$ref": "#/components/schemas/StreamEventsResponseOutputItemAddedItemOneOf10"
         }
       ]
     },
@@ -125301,6 +126142,9 @@
               "$ref": "#/components/schemas/OutputItemCodeInterpreterCall"
             }
           ]
+        },
+        {
+          "$ref": "#/components/schemas/StreamEventsResponseOutputItemDoneItemOneOf10"
         }
       ]
     },
@@ -126369,6 +127213,134 @@
           {
             "value": "response.in_progress",
             "name": "ResponseInProgress"
+          }
+        ]
+      }
+    },
+    "ResponseMcpCallArgumentsDeltaType": {
+      "enum": [
+        "response.mcp_call_arguments.delta"
+      ],
+      "type": "string",
+      "x-ms-enum": {
+        "name": "ResponseMcpCallArgumentsDeltaType",
+        "modelAsString": false,
+        "values": [
+          {
+            "value": "response.mcp_call_arguments.delta",
+            "name": "ResponseMcpCallArgumentsDelta"
+          }
+        ]
+      }
+    },
+    "ResponseMcpCallArgumentsDoneType": {
+      "enum": [
+        "response.mcp_call_arguments.done"
+      ],
+      "type": "string",
+      "x-ms-enum": {
+        "name": "ResponseMcpCallArgumentsDoneType",
+        "modelAsString": false,
+        "values": [
+          {
+            "value": "response.mcp_call_arguments.done",
+            "name": "ResponseMcpCallArgumentsDone"
+          }
+        ]
+      }
+    },
+    "ResponseMcpCallCompletedType": {
+      "enum": [
+        "response.mcp_call.completed"
+      ],
+      "type": "string",
+      "x-ms-enum": {
+        "name": "ResponseMcpCallCompletedType",
+        "modelAsString": false,
+        "values": [
+          {
+            "value": "response.mcp_call.completed",
+            "name": "ResponseMcpCallCompleted"
+          }
+        ]
+      }
+    },
+    "ResponseMcpCallFailedType": {
+      "enum": [
+        "response.mcp_call.failed"
+      ],
+      "type": "string",
+      "x-ms-enum": {
+        "name": "ResponseMcpCallFailedType",
+        "modelAsString": false,
+        "values": [
+          {
+            "value": "response.mcp_call.failed",
+            "name": "ResponseMcpCallFailed"
+          }
+        ]
+      }
+    },
+    "ResponseMcpCallInProgressType": {
+      "enum": [
+        "response.mcp_call.in_progress"
+      ],
+      "type": "string",
+      "x-ms-enum": {
+        "name": "ResponseMcpCallInProgressType",
+        "modelAsString": false,
+        "values": [
+          {
+            "value": "response.mcp_call.in_progress",
+            "name": "ResponseMcpCallInProgress"
+          }
+        ]
+      }
+    },
+    "ResponseMcpListToolsCompletedType": {
+      "enum": [
+        "response.mcp_list_tools.completed"
+      ],
+      "type": "string",
+      "x-ms-enum": {
+        "name": "ResponseMcpListToolsCompletedType",
+        "modelAsString": false,
+        "values": [
+          {
+            "value": "response.mcp_list_tools.completed",
+            "name": "ResponseMcpListToolsCompleted"
+          }
+        ]
+      }
+    },
+    "ResponseMcpListToolsFailedType": {
+      "enum": [
+        "response.mcp_list_tools.failed"
+      ],
+      "type": "string",
+      "x-ms-enum": {
+        "name": "ResponseMcpListToolsFailedType",
+        "modelAsString": false,
+        "values": [
+          {
+            "value": "response.mcp_list_tools.failed",
+            "name": "ResponseMcpListToolsFailed"
+          }
+        ]
+      }
+    },
+    "ResponseMcpListToolsInProgressType": {
+      "enum": [
+        "response.mcp_list_tools.in_progress"
+      ],
+      "type": "string",
+      "x-ms-enum": {
+        "name": "ResponseMcpListToolsInProgressType",
+        "modelAsString": false,
+        "values": [
+          {
+            "value": "response.mcp_list_tools.in_progress",
+            "name": "ResponseMcpListToolsInProgress"
           }
         ]
       }
@@ -134379,6 +135351,34 @@
         "status"
       ]
     },
+    "StreamEventsResponseOutputItemAddedItemOneOf10": {
+      "allOf": [
+        {
+          "description": "An output item from the response",
+          "$ref": "#/components/schemas/OutputItems"
+        }
+      ],
+      "type": "object",
+      "properties": {
+        "created_by": {
+          "type": "string"
+        },
+        "encrypted_content": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/components/schemas/CompactionType"
+        }
+      },
+      "required": [
+        "type",
+        "id",
+        "encrypted_content"
+      ]
+    },
     "StreamEventsResponseOutputItemDoneItemOneOf1": {
       "allOf": [
         {
@@ -134646,6 +135646,34 @@
         "call_id",
         "operation",
         "status"
+      ]
+    },
+    "StreamEventsResponseOutputItemDoneItemOneOf10": {
+      "allOf": [
+        {
+          "description": "An output item from the response",
+          "$ref": "#/components/schemas/OutputItems"
+        }
+      ],
+      "type": "object",
+      "properties": {
+        "created_by": {
+          "type": "string"
+        },
+        "encrypted_content": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/components/schemas/CompactionType"
+        }
+      },
+      "required": [
+        "type",
+        "id",
+        "encrypted_content"
       ]
     },
     "CreatedBeforeAnyOf2": {

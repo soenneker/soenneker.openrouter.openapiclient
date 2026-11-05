@@ -53,6 +53,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             {
                 "apply_patch_call" => new global::Soenneker.OpenRouter.OpenApiClient.Models.AlignmentResponsesRejectedItemOutputItemApplyPatchCall(),
                 "code_interpreter_call" => new global::Soenneker.OpenRouter.OpenApiClient.Models.AlignmentResponsesRejectedItemOutputItemCodeInterpreterCall(),
+                "compaction" => new global::Soenneker.OpenRouter.OpenApiClient.Models.AlignmentResponsesRejectedItemOutputItemCompaction(),
                 "custom_tool_call" => new global::Soenneker.OpenRouter.OpenApiClient.Models.AlignmentResponsesRejectedItemOutputItemCustomToolCall(),
                 "file_search_call" => new global::Soenneker.OpenRouter.OpenApiClient.Models.AlignmentResponsesRejectedItemOutputItemFileSearchCall(),
                 "function_call" => new global::Soenneker.OpenRouter.OpenApiClient.Models.AlignmentResponsesRejectedItemOutputItemFunctionCall(),

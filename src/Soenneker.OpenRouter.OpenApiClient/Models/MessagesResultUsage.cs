@@ -27,6 +27,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             else if (parseNode.GetChildNode("cost") is { } nullNodeCost && nullNodeCost.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Cost = null;
             if (parseNode.GetChildNode("cost_details") is null) { _explicitNullValueCostDetails = default!; _explicitNullProperties?.Remove("cost_details"); }
             else if (parseNode.GetChildNode("cost_details") is { } nullNodeCostDetails && nullNodeCostDetails.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CostDetails = null;
+            if (parseNode.GetChildNode("deferred_tools_details") is null) { _explicitNullValueDeferredToolsDetails = default!; _explicitNullProperties?.Remove("deferred_tools_details"); }
+            else if (parseNode.GetChildNode("deferred_tools_details") is { } nullNodeDeferredToolsDetails && nullNodeDeferredToolsDetails.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeferredToolsDetails = null;
             if (parseNode.GetChildNode("inference_geo") is null) { _explicitNullValueInferenceGeo = default!; _explicitNullProperties?.Remove("inference_geo"); }
             else if (parseNode.GetChildNode("inference_geo") is { } nullNodeInferenceGeo && nullNodeInferenceGeo.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InferenceGeo = null;
             if (parseNode.GetChildNode("input_tokens") is null) { _explicitNullValueInputTokens = default!; _explicitNullProperties?.Remove("input_tokens"); }
@@ -77,6 +79,16 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public global::Soenneker.OpenRouter.OpenApiClient.Models.CostDetails CostDetails { get => _explicitNullValueCostDetails; set { _explicitNullValueCostDetails = value; AdditionalData?.Remove("cost_details"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cost_details"); else _explicitNullProperties?.Remove("cost_details"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.CostDetails _explicitNullValueCostDetails = default!;
+#endif
+        /// <summary>The deferred_tools_details property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResultAllOf2UsageAllOf2DeferredToolsDetails? DeferredToolsDetails { get => _explicitNullValueDeferredToolsDetails; set { _explicitNullValueDeferredToolsDetails = value; AdditionalData?.Remove("deferred_tools_details"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deferred_tools_details"); else _explicitNullProperties?.Remove("deferred_tools_details"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResultAllOf2UsageAllOf2DeferredToolsDetails? _explicitNullValueDeferredToolsDetails = default!;
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResultAllOf2UsageAllOf2DeferredToolsDetails DeferredToolsDetails { get => _explicitNullValueDeferredToolsDetails; set { _explicitNullValueDeferredToolsDetails = value; AdditionalData?.Remove("deferred_tools_details"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deferred_tools_details"); else _explicitNullProperties?.Remove("deferred_tools_details"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResultAllOf2UsageAllOf2DeferredToolsDetails _explicitNullValueDeferredToolsDetails = default!;
 #endif
         /// <summary>The inference_geo property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -177,6 +189,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "cache_read_input_tokens", n => { CacheReadInputTokens = n.GetIntValue(); } },
                 { "cost", n => { Cost = n.GetDoubleValue(); } },
                 { "cost_details", n => { CostDetails = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.CostDetails>(global::Soenneker.OpenRouter.OpenApiClient.Models.CostDetails.CreateFromDiscriminatorValue); } },
+                { "deferred_tools_details", n => { DeferredToolsDetails = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResultAllOf2UsageAllOf2DeferredToolsDetails>(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResultAllOf2UsageAllOf2DeferredToolsDetails.CreateFromDiscriminatorValue); } },
                 { "inference_geo", n => { InferenceGeo = n.GetStringValue(); } },
                 { "input_tokens", n => { InputTokens = n.GetIntValue(); } },
                 { "is_byok", n => { IsByok = n.GetBoolValue(); } },
@@ -200,6 +213,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteIntValue("cache_read_input_tokens", CacheReadInputTokens);
             writer.WriteDoubleValue("cost", Cost);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.CostDetails>("cost_details", CostDetails);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesResultAllOf2UsageAllOf2DeferredToolsDetails>("deferred_tools_details", DeferredToolsDetails);
             writer.WriteStringValue("inference_geo", InferenceGeo);
             writer.WriteIntValue("input_tokens", InputTokens);
             writer.WriteBoolValue("is_byok", IsByok);

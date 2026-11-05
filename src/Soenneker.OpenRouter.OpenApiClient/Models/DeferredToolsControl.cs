@@ -30,9 +30,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Loading profile. Only `portable` is available in this release: OpenRouter serves deferral with router-built search and call wrappers on any model.</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.PortableProfile? Profile { get => _explicitNullValueProfile; set { _explicitNullValueProfile = value; AdditionalData?.Remove("profile"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("profile"); else _explicitNullProperties?.Remove("profile"); } }
-        private global::Soenneker.OpenRouter.OpenApiClient.Models.PortableProfile? _explicitNullValueProfile = default!;
+        /// <summary>Loading profile. `portable` serves the `defer_loading` tools with router-built search and call wrappers on any model and keeps the catalog fixed. `universal` defers every wrappable tool behind the same wrappers so the provider-facing tool list never changes, and rebuilds the catalog from each request so tools can be added or removed mid-conversation.</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.DeferredToolsControlProfile? Profile { get => _explicitNullValueProfile; set { _explicitNullValueProfile = value; AdditionalData?.Remove("profile"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("profile"); else _explicitNullProperties?.Remove("profile"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.DeferredToolsControlProfile? _explicitNullValueProfile = default!;
         /// <summary>The protocol property</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.V1Protocol? Protocol { get => _explicitNullValueProtocol; set { _explicitNullValueProtocol = value; AdditionalData?.Remove("protocol"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("protocol"); else _explicitNullProperties?.Remove("protocol"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.V1Protocol? _explicitNullValueProtocol = default!;
@@ -74,7 +74,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "profile", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PortableProfile>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueProfile = default; _explicitNullProperties?.Remove("profile"); AdditionalData["profile"] = unknown; } else { Profile = parsed; AdditionalData.Remove("profile"); } } },
+                { "profile", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.DeferredToolsControlProfile>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueProfile = default; _explicitNullProperties?.Remove("profile"); AdditionalData["profile"] = unknown; } else { Profile = parsed; AdditionalData.Remove("profile"); } } },
                 { "protocol", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.V1Protocol>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueProtocol = default; _explicitNullProperties?.Remove("protocol"); AdditionalData["protocol"] = unknown; } else { Protocol = parsed; AdditionalData.Remove("protocol"); } } },
                 { "search", n => { Search = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.DeferredToolsSearchStrategy>(global::Soenneker.OpenRouter.OpenApiClient.Models.DeferredToolsSearchStrategy.CreateFromDiscriminatorValue); } },
                 { "validation", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.RuntimeValidation>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueValidation = default; _explicitNullProperties?.Remove("validation"); AdditionalData["validation"] = unknown; } else { Validation = parsed; AdditionalData.Remove("validation"); } } },
@@ -87,7 +87,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PortableProfile>("profile", Profile);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.DeferredToolsControlProfile>("profile", Profile);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.V1Protocol>("protocol", Protocol);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.DeferredToolsSearchStrategy>("search", Search);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.RuntimeValidation>("validation", Validation);

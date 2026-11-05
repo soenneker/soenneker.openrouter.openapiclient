@@ -71,7 +71,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public string LastName { get => _explicitNullValueLastName; set { _explicitNullValueLastName = value; AdditionalData?.Remove("last_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_name"); else _explicitNullProperties?.Remove("last_name"); } }
         private string _explicitNullValueLastName = default!;
 #endif
-        /// <summary>Role of the member in the organization</summary>
+        /// <summary>Role of the member in the organization. `org:viewer` is coming soon and not yet available. Once launched, it has read-only organization access: it can view organization settings, billing and workspaces but not change them. Workspace roles can still grant write access in specific workspaces.</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ListOrganizationMembers200ResponseDataItemRole? Role { get => _explicitNullValueRole; set { _explicitNullValueRole = value; AdditionalData?.Remove("role"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("role"); else _explicitNullProperties?.Remove("role"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.ListOrganizationMembers200ResponseDataItemRole? _explicitNullValueRole = default!;
         /// <summary>

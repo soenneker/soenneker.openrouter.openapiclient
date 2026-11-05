@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
-    /// <summary>Role of the member in the organization</summary>
+    /// <summary>Role of the member in the organization. `org:viewer` is coming soon and not yet available. Once launched, it has read-only organization access: it can view organization settings, billing and workspaces but not change them. Workspace roles can still grant write access in specific workspaces.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum ListOrganizationMembers200ResponseDataItemRole
     {
@@ -14,6 +14,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         [EnumMember(Value = "org:member")]
         #pragma warning disable CS1591
         OrgColonMember,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "org:viewer")]
+        #pragma warning disable CS1591
+        OrgColonViewer,
         #pragma warning restore CS1591
     }
 }

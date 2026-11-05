@@ -359,6 +359,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning disable CS1591
         Poolside,
         #pragma warning restore CS1591
+        [EnumMember(Value = "primalabs")]
+        #pragma warning disable CS1591
+        Primalabs,
+        #pragma warning restore CS1591
         [EnumMember(Value = "primeintellect")]
         #pragma warning disable CS1591
         Primeintellect,

@@ -17,6 +17,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
+            if (parseNode.GetChildNode("annotations") is null) { _explicitNullValueAnnotations = default!; _explicitNullProperties?.Remove("annotations"); }
+            else if (parseNode.GetChildNode("annotations") is { } nullNodeAnnotations && nullNodeAnnotations.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Annotations = null;
             if (parseNode.GetChildNode("answers") is null) { _explicitNullValueAnswers = default!; _explicitNullProperties?.Remove("answers"); }
             else if (parseNode.GetChildNode("answers") is { } nullNodeAnswers && nullNodeAnswers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Answers = null;
             if (parseNode.GetChildNode("id") is null) { _explicitNullValueId = default!; _explicitNullProperties?.Remove("id"); }
@@ -31,6 +33,16 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Sources for the request as a whole, when the provider returns them. Not attributed to individual answers.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.DecisionsUrlCitationAnnotation>? Annotations { get => _explicitNullValueAnnotations; set { _explicitNullValueAnnotations = value; AdditionalData?.Remove("annotations"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("annotations"); else _explicitNullProperties?.Remove("annotations"); } }
+        private List<global::Soenneker.OpenRouter.OpenApiClient.Models.DecisionsUrlCitationAnnotation>? _explicitNullValueAnnotations = default!;
+#nullable restore
+#else
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.DecisionsUrlCitationAnnotation> Annotations { get => _explicitNullValueAnnotations; set { _explicitNullValueAnnotations = value; AdditionalData?.Remove("annotations"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("annotations"); else _explicitNullProperties?.Remove("annotations"); } }
+        private List<global::Soenneker.OpenRouter.OpenApiClient.Models.DecisionsUrlCitationAnnotation> _explicitNullValueAnnotations = default!;
+#endif
         /// <summary>The answers property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -106,6 +118,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "annotations", n => { Annotations = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.DecisionsUrlCitationAnnotation>(global::Soenneker.OpenRouter.OpenApiClient.Models.DecisionsUrlCitationAnnotation.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "answers", n => { Answers = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.DecisionsResponseAnswersProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.DecisionsResponseAnswersProperty.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "model", n => { Model = n.GetStringValue(); } },
@@ -120,6 +133,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.DecisionsUrlCitationAnnotation>("annotations", Annotations);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.DecisionsResponseAnswersProperty>("answers", Answers);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("model", Model);

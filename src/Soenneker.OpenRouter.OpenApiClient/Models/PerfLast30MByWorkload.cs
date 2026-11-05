@@ -22,6 +22,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             else if (parseNode.GetChildNode("decisions") is { } nullNodeDecisions && nullNodeDecisions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Decisions = null;
             if (parseNode.GetChildNode("embeddings") is null) { _explicitNullValueEmbeddings = default!; _explicitNullProperties?.Remove("embeddings"); }
             else if (parseNode.GetChildNode("embeddings") is { } nullNodeEmbeddings && nullNodeEmbeddings.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Embeddings = null;
+            if (parseNode.GetChildNode("extractions") is null) { _explicitNullValueExtractions = default!; _explicitNullProperties?.Remove("extractions"); }
+            else if (parseNode.GetChildNode("extractions") is { } nullNodeExtractions && nullNodeExtractions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Extractions = null;
             if (parseNode.GetChildNode("image_generation") is null) { _explicitNullValueImageGeneration = default!; _explicitNullProperties?.Remove("image_generation"); }
             else if (parseNode.GetChildNode("image_generation") is { } nullNodeImageGeneration && nullNodeImageGeneration.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ImageGeneration = null;
             if (parseNode.GetChildNode("rerank") is null) { _explicitNullValueRerank = default!; _explicitNullProperties?.Remove("rerank"); }
@@ -57,6 +59,16 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public global::Soenneker.OpenRouter.OpenApiClient.Models.Embeddings Embeddings { get => _explicitNullValueEmbeddings; set { _explicitNullValueEmbeddings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("embeddings"); else _explicitNullProperties?.Remove("embeddings"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.Embeddings _explicitNullValueEmbeddings = default!;
+#endif
+        /// <summary>The extractions property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.Extractions? Extractions { get => _explicitNullValueExtractions; set { _explicitNullValueExtractions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("extractions"); else _explicitNullProperties?.Remove("extractions"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.Extractions? _explicitNullValueExtractions = default!;
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.Extractions Extractions { get => _explicitNullValueExtractions; set { _explicitNullValueExtractions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("extractions"); else _explicitNullProperties?.Remove("extractions"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.Extractions _explicitNullValueExtractions = default!;
 #endif
         /// <summary>The image_generation property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -148,6 +160,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             {
                 { "decisions", n => { Decisions = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.Decisions>(global::Soenneker.OpenRouter.OpenApiClient.Models.Decisions.CreateFromDiscriminatorValue); } },
                 { "embeddings", n => { Embeddings = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.Embeddings>(global::Soenneker.OpenRouter.OpenApiClient.Models.Embeddings.CreateFromDiscriminatorValue); } },
+                { "extractions", n => { Extractions = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.Extractions>(global::Soenneker.OpenRouter.OpenApiClient.Models.Extractions.CreateFromDiscriminatorValue); } },
                 { "image_generation", n => { ImageGeneration = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGeneration>(global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGeneration.CreateFromDiscriminatorValue); } },
                 { "rerank", n => { Rerank = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.Rerank>(global::Soenneker.OpenRouter.OpenApiClient.Models.Rerank.CreateFromDiscriminatorValue); } },
                 { "stt", n => { Stt = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.Stt>(global::Soenneker.OpenRouter.OpenApiClient.Models.Stt.CreateFromDiscriminatorValue); } },
@@ -166,6 +179,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.Decisions>("decisions", Decisions);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.Embeddings>("embeddings", Embeddings);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.Extractions>("extractions", Extractions);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGeneration>("image_generation", ImageGeneration);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.Rerank>("rerank", Rerank);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.Stt>("stt", Stt);

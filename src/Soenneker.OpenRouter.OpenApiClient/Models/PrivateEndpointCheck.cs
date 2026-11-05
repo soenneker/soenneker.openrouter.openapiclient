@@ -31,7 +31,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             else if (parseNode.GetChildNode("upstream_status") is { } nullNodeUpstreamStatus && nullNodeUpstreamStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UpstreamStatus = null;
         }
 
-        /// <summary>Model the upstream reported serving, when it differs from the request.</summary>
+        /// <summary>Deprecated: validation no longer compares the model the upstream reports, so this field is never returned.</summary>
+        [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ActualModel { get => _explicitNullValueActualModel; set { _explicitNullValueActualModel = value; AdditionalData?.Remove("actual_model"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("actual_model"); else _explicitNullProperties?.Remove("actual_model"); } }

@@ -44,7 +44,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Unique identifier for the workspace membership</summary>
         public Guid? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; AdditionalData?.Remove("id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
         private Guid? _explicitNullValueId = default!;
-        /// <summary>Role of the member in the workspace</summary>
+        /// <summary>Role of the member in the workspace. `viewer` and `restricted_viewer` are read-only: `viewer` can view the whole workspace, and `restricted_viewer` can view only their own activity.</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.WorkspaceMemberRole? Role { get => _explicitNullValueRole; set { _explicitNullValueRole = value; AdditionalData?.Remove("role"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("role"); else _explicitNullProperties?.Remove("role"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.WorkspaceMemberRole? _explicitNullValueRole = default!;
         /// <summary>Clerk user ID of the member</summary>

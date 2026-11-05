@@ -37,7 +37,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Optional user ID of the key creator. Only meaningful for organization-owned keys where a specific member is creating the key.</summary>
+        /// <summary>Optional user ID of the key creator. Only meaningful for organization-owned keys where a specific member is creating the key. A workspace-scoped management key may only name a member of its own workspace.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? CreatorUserId { get => _explicitNullValueCreatorUserId; set { _explicitNullValueCreatorUserId = value; AdditionalData?.Remove("creator_user_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("creator_user_id"); else _explicitNullProperties?.Remove("creator_user_id"); } }

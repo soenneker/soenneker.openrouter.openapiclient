@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
-    /// <summary>Encoding of the returned image bytes. Most models produce raster formats (png, jpeg, webp). SVG is supported by vectorization models (e.g. Quiver) — the SVG markup is UTF-8 base64-encoded in `b64_json`.</summary>
+    /// <summary>Encoding of the returned image bytes. Most models produce raster formats (png, jpeg, webp). SVG is supported by vectorization models (e.g. Quiver) — the SVG markup is UTF-8 base64-encoded in `b64_json`. GIF produces an animation on models that support it (OpenAI gpt-image-2.6; see `frame_count`).</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum ImageGenerationRequestOutputFormat
     {
@@ -22,6 +22,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         [EnumMember(Value = "svg")]
         #pragma warning disable CS1591
         Svg,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "gif")]
+        #pragma warning disable CS1591
+        Gif,
         #pragma warning restore CS1591
     }
 }
