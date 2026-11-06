@@ -388,6 +388,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning disable CS1591
         Respan,
         #pragma warning restore CS1591
+        [EnumMember(Value = "River")]
+        #pragma warning disable CS1591
+        River,
+        #pragma warning restore CS1591
         [EnumMember(Value = "Sail Research")]
         #pragma warning disable CS1591
         SailResearch,

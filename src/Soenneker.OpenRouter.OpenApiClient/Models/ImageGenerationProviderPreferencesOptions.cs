@@ -257,6 +257,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             else if (parseNode.GetChildNode("replicate") is { } nullNodeReplicate && nullNodeReplicate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Replicate = null;
             if (parseNode.GetChildNode("respan") is null) { _explicitNullValueRespan = default!; _explicitNullProperties?.Remove("respan"); }
             else if (parseNode.GetChildNode("respan") is { } nullNodeRespan && nullNodeRespan.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Respan = null;
+            if (parseNode.GetChildNode("river") is null) { _explicitNullValueRiver = default!; _explicitNullProperties?.Remove("river"); }
+            else if (parseNode.GetChildNode("river") is { } nullNodeRiver && nullNodeRiver.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) River = null;
             if (parseNode.GetChildNode("runway") is null) { _explicitNullValueRunway = default!; _explicitNullProperties?.Remove("runway"); }
             else if (parseNode.GetChildNode("runway") is { } nullNodeRunway && nullNodeRunway.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Runway = null;
             if (parseNode.GetChildNode("sail-research") is null) { _explicitNullValueSailResearch = default!; _explicitNullProperties?.Remove("sail-research"); }
@@ -1529,6 +1531,16 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsRespan Respan { get => _explicitNullValueRespan; set { _explicitNullValueRespan = value; AdditionalData?.Remove("respan"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("respan"); else _explicitNullProperties?.Remove("respan"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsRespan _explicitNullValueRespan = default!;
 #endif
+        /// <summary>The river property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsRiver? River { get => _explicitNullValueRiver; set { _explicitNullValueRiver = value; AdditionalData?.Remove("river"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("river"); else _explicitNullProperties?.Remove("river"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsRiver? _explicitNullValueRiver = default!;
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsRiver River { get => _explicitNullValueRiver; set { _explicitNullValueRiver = value; AdditionalData?.Remove("river"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("river"); else _explicitNullProperties?.Remove("river"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsRiver _explicitNullValueRiver = default!;
+#endif
         /// <summary>The runway property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -2014,6 +2026,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "relace", n => { Relace = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsRelace>(global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsRelace.CreateFromDiscriminatorValue); } },
                 { "replicate", n => { Replicate = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsReplicate>(global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsReplicate.CreateFromDiscriminatorValue); } },
                 { "respan", n => { Respan = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsRespan>(global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsRespan.CreateFromDiscriminatorValue); } },
+                { "river", n => { River = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsRiver>(global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsRiver.CreateFromDiscriminatorValue); } },
                 { "runway", n => { Runway = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsRunway>(global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsRunway.CreateFromDiscriminatorValue); } },
                 { "sail-research", n => { SailResearch = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSailResearch>(global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSailResearch.CreateFromDiscriminatorValue); } },
                 { "sakana", n => { Sakana = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSakana>(global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSakana.CreateFromDiscriminatorValue); } },
@@ -2177,6 +2190,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsRelace>("relace", Relace);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsReplicate>("replicate", Replicate);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsRespan>("respan", Respan);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsRiver>("river", River);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsRunway>("runway", Runway);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSailResearch>("sail-research", SailResearch);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSakana>("sakana", Sakana);

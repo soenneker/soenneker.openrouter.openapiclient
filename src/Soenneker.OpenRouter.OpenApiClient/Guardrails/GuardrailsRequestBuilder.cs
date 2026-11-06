@@ -5,6 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.OpenRouter.OpenApiClient.Guardrails.Assignments;
 using Soenneker.OpenRouter.OpenApiClient.Guardrails.Item;
+using Soenneker.OpenRouter.OpenApiClient.Guardrails.Policies;
 using Soenneker.OpenRouter.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -23,6 +24,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Guardrails
         public global::Soenneker.OpenRouter.OpenApiClient.Guardrails.Assignments.AssignmentsRequestBuilder Assignments
         {
             get => new global::Soenneker.OpenRouter.OpenApiClient.Guardrails.Assignments.AssignmentsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The policies property</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Guardrails.Policies.PoliciesRequestBuilder Policies
+        {
+            get => new global::Soenneker.OpenRouter.OpenApiClient.Guardrails.Policies.PoliciesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Soenneker.OpenRouter.OpenApiClient.guardrails.item collection</summary>
         /// <param name="position">The unique identifier of the guardrail to delete</param>

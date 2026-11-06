@@ -68,7 +68,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Background treatment. `transparent` requires an output_format that supports alpha (png or webp).</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationRequestBackground? Background { get => _explicitNullValueBackground; set { _explicitNullValueBackground = value; AdditionalData?.Remove("background"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("background"); else _explicitNullProperties?.Remove("background"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationRequestBackground? _explicitNullValueBackground = default!;
-        /// <summary>Number of animation frames (2-64) when `output_format` is `gif`. Only honored by models that produce animations (OpenAI gpt-image-2.6, generations only); ignored otherwise.</summary>
+        /// <summary>Number of animation frames (2-64) when `output_format` is `gif`. Only honored by models that produce animations; each accepts its own range and rejects values outside it. Ignored otherwise.</summary>
         public int? FrameCount { get => _explicitNullValueFrameCount; set { _explicitNullValueFrameCount = value; AdditionalData?.Remove("frame_count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("frame_count"); else _explicitNullProperties?.Remove("frame_count"); } }
         private int? _explicitNullValueFrameCount = default!;
         /// <summary>Display time of each animation frame in milliseconds (20-2000) when `output_format` is `gif`. Ignored by models that do not produce animations.</summary>

@@ -5,40 +5,44 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public enum McpServerToolConnectorId
+    public enum GuardrailModerationPolicyConfigContentFilterBuiltinsItemSlug
     #pragma warning restore CS1591
     {
-        [EnumMember(Value = "connector_dropbox")]
+        [EnumMember(Value = "email")]
         #pragma warning disable CS1591
-        ConnectorDropbox,
+        Email,
         #pragma warning restore CS1591
-        [EnumMember(Value = "connector_gmail")]
+        [EnumMember(Value = "phone")]
         #pragma warning disable CS1591
-        ConnectorGmail,
+        Phone,
         #pragma warning restore CS1591
-        [EnumMember(Value = "connector_googlecalendar")]
+        [EnumMember(Value = "ssn")]
         #pragma warning disable CS1591
-        ConnectorGooglecalendar,
+        Ssn,
         #pragma warning restore CS1591
-        [EnumMember(Value = "connector_googledrive")]
+        [EnumMember(Value = "credit-card")]
         #pragma warning disable CS1591
-        ConnectorGoogledrive,
+        CreditCard,
         #pragma warning restore CS1591
-        [EnumMember(Value = "connector_microsoftteams")]
+        [EnumMember(Value = "ip-address")]
         #pragma warning disable CS1591
-        ConnectorMicrosoftteams,
+        IpAddress,
         #pragma warning restore CS1591
-        [EnumMember(Value = "connector_outlookcalendar")]
+        [EnumMember(Value = "secrets")]
         #pragma warning disable CS1591
-        ConnectorOutlookcalendar,
+        Secrets,
         #pragma warning restore CS1591
-        [EnumMember(Value = "connector_outlookemail")]
+        [EnumMember(Value = "person-name")]
         #pragma warning disable CS1591
-        ConnectorOutlookemail,
+        PersonName,
         #pragma warning restore CS1591
-        [EnumMember(Value = "connector_sharepoint")]
+        [EnumMember(Value = "address")]
         #pragma warning disable CS1591
-        ConnectorSharepoint,
+        Address,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "regex-prompt-injection")]
+        #pragma warning disable CS1591
+        RegexPromptInjection,
         #pragma warning restore CS1591
     }
 }

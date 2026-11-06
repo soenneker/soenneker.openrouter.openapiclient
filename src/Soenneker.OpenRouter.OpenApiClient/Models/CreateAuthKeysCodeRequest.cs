@@ -29,10 +29,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             else if (parseNode.GetChildNode("key_label") is { } nullNodeKeyLabel && nullNodeKeyLabel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) KeyLabel = null;
             if (parseNode.GetChildNode("limit") is null) { _explicitNullValueLimit = default!; _explicitNullProperties?.Remove("limit"); }
             else if (parseNode.GetChildNode("limit") is { } nullNodeLimit && nullNodeLimit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Limit = null;
-            if (parseNode.GetChildNode("spawn_agent") is null) { _explicitNullValueSpawnAgent = default!; _explicitNullProperties?.Remove("spawn_agent"); }
-            else if (parseNode.GetChildNode("spawn_agent") is { } nullNodeSpawnAgent && nullNodeSpawnAgent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SpawnAgent = null;
-            if (parseNode.GetChildNode("spawn_cloud") is null) { _explicitNullValueSpawnCloud = default!; _explicitNullProperties?.Remove("spawn_cloud"); }
-            else if (parseNode.GetChildNode("spawn_cloud") is { } nullNodeSpawnCloud && nullNodeSpawnCloud.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SpawnCloud = null;
             if (parseNode.GetChildNode("usage_limit_type") is null) { _explicitNullValueUsageLimitType = default!; _explicitNullProperties?.Remove("usage_limit_type"); }
             else if (parseNode.GetChildNode("usage_limit_type") is { } nullNodeUsageLimitType && nullNodeUsageLimitType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UsageLimitType = null;
             if (parseNode.GetChildNode("workspace_id") is null) { _explicitNullValueWorkspaceId = default!; _explicitNullProperties?.Remove("workspace_id"); }
@@ -80,26 +76,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Credit limit for the API key to be created</summary>
         public double? Limit { get => _explicitNullValueLimit; set { _explicitNullValueLimit = value; AdditionalData?.Remove("limit"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("limit"); else _explicitNullProperties?.Remove("limit"); } }
         private double? _explicitNullValueLimit = default!;
-        /// <summary>Agent identifier for spawn telemetry</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? SpawnAgent { get => _explicitNullValueSpawnAgent; set { _explicitNullValueSpawnAgent = value; AdditionalData?.Remove("spawn_agent"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("spawn_agent"); else _explicitNullProperties?.Remove("spawn_agent"); } }
-        private string? _explicitNullValueSpawnAgent = default!;
-#nullable restore
-#else
-        public string SpawnAgent { get => _explicitNullValueSpawnAgent; set { _explicitNullValueSpawnAgent = value; AdditionalData?.Remove("spawn_agent"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("spawn_agent"); else _explicitNullProperties?.Remove("spawn_agent"); } }
-        private string _explicitNullValueSpawnAgent = default!;
-#endif
-        /// <summary>Cloud identifier for spawn telemetry</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? SpawnCloud { get => _explicitNullValueSpawnCloud; set { _explicitNullValueSpawnCloud = value; AdditionalData?.Remove("spawn_cloud"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("spawn_cloud"); else _explicitNullProperties?.Remove("spawn_cloud"); } }
-        private string? _explicitNullValueSpawnCloud = default!;
-#nullable restore
-#else
-        public string SpawnCloud { get => _explicitNullValueSpawnCloud; set { _explicitNullValueSpawnCloud = value; AdditionalData?.Remove("spawn_cloud"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("spawn_cloud"); else _explicitNullProperties?.Remove("spawn_cloud"); } }
-        private string _explicitNullValueSpawnCloud = default!;
-#endif
         /// <summary>Optional credit limit reset interval. When set, the credit limit resets on this interval.</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.CreateAuthKeysCodeRequestUsageLimitType? UsageLimitType { get => _explicitNullValueUsageLimitType; set { _explicitNullValueUsageLimitType = value; AdditionalData?.Remove("usage_limit_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("usage_limit_type"); else _explicitNullProperties?.Remove("usage_limit_type"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.CreateAuthKeysCodeRequestUsageLimitType? _explicitNullValueUsageLimitType = default!;
@@ -137,8 +113,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "expires_at", n => { ExpiresAt = n.GetDateTimeOffsetValue(); } },
                 { "key_label", n => { KeyLabel = n.GetStringValue(); } },
                 { "limit", n => { Limit = n.GetDoubleValue(); } },
-                { "spawn_agent", n => { SpawnAgent = n.GetStringValue(); } },
-                { "spawn_cloud", n => { SpawnCloud = n.GetStringValue(); } },
                 { "usage_limit_type", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.CreateAuthKeysCodeRequestUsageLimitType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueUsageLimitType = default; _explicitNullProperties?.Remove("usage_limit_type"); AdditionalData["usage_limit_type"] = unknown; } else { UsageLimitType = parsed; AdditionalData.Remove("usage_limit_type"); } } },
                 { "workspace_id", n => { WorkspaceId = n.GetGuidValue(); } },
             };
@@ -156,8 +130,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("expires_at", ExpiresAt);
             writer.WriteStringValue("key_label", KeyLabel);
             writer.WriteDoubleValue("limit", Limit);
-            writer.WriteStringValue("spawn_agent", SpawnAgent);
-            writer.WriteStringValue("spawn_cloud", SpawnCloud);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.CreateAuthKeysCodeRequestUsageLimitType>("usage_limit_type", UsageLimitType);
             writer.WriteGuidValue("workspace_id", WorkspaceId);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);

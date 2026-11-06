@@ -32,6 +32,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning disable CS1591
         OpenrouterColonImageGeneration,
         #pragma warning restore CS1591
+        [EnumMember(Value = "openrouter:mcp")]
+        #pragma warning disable CS1591
+        OpenrouterColonMcp,
+        #pragma warning restore CS1591
         [EnumMember(Value = "openrouter:experimental__search_models")]
         #pragma warning disable CS1591
         OpenrouterColonExperimentalSearchModels,

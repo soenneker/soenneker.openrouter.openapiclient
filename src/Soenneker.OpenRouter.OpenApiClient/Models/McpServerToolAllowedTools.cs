@@ -70,6 +70,10 @@ bool? result = true;
 if (node is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject obj) { var fields = obj.GetValue();
 { result &= (!fields.ContainsKey("read_only") ? (bool?)true : MatchSchema1(fields["read_only"], depth + 1)); if (result == false) return false; }
 { result &= (!fields.ContainsKey("tool_names") ? (bool?)true : MatchSchema2(fields["tool_names"], depth + 1)); if (result == false) return false; }
+foreach (var field in fields) {
+if (field.Key == "read_only" || field.Key == "tool_names") continue;
+{ result &= (MatchSchema3(field.Value, depth + 1)); if (result == false) return false; }
+}
 }
 return result;
 }
@@ -84,11 +88,16 @@ if (depth > 64 || --remaining < 0) return null;
 bool? result = true;
 { result &= (node is global::Microsoft.Kiota.Abstractions.Serialization.UntypedArray); if (result == false) return false; }
 if (node is global::Microsoft.Kiota.Abstractions.Serialization.UntypedArray itemsArray) foreach (var item in itemsArray.GetValue()) {
-{ result &= (MatchSchema3(item, depth + 1)); if (result == false) return false; }
+{ result &= (MatchSchema4(item, depth + 1)); if (result == false) return false; }
 }
 return result;
 }
 bool? MatchSchema3(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode? node, int depth) {
+if (depth > 64 || --remaining < 0) return null;
+bool? result = true;
+return result;
+}
+bool? MatchSchema4(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode? node, int depth) {
 if (depth > 64 || --remaining < 0) return null;
 bool? result = true;
 { result &= (node is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString); if (result == false) return false; }

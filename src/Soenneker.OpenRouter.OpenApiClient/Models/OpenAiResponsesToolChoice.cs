@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAiResponsesToolChoiceAnyOf1"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAiResponsesToolChoiceAnyOf2"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAiResponsesToolChoiceAnyOf3"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAiResponsesToolChoiceAnyOf4"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAiResponsesToolChoiceAnyOf5"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAiResponsesToolChoiceAnyOf7"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAiResponsesToolChoiceAnyOf8"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ToolChoiceAllowed"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAiResponsesToolChoiceAnyOf1"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAiResponsesToolChoiceAnyOf2"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAiResponsesToolChoiceAnyOf3"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAiResponsesToolChoiceAnyOf4"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAiResponsesToolChoiceAnyOf5"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAiResponsesToolChoiceAnyOf7"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAiResponsesToolChoiceAnyOf8"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ToolChoiceAllowed"/>, <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ToolChoiceMcp"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class OpenAiResponsesToolChoice : IComposedTypeWrapper, IParsable
@@ -64,6 +64,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ToolChoiceAllowed ToolChoiceAllowed { get; set; }
 #endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ToolChoiceMcp"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ToolChoiceMcp? ToolChoiceMcp { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ToolChoiceMcp ToolChoiceMcp { get; set; }
+#endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -91,10 +99,12 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 
                 
                 
+                
             }
             
             var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
             var unionBranchMatches = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject ? ((global::System.Func<bool?[]>)(() => { int remaining = 10000;
+bool? Any(params bool?[] values) { bool? result = false; foreach (var item in values) result |= item; return result; }
 
 bool? MatchSchema0(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode? node, int depth) {
 if (depth > 64 || --remaining < 0) return null;
@@ -103,8 +113,8 @@ bool? result = true;
 if (node is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject obj) { var fields = obj.GetValue();
 { result &= (fields.ContainsKey("type")); if (result == false) return false; }
 { result &= (fields.ContainsKey("name")); if (result == false) return false; }
-{ result &= (!fields.ContainsKey("name") ? (bool?)true : MatchSchema5(fields["name"], depth + 1)); if (result == false) return false; }
-{ result &= (!fields.ContainsKey("type") ? (bool?)true : MatchSchema6(fields["type"], depth + 1)); if (result == false) return false; }
+{ result &= (!fields.ContainsKey("name") ? (bool?)true : MatchSchema6(fields["name"], depth + 1)); if (result == false) return false; }
+{ result &= (!fields.ContainsKey("type") ? (bool?)true : MatchSchema7(fields["type"], depth + 1)); if (result == false) return false; }
 }
 return result;
 }
@@ -114,7 +124,7 @@ bool? result = true;
 { result &= (node is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject); if (result == false) return false; }
 if (node is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject obj) { var fields = obj.GetValue();
 { result &= (fields.ContainsKey("type")); if (result == false) return false; }
-{ result &= (!fields.ContainsKey("type") ? (bool?)true : MatchSchema7(fields["type"], depth + 1)); if (result == false) return false; }
+{ result &= (!fields.ContainsKey("type") ? (bool?)true : MatchSchema8(fields["type"], depth + 1)); if (result == false) return false; }
 }
 return result;
 }
@@ -126,9 +136,9 @@ if (node is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject obj
 { result &= (fields.ContainsKey("type")); if (result == false) return false; }
 { result &= (fields.ContainsKey("mode")); if (result == false) return false; }
 { result &= (fields.ContainsKey("tools")); if (result == false) return false; }
-{ result &= (!fields.ContainsKey("mode") ? (bool?)true : MatchSchema8(fields["mode"], depth + 1)); if (result == false) return false; }
-{ result &= (!fields.ContainsKey("tools") ? (bool?)true : MatchSchema9(fields["tools"], depth + 1)); if (result == false) return false; }
-{ result &= (!fields.ContainsKey("type") ? (bool?)true : MatchSchema10(fields["type"], depth + 1)); if (result == false) return false; }
+{ result &= (!fields.ContainsKey("mode") ? (bool?)true : MatchSchema9(fields["mode"], depth + 1)); if (result == false) return false; }
+{ result &= (!fields.ContainsKey("tools") ? (bool?)true : MatchSchema10(fields["tools"], depth + 1)); if (result == false) return false; }
+{ result &= (!fields.ContainsKey("type") ? (bool?)true : MatchSchema11(fields["type"], depth + 1)); if (result == false) return false; }
 }
 return result;
 }
@@ -138,7 +148,7 @@ bool? result = true;
 { result &= (node is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject); if (result == false) return false; }
 if (node is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject obj) { var fields = obj.GetValue();
 { result &= (fields.ContainsKey("type")); if (result == false) return false; }
-{ result &= (!fields.ContainsKey("type") ? (bool?)true : MatchSchema11(fields["type"], depth + 1)); if (result == false) return false; }
+{ result &= (!fields.ContainsKey("type") ? (bool?)true : MatchSchema12(fields["type"], depth + 1)); if (result == false) return false; }
 }
 return result;
 }
@@ -148,17 +158,30 @@ bool? result = true;
 { result &= (node is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject); if (result == false) return false; }
 if (node is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject obj) { var fields = obj.GetValue();
 { result &= (fields.ContainsKey("type")); if (result == false) return false; }
-{ result &= (!fields.ContainsKey("type") ? (bool?)true : MatchSchema12(fields["type"], depth + 1)); if (result == false) return false; }
+{ result &= (!fields.ContainsKey("type") ? (bool?)true : MatchSchema13(fields["type"], depth + 1)); if (result == false) return false; }
 }
 return result;
 }
 bool? MatchSchema5(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode? node, int depth) {
 if (depth > 64 || --remaining < 0) return null;
 bool? result = true;
-{ result &= (node is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString); if (result == false) return false; }
+{ result &= (node is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject); if (result == false) return false; }
+if (node is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject obj) { var fields = obj.GetValue();
+{ result &= (fields.ContainsKey("type")); if (result == false) return false; }
+{ result &= (fields.ContainsKey("server_label")); if (result == false) return false; }
+{ result &= (!fields.ContainsKey("name") ? (bool?)true : MatchSchema14(fields["name"], depth + 1)); if (result == false) return false; }
+{ result &= (!fields.ContainsKey("server_label") ? (bool?)true : MatchSchema15(fields["server_label"], depth + 1)); if (result == false) return false; }
+{ result &= (!fields.ContainsKey("type") ? (bool?)true : MatchSchema16(fields["type"], depth + 1)); if (result == false) return false; }
+}
 return result;
 }
 bool? MatchSchema6(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode? node, int depth) {
+if (depth > 64 || --remaining < 0) return null;
+bool? result = true;
+{ result &= (node is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString); if (result == false) return false; }
+return result;
+}
+bool? MatchSchema7(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode? node, int depth) {
 if (depth > 64 || --remaining < 0) return null;
 bool? result = true;
 { result &= (node is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString); if (result == false) return false; }
@@ -167,7 +190,7 @@ bool? enumMatch = false;
 { result &= (enumMatch); if (result == false) return false; }
 return result;
 }
-bool? MatchSchema7(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode? node, int depth) {
+bool? MatchSchema8(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode? node, int depth) {
 if (depth > 64 || --remaining < 0) return null;
 bool? result = true;
 { result &= (node is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString); if (result == false) return false; }
@@ -177,7 +200,7 @@ bool? enumMatch = false;
 { result &= (enumMatch); if (result == false) return false; }
 return result;
 }
-bool? MatchSchema8(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode? node, int depth) {
+bool? MatchSchema9(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode? node, int depth) {
 if (depth > 64 || --remaining < 0) return null;
 bool? result = true;
 { result &= (node is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString); if (result == false) return false; }
@@ -187,16 +210,16 @@ bool? enumMatch = false;
 { result &= (enumMatch); if (result == false) return false; }
 return result;
 }
-bool? MatchSchema9(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode? node, int depth) {
+bool? MatchSchema10(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode? node, int depth) {
 if (depth > 64 || --remaining < 0) return null;
 bool? result = true;
 { result &= (node is global::Microsoft.Kiota.Abstractions.Serialization.UntypedArray); if (result == false) return false; }
 if (node is global::Microsoft.Kiota.Abstractions.Serialization.UntypedArray itemsArray) foreach (var item in itemsArray.GetValue()) {
-{ result &= (MatchSchema13(item, depth + 1)); if (result == false) return false; }
+{ result &= (MatchSchema17(item, depth + 1)); if (result == false) return false; }
 }
 return result;
 }
-bool? MatchSchema10(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode? node, int depth) {
+bool? MatchSchema11(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode? node, int depth) {
 if (depth > 64 || --remaining < 0) return null;
 bool? result = true;
 { result &= (node is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString); if (result == false) return false; }
@@ -205,7 +228,7 @@ bool? enumMatch = false;
 { result &= (enumMatch); if (result == false) return false; }
 return result;
 }
-bool? MatchSchema11(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode? node, int depth) {
+bool? MatchSchema12(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode? node, int depth) {
 if (depth > 64 || --remaining < 0) return null;
 bool? result = true;
 { result &= (node is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString); if (result == false) return false; }
@@ -214,7 +237,7 @@ bool? enumMatch = false;
 { result &= (enumMatch); if (result == false) return false; }
 return result;
 }
-bool? MatchSchema12(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode? node, int depth) {
+bool? MatchSchema13(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode? node, int depth) {
 if (depth > 64 || --remaining < 0) return null;
 bool? result = true;
 { result &= (node is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString); if (result == false) return false; }
@@ -223,47 +246,72 @@ bool? enumMatch = false;
 { result &= (enumMatch); if (result == false) return false; }
 return result;
 }
-bool? MatchSchema13(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode? node, int depth) {
+bool? MatchSchema14(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode? node, int depth) {
+if (depth > 64 || --remaining < 0) return null;
+bool? result = true;
+{ result &= (Any((bool?)(node == null || node is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull),(bool?)(node is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString))); if (result == false) return false; }
+return result;
+}
+bool? MatchSchema15(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode? node, int depth) {
+if (depth > 64 || --remaining < 0) return null;
+bool? result = true;
+{ result &= (node is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString); if (result == false) return false; }
+return result;
+}
+bool? MatchSchema16(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode? node, int depth) {
+if (depth > 64 || --remaining < 0) return null;
+bool? result = true;
+{ result &= (node is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString); if (result == false) return false; }
+bool? enumMatch = false;
+{ enumMatch |= ((node is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString text && "mcp".Equals(text.GetValue(), global::System.StringComparison.Ordinal))); }
+{ result &= (enumMatch); if (result == false) return false; }
+return result;
+}
+bool? MatchSchema17(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode? node, int depth) {
 if (depth > 64 || --remaining < 0) return null;
 bool? result = true;
 { result &= (node is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject); if (result == false) return false; }
 if (node is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject obj) { var fields = obj.GetValue();
 foreach (var field in fields) {
-{ result &= (MatchSchema14(field.Value, depth + 1)); if (result == false) return false; }
+{ result &= (MatchSchema18(field.Value, depth + 1)); if (result == false) return false; }
 }
 }
 return result;
 }
-bool? MatchSchema14(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode? node, int depth) {
+bool? MatchSchema18(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode? node, int depth) {
 if (depth > 64 || --remaining < 0) return null;
 bool? result = true;
 return result;
 }
-var matches = new bool?[5];
+var matches = new bool?[6];
 remaining = 10000; matches[0] = MatchSchema0(unionPayload, 0);
 remaining = 10000; matches[1] = MatchSchema1(unionPayload, 0);
 remaining = 10000; matches[2] = MatchSchema2(unionPayload, 0);
 remaining = 10000; matches[3] = MatchSchema3(unionPayload, 0);
 remaining = 10000; matches[4] = MatchSchema4(unionPayload, 0);
+remaining = 10000; matches[5] = MatchSchema5(unionPayload, 0);
 return matches; }))() : null;
             bool? matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject ? unionBranchMatches![0] : (bool?)false;
             bool? matchesUnionBranch1 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject ? unionBranchMatches![1] : (bool?)false;
             bool? matchesUnionBranch2 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject ? unionBranchMatches![2] : (bool?)false;
             bool? matchesUnionBranch3 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject ? unionBranchMatches![3] : (bool?)false;
             bool? matchesUnionBranch4 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject ? unionBranchMatches![4] : (bool?)false;
+            bool? matchesUnionBranch5 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject ? unionBranchMatches![5] : (bool?)false;
             int matchingUnionBranches = 0;
             if (matchesUnionBranch0 != false) matchingUnionBranches++;
             if (matchesUnionBranch1 != false) matchingUnionBranches++;
             if (matchesUnionBranch2 != false) matchingUnionBranches++;
             if (matchesUnionBranch3 != false) matchingUnionBranches++;
             if (matchesUnionBranch4 != false) matchingUnionBranches++;
-            bool noSelectedUnionBranch = result.OpenAiResponsesToolChoiceAnyOf1 == null && result.OpenAiResponsesToolChoiceAnyOf2 == null && result.OpenAiResponsesToolChoiceAnyOf3 == null && result.OpenAiResponsesToolChoiceAnyOf4 == null && result.OpenAiResponsesToolChoiceAnyOf5 == null && result.OpenAiResponsesToolChoiceAnyOf7 == null && result.OpenAiResponsesToolChoiceAnyOf8 == null && result.ToolChoiceAllowed == null;
+            if (matchesUnionBranch5 != false) matchingUnionBranches++;
+            bool noSelectedUnionBranch = result.OpenAiResponsesToolChoiceAnyOf1 == null && result.OpenAiResponsesToolChoiceAnyOf2 == null && result.OpenAiResponsesToolChoiceAnyOf3 == null && result.OpenAiResponsesToolChoiceAnyOf4 == null && result.OpenAiResponsesToolChoiceAnyOf5 == null && result.OpenAiResponsesToolChoiceAnyOf7 == null && result.OpenAiResponsesToolChoiceAnyOf8 == null && result.ToolChoiceAllowed == null && result.ToolChoiceMcp == null;
             if (noSelectedUnionBranch && matchesUnionBranch0 == true && matchingUnionBranches == 1) result.OpenAiResponsesToolChoiceAnyOf4 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAiResponsesToolChoiceAnyOf4(), parseNode);
             if (noSelectedUnionBranch && matchesUnionBranch1 == true && matchingUnionBranches == 1) result.OpenAiResponsesToolChoiceAnyOf5 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAiResponsesToolChoiceAnyOf5(), parseNode);
             if (noSelectedUnionBranch && matchesUnionBranch2 == true && matchingUnionBranches == 1) result.ToolChoiceAllowed = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.ToolChoiceAllowed(), parseNode);
             if (noSelectedUnionBranch && matchesUnionBranch3 == true && matchingUnionBranches == 1) result.OpenAiResponsesToolChoiceAnyOf7 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAiResponsesToolChoiceAnyOf7(), parseNode);
             if (noSelectedUnionBranch && matchesUnionBranch4 == true && matchingUnionBranches == 1) result.OpenAiResponsesToolChoiceAnyOf8 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAiResponsesToolChoiceAnyOf8(), parseNode);
-            if (result.OpenAiResponsesToolChoiceAnyOf1 == null && result.OpenAiResponsesToolChoiceAnyOf2 == null && result.OpenAiResponsesToolChoiceAnyOf3 == null && result.OpenAiResponsesToolChoiceAnyOf4 == null && result.OpenAiResponsesToolChoiceAnyOf5 == null && result.OpenAiResponsesToolChoiceAnyOf7 == null && result.OpenAiResponsesToolChoiceAnyOf8 == null && result.ToolChoiceAllowed == null) result.UnrecognizedValue = unionPayload;
+            if (noSelectedUnionBranch && matchesUnionBranch5 == true && matchingUnionBranches == 1) result.ToolChoiceMcp = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.ToolChoiceMcp(), parseNode);
+            if (result.OpenAiResponsesToolChoiceAnyOf1 == null && result.OpenAiResponsesToolChoiceAnyOf2 == null && result.OpenAiResponsesToolChoiceAnyOf3 == null && result.OpenAiResponsesToolChoiceAnyOf4 == null && result.OpenAiResponsesToolChoiceAnyOf5 == null && result.OpenAiResponsesToolChoiceAnyOf7 == null && result.OpenAiResponsesToolChoiceAnyOf8 == null && result.ToolChoiceAllowed == null && result.ToolChoiceMcp == null) result.UnrecognizedValue = unionPayload;
 return result;
         }
         /// <summary>
@@ -274,9 +322,9 @@ return result;
         {
             if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawFields) { var fields = new global::System.Collections.Generic.Dictionary<string, global::System.Action<IParseNode>>(); foreach (var entry in rawFields.GetValue()) fields[entry.Key] = _ => { }; return fields; }
 
-            if(OpenAiResponsesToolChoiceAnyOf4 != null || OpenAiResponsesToolChoiceAnyOf5 != null || OpenAiResponsesToolChoiceAnyOf7 != null || OpenAiResponsesToolChoiceAnyOf8 != null || ToolChoiceAllowed != null)
+            if(OpenAiResponsesToolChoiceAnyOf4 != null || OpenAiResponsesToolChoiceAnyOf5 != null || OpenAiResponsesToolChoiceAnyOf7 != null || OpenAiResponsesToolChoiceAnyOf8 != null || ToolChoiceAllowed != null || ToolChoiceMcp != null)
             {
-                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(OpenAiResponsesToolChoiceAnyOf4, OpenAiResponsesToolChoiceAnyOf5, OpenAiResponsesToolChoiceAnyOf7, OpenAiResponsesToolChoiceAnyOf8, ToolChoiceAllowed);
+                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(OpenAiResponsesToolChoiceAnyOf4, OpenAiResponsesToolChoiceAnyOf5, OpenAiResponsesToolChoiceAnyOf7, OpenAiResponsesToolChoiceAnyOf8, ToolChoiceAllowed, ToolChoiceMcp);
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -287,7 +335,7 @@ return result;
         public virtual void Serialize(ISerializationWriter writer)
         {
             if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
-            if (OpenAiResponsesToolChoiceAnyOf1 == null && OpenAiResponsesToolChoiceAnyOf2 == null && OpenAiResponsesToolChoiceAnyOf3 == null && OpenAiResponsesToolChoiceAnyOf4 == null && OpenAiResponsesToolChoiceAnyOf5 == null && OpenAiResponsesToolChoiceAnyOf7 == null && OpenAiResponsesToolChoiceAnyOf8 == null && ToolChoiceAllowed == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            if (OpenAiResponsesToolChoiceAnyOf1 == null && OpenAiResponsesToolChoiceAnyOf2 == null && OpenAiResponsesToolChoiceAnyOf3 == null && OpenAiResponsesToolChoiceAnyOf4 == null && OpenAiResponsesToolChoiceAnyOf5 == null && OpenAiResponsesToolChoiceAnyOf7 == null && OpenAiResponsesToolChoiceAnyOf8 == null && ToolChoiceAllowed == null && ToolChoiceMcp == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
             int selectedUnionBranches = 0;
             if (OpenAiResponsesToolChoiceAnyOf1 != null) selectedUnionBranches++;
             if (OpenAiResponsesToolChoiceAnyOf2 != null) selectedUnionBranches++;
@@ -297,11 +345,13 @@ return result;
             if (OpenAiResponsesToolChoiceAnyOf7 != null) selectedUnionBranches++;
             if (OpenAiResponsesToolChoiceAnyOf8 != null) selectedUnionBranches++;
             if (ToolChoiceAllowed != null) selectedUnionBranches++;
+            if (ToolChoiceMcp != null) selectedUnionBranches++;
             if (OpenAiResponsesToolChoiceAnyOf4 != null && selectedUnionBranches == 1) { if (OpenAiResponsesToolChoiceAnyOf4 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, OpenAiResponsesToolChoiceAnyOf4); return; }
             if (OpenAiResponsesToolChoiceAnyOf5 != null && selectedUnionBranches == 1) { if (OpenAiResponsesToolChoiceAnyOf5 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, OpenAiResponsesToolChoiceAnyOf5); return; }
             if (OpenAiResponsesToolChoiceAnyOf7 != null && selectedUnionBranches == 1) { if (OpenAiResponsesToolChoiceAnyOf7 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, OpenAiResponsesToolChoiceAnyOf7); return; }
             if (OpenAiResponsesToolChoiceAnyOf8 != null && selectedUnionBranches == 1) { if (OpenAiResponsesToolChoiceAnyOf8 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, OpenAiResponsesToolChoiceAnyOf8); return; }
             if (ToolChoiceAllowed != null && selectedUnionBranches == 1) { if (ToolChoiceAllowed is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, ToolChoiceAllowed); return; }
+            if (ToolChoiceMcp != null && selectedUnionBranches == 1) { if (ToolChoiceMcp is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, ToolChoiceMcp); return; }
 
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             if(OpenAiResponsesToolChoiceAnyOf1 != null)
@@ -317,7 +367,7 @@ return result;
                 writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAiResponsesToolChoiceAnyOf3>(null, OpenAiResponsesToolChoiceAnyOf3);
             }
             else {
-                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAiResponsesToolChoiceAnyOf4>(null, OpenAiResponsesToolChoiceAnyOf4, OpenAiResponsesToolChoiceAnyOf5, OpenAiResponsesToolChoiceAnyOf7, OpenAiResponsesToolChoiceAnyOf8, ToolChoiceAllowed);
+                writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OpenAiResponsesToolChoiceAnyOf4>(null, OpenAiResponsesToolChoiceAnyOf4, OpenAiResponsesToolChoiceAnyOf5, OpenAiResponsesToolChoiceAnyOf7, OpenAiResponsesToolChoiceAnyOf8, ToolChoiceAllowed, ToolChoiceMcp);
             }
         }
     }
