@@ -18,10 +18,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
+            if (parseNode.GetChildNode("interface") is null) { _explicitNullValueInterface = default!; _explicitNullProperties?.Remove("interface"); }
+            else if (parseNode.GetChildNode("interface") is { } nullNodeInterface && nullNodeInterface.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Interface = null;
             if (parseNode.GetChildNode("profile") is null) { _explicitNullValueProfile = default!; _explicitNullProperties?.Remove("profile"); }
             else if (parseNode.GetChildNode("profile") is { } nullNodeProfile && nullNodeProfile.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Profile = null;
             if (parseNode.GetChildNode("protocol") is null) { _explicitNullValueProtocol = default!; _explicitNullProperties?.Remove("protocol"); }
             else if (parseNode.GetChildNode("protocol") is { } nullNodeProtocol && nullNodeProtocol.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Protocol = null;
+            if (parseNode.GetChildNode("scope") is null) { _explicitNullValueScope = default!; _explicitNullProperties?.Remove("scope"); }
+            else if (parseNode.GetChildNode("scope") is { } nullNodeScope && nullNodeScope.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Scope = null;
             if (parseNode.GetChildNode("search") is null) { _explicitNullValueSearch = default!; _explicitNullProperties?.Remove("search"); }
             else if (parseNode.GetChildNode("search") is { } nullNodeSearch && nullNodeSearch.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Search = null;
             if (parseNode.GetChildNode("validation") is null) { _explicitNullValueValidation = default!; _explicitNullProperties?.Remove("validation"); }
@@ -30,12 +34,18 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>How the universal profile exposes the hidden catalog to the provider. Absent or `wrappers`: the `tool_search` and `tool_exec` tools. `code_mode`: one `tool_code` tool that runs a short JavaScript program in which `search()` and `call()` reach the catalog, so several searches and calls complete in one tool result. Experimental.</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.DeferredToolsControlInterface? Interface { get => _explicitNullValueInterface; set { _explicitNullValueInterface = value; AdditionalData?.Remove("interface"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("interface"); else _explicitNullProperties?.Remove("interface"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.DeferredToolsControlInterface? _explicitNullValueInterface = default!;
         /// <summary>Loading profile. `portable` serves the `defer_loading` tools with router-built search and call wrappers on any model and keeps the catalog fixed. `universal` defers every wrappable tool behind the same wrappers so the provider-facing tool list never changes, and rebuilds the catalog from each request so tools can be added or removed mid-conversation.</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.DeferredToolsControlProfile? Profile { get => _explicitNullValueProfile; set { _explicitNullValueProfile = value; AdditionalData?.Remove("profile"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("profile"); else _explicitNullProperties?.Remove("profile"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.DeferredToolsControlProfile? _explicitNullValueProfile = default!;
         /// <summary>The protocol property</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.V1Protocol? Protocol { get => _explicitNullValueProtocol; set { _explicitNullValueProtocol = value; AdditionalData?.Remove("protocol"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("protocol"); else _explicitNullProperties?.Remove("protocol"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.V1Protocol? _explicitNullValueProtocol = default!;
+        /// <summary>Which tools the universal profile defers. Absent or `all`: every wrappable tool outside the coding-harness core set. `mcp`: only MCP server tools (`mcp__*` names and Responses namespaces outside `functions`); the harness keeps its own built-in tools direct. Experimental.</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.DeferredToolsControlScope? Scope { get => _explicitNullValueScope; set { _explicitNullValueScope = value; AdditionalData?.Remove("scope"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scope"); else _explicitNullProperties?.Remove("scope"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.DeferredToolsControlScope? _explicitNullValueScope = default!;
         /// <summary>Router-local regex/BM25 or caller-owned custom search.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -74,8 +84,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "interface", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.DeferredToolsControlInterface>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueInterface = default; _explicitNullProperties?.Remove("interface"); AdditionalData["interface"] = unknown; } else { Interface = parsed; AdditionalData.Remove("interface"); } } },
                 { "profile", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.DeferredToolsControlProfile>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueProfile = default; _explicitNullProperties?.Remove("profile"); AdditionalData["profile"] = unknown; } else { Profile = parsed; AdditionalData.Remove("profile"); } } },
                 { "protocol", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.V1Protocol>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueProtocol = default; _explicitNullProperties?.Remove("protocol"); AdditionalData["protocol"] = unknown; } else { Protocol = parsed; AdditionalData.Remove("protocol"); } } },
+                { "scope", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.DeferredToolsControlScope>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueScope = default; _explicitNullProperties?.Remove("scope"); AdditionalData["scope"] = unknown; } else { Scope = parsed; AdditionalData.Remove("scope"); } } },
                 { "search", n => { Search = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.DeferredToolsSearchStrategy>(global::Soenneker.OpenRouter.OpenApiClient.Models.DeferredToolsSearchStrategy.CreateFromDiscriminatorValue); } },
                 { "validation", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.RuntimeValidation>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueValidation = default; _explicitNullProperties?.Remove("validation"); AdditionalData["validation"] = unknown; } else { Validation = parsed; AdditionalData.Remove("validation"); } } },
             };
@@ -87,8 +99,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.DeferredToolsControlInterface>("interface", Interface);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.DeferredToolsControlProfile>("profile", Profile);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.V1Protocol>("protocol", Protocol);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.DeferredToolsControlScope>("scope", Scope);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.DeferredToolsSearchStrategy>("search", Search);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.RuntimeValidation>("validation", Validation);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
