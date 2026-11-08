@@ -22,7 +22,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Presets.Item.Messages
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public MessagesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/presets/{slug}/messages", pathParameters)
+        public MessagesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/presets/{slug}/messages{?workspace_id*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,11 +30,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Presets.Item.Messages
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public MessagesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/presets/{slug}/messages", rawUrl)
+        public MessagesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/presets/{slug}/messages{?workspace_id*}", rawUrl)
         {
         }
         /// <summary>
-        /// Creates a preset (or a new version of an existing one) from an inference request body. Only fields that overlap with the preset config are persisted; other fields (e.g. `messages`, `stream`, `prompt`) are silently ignored.
+        /// Creates a preset (or a new version of an existing one) from an inference request body. Only fields that overlap with the preset config are persisted; other fields (e.g. `messages`, `stream`, `prompt`) are silently ignored. Requires a read-write [management key](/docs/guides/overview/auth/management-api-keys); inference API keys are rejected.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.CreatePresetFromInferenceResponse"/></returns>
         /// <param name="body">Request schema for Anthropic Messages API endpoint</param>
@@ -48,11 +48,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Presets.Item.Messages
         /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.InternalServerResponse">When receiving a 500 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.OpenRouter.OpenApiClient.Models.CreatePresetFromInferenceResponse?> PostAsync(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.OpenRouter.OpenApiClient.Models.CreatePresetFromInferenceResponse?> PostAsync(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest body, Action<RequestConfiguration<global::Soenneker.OpenRouter.OpenApiClient.Presets.Item.Messages.MessagesRequestBuilder.MessagesRequestBuilderPostQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.OpenRouter.OpenApiClient.Models.CreatePresetFromInferenceResponse> PostAsync(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.OpenRouter.OpenApiClient.Models.CreatePresetFromInferenceResponse> PostAsync(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest body, Action<RequestConfiguration<global::Soenneker.OpenRouter.OpenApiClient.Presets.Item.Messages.MessagesRequestBuilder.MessagesRequestBuilderPostQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -71,18 +71,18 @@ namespace Soenneker.OpenRouter.OpenApiClient.Presets.Item.Messages
             return await RequestAdapter.SendAsync<global::Soenneker.OpenRouter.OpenApiClient.Models.CreatePresetFromInferenceResponse>(requestInfo, global::Soenneker.OpenRouter.OpenApiClient.Models.CreatePresetFromInferenceResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Creates a preset (or a new version of an existing one) from an inference request body. Only fields that overlap with the preset config are persisted; other fields (e.g. `messages`, `stream`, `prompt`) are silently ignored.
+        /// Creates a preset (or a new version of an existing one) from an inference request body. Only fields that overlap with the preset config are persisted; other fields (e.g. `messages`, `stream`, `prompt`) are silently ignored. Requires a read-write [management key](/docs/guides/overview/auth/management-api-keys); inference API keys are rejected.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">Request schema for Anthropic Messages API endpoint</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest body, Action<RequestConfiguration<global::Soenneker.OpenRouter.OpenApiClient.Presets.Item.Messages.MessagesRequestBuilder.MessagesRequestBuilderPostQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesRequest body, Action<RequestConfiguration<global::Soenneker.OpenRouter.OpenApiClient.Presets.Item.Messages.MessagesRequestBuilder.MessagesRequestBuilderPostQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -100,6 +100,16 @@ namespace Soenneker.OpenRouter.OpenApiClient.Presets.Item.Messages
         public global::Soenneker.OpenRouter.OpenApiClient.Presets.Item.Messages.MessagesRequestBuilder WithUrl(string rawUrl)
         {
             return new global::Soenneker.OpenRouter.OpenApiClient.Presets.Item.Messages.MessagesRequestBuilder(rawUrl, RequestAdapter);
+        }
+        /// <summary>
+        /// Creates a preset (or a new version of an existing one) from an inference request body. Only fields that overlap with the preset config are persisted; other fields (e.g. `messages`, `stream`, `prompt`) are silently ignored. Requires a read-write [management key](/docs/guides/overview/auth/management-api-keys); inference API keys are rejected.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+        public partial class MessagesRequestBuilderPostQueryParameters 
+        {
+            /// <summary>Workspace to create the preset in. Defaults to the key&apos;s workspace for a key limited to one workspace, otherwise to the account&apos;s default workspace.</summary>
+            [QueryParameter("workspace_id")]
+            public Guid? WorkspaceId { get; set; }
         }
     }
 }

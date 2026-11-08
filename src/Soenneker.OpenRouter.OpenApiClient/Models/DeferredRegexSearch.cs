@@ -20,6 +20,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if (parseNode.GetChildNode("max_results") is null) { _explicitNullValueMaxResults = default!; _explicitNullProperties?.Remove("max_results"); }
             else if (parseNode.GetChildNode("max_results") is { } nullNodeMaxResults && nullNodeMaxResults.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxResults = null;
+            if (parseNode.GetChildNode("miss_sources") is null) { _explicitNullValueMissSources = default!; _explicitNullProperties?.Remove("miss_sources"); }
+            else if (parseNode.GetChildNode("miss_sources") is { } nullNodeMissSources && nullNodeMissSources.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MissSources = null;
+            if (parseNode.GetChildNode("siblings") is null) { _explicitNullValueSiblings = default!; _explicitNullProperties?.Remove("siblings"); }
+            else if (parseNode.GetChildNode("siblings") is { } nullNodeSiblings && nullNodeSiblings.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Siblings = null;
             if (parseNode.GetChildNode("type") is null) { _explicitNullValueType = default!; _explicitNullProperties?.Remove("type"); }
             else if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
         }
@@ -29,6 +33,12 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The max_results property</summary>
         public int? MaxResults { get => _explicitNullValueMaxResults; set { _explicitNullValueMaxResults = value; AdditionalData?.Remove("max_results"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_results"); else _explicitNullProperties?.Remove("max_results"); } }
         private int? _explicitNullValueMaxResults = default!;
+        /// <summary>Universal profile only, for searches the router answers through the `tool_search` wrapper. When true, a search that matches nothing also names the deferred sources this search covers (namespaces, MCP servers, and shared `&lt;server&gt;_` prefixes; up to 40 names or 2,000 characters, with a count of any omitted) and tells the model that a source the search does not cover is unreachable through it in this request, so it can make a client tool call the task already needs (or a read-only one) and search again on a later turn instead of concluding the integration is missing. Direct tools, including a client&apos;s built-in tools, are already in the tool list and are not named. Absent or false: a miss suggests other keywords and the closest names only.</summary>
+        public bool? MissSources { get => _explicitNullValueMissSources; set { _explicitNullValueMissSources = value; AdditionalData?.Remove("miss_sources"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("miss_sources"); else _explicitNullProperties?.Remove("miss_sources"); } }
+        private bool? _explicitNullValueMissSources = default!;
+        /// <summary>Universal profile only, for searches the router answers through the `tool_search` wrapper; code-mode `search()` and a client-owned tool search list the matched tools alone. When true, each result also names up to 16 other deferred tools of every source a match came from, so a model that found one tool of an MCP server learns its neighbours without another search. Absent or false: results list the matched tools alone.</summary>
+        public bool? Siblings { get => _explicitNullValueSiblings; set { _explicitNullValueSiblings = value; AdditionalData?.Remove("siblings"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("siblings"); else _explicitNullProperties?.Remove("siblings"); } }
+        private bool? _explicitNullValueSiblings = default!;
         /// <summary>The type property</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.RegexType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; AdditionalData?.Remove("type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.RegexType? _explicitNullValueType = default!;
@@ -58,6 +68,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "max_results", n => { MaxResults = n.GetIntValue(); } },
+                { "miss_sources", n => { MissSources = n.GetBoolValue(); } },
+                { "siblings", n => { Siblings = n.GetBoolValue(); } },
                 { "type", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.RegexType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueType = default; _explicitNullProperties?.Remove("type"); AdditionalData["type"] = unknown; } else { Type = parsed; AdditionalData.Remove("type"); } } },
             };
         }
@@ -69,6 +81,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("max_results", MaxResults);
+            writer.WriteBoolValue("miss_sources", MissSources);
+            writer.WriteBoolValue("siblings", Siblings);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.RegexType>("type", Type);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);

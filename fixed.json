@@ -5036,317 +5036,6 @@
         }
       ]
     },
-    "/credits/purchases": {
-      "post": {
-        "tags": [
-          "Credits"
-        ],
-        "summary": "Buy credits with a machine payment",
-        "description": "Starts an agent credit purchase paid with a Machine Payments Protocol (MPP) credential on Tempo. The first call answers \u0060402\u0060 with a \u0060WWW-Authenticate: Payment ...\u0060 challenge; retry the same request, same \u0060Idempotency-Key\u0060, with the signed credential in \u0060Payment-Authorization: Payment ...\u0060 (or in \u0060Authorization: Payment ...\u0060 when the API key is sent as \u0060X-Api-Key\u0060). A paid request answers \u0060202\u0060: the transfer was broadcast and Stripe is still screening the payment, so credits arrive asynchronously. Poll \u0060GET /api/v1/credits/purchases/{id}\u0060 until \u0060status\u0060 is \u0060credited\u0060 or \u0060failed\u0060. A retry with the same \u0060Idempotency-Key\u0060 after the purchase is credited answers \u0060200\u0060.",
-        "operationId": "CreateCreditsPurchases",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateCreditPurchaseRequest"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "Credits minted.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/CreditPurchaseResponse"
-                }
-              }
-            }
-          },
-          "202": {
-            "description": "Payment accepted; credits are minted when the PaymentIntent succeeds.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/CreditPurchaseResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request - Invalid request parameters or malformed input",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BadRequestResponse"
-                },
-                "example": {
-                  "error": {
-                    "code": 400,
-                    "message": "Invalid request parameters"
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized - Authentication required or invalid credentials",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/UnauthorizedResponse"
-                },
-                "example": {
-                  "error": {
-                    "code": 401,
-                    "message": "Missing Authentication header"
-                  }
-                }
-              }
-            }
-          },
-          "402": {
-            "description": "Payment required. An unpaid request carries the MPP challenge in \u0060WWW-Authenticate\u0060; a purchase whose transfer was rejected returns its record with \u0060status: failed\u0060.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/CreditPurchaseResponse"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden - Authentication successful but insufficient permissions",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ForbiddenResponse"
-                },
-                "example": {
-                  "error": {
-                    "code": 403,
-                    "message": "Only management keys can perform this operation"
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found - Resource does not exist",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/NotFoundResponse"
-                },
-                "example": {
-                  "error": {
-                    "code": 404,
-                    "message": "Resource not found"
-                  }
-                }
-              }
-            }
-          },
-          "409": {
-            "description": "Conflict - Resource conflict or concurrent modification",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ConflictResponse"
-                },
-                "example": {
-                  "error": {
-                    "code": 409,
-                    "message": "Resource conflict. Please try again later."
-                  }
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error - Unexpected server error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/InternalServerResponse"
-                },
-                "example": {
-                  "error": {
-                    "code": 500,
-                    "message": "Internal Server Error"
-                  }
-                }
-              }
-            }
-          },
-          "503": {
-            "description": "Service Unavailable - Service temporarily unavailable",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ServiceUnavailableResponse"
-                },
-                "example": {
-                  "error": {
-                    "code": 503,
-                    "message": "Service temporarily unavailable"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {}
-        ],
-        "x-fern-ignore": true,
-        "x-hidden": true,
-        "x-speakeasy-ignore": true
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
-    },
-    "/credits/purchases/{id}": {
-      "get": {
-        "tags": [
-          "Credits"
-        ],
-        "summary": "Get a credit purchase",
-        "description": "Returns one agent credit purchase made with a key of the calling workspace. Poll this after a \u0060202\u0060 until \u0060status\u0060 is \u0060credited\u0060 or \u0060failed\u0060.",
-        "operationId": "ListCreditsPurchases",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "The purchase.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/CreditPurchaseResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request - Invalid request parameters or malformed input",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BadRequestResponse"
-                },
-                "example": {
-                  "error": {
-                    "code": 400,
-                    "message": "Invalid request parameters"
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized - Authentication required or invalid credentials",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/UnauthorizedResponse"
-                },
-                "example": {
-                  "error": {
-                    "code": 401,
-                    "message": "Missing Authentication header"
-                  }
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden - Authentication successful but insufficient permissions",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ForbiddenResponse"
-                },
-                "example": {
-                  "error": {
-                    "code": 403,
-                    "message": "Only management keys can perform this operation"
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found - Resource does not exist",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/NotFoundResponse"
-                },
-                "example": {
-                  "error": {
-                    "code": 404,
-                    "message": "Resource not found"
-                  }
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error - Unexpected server error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/InternalServerResponse"
-                },
-                "example": {
-                  "error": {
-                    "code": 500,
-                    "message": "Internal Server Error"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {}
-        ],
-        "x-fern-ignore": true,
-        "x-hidden": true,
-        "x-speakeasy-ignore": true
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
-    },
     "/datasets/app-rankings": {
       "get": {
         "tags": [
@@ -18968,7 +18657,7 @@
           "Presets"
         ],
         "summary": "Create a preset from a chat-completions request body",
-        "description": "Creates a preset (or a new version of an existing one) from an inference request body. Only fields that overlap with the preset config are persisted; other fields (e.g. \u0060messages\u0060, \u0060stream\u0060, \u0060prompt\u0060) are silently ignored.",
+        "description": "Creates a preset (or a new version of an existing one) from an inference request body. Only fields that overlap with the preset config are persisted; other fields (e.g. \u0060messages\u0060, \u0060stream\u0060, \u0060prompt\u0060) are silently ignored. Requires a read-write [management key](/docs/guides/overview/auth/management-api-keys); inference API keys are rejected.",
         "operationId": "CreatePresetsChatCompletions",
         "parameters": [
           {
@@ -18981,6 +18670,17 @@
               "type": "string",
               "description": "URL-safe slug identifying the preset. Created if it does not exist.",
               "example": "my-preset"
+            }
+          },
+          {
+            "name": "workspace_id",
+            "in": "query",
+            "description": "Workspace to create the preset in. Defaults to the key\u0027s workspace for a key limited to one workspace, otherwise to the account\u0027s default workspace.",
+            "schema": {
+              "type": "string",
+              "description": "Workspace to create the preset in. Defaults to the key\u0027s workspace for a key limited to one workspace, otherwise to the account\u0027s default workspace.",
+              "format": "uuid",
+              "example": "750e8400-e29b-41d4-a716-446655440002"
             }
           }
         ],
@@ -19168,7 +18868,7 @@
           "Presets"
         ],
         "summary": "Create a preset from a messages request body",
-        "description": "Creates a preset (or a new version of an existing one) from an inference request body. Only fields that overlap with the preset config are persisted; other fields (e.g. \u0060messages\u0060, \u0060stream\u0060, \u0060prompt\u0060) are silently ignored.",
+        "description": "Creates a preset (or a new version of an existing one) from an inference request body. Only fields that overlap with the preset config are persisted; other fields (e.g. \u0060messages\u0060, \u0060stream\u0060, \u0060prompt\u0060) are silently ignored. Requires a read-write [management key](/docs/guides/overview/auth/management-api-keys); inference API keys are rejected.",
         "operationId": "CreatePresetsMessages",
         "parameters": [
           {
@@ -19181,6 +18881,17 @@
               "type": "string",
               "description": "URL-safe slug identifying the preset. Created if it does not exist.",
               "example": "my-preset"
+            }
+          },
+          {
+            "name": "workspace_id",
+            "in": "query",
+            "description": "Workspace to create the preset in. Defaults to the key\u0027s workspace for a key limited to one workspace, otherwise to the account\u0027s default workspace.",
+            "schema": {
+              "type": "string",
+              "description": "Workspace to create the preset in. Defaults to the key\u0027s workspace for a key limited to one workspace, otherwise to the account\u0027s default workspace.",
+              "format": "uuid",
+              "example": "750e8400-e29b-41d4-a716-446655440002"
             }
           }
         ],
@@ -19365,7 +19076,7 @@
           "Presets"
         ],
         "summary": "Create a preset from a responses request body",
-        "description": "Creates a preset (or a new version of an existing one) from an inference request body. Only fields that overlap with the preset config are persisted; other fields (e.g. \u0060messages\u0060, \u0060stream\u0060, \u0060prompt\u0060) are silently ignored.",
+        "description": "Creates a preset (or a new version of an existing one) from an inference request body. Only fields that overlap with the preset config are persisted; other fields (e.g. \u0060messages\u0060, \u0060stream\u0060, \u0060prompt\u0060) are silently ignored. Requires a read-write [management key](/docs/guides/overview/auth/management-api-keys); inference API keys are rejected.",
         "operationId": "CreatePresetsResponses",
         "parameters": [
           {
@@ -19378,6 +19089,17 @@
               "type": "string",
               "description": "URL-safe slug identifying the preset. Created if it does not exist.",
               "example": "my-preset"
+            }
+          },
+          {
+            "name": "workspace_id",
+            "in": "query",
+            "description": "Workspace to create the preset in. Defaults to the key\u0027s workspace for a key limited to one workspace, otherwise to the account\u0027s default workspace.",
+            "schema": {
+              "type": "string",
+              "description": "Workspace to create the preset in. Defaults to the key\u0027s workspace for a key limited to one workspace, otherwise to the account\u0027s default workspace.",
+              "format": "uuid",
+              "example": "750e8400-e29b-41d4-a716-446655440002"
             }
           }
         ],
@@ -37455,7 +37177,7 @@
             "$ref": "#/components/schemas/ChatDebugOptions"
           },
           "deferred_tools": {
-            "description": "Opt-in versioned router-level deferred-tool protocol. Replay assistant reasoning unchanged on continuation; keep the catalog unchanged.",
+            "description": "Opt-in versioned router-level deferred-tool protocol. Replay assistant reasoning unchanged on continuation. The portable profile needs the catalog unchanged across a continuation; the universal profile accepts a changed catalog and, with \u0060announce_catalog_changes\u0060, tells the model about it.",
             "$ref": "#/components/schemas/DeferredToolsControl"
           },
           "frequency_penalty": {
@@ -38454,7 +38176,7 @@
             "$ref": "#/components/schemas/CodeInterpreterType"
           }
         },
-        "description": "Code interpreter tool configuration",
+        "description": "Code interpreter tool configuration. An existing container id or \u0060container.file_ids\u0060 requires BYOK (your own OpenAI key); requests on OpenRouter credits must use \u0060auto\u0060 with no \u0060file_ids\u0060.",
         "example": {
           "container": "auto",
           "type": "code_interpreter"
@@ -39441,19 +39163,6 @@
           }
         }
       },
-      "CreateCreditPurchaseRequest": {
-        "required": [
-          "credit_amount_usd"
-        ],
-        "type": "object",
-        "properties": {
-          "credit_amount_usd": {
-            "type": "string",
-            "description": "Credits to buy, in USD with at most two decimals. The platform fee is added on top and shown in the challenge and the receipt.",
-            "example": "25.00"
-          }
-        }
-      },
       "CreateExternalUserRequest": {
         "required": [
           "user"
@@ -40415,71 +40124,6 @@
           }
         }
       },
-      "CreditPurchase": {
-        "required": [
-          "id",
-          "status",
-          "credit_amount_usd",
-          "platform_fee_usd",
-          "total_charged_usd",
-          "protocol",
-          "network",
-          "payment_intent_id",
-          "failure_reason",
-          "created_at"
-        ],
-        "type": "object",
-        "properties": {
-          "created_at": {
-            "type": "string"
-          },
-          "credit_amount_usd": {
-            "type": "string"
-          },
-          "failure_reason": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "id": {
-            "type": "string",
-            "description": "Opaque purchase id, owned by the calling account."
-          },
-          "network": {
-            "type": "string"
-          },
-          "payment_intent_id": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "platform_fee_usd": {
-            "type": "string"
-          },
-          "protocol": {
-            "type": "string"
-          },
-          "status": {
-            "$ref": "#/components/schemas/CreditPurchaseStatus"
-          },
-          "total_charged_usd": {
-            "type": "string"
-          }
-        }
-      },
-      "CreditPurchaseResponse": {
-        "required": [
-          "data"
-        ],
-        "type": "object",
-        "properties": {
-          "data": {
-            "$ref": "#/components/schemas/CreditPurchase"
-          }
-        }
-      },
       "CustomTool": {
         "required": [
           "type",
@@ -40893,6 +40537,18 @@
           "max_results": {
             "type": "integer"
           },
+          "miss_sources": {
+            "type": "boolean",
+            "description": "Universal profile only, for searches the router answers through the \u0060tool_search\u0060 wrapper. When true, a search that matches nothing also names the deferred sources this search covers (namespaces, MCP servers, and shared \u0060\u003Cserver\u003E_\u0060 prefixes; up to 40 names or 2,000 characters, with a count of any omitted) and tells the model that a source the search does not cover is unreachable through it in this request, so it can make a client tool call the task already needs (or a read-only one) and search again on a later turn instead of concluding the integration is missing. Direct tools, including a client\u0027s built-in tools, are already in the tool list and are not named. Absent or false: a miss suggests other keywords and the closest names only."
+          },
+          "siblings": {
+            "type": "boolean",
+            "description": "Universal profile only, for searches the router answers through the \u0060tool_search\u0060 wrapper; code-mode \u0060search()\u0060 and a client-owned tool search list the matched tools alone. When true, each result also names up to 16 other deferred tools of every source a match came from, so a model that found one tool of an MCP server learns its neighbours without another search. Absent or false: results list the matched tools alone."
+          },
+          "spread": {
+            "type": "boolean",
+            "description": "Universal profile only, for keyword searches the router answers through the \u0060tool_search\u0060 wrapper. When true, a result spreads across sources: of the 3 x limit best-scoring candidates, those scoring at least 60% of the best match take at most 2 slots per source (MCP server, namespace or shared \u0060\u003Cserver\u003E_\u0060 prefix; a tool with no source is never capped), and the remaining slots fill in score order, so a catalog with several systems for one job (web search, page extraction) shows one of each instead of the top system\u0027s siblings. Absent or false: results are the best matches in score order."
+          },
           "type": {
             "$ref": "#/components/schemas/Bm25Type"
           }
@@ -40943,6 +40599,14 @@
           "max_results": {
             "type": "integer"
           },
+          "miss_sources": {
+            "type": "boolean",
+            "description": "Universal profile only, for searches the router answers through the \u0060tool_search\u0060 wrapper. When true, a search that matches nothing also names the deferred sources this search covers (namespaces, MCP servers, and shared \u0060\u003Cserver\u003E_\u0060 prefixes; up to 40 names or 2,000 characters, with a count of any omitted) and tells the model that a source the search does not cover is unreachable through it in this request, so it can make a client tool call the task already needs (or a read-only one) and search again on a later turn instead of concluding the integration is missing. Direct tools, including a client\u0027s built-in tools, are already in the tool list and are not named. Absent or false: a miss suggests other keywords and the closest names only."
+          },
+          "siblings": {
+            "type": "boolean",
+            "description": "Universal profile only, for searches the router answers through the \u0060tool_search\u0060 wrapper; code-mode \u0060search()\u0060 and a client-owned tool search list the matched tools alone. When true, each result also names up to 16 other deferred tools of every source a match came from, so a model that found one tool of an MCP server learns its neighbours without another search. Absent or false: results list the matched tools alone."
+          },
           "type": {
             "$ref": "#/components/schemas/RegexType"
           }
@@ -40962,8 +40626,25 @@
         ],
         "type": "object",
         "properties": {
+          "announce_catalog_changes": {
+            "type": "boolean",
+            "description": "Universal profile only. When true, a catalog whose deferred tools changed between two of the model\u0027s own turns (a client that connects MCP servers while the model works) is re-announced before the next model turn, with the sources added, changed and removed since the previous index, or that no deferred tools remain. Applies when the router lists the catalog itself; a client whose own tool search was adopted lists its deferred tools itself and is not re-announced. The announcement shares the result budget of the turn and is skipped when it does not fit. Absent or false: the catalog index is announced on a user turn only."
+          },
+          "cascade_mode": {
+            "$ref": "#/components/schemas/DeferredToolsControlCascadeMode"
+          },
+          "hint": {
+            "maxLength": 2000,
+            "minLength": 1,
+            "type": "string",
+            "description": "Universal profile only. Caller text announced to the model with the deferred catalog before its first turn, for example which sources the task needs. Repeated only when it changes. Trimmed before the length bounds apply. Recorded in the \u0060catalog_index\u0060 discovery record of the response, so it is replayed with the conversation."
+          },
           "interface": {
             "$ref": "#/components/schemas/DeferredToolsControlInterface"
+          },
+          "min_deferred_tools": {
+            "type": "integer",
+            "description": "Universal profile only. When fewer tools than this would be deferred, the universal profile defers none of them and sends the client tools unchanged, so a harness with a handful of non-core tools and no MCP servers pays no search turn for them. Counted after the interface exclusions; ignored with a custom search, whose client decides what it loads. Absent: every wrappable tool in scope is deferred."
           },
           "profile": {
             "$ref": "#/components/schemas/DeferredToolsControlProfile"
@@ -40982,7 +40663,7 @@
             "$ref": "#/components/schemas/RuntimeValidation"
           }
         },
-        "description": "Opt-in versioned router-level deferred-tool protocol. Replay assistant reasoning unchanged on continuation; keep the catalog unchanged.",
+        "description": "Opt-in versioned router-level deferred-tool protocol. Replay assistant reasoning unchanged on continuation. The portable profile needs the catalog unchanged across a continuation; the universal profile accepts a changed catalog and, with \u0060announce_catalog_changes\u0060, tells the model about it.",
         "example": {
           "profile": "portable",
           "protocol": "v1",
@@ -41930,7 +41611,7 @@
             }
           }
         },
-        "description": "File search tool configuration",
+        "description": "File search tool configuration. \u0060vector_store_ids\u0060 names OpenAI vector stores, so it requires BYOK (your own OpenAI key); requests on OpenRouter credits get a 400.",
         "example": {
           "type": "file_search",
           "vector_store_ids": [
@@ -44443,7 +44124,7 @@
         "description": "OpenRouter built-in server tool: generates images from text prompts using an image generation model",
         "example": {
           "parameters": {
-            "model": "openai/gpt-5-image",
+            "model": "openai/gpt-image-2.6-flare",
             "quality": "high",
             "size": "1024x1024"
           },
@@ -44455,8 +44136,8 @@
         "properties": {
           "model": {
             "type": "string",
-            "description": "Which image generation model to use (e.g. \u0022openai/gpt-5-image\u0022). Defaults to \u0022openai/gpt-5-image\u0022.",
-            "example": "openai/gpt-5-image"
+            "description": "Which image generation model to use (e.g. \u0022openai/gpt-image-2.6-flare\u0022). Defaults to \u0022openai/gpt-image-2.6-flare\u0022.",
+            "example": "openai/gpt-image-2.6-flare"
           }
         },
         "additionalProperties": {
@@ -44465,7 +44146,7 @@
         "description": "Configuration for the openrouter:image_generation server tool. Accepts all image_config params (aspect_ratio, quality, size, background, output_format, output_compression, moderation, etc.) plus a model field.",
         "example": {
           "aspect_ratio": "16:9",
-          "model": "openai/gpt-5-image",
+          "model": "openai/gpt-image-2.6-flare",
           "quality": "high"
         }
       },
@@ -47014,7 +46695,7 @@
             "$ref": "#/components/schemas/MessagesRequestContextManagement"
           },
           "deferred_tools": {
-            "description": "Opt-in versioned router-level deferred-tool protocol. Replay assistant reasoning unchanged on continuation; keep the catalog unchanged.",
+            "description": "Opt-in versioned router-level deferred-tool protocol. Replay assistant reasoning unchanged on continuation. The portable profile needs the catalog unchanged across a continuation; the universal profile accepts a changed catalog and, with \u0060announce_catalog_changes\u0060, tells the model about it.",
             "$ref": "#/components/schemas/DeferredToolsControl"
           },
           "fallbacks": {
@@ -54600,6 +54281,11 @@
             "description": "The ID of the model call that ran the search. Replaying the item reuses it.",
             "example": "call_search_1"
           },
+          "catalog_changes": {
+            "type": "string",
+            "description": "What the announced index added and removed since the previous one, when the request opted into \u0060announce_catalog_changes\u0060 and the catalog changed between model turns. Replaying the item shows the same lines.",
+            "example": "Added since the previous index: mcp__okta (113)."
+          },
           "catalog_index": {
             "type": "string",
             "description": "The deferred-tool index the router showed the model with a pre-search, listing tool sources and names. Replaying the item shows the same index.",
@@ -54629,6 +54315,9 @@
           },
           "query": {
             "type": "string"
+          },
+          "sources": {
+            "$ref": "#/components/schemas/OutputToolSearchServerToolItemSourcesProperty"
           },
           "status": {
             "$ref": "#/components/schemas/FailableToolCallStatus"
@@ -59481,7 +59170,7 @@
             "$ref": "#/components/schemas/ChatDebugOptions"
           },
           "deferred_tools": {
-            "description": "Opt-in versioned router-level deferred-tool protocol. Replay assistant reasoning unchanged on continuation; keep the catalog unchanged.",
+            "description": "Opt-in versioned router-level deferred-tool protocol. Replay assistant reasoning unchanged on continuation. The portable profile needs the catalog unchanged across a continuation; the universal profile accepts a changed catalog and, with \u0060announce_catalog_changes\u0060, tells the model about it.",
             "$ref": "#/components/schemas/DeferredToolsControl"
           },
           "frequency_penalty": {
@@ -84180,6 +83869,22 @@
         "type": "object",
         "additionalProperties": {}
       },
+      "OutputToolSearchServerToolItemSourcesProperty": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "description": "The other deferred tools of each source a match came from, by name, when the search listed siblings. Replaying the item shows the same names.",
+        "example": {
+          "mcp__tavily": [
+            "mcp__tavily__tavily_extract",
+            "mcp__tavily__tavily_crawl"
+          ]
+        }
+      },
       "PayloadTooLargeResponseOpenrouterMetadataProperty": {
         "type": [
           "null",
@@ -91994,38 +91699,6 @@
           ]
         }
       },
-      "CreditPurchaseStatus": {
-        "enum": [
-          "settling",
-          "settled",
-          "credited",
-          "failed"
-        ],
-        "type": "string",
-        "x-speakeasy-unknown-values": "allow",
-        "x-ms-enum": {
-          "name": "CreditPurchaseStatus",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "settling",
-              "name": "Settling"
-            },
-            {
-              "value": "settled",
-              "name": "Settled"
-            },
-            {
-              "value": "credited",
-              "name": "Credited"
-            },
-            {
-              "value": "failed",
-              "name": "Failed"
-            }
-          ]
-        }
-      },
       "CustomType": {
         "enum": [
           "custom"
@@ -92229,6 +91902,29 @@
           ]
         }
       },
+      "DeferredToolsControlCascadeMode": {
+        "enum": [
+          "keywords",
+          "native"
+        ],
+        "type": "string",
+        "description": "How a universal \u0060tool_search\u0060 query reaches the client\u0027s own tool search. Absent or \u0060keywords\u0060: a \u0060select:\u0060 query becomes the words of the selected names and the limit is always filled. \u0060native\u0060: a \u0060select:\u0060 query passes through verbatim when the client search documents \u0060select:\u0060, and the limit field is sent only when the model gave one, unless the client search requires it, in which case its documented default is sent. Experimental.",
+        "x-speakeasy-unknown-values": "allow",
+        "x-ms-enum": {
+          "name": "DeferredToolsControlCascadeMode",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "keywords",
+              "name": "Keywords"
+            },
+            {
+              "value": "native",
+              "name": "Native"
+            }
+          ]
+        }
+      },
       "DeferredToolsControlInterface": {
         "enum": [
           "wrappers",
@@ -92258,7 +91954,7 @@
           "universal"
         ],
         "type": "string",
-        "description": "Loading profile. \u0060portable\u0060 serves the \u0060defer_loading\u0060 tools with router-built search and call wrappers on any model and keeps the catalog fixed. \u0060universal\u0060 defers every wrappable tool behind the same wrappers so the provider-facing tool list never changes, and rebuilds the catalog from each request so tools can be added or removed mid-conversation.",
+        "description": "Loading profile. \u0060portable\u0060 serves the \u0060defer_loading\u0060 tools with router-built search and call wrappers on any model and keeps the catalog fixed. \u0060universal\u0060 defers every wrappable tool behind the same wrappers so the provider-facing tool list never changes (unless \u0060min_deferred_tools\u0060 inlines a small catalog), and rebuilds the catalog from each request so tools can be added or removed mid-conversation.",
         "x-speakeasy-unknown-values": "allow",
         "x-ms-enum": {
           "name": "DeferredToolsControlProfile",
@@ -92294,10 +91990,11 @@
       "DeferredToolsControlScope": {
         "enum": [
           "all",
-          "mcp"
+          "mcp",
+          "client"
         ],
         "type": "string",
-        "description": "Which tools the universal profile defers. Absent or \u0060all\u0060: every wrappable tool outside the coding-harness core set. \u0060mcp\u0060: only MCP server tools (\u0060mcp__*\u0060 names and Responses namespaces outside \u0060functions\u0060); the harness keeps its own built-in tools direct. Experimental.",
+        "description": "Which tools the universal profile defers. Absent or \u0060all\u0060: every wrappable tool outside the coding-harness core set. \u0060mcp\u0060: only MCP server tools (\u0060mcp__*\u0060 names and Responses namespaces outside \u0060functions\u0060); the harness keeps its own built-in tools direct. \u0060client\u0060: only the tools the client itself marked \u0060defer_loading\u0060, so a harness with its own tool search keeps its other direct tools direct; an adopted client tool search is still replaced by the router wrappers, and a client-deferred tool the router cannot wrap stays direct. Experimental.",
         "x-speakeasy-unknown-values": "allow",
         "x-ms-enum": {
           "name": "DeferredToolsControlScope",
@@ -92310,6 +92007,10 @@
             {
               "value": "mcp",
               "name": "Mcp"
+            },
+            {
+              "value": "client",
+              "name": "Client"
             }
           ]
         }
@@ -108939,7 +108640,7 @@
                 }
               }
             },
-            "description": "File search tool configuration",
+            "description": "File search tool configuration. \u0060vector_store_ids\u0060 names OpenAI vector stores, so it requires BYOK (your own OpenAI key); requests on OpenRouter credits get a 400.",
             "example": {
               "type": "file_search",
               "vector_store_ids": [
@@ -109005,7 +108706,7 @@
                 "$ref": "#/components/schemas/CodeInterpreterType"
               }
             },
-            "description": "Code interpreter tool configuration",
+            "description": "Code interpreter tool configuration. An existing container id or \u0060container.file_ids\u0060 requires BYOK (your own OpenAI key); requests on OpenRouter credits must use \u0060auto\u0060 with no \u0060file_ids\u0060.",
             "example": {
               "container": "auto",
               "type": "code_interpreter"
@@ -112365,6 +112066,10 @@
             ],
             "type": "object",
             "properties": {
+              "confidence": {
+                "type": "number",
+                "format": "double"
+              },
               "noul": {
                 "type": "number",
                 "format": "double"
@@ -122882,6 +122587,10 @@
       ],
       "type": "object",
       "properties": {
+        "confidence": {
+          "type": "number",
+          "format": "double"
+        },
         "noul": {
           "type": "number",
           "format": "double"
@@ -132374,6 +132083,22 @@
     "OrAnthropicToolSearchResultParamContent": {
       "type": "object",
       "additionalProperties": {}
+    },
+    "OutputToolSearchServerToolItemSources": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "description": "The other deferred tools of each source a match came from, by name, when the search listed siblings. Replaying the item shows the same names.",
+      "example": {
+        "mcp__tavily": [
+          "mcp__tavily__tavily_extract",
+          "mcp__tavily__tavily_crawl"
+        ]
+      }
     },
     "PayloadTooLargeResponseOpenrouterMetadata": {
       "type": [

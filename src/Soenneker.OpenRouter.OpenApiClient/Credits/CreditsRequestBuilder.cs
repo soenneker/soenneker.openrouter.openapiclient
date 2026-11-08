@@ -4,7 +4,6 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.OpenRouter.OpenApiClient.Credits.Coinbase;
-using Soenneker.OpenRouter.OpenApiClient.Credits.Purchases;
 using Soenneker.OpenRouter.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -24,11 +23,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Credits
         public global::Soenneker.OpenRouter.OpenApiClient.Credits.Coinbase.CoinbaseRequestBuilder Coinbase
         {
             get => new global::Soenneker.OpenRouter.OpenApiClient.Credits.Coinbase.CoinbaseRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The purchases property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Credits.Purchases.PurchasesRequestBuilder Purchases
-        {
-            get => new global::Soenneker.OpenRouter.OpenApiClient.Credits.Purchases.PurchasesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Credits.CreditsRequestBuilder"/> and sets the default values.

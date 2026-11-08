@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     /// <summary>
-    /// Code interpreter tool configuration
+    /// Code interpreter tool configuration. An existing container id or `container.file_ids` requires BYOK (your own OpenAI key); requests on OpenRouter credits must use `auto` with no `file_ids`.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class BaseResponsesResultToolsItemCodeInterpreterServerTool : global::Soenneker.OpenRouter.OpenApiClient.Models.BaseResponsesResultToolsItem, IParsable
