@@ -5036,6 +5036,317 @@
         }
       ]
     },
+    "/credits/purchases": {
+      "post": {
+        "tags": [
+          "Credits"
+        ],
+        "summary": "Buy credits with a machine payment",
+        "description": "Starts an agent credit purchase paid with a Machine Payments Protocol (MPP) credential on Tempo. The first call answers \u0060402\u0060 with a \u0060WWW-Authenticate: Payment ...\u0060 challenge; retry the same request, same \u0060Idempotency-Key\u0060, with the signed credential in \u0060Payment-Authorization: Payment ...\u0060 (or in \u0060Authorization: Payment ...\u0060 when the API key is sent as \u0060X-Api-Key\u0060). A paid request answers \u0060202\u0060: the transfer was broadcast and Stripe is still screening the payment, so credits arrive asynchronously. Poll \u0060GET /api/v1/credits/purchases/{id}\u0060 until \u0060status\u0060 is \u0060credited\u0060 or \u0060failed\u0060. A retry with the same \u0060Idempotency-Key\u0060 after the purchase is credited answers \u0060200\u0060.",
+        "operationId": "CreateCreditsPurchases",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateCreditPurchaseRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Credits minted.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreditPurchaseResponse"
+                }
+              }
+            }
+          },
+          "202": {
+            "description": "Payment accepted; credits are minted when the PaymentIntent succeeds.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreditPurchaseResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request - Invalid request parameters or malformed input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 400,
+                    "message": "Invalid request parameters"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Authentication required or invalid credentials",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 401,
+                    "message": "Missing Authentication header"
+                  }
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Payment required. An unpaid request carries the MPP challenge in \u0060WWW-Authenticate\u0060; a purchase whose transfer was rejected returns its record with \u0060status: failed\u0060.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreditPurchaseResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden - Authentication successful but insufficient permissions",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ForbiddenResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 403,
+                    "message": "Only management keys can perform this operation"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found - Resource does not exist",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFoundResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 404,
+                    "message": "Resource not found"
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict - Resource conflict or concurrent modification",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConflictResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 409,
+                    "message": "Resource conflict. Please try again later."
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error - Unexpected server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 500,
+                    "message": "Internal Server Error"
+                  }
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable - Service temporarily unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceUnavailableResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 503,
+                    "message": "Service temporarily unavailable"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {}
+        ],
+        "x-fern-ignore": true,
+        "x-hidden": true,
+        "x-speakeasy-ignore": true
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
+    },
+    "/credits/purchases/{id}": {
+      "get": {
+        "tags": [
+          "Credits"
+        ],
+        "summary": "Get a credit purchase",
+        "description": "Returns one agent credit purchase made with a key of the calling workspace. Poll this after a \u0060202\u0060 until \u0060status\u0060 is \u0060credited\u0060 or \u0060failed\u0060.",
+        "operationId": "ListCreditsPurchases",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The purchase.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreditPurchaseResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request - Invalid request parameters or malformed input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 400,
+                    "message": "Invalid request parameters"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Authentication required or invalid credentials",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 401,
+                    "message": "Missing Authentication header"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden - Authentication successful but insufficient permissions",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ForbiddenResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 403,
+                    "message": "Only management keys can perform this operation"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found - Resource does not exist",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFoundResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 404,
+                    "message": "Resource not found"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error - Unexpected server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 500,
+                    "message": "Internal Server Error"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {}
+        ],
+        "x-fern-ignore": true,
+        "x-hidden": true,
+        "x-speakeasy-ignore": true
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
+    },
     "/datasets/app-rankings": {
       "get": {
         "tags": [
@@ -39163,6 +39474,19 @@
           }
         }
       },
+      "CreateCreditPurchaseRequest": {
+        "required": [
+          "credit_amount_usd"
+        ],
+        "type": "object",
+        "properties": {
+          "credit_amount_usd": {
+            "type": "string",
+            "description": "Credits to buy, in USD with at most two decimals. The platform fee is added on top and shown in the challenge and the receipt.",
+            "example": "25.00"
+          }
+        }
+      },
       "CreateExternalUserRequest": {
         "required": [
           "user"
@@ -40124,6 +40448,71 @@
           }
         }
       },
+      "CreditPurchase": {
+        "required": [
+          "id",
+          "status",
+          "credit_amount_usd",
+          "platform_fee_usd",
+          "total_charged_usd",
+          "protocol",
+          "network",
+          "payment_intent_id",
+          "failure_reason",
+          "created_at"
+        ],
+        "type": "object",
+        "properties": {
+          "created_at": {
+            "type": "string"
+          },
+          "credit_amount_usd": {
+            "type": "string"
+          },
+          "failure_reason": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "id": {
+            "type": "string",
+            "description": "Opaque purchase id, owned by the calling account."
+          },
+          "network": {
+            "type": "string"
+          },
+          "payment_intent_id": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "platform_fee_usd": {
+            "type": "string"
+          },
+          "protocol": {
+            "type": "string"
+          },
+          "status": {
+            "$ref": "#/components/schemas/CreditPurchaseStatus"
+          },
+          "total_charged_usd": {
+            "type": "string"
+          }
+        }
+      },
+      "CreditPurchaseResponse": {
+        "required": [
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/CreditPurchase"
+          }
+        }
+      },
       "CustomTool": {
         "required": [
           "type",
@@ -40539,7 +40928,7 @@
           },
           "miss_sources": {
             "type": "boolean",
-            "description": "Universal profile only, for searches the router answers through the \u0060tool_search\u0060 wrapper. When true, a search that matches nothing also names the deferred sources this search covers (namespaces, MCP servers, and shared \u0060\u003Cserver\u003E_\u0060 prefixes; up to 40 names or 2,000 characters, with a count of any omitted) and tells the model that a source the search does not cover is unreachable through it in this request, so it can make a client tool call the task already needs (or a read-only one) and search again on a later turn instead of concluding the integration is missing. Direct tools, including a client\u0027s built-in tools, are already in the tool list and are not named. Absent or false: a miss suggests other keywords and the closest names only."
+            "description": "Universal profile only, for searches the router answers through the \u0060tool_search\u0060 wrapper. When true, a search that matches nothing also names the deferred sources this search covers (namespaces, MCP servers, and shared \u0060\u003Cserver\u003E_\u0060 prefixes; up to 40 names or 2,000 characters, with a count of any omitted) and tells the model that a source the search does not cover is unreachable through it in this request, so it can make a client tool call the task already needs (or a read-only one) and search again on a later turn instead of concluding the integration is missing. A hit gets the same guidance after its matches when, as a heuristic on the model\u0027s own words, the query\u0027s leading word has 3 to 64 characters, no query word names a searchable source, and the leading word is not among the words of the deferred tools\u0027 names (the union of every deferred tool name\u0027s tokens, whole and split as the search index splits names; a camel-case word counts when each of its parts is), with descriptions left out so a tool that merely mentions another product cannot mask it (\u0060jira create issue\u0060 answered with another tracker\u0027s issue tools). Direct tools, including a client\u0027s built-in tools, are already in the tool list and are not named. Absent or false: a miss suggests other keywords and the closest names only."
           },
           "siblings": {
             "type": "boolean",
@@ -40601,7 +40990,7 @@
           },
           "miss_sources": {
             "type": "boolean",
-            "description": "Universal profile only, for searches the router answers through the \u0060tool_search\u0060 wrapper. When true, a search that matches nothing also names the deferred sources this search covers (namespaces, MCP servers, and shared \u0060\u003Cserver\u003E_\u0060 prefixes; up to 40 names or 2,000 characters, with a count of any omitted) and tells the model that a source the search does not cover is unreachable through it in this request, so it can make a client tool call the task already needs (or a read-only one) and search again on a later turn instead of concluding the integration is missing. Direct tools, including a client\u0027s built-in tools, are already in the tool list and are not named. Absent or false: a miss suggests other keywords and the closest names only."
+            "description": "Universal profile only, for searches the router answers through the \u0060tool_search\u0060 wrapper. When true, a search that matches nothing also names the deferred sources this search covers (namespaces, MCP servers, and shared \u0060\u003Cserver\u003E_\u0060 prefixes; up to 40 names or 2,000 characters, with a count of any omitted) and tells the model that a source the search does not cover is unreachable through it in this request, so it can make a client tool call the task already needs (or a read-only one) and search again on a later turn instead of concluding the integration is missing. A hit gets the same guidance after its matches when, as a heuristic on the model\u0027s own words, the query\u0027s leading word has 3 to 64 characters, no query word names a searchable source, and the leading word is not among the words of the deferred tools\u0027 names (the union of every deferred tool name\u0027s tokens, whole and split as the search index splits names; a camel-case word counts when each of its parts is), with descriptions left out so a tool that merely mentions another product cannot mask it (\u0060jira create issue\u0060 answered with another tracker\u0027s issue tools). Direct tools, including a client\u0027s built-in tools, are already in the tool list and are not named. Absent or false: a miss suggests other keywords and the closest names only."
           },
           "siblings": {
             "type": "boolean",
@@ -91699,6 +92088,38 @@
           ]
         }
       },
+      "CreditPurchaseStatus": {
+        "enum": [
+          "settling",
+          "settled",
+          "credited",
+          "failed"
+        ],
+        "type": "string",
+        "x-speakeasy-unknown-values": "allow",
+        "x-ms-enum": {
+          "name": "CreditPurchaseStatus",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "settling",
+              "name": "Settling"
+            },
+            {
+              "value": "settled",
+              "name": "Settled"
+            },
+            {
+              "value": "credited",
+              "name": "Credited"
+            },
+            {
+              "value": "failed",
+              "name": "Failed"
+            }
+          ]
+        }
+      },
       "CustomType": {
         "enum": [
           "custom"
@@ -91908,7 +92329,7 @@
           "native"
         ],
         "type": "string",
-        "description": "How a universal \u0060tool_search\u0060 query reaches the client\u0027s own tool search. Absent or \u0060keywords\u0060: a \u0060select:\u0060 query becomes the words of the selected names and the limit is always filled. \u0060native\u0060: a \u0060select:\u0060 query passes through verbatim when the client search documents \u0060select:\u0060, and the limit field is sent only when the model gave one, unless the client search requires it, in which case its documented default is sent. Experimental.",
+        "description": "How a universal \u0060tool_search\u0060 query reaches the client\u0027s own tool search. Absent or \u0060keywords\u0060: a \u0060select:\u0060 query becomes the words of the selected names and the limit is always filled. \u0060native\u0060: a \u0060select:\u0060 query passes through verbatim when the client search documents \u0060select:\u0060, and the limit field is sent only when the model gave one, unless the client search requires it, in which case its documented default is sent. A tool the client sent with \u0060defer_loading: true\u0060 that universal keeps direct is forwarded with that flag, so the provider loads it through the client search as it would without universal. Experimental.",
         "x-speakeasy-unknown-values": "allow",
         "x-ms-enum": {
           "name": "DeferredToolsControlCascadeMode",
@@ -91990,11 +92411,10 @@
       "DeferredToolsControlScope": {
         "enum": [
           "all",
-          "mcp",
-          "client"
+          "mcp"
         ],
         "type": "string",
-        "description": "Which tools the universal profile defers. Absent or \u0060all\u0060: every wrappable tool outside the coding-harness core set. \u0060mcp\u0060: only MCP server tools (\u0060mcp__*\u0060 names and Responses namespaces outside \u0060functions\u0060); the harness keeps its own built-in tools direct. \u0060client\u0060: only the tools the client itself marked \u0060defer_loading\u0060, so a harness with its own tool search keeps its other direct tools direct; an adopted client tool search is still replaced by the router wrappers, and a client-deferred tool the router cannot wrap stays direct. Experimental.",
+        "description": "Which tools the universal profile defers. Absent or \u0060all\u0060: every wrappable tool outside the coding-harness core set. \u0060mcp\u0060: only MCP server tools (\u0060mcp__*\u0060 names and Responses namespaces outside \u0060functions\u0060); the harness keeps its own built-in tools direct. Experimental.",
         "x-speakeasy-unknown-values": "allow",
         "x-ms-enum": {
           "name": "DeferredToolsControlScope",
@@ -92007,10 +92427,6 @@
             {
               "value": "mcp",
               "name": "Mcp"
-            },
-            {
-              "value": "client",
-              "name": "Client"
             }
           ]
         }

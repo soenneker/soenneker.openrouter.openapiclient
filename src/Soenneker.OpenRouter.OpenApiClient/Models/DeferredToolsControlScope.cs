@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
-    /// <summary>Which tools the universal profile defers. Absent or `all`: every wrappable tool outside the coding-harness core set. `mcp`: only MCP server tools (`mcp__*` names and Responses namespaces outside `functions`); the harness keeps its own built-in tools direct. `client`: only the tools the client itself marked `defer_loading`, so a harness with its own tool search keeps its other direct tools direct; an adopted client tool search is still replaced by the router wrappers, and a client-deferred tool the router cannot wrap stays direct. Experimental.</summary>
+    /// <summary>Which tools the universal profile defers. Absent or `all`: every wrappable tool outside the coding-harness core set. `mcp`: only MCP server tools (`mcp__*` names and Responses namespaces outside `functions`); the harness keeps its own built-in tools direct. Experimental.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum DeferredToolsControlScope
     {
@@ -14,10 +14,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         [EnumMember(Value = "mcp")]
         #pragma warning disable CS1591
         Mcp,
-        #pragma warning restore CS1591
-        [EnumMember(Value = "client")]
-        #pragma warning disable CS1591
-        Client,
         #pragma warning restore CS1591
     }
 }
