@@ -8,13 +8,13 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
     public enum CreditPurchaseStatus
     #pragma warning restore CS1591
     {
-        [EnumMember(Value = "settling")]
+        [EnumMember(Value = "awaiting_payment")]
         #pragma warning disable CS1591
-        Settling,
+        AwaitingPayment,
         #pragma warning restore CS1591
-        [EnumMember(Value = "settled")]
+        [EnumMember(Value = "processing")]
         #pragma warning disable CS1591
-        Settled,
+        Processing,
         #pragma warning restore CS1591
         [EnumMember(Value = "credited")]
         #pragma warning disable CS1591

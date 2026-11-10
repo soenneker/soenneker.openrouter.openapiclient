@@ -7,6 +7,7 @@ using Soenneker.OpenRouter.OpenApiClient.Models;
 using Soenneker.OpenRouter.OpenApiClient.Presets.Item.Chat;
 using Soenneker.OpenRouter.OpenApiClient.Presets.Item.Messages;
 using Soenneker.OpenRouter.OpenApiClient.Presets.Item.Responses;
+using Soenneker.OpenRouter.OpenApiClient.Presets.Item.Restore;
 using Soenneker.OpenRouter.OpenApiClient.Presets.Item.Versions;
 using System.Collections.Generic;
 using System.IO;
@@ -36,6 +37,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Presets.Item
         {
             get => new global::Soenneker.OpenRouter.OpenApiClient.Presets.Item.Responses.ResponsesRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The restore property</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Presets.Item.Restore.RestoreRequestBuilder Restore
+        {
+            get => new global::Soenneker.OpenRouter.OpenApiClient.Presets.Item.Restore.RestoreRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The versions property</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Presets.Item.Versions.VersionsRequestBuilder Versions
         {
@@ -46,7 +52,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Presets.Item
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithSlugItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/presets/{slug}", pathParameters)
+        public WithSlugItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/presets/{slug}{?workspace_id*}", pathParameters)
         {
         }
         /// <summary>
@@ -54,8 +60,43 @@ namespace Soenneker.OpenRouter.OpenApiClient.Presets.Item
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithSlugItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/presets/{slug}", rawUrl)
+        public WithSlugItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/presets/{slug}{?workspace_id*}", rawUrl)
         {
+        }
+        /// <summary>
+        /// Archives a preset: it no longer resolves for inference and is hidden from get and list. The preset and its versions are kept, so the slug stays taken; restore it with `POST /presets/{slug}/restore`. Deleting an already-archived preset succeeds again. A disabled preset returns 409. Requires a read-write [management key](/docs/guides/overview/auth/management-api-keys); inference API keys are rejected. `workspace_id` may be sent as a query parameter or a JSON body field.
+        /// </summary>
+        /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.GetPresetResponse"/></returns>
+        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BadRequestResponse">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.UnauthorizedResponse">When receiving a 401 status code</exception>
+        /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ForbiddenResponse">When receiving a 403 status code</exception>
+        /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.NotFoundResponse">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ConflictResponse">When receiving a 409 status code</exception>
+        /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.InternalServerResponse">When receiving a 500 status code</exception>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public async Task<global::Soenneker.OpenRouter.OpenApiClient.Models.GetPresetResponse?> DeleteAsync(Action<RequestConfiguration<global::Soenneker.OpenRouter.OpenApiClient.Presets.Item.WithSlugItemRequestBuilder.WithSlugItemRequestBuilderDeleteQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
+#nullable restore
+#else
+        public async Task<global::Soenneker.OpenRouter.OpenApiClient.Models.GetPresetResponse> DeleteAsync(Action<RequestConfiguration<global::Soenneker.OpenRouter.OpenApiClient.Presets.Item.WithSlugItemRequestBuilder.WithSlugItemRequestBuilderDeleteQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
+#endif
+            var requestInfo = ToDeleteRequestInformation(requestConfiguration);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "400", global::Soenneker.OpenRouter.OpenApiClient.Models.BadRequestResponse.CreateFromDiscriminatorValue },
+                { "401", global::Soenneker.OpenRouter.OpenApiClient.Models.UnauthorizedResponse.CreateFromDiscriminatorValue },
+                { "403", global::Soenneker.OpenRouter.OpenApiClient.Models.ForbiddenResponse.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.OpenRouter.OpenApiClient.Models.NotFoundResponse.CreateFromDiscriminatorValue },
+                { "409", global::Soenneker.OpenRouter.OpenApiClient.Models.ConflictResponse.CreateFromDiscriminatorValue },
+                { "500", global::Soenneker.OpenRouter.OpenApiClient.Models.InternalServerResponse.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.OpenRouter.OpenApiClient.Models.GetPresetResponse>(requestInfo, global::Soenneker.OpenRouter.OpenApiClient.Models.GetPresetResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Retrieves a preset by its slug with its currently designated version inline.
@@ -71,11 +112,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Presets.Item
         /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ServiceUnavailableResponse">When receiving a 503 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.OpenRouter.OpenApiClient.Models.GetPresetResponse?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.OpenRouter.OpenApiClient.Models.GetPresetResponse?> GetAsync(Action<RequestConfiguration<global::Soenneker.OpenRouter.OpenApiClient.Presets.Item.WithSlugItemRequestBuilder.WithSlugItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.OpenRouter.OpenApiClient.Models.GetPresetResponse> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.OpenRouter.OpenApiClient.Models.GetPresetResponse> GetAsync(Action<RequestConfiguration<global::Soenneker.OpenRouter.OpenApiClient.Presets.Item.WithSlugItemRequestBuilder.WithSlugItemRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
@@ -93,17 +134,36 @@ namespace Soenneker.OpenRouter.OpenApiClient.Presets.Item
             return await RequestAdapter.SendAsync<global::Soenneker.OpenRouter.OpenApiClient.Models.GetPresetResponse>(requestInfo, global::Soenneker.OpenRouter.OpenApiClient.Models.GetPresetResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
+        /// Archives a preset: it no longer resolves for inference and is hidden from get and list. The preset and its versions are kept, so the slug stays taken; restore it with `POST /presets/{slug}/restore`. Deleting an already-archived preset succeeds again. A disabled preset returns 409. Requires a read-write [management key](/docs/guides/overview/auth/management-api-keys); inference API keys are rejected. `workspace_id` may be sent as a query parameter or a JSON body field.
+        /// </summary>
+        /// <returns>A <see cref="RequestInformation"/></returns>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public RequestInformation ToDeleteRequestInformation(Action<RequestConfiguration<global::Soenneker.OpenRouter.OpenApiClient.Presets.Item.WithSlugItemRequestBuilder.WithSlugItemRequestBuilderDeleteQueryParameters>>? requestConfiguration = default)
+        {
+#nullable restore
+#else
+        public RequestInformation ToDeleteRequestInformation(Action<RequestConfiguration<global::Soenneker.OpenRouter.OpenApiClient.Presets.Item.WithSlugItemRequestBuilder.WithSlugItemRequestBuilderDeleteQueryParameters>> requestConfiguration = default)
+        {
+#endif
+            var requestInfo = new RequestInformation(Method.DELETE, UrlTemplate, PathParameters);
+            requestInfo.Configure(requestConfiguration);
+            requestInfo.Headers.TryAdd("Accept", "application/json");
+            return requestInfo;
+        }
+        /// <summary>
         /// Retrieves a preset by its slug with its currently designated version inline.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.OpenRouter.OpenApiClient.Presets.Item.WithSlugItemRequestBuilder.WithSlugItemRequestBuilderGetQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.OpenRouter.OpenApiClient.Presets.Item.WithSlugItemRequestBuilder.WithSlugItemRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
@@ -119,6 +179,26 @@ namespace Soenneker.OpenRouter.OpenApiClient.Presets.Item
         public global::Soenneker.OpenRouter.OpenApiClient.Presets.Item.WithSlugItemRequestBuilder WithUrl(string rawUrl)
         {
             return new global::Soenneker.OpenRouter.OpenApiClient.Presets.Item.WithSlugItemRequestBuilder(rawUrl, RequestAdapter);
+        }
+        /// <summary>
+        /// Archives a preset: it no longer resolves for inference and is hidden from get and list. The preset and its versions are kept, so the slug stays taken; restore it with `POST /presets/{slug}/restore`. Deleting an already-archived preset succeeds again. A disabled preset returns 409. Requires a read-write [management key](/docs/guides/overview/auth/management-api-keys); inference API keys are rejected. `workspace_id` may be sent as a query parameter or a JSON body field.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+        public partial class WithSlugItemRequestBuilderDeleteQueryParameters 
+        {
+            /// <summary>Workspace to act in. Also accepted as a `workspace_id` field in a JSON request body. Defaults to the key&apos;s workspace for a key limited to one workspace, otherwise to the account&apos;s default workspace.</summary>
+            [QueryParameter("workspace_id")]
+            public Guid? WorkspaceId { get; set; }
+        }
+        /// <summary>
+        /// Retrieves a preset by its slug with its currently designated version inline.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+        public partial class WithSlugItemRequestBuilderGetQueryParameters 
+        {
+            /// <summary>Workspace to act in. Also accepted as a `workspace_id` field in a JSON request body. Defaults to the key&apos;s workspace for a key limited to one workspace, otherwise to the account&apos;s default workspace.</summary>
+            [QueryParameter("workspace_id")]
+            public Guid? WorkspaceId { get; set; }
         }
     }
 }

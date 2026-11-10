@@ -45,6 +45,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Auth.Keys.Code
         /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ForbiddenResponse">When receiving a 403 status code</exception>
         /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ConflictResponse">When receiving a 409 status code</exception>
         /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.InternalServerResponse">When receiving a 500 status code</exception>
+        /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ServiceUnavailableResponse">When receiving a 503 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.OpenRouter.OpenApiClient.Models.CreateAuthKeysCode200Response?> PostAsync(global::Soenneker.OpenRouter.OpenApiClient.Models.CreateAuthKeysCodeRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -63,6 +64,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Auth.Keys.Code
                 { "403", global::Soenneker.OpenRouter.OpenApiClient.Models.ForbiddenResponse.CreateFromDiscriminatorValue },
                 { "409", global::Soenneker.OpenRouter.OpenApiClient.Models.ConflictResponse.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.OpenRouter.OpenApiClient.Models.InternalServerResponse.CreateFromDiscriminatorValue },
+                { "503", global::Soenneker.OpenRouter.OpenApiClient.Models.ServiceUnavailableResponse.CreateFromDiscriminatorValue },
                 { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
                 { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };

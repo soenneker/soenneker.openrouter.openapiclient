@@ -4,6 +4,8 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.OpenRouter.OpenApiClient.Credits.Purchases.Item;
+using Soenneker.OpenRouter.OpenApiClient.Credits.Purchases.SKILLMd;
+using Soenneker.OpenRouter.OpenApiClient.Credits.Purchases.Setup;
 using Soenneker.OpenRouter.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -18,10 +20,20 @@ namespace Soenneker.OpenRouter.OpenApiClient.Credits.Purchases
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PurchasesRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The setup property</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Credits.Purchases.Setup.SetupRequestBuilder Setup
+        {
+            get => new global::Soenneker.OpenRouter.OpenApiClient.Credits.Purchases.Setup.SetupRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The SKILLMd property</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Credits.Purchases.SKILLMd.SKILLMdRequestBuilder SKILLMd
+        {
+            get => new global::Soenneker.OpenRouter.OpenApiClient.Credits.Purchases.SKILLMd.SKILLMdRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>Gets an item from the Soenneker.OpenRouter.OpenApiClient.credits.purchases.item collection</summary>
         /// <param name="position">Unique identifier of the item</param>
         /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Credits.Purchases.Item.PurchasesItemRequestBuilder"/></returns>
-        public global::Soenneker.OpenRouter.OpenApiClient.Credits.Purchases.Item.PurchasesItemRequestBuilder this[Guid position]
+        public global::Soenneker.OpenRouter.OpenApiClient.Credits.Purchases.Item.PurchasesItemRequestBuilder this[string position]
         {
             get
             {
@@ -47,7 +59,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Credits.Purchases
         {
         }
         /// <summary>
-        /// Starts an agent credit purchase paid with a Machine Payments Protocol (MPP) credential on Tempo. The first call answers `402` with a `WWW-Authenticate: Payment ...` challenge; retry the same request, same `Idempotency-Key`, with the signed credential in `Payment-Authorization: Payment ...` (or in `Authorization: Payment ...` when the API key is sent as `X-Api-Key`). A paid request answers `202`: the transfer was broadcast and Stripe is still screening the payment, so credits arrive asynchronously. Poll `GET /api/v1/credits/purchases/{id}` until `status` is `credited` or `failed`. A retry with the same `Idempotency-Key` after the purchase is credited answers `200`.
+        /// Starts an agent credit purchase paid with a Machine Payments Protocol (MPP) credential on Tempo. The first call answers `402` with a `WWW-Authenticate: Payment ...` challenge; retry the same request, same `Idempotency-Key`, with the signed credential in `Payment-Authorization: Payment ...` (or in `Authorization: Payment ...` when the management key is sent as `X-Api-Key`). A paid request answers `202`: the transfer was broadcast and Stripe is still screening the payment, so credits arrive asynchronously. Poll the URL in the `Location` header, `GET /api/v1/credits/purchases/{id}`, until `status` is `credited` or `failed`.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.CreditPurchaseResponse"/></returns>
         /// <param name="body">The request body</param>
@@ -59,6 +71,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Credits.Purchases
         /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ForbiddenResponse">When receiving a 403 status code</exception>
         /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.NotFoundResponse">When receiving a 404 status code</exception>
         /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ConflictResponse">When receiving a 409 status code</exception>
+        /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.TooManyRequestsResponse">When receiving a 429 status code</exception>
         /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.InternalServerResponse">When receiving a 500 status code</exception>
         /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ServiceUnavailableResponse">When receiving a 503 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -80,6 +93,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Credits.Purchases
                 { "403", global::Soenneker.OpenRouter.OpenApiClient.Models.ForbiddenResponse.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.OpenRouter.OpenApiClient.Models.NotFoundResponse.CreateFromDiscriminatorValue },
                 { "409", global::Soenneker.OpenRouter.OpenApiClient.Models.ConflictResponse.CreateFromDiscriminatorValue },
+                { "429", global::Soenneker.OpenRouter.OpenApiClient.Models.TooManyRequestsResponse.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.OpenRouter.OpenApiClient.Models.InternalServerResponse.CreateFromDiscriminatorValue },
                 { "503", global::Soenneker.OpenRouter.OpenApiClient.Models.ServiceUnavailableResponse.CreateFromDiscriminatorValue },
                 { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
@@ -88,7 +102,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Credits.Purchases
             return await RequestAdapter.SendAsync<global::Soenneker.OpenRouter.OpenApiClient.Models.CreditPurchaseResponse>(requestInfo, global::Soenneker.OpenRouter.OpenApiClient.Models.CreditPurchaseResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Starts an agent credit purchase paid with a Machine Payments Protocol (MPP) credential on Tempo. The first call answers `402` with a `WWW-Authenticate: Payment ...` challenge; retry the same request, same `Idempotency-Key`, with the signed credential in `Payment-Authorization: Payment ...` (or in `Authorization: Payment ...` when the API key is sent as `X-Api-Key`). A paid request answers `202`: the transfer was broadcast and Stripe is still screening the payment, so credits arrive asynchronously. Poll `GET /api/v1/credits/purchases/{id}` until `status` is `credited` or `failed`. A retry with the same `Idempotency-Key` after the purchase is credited answers `200`.
+        /// Starts an agent credit purchase paid with a Machine Payments Protocol (MPP) credential on Tempo. The first call answers `402` with a `WWW-Authenticate: Payment ...` challenge; retry the same request, same `Idempotency-Key`, with the signed credential in `Payment-Authorization: Payment ...` (or in `Authorization: Payment ...` when the management key is sent as `X-Api-Key`). A paid request answers `202`: the transfer was broadcast and Stripe is still screening the payment, so credits arrive asynchronously. Poll the URL in the `Location` header, `GET /api/v1/credits/purchases/{id}`, until `status` is `credited` or `failed`.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

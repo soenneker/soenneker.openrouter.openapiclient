@@ -27,8 +27,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             else if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
             if (parseNode.GetChildNode("network") is null) { _explicitNullValueNetwork = default!; _explicitNullProperties?.Remove("network"); }
             else if (parseNode.GetChildNode("network") is { } nullNodeNetwork && nullNodeNetwork.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Network = null;
-            if (parseNode.GetChildNode("payment_intent_id") is null) { _explicitNullValuePaymentIntentId = default!; _explicitNullProperties?.Remove("payment_intent_id"); }
-            else if (parseNode.GetChildNode("payment_intent_id") is { } nullNodePaymentIntentId && nullNodePaymentIntentId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PaymentIntentId = null;
             if (parseNode.GetChildNode("platform_fee_usd") is null) { _explicitNullValuePlatformFeeUsd = default!; _explicitNullProperties?.Remove("platform_fee_usd"); }
             else if (parseNode.GetChildNode("platform_fee_usd") is { } nullNodePlatformFeeUsd && nullNodePlatformFeeUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PlatformFeeUsd = null;
             if (parseNode.GetChildNode("protocol") is null) { _explicitNullValueProtocol = default!; _explicitNullProperties?.Remove("protocol"); }
@@ -71,7 +69,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public string FailureReason { get => _explicitNullValueFailureReason; set { _explicitNullValueFailureReason = value; AdditionalData?.Remove("failure_reason"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failure_reason"); else _explicitNullProperties?.Remove("failure_reason"); } }
         private string _explicitNullValueFailureReason = default!;
 #endif
-        /// <summary>Opaque purchase id, owned by the calling account.</summary>
+        /// <summary>Purchase id, the Stripe PaymentIntent that owns the deposit address.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; AdditionalData?.Remove("id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
@@ -90,16 +88,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public string Network { get => _explicitNullValueNetwork; set { _explicitNullValueNetwork = value; AdditionalData?.Remove("network"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("network"); else _explicitNullProperties?.Remove("network"); } }
         private string _explicitNullValueNetwork = default!;
-#endif
-        /// <summary>The payment_intent_id property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? PaymentIntentId { get => _explicitNullValuePaymentIntentId; set { _explicitNullValuePaymentIntentId = value; AdditionalData?.Remove("payment_intent_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("payment_intent_id"); else _explicitNullProperties?.Remove("payment_intent_id"); } }
-        private string? _explicitNullValuePaymentIntentId = default!;
-#nullable restore
-#else
-        public string PaymentIntentId { get => _explicitNullValuePaymentIntentId; set { _explicitNullValuePaymentIntentId = value; AdditionalData?.Remove("payment_intent_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("payment_intent_id"); else _explicitNullProperties?.Remove("payment_intent_id"); } }
-        private string _explicitNullValuePaymentIntentId = default!;
 #endif
         /// <summary>The platform_fee_usd property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -164,7 +152,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "failure_reason", n => { FailureReason = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "network", n => { Network = n.GetStringValue(); } },
-                { "payment_intent_id", n => { PaymentIntentId = n.GetStringValue(); } },
                 { "platform_fee_usd", n => { PlatformFeeUsd = n.GetStringValue(); } },
                 { "protocol", n => { Protocol = n.GetStringValue(); } },
                 { "status", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.CreditPurchaseStatus>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueStatus = default; _explicitNullProperties?.Remove("status"); AdditionalData["status"] = unknown; } else { Status = parsed; AdditionalData.Remove("status"); } } },
@@ -183,7 +170,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteStringValue("failure_reason", FailureReason);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("network", Network);
-            writer.WriteStringValue("payment_intent_id", PaymentIntentId);
             writer.WriteStringValue("platform_fee_usd", PlatformFeeUsd);
             writer.WriteStringValue("protocol", Protocol);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.CreditPurchaseStatus>("status", Status);

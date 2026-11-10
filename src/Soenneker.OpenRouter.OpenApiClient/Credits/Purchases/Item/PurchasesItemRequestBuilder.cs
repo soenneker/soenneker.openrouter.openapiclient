@@ -34,7 +34,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Credits.Purchases.Item
         {
         }
         /// <summary>
-        /// Returns one agent credit purchase made with a key of the calling workspace. Poll this after a `202` until `status` is `credited` or `failed`.
+        /// Returns one agent credit purchase of the calling account, read from its Stripe PaymentIntent. Poll this after a `202` until `status` is `credited` or `failed`.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.CreditPurchaseResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -43,7 +43,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Credits.Purchases.Item
         /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.UnauthorizedResponse">When receiving a 401 status code</exception>
         /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ForbiddenResponse">When receiving a 403 status code</exception>
         /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.NotFoundResponse">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.TooManyRequestsResponse">When receiving a 429 status code</exception>
         /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.InternalServerResponse">When receiving a 500 status code</exception>
+        /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ServiceUnavailableResponse">When receiving a 503 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.OpenRouter.OpenApiClient.Models.CreditPurchaseResponse?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -60,14 +62,16 @@ namespace Soenneker.OpenRouter.OpenApiClient.Credits.Purchases.Item
                 { "401", global::Soenneker.OpenRouter.OpenApiClient.Models.UnauthorizedResponse.CreateFromDiscriminatorValue },
                 { "403", global::Soenneker.OpenRouter.OpenApiClient.Models.ForbiddenResponse.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.OpenRouter.OpenApiClient.Models.NotFoundResponse.CreateFromDiscriminatorValue },
+                { "429", global::Soenneker.OpenRouter.OpenApiClient.Models.TooManyRequestsResponse.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.OpenRouter.OpenApiClient.Models.InternalServerResponse.CreateFromDiscriminatorValue },
+                { "503", global::Soenneker.OpenRouter.OpenApiClient.Models.ServiceUnavailableResponse.CreateFromDiscriminatorValue },
                 { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
                 { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.OpenRouter.OpenApiClient.Models.CreditPurchaseResponse>(requestInfo, global::Soenneker.OpenRouter.OpenApiClient.Models.CreditPurchaseResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Returns one agent credit purchase made with a key of the calling workspace. Poll this after a `202` until `status` is `credited` or `failed`.
+        /// Returns one agent credit purchase of the calling account, read from its Stripe PaymentIntent. Poll this after a `202` until `status` is `credited` or `failed`.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

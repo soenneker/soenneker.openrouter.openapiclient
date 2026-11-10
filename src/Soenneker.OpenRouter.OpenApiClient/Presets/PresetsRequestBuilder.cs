@@ -35,7 +35,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Presets
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public PresetsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/presets{?limit*,offset*}", pathParameters)
+        public PresetsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/presets{?limit*,offset*,workspace_id*}", pathParameters)
         {
         }
         /// <summary>
@@ -43,7 +43,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Presets
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public PresetsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/presets{?limit*,offset*}", rawUrl)
+        public PresetsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/presets{?limit*,offset*,workspace_id*}", rawUrl)
         {
         }
         /// <summary>
@@ -55,6 +55,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Presets
         /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BadRequestResponse">When receiving a 400 status code</exception>
         /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.UnauthorizedResponse">When receiving a 401 status code</exception>
         /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ForbiddenResponse">When receiving a 403 status code</exception>
+        /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.NotFoundResponse">When receiving a 404 status code</exception>
         /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.InternalServerResponse">When receiving a 500 status code</exception>
         /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ServiceUnavailableResponse">When receiving a 503 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -72,6 +73,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Presets
                 { "400", global::Soenneker.OpenRouter.OpenApiClient.Models.BadRequestResponse.CreateFromDiscriminatorValue },
                 { "401", global::Soenneker.OpenRouter.OpenApiClient.Models.UnauthorizedResponse.CreateFromDiscriminatorValue },
                 { "403", global::Soenneker.OpenRouter.OpenApiClient.Models.ForbiddenResponse.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.OpenRouter.OpenApiClient.Models.NotFoundResponse.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.OpenRouter.OpenApiClient.Models.InternalServerResponse.CreateFromDiscriminatorValue },
                 { "503", global::Soenneker.OpenRouter.OpenApiClient.Models.ServiceUnavailableResponse.CreateFromDiscriminatorValue },
                 { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
@@ -119,6 +121,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Presets
             /// <summary>Number of records to skip for pagination</summary>
             [QueryParameter("offset")]
             public int? Offset { get; set; }
+            /// <summary>Workspace to act in. Also accepted as a `workspace_id` field in a JSON request body. Defaults to the key&apos;s workspace for a key limited to one workspace, otherwise to the account&apos;s default workspace.</summary>
+            [QueryParameter("workspace_id")]
+            public Guid? WorkspaceId { get; set; }
         }
     }
 }

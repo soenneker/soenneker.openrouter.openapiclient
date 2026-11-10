@@ -96,6 +96,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning disable CS1591
         DataResidencyMismatch,
         #pragma warning restore CS1591
+        [EnumMember(Value = "flex_unavailable")]
+        #pragma warning disable CS1591
+        FlexUnavailable,
+        #pragma warning restore CS1591
         [EnumMember(Value = "permission_denied")]
         #pragma warning disable CS1591
         PermissionDenied,

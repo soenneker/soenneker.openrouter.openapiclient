@@ -35,7 +35,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Presets.Item.Versions
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public VersionsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/presets/{slug}/versions{?limit*,offset*}", pathParameters)
+        public VersionsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/presets/{slug}/versions{?limit*,offset*,workspace_id*}", pathParameters)
         {
         }
         /// <summary>
@@ -43,7 +43,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Presets.Item.Versions
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public VersionsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/presets/{slug}/versions{?limit*,offset*}", rawUrl)
+        public VersionsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/presets/{slug}/versions{?limit*,offset*,workspace_id*}", rawUrl)
         {
         }
         /// <summary>
@@ -121,6 +121,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Presets.Item.Versions
             /// <summary>Number of records to skip for pagination</summary>
             [QueryParameter("offset")]
             public int? Offset { get; set; }
+            /// <summary>Workspace to act in. Also accepted as a `workspace_id` field in a JSON request body. Defaults to the key&apos;s workspace for a key limited to one workspace, otherwise to the account&apos;s default workspace.</summary>
+            [QueryParameter("workspace_id")]
+            public Guid? WorkspaceId { get; set; }
         }
     }
 }

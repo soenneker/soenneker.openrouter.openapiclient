@@ -107,7 +107,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Presets.Item.Messages
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class MessagesRequestBuilderPostQueryParameters 
         {
-            /// <summary>Workspace to create the preset in. Defaults to the key&apos;s workspace for a key limited to one workspace, otherwise to the account&apos;s default workspace.</summary>
+            /// <summary>Workspace to act in. Also accepted as a `workspace_id` field in a JSON request body. Defaults to the key&apos;s workspace for a key limited to one workspace, otherwise to the account&apos;s default workspace.</summary>
             [QueryParameter("workspace_id")]
             public Guid? WorkspaceId { get; set; }
         }
