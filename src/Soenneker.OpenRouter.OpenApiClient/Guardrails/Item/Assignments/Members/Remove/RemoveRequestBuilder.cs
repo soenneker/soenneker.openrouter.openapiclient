@@ -34,7 +34,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Guardrails.Item.Assignments.Members
         {
         }
         /// <summary>
-        /// Unassign multiple organization members from a specific guardrail. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+        /// Unassign multiple organization members from a specific guardrail. Requires an organization-scoped management key; workspace-scoped management keys return 403. [Management key](/docs/guides/overview/auth/management-api-keys) required.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BulkUnassignMembersResponse"/></returns>
         /// <param name="body">The request body</param>
@@ -69,7 +69,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Guardrails.Item.Assignments.Members
             return await RequestAdapter.SendAsync<global::Soenneker.OpenRouter.OpenApiClient.Models.BulkUnassignMembersResponse>(requestInfo, global::Soenneker.OpenRouter.OpenApiClient.Models.BulkUnassignMembersResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Unassign multiple organization members from a specific guardrail. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+        /// Unassign multiple organization members from a specific guardrail. Requires an organization-scoped management key; workspace-scoped management keys return 403. [Management key](/docs/guides/overview/auth/management-api-keys) required.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

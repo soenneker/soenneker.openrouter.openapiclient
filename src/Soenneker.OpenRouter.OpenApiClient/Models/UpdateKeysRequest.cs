@@ -62,7 +62,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; AdditionalData?.Remove("name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
         private string _explicitNullValueName = default!;
 #endif
-        /// <summary>Move the API key to this workspace. The key keeps its value; guardrail selections move with it, while other workspace-scoped settings (presets, BYOK keys, broadcast destinations, routing rules) do not. Sending the key&apos;s current workspace is a no-op.</summary>
+        /// <summary>Move the API key to this workspace. The key keeps its value; guardrail selections move with it, except direct guardrail assignments owned by the key&apos;s current workspace, which are removed along with the selections derived from them, while other workspace-scoped settings (presets, BYOK keys, broadcast destinations, routing rules) do not. Sending the key&apos;s current workspace is a no-op.</summary>
         public Guid? WorkspaceId { get => _explicitNullValueWorkspaceId; set { _explicitNullValueWorkspaceId = value; AdditionalData?.Remove("workspace_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("workspace_id"); else _explicitNullProperties?.Remove("workspace_id"); } }
         private Guid? _explicitNullValueWorkspaceId = default!;
         /// <summary>

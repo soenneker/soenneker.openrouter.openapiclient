@@ -40,7 +40,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Guardrails.Item.Assignments.Members
         {
         }
         /// <summary>
-        /// List all organization member assignments for a specific guardrail. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+        /// List all organization member assignments for a specific guardrail. A workspace-scoped management key reaches only guardrails in its own workspace; any other guardrail returns 404. [Management key](/docs/guides/overview/auth/management-api-keys) required.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ListMemberAssignmentsResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -71,7 +71,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Guardrails.Item.Assignments.Members
             return await RequestAdapter.SendAsync<global::Soenneker.OpenRouter.OpenApiClient.Models.ListMemberAssignmentsResponse>(requestInfo, global::Soenneker.OpenRouter.OpenApiClient.Models.ListMemberAssignmentsResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Assign multiple organization members to a specific guardrail. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+        /// Assign multiple organization members to a specific guardrail. Requires an organization-scoped management key; workspace-scoped management keys return 403. [Management key](/docs/guides/overview/auth/management-api-keys) required.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BulkAssignMembersResponse"/></returns>
         /// <param name="body">The request body</param>
@@ -106,7 +106,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Guardrails.Item.Assignments.Members
             return await RequestAdapter.SendAsync<global::Soenneker.OpenRouter.OpenApiClient.Models.BulkAssignMembersResponse>(requestInfo, global::Soenneker.OpenRouter.OpenApiClient.Models.BulkAssignMembersResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// List all organization member assignments for a specific guardrail. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+        /// List all organization member assignments for a specific guardrail. A workspace-scoped management key reaches only guardrails in its own workspace; any other guardrail returns 404. [Management key](/docs/guides/overview/auth/management-api-keys) required.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -125,7 +125,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Guardrails.Item.Assignments.Members
             return requestInfo;
         }
         /// <summary>
-        /// Assign multiple organization members to a specific guardrail. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+        /// Assign multiple organization members to a specific guardrail. Requires an organization-scoped management key; workspace-scoped management keys return 403. [Management key](/docs/guides/overview/auth/management-api-keys) required.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
@@ -156,7 +156,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Guardrails.Item.Assignments.Members
             return new global::Soenneker.OpenRouter.OpenApiClient.Guardrails.Item.Assignments.Members.MembersRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// List all organization member assignments for a specific guardrail. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+        /// List all organization member assignments for a specific guardrail. A workspace-scoped management key reaches only guardrails in its own workspace; any other guardrail returns 404. [Management key](/docs/guides/overview/auth/management-api-keys) required.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class MembersRequestBuilderGetQueryParameters 

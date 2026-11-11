@@ -100,7 +100,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public List<string> OptedOutMemberIds { get => _explicitNullValueOptedOutMemberIds; set { _explicitNullValueOptedOutMemberIds = value; AdditionalData?.Remove("opted_out_member_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("opted_out_member_ids"); else _explicitNullProperties?.Remove("opted_out_member_ids"); } }
         private List<string> _explicitNullValueOptedOutMemberIds = default!;
 #endif
-        /// <summary>Workspace the policy belongs to</summary>
+        /// <summary>Workspace the policy belongs to. Required for an organization management key; a workspace-scoped key defaults to its own workspace and gets 403 for any other.</summary>
         public Guid? WorkspaceId { get => _explicitNullValueWorkspaceId; set { _explicitNullValueWorkspaceId = value; AdditionalData?.Remove("workspace_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("workspace_id"); else _explicitNullProperties?.Remove("workspace_id"); } }
         private Guid? _explicitNullValueWorkspaceId = default!;
         /// <summary>

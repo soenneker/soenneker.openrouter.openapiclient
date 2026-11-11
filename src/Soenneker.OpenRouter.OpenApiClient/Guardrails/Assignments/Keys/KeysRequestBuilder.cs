@@ -22,7 +22,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Guardrails.Assignments.Keys
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public KeysRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/guardrails/assignments/keys{?limit*,offset*}", pathParameters)
+        public KeysRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/guardrails/assignments/keys{?limit*,offset*,workspace_id*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,11 +30,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Guardrails.Assignments.Keys
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public KeysRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/guardrails/assignments/keys{?limit*,offset*}", rawUrl)
+        public KeysRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/guardrails/assignments/keys{?limit*,offset*,workspace_id*}", rawUrl)
         {
         }
         /// <summary>
-        /// List all API key guardrail assignments for the authenticated user. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+        /// List all API key guardrail assignments for the authenticated user. A workspace-scoped management key lists only its own workspace, which `workspace_id` defaults to; naming another workspace returns 403. [Management key](/docs/guides/overview/auth/management-api-keys) required.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ListKeyAssignmentsResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -67,7 +67,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Guardrails.Assignments.Keys
             return await RequestAdapter.SendAsync<global::Soenneker.OpenRouter.OpenApiClient.Models.ListKeyAssignmentsResponse>(requestInfo, global::Soenneker.OpenRouter.OpenApiClient.Models.ListKeyAssignmentsResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// List all API key guardrail assignments for the authenticated user. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+        /// List all API key guardrail assignments for the authenticated user. A workspace-scoped management key lists only its own workspace, which `workspace_id` defaults to; naming another workspace returns 403. [Management key](/docs/guides/overview/auth/management-api-keys) required.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -95,7 +95,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Guardrails.Assignments.Keys
             return new global::Soenneker.OpenRouter.OpenApiClient.Guardrails.Assignments.Keys.KeysRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// List all API key guardrail assignments for the authenticated user. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+        /// List all API key guardrail assignments for the authenticated user. A workspace-scoped management key lists only its own workspace, which `workspace_id` defaults to; naming another workspace returns 403. [Management key](/docs/guides/overview/auth/management-api-keys) required.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class KeysRequestBuilderGetQueryParameters 
@@ -106,6 +106,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Guardrails.Assignments.Keys
             /// <summary>Number of records to skip for pagination</summary>
             [QueryParameter("offset")]
             public int? Offset { get; set; }
+            /// <summary>Only list assignments of guardrails in this workspace. When omitted, an organization management key lists every workspace and a workspace-scoped key lists its own workspace. A workspace-scoped key gets 403 for any other workspace.</summary>
+            [QueryParameter("workspace_id")]
+            public Guid? WorkspaceId { get; set; }
         }
     }
 }

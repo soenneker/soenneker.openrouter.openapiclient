@@ -22,7 +22,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Guardrails.Policies.ModelAvailabili
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ModelAvailabilityItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/guardrails/policies/model-availability/{id}", pathParameters)
+        public ModelAvailabilityItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/guardrails/policies/model-availability/{id}{?workspace_id*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Guardrails.Policies.ModelAvailabili
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ModelAvailabilityItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/guardrails/policies/model-availability/{id}", rawUrl)
+        public ModelAvailabilityItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/guardrails/policies/model-availability/{id}{?workspace_id*}", rawUrl)
         {
         }
         /// <summary>
@@ -152,7 +152,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Guardrails.Policies.ModelAvailabili
         public RequestInformation ToDeleteRequestInformation(Action<RequestConfiguration<global::Soenneker.OpenRouter.OpenApiClient.Guardrails.Policies.ModelAvailability.Item.ModelAvailabilityItemRequestBuilder.ModelAvailabilityItemRequestBuilderDeleteQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.DELETE, "{+baseurl}/guardrails/policies/model-availability/{id}?workspace_id={workspace_id}", PathParameters);
+            var requestInfo = new RequestInformation(Method.DELETE, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
@@ -171,7 +171,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Guardrails.Policies.ModelAvailabili
         public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.OpenRouter.OpenApiClient.Guardrails.Policies.ModelAvailability.Item.ModelAvailabilityItemRequestBuilder.ModelAvailabilityItemRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.GET, "{+baseurl}/guardrails/policies/model-availability/{id}?workspace_id={workspace_id}", PathParameters);
+            var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
@@ -213,7 +213,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Guardrails.Policies.ModelAvailabili
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class ModelAvailabilityItemRequestBuilderDeleteQueryParameters 
         {
-            /// <summary>Workspace the policy belongs to</summary>
+            /// <summary>Workspace the policy belongs to. Required for an organization management key; a workspace-scoped key defaults to its own workspace and gets 403 for any other.</summary>
             [QueryParameter("workspace_id")]
             public Guid? WorkspaceId { get; set; }
         }
@@ -223,7 +223,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Guardrails.Policies.ModelAvailabili
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class ModelAvailabilityItemRequestBuilderGetQueryParameters 
         {
-            /// <summary>Workspace the policy belongs to</summary>
+            /// <summary>Workspace the policy belongs to. Required for an organization management key; a workspace-scoped key defaults to its own workspace and gets 403 for any other.</summary>
             [QueryParameter("workspace_id")]
             public Guid? WorkspaceId { get; set; }
         }

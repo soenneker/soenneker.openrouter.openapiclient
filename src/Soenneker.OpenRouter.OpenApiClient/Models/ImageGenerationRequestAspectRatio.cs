@@ -15,6 +15,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning disable CS1591
         Value1Colon2,
         #pragma warning restore CS1591
+        [EnumMember(Value = "1:3")]
+        #pragma warning disable CS1591
+        Value1Colon3,
+        #pragma warning restore CS1591
         [EnumMember(Value = "1:4")]
         #pragma warning disable CS1591
         Value1Colon4,
@@ -30,6 +34,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         [EnumMember(Value = "2:3")]
         #pragma warning disable CS1591
         Value2Colon3,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "3:1")]
+        #pragma warning disable CS1591
+        Value3Colon1,
         #pragma warning restore CS1591
         [EnumMember(Value = "2.35:1")]
         #pragma warning disable CS1591

@@ -34,7 +34,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Guardrails.Item.Assignments.Keys.Re
         {
         }
         /// <summary>
-        /// Unassign multiple API keys from a specific guardrail. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+        /// Unassign multiple API keys from a specific guardrail. A workspace-scoped management key reaches only guardrails in its own workspace (any other returns 404), and a batch naming an unknown or out-of-workspace key hash is rejected with 400 before anything changes. [Management key](/docs/guides/overview/auth/management-api-keys) required.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BulkUnassignKeysResponse"/></returns>
         /// <param name="body">The request body</param>
@@ -69,7 +69,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Guardrails.Item.Assignments.Keys.Re
             return await RequestAdapter.SendAsync<global::Soenneker.OpenRouter.OpenApiClient.Models.BulkUnassignKeysResponse>(requestInfo, global::Soenneker.OpenRouter.OpenApiClient.Models.BulkUnassignKeysResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Unassign multiple API keys from a specific guardrail. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+        /// Unassign multiple API keys from a specific guardrail. A workspace-scoped management key reaches only guardrails in its own workspace (any other returns 404), and a batch naming an unknown or out-of-workspace key hash is rejected with 400 before anything changes. [Management key](/docs/guides/overview/auth/management-api-keys) required.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

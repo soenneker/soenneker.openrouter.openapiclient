@@ -105,7 +105,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The policy_type property</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ModelAvailabilityPolicyType? PolicyType { get => _explicitNullValuePolicyType; set { _explicitNullValuePolicyType = value; AdditionalData?.Remove("policy_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("policy_type"); else _explicitNullProperties?.Remove("policy_type"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.ModelAvailabilityPolicyType? _explicitNullValuePolicyType = default!;
-        /// <summary>Workspace the policy belongs to</summary>
+        /// <summary>Workspace the policy belongs to. Required for an organization management key; a workspace-scoped key defaults to its own workspace and gets 403 for any other.</summary>
         public Guid? WorkspaceId { get => _explicitNullValueWorkspaceId; set { _explicitNullValueWorkspaceId = value; AdditionalData?.Remove("workspace_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("workspace_id"); else _explicitNullProperties?.Remove("workspace_id"); } }
         private Guid? _explicitNullValueWorkspaceId = default!;
         /// <summary>

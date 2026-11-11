@@ -47,7 +47,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Byok
         {
         }
         /// <summary>
-        /// List the bring-your-own-key (BYOK) provider credentials for the authenticated entity&apos;s default workspace. Use the `workspace_id` query parameter to scope the result to a different workspace, or the `provider` query parameter to filter by upstream provider. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+        /// List the bring-your-own-key (BYOK) provider credentials for the authenticated entity&apos;s default workspace, or a workspace-scoped management key&apos;s own workspace. Use the `workspace_id` query parameter to scope the result to a different workspace, or the `provider` query parameter to filter by upstream provider. A workspace-scoped management key can only list its own workspace; any other `workspace_id` returns 403. [Management key](/docs/guides/overview/auth/management-api-keys) required.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ListByokKeysResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -78,7 +78,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Byok
             return await RequestAdapter.SendAsync<global::Soenneker.OpenRouter.OpenApiClient.Models.ListByokKeysResponse>(requestInfo, global::Soenneker.OpenRouter.OpenApiClient.Models.ListByokKeysResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Create a new bring-your-own-key (BYOK) provider credential. The raw key is encrypted at rest and never returned in API responses. When `workspace_id` is omitted, the credential is created in the default workspace; if that default has been deleted, the request returns a 400 and you must pass `workspace_id` explicitly. Treat the raw key as write-only; it is never returned after creation. Use `allowed_api_key_hashes` to restrict the credential to specific OpenRouter API keys. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+        /// Create a new bring-your-own-key (BYOK) provider credential. The raw key is encrypted at rest and never returned in API responses. When `workspace_id` is omitted, the credential is created in the default workspace; if that default has been deleted, the request returns a 400 and you must pass `workspace_id` explicitly. A workspace-scoped management key creates the credential in its own workspace when `workspace_id` is omitted, and any other `workspace_id` returns 403. Treat the raw key as write-only; it is never returned after creation. Use `allowed_api_key_hashes` to restrict the credential to specific OpenRouter API keys. [Management key](/docs/guides/overview/auth/management-api-keys) required.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.CreateByokKeyResponse"/></returns>
         /// <param name="body">The request body</param>
@@ -111,7 +111,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Byok
             return await RequestAdapter.SendAsync<global::Soenneker.OpenRouter.OpenApiClient.Models.CreateByokKeyResponse>(requestInfo, global::Soenneker.OpenRouter.OpenApiClient.Models.CreateByokKeyResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// List the bring-your-own-key (BYOK) provider credentials for the authenticated entity&apos;s default workspace. Use the `workspace_id` query parameter to scope the result to a different workspace, or the `provider` query parameter to filter by upstream provider. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+        /// List the bring-your-own-key (BYOK) provider credentials for the authenticated entity&apos;s default workspace, or a workspace-scoped management key&apos;s own workspace. Use the `workspace_id` query parameter to scope the result to a different workspace, or the `provider` query parameter to filter by upstream provider. A workspace-scoped management key can only list its own workspace; any other `workspace_id` returns 403. [Management key](/docs/guides/overview/auth/management-api-keys) required.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -130,7 +130,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Byok
             return requestInfo;
         }
         /// <summary>
-        /// Create a new bring-your-own-key (BYOK) provider credential. The raw key is encrypted at rest and never returned in API responses. When `workspace_id` is omitted, the credential is created in the default workspace; if that default has been deleted, the request returns a 400 and you must pass `workspace_id` explicitly. Treat the raw key as write-only; it is never returned after creation. Use `allowed_api_key_hashes` to restrict the credential to specific OpenRouter API keys. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+        /// Create a new bring-your-own-key (BYOK) provider credential. The raw key is encrypted at rest and never returned in API responses. When `workspace_id` is omitted, the credential is created in the default workspace; if that default has been deleted, the request returns a 400 and you must pass `workspace_id` explicitly. A workspace-scoped management key creates the credential in its own workspace when `workspace_id` is omitted, and any other `workspace_id` returns 403. Treat the raw key as write-only; it is never returned after creation. Use `allowed_api_key_hashes` to restrict the credential to specific OpenRouter API keys. [Management key](/docs/guides/overview/auth/management-api-keys) required.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
@@ -161,7 +161,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Byok
             return new global::Soenneker.OpenRouter.OpenApiClient.Byok.ByokRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// List the bring-your-own-key (BYOK) provider credentials for the authenticated entity&apos;s default workspace. Use the `workspace_id` query parameter to scope the result to a different workspace, or the `provider` query parameter to filter by upstream provider. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+        /// List the bring-your-own-key (BYOK) provider credentials for the authenticated entity&apos;s default workspace, or a workspace-scoped management key&apos;s own workspace. Use the `workspace_id` query parameter to scope the result to a different workspace, or the `provider` query parameter to filter by upstream provider. A workspace-scoped management key can only list its own workspace; any other `workspace_id` returns 403. [Management key](/docs/guides/overview/auth/management-api-keys) required.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class ByokRequestBuilderGetQueryParameters 
@@ -175,7 +175,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Byok
             /// <summary>Optional provider slug to filter by (e.g. `openai`, `anthropic`, `amazon-bedrock`).</summary>
             [QueryParameter("provider")]
             public global::Soenneker.OpenRouter.OpenApiClient.Models.ListByokKeysProviderParameter? Provider { get; set; }
-            /// <summary>Optional workspace ID to filter by. When omitted, resolves to the account’s default workspace; if that default has been deleted, the request returns a 400 and you must pass `workspace_id` explicitly.</summary>
+            /// <summary>Optional workspace ID to filter by. When omitted, a workspace-scoped management key uses its own workspace. An organization management key uses the account’s default workspace; if that default has been deleted, the request returns a 400 and you must pass `workspace_id` explicitly.</summary>
             [QueryParameter("workspace_id")]
             public Guid? WorkspaceId { get; set; }
         }

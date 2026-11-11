@@ -22,7 +22,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Guardrails.Policies.Assignments.Api
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithHashItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/guardrails/policies/assignments/api-keys/{hash}", pathParameters)
+        public WithHashItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/guardrails/policies/assignments/api-keys/{hash}{?workspace_id*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Guardrails.Policies.Assignments.Api
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithHashItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/guardrails/policies/assignments/api-keys/{hash}", rawUrl)
+        public WithHashItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/guardrails/policies/assignments/api-keys/{hash}{?workspace_id*}", rawUrl)
         {
         }
         /// <summary>
@@ -117,7 +117,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Guardrails.Policies.Assignments.Api
         public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.OpenRouter.OpenApiClient.Guardrails.Policies.Assignments.ApiKeys.Item.WithHashItemRequestBuilder.WithHashItemRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.GET, "{+baseurl}/guardrails/policies/assignments/api-keys/{hash}?policy_type={policy_type}&workspace_id={workspace_id}", PathParameters);
+            var requestInfo = new RequestInformation(Method.GET, "{+baseurl}/guardrails/policies/assignments/api-keys/{hash}?policy_type={policy_type}{&workspace_id*}", PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
@@ -162,7 +162,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Guardrails.Policies.Assignments.Api
             /// <summary>Policy type the assignment is read or changed for</summary>
             [QueryParameter("policy_type")]
             public global::Soenneker.OpenRouter.OpenApiClient.Models.GetApiKeyPolicyAssignmentPolicyTypeParameter? PolicyType { get; set; }
-            /// <summary>Workspace the policy belongs to</summary>
+            /// <summary>Workspace the policy belongs to. Required for an organization management key; a workspace-scoped key defaults to its own workspace and gets 403 for any other.</summary>
             [QueryParameter("workspace_id")]
             public Guid? WorkspaceId { get; set; }
         }

@@ -22,7 +22,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Guardrails.Policies.Budget.Item
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public BudgetItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/guardrails/policies/budget/{id}", pathParameters)
+        public BudgetItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/guardrails/policies/budget/{id}{?workspace_id*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Guardrails.Policies.Budget.Item
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public BudgetItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/guardrails/policies/budget/{id}", rawUrl)
+        public BudgetItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/guardrails/policies/budget/{id}{?workspace_id*}", rawUrl)
         {
         }
         /// <summary>
@@ -152,7 +152,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Guardrails.Policies.Budget.Item
         public RequestInformation ToDeleteRequestInformation(Action<RequestConfiguration<global::Soenneker.OpenRouter.OpenApiClient.Guardrails.Policies.Budget.Item.BudgetItemRequestBuilder.BudgetItemRequestBuilderDeleteQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.DELETE, "{+baseurl}/guardrails/policies/budget/{id}?workspace_id={workspace_id}", PathParameters);
+            var requestInfo = new RequestInformation(Method.DELETE, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
@@ -171,7 +171,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Guardrails.Policies.Budget.Item
         public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.OpenRouter.OpenApiClient.Guardrails.Policies.Budget.Item.BudgetItemRequestBuilder.BudgetItemRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.GET, "{+baseurl}/guardrails/policies/budget/{id}?workspace_id={workspace_id}", PathParameters);
+            var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
@@ -213,7 +213,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Guardrails.Policies.Budget.Item
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class BudgetItemRequestBuilderDeleteQueryParameters 
         {
-            /// <summary>Workspace the policy belongs to</summary>
+            /// <summary>Workspace the policy belongs to. Required for an organization management key; a workspace-scoped key defaults to its own workspace and gets 403 for any other.</summary>
             [QueryParameter("workspace_id")]
             public Guid? WorkspaceId { get; set; }
         }
@@ -223,7 +223,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Guardrails.Policies.Budget.Item
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class BudgetItemRequestBuilderGetQueryParameters 
         {
-            /// <summary>Workspace the policy belongs to</summary>
+            /// <summary>Workspace the policy belongs to. Required for an organization management key; a workspace-scoped key defaults to its own workspace and gets 403 for any other.</summary>
             [QueryParameter("workspace_id")]
             public Guid? WorkspaceId { get; set; }
         }

@@ -35,7 +35,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Guardrails.Policies.Budget
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public BudgetRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/guardrails/policies/budget{?limit*,offset*}", pathParameters)
+        public BudgetRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/guardrails/policies/budget{?limit*,offset*,workspace_id*}", pathParameters)
         {
         }
         /// <summary>
@@ -43,7 +43,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Guardrails.Policies.Budget
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public BudgetRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/guardrails/policies/budget{?limit*,offset*}", rawUrl)
+        public BudgetRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/guardrails/policies/budget{?limit*,offset*,workspace_id*}", rawUrl)
         {
         }
         /// <summary>
@@ -130,7 +130,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Guardrails.Policies.Budget
         public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.OpenRouter.OpenApiClient.Guardrails.Policies.Budget.BudgetRequestBuilder.BudgetRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.GET, "{+baseurl}/guardrails/policies/budget?workspace_id={workspace_id}{&limit*,offset*}", PathParameters);
+            var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
@@ -178,7 +178,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Guardrails.Policies.Budget
             /// <summary>Number of records to skip for pagination. When both offset and limit are omitted, the full list is returned</summary>
             [QueryParameter("offset")]
             public int? Offset { get; set; }
-            /// <summary>Workspace the policy belongs to</summary>
+            /// <summary>Workspace the policy belongs to. Required for an organization management key; a workspace-scoped key defaults to its own workspace and gets 403 for any other.</summary>
             [QueryParameter("workspace_id")]
             public Guid? WorkspaceId { get; set; }
         }

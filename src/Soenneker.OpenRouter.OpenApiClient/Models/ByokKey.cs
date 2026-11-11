@@ -53,7 +53,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Optional allowlist of OpenRouter API key hashes (`api_keys.hash`) that may use this credential. `null` means no restriction.</summary>
+        /// <summary>Optional allowlist of OpenRouter API key hashes (`api_keys.hash`) that may use this credential. `null` means no restriction. A workspace-scoped management key can only name API keys in its own workspace.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? AllowedApiKeyHashes { get => _explicitNullValueAllowedApiKeyHashes; set { _explicitNullValueAllowedApiKeyHashes = value; AdditionalData?.Remove("allowed_api_key_hashes"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allowed_api_key_hashes"); else _explicitNullProperties?.Remove("allowed_api_key_hashes"); } }

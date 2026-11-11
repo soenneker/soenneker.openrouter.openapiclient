@@ -28,7 +28,7 @@
           "Analytics"
         ],
         "summary": "Get user activity grouped by endpoint",
-        "description": "Returns user activity data grouped by endpoint for the last 30 (completed) UTC days. Pass \u0060workspace_id\u0060 to scope the response to a single workspace. Pass \u0060group_by=workspace\u0060 to split each row per workspace and include \u0060workspace_id\u0060 on every item; by default rows are aggregated across workspaces and \u0060workspace_id\u0060 is not returned. Activity recorded before workspace resolution existed is permanently attributed to the account default workspace (no backfill is possible). [Management key](/docs/guides/overview/auth/management-api-keys) required.",
+        "description": "Returns user activity data grouped by endpoint for the last 30 (completed) UTC days. Pass \u0060workspace_id\u0060 to scope the response to a single workspace. Pass \u0060group_by=workspace\u0060 to split each row per workspace and include \u0060workspace_id\u0060 on every item; by default rows are aggregated across workspaces and \u0060workspace_id\u0060 is not returned. Activity recorded before workspace resolution existed is permanently attributed to the account default workspace (no backfill is possible). A workspace-scoped management key needs \u0060activity:view_all\u0060 on its own workspace and reads only that workspace: an omitted \u0060workspace_id\u0060 defaults to it, a \u0060workspace_id\u0060 naming any other workspace returns 403, \u0060api_key_hash\u0060 and \u0060user_id\u0060 resolve only keys and members of that workspace, and legacy activity with no workspace is excluded (including for the default workspace). [Management key](/docs/guides/overview/auth/management-api-keys) required.",
         "operationId": "GetUserActivity",
         "parameters": [
           {
@@ -210,7 +210,7 @@
           "Analytics"
         ],
         "summary": "Get available analytics metrics and dimensions",
-        "description": "Returns the available metrics, dimensions, filter operators, and granularities for the analytics query endpoint. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
+        "description": "Returns the available metrics, dimensions, filter operators, and granularities for the analytics query endpoint. Workspace-scoped management keys are accepted. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
         "operationId": "GetAnalyticsMeta",
         "responses": {
           "200": {
@@ -321,7 +321,7 @@
           "Analytics"
         ],
         "summary": "Query analytics data",
-        "description": "Execute an analytics query with specified metrics, dimensions, filters, and time range. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
+        "description": "Execute an analytics query with specified metrics, dimensions, filters, and time range. A workspace-scoped management key needs \u0060activity:view_all\u0060 on its own workspace and reads only that workspace: it is refused a \u0060workspace\u0060 filter naming another workspace, it excludes legacy rows with no workspace (including for the default workspace), and possible-cache metrics such as \u0060possible_cached_tokens\u0060 return 400. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
         "operationId": "QueryAnalytics",
         "requestBody": {
           "content": {
@@ -2905,7 +2905,7 @@
           "BYOK"
         ],
         "summary": "List BYOK provider credentials",
-        "description": "List the bring-your-own-key (BYOK) provider credentials for the authenticated entity\u0027s default workspace. Use the \u0060workspace_id\u0060 query parameter to scope the result to a different workspace, or the \u0060provider\u0060 query parameter to filter by upstream provider. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
+        "description": "List the bring-your-own-key (BYOK) provider credentials for the authenticated entity\u0027s default workspace, or a workspace-scoped management key\u0027s own workspace. Use the \u0060workspace_id\u0060 query parameter to scope the result to a different workspace, or the \u0060provider\u0060 query parameter to filter by upstream provider. A workspace-scoped management key can only list its own workspace; any other \u0060workspace_id\u0060 returns 403. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
         "operationId": "ListByokKeys",
         "parameters": [
           {
@@ -2939,10 +2939,10 @@
           {
             "name": "workspace_id",
             "in": "query",
-            "description": "Optional workspace ID to filter by. When omitted, resolves to the account\u2019s default workspace; if that default has been deleted, the request returns a 400 and you must pass \u0060workspace_id\u0060 explicitly.",
+            "description": "Optional workspace ID to filter by. When omitted, a workspace-scoped management key uses its own workspace. An organization management key uses the account\u2019s default workspace; if that default has been deleted, the request returns a 400 and you must pass \u0060workspace_id\u0060 explicitly.",
             "schema": {
               "type": "string",
-              "description": "Optional workspace ID to filter by. When omitted, resolves to the account\u2019s default workspace; if that default has been deleted, the request returns a 400 and you must pass \u0060workspace_id\u0060 explicitly.",
+              "description": "Optional workspace ID to filter by. When omitted, a workspace-scoped management key uses its own workspace. An organization management key uses the account\u2019s default workspace; if that default has been deleted, the request returns a 400 and you must pass \u0060workspace_id\u0060 explicitly.",
               "format": "uuid",
               "example": "550e8400-e29b-41d4-a716-446655440000"
             }
@@ -3080,7 +3080,7 @@
           "BYOK"
         ],
         "summary": "Create a BYOK provider credential",
-        "description": "Create a new bring-your-own-key (BYOK) provider credential. The raw key is encrypted at rest and never returned in API responses. When \u0060workspace_id\u0060 is omitted, the credential is created in the default workspace; if that default has been deleted, the request returns a 400 and you must pass \u0060workspace_id\u0060 explicitly. Treat the raw key as write-only; it is never returned after creation. Use \u0060allowed_api_key_hashes\u0060 to restrict the credential to specific OpenRouter API keys. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
+        "description": "Create a new bring-your-own-key (BYOK) provider credential. The raw key is encrypted at rest and never returned in API responses. When \u0060workspace_id\u0060 is omitted, the credential is created in the default workspace; if that default has been deleted, the request returns a 400 and you must pass \u0060workspace_id\u0060 explicitly. A workspace-scoped management key creates the credential in its own workspace when \u0060workspace_id\u0060 is omitted, and any other \u0060workspace_id\u0060 returns 403. Treat the raw key as write-only; it is never returned after creation. Use \u0060allowed_api_key_hashes\u0060 to restrict the credential to specific OpenRouter API keys. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
         "operationId": "CreateByokKey",
         "requestBody": {
           "content": {
@@ -3244,7 +3244,7 @@
           "BYOK"
         ],
         "summary": "Delete a BYOK provider credential",
-        "description": "Delete (soft-delete) a bring-your-own-key (BYOK) provider credential by its \u0060id\u0060. The encrypted key material is wiped and the record is marked as deleted. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
+        "description": "Delete (soft-delete) a bring-your-own-key (BYOK) provider credential by its \u0060id\u0060. The encrypted key material is wiped and the record is marked as deleted. A workspace-scoped management key only reaches credentials in its own workspace; any other \u0060id\u0060 returns 404. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
         "operationId": "DeleteByokKey",
         "parameters": [
           {
@@ -3346,7 +3346,7 @@
           "BYOK"
         ],
         "summary": "Get a BYOK provider credential",
-        "description": "Get a single bring-your-own-key (BYOK) provider credential by its \u0060id\u0060. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
+        "description": "Get a single bring-your-own-key (BYOK) provider credential by its \u0060id\u0060. A workspace-scoped management key only reaches credentials in its own workspace; any other \u0060id\u0060 returns 404. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
         "operationId": "GetByokKey",
         "parameters": [
           {
@@ -3465,7 +3465,7 @@
           "BYOK"
         ],
         "summary": "Update a BYOK provider credential",
-        "description": "Update an existing bring-your-own-key (BYOK) provider credential by its \u0060id\u0060. Include the \u0060key\u0060 field to rotate the raw provider API key in-place (the previous key material is overwritten). Use \u0060allowed_api_key_hashes\u0060 to restrict the credential to specific OpenRouter API keys (\u0060null\u0060 clears the restriction). [Management key](/docs/guides/overview/auth/management-api-keys) required.",
+        "description": "Update an existing bring-your-own-key (BYOK) provider credential by its \u0060id\u0060. Include the \u0060key\u0060 field to rotate the raw provider API key in-place (the previous key material is overwritten). Use \u0060allowed_api_key_hashes\u0060 to restrict the credential to specific OpenRouter API keys (\u0060null\u0060 clears the restriction). A workspace-scoped management key only reaches credentials in its own workspace; any other \u0060id\u0060 returns 404. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
         "operationId": "UpdateByokKey",
         "parameters": [
           {
@@ -5053,12 +5053,35 @@
       ]
     },
     "/credits/purchases": {
+      "get": {
+        "tags": [
+          "Credits"
+        ],
+        "summary": "Agent setup guide, served at the purchases collection",
+        "operationId": "GetCreditPurchasesSetupGuide",
+        "responses": {
+          "200": {
+            "description": "Markdown document, readable without a key.",
+            "content": {
+              "text/markdown": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetCreditPurchasesSetupGuide200MarkdownResponseSchema"
+                }
+              }
+            }
+          }
+        },
+        "security": [],
+        "x-fern-ignore": true,
+        "x-hidden": true,
+        "x-speakeasy-ignore": true
+      },
       "post": {
         "tags": [
           "Credits"
         ],
         "summary": "Buy credits with a machine payment",
-        "description": "Starts an agent credit purchase paid with a Machine Payments Protocol (MPP) credential on Tempo. The first call answers \u0060402\u0060 with a \u0060WWW-Authenticate: Payment ...\u0060 challenge; retry the same request, same \u0060Idempotency-Key\u0060, with the signed credential in \u0060Payment-Authorization: Payment ...\u0060 (or in \u0060Authorization: Payment ...\u0060 when the management key is sent as \u0060X-Api-Key\u0060). A paid request answers \u0060202\u0060: the transfer was broadcast and Stripe is still screening the payment, so credits arrive asynchronously. Poll the URL in the \u0060Location\u0060 header, \u0060GET /api/v1/credits/purchases/{id}\u0060, until \u0060status\u0060 is \u0060credited\u0060 or \u0060failed\u0060.",
+        "description": "Starts an agent credit purchase paid with a Machine Payments Protocol (MPP) credential: USDC on Tempo, or a card when one is offered. The first call answers \u0060402\u0060 with one \u0060WWW-Authenticate: Payment ...\u0060 challenge per payment option; pay one of them and retry the same request, same \u0060Idempotency-Key\u0060, with the signed credential in \u0060Payment-Authorization: Payment ...\u0060 (or in \u0060Authorization: Payment ...\u0060 when the management key is sent as \u0060X-Api-Key\u0060). A paid request answers \u0060202\u0060: the transfer was broadcast or the card was charged, and the payment is still being confirmed, so credits arrive asynchronously. Poll the URL in the \u0060Location\u0060 header, \u0060GET /api/v1/credits/purchases/{id}\u0060, until \u0060status\u0060 is \u0060credited\u0060 or \u0060failed\u0060.",
         "operationId": "CreateCreditsPurchases",
         "parameters": [
           {
@@ -5096,6 +5119,14 @@
                   "type": "string",
                   "description": "The purchase to poll: \u0060GET /api/v1/credits/purchases/{id}\u0060.",
                   "example": "/api/v1/credits/purchases/pi_3PqXyZ2eZvKYlo2C0abc1234"
+                }
+              },
+              "Payment-Receipt": {
+                "description": "The payment reference, on the request that paid: the Tempo transaction hash for USDC, or the PaymentIntent ID for a card. Absent when an earlier request already paid this purchase.",
+                "schema": {
+                  "type": "string",
+                  "description": "The payment reference, on the request that paid: the Tempo transaction hash for USDC, or the PaymentIntent ID for a card. Absent when an earlier request already paid this purchase.",
+                  "example": "0x8f3c2b1a9e7d6c5b4a39281706f5e4d3c2b1a09f8e7d6c5b4a39281706f5e4d3"
                 }
               }
             },
@@ -5141,10 +5172,29 @@
           },
           "402": {
             "description": "Payment required. An unpaid request carries the MPP challenge in \u0060WWW-Authenticate\u0060, and a \u0060Link: rel=\u0022help\u0022\u0060 header plus a \u0060setup\u0060 field pointing at the agent setup guide, \u0060GET /api/v1/credits/purchases/setup\u0060.",
-            "content": {
-              "application/json": {
+            "headers": {
+              "Link": {
+                "description": "The agent setup guide.",
+                "required": true,
                 "schema": {
-                  "$ref": "#/components/schemas/CreditPurchaseResponse"
+                  "type": "string",
+                  "description": "The agent setup guide.",
+                  "example": "\u003Chttps://openrouter.ai/api/v1/credits/purchases/setup\u003E; rel=\u0022help\u0022"
+                }
+              },
+              "WWW-Authenticate": {
+                "description": "The MPP challenges, one per way to pay: \u0060Payment id=\u0022...\u0022, method=\u0022tempo\u0022, intent=\u0022charge\u0022, ...\u0060 for USDC on Tempo and, when cards are offered, \u0060Payment id=\u0022...\u0022, method=\u0022stripe\u0022, intent=\u0022charge\u0022, ...\u0060 for a card. Pay one of them.",
+                "required": true,
+                "schema": {
+                  "type": "string",
+                  "description": "The MPP challenges, one per way to pay: \u0060Payment id=\u0022...\u0022, method=\u0022tempo\u0022, intent=\u0022charge\u0022, ...\u0060 for USDC on Tempo and, when cards are offered, \u0060Payment id=\u0022...\u0022, method=\u0022stripe\u0022, intent=\u0022charge\u0022, ...\u0060 for a card. Pay one of them."
+                }
+              }
+            },
+            "content": {
+              "application/problem\u002Bjson": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreditPurchasePaymentRequired"
                 }
               }
             }
@@ -5255,6 +5305,14 @@
                   "type": "string",
                   "description": "The purchase to poll: \u0060GET /api/v1/credits/purchases/{id}\u0060.",
                   "example": "/api/v1/credits/purchases/pi_3PqXyZ2eZvKYlo2C0abc1234"
+                }
+              },
+              "Payment-Receipt": {
+                "description": "The payment reference, on the request that paid: the Tempo transaction hash for USDC, or the PaymentIntent ID for a card. Absent when an earlier request already paid this purchase.",
+                "schema": {
+                  "type": "string",
+                  "description": "The payment reference, on the request that paid: the Tempo transaction hash for USDC, or the PaymentIntent ID for a card. Absent when an earlier request already paid this purchase.",
+                  "example": "0x8f3c2b1a9e7d6c5b4a39281706f5e4d3c2b1a09f8e7d6c5b4a39281706f5e4d3"
                 }
               }
             },
@@ -5467,7 +5525,11 @@
               }
             }
           }
-        }
+        },
+        "security": [],
+        "x-fern-ignore": true,
+        "x-hidden": true,
+        "x-speakeasy-ignore": true
       },
       "parameters": [
         {
@@ -5499,7 +5561,11 @@
               }
             }
           }
-        }
+        },
+        "security": [],
+        "x-fern-ignore": true,
+        "x-hidden": true,
+        "x-speakeasy-ignore": true
       },
       "parameters": [
         {
@@ -6622,6 +6688,22 @@
                       "uptime_last_5m": 100
                     }
                   ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Authentication required or invalid credentials",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 401,
+                    "message": "Missing Authentication header"
+                  }
                 }
               }
             }
@@ -9061,7 +9143,7 @@
           "Guardrails"
         ],
         "summary": "List guardrails",
-        "description": "List all guardrails for the authenticated user. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
+        "description": "List all guardrails for the authenticated user. A workspace-scoped management key lists only its own workspace, which \u0060workspace_id\u0060 defaults to; naming another workspace returns 403. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
         "operationId": "ListGuardrails",
         "parameters": [
           {
@@ -9095,10 +9177,10 @@
           {
             "name": "workspace_id",
             "in": "query",
-            "description": "Filter guardrails by workspace ID. By default, guardrails in the default workspace are returned.",
+            "description": "Filter guardrails by workspace ID. When omitted, an organization management key gets guardrails in the default workspace and a workspace-scoped key gets guardrails in its own workspace. A workspace-scoped key gets 403 for any other workspace.",
             "schema": {
               "type": "string",
-              "description": "Filter guardrails by workspace ID. By default, guardrails in the default workspace are returned.",
+              "description": "Filter guardrails by workspace ID. When omitted, an organization management key gets guardrails in the default workspace and a workspace-scoped key gets guardrails in its own workspace. A workspace-scoped key gets 403 for any other workspace.",
               "format": "uuid",
               "example": "0df9e665-d932-5740-b2c7-b52af166bc11"
             }
@@ -9230,7 +9312,7 @@
           "Guardrails"
         ],
         "summary": "Create a guardrail",
-        "description": "Create a new guardrail for the authenticated user. A newly created guardrail enforces nothing until it is assigned to API keys or organization members; \u0060workspace_id\u0060 places the guardrail in a workspace but does not apply it to that workspace\u0027s traffic. To restrict all traffic in a workspace, update the workspace\u0027s default guardrail instead. Set \u0060allowed_data_regions\u0060 to enforce [In-Region Routing](/docs/guides/features/in-region-routing#enforcing-in-region-routing-with-guardrails): governed requests must arrive through one of the listed OpenRouter domains and are rejected with a 403 otherwise. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
+        "description": "Create a new guardrail for the authenticated user. A newly created guardrail enforces nothing until it is assigned to API keys or organization members; \u0060workspace_id\u0060 places the guardrail in a workspace but does not apply it to that workspace\u0027s traffic. To restrict all traffic in a workspace, update the workspace\u0027s default guardrail instead. Set \u0060allowed_data_regions\u0060 to enforce [In-Region Routing](/docs/guides/features/in-region-routing#enforcing-in-region-routing-with-guardrails): governed requests must arrive through one of the listed OpenRouter domains and are rejected with a 403 otherwise. A workspace-scoped management key creates in its own workspace, which \u0060workspace_id\u0060 defaults to; naming another workspace returns 403. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
         "operationId": "CreateGuardrail",
         "requestBody": {
           "content": {
@@ -9425,7 +9507,7 @@
           "Guardrails"
         ],
         "summary": "Delete a guardrail",
-        "description": "Delete an existing guardrail. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
+        "description": "Delete an existing guardrail. A workspace-scoped management key reaches only guardrails in its own workspace; any other guardrail returns 404. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
         "operationId": "DeleteGuardrail",
         "parameters": [
           {
@@ -9527,7 +9609,7 @@
           "Guardrails"
         ],
         "summary": "Get a guardrail",
-        "description": "Get a single guardrail by ID. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
+        "description": "Get a single guardrail by ID. A workspace-scoped management key reaches only guardrails in its own workspace; any other guardrail returns 404. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
         "operationId": "GetGuardrail",
         "parameters": [
           {
@@ -9648,7 +9730,7 @@
           "Guardrails"
         ],
         "summary": "Update a guardrail",
-        "description": "Update an existing guardrail, or materialize an unconfigured workspace default guardrail. Collection fields use replace semantics: send the full desired set on every update. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
+        "description": "Update an existing guardrail, or materialize an unconfigured workspace default guardrail. Collection fields use replace semantics: send the full desired set on every update. A workspace-scoped management key reaches only guardrails in its own workspace; any other guardrail returns 404. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
         "operationId": "UpdateGuardrail",
         "parameters": [
           {
@@ -9833,7 +9915,7 @@
           "Guardrails"
         ],
         "summary": "List key assignments for a guardrail",
-        "description": "List all API key assignments for a specific guardrail. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
+        "description": "List all API key assignments for a specific guardrail. A workspace-scoped management key reaches only guardrails in its own workspace; any other guardrail returns 404. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
         "operationId": "ListGuardrailKeyAssignments",
         "parameters": [
           {
@@ -9992,7 +10074,7 @@
           "Guardrails"
         ],
         "summary": "Bulk assign keys to a guardrail",
-        "description": "Assign multiple API keys to a specific guardrail. A key may hold at most one guardrail; assigning replaces any existing assignment. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
+        "description": "Assign multiple API keys to a specific guardrail. A key may hold at most one guardrail; assigning replaces any existing assignment. A workspace-scoped management key reaches only guardrails in its own workspace (any other returns 404), and a batch naming an unknown or out-of-workspace key hash is rejected with 400 before anything changes. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
         "operationId": "BulkAssignKeysToGuardrail",
         "parameters": [
           {
@@ -10138,7 +10220,7 @@
           "Guardrails"
         ],
         "summary": "Bulk unassign keys from a guardrail",
-        "description": "Unassign multiple API keys from a specific guardrail. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
+        "description": "Unassign multiple API keys from a specific guardrail. A workspace-scoped management key reaches only guardrails in its own workspace (any other returns 404), and a batch naming an unknown or out-of-workspace key hash is rejected with 400 before anything changes. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
         "operationId": "BulkUnassignKeysFromGuardrail",
         "parameters": [
           {
@@ -10284,7 +10366,7 @@
           "Guardrails"
         ],
         "summary": "List member assignments for a guardrail",
-        "description": "List all organization member assignments for a specific guardrail. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
+        "description": "List all organization member assignments for a specific guardrail. A workspace-scoped management key reaches only guardrails in its own workspace; any other guardrail returns 404. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
         "operationId": "ListGuardrailMemberAssignments",
         "parameters": [
           {
@@ -10442,7 +10524,7 @@
           "Guardrails"
         ],
         "summary": "Bulk assign members to a guardrail",
-        "description": "Assign multiple organization members to a specific guardrail. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
+        "description": "Assign multiple organization members to a specific guardrail. Requires an organization-scoped management key; workspace-scoped management keys return 403. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
         "operationId": "BulkAssignMembersToGuardrail",
         "parameters": [
           {
@@ -10589,7 +10671,7 @@
           "Guardrails"
         ],
         "summary": "Bulk unassign members from a guardrail",
-        "description": "Unassign multiple organization members from a specific guardrail. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
+        "description": "Unassign multiple organization members from a specific guardrail. Requires an organization-scoped management key; workspace-scoped management keys return 403. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
         "operationId": "BulkUnassignMembersFromGuardrail",
         "parameters": [
           {
@@ -10736,7 +10818,7 @@
           "Guardrails"
         ],
         "summary": "List all key assignments",
-        "description": "List all API key guardrail assignments for the authenticated user. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
+        "description": "List all API key guardrail assignments for the authenticated user. A workspace-scoped management key lists only its own workspace, which \u0060workspace_id\u0060 defaults to; naming another workspace returns 403. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
         "operationId": "ListKeyAssignments",
         "parameters": [
           {
@@ -10765,6 +10847,17 @@
               "description": "Maximum number of records to return (max 100)",
               "default": 50,
               "example": 50
+            }
+          },
+          {
+            "name": "workspace_id",
+            "in": "query",
+            "description": "Only list assignments of guardrails in this workspace. When omitted, an organization management key lists every workspace and a workspace-scoped key lists its own workspace. A workspace-scoped key gets 403 for any other workspace.",
+            "schema": {
+              "type": "string",
+              "description": "Only list assignments of guardrails in this workspace. When omitted, an organization management key lists every workspace and a workspace-scoped key lists its own workspace. A workspace-scoped key gets 403 for any other workspace.",
+              "format": "uuid",
+              "example": "0df9e665-d932-5740-b2c7-b52af166bc11"
             }
           }
         ],
@@ -10912,7 +11005,7 @@
           "Guardrails"
         ],
         "summary": "List all member assignments",
-        "description": "List all organization member guardrail assignments for the authenticated user. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
+        "description": "List all organization member guardrail assignments for the authenticated user. A workspace-scoped management key lists only its own workspace, which \u0060workspace_id\u0060 defaults to; naming another workspace returns 403. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
         "operationId": "ListMemberAssignments",
         "parameters": [
           {
@@ -10941,6 +11034,17 @@
               "description": "Maximum number of records to return (max 100)",
               "default": 50,
               "example": 50
+            }
+          },
+          {
+            "name": "workspace_id",
+            "in": "query",
+            "description": "Only list assignments of guardrails in this workspace. When omitted, an organization management key lists every workspace and a workspace-scoped key lists its own workspace. A workspace-scoped key gets 403 for any other workspace.",
+            "schema": {
+              "type": "string",
+              "description": "Only list assignments of guardrails in this workspace. When omitted, an organization management key lists every workspace and a workspace-scoped key lists its own workspace. A workspace-scoped key gets 403 for any other workspace.",
+              "format": "uuid",
+              "example": "0df9e665-d932-5740-b2c7-b52af166bc11"
             }
           }
         ],
@@ -11685,11 +11789,10 @@
           {
             "name": "workspace_id",
             "in": "query",
-            "description": "Workspace the policy belongs to",
-            "required": true,
+            "description": "Workspace the policy belongs to. Required for an organization management key; a workspace-scoped key defaults to its own workspace and gets 403 for any other.",
             "schema": {
               "type": "string",
-              "description": "Workspace the policy belongs to",
+              "description": "Workspace the policy belongs to. Required for an organization management key; a workspace-scoped key defaults to its own workspace and gets 403 for any other.",
               "format": "uuid",
               "example": "0df9e665-d932-5740-b2c7-b52af166bc11"
             }
@@ -11975,11 +12078,10 @@
           {
             "name": "workspace_id",
             "in": "query",
-            "description": "Workspace the policy belongs to",
-            "required": true,
+            "description": "Workspace the policy belongs to. Required for an organization management key; a workspace-scoped key defaults to its own workspace and gets 403 for any other.",
             "schema": {
               "type": "string",
-              "description": "Workspace the policy belongs to",
+              "description": "Workspace the policy belongs to. Required for an organization management key; a workspace-scoped key defaults to its own workspace and gets 403 for any other.",
               "format": "uuid",
               "example": "0df9e665-d932-5740-b2c7-b52af166bc11"
             }
@@ -12276,11 +12378,10 @@
           {
             "name": "workspace_id",
             "in": "query",
-            "description": "Workspace the policy belongs to",
-            "required": true,
+            "description": "Workspace the policy belongs to. Required for an organization management key; a workspace-scoped key defaults to its own workspace and gets 403 for any other.",
             "schema": {
               "type": "string",
-              "description": "Workspace the policy belongs to",
+              "description": "Workspace the policy belongs to. Required for an organization management key; a workspace-scoped key defaults to its own workspace and gets 403 for any other.",
               "format": "uuid",
               "example": "0df9e665-d932-5740-b2c7-b52af166bc11"
             }
@@ -12572,11 +12673,10 @@
           {
             "name": "workspace_id",
             "in": "query",
-            "description": "Workspace the policy belongs to",
-            "required": true,
+            "description": "Workspace the policy belongs to. Required for an organization management key; a workspace-scoped key defaults to its own workspace and gets 403 for any other.",
             "schema": {
               "type": "string",
-              "description": "Workspace the policy belongs to",
+              "description": "Workspace the policy belongs to. Required for an organization management key; a workspace-scoped key defaults to its own workspace and gets 403 for any other.",
               "format": "uuid",
               "example": "0df9e665-d932-5740-b2c7-b52af166bc11"
             }
@@ -12715,11 +12815,10 @@
           {
             "name": "workspace_id",
             "in": "query",
-            "description": "Workspace the policy belongs to",
-            "required": true,
+            "description": "Workspace the policy belongs to. Required for an organization management key; a workspace-scoped key defaults to its own workspace and gets 403 for any other.",
             "schema": {
               "type": "string",
-              "description": "Workspace the policy belongs to",
+              "description": "Workspace the policy belongs to. Required for an organization management key; a workspace-scoped key defaults to its own workspace and gets 403 for any other.",
               "format": "uuid",
               "example": "0df9e665-d932-5740-b2c7-b52af166bc11"
             }
@@ -13007,11 +13106,10 @@
           {
             "name": "workspace_id",
             "in": "query",
-            "description": "Workspace the policy belongs to",
-            "required": true,
+            "description": "Workspace the policy belongs to. Required for an organization management key; a workspace-scoped key defaults to its own workspace and gets 403 for any other.",
             "schema": {
               "type": "string",
-              "description": "Workspace the policy belongs to",
+              "description": "Workspace the policy belongs to. Required for an organization management key; a workspace-scoped key defaults to its own workspace and gets 403 for any other.",
               "format": "uuid",
               "example": "0df9e665-d932-5740-b2c7-b52af166bc11"
             }
@@ -13303,11 +13401,10 @@
           {
             "name": "workspace_id",
             "in": "query",
-            "description": "Workspace the policy belongs to",
-            "required": true,
+            "description": "Workspace the policy belongs to. Required for an organization management key; a workspace-scoped key defaults to its own workspace and gets 403 for any other.",
             "schema": {
               "type": "string",
-              "description": "Workspace the policy belongs to",
+              "description": "Workspace the policy belongs to. Required for an organization management key; a workspace-scoped key defaults to its own workspace and gets 403 for any other.",
               "format": "uuid",
               "example": "0df9e665-d932-5740-b2c7-b52af166bc11"
             }
@@ -13446,11 +13543,10 @@
           {
             "name": "workspace_id",
             "in": "query",
-            "description": "Workspace the policy belongs to",
-            "required": true,
+            "description": "Workspace the policy belongs to. Required for an organization management key; a workspace-scoped key defaults to its own workspace and gets 403 for any other.",
             "schema": {
               "type": "string",
-              "description": "Workspace the policy belongs to",
+              "description": "Workspace the policy belongs to. Required for an organization management key; a workspace-scoped key defaults to its own workspace and gets 403 for any other.",
               "format": "uuid",
               "example": "0df9e665-d932-5740-b2c7-b52af166bc11"
             }
@@ -13738,11 +13834,10 @@
           {
             "name": "workspace_id",
             "in": "query",
-            "description": "Workspace the policy belongs to",
-            "required": true,
+            "description": "Workspace the policy belongs to. Required for an organization management key; a workspace-scoped key defaults to its own workspace and gets 403 for any other.",
             "schema": {
               "type": "string",
-              "description": "Workspace the policy belongs to",
+              "description": "Workspace the policy belongs to. Required for an organization management key; a workspace-scoped key defaults to its own workspace and gets 403 for any other.",
               "format": "uuid",
               "example": "0df9e665-d932-5740-b2c7-b52af166bc11"
             }
@@ -14034,11 +14129,10 @@
           {
             "name": "workspace_id",
             "in": "query",
-            "description": "Workspace the policy belongs to",
-            "required": true,
+            "description": "Workspace the policy belongs to. Required for an organization management key; a workspace-scoped key defaults to its own workspace and gets 403 for any other.",
             "schema": {
               "type": "string",
-              "description": "Workspace the policy belongs to",
+              "description": "Workspace the policy belongs to. Required for an organization management key; a workspace-scoped key defaults to its own workspace and gets 403 for any other.",
               "format": "uuid",
               "example": "0df9e665-d932-5740-b2c7-b52af166bc11"
             }
@@ -14177,11 +14271,10 @@
           {
             "name": "workspace_id",
             "in": "query",
-            "description": "Workspace the policy belongs to",
-            "required": true,
+            "description": "Workspace the policy belongs to. Required for an organization management key; a workspace-scoped key defaults to its own workspace and gets 403 for any other.",
             "schema": {
               "type": "string",
-              "description": "Workspace the policy belongs to",
+              "description": "Workspace the policy belongs to. Required for an organization management key; a workspace-scoped key defaults to its own workspace and gets 403 for any other.",
               "format": "uuid",
               "example": "0df9e665-d932-5740-b2c7-b52af166bc11"
             }
@@ -17002,6 +17095,22 @@
               }
             }
           },
+          "401": {
+            "description": "Unauthorized - Authentication required or invalid credentials",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 401,
+                    "message": "Missing Authentication header"
+                  }
+                }
+              }
+            }
+          },
           "403": {
             "description": "Forbidden - Authentication successful but insufficient permissions",
             "content": {
@@ -17605,7 +17714,7 @@
           "Observability"
         ],
         "summary": "List observability destinations",
-        "description": "List the observability destinations configured for the authenticated entity\u0027s default workspace. Use the \u0060workspace_id\u0060 query parameter to scope the result to a different workspace. Only destinations with stable release status are surfaced \u2014 destinations of other types are excluded. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
+        "description": "List the observability destinations configured for the authenticated entity\u0027s default workspace, or a workspace-scoped management key\u0027s own workspace. Use the \u0060workspace_id\u0060 query parameter to scope the result to a different workspace. A workspace-scoped management key can only list its own workspace; any other \u0060workspace_id\u0060 returns 403. Only destinations with stable release status are surfaced \u2014 destinations of other types are excluded. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
         "operationId": "ListObservabilityDestinations",
         "parameters": [
           {
@@ -17639,10 +17748,10 @@
           {
             "name": "workspace_id",
             "in": "query",
-            "description": "Optional workspace ID to filter by. Defaults to the authenticated entity\u0027s default workspace.",
+            "description": "Optional workspace ID to filter by. Defaults to the authenticated entity\u0027s default workspace, or a workspace-scoped management key\u0027s own workspace.",
             "schema": {
               "type": "string",
-              "description": "Optional workspace ID to filter by. Defaults to the authenticated entity\u0027s default workspace.",
+              "description": "Optional workspace ID to filter by. Defaults to the authenticated entity\u0027s default workspace, or a workspace-scoped management key\u0027s own workspace.",
               "format": "uuid",
               "example": "550e8400-e29b-41d4-a716-446655440000"
             }
@@ -17779,7 +17888,7 @@
           "Observability"
         ],
         "summary": "Create an observability destination",
-        "description": "Create a new observability destination. A maximum of 5 destinations per type is allowed. Defaults to the authenticated entity\u0027s default workspace; use the \u0060workspace_id\u0060 body field to scope to a different workspace. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
+        "description": "Create a new observability destination. A maximum of 5 destinations per type is allowed. Defaults to the authenticated entity\u0027s default workspace, or a workspace-scoped management key\u0027s own workspace; use the \u0060workspace_id\u0060 body field to scope to a different workspace. A workspace-scoped management key can only create in its own workspace; any other \u0060workspace_id\u0060 returns 403. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
         "operationId": "CreateObservabilityDestination",
         "requestBody": {
           "content": {
@@ -17977,7 +18086,7 @@
           "Observability"
         ],
         "summary": "Delete an observability destination",
-        "description": "Delete an existing observability destination. This performs a soft delete. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
+        "description": "Delete an existing observability destination. This performs a soft delete. A workspace-scoped management key only reaches destinations in its own workspace; any other \u0060id\u0060 returns 404. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
         "operationId": "DeleteObservabilityDestination",
         "parameters": [
           {
@@ -18079,7 +18188,7 @@
           "Observability"
         ],
         "summary": "Get an observability destination",
-        "description": "Fetch a single observability destination by its UUID. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
+        "description": "Fetch a single observability destination by its UUID. A workspace-scoped management key only reaches destinations in its own workspace; any other \u0060id\u0060 returns 404. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
         "operationId": "GetObservabilityDestination",
         "parameters": [
           {
@@ -18205,7 +18314,7 @@
           "Observability"
         ],
         "summary": "Update an observability destination",
-        "description": "Update an existing observability destination. Only the fields provided in the request body are updated. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
+        "description": "Update an existing observability destination. Only the fields provided in the request body are updated. A workspace-scoped management key only reaches destinations in its own workspace; any other \u0060id\u0060 returns 404. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
         "operationId": "UpdateObservabilityDestination",
         "parameters": [
           {
@@ -36385,7 +36494,7 @@
             "items": {
               "type": "string"
             },
-            "description": "Optional allowlist of OpenRouter API key hashes (\u0060api_keys.hash\u0060) that may use this credential. \u0060null\u0060 means no restriction."
+            "description": "Optional allowlist of OpenRouter API key hashes (\u0060api_keys.hash\u0060) that may use this credential. \u0060null\u0060 means no restriction. A workspace-scoped management key can only name API keys in its own workspace."
           },
           "allowed_models": {
             "maxItems": 100,
@@ -37178,7 +37287,6 @@
       },
       "ChangeGuardrailPolicyAssignmentRequest": {
         "required": [
-          "workspace_id",
           "policy_type",
           "policy_id",
           "assigned",
@@ -37205,7 +37313,7 @@
           },
           "workspace_id": {
             "type": "string",
-            "description": "Workspace the policy belongs to",
+            "description": "Workspace the policy belongs to. Required for an organization management key; a workspace-scoped key defaults to its own workspace and gets 403 for any other.",
             "format": "uuid",
             "example": "0df9e665-d932-5740-b2c7-b52af166bc11"
           }
@@ -39792,8 +39900,7 @@
         "required": [
           "name",
           "policy_type",
-          "config",
-          "workspace_id"
+          "config"
         ],
         "type": "object",
         "properties": {
@@ -39864,7 +39971,7 @@
           },
           "workspace_id": {
             "type": "string",
-            "description": "Workspace the policy belongs to",
+            "description": "Workspace the policy belongs to. Required for an organization management key; a workspace-scoped key defaults to its own workspace and gets 403 for any other.",
             "format": "uuid",
             "example": "0df9e665-d932-5740-b2c7-b52af166bc11"
           }
@@ -39888,7 +39995,7 @@
               "pattern": "^[a-f0-9]{64}$",
               "type": "string"
             },
-            "description": "Optional allowlist of OpenRouter API key hashes (\u0060api_keys.hash\u0060) that may use this credential. \u0060null\u0060 means no restriction. Must contain at least one hash if provided. Hashes that do not belong to your account return a 400."
+            "description": "Optional allowlist of OpenRouter API key hashes (\u0060api_keys.hash\u0060) that may use this credential. \u0060null\u0060 means no restriction. Must contain at least one hash if provided. Hashes that do not belong to your account return a 400; for a workspace-scoped management key, so do hashes of API keys outside its own workspace."
           },
           "allowed_models": {
             "maxItems": 100,
@@ -39965,7 +40072,7 @@
           },
           "workspace_id": {
             "type": "string",
-            "description": "Optional workspace ID to scope the credential to. When omitted, the credential is created in the account\u0027s default workspace; if that default has been deleted, the request returns a 400 and you must pass \u0060workspace_id\u0060 explicitly.",
+            "description": "Optional workspace ID to scope the credential to. When omitted, a workspace-scoped management key creates it in its own workspace. An organization management key creates it in the account\u0027s default workspace; if that default has been deleted, the request returns a 400 and you must pass \u0060workspace_id\u0060 explicitly.",
             "format": "uuid",
             "example": "550e8400-e29b-41d4-a716-446655440000"
           }
@@ -40254,7 +40361,7 @@
           },
           "workspace_id": {
             "type": "string",
-            "description": "The workspace to create the guardrail in. When omitted, the guardrail is created in the default workspace; if that default has been deleted, the request returns a 400 and you must pass \u0060workspace_id\u0060 explicitly. This only places the guardrail in the workspace; the created guardrail enforces nothing for that workspace\u0027s traffic until it is assigned to API keys or members. To restrict all traffic in a workspace, update the workspace\u0027s default guardrail instead.",
+            "description": "The workspace to create the guardrail in. When omitted, an organization management key creates the guardrail in the default workspace (a 400 if that default has been deleted, so pass \u0060workspace_id\u0060 explicitly) and a workspace-scoped key creates it in its own workspace. A workspace-scoped key gets a 403 for any other workspace. This only places the guardrail in the workspace; the created guardrail enforces nothing for that workspace\u0027s traffic until it is assigned to API keys or members. To restrict all traffic in a workspace, update the workspace\u0027s default guardrail instead.",
             "format": "uuid",
             "example": "0df9e665-d932-5740-b2c7-b52af166bc11"
           }
@@ -40339,8 +40446,7 @@
         "required": [
           "name",
           "policy_type",
-          "config",
-          "workspace_id"
+          "config"
         ],
         "type": "object",
         "properties": {
@@ -40411,7 +40517,7 @@
           },
           "workspace_id": {
             "type": "string",
-            "description": "Workspace the policy belongs to",
+            "description": "Workspace the policy belongs to. Required for an organization management key; a workspace-scoped key defaults to its own workspace and gets 403 for any other.",
             "format": "uuid",
             "example": "0df9e665-d932-5740-b2c7-b52af166bc11"
           }
@@ -40421,8 +40527,7 @@
         "required": [
           "name",
           "policy_type",
-          "config",
-          "workspace_id"
+          "config"
         ],
         "type": "object",
         "properties": {
@@ -40493,7 +40598,7 @@
           },
           "workspace_id": {
             "type": "string",
-            "description": "Workspace the policy belongs to",
+            "description": "Workspace the policy belongs to. Required for an organization management key; a workspace-scoped key defaults to its own workspace and gets 403 for any other.",
             "format": "uuid",
             "example": "0df9e665-d932-5740-b2c7-b52af166bc11"
           }
@@ -40516,7 +40621,7 @@
             "items": {
               "type": "string"
             },
-            "description": "Optional allowlist of OpenRouter API key hashes whose traffic is forwarded. \u0060null\u0060 or omitted means all keys. Must contain at least one hash if provided.",
+            "description": "Optional allowlist of OpenRouter API key hashes whose traffic is forwarded. \u0060null\u0060 or omitted means all keys. Must contain at least one hash if provided. A workspace-scoped management key can only name API keys in its own workspace; any other hash returns 400.",
             "example": null
           },
           "broadcast_generation_cost": {
@@ -40592,7 +40697,7 @@
           },
           "workspace_id": {
             "type": "string",
-            "description": "Optional workspace ID. Defaults to the authenticated entity\u0027s default workspace.",
+            "description": "Optional workspace ID. Defaults to the authenticated entity\u0027s default workspace, or a workspace-scoped management key\u0027s own workspace.",
             "format": "uuid",
             "example": "550e8400-e29b-41d4-a716-446655440000"
           }
@@ -41025,6 +41130,38 @@
           },
           "total_charged_usd": {
             "type": "string"
+          }
+        }
+      },
+      "CreditPurchasePaymentRequired": {
+        "required": [
+          "type",
+          "title",
+          "status",
+          "setup"
+        ],
+        "type": "object",
+        "properties": {
+          "challengeId": {
+            "type": "string"
+          },
+          "detail": {
+            "type": "string"
+          },
+          "setup": {
+            "type": "string",
+            "description": "The agent setup guide, \u0060GET /api/v1/credits/purchases/setup\u0060.",
+            "example": "https://openrouter.ai/api/v1/credits/purchases/setup"
+          },
+          "status": {
+            "$ref": "#/components/schemas/CreditPurchasePaymentRequiredStatus"
+          },
+          "title": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "example": "https://paymentauth.org/problems/payment-required"
           }
         }
       },
@@ -42098,7 +42235,7 @@
           }
         },
         "additionalProperties": false,
-        "description": "An image or PDF sent once and referenced by its key in the \u0060assets\u0060 map. \u0060data_base64\u0060 is the file in standard base64 with no \u0060data:\u0060 prefix. PDF is read by document models only."
+        "description": "An image or PDF sent once and referenced by its key in the \u0060assets\u0060 map. \u0060data_base64\u0060 is the file in standard base64 with no \u0060data:\u0060 prefix. Which formats are read is model-specific: a format the model cannot read fails with a 400."
       },
       "ExtractionForecastStep": {
         "required": [
@@ -42166,7 +42303,6 @@
       "ExtractionsRequest": {
         "required": [
           "model",
-          "state",
           "fields"
         ],
         "type": "object",
@@ -42196,7 +42332,8 @@
           },
           "state": {
             "type": "string",
-            "description": "The text to read from. May be empty only when the request carries image assets."
+            "description": "The text to read from. May be empty or omitted only when the request carries assets, which are then read without being referenced by key.",
+            "default": ""
           },
           "trace": {
             "description": "Metadata for observability and tracing. Known keys (trace_id, trace_name, span_name, generation_name, parent_span_id) have special handling. Additional keys are passed through as custom metadata to configured broadcast destinations.",
@@ -59702,6 +59839,7 @@
               "bedrock-xai-responses-v1",
               "xai-responses-v1",
               "meta-responses-v1",
+              "google-vertex-responses-v1",
               "openrouter-stealth-v1",
               "anthropic-claude-v1",
               "google-gemini-v1"
@@ -59740,6 +59878,10 @@
                 {
                   "value": "meta-responses-v1",
                   "name": "MetaResponsesV1"
+                },
+                {
+                  "value": "google-vertex-responses-v1",
+                  "name": "GoogleVertexResponsesV1"
                 },
                 {
                   "value": "openrouter-stealth-v1",
@@ -64113,8 +64255,7 @@
       "UpdateBudgetGuardrailPolicyRequest": {
         "required": [
           "name",
-          "config",
-          "workspace_id"
+          "config"
         ],
         "type": "object",
         "properties": {
@@ -64182,7 +64323,7 @@
           },
           "workspace_id": {
             "type": "string",
-            "description": "Workspace the policy belongs to",
+            "description": "Workspace the policy belongs to. Required for an organization management key; a workspace-scoped key defaults to its own workspace and gets 403 for any other.",
             "format": "uuid",
             "example": "0df9e665-d932-5740-b2c7-b52af166bc11"
           }
@@ -64202,7 +64343,7 @@
               "pattern": "^[a-f0-9]{64}$",
               "type": "string"
             },
-            "description": "Optional allowlist of OpenRouter API key hashes (\u0060api_keys.hash\u0060) that may use this credential. \u0060null\u0060 clears the restriction. Must contain at least one hash if provided. Hashes that do not belong to your account return a 400."
+            "description": "Optional allowlist of OpenRouter API key hashes (\u0060api_keys.hash\u0060) that may use this credential. \u0060null\u0060 clears the restriction. Must contain at least one hash if provided. Hashes that do not belong to your account return a 400; for a workspace-scoped management key, so do hashes of API keys outside its own workspace."
           },
           "allowed_models": {
             "maxItems": 100,
@@ -64596,8 +64737,7 @@
       "UpdateModelAvailabilityGuardrailPolicyRequest": {
         "required": [
           "name",
-          "config",
-          "workspace_id"
+          "config"
         ],
         "type": "object",
         "properties": {
@@ -64665,7 +64805,7 @@
           },
           "workspace_id": {
             "type": "string",
-            "description": "Workspace the policy belongs to",
+            "description": "Workspace the policy belongs to. Required for an organization management key; a workspace-scoped key defaults to its own workspace and gets 403 for any other.",
             "format": "uuid",
             "example": "0df9e665-d932-5740-b2c7-b52af166bc11"
           }
@@ -64674,8 +64814,7 @@
       "UpdateModerationGuardrailPolicyRequest": {
         "required": [
           "name",
-          "config",
-          "workspace_id"
+          "config"
         ],
         "type": "object",
         "properties": {
@@ -64743,7 +64882,7 @@
           },
           "workspace_id": {
             "type": "string",
-            "description": "Workspace the policy belongs to",
+            "description": "Workspace the policy belongs to. Required for an organization management key; a workspace-scoped key defaults to its own workspace and gets 403 for any other.",
             "format": "uuid",
             "example": "0df9e665-d932-5740-b2c7-b52af166bc11"
           }
@@ -64761,7 +64900,7 @@
             "items": {
               "type": "string"
             },
-            "description": "Optional allowlist of OpenRouter API key hashes. \u0060null\u0060 clears the filter (all keys). Omitting leaves the current value. Must contain at least one hash if provided.",
+            "description": "Optional allowlist of OpenRouter API key hashes. \u0060null\u0060 clears the filter (all keys). Omitting leaves the current value, including any API key from another workspace that an organization-scoped key attached. Must contain at least one hash if provided. A workspace-scoped management key can only name API keys in its own workspace; any other hash returns 400.",
             "example": null
           },
           "broadcast_generation_cost": {
@@ -68636,7 +68775,7 @@
             "items": {
               "type": "string"
             },
-            "description": "Optional allowlist of OpenRouter API key hashes (\u0060api_keys.hash\u0060) that may use this credential. \u0060null\u0060 means no restriction."
+            "description": "Optional allowlist of OpenRouter API key hashes (\u0060api_keys.hash\u0060) that may use this credential. \u0060null\u0060 means no restriction. A workspace-scoped management key can only name API keys in its own workspace."
           },
           "allowed_models": {
             "maxItems": 100,
@@ -70452,7 +70591,7 @@
             "items": {
               "type": "string"
             },
-            "description": "Optional allowlist of OpenRouter API key hashes (\u0060api_keys.hash\u0060) that may use this credential. \u0060null\u0060 means no restriction."
+            "description": "Optional allowlist of OpenRouter API key hashes (\u0060api_keys.hash\u0060) that may use this credential. \u0060null\u0060 means no restriction. A workspace-scoped management key can only name API keys in its own workspace."
           },
           "allowed_models": {
             "maxItems": 100,
@@ -73716,7 +73855,7 @@
             "items": {
               "type": "string"
             },
-            "description": "Optional allowlist of OpenRouter API key hashes (\u0060api_keys.hash\u0060) that may use this credential. \u0060null\u0060 means no restriction."
+            "description": "Optional allowlist of OpenRouter API key hashes (\u0060api_keys.hash\u0060) that may use this credential. \u0060null\u0060 means no restriction. A workspace-scoped management key can only name API keys in its own workspace."
           },
           "allowed_models": {
             "maxItems": 100,
@@ -82591,7 +82730,7 @@
           },
           "workspace_id": {
             "type": "string",
-            "description": "Move the API key to this workspace. The key keeps its value; guardrail selections move with it, while other workspace-scoped settings (presets, BYOK keys, broadcast destinations, routing rules) do not. Sending the key\u0027s current workspace is a no-op.",
+            "description": "Move the API key to this workspace. The key keeps its value; guardrail selections move with it, except direct guardrail assignments owned by the key\u0027s current workspace, which are removed along with the selections derived from them, while other workspace-scoped settings (presets, BYOK keys, broadcast destinations, routing rules) do not. Sending the key\u0027s current workspace is a no-op.",
             "format": "uuid",
             "example": "0df9e665-d932-5740-b2c7-b52af166bc11"
           }
@@ -82841,6 +82980,9 @@
       "DownloadContainerFileContent200OctetStreamResponseSchema": {
         "type": "string",
         "format": "binary"
+      },
+      "GetCreditPurchasesSetupGuide200MarkdownResponseSchema": {
+        "type": "string"
       },
       "ListCreditsPurchasesSetup200MarkdownResponseSchema": {
         "type": "string"
@@ -84596,7 +84738,7 @@
         "additionalProperties": {
           "$ref": "#/components/schemas/ExtractionAsset"
         },
-        "description": "Assets keyed by reference string. Write a reference wherever the asset belongs in \u0060state\u0060 or a field \u0060instructions\u0060; every asset must be referenced at least once. A \u0060state\u0060 that is exactly the sole asset\u0027s key carries no text of its own and is read as file-only. A model that reads either text or a document per request, not both (ScaleDown Extract with a PDF), needs that form: any other text around the key is state text and is rejected with 400."
+        "description": "Assets keyed by reference string. Write a reference wherever the asset belongs in \u0060state\u0060 or a field \u0060instructions\u0060; every asset must be referenced at least once, unless \u0060state\u0060 is empty or omitted, in which case the assets are read without a reference. A \u0060state\u0060 that is exactly the sole asset\u0027s key carries no text of its own and is read as file-only. A model that reads either text or a document per request, not both (ScaleDown Extract with a PDF), takes that form or an empty or omitted \u0060state\u0060: any other text around the key is state text and is rejected with 400."
       },
       "ExtractionsRequestFieldsProperty": {
         "type": "object",
@@ -92652,6 +92794,12 @@
           ]
         }
       },
+      "CreditPurchasePaymentRequiredStatus": {
+        "enum": [
+          402
+        ],
+        "type": "number"
+      },
       "CustomType": {
         "enum": [
           "custom"
@@ -93001,6 +93149,7 @@
           "png",
           "jpg",
           "jpeg",
+          "webp",
           "pdf"
         ],
         "type": "string",
@@ -93020,6 +93169,10 @@
             {
               "value": "jpeg",
               "name": "Jpeg"
+            },
+            {
+              "value": "webp",
+              "name": "Webp"
             },
             {
               "value": "pdf",
@@ -93876,10 +94029,12 @@
         "enum": [
           "1:1",
           "1:2",
+          "1:3",
           "1:4",
           "1:8",
           "2:1",
           "2:3",
+          "3:1",
           "2.35:1",
           "3:2",
           "3:4",
@@ -93918,6 +94073,10 @@
               "name": "Value1Colon2"
             },
             {
+              "value": "1:3",
+              "name": "Value1Colon3"
+            },
+            {
               "value": "1:4",
               "name": "Value1Colon4"
             },
@@ -93932,6 +94091,10 @@
             {
               "value": "2:3",
               "name": "Value2Colon3"
+            },
+            {
+              "value": "3:1",
+              "name": "Value3Colon1"
             },
             {
               "value": "2.35:1",
@@ -113170,6 +113333,10 @@
               },
               "type": {
                 "$ref": "#/components/schemas/TextType"
+              },
+              "unit": {
+                "type": "string",
+                "description": "Unit label for the value."
               }
             },
             "additionalProperties": false
@@ -113198,7 +113365,8 @@
                 "description": "What the field should contain."
               },
               "integer": {
-                "type": "boolean"
+                "type": "boolean",
+                "description": "Whole numbers only."
               },
               "null_threshold": {
                 "maximum": 1,
@@ -113211,7 +113379,8 @@
                 "$ref": "#/components/schemas/NumberType"
               },
               "unit": {
-                "type": "string"
+                "type": "string",
+                "description": "Unit label for the value."
               }
             },
             "additionalProperties": false
@@ -113242,6 +113411,10 @@
               },
               "type": {
                 "$ref": "#/components/schemas/DateType"
+              },
+              "unit": {
+                "type": "string",
+                "description": "Unit label for the value."
               }
             },
             "additionalProperties": false
@@ -113272,6 +113445,10 @@
               },
               "type": {
                 "$ref": "#/components/schemas/TimeType"
+              },
+              "unit": {
+                "type": "string",
+                "description": "Unit label for the value."
               }
             },
             "additionalProperties": false
@@ -113302,6 +113479,10 @@
               },
               "type": {
                 "$ref": "#/components/schemas/DatetimeType"
+              },
+              "unit": {
+                "type": "string",
+                "description": "Unit label for the value."
               }
             },
             "additionalProperties": false
@@ -113330,7 +113511,8 @@
                 "description": "What the field should contain."
               },
               "integer": {
-                "type": "boolean"
+                "type": "boolean",
+                "description": "Whole numbers only."
               },
               "null_threshold": {
                 "maximum": 1,
@@ -113373,6 +113555,10 @@
                 "type": "string",
                 "description": "What the field should contain."
               },
+              "integer": {
+                "type": "boolean",
+                "description": "Whole numbers only. Lists of numbers only."
+              },
               "items": {
                 "$ref": "#/components/schemas/ExtractionListFieldItems"
               },
@@ -113385,6 +113571,10 @@
               },
               "type": {
                 "$ref": "#/components/schemas/ListType"
+              },
+              "unit": {
+                "type": "string",
+                "description": "Unit label for the value."
               }
             },
             "additionalProperties": false
@@ -113418,7 +113608,7 @@
                 "maximum": 1,
                 "minimum": 0,
                 "type": "number",
-                "description": "Probability of null above which \u0060value\u0060 is null. Default 0.5.",
+                "description": "Not read on this field type: no model takes a null threshold here, and a request that sets it fails with a 400.",
                 "format": "double"
               },
               "scale": {
@@ -113431,7 +113621,8 @@
                 "$ref": "#/components/schemas/EstimateType"
               },
               "unit": {
-                "type": "string"
+                "type": "string",
+                "description": "Unit label for the value."
               }
             },
             "additionalProperties": false
@@ -113476,7 +113667,7 @@
                 "maximum": 1,
                 "minimum": 0,
                 "type": "number",
-                "description": "Probability of null above which \u0060value\u0060 is null. Default 0.5.",
+                "description": "Not read on this field type: no model takes a null threshold here, and a request that sets it fails with a 400.",
                 "format": "double"
               },
               "scale": {
@@ -113489,7 +113680,8 @@
                 "$ref": "#/components/schemas/ForecastType"
               },
               "unit": {
-                "type": "string"
+                "type": "string",
+                "description": "Unit label for the value."
               }
             },
             "additionalProperties": false
@@ -113531,7 +113723,7 @@
                 "items": {
                   "type": "integer"
                 },
-                "description": "Unicode code point offsets [start, end) into the state text: index code points (not UTF-16 code units or UTF-8 bytes), so an emoji or accented letter counts once."
+                "description": "Unicode code point offsets [start, end) into the state text: index code points (not UTF-16 code units or UTF-8 bytes), so an emoji or accented letter counts once. Absent for an answer that has no offsets in the state text, for example a null answer, one read from an image or a document, or one the provider returned without offsets that delimit it."
               },
               "spell_confidence": {
                 "type": "number",
@@ -113587,7 +113779,7 @@
                 "items": {
                   "type": "integer"
                 },
-                "description": "Unicode code point offsets [start, end) into the state text: index code points (not UTF-16 code units or UTF-8 bytes), so an emoji or accented letter counts once."
+                "description": "Unicode code point offsets [start, end) into the state text: index code points (not UTF-16 code units or UTF-8 bytes), so an emoji or accented letter counts once. Absent for an answer that has no offsets in the state text, for example a null answer, one read from an image or a document, or one the provider returned without offsets that delimit it."
               },
               "spell_confidence": {
                 "type": "number",
@@ -113643,7 +113835,7 @@
                 "items": {
                   "type": "integer"
                 },
-                "description": "Unicode code point offsets [start, end) into the state text: index code points (not UTF-16 code units or UTF-8 bytes), so an emoji or accented letter counts once."
+                "description": "Unicode code point offsets [start, end) into the state text: index code points (not UTF-16 code units or UTF-8 bytes), so an emoji or accented letter counts once. Absent for an answer that has no offsets in the state text, for example a null answer, one read from an image or a document, or one the provider returned without offsets that delimit it."
               },
               "spell_confidence": {
                 "type": "number",
@@ -113698,7 +113890,7 @@
                 "items": {
                   "type": "integer"
                 },
-                "description": "Unicode code point offsets [start, end) into the state text: index code points (not UTF-16 code units or UTF-8 bytes), so an emoji or accented letter counts once."
+                "description": "Unicode code point offsets [start, end) into the state text: index code points (not UTF-16 code units or UTF-8 bytes), so an emoji or accented letter counts once. Absent for an answer that has no offsets in the state text, for example a null answer, one read from an image or a document, or one the provider returned without offsets that delimit it."
               },
               "spell_confidence": {
                 "type": "number",
@@ -113753,7 +113945,7 @@
                 "items": {
                   "type": "integer"
                 },
-                "description": "Unicode code point offsets [start, end) into the state text: index code points (not UTF-16 code units or UTF-8 bytes), so an emoji or accented letter counts once."
+                "description": "Unicode code point offsets [start, end) into the state text: index code points (not UTF-16 code units or UTF-8 bytes), so an emoji or accented letter counts once. Absent for an answer that has no offsets in the state text, for example a null answer, one read from an image or a document, or one the provider returned without offsets that delimit it."
               },
               "spell_confidence": {
                 "type": "number",
@@ -113809,7 +114001,7 @@
                 "items": {
                   "type": "integer"
                 },
-                "description": "Unicode code point offsets [start, end) into the state text: index code points (not UTF-16 code units or UTF-8 bytes), so an emoji or accented letter counts once."
+                "description": "Unicode code point offsets [start, end) into the state text: index code points (not UTF-16 code units or UTF-8 bytes), so an emoji or accented letter counts once. Absent for an answer that has no offsets in the state text, for example a null answer, one read from an image or a document, or one the provider returned without offsets that delimit it."
               },
               "spell_confidence": {
                 "type": "number",
@@ -113878,12 +114070,16 @@
                 "items": {
                   "maxItems": 2,
                   "minItems": 2,
-                  "type": "array",
+                  "type": [
+                    "null",
+                    "array"
+                  ],
                   "items": {
                     "type": "integer"
                   },
                   "description": "Unicode code point offsets [start, end) into the state text: index code points (not UTF-16 code units or UTF-8 bytes), so an emoji or accented letter counts once."
-                }
+                },
+                "description": "One span per item of \u0060value\u0060, in the same order; null for an item that has no offsets in the state text: one read from an image or a document, or one the provider returned without offsets that delimit it."
               },
               "spell_confidence": {
                 "type": "number",
@@ -123706,7 +123902,7 @@
           "items": {
             "type": "integer"
           },
-          "description": "Unicode code point offsets [start, end) into the state text: index code points (not UTF-16 code units or UTF-8 bytes), so an emoji or accented letter counts once."
+          "description": "Unicode code point offsets [start, end) into the state text: index code points (not UTF-16 code units or UTF-8 bytes), so an emoji or accented letter counts once. Absent for an answer that has no offsets in the state text, for example a null answer, one read from an image or a document, or one the provider returned without offsets that delimit it."
         },
         "spell_confidence": {
           "type": "number",
@@ -123743,6 +123939,10 @@
         },
         "type": {
           "$ref": "#/components/schemas/DateType"
+        },
+        "unit": {
+          "type": "string",
+          "description": "Unit label for the value."
         }
       },
       "additionalProperties": false
@@ -123777,7 +123977,7 @@
           "items": {
             "type": "integer"
           },
-          "description": "Unicode code point offsets [start, end) into the state text: index code points (not UTF-16 code units or UTF-8 bytes), so an emoji or accented letter counts once."
+          "description": "Unicode code point offsets [start, end) into the state text: index code points (not UTF-16 code units or UTF-8 bytes), so an emoji or accented letter counts once. Absent for an answer that has no offsets in the state text, for example a null answer, one read from an image or a document, or one the provider returned without offsets that delimit it."
         },
         "spell_confidence": {
           "type": "number",
@@ -123814,6 +124014,10 @@
         },
         "type": {
           "$ref": "#/components/schemas/DatetimeType"
+        },
+        "unit": {
+          "type": "string",
+          "description": "Unit label for the value."
         }
       },
       "additionalProperties": false
@@ -123849,7 +124053,7 @@
           "items": {
             "type": "integer"
           },
-          "description": "Unicode code point offsets [start, end) into the state text: index code points (not UTF-16 code units or UTF-8 bytes), so an emoji or accented letter counts once."
+          "description": "Unicode code point offsets [start, end) into the state text: index code points (not UTF-16 code units or UTF-8 bytes), so an emoji or accented letter counts once. Absent for an answer that has no offsets in the state text, for example a null answer, one read from an image or a document, or one the provider returned without offsets that delimit it."
         },
         "spell_confidence": {
           "type": "number",
@@ -123889,7 +124093,8 @@
           "description": "What the field should contain."
         },
         "integer": {
-          "type": "boolean"
+          "type": "boolean",
+          "description": "Whole numbers only."
         },
         "null_threshold": {
           "maximum": 1,
@@ -123994,7 +124199,7 @@
           "maximum": 1,
           "minimum": 0,
           "type": "number",
-          "description": "Probability of null above which \u0060value\u0060 is null. Default 0.5.",
+          "description": "Not read on this field type: no model takes a null threshold here, and a request that sets it fails with a 400.",
           "format": "double"
         },
         "scale": {
@@ -124007,7 +124212,8 @@
           "$ref": "#/components/schemas/EstimateType"
         },
         "unit": {
-          "type": "string"
+          "type": "string",
+          "description": "Unit label for the value."
         }
       },
       "additionalProperties": false
@@ -124120,7 +124326,7 @@
           "maximum": 1,
           "minimum": 0,
           "type": "number",
-          "description": "Probability of null above which \u0060value\u0060 is null. Default 0.5.",
+          "description": "Not read on this field type: no model takes a null threshold here, and a request that sets it fails with a 400.",
           "format": "double"
         },
         "scale": {
@@ -124133,7 +124339,8 @@
           "$ref": "#/components/schemas/ForecastType"
         },
         "unit": {
-          "type": "string"
+          "type": "string",
+          "description": "Unit label for the value."
         }
       },
       "additionalProperties": false
@@ -124177,12 +124384,16 @@
           "items": {
             "maxItems": 2,
             "minItems": 2,
-            "type": "array",
+            "type": [
+              "null",
+              "array"
+            ],
             "items": {
               "type": "integer"
             },
             "description": "Unicode code point offsets [start, end) into the state text: index code points (not UTF-16 code units or UTF-8 bytes), so an emoji or accented letter counts once."
-          }
+          },
+          "description": "One span per item of \u0060value\u0060, in the same order; null for an item that has no offsets in the state text: one read from an image or a document, or one the provider returned without offsets that delimit it."
         },
         "spell_confidence": {
           "type": "number",
@@ -124220,6 +124431,10 @@
           "type": "string",
           "description": "What the field should contain."
         },
+        "integer": {
+          "type": "boolean",
+          "description": "Whole numbers only. Lists of numbers only."
+        },
         "items": {
           "$ref": "#/components/schemas/ExtractionListFieldItems"
         },
@@ -124232,6 +124447,10 @@
         },
         "type": {
           "$ref": "#/components/schemas/ListType"
+        },
+        "unit": {
+          "type": "string",
+          "description": "Unit label for the value."
         }
       },
       "additionalProperties": false
@@ -124267,7 +124486,7 @@
           "items": {
             "type": "integer"
           },
-          "description": "Unicode code point offsets [start, end) into the state text: index code points (not UTF-16 code units or UTF-8 bytes), so an emoji or accented letter counts once."
+          "description": "Unicode code point offsets [start, end) into the state text: index code points (not UTF-16 code units or UTF-8 bytes), so an emoji or accented letter counts once. Absent for an answer that has no offsets in the state text, for example a null answer, one read from an image or a document, or one the provider returned without offsets that delimit it."
         },
         "spell_confidence": {
           "type": "number",
@@ -124303,7 +124522,8 @@
           "description": "What the field should contain."
         },
         "integer": {
-          "type": "boolean"
+          "type": "boolean",
+          "description": "Whole numbers only."
         },
         "null_threshold": {
           "maximum": 1,
@@ -124316,7 +124536,8 @@
           "$ref": "#/components/schemas/NumberType"
         },
         "unit": {
-          "type": "string"
+          "type": "string",
+          "description": "Unit label for the value."
         }
       },
       "additionalProperties": false
@@ -124351,7 +124572,7 @@
           "items": {
             "type": "integer"
           },
-          "description": "Unicode code point offsets [start, end) into the state text: index code points (not UTF-16 code units or UTF-8 bytes), so an emoji or accented letter counts once."
+          "description": "Unicode code point offsets [start, end) into the state text: index code points (not UTF-16 code units or UTF-8 bytes), so an emoji or accented letter counts once. Absent for an answer that has no offsets in the state text, for example a null answer, one read from an image or a document, or one the provider returned without offsets that delimit it."
         },
         "spell_confidence": {
           "type": "number",
@@ -124388,6 +124609,10 @@
         },
         "type": {
           "$ref": "#/components/schemas/TextType"
+        },
+        "unit": {
+          "type": "string",
+          "description": "Unit label for the value."
         }
       },
       "additionalProperties": false
@@ -124422,7 +124647,7 @@
           "items": {
             "type": "integer"
           },
-          "description": "Unicode code point offsets [start, end) into the state text: index code points (not UTF-16 code units or UTF-8 bytes), so an emoji or accented letter counts once."
+          "description": "Unicode code point offsets [start, end) into the state text: index code points (not UTF-16 code units or UTF-8 bytes), so an emoji or accented letter counts once. Absent for an answer that has no offsets in the state text, for example a null answer, one read from an image or a document, or one the provider returned without offsets that delimit it."
         },
         "spell_confidence": {
           "type": "number",
@@ -124459,6 +124684,10 @@
         },
         "type": {
           "$ref": "#/components/schemas/TimeType"
+        },
+        "unit": {
+          "type": "string",
+          "description": "Unit label for the value."
         }
       },
       "additionalProperties": false
@@ -132688,7 +132917,7 @@
       "additionalProperties": {
         "$ref": "#/components/schemas/ExtractionAsset"
       },
-      "description": "Assets keyed by reference string. Write a reference wherever the asset belongs in \u0060state\u0060 or a field \u0060instructions\u0060; every asset must be referenced at least once. A \u0060state\u0060 that is exactly the sole asset\u0027s key carries no text of its own and is read as file-only. A model that reads either text or a document per request, not both (ScaleDown Extract with a PDF), needs that form: any other text around the key is state text and is rejected with 400."
+      "description": "Assets keyed by reference string. Write a reference wherever the asset belongs in \u0060state\u0060 or a field \u0060instructions\u0060; every asset must be referenced at least once, unless \u0060state\u0060 is empty or omitted, in which case the assets are read without a reference. A \u0060state\u0060 that is exactly the sole asset\u0027s key carries no text of its own and is read as file-only. A model that reads either text or a document per request, not both (ScaleDown Extract with a PDF), takes that form or an empty or omitted \u0060state\u0060: any other text around the key is state text and is rejected with 400."
     },
     "ExtractionsRequestFields": {
       "type": "object",
@@ -134138,6 +134367,9 @@
     "DownloadContainerFileContent200OctetStreamResponse": {
       "type": "string",
       "format": "binary"
+    },
+    "GetCreditPurchasesSetupGuide200MarkdownResponse": {
+      "type": "string"
     },
     "ListCreditsPurchasesSetup200MarkdownResponse": {
       "type": "string"

@@ -47,7 +47,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Observability.Destinations
         {
         }
         /// <summary>
-        /// List the observability destinations configured for the authenticated entity&apos;s default workspace. Use the `workspace_id` query parameter to scope the result to a different workspace. Only destinations with stable release status are surfaced — destinations of other types are excluded. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+        /// List the observability destinations configured for the authenticated entity&apos;s default workspace, or a workspace-scoped management key&apos;s own workspace. Use the `workspace_id` query parameter to scope the result to a different workspace. A workspace-scoped management key can only list its own workspace; any other `workspace_id` returns 403. Only destinations with stable release status are surfaced — destinations of other types are excluded. [Management key](/docs/guides/overview/auth/management-api-keys) required.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ListObservabilityDestinationsResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -78,7 +78,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Observability.Destinations
             return await RequestAdapter.SendAsync<global::Soenneker.OpenRouter.OpenApiClient.Models.ListObservabilityDestinationsResponse>(requestInfo, global::Soenneker.OpenRouter.OpenApiClient.Models.ListObservabilityDestinationsResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Create a new observability destination. A maximum of 5 destinations per type is allowed. Defaults to the authenticated entity&apos;s default workspace; use the `workspace_id` body field to scope to a different workspace. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+        /// Create a new observability destination. A maximum of 5 destinations per type is allowed. Defaults to the authenticated entity&apos;s default workspace, or a workspace-scoped management key&apos;s own workspace; use the `workspace_id` body field to scope to a different workspace. A workspace-scoped management key can only create in its own workspace; any other `workspace_id` returns 403. [Management key](/docs/guides/overview/auth/management-api-keys) required.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.CreateObservabilityDestinationResponse"/></returns>
         /// <param name="body">The request body</param>
@@ -113,7 +113,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Observability.Destinations
             return await RequestAdapter.SendAsync<global::Soenneker.OpenRouter.OpenApiClient.Models.CreateObservabilityDestinationResponse>(requestInfo, global::Soenneker.OpenRouter.OpenApiClient.Models.CreateObservabilityDestinationResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// List the observability destinations configured for the authenticated entity&apos;s default workspace. Use the `workspace_id` query parameter to scope the result to a different workspace. Only destinations with stable release status are surfaced — destinations of other types are excluded. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+        /// List the observability destinations configured for the authenticated entity&apos;s default workspace, or a workspace-scoped management key&apos;s own workspace. Use the `workspace_id` query parameter to scope the result to a different workspace. A workspace-scoped management key can only list its own workspace; any other `workspace_id` returns 403. Only destinations with stable release status are surfaced — destinations of other types are excluded. [Management key](/docs/guides/overview/auth/management-api-keys) required.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -132,7 +132,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Observability.Destinations
             return requestInfo;
         }
         /// <summary>
-        /// Create a new observability destination. A maximum of 5 destinations per type is allowed. Defaults to the authenticated entity&apos;s default workspace; use the `workspace_id` body field to scope to a different workspace. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+        /// Create a new observability destination. A maximum of 5 destinations per type is allowed. Defaults to the authenticated entity&apos;s default workspace, or a workspace-scoped management key&apos;s own workspace; use the `workspace_id` body field to scope to a different workspace. A workspace-scoped management key can only create in its own workspace; any other `workspace_id` returns 403. [Management key](/docs/guides/overview/auth/management-api-keys) required.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
@@ -163,7 +163,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Observability.Destinations
             return new global::Soenneker.OpenRouter.OpenApiClient.Observability.Destinations.DestinationsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// List the observability destinations configured for the authenticated entity&apos;s default workspace. Use the `workspace_id` query parameter to scope the result to a different workspace. Only destinations with stable release status are surfaced — destinations of other types are excluded. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+        /// List the observability destinations configured for the authenticated entity&apos;s default workspace, or a workspace-scoped management key&apos;s own workspace. Use the `workspace_id` query parameter to scope the result to a different workspace. A workspace-scoped management key can only list its own workspace; any other `workspace_id` returns 403. Only destinations with stable release status are surfaced — destinations of other types are excluded. [Management key](/docs/guides/overview/auth/management-api-keys) required.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class DestinationsRequestBuilderGetQueryParameters 
@@ -174,7 +174,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Observability.Destinations
             /// <summary>Number of records to skip for pagination</summary>
             [QueryParameter("offset")]
             public int? Offset { get; set; }
-            /// <summary>Optional workspace ID to filter by. Defaults to the authenticated entity&apos;s default workspace.</summary>
+            /// <summary>Optional workspace ID to filter by. Defaults to the authenticated entity&apos;s default workspace, or a workspace-scoped management key&apos;s own workspace.</summary>
             [QueryParameter("workspace_id")]
             public Guid? WorkspaceId { get; set; }
         }
