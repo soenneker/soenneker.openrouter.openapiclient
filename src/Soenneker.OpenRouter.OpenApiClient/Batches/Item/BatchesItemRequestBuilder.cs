@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.OpenRouter.OpenApiClient.Batches.Item.Cancel;
 using Soenneker.OpenRouter.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -17,6 +18,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Batches.Item
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class BatchesItemRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The cancel property</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Batches.Item.Cancel.CancelRequestBuilder Cancel
+        {
+            get => new global::Soenneker.OpenRouter.OpenApiClient.Batches.Item.Cancel.CancelRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Batches.Item.BatchesItemRequestBuilder"/> and sets the default values.
         /// </summary>

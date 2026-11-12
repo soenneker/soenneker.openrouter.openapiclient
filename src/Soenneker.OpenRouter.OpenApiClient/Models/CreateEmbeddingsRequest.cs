@@ -56,7 +56,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInput Input { get => _explicitNullValueInput; set { _explicitNullValueInput = value; AdditionalData?.Remove("input"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input"); else _explicitNullProperties?.Remove("input"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInput _explicitNullValueInput = default!;
 #endif
-        /// <summary>The type of input (e.g. search_query, search_document)</summary>
+        /// <summary>The type of input (e.g. search_query, search_document). Document-chunk input (`string[][]`) is only valid with a document input type.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? InputType { get => _explicitNullValueInputType; set { _explicitNullValueInputType = value; AdditionalData?.Remove("input_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input_type"); else _explicitNullProperties?.Remove("input_type"); } }

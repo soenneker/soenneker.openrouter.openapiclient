@@ -108,7 +108,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Sampling rate for I/O logging (0.0001-1)</summary>
         public double? IoLoggingSamplingRate { get => _explicitNullValueIoLoggingSamplingRate; set { _explicitNullValueIoLoggingSamplingRate = value; AdditionalData?.Remove("io_logging_sampling_rate"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("io_logging_sampling_rate"); else _explicitNullProperties?.Remove("io_logging_sampling_rate"); } }
         private double? _explicitNullValueIoLoggingSamplingRate = default!;
-        /// <summary>Whether data discount logging is enabled</summary>
+        /// <summary>Whether data discount logging is enabled. Enabling it requires the account to allow workspace data-discount logging; otherwise the request returns 403.</summary>
         public bool? IsDataDiscountLoggingEnabled { get => _explicitNullValueIsDataDiscountLoggingEnabled; set { _explicitNullValueIsDataDiscountLoggingEnabled = value; AdditionalData?.Remove("is_data_discount_logging_enabled"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_data_discount_logging_enabled"); else _explicitNullProperties?.Remove("is_data_discount_logging_enabled"); } }
         private bool? _explicitNullValueIsDataDiscountLoggingEnabled = default!;
         /// <summary>Whether broadcast is enabled</summary>

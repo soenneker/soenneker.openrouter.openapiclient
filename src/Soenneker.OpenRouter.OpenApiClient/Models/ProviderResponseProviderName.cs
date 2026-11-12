@@ -531,6 +531,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning disable CS1591
         Sourceful,
         #pragma warning restore CS1591
+        [EnumMember(Value = "Speechify")]
+        #pragma warning disable CS1591
+        Speechify,
+        #pragma warning restore CS1591
         [EnumMember(Value = "StepFun")]
         #pragma warning disable CS1591
         StepFun,

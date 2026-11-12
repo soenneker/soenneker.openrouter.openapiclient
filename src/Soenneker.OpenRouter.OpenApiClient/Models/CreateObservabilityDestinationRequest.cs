@@ -49,7 +49,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Optional allowlist of OpenRouter API key hashes whose traffic is forwarded. `null` or omitted means all keys. Must contain at least one hash if provided. A workspace-scoped management key can only name API keys in its own workspace; any other hash returns 400.</summary>
+        /// <summary>Optional allowlist of OpenRouter API key hashes whose traffic is forwarded. `null` or omitted means all keys. Must contain at least one hash if provided. Every hash must belong to an API key in the destination&apos;s workspace; any other hash returns 400.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? ApiKeyHashes { get => _explicitNullValueApiKeyHashes; set { _explicitNullValueApiKeyHashes = value; AdditionalData?.Remove("api_key_hashes"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("api_key_hashes"); else _explicitNullProperties?.Remove("api_key_hashes"); } }

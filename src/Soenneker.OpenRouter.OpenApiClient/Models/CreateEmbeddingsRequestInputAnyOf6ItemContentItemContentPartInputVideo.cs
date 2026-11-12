@@ -9,7 +9,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class CreateEmbeddingsRequestInputAnyOf5ItemContentItemContentPartInputVideo : global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInputAnyOf5ItemContentItem, IParsable
+    public partial class CreateEmbeddingsRequestInputAnyOf6ItemContentItemContentPartInputVideo : global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInputAnyOf6ItemContentItem, IParsable
     #pragma warning restore CS1591
     {
         // Track explicitly assigned nulls separately from absent properties.
@@ -35,12 +35,12 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInputAnyOf5ItemContentItemContentPartInputVideo"/></returns>
+        /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInputAnyOf6ItemContentItemContentPartInputVideo"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static new global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInputAnyOf5ItemContentItemContentPartInputVideo CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static new global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInputAnyOf6ItemContentItemContentPartInputVideo CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInputAnyOf5ItemContentItemContentPartInputVideo(), parseNode);
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInputAnyOf6ItemContentItemContentPartInputVideo(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model

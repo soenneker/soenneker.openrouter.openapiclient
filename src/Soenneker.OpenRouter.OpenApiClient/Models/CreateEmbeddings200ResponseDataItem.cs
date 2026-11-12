@@ -18,6 +18,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
+            if (parseNode.GetChildNode("document_index") is null) { _explicitNullValueDocumentIndex = default!; _explicitNullProperties?.Remove("document_index"); }
+            else if (parseNode.GetChildNode("document_index") is { } nullNodeDocumentIndex && nullNodeDocumentIndex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DocumentIndex = null;
             if (parseNode.GetChildNode("embedding") is null) { _explicitNullValueEmbedding = default!; _explicitNullProperties?.Remove("embedding"); }
             else if (parseNode.GetChildNode("embedding") is { } nullNodeEmbedding && nullNodeEmbedding.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Embedding = null;
             if (parseNode.GetChildNode("index") is null) { _explicitNullValueIndex = default!; _explicitNullProperties?.Remove("index"); }
@@ -28,6 +30,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Index of the source document when `input` was a list of documents (contextual embeddings). Absent otherwise.</summary>
+        public int? DocumentIndex { get => _explicitNullValueDocumentIndex; set { _explicitNullValueDocumentIndex = value; AdditionalData?.Remove("document_index"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("document_index"); else _explicitNullProperties?.Remove("document_index"); } }
+        private int? _explicitNullValueDocumentIndex = default!;
         /// <summary>Embedding vector as an array of floats or a base64 string</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -69,6 +74,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "document_index", n => { DocumentIndex = n.GetIntValue(); } },
                 { "embedding", n => { Embedding = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.BatchObjectResultsItemResponseBodyAnyOf4DataItemEmbedding>(global::Soenneker.OpenRouter.OpenApiClient.Models.BatchObjectResultsItemResponseBodyAnyOf4DataItemEmbedding.CreateFromDiscriminatorValue); } },
                 { "index", n => { Index = n.GetIntValue(); } },
                 { "object", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.EmbeddingObject>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueObject = default; _explicitNullProperties?.Remove("object"); AdditionalData["object"] = unknown; } else { Object = parsed; AdditionalData.Remove("object"); } } },
@@ -81,6 +87,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteIntValue("document_index", DocumentIndex);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.BatchObjectResultsItemResponseBodyAnyOf4DataItemEmbedding>("embedding", Embedding);
             writer.WriteIntValue("index", Index);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.EmbeddingObject>("object", Object);

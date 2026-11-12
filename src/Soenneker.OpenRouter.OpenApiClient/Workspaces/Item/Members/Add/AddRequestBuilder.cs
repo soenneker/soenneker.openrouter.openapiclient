@@ -34,7 +34,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Workspaces.Item.Members.Add
         {
         }
         /// <summary>
-        /// Add multiple organization members to a workspace. Members are assigned the same role they hold in the organization. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+        /// Add multiple organization members to a workspace. New members are assigned the workspace role that matches their organization role. Users who are already members of the workspace keep their current role and are not included in the response. [Management key](/docs/guides/overview/auth/management-api-keys) required.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BulkAddWorkspaceMembersResponse"/></returns>
         /// <param name="body">The request body</param>
@@ -69,7 +69,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Workspaces.Item.Members.Add
             return await RequestAdapter.SendAsync<global::Soenneker.OpenRouter.OpenApiClient.Models.BulkAddWorkspaceMembersResponse>(requestInfo, global::Soenneker.OpenRouter.OpenApiClient.Models.BulkAddWorkspaceMembersResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Add multiple organization members to a workspace. Members are assigned the same role they hold in the organization. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+        /// Add multiple organization members to a workspace. New members are assigned the workspace role that matches their organization role. Users who are already members of the workspace keep their current role and are not included in the response. [Management key](/docs/guides/overview/auth/management-api-keys) required.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

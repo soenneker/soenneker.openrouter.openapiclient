@@ -18,16 +18,34 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
+            if (parseNode.GetChildNode("context") is null) { _explicitNullValueContext = default!; _explicitNullProperties?.Remove("context"); }
+            else if (parseNode.GetChildNode("context") is { } nullNodeContext && nullNodeContext.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Context = null;
             if (parseNode.GetChildNode("effort") is null) { _explicitNullValueEffort = default!; _explicitNullProperties?.Remove("effort"); }
             else if (parseNode.GetChildNode("effort") is { } nullNodeEffort && nullNodeEffort.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Effort = null;
+            if (parseNode.GetChildNode("enabled") is null) { _explicitNullValueEnabled = default!; _explicitNullProperties?.Remove("enabled"); }
+            else if (parseNode.GetChildNode("enabled") is { } nullNodeEnabled && nullNodeEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Enabled = null;
+            if (parseNode.GetChildNode("exclude") is null) { _explicitNullValueExclude = default!; _explicitNullProperties?.Remove("exclude"); }
+            else if (parseNode.GetChildNode("exclude") is { } nullNodeExclude && nullNodeExclude.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Exclude = null;
             if (parseNode.GetChildNode("max_tokens") is null) { _explicitNullValueMaxTokens = default!; _explicitNullProperties?.Remove("max_tokens"); }
             else if (parseNode.GetChildNode("max_tokens") is { } nullNodeMaxTokens && nullNodeMaxTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxTokens = null;
+            if (parseNode.GetChildNode("mode") is null) { _explicitNullValueMode = default!; _explicitNullProperties?.Remove("mode"); }
+            else if (parseNode.GetChildNode("mode") is { } nullNodeMode && nullNodeMode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Mode = null;
             if (parseNode.GetChildNode("summary") is null) { _explicitNullValueSummary = default!; _explicitNullProperties?.Remove("summary"); }
             else if (parseNode.GetChildNode("summary") is { } nullNodeSummary && nullNodeSummary.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Summary = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Controls which reasoning is available to the model. `auto` uses the model default (same as omitting); `all_turns` includes reasoning from earlier turns passed in input; `current_turn` limits to the current turn only. Only supported by OpenAI GPT-5.6 and newer.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningContext? Context { get => _explicitNullValueContext; set { _explicitNullValueContext = value; AdditionalData?.Remove("context"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("context"); else _explicitNullProperties?.Remove("context"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningContext? _explicitNullValueContext = default!;
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningContext Context { get => _explicitNullValueContext; set { _explicitNullValueContext = value; AdditionalData?.Remove("context"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("context"); else _explicitNullProperties?.Remove("context"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningContext _explicitNullValueContext = default!;
+#endif
         /// <summary>Constrains effort on reasoning for reasoning models</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -38,9 +56,25 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequestReasoningEffortEnum Effort { get => _explicitNullValueEffort; set { _explicitNullValueEffort = value; AdditionalData?.Remove("effort"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("effort"); else _explicitNullProperties?.Remove("effort"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequestReasoningEffortEnum _explicitNullValueEffort = default!;
 #endif
+        /// <summary>Enables reasoning with default settings. Defaults to being inferred from `effort` or `max_tokens`.</summary>
+        public bool? Enabled { get => _explicitNullValueEnabled; set { _explicitNullValueEnabled = value; AdditionalData?.Remove("enabled"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enabled"); else _explicitNullProperties?.Remove("enabled"); } }
+        private bool? _explicitNullValueEnabled = default!;
+        /// <summary>When true, the model still reasons but the reasoning is omitted from the response. Defaults to false.</summary>
+        public bool? Exclude { get => _explicitNullValueExclude; set { _explicitNullValueExclude = value; AdditionalData?.Remove("exclude"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("exclude"); else _explicitNullProperties?.Remove("exclude"); } }
+        private bool? _explicitNullValueExclude = default!;
         /// <summary>Maximum number of tokens the model may spend on reasoning, for models that take a reasoning token budget instead of an effort level. Cannot be combined with `reasoning.effort` or the top-level `reasoning_effort`: a request that sets both is rejected with &quot;Only one of &quot;reasoning.effort&quot; and &quot;reasoning.max_tokens&quot; can be specified&quot;.</summary>
         public int? MaxTokens { get => _explicitNullValueMaxTokens; set { _explicitNullValueMaxTokens = value; AdditionalData?.Remove("max_tokens"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_tokens"); else _explicitNullProperties?.Remove("max_tokens"); } }
         private int? _explicitNullValueMaxTokens = default!;
+        /// <summary>Selects the reasoning mode. `standard` is the default; `pro` engages deeper reasoning on models that support it, billed at standard token rates. Only supported by OpenAI GPT-5.6 and newer.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningMode? Mode { get => _explicitNullValueMode; set { _explicitNullValueMode = value; AdditionalData?.Remove("mode"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mode"); else _explicitNullProperties?.Remove("mode"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningMode? _explicitNullValueMode = default!;
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningMode Mode { get => _explicitNullValueMode; set { _explicitNullValueMode = value; AdditionalData?.Remove("mode"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mode"); else _explicitNullProperties?.Remove("mode"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningMode _explicitNullValueMode = default!;
+#endif
         /// <summary>The summary property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -76,8 +110,12 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "context", n => { Context = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningContext>(global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningContext.CreateFromDiscriminatorValue); } },
                 { "effort", n => { Effort = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequestReasoningEffortEnum>(global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequestReasoningEffortEnum.CreateFromDiscriminatorValue); } },
+                { "enabled", n => { Enabled = n.GetBoolValue(); } },
+                { "exclude", n => { Exclude = n.GetBoolValue(); } },
                 { "max_tokens", n => { MaxTokens = n.GetIntValue(); } },
+                { "mode", n => { Mode = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningMode>(global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningMode.CreateFromDiscriminatorValue); } },
                 { "summary", n => { Summary = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatReasoningSummaryVerbosityEnum>(global::Soenneker.OpenRouter.OpenApiClient.Models.ChatReasoningSummaryVerbosityEnum.CreateFromDiscriminatorValue); } },
             };
         }
@@ -88,8 +126,12 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningContext>("context", Context);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatRequestReasoningEffortEnum>("effort", Effort);
+            writer.WriteBoolValue("enabled", Enabled);
+            writer.WriteBoolValue("exclude", Exclude);
             writer.WriteIntValue("max_tokens", MaxTokens);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ReasoningMode>("mode", Mode);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatReasoningSummaryVerbosityEnum>("summary", Summary);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);

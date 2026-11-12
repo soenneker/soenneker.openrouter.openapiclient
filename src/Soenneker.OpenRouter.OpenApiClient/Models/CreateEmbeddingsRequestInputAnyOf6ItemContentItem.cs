@@ -9,7 +9,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class CreateEmbeddingsRequestInputAnyOf5ItemContentItem : IAdditionalDataHolder, IParsable
+    public partial class CreateEmbeddingsRequestInputAnyOf6ItemContentItem : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
         // Track explicitly assigned nulls separately from absent properties.
@@ -34,29 +34,29 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         private string _explicitNullValueType = default!;
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInputAnyOf5ItemContentItem"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInputAnyOf6ItemContentItem"/> and sets the default values.
         /// </summary>
-        public CreateEmbeddingsRequestInputAnyOf5ItemContentItem()
+        public CreateEmbeddingsRequestInputAnyOf6ItemContentItem()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInputAnyOf5ItemContentItem"/></returns>
+        /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInputAnyOf6ItemContentItem"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInputAnyOf5ItemContentItem CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInputAnyOf6ItemContentItem CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
             return mappingValue switch
             {
-                "image_url" => new global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf2Variant(),
-                "input_audio" => new global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInputAnyOf5ItemContentItemContentPartInputAudio(),
-                "input_file" => new global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInputAnyOf5ItemContentItemContentPartInputFile(),
-                "input_video" => new global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInputAnyOf5ItemContentItemContentPartInputVideo(),
-                "text" => new global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf1Variant(),
-                _ => new global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInputAnyOf5ItemContentItem(),
+                "image_url" => new global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInputAnyOf6ItemContentItemOneOf2Variant(),
+                "input_audio" => new global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInputAnyOf6ItemContentItemContentPartInputAudio(),
+                "input_file" => new global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInputAnyOf6ItemContentItemContentPartInputFile(),
+                "input_video" => new global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInputAnyOf6ItemContentItemContentPartInputVideo(),
+                "text" => new global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInputAnyOf6ItemContentItemOneOf1Variant(),
+                _ => new global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInputAnyOf6ItemContentItem(),
             };
         }
         /// <summary>

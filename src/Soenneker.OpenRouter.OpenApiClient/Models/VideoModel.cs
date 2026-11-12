@@ -154,7 +154,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public List<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModelSupportedAspectRatiosItem?> SupportedAspectRatios { get => _explicitNullValueSupportedAspectRatios; set { _explicitNullValueSupportedAspectRatios = value; AdditionalData?.Remove("supported_aspect_ratios"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supported_aspect_ratios"); else _explicitNullProperties?.Remove("supported_aspect_ratios"); } }
         private List<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoModelSupportedAspectRatiosItem?> _explicitNullValueSupportedAspectRatios = default!;
 #endif
-        /// <summary>Supported video durations in seconds</summary>
+        /// <summary>Supported video durations in seconds. -1 means the model accepts duration -1 and chooses the length itself.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<int?>? SupportedDurations { get => _explicitNullValueSupportedDurations; set { _explicitNullValueSupportedDurations = value; AdditionalData?.Remove("supported_durations"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supported_durations"); else _explicitNullProperties?.Remove("supported_durations"); } }

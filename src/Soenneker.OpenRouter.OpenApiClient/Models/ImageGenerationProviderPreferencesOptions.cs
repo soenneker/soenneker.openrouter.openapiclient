@@ -281,6 +281,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             else if (parseNode.GetChildNode("siliconflow") is { } nullNodeSiliconflow && nullNodeSiliconflow.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Siliconflow = null;
             if (parseNode.GetChildNode("sourceful") is null) { _explicitNullValueSourceful = default!; _explicitNullProperties?.Remove("sourceful"); }
             else if (parseNode.GetChildNode("sourceful") is { } nullNodeSourceful && nullNodeSourceful.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Sourceful = null;
+            if (parseNode.GetChildNode("speechify") is null) { _explicitNullValueSpeechify = default!; _explicitNullProperties?.Remove("speechify"); }
+            else if (parseNode.GetChildNode("speechify") is { } nullNodeSpeechify && nullNodeSpeechify.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Speechify = null;
             if (parseNode.GetChildNode("stealth") is null) { _explicitNullValueStealth = default!; _explicitNullProperties?.Remove("stealth"); }
             else if (parseNode.GetChildNode("stealth") is { } nullNodeStealth && nullNodeStealth.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Stealth = null;
             if (parseNode.GetChildNode("stepfun") is null) { _explicitNullValueStepfun = default!; _explicitNullProperties?.Remove("stepfun"); }
@@ -1651,6 +1653,16 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSourceful Sourceful { get => _explicitNullValueSourceful; set { _explicitNullValueSourceful = value; AdditionalData?.Remove("sourceful"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sourceful"); else _explicitNullProperties?.Remove("sourceful"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSourceful _explicitNullValueSourceful = default!;
 #endif
+        /// <summary>The speechify property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSpeechify? Speechify { get => _explicitNullValueSpeechify; set { _explicitNullValueSpeechify = value; AdditionalData?.Remove("speechify"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("speechify"); else _explicitNullProperties?.Remove("speechify"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSpeechify? _explicitNullValueSpeechify = default!;
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSpeechify Speechify { get => _explicitNullValueSpeechify; set { _explicitNullValueSpeechify = value; AdditionalData?.Remove("speechify"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("speechify"); else _explicitNullProperties?.Remove("speechify"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSpeechify _explicitNullValueSpeechify = default!;
+#endif
         /// <summary>The stealth property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -2038,6 +2050,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "sf-compute", n => { SfCompute = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSfCompute>(global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSfCompute.CreateFromDiscriminatorValue); } },
                 { "siliconflow", n => { Siliconflow = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSiliconflow>(global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSiliconflow.CreateFromDiscriminatorValue); } },
                 { "sourceful", n => { Sourceful = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSourceful>(global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSourceful.CreateFromDiscriminatorValue); } },
+                { "speechify", n => { Speechify = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSpeechify>(global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSpeechify.CreateFromDiscriminatorValue); } },
                 { "stealth", n => { Stealth = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsStealth>(global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsStealth.CreateFromDiscriminatorValue); } },
                 { "stepfun", n => { Stepfun = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsStepfun>(global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsStepfun.CreateFromDiscriminatorValue); } },
                 { "streamlake", n => { Streamlake = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsStreamlake>(global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsStreamlake.CreateFromDiscriminatorValue); } },
@@ -2202,6 +2215,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSfCompute>("sf-compute", SfCompute);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSiliconflow>("siliconflow", Siliconflow);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSourceful>("sourceful", Sourceful);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsSpeechify>("speechify", Speechify);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsStealth>("stealth", Stealth);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsStepfun>("stepfun", Stepfun);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptionsStreamlake>("streamlake", Streamlake);

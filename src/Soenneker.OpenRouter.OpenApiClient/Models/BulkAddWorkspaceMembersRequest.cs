@@ -23,7 +23,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>List of user IDs to add to the workspace. Members are assigned the same role they hold in the organization.</summary>
+        /// <summary>List of user IDs to add to the workspace. New members are assigned the workspace role that matches their organization role; users already in the workspace keep their current role.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? UserIds { get => _explicitNullValueUserIds; set { _explicitNullValueUserIds = value; AdditionalData?.Remove("user_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_ids"); else _explicitNullProperties?.Remove("user_ids"); } }

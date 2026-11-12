@@ -9,7 +9,7 @@ using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="string"/>, List&lt;double&gt;, List&lt;global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInputAnyOf5Item&gt;, List&lt;global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInputMember1&gt;, List&lt;string&gt;
+    /// Composed type wrapper for classes <see cref="string"/>, List&lt;double&gt;, List&lt;global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInputAnyOf6Item&gt;, List&lt;global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInputMember1&gt;, List&lt;global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInputMember2&gt;, List&lt;string&gt;
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CreateEmbeddingsRequestInput : IComposedTypeWrapper, IParsable
@@ -19,13 +19,13 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
-        /// <summary>Composed type representation for type List&lt;global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInputAnyOf5Item&gt;</summary>
+        /// <summary>Composed type representation for type List&lt;global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInputAnyOf6Item&gt;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInputAnyOf5Item>? CreateEmbeddingsRequestInputAnyOf5Item { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInputAnyOf6Item>? CreateEmbeddingsRequestInputAnyOf6Item { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInputAnyOf5Item> CreateEmbeddingsRequestInputAnyOf5Item { get; set; }
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInputAnyOf6Item> CreateEmbeddingsRequestInputAnyOf6Item { get; set; }
 #endif
         /// <summary>Composed type representation for type List&lt;global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInputMember1&gt;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -34,6 +34,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #nullable restore
 #else
         public List<global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInputMember1> CreateEmbeddingsRequestInputMember1 { get; set; }
+#endif
+        /// <summary>Composed type representation for type List&lt;global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInputMember2&gt;</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInputMember2>? CreateEmbeddingsRequestInputMember2 { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInputMember2> CreateEmbeddingsRequestInputMember2 { get; set; }
 #endif
         /// <summary>Composed type representation for type <see cref="string"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -115,13 +123,17 @@ return result;
 }
 var matches = new bool?[1];
 remaining = 10000; matches[0] = MatchSchema0(item, 0);
-return matches; }))()[0]) == true) && parseNode.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInputAnyOf5Item>(global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInputAnyOf5Item.CreateFromDiscriminatorValue)?.AsList() is List<global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInputAnyOf5Item> createEmbeddingsRequestInputAnyOf5ItemValue)
+return matches; }))()[0]) == true) && parseNode.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInputAnyOf6Item>(global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInputAnyOf6Item.CreateFromDiscriminatorValue)?.AsList() is List<global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInputAnyOf6Item> createEmbeddingsRequestInputAnyOf6ItemValue)
             {
-                result.CreateEmbeddingsRequestInputAnyOf5Item = createEmbeddingsRequestInputAnyOf5ItemValue;
+                result.CreateEmbeddingsRequestInputAnyOf6Item = createEmbeddingsRequestInputAnyOf6ItemValue;
             }
             else if(parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedArray && global::System.Linq.Enumerable.All(((global::Microsoft.Kiota.Abstractions.Serialization.UntypedArray)parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue)).GetValue(), item => item is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject) && parseNode.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInputMember1>(global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInputMember1.CreateFromDiscriminatorValue)?.AsList() is List<global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInputMember1> createEmbeddingsRequestInputMember1Value)
             {
                 result.CreateEmbeddingsRequestInputMember1 = createEmbeddingsRequestInputMember1Value;
+            }
+            else if(parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedArray && global::System.Linq.Enumerable.All(((global::Microsoft.Kiota.Abstractions.Serialization.UntypedArray)parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue)).GetValue(), item => item is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject) && parseNode.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInputMember2>(global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInputMember2.CreateFromDiscriminatorValue)?.AsList() is List<global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInputMember2> createEmbeddingsRequestInputMember2Value)
+            {
+                result.CreateEmbeddingsRequestInputMember2 = createEmbeddingsRequestInputMember2Value;
             }
             else if(parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedArray && parseNode.GetCollectionOfPrimitiveValues<double?>()?.AsList() is List<double?> doubleValue)
             {
@@ -133,7 +145,7 @@ return matches; }))()[0]) == true) && parseNode.GetCollectionOfObjectValues<glob
             }
             
             var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
-            if (result.CreateEmbeddingsRequestInputAnyOf5Item == null && result.CreateEmbeddingsRequestInputMember1 == null && result.CreateEmbeddingsRequestInputString == null && result.String == null) result.UnrecognizedValue = unionPayload;
+            if (result.CreateEmbeddingsRequestInputAnyOf6Item == null && result.CreateEmbeddingsRequestInputMember1 == null && result.CreateEmbeddingsRequestInputMember2 == null && result.CreateEmbeddingsRequestInputString == null && result.String == null) result.UnrecognizedValue = unionPayload;
 return result;
         }
         /// <summary>
@@ -153,20 +165,24 @@ return result;
         public virtual void Serialize(ISerializationWriter writer)
         {
             if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
-            if (CreateEmbeddingsRequestInputAnyOf5Item == null && CreateEmbeddingsRequestInputMember1 == null && CreateEmbeddingsRequestInputString == null && String == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            if (CreateEmbeddingsRequestInputAnyOf6Item == null && CreateEmbeddingsRequestInputMember1 == null && CreateEmbeddingsRequestInputMember2 == null && CreateEmbeddingsRequestInputString == null && String == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
 
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             if(CreateEmbeddingsRequestInputString != null)
             {
                 writer.WriteStringValue(null, CreateEmbeddingsRequestInputString);
             }
-            else if(CreateEmbeddingsRequestInputAnyOf5Item != null)
+            else if(CreateEmbeddingsRequestInputAnyOf6Item != null)
             {
-                writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInputAnyOf5Item>(null, CreateEmbeddingsRequestInputAnyOf5Item);
+                writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInputAnyOf6Item>(null, CreateEmbeddingsRequestInputAnyOf6Item);
             }
             else if(CreateEmbeddingsRequestInputMember1 != null)
             {
                 writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInputMember1>(null, CreateEmbeddingsRequestInputMember1);
+            }
+            else if(CreateEmbeddingsRequestInputMember2 != null)
+            {
+                writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestInputMember2>(null, CreateEmbeddingsRequestInputMember2);
             }
             else if(Double != null)
             {

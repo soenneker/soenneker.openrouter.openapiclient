@@ -57,7 +57,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Aspect ratio of the generated video</summary>
+        /// <summary>Aspect ratio of the generated video. Omit it to use the model default, which on models with adaptive aspect ratio (e.g. BytePlus Seedance) follows the input image or video.</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestAspectRatio? AspectRatio { get => _explicitNullValueAspectRatio; set { _explicitNullValueAspectRatio = value; AdditionalData?.Remove("aspect_ratio"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("aspect_ratio"); else _explicitNullProperties?.Remove("aspect_ratio"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestAspectRatio? _explicitNullValueAspectRatio = default!;
         /// <summary>URL to receive a webhook notification when the video generation job completes. Overrides the workspace-level default callback URL if set. Must be HTTPS.</summary>
@@ -73,7 +73,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Creativity level for video upscaling models only. This parameter is not supported by video generation models.</summary>
         public int? Creativity { get => _explicitNullValueCreativity; set { _explicitNullValueCreativity = value; AdditionalData?.Remove("creativity"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("creativity"); else _explicitNullProperties?.Remove("creativity"); } }
         private int? _explicitNullValueCreativity = default!;
-        /// <summary>Duration of the generated video in seconds</summary>
+        /// <summary>Duration of the generated video in seconds, or -1 to let the provider choose the length (e.g. following an input video). -1 is only accepted by models that list it in supported_durations.</summary>
         public int? Duration { get => _explicitNullValueDuration; set { _explicitNullValueDuration = value; AdditionalData?.Remove("duration"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("duration"); else _explicitNullProperties?.Remove("duration"); } }
         private int? _explicitNullValueDuration = default!;
         /// <summary>Images to use as the first and/or last frame of the generated video. Each image must specify a frame_type of first_frame or last_frame.</summary>

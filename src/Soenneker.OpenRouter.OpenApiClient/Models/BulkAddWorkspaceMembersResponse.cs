@@ -23,7 +23,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             else if (parseNode.GetChildNode("data") is { } nullNodeData && nullNodeData.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Data = null;
         }
 
-        /// <summary>Number of workspace memberships created or updated</summary>
+        /// <summary>Number of workspace memberships created</summary>
         public int? AddedCount { get => _explicitNullValueAddedCount; set { _explicitNullValueAddedCount = value; AdditionalData?.Remove("added_count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("added_count"); else _explicitNullProperties?.Remove("added_count"); } }
         private int? _explicitNullValueAddedCount = default!;
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>

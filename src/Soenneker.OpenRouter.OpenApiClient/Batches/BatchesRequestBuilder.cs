@@ -80,7 +80,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Batches
             return await RequestAdapter.SendAsync<global::Soenneker.OpenRouter.OpenApiClient.Models.BatchListResponse>(requestInfo, global::Soenneker.OpenRouter.OpenApiClient.Models.BatchListResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Creates a batch of requests that run asynchronously against a single endpoint (`/v1/chat/completions`, `/v1/responses`, `/v1/messages`, `/v1/embeddings`). Returns `202` with `status: &quot;validating&quot;`. Poll `GET /batches/{id}` for progress and results. See the [Batch API Quickstart](https://openrouter.ai/docs/batch-quickstart).
+        /// Creates a batch of requests that run asynchronously against a single endpoint (`/v1/chat/completions`, `/v1/responses`, `/v1/messages`, `/v1/embeddings`, `/v1/audio/speech`). Returns `202` with `status: &quot;validating&quot;`. Poll `GET /batches/{id}` for progress and results. See the [Batch API Quickstart](https://openrouter.ai/docs/batch-quickstart).
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BatchObject"/></returns>
         /// <param name="body">Batch submit request body.</param>
@@ -144,7 +144,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Batches
             return requestInfo;
         }
         /// <summary>
-        /// Creates a batch of requests that run asynchronously against a single endpoint (`/v1/chat/completions`, `/v1/responses`, `/v1/messages`, `/v1/embeddings`). Returns `202` with `status: &quot;validating&quot;`. Poll `GET /batches/{id}` for progress and results. See the [Batch API Quickstart](https://openrouter.ai/docs/batch-quickstart).
+        /// Creates a batch of requests that run asynchronously against a single endpoint (`/v1/chat/completions`, `/v1/responses`, `/v1/messages`, `/v1/embeddings`, `/v1/audio/speech`). Returns `202` with `status: &quot;validating&quot;`. Poll `GET /batches/{id}` for progress and results. See the [Batch API Quickstart](https://openrouter.ai/docs/batch-quickstart).
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">Batch submit request body.</param>

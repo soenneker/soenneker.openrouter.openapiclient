@@ -2085,7 +2085,7 @@
           "Batch"
         ],
         "summary": "Create a batch",
-        "description": "Creates a batch of requests that run asynchronously against a single endpoint (\u0060/v1/chat/completions\u0060, \u0060/v1/responses\u0060, \u0060/v1/messages\u0060, \u0060/v1/embeddings\u0060). Returns \u0060202\u0060 with \u0060status: \u0022validating\u0022\u0060. Poll \u0060GET /batches/{id}\u0060 for progress and results. See the [Batch API Quickstart](https://openrouter.ai/docs/batch-quickstart).",
+        "description": "Creates a batch of requests that run asynchronously against a single endpoint (\u0060/v1/chat/completions\u0060, \u0060/v1/responses\u0060, \u0060/v1/messages\u0060, \u0060/v1/embeddings\u0060, \u0060/v1/audio/speech\u0060). Returns \u0060202\u0060 with \u0060status: \u0022validating\u0022\u0060. Poll \u0060GET /batches/{id}\u0060 for progress and results. See the [Batch API Quickstart](https://openrouter.ai/docs/batch-quickstart).",
         "operationId": "CreateBatches",
         "requestBody": {
           "description": "The batch to create. Each item in \u0060requests\u0060 has a unique \u0060custom_id\u0060 and a \u0060body\u0060 in the request format of the chosen \u0060endpoint\u0060.",
@@ -2669,6 +2669,182 @@
             }
           }
         }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
+    },
+    "/batches/{id}/cancel": {
+      "post": {
+        "tags": [
+          "Batch"
+        ],
+        "summary": "Cancel a batch",
+        "description": "Asks the provider to stop a batch that is still running. Cancellation is enabled per organization; other organizations get \u0060403\u0060. The response is the batch in its current status: it stays \u0060in_progress\u0060 until the provider confirms, then becomes \u0060cancelled\u0060, or \u0060completed\u0060 when the provider finished it first. Repeating the call is safe. On OpenAI a cancelled batch keeps the requests that finished before the cancellation: they are returned in \u0060results\u0060 and charged at the batch price. With your own provider key (BYOK), the provider charges your provider account for them. A Google Vertex batch is read the same way, but this has not been observed on a live cancelled job. On every other provider a cancelled batch has no results. See the [Batch API Quickstart](https://openrouter.ai/docs/batch-quickstart).",
+        "operationId": "CancelBatch",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The batch job id returned from submit.",
+            "required": true,
+            "schema": {
+              "minLength": 1,
+              "type": "string",
+              "description": "The batch job id returned from submit.",
+              "example": "batch_abc123"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The provider accepted the cancellation, or the batch had already ended at the provider. Poll the batch for its final status.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BatchObject"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The API key resolved no active workspace.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BatchErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 400,
+                    "message": "No active workspace resolved for this request."
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid API key.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BatchErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 401,
+                    "message": "No auth credentials found."
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Batch cancellation is not enabled for the organization.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BatchErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 403,
+                    "message": "Batch cancellation is not enabled for this organization."
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No batch exists for the given id.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BatchErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 404,
+                    "message": "Batch not found."
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "The batch has already ended, has not reached the provider yet, runs on a provider without a cancel call, or its required provider key is unavailable.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BatchErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 409,
+                    "message": "This batch has already ended and cannot be cancelled."
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Batch API rate limit exceeded for the billable entity.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BatchErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 429,
+                    "message": "Rate limit exceeded."
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Unexpected error in the ingress or upstream batch-api.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BatchErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 500,
+                    "message": "Internal server error."
+                  }
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "The batch service is unavailable, or an upstream provider operation failed, including batch or file cleanup.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BatchErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 502,
+                    "message": "Upstream batch-api is unavailable."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-speakeasy-name-override": "cancel"
       },
       "parameters": [
         {
@@ -5053,29 +5229,6 @@
       ]
     },
     "/credits/purchases": {
-      "get": {
-        "tags": [
-          "Credits"
-        ],
-        "summary": "Agent setup guide, served at the purchases collection",
-        "operationId": "GetCreditPurchasesSetupGuide",
-        "responses": {
-          "200": {
-            "description": "Markdown document, readable without a key.",
-            "content": {
-              "text/markdown": {
-                "schema": {
-                  "$ref": "#/components/schemas/GetCreditPurchasesSetupGuide200MarkdownResponseSchema"
-                }
-              }
-            }
-          }
-        },
-        "security": [],
-        "x-fern-ignore": true,
-        "x-hidden": true,
-        "x-speakeasy-ignore": true
-      },
       "post": {
         "tags": [
           "Credits"
@@ -21189,7 +21342,7 @@
           "Private Endpoints"
         ],
         "summary": "Update a private endpoint",
-        "description": "Change any of the endpoint fields you own in one call; only the fields present change, and the response is the whole endpoint. \u0060pricing\u0060 and \u0060declared_parameters\u0060 replace their stored value, \u0060settings\u0060 changes only the fields it names (\u0060null\u0060 clears a limit or restores the provider default); routing picks these up for subsequent requests on drafts and active endpoints alike. \u0060declared_zdr\u0060 and \u0060declared_region\u0060 change on drafts and active endpoints alike; on an active endpoint the change keeps its validation and tested parameters, and routing applies it to subsequent requests. \u0060upstream_model_id\u0060 and \u0060base_url\u0060 re-point a draft: an omitted \u0060upstream_model_id\u0060 or \u0060base_url\u0060 keeps the stored one, omitted data-policy declarations are kept while the upstream is unchanged and cleared when it changes, and any change to the upstream or declarations of a draft clears earlier validation. Naming \u0060upstream_model_id\u0060 or \u0060base_url\u0060 on an active endpoint returns 409 \u0060already_active\u0060 and writes nothing, even alongside other fields; delete and re-create instead. Every group is checked before anything is written: 400 \u0060parameters_invalid\u0060 when \u0060tool_choice\u0060 is declared without \u0060tools\u0060 tested or declared, 400 \u0060settings_invalid\u0060 when \u0060max_prompt_tokens\u0060 exceeds the context length, both completion APIs are off, or \u0060excluded_parameters\u0060 names a tested parameter, 422 \u0060pricing_invalid\u0060 for rates the provider strategy cannot represent. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
+        "description": "Change any of the endpoint fields you own in one call; only the fields present change, and the response is the whole endpoint. \u0060pricing\u0060 and \u0060declared_parameters\u0060 replace their stored value, \u0060settings\u0060 changes only the fields it names (\u0060null\u0060 clears a limit or restores the provider default); routing picks these up for subsequent requests on drafts and active endpoints alike. \u0060declared_zdr\u0060 and \u0060declared_region\u0060 change on drafts and active endpoints alike; on an active endpoint the change keeps its validation and tested parameters, and routing applies it to subsequent requests. \u0060upstream_model_id\u0060 and \u0060base_url\u0060 re-point a draft: an omitted \u0060upstream_model_id\u0060 or \u0060base_url\u0060 keeps the stored one, omitted data-policy declarations are kept while the upstream is unchanged and cleared when it changes, and any change to the upstream or declarations of a draft clears earlier validation. Naming \u0060upstream_model_id\u0060 or \u0060base_url\u0060 on an active endpoint returns 409 \u0060already_active\u0060 and writes nothing, even alongside other fields; delete and re-create instead. Every group is checked before anything is written: 400 \u0060parameters_invalid\u0060 when \u0060tool_choice\u0060 is declared without \u0060tools\u0060 tested or declared, 400 \u0060settings_invalid\u0060 when \u0060max_prompt_tokens\u0060 exceeds the context length, both completion APIs are off, or \u0060excluded_parameters\u0060 names a tested parameter, 422 \u0060pricing_invalid\u0060 for rates the provider strategy cannot represent, or \u0060pricing_cache_read_unsupported\u0060 or \u0060pricing_cache_write_unsupported\u0060 when that rate is a cache rate the strategy has no SKU for. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
         "operationId": "UpdatePrivateEndpoint",
         "parameters": [
           {
@@ -29974,7 +30127,7 @@
           "Workspaces"
         ],
         "summary": "Bulk add members to a workspace",
-        "description": "Add multiple organization members to a workspace. Members are assigned the same role they hold in the organization. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
+        "description": "Add multiple organization members to a workspace. New members are assigned the workspace role that matches their organization role. Users who are already members of the workspace keep their current role and are not included in the response. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
         "operationId": "BulkAddWorkspaceMembers",
         "parameters": [
           {
@@ -36203,7 +36356,7 @@
             "items": {
               "type": "string"
             },
-            "description": "List of user IDs to add to the workspace. Members are assigned the same role they hold in the organization.",
+            "description": "List of user IDs to add to the workspace. New members are assigned the workspace role that matches their organization role; users already in the workspace keep their current role.",
             "example": [
               "user_abc123",
               "user_def456"
@@ -36226,7 +36379,7 @@
         "properties": {
           "added_count": {
             "type": "integer",
-            "description": "Number of workspace memberships created or updated",
+            "description": "Number of workspace memberships created",
             "example": 2
           },
           "data": {
@@ -36494,7 +36647,7 @@
             "items": {
               "type": "string"
             },
-            "description": "Optional allowlist of OpenRouter API key hashes (\u0060api_keys.hash\u0060) that may use this credential. \u0060null\u0060 means no restriction. A workspace-scoped management key can only name API keys in its own workspace."
+            "description": "Optional allowlist of OpenRouter API key hashes (\u0060api_keys.hash\u0060) that may use this credential. \u0060null\u0060 means no restriction. Keys newly added to a credential pinned to a workspace must be in that workspace; a listed key that has since moved to another workspace stays listed."
           },
           "allowed_models": {
             "maxItems": 100,
@@ -36720,6 +36873,7 @@
           "seed",
           "siliconflow",
           "sourceful",
+          "speechify",
           "stepfun",
           "streamlake",
           "switchpoint",
@@ -37170,6 +37324,10 @@
             {
               "value": "sourceful",
               "name": "Sourceful"
+            },
+            {
+              "value": "speechify",
+              "name": "Speechify"
             },
             {
               "value": "stepfun",
@@ -39995,7 +40153,7 @@
               "pattern": "^[a-f0-9]{64}$",
               "type": "string"
             },
-            "description": "Optional allowlist of OpenRouter API key hashes (\u0060api_keys.hash\u0060) that may use this credential. \u0060null\u0060 means no restriction. Must contain at least one hash if provided. Hashes that do not belong to your account return a 400; for a workspace-scoped management key, so do hashes of API keys outside its own workspace."
+            "description": "Optional allowlist of OpenRouter API key hashes (\u0060api_keys.hash\u0060) that may use this credential. \u0060null\u0060 means no restriction. Must contain at least one hash if provided. Hashes that do not belong to your account return a 400; for a credential pinned to a workspace, so do hashes of API keys outside that workspace."
           },
           "allowed_models": {
             "maxItems": 100,
@@ -40621,7 +40779,7 @@
             "items": {
               "type": "string"
             },
-            "description": "Optional allowlist of OpenRouter API key hashes whose traffic is forwarded. \u0060null\u0060 or omitted means all keys. Must contain at least one hash if provided. A workspace-scoped management key can only name API keys in its own workspace; any other hash returns 400.",
+            "description": "Optional allowlist of OpenRouter API key hashes whose traffic is forwarded. \u0060null\u0060 or omitted means all keys. Must contain at least one hash if provided. Every hash must belong to an API key in the destination\u0027s workspace; any other hash returns 400.",
             "example": null
           },
           "broadcast_generation_cost": {
@@ -41015,7 +41173,7 @@
           },
           "is_data_discount_logging_enabled": {
             "type": "boolean",
-            "description": "Whether data discount logging is enabled",
+            "description": "Whether data discount logging is enabled. Enabling it requires the account to allow workspace data-discount logging; otherwise the request returns 403.",
             "example": true
           },
           "is_observability_broadcast_enabled": {
@@ -57879,6 +58037,7 @@
           "Seed",
           "SiliconFlow",
           "Sourceful",
+          "Speechify",
           "StepFun",
           "Stealth",
           "StreamLake",
@@ -58427,6 +58586,9 @@
           },
           "sourceful": {
             "$ref": "#/components/schemas/ProviderOptionsSourcefulProperty"
+          },
+          "speechify": {
+            "$ref": "#/components/schemas/ProviderOptionsSpeechifyProperty"
           },
           "stealth": {
             "$ref": "#/components/schemas/ProviderOptionsStealthProperty"
@@ -61773,7 +61935,7 @@
             }
           }
         ],
-        "description": "Text to synthesize, or a list of turns for multi-speaker input. Each turn has its own text, voice, and instructions. Multi-speaker input is supported by Gemini TTS models and by Fish Audio models other than S1.",
+        "description": "Text to synthesize, or a list of turns for multi-speaker input. Each turn has its own text, voice, and instructions. Multi-speaker input is supported by Gemini TTS models, by Fish Audio models other than S1, and by Speechify dialogue models.",
         "example": "Hello world"
       },
       "SpeechInputReference": {
@@ -61936,7 +62098,7 @@
         "type": "object",
         "properties": {
           "input": {
-            "description": "Text to synthesize, or a list of turns for multi-speaker input. Each turn has its own text, voice, and instructions. Multi-speaker input is supported by Gemini TTS models and by Fish Audio models other than S1.",
+            "description": "Text to synthesize, or a list of turns for multi-speaker input. Each turn has its own text, voice, and instructions. Multi-speaker input is supported by Gemini TTS models, by Fish Audio models other than S1, and by Speechify dialogue models.",
             "$ref": "#/components/schemas/SpeechInput"
           },
           "input_references": {
@@ -64343,7 +64505,7 @@
               "pattern": "^[a-f0-9]{64}$",
               "type": "string"
             },
-            "description": "Optional allowlist of OpenRouter API key hashes (\u0060api_keys.hash\u0060) that may use this credential. \u0060null\u0060 clears the restriction. Must contain at least one hash if provided. Hashes that do not belong to your account return a 400; for a workspace-scoped management key, so do hashes of API keys outside its own workspace."
+            "description": "Optional allowlist of OpenRouter API key hashes (\u0060api_keys.hash\u0060) that may use this credential. \u0060null\u0060 clears the restriction. Must contain at least one hash if provided. Hashes that do not belong to your account return a 400; for a credential pinned to a workspace, so do hashes of API keys outside that workspace, unless the credential already lists them (a listed key that has since moved to another workspace stays listed and can be written back)."
           },
           "allowed_models": {
             "maxItems": 100,
@@ -64900,7 +65062,7 @@
             "items": {
               "type": "string"
             },
-            "description": "Optional allowlist of OpenRouter API key hashes. \u0060null\u0060 clears the filter (all keys). Omitting leaves the current value, including any API key from another workspace that an organization-scoped key attached. Must contain at least one hash if provided. A workspace-scoped management key can only name API keys in its own workspace; any other hash returns 400.",
+            "description": "Optional allowlist of OpenRouter API key hashes. \u0060null\u0060 clears the filter (all keys). Omitting leaves the current value. Must contain at least one hash if provided. Every hash must belong to an API key in the destination\u0027s workspace; any other hash returns 400. A hash the destination already lists is kept even if that key has since moved to another workspace, so an already-listed hash can always be written back.",
             "example": null
           },
           "broadcast_generation_cost": {
@@ -65242,7 +65404,7 @@
           },
           "is_data_discount_logging_enabled": {
             "type": "boolean",
-            "description": "Whether data discount logging is enabled",
+            "description": "Whether data discount logging is enabled. Enabling it requires the account to allow workspace data-discount logging; otherwise the request returns 403.",
             "example": true
           },
           "is_observability_broadcast_enabled": {
@@ -65895,9 +66057,9 @@
             "example": 1
           },
           "duration": {
-            "minimum": 1,
+            "minimum": -1,
             "type": "integer",
-            "description": "Duration of the generated video in seconds",
+            "description": "Duration of the generated video in seconds, or -1 to let the provider choose the length (e.g. following an input video). -1 is only accepted by models that list it in supported_durations.",
             "example": 8
           },
           "frame_images": {
@@ -66161,7 +66323,7 @@
             "items": {
               "type": "integer"
             },
-            "description": "Supported video durations in seconds"
+            "description": "Supported video durations in seconds. -1 means the model accepts duration -1 and chooses the length itself."
           },
           "supported_frame_images": {
             "type": [
@@ -68265,6 +68427,9 @@
           },
           {
             "$ref": "#/components/schemas/BatchObjectResultsItemResponseBodyAnyOf4"
+          },
+          {
+            "$ref": "#/components/schemas/BatchObjectResultsItemResponseBodyAnyOf5"
           }
         ]
       },
@@ -68775,7 +68940,7 @@
             "items": {
               "type": "string"
             },
-            "description": "Optional allowlist of OpenRouter API key hashes (\u0060api_keys.hash\u0060) that may use this credential. \u0060null\u0060 means no restriction. A workspace-scoped management key can only name API keys in its own workspace."
+            "description": "Optional allowlist of OpenRouter API key hashes (\u0060api_keys.hash\u0060) that may use this credential. \u0060null\u0060 means no restriction. Keys newly added to a credential pinned to a workspace must be in that workspace; a listed key that has since moved to another workspace stays listed."
           },
           "allowed_models": {
             "maxItems": 100,
@@ -70591,7 +70756,7 @@
             "items": {
               "type": "string"
             },
-            "description": "Optional allowlist of OpenRouter API key hashes (\u0060api_keys.hash\u0060) that may use this credential. \u0060null\u0060 means no restriction. A workspace-scoped management key can only name API keys in its own workspace."
+            "description": "Optional allowlist of OpenRouter API key hashes (\u0060api_keys.hash\u0060) that may use this credential. \u0060null\u0060 means no restriction. Keys newly added to a credential pinned to a workspace must be in that workspace; a listed key that has since moved to another workspace stays listed."
           },
           "allowed_models": {
             "maxItems": 100,
@@ -71759,6 +71924,9 @@
           },
           "sourceful": {
             "$ref": "#/components/schemas/ImageGenerationProviderPreferencesOptionsSourceful"
+          },
+          "speechify": {
+            "$ref": "#/components/schemas/ImageGenerationProviderPreferencesOptionsSpeechify"
           },
           "stealth": {
             "$ref": "#/components/schemas/ImageGenerationProviderPreferencesOptionsStealth"
@@ -73855,7 +74023,7 @@
             "items": {
               "type": "string"
             },
-            "description": "Optional allowlist of OpenRouter API key hashes (\u0060api_keys.hash\u0060) that may use this credential. \u0060null\u0060 means no restriction. A workspace-scoped management key can only name API keys in its own workspace."
+            "description": "Optional allowlist of OpenRouter API key hashes (\u0060api_keys.hash\u0060) that may use this credential. \u0060null\u0060 means no restriction. Keys newly added to a credential pinned to a workspace must be in that workspace; a listed key that has since moved to another workspace stays listed."
           },
           "allowed_models": {
             "maxItems": 100,
@@ -75097,6 +75265,9 @@
           "sourceful": {
             "$ref": "#/components/schemas/VideoGenerationRequestProviderOptionsSourceful"
           },
+          "speechify": {
+            "$ref": "#/components/schemas/VideoGenerationRequestProviderOptionsSpeechify"
+          },
           "stealth": {
             "$ref": "#/components/schemas/VideoGenerationRequestProviderOptionsStealth"
           },
@@ -75457,6 +75628,30 @@
             "total_tokens": 8
           }
         }
+      },
+      "BatchObjectResultsItemResponseBodyAnyOf5": {
+        "required": [
+          "object",
+          "model",
+          "audio",
+          "usage"
+        ],
+        "type": "object",
+        "properties": {
+          "audio": {
+            "$ref": "#/components/schemas/BatchObjectResultsItemResponseBodyAnyOf5Audio"
+          },
+          "model": {
+            "type": "string"
+          },
+          "object": {
+            "$ref": "#/components/schemas/AudioSpeechObject"
+          },
+          "usage": {
+            "$ref": "#/components/schemas/BatchObjectResultsItemResponseBodyAnyOf5Usage"
+          }
+        },
+        "additionalProperties": false
       },
       "CodeInterpreterServerToolContainerAnyOf2": {
         "required": [
@@ -76322,6 +76517,16 @@
         ],
         "description": "Embedding vector as an array of floats or a base64 string"
       },
+      "BatchObjectResultsItemResponseBodyAnyOf5Audio": {
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/BatchObjectResultsItemResponseBodyAnyOf5AudioAnyOf1"
+          },
+          {
+            "$ref": "#/components/schemas/BatchObjectResultsItemResponseBodyAnyOf5AudioAnyOf2"
+          }
+        ]
+      },
       "CustomToolCallOutputItemAllOf2OutputAnyOf2Item": {
         "oneOf": [
           {
@@ -76611,6 +76816,74 @@
             "input_audio": "#/components/schemas/InputAudio"
           }
         }
+      },
+      "BatchObjectResultsItemResponseBodyAnyOf5AudioAnyOf1": {
+        "required": [
+          "format",
+          "sample_rate",
+          "channels",
+          "bits_per_sample",
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "bits_per_sample": {
+            "$ref": "#/components/schemas/BatchObjectResultsItemResponseBodyAnyOf5AudioAnyOf1BitsPerSample"
+          },
+          "channels": {
+            "exclusiveMinimum": 0,
+            "type": "integer"
+          },
+          "data": {
+            "minLength": 1,
+            "type": "string",
+            "description": "Base64-encoded PCM16 audio in the format the sibling fields give."
+          },
+          "format": {
+            "$ref": "#/components/schemas/PcmFormat"
+          },
+          "sample_rate": {
+            "exclusiveMinimum": 0,
+            "type": "integer"
+          }
+        },
+        "additionalProperties": false
+      },
+      "BatchObjectResultsItemResponseBodyAnyOf5AudioAnyOf2": {
+        "required": [
+          "format",
+          "sample_rate",
+          "channels",
+          "bits_per_sample",
+          "byte_length",
+          "sha256"
+        ],
+        "type": "object",
+        "properties": {
+          "bits_per_sample": {
+            "$ref": "#/components/schemas/BatchObjectResultsItemResponseBodyAnyOf5AudioAnyOf2BitsPerSample"
+          },
+          "byte_length": {
+            "exclusiveMinimum": 0,
+            "type": "integer"
+          },
+          "channels": {
+            "exclusiveMinimum": 0,
+            "type": "integer"
+          },
+          "format": {
+            "$ref": "#/components/schemas/PcmFormat"
+          },
+          "sample_rate": {
+            "exclusiveMinimum": 0,
+            "type": "integer"
+          },
+          "sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
       },
       "MessagesMessageParamContentAnyOf2ItemOneOf5Content": {
         "anyOf": [
@@ -77335,8 +77608,22 @@
       "ChatRequestReasoning": {
         "type": "object",
         "properties": {
+          "context": {
+            "description": "Controls which reasoning is available to the model. \u0060auto\u0060 uses the model default (same as omitting); \u0060all_turns\u0060 includes reasoning from earlier turns passed in input; \u0060current_turn\u0060 limits to the current turn only. Only supported by OpenAI GPT-5.6 and newer.",
+            "$ref": "#/components/schemas/ReasoningContext"
+          },
           "effort": {
             "$ref": "#/components/schemas/ChatRequestReasoningEffortEnum"
+          },
+          "enabled": {
+            "type": "boolean",
+            "description": "Enables reasoning with default settings. Defaults to being inferred from \u0060effort\u0060 or \u0060max_tokens\u0060.",
+            "example": true
+          },
+          "exclude": {
+            "type": "boolean",
+            "description": "When true, the model still reasons but the reasoning is omitted from the response. Defaults to false.",
+            "example": false
           },
           "max_tokens": {
             "type": [
@@ -77345,6 +77632,10 @@
             ],
             "description": "Maximum number of tokens the model may spend on reasoning, for models that take a reasoning token budget instead of an effort level. Cannot be combined with \u0060reasoning.effort\u0060 or the top-level \u0060reasoning_effort\u0060: a request that sets both is rejected with \u0022Only one of \u0022reasoning.effort\u0022 and \u0022reasoning.max_tokens\u0022 can be specified\u0022.",
             "example": 2000
+          },
+          "mode": {
+            "description": "Selects the reasoning mode. \u0060standard\u0060 is the default; \u0060pro\u0060 engages deeper reasoning on models that support it, billed at standard token rates. Only supported by OpenAI GPT-5.6 and newer.",
+            "$ref": "#/components/schemas/ReasoningMode"
           },
           "summary": {
             "$ref": "#/components/schemas/ChatReasoningSummaryVerbosityEnum"
@@ -80647,6 +80938,11 @@
         ],
         "type": "object",
         "properties": {
+          "document_index": {
+            "type": "integer",
+            "description": "Index of the source document when \u0060input\u0060 was a list of documents (contextual embeddings). Absent otherwise.",
+            "example": 0
+          },
           "embedding": {
             "$ref": "#/components/schemas/BatchObjectResultsItemResponseBodyAnyOf4DataItemEmbedding"
           },
@@ -80710,6 +81006,29 @@
           "prompt_tokens": 8,
           "total_tokens": 8
         }
+      },
+      "BatchObjectResultsItemResponseBodyAnyOf5Usage": {
+        "required": [
+          "prompt_tokens",
+          "completion_tokens",
+          "total_tokens"
+        ],
+        "type": "object",
+        "properties": {
+          "completion_tokens": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "prompt_tokens": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "total_tokens": {
+            "minimum": 0,
+            "type": "integer"
+          }
+        },
+        "additionalProperties": false
       },
       "McpServerToolRequireApprovalAnyOf1Always": {
         "type": "object",
@@ -82299,7 +82618,7 @@
           },
           "input_type": {
             "type": "string",
-            "description": "The type of input (e.g. search_query, search_document)",
+            "description": "The type of input (e.g. search_query, search_document). Document-chunk input (\u0060string[][]\u0060) is only valid with a document input type.",
             "example": "search_query"
           },
           "model": {
@@ -82980,9 +83299,6 @@
       "DownloadContainerFileContent200OctetStreamResponseSchema": {
         "type": "string",
         "format": "binary"
-      },
-      "GetCreditPurchasesSetupGuide200MarkdownResponseSchema": {
-        "type": "string"
       },
       "ListCreditsPurchasesSetup200MarkdownResponseSchema": {
         "type": "string"
@@ -84100,6 +84416,28 @@
             }
           },
           {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "minItems": 1,
+              "type": "array",
+              "items": {
+                "minLength": 1,
+                "type": "string"
+              }
+            },
+            "description": "Documents to embed with document-level context: each item is an ordered list of chunk strings. One embedding is returned per chunk, in document order, with \u0060document_index\u0060 set on each. Only models that support contextual embeddings accept this shape.",
+            "example": [
+              [
+                "Paris is the capital of France.",
+                "It sits on the Seine."
+              ],
+              [
+                "Berlin is the capital of Germany."
+              ]
+            ]
+          },
+          {
             "type": "array",
             "items": {
               "type": "number"
@@ -84115,7 +84453,7 @@
             }
           },
           {
-            "$ref": "#/components/schemas/CreateEmbeddingsRequestInputAnyOf5"
+            "$ref": "#/components/schemas/CreateEmbeddingsRequestInputAnyOf6"
           }
         ],
         "description": "Text, token, or multimodal input(s) to embed",
@@ -84457,10 +84795,10 @@
           }
         ]
       },
-      "CreateEmbeddingsRequestInputAnyOf5": {
+      "CreateEmbeddingsRequestInputAnyOf6": {
         "type": "array",
         "items": {
-          "$ref": "#/components/schemas/CreateEmbeddingsRequestInputAnyOf5Item"
+          "$ref": "#/components/schemas/CreateEmbeddingsRequestInputAnyOf6Item"
         }
       },
       "CreateRerankRequestDocumentsItemAnyOf2": {
@@ -84479,24 +84817,24 @@
         },
         "description": "A structured document with optional text and/or image content. At least one of \u0060text\u0060 or \u0060image\u0060 must be provided."
       },
-      "CreateEmbeddingsRequestInputAnyOf5ItemContentItem": {
+      "CreateEmbeddingsRequestInputAnyOf6ItemContentItem": {
         "discriminator": {
           "propertyName": "type",
           "mapping": {
-            "text": "#/components/schemas/CreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf1Variant",
-            "image_url": "#/components/schemas/CreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf2Variant",
-            "input_audio": "#/components/schemas/CreateEmbeddingsRequestInputAnyOf5ItemContentItemContentPartInputAudio",
-            "input_video": "#/components/schemas/CreateEmbeddingsRequestInputAnyOf5ItemContentItemContentPartInputVideo",
-            "input_file": "#/components/schemas/CreateEmbeddingsRequestInputAnyOf5ItemContentItemContentPartInputFile"
+            "text": "#/components/schemas/CreateEmbeddingsRequestInputAnyOf6ItemContentItemOneOf1Variant",
+            "image_url": "#/components/schemas/CreateEmbeddingsRequestInputAnyOf6ItemContentItemOneOf2Variant",
+            "input_audio": "#/components/schemas/CreateEmbeddingsRequestInputAnyOf6ItemContentItemContentPartInputAudio",
+            "input_video": "#/components/schemas/CreateEmbeddingsRequestInputAnyOf6ItemContentItemContentPartInputVideo",
+            "input_file": "#/components/schemas/CreateEmbeddingsRequestInputAnyOf6ItemContentItemContentPartInputFile"
           }
         },
         "x-client-original-tagged-union": {
           "oneOf": [
             {
-              "$ref": "#/components/schemas/CreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf1"
+              "$ref": "#/components/schemas/CreateEmbeddingsRequestInputAnyOf6ItemContentItemOneOf1"
             },
             {
-              "$ref": "#/components/schemas/CreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf2"
+              "$ref": "#/components/schemas/CreateEmbeddingsRequestInputAnyOf6ItemContentItemOneOf2"
             },
             {
               "$ref": "#/components/schemas/ContentPartInputAudio"
@@ -84511,8 +84849,8 @@
           "discriminator": {
             "propertyName": "type",
             "mapping": {
-              "text": "#/components/schemas/CreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf1",
-              "image_url": "#/components/schemas/CreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf2",
+              "text": "#/components/schemas/CreateEmbeddingsRequestInputAnyOf6ItemContentItemOneOf1",
+              "image_url": "#/components/schemas/CreateEmbeddingsRequestInputAnyOf6ItemContentItemOneOf2",
               "input_audio": "#/components/schemas/ContentPartInputAudio",
               "input_video": "#/components/schemas/ContentPartInputVideo",
               "input_file": "#/components/schemas/ContentPartInputFile"
@@ -85516,6 +85854,10 @@
         "type": "object",
         "additionalProperties": {}
       },
+      "ProviderOptionsSpeechifyProperty": {
+        "type": "object",
+        "additionalProperties": {}
+      },
       "ProviderOptionsStealthProperty": {
         "type": "object",
         "additionalProperties": {}
@@ -86367,6 +86709,10 @@
         "type": "object",
         "additionalProperties": {}
       },
+      "ImageGenerationProviderPreferencesOptionsSpeechify": {
+        "type": "object",
+        "additionalProperties": {}
+      },
       "ImageGenerationProviderPreferencesOptionsStealth": {
         "type": "object",
         "additionalProperties": {}
@@ -86987,6 +87333,10 @@
         "type": "object",
         "additionalProperties": {}
       },
+      "VideoGenerationRequestProviderOptionsSpeechify": {
+        "type": "object",
+        "additionalProperties": {}
+      },
       "VideoGenerationRequestProviderOptionsStealth": {
         "type": "object",
         "additionalProperties": {}
@@ -87476,6 +87826,11 @@
         ],
         "type": "object",
         "properties": {
+          "document_index": {
+            "type": "integer",
+            "description": "Index of the source document when \u0060input\u0060 was a list of documents (contextual embeddings). Absent otherwise.",
+            "example": 0
+          },
           "embedding": {
             "$ref": "#/components/schemas/BatchObjectResultsItemResponseBodyAnyOf4DataItemEmbedding"
           },
@@ -88899,7 +89254,7 @@
         ],
         "additionalProperties": {}
       },
-      "CreateEmbeddingsRequestInputAnyOf5Item": {
+      "CreateEmbeddingsRequestInputAnyOf6Item": {
         "required": [
           "content"
         ],
@@ -88909,12 +89264,12 @@
             "minItems": 1,
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/CreateEmbeddingsRequestInputAnyOf5ItemContentItem"
+              "$ref": "#/components/schemas/CreateEmbeddingsRequestInputAnyOf6ItemContentItem"
             }
           }
         }
       },
-      "CreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf2ImageUrl": {
+      "CreateEmbeddingsRequestInputAnyOf6ItemContentItemOneOf2ImageUrl": {
         "required": [
           "url"
         ],
@@ -91498,7 +91853,8 @@
           "/v1/chat/completions",
           "/v1/responses",
           "/v1/messages",
-          "/v1/embeddings"
+          "/v1/embeddings",
+          "/v1/audio/speech"
         ],
         "type": "string",
         "x-speakeasy-unknown-values": "allow",
@@ -91521,6 +91877,10 @@
             {
               "value": "/v1/embeddings",
               "name": "V1Embeddings"
+            },
+            {
+              "value": "/v1/audio/speech",
+              "name": "V1AudioSpeech"
             }
           ]
         }
@@ -97174,6 +97534,7 @@
           "Seed",
           "SiliconFlow",
           "Sourceful",
+          "Speechify",
           "StepFun",
           "Stealth",
           "StreamLake",
@@ -99261,7 +99622,7 @@
           "9:21"
         ],
         "type": "string",
-        "description": "Aspect ratio of the generated video",
+        "description": "Aspect ratio of the generated video. Omit it to use the model default, which on models with adaptive aspect ratio (e.g. BytePlus Seedance) follows the input image or video.",
         "example": "16:9",
         "x-speakeasy-unknown-values": "allow",
         "x-ms-enum": {
@@ -100572,6 +100933,22 @@
           ]
         }
       },
+      "AudioSpeechObject": {
+        "enum": [
+          "audio.speech"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "AudioSpeechObject",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "audio.speech",
+              "name": "AudioSpeech"
+            }
+          ]
+        }
+      },
       "CodeInterpreterServerToolContainerAnyOf2MemoryLimit": {
         "x-speakeasy-unknown-values": "allow",
         "anyOf": [
@@ -101173,6 +101550,34 @@
             }
           ]
         }
+      },
+      "BatchObjectResultsItemResponseBodyAnyOf5AudioAnyOf1BitsPerSample": {
+        "enum": [
+          16
+        ],
+        "type": "number"
+      },
+      "PcmFormat": {
+        "enum": [
+          "pcm"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "PcmFormat",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "pcm",
+              "name": "Pcm"
+            }
+          ]
+        }
+      },
+      "BatchObjectResultsItemResponseBodyAnyOf5AudioAnyOf2BitsPerSample": {
+        "enum": [
+          16
+        ],
+        "type": "number"
       },
       "AllType": {
         "enum": [
@@ -105777,6 +106182,7 @@
           "seed",
           "siliconflow",
           "sourceful",
+          "speechify",
           "stepfun",
           "streamlake",
           "switchpoint",
@@ -106227,6 +106633,10 @@
             {
               "value": "sourceful",
               "name": "Sourceful"
+            },
+            {
+              "value": "speechify",
+              "name": "Speechify"
             },
             {
               "value": "stepfun",
@@ -120176,10 +120586,10 @@
           }
         ]
       },
-      "CreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf1Variant": {
+      "CreateEmbeddingsRequestInputAnyOf6ItemContentItemOneOf1Variant": {
         "allOf": [
           {
-            "$ref": "#/components/schemas/CreateEmbeddingsRequestInputAnyOf5ItemContentItem"
+            "$ref": "#/components/schemas/CreateEmbeddingsRequestInputAnyOf6ItemContentItem"
           },
           {
             "required": [
@@ -120199,10 +120609,10 @@
           }
         ]
       },
-      "CreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf2Variant": {
+      "CreateEmbeddingsRequestInputAnyOf6ItemContentItemOneOf2Variant": {
         "allOf": [
           {
-            "$ref": "#/components/schemas/CreateEmbeddingsRequestInputAnyOf5ItemContentItem"
+            "$ref": "#/components/schemas/CreateEmbeddingsRequestInputAnyOf6ItemContentItem"
           },
           {
             "required": [
@@ -120212,7 +120622,7 @@
             "type": "object",
             "properties": {
               "image_url": {
-                "$ref": "#/components/schemas/CreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf2ImageUrl"
+                "$ref": "#/components/schemas/CreateEmbeddingsRequestInputAnyOf6ItemContentItemOneOf2ImageUrl"
               },
               "type": {
                 "$ref": "#/components/schemas/ImageUrlType"
@@ -120221,10 +120631,10 @@
           }
         ]
       },
-      "CreateEmbeddingsRequestInputAnyOf5ItemContentItemContentPartInputAudio": {
+      "CreateEmbeddingsRequestInputAnyOf6ItemContentItemContentPartInputAudio": {
         "allOf": [
           {
-            "$ref": "#/components/schemas/CreateEmbeddingsRequestInputAnyOf5ItemContentItem"
+            "$ref": "#/components/schemas/CreateEmbeddingsRequestInputAnyOf6ItemContentItem"
           },
           {
             "required": [
@@ -120250,10 +120660,10 @@
           }
         ]
       },
-      "CreateEmbeddingsRequestInputAnyOf5ItemContentItemContentPartInputVideo": {
+      "CreateEmbeddingsRequestInputAnyOf6ItemContentItemContentPartInputVideo": {
         "allOf": [
           {
-            "$ref": "#/components/schemas/CreateEmbeddingsRequestInputAnyOf5ItemContentItem"
+            "$ref": "#/components/schemas/CreateEmbeddingsRequestInputAnyOf6ItemContentItem"
           },
           {
             "required": [
@@ -120279,10 +120689,10 @@
           }
         ]
       },
-      "CreateEmbeddingsRequestInputAnyOf5ItemContentItemContentPartInputFile": {
+      "CreateEmbeddingsRequestInputAnyOf6ItemContentItemContentPartInputFile": {
         "allOf": [
           {
-            "$ref": "#/components/schemas/CreateEmbeddingsRequestInputAnyOf5ItemContentItem"
+            "$ref": "#/components/schemas/CreateEmbeddingsRequestInputAnyOf6ItemContentItem"
           },
           {
             "required": [
@@ -120374,7 +120784,7 @@
     },
     {
       "name": "Batch",
-      "description": "Submit, list, poll, and delete asynchronous batches of inference requests. See https://openrouter.ai/docs/batch-quickstart."
+      "description": "Submit, list, poll, cancel, and delete asynchronous batches of inference requests. See https://openrouter.ai/docs/batch-quickstart."
     },
     {
       "name": "Benchmarks",
@@ -133855,6 +134265,10 @@
       "type": "object",
       "additionalProperties": {}
     },
+    "ProviderOptionsSpeechify": {
+      "type": "object",
+      "additionalProperties": {}
+    },
     "ProviderOptionsStealth": {
       "type": "object",
       "additionalProperties": {}
@@ -134367,9 +134781,6 @@
     "DownloadContainerFileContent200OctetStreamResponse": {
       "type": "string",
       "format": "binary"
-    },
-    "GetCreditPurchasesSetupGuide200MarkdownResponse": {
-      "type": "string"
     },
     "ListCreditsPurchasesSetup200MarkdownResponse": {
       "type": "string"
@@ -135697,7 +136108,7 @@
       ],
       "description": "Embedding vector as an array of floats or a base64 string"
     },
-    "CreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf1": {
+    "CreateEmbeddingsRequestInputAnyOf6ItemContentItemOneOf1": {
       "required": [
         "type",
         "text"
@@ -135713,7 +136124,7 @@
         }
       }
     },
-    "CreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf2": {
+    "CreateEmbeddingsRequestInputAnyOf6ItemContentItemOneOf2": {
       "required": [
         "type",
         "image_url"
@@ -135721,7 +136132,7 @@
       "type": "object",
       "properties": {
         "image_url": {
-          "$ref": "#/components/schemas/CreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf2ImageUrl"
+          "$ref": "#/components/schemas/CreateEmbeddingsRequestInputAnyOf6ItemContentItemOneOf2ImageUrl"
         },
         "type": {
           "$ref": "#/components/schemas/ImageUrlType"
@@ -137698,6 +138109,7 @@
         "Seed",
         "SiliconFlow",
         "Sourceful",
+        "Speechify",
         "StepFun",
         "Stealth",
         "StreamLake",

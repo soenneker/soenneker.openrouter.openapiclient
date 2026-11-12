@@ -59,24 +59,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Credits.Purchases
         {
         }
         /// <summary>
-        /// Agent setup guide, served at the purchases collection
-        /// </summary>
-        /// <returns>A <see cref="Stream"/></returns>
-        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
-        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public async Task<Stream?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
-        {
-#nullable restore
-#else
-        public async Task<Stream> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
-        {
-#endif
-            var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
-        }
-        /// <summary>
         /// Starts an agent credit purchase paid with a Machine Payments Protocol (MPP) credential: USDC on Tempo, or a card when one is offered. The first call answers `402` with one `WWW-Authenticate: Payment ...` challenge per payment option; pay one of them and retry the same request, same `Idempotency-Key`, with the signed credential in `Payment-Authorization: Payment ...` (or in `Authorization: Payment ...` when the management key is sent as `X-Api-Key`). A paid request answers `202`: the transfer was broadcast or the card was charged, and the payment is still being confirmed, so credits arrive asynchronously. Poll the URL in the `Location` header, `GET /api/v1/credits/purchases/{id}`, until `status` is `credited` or `failed`.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.CreditPurchaseResponse"/></returns>
@@ -118,25 +100,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Credits.Purchases
                 { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.OpenRouter.OpenApiClient.Models.CreditPurchaseResponse>(requestInfo, global::Soenneker.OpenRouter.OpenApiClient.Models.CreditPurchaseResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
-        }
-        /// <summary>
-        /// Agent setup guide, served at the purchases collection
-        /// </summary>
-        /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
-        {
-#nullable restore
-#else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
-        {
-#endif
-            var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
-            requestInfo.Configure(requestConfiguration);
-            requestInfo.Headers.TryAdd("Accept", "text/markdown");
-            return requestInfo;
         }
         /// <summary>
         /// Starts an agent credit purchase paid with a Machine Payments Protocol (MPP) credential: USDC on Tempo, or a card when one is offered. The first call answers `402` with one `WWW-Authenticate: Payment ...` challenge per payment option; pay one of them and retry the same request, same `Idempotency-Key`, with the signed credential in `Payment-Authorization: Payment ...` (or in `Authorization: Payment ...` when the management key is sent as `X-Api-Key`). A paid request answers `202`: the transfer was broadcast or the card was charged, and the payment is still being confirmed, so credits arrive asynchronously. Poll the URL in the `Location` header, `GET /api/v1/credits/purchases/{id}`, until `status` is `credited` or `failed`.

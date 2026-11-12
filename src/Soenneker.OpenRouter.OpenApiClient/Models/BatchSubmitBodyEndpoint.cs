@@ -24,5 +24,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning disable CS1591
         V1Embeddings,
         #pragma warning restore CS1591
+        [EnumMember(Value = "/v1/audio/speech")]
+        #pragma warning disable CS1591
+        V1AudioSpeech,
+        #pragma warning restore CS1591
     }
 }
