@@ -32,5 +32,13 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning disable CS1591
         CodeInterpreterCallOutputs,
         #pragma warning restore CS1591
+        [EnumMember(Value = "web_search_call.results")]
+        #pragma warning disable CS1591
+        WebSearchCallResults,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "web_search_call.action.sources")]
+        #pragma warning disable CS1591
+        WebSearchCallActionSources,
+        #pragma warning restore CS1591
     }
 }

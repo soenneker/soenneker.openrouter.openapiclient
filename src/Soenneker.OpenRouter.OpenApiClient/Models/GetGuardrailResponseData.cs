@@ -127,12 +127,12 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Custom regex content filters applied to request messages</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterEntry>? ContentFilters { get => _explicitNullValueContentFilters; set { _explicitNullValueContentFilters = value; AdditionalData?.Remove("content_filters"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content_filters"); else _explicitNullProperties?.Remove("content_filters"); } }
-        private List<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterEntry>? _explicitNullValueContentFilters = default!;
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterReadEntry>? ContentFilters { get => _explicitNullValueContentFilters; set { _explicitNullValueContentFilters = value; AdditionalData?.Remove("content_filters"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content_filters"); else _explicitNullProperties?.Remove("content_filters"); } }
+        private List<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterReadEntry>? _explicitNullValueContentFilters = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterEntry> ContentFilters { get => _explicitNullValueContentFilters; set { _explicitNullValueContentFilters = value; AdditionalData?.Remove("content_filters"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content_filters"); else _explicitNullProperties?.Remove("content_filters"); } }
-        private List<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterEntry> _explicitNullValueContentFilters = default!;
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterReadEntry> ContentFilters { get => _explicitNullValueContentFilters; set { _explicitNullValueContentFilters = value; AdditionalData?.Remove("content_filters"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content_filters"); else _explicitNullProperties?.Remove("content_filters"); } }
+        private List<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterReadEntry> _explicitNullValueContentFilters = default!;
 #endif
         /// <summary>ISO 8601 timestamp of when the guardrail was created</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -285,7 +285,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "allowed_models", n => { AllowedModels = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "allowed_providers", n => { AllowedProviders = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "content_filter_builtins", n => { ContentFilterBuiltins = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterBuiltinEntry>(global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterBuiltinEntry.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "content_filters", n => { ContentFilters = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterEntry>(global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterEntry.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "content_filters", n => { ContentFilters = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterReadEntry>(global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterReadEntry.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "created_at", n => { CreatedAt = n.GetStringValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "enable_free_model_publication", n => { EnableFreeModelPublication = n.GetBoolValue(); } },
@@ -322,7 +322,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteBoolValue("allow_safety_retention_google", AllowSafetyRetentionGoogle);
             writer.WriteBoolValue("allow_safety_retention_other", AllowSafetyRetentionOther);
             writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterBuiltinEntry>("content_filter_builtins", ContentFilterBuiltins);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterEntry>("content_filters", ContentFilters);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterReadEntry>("content_filters", ContentFilters);
             writer.WriteStringValue("created_at", CreatedAt);
             writer.WriteStringValue("description", Description);
             writer.WriteBoolValue("enable_free_model_publication", EnableFreeModelPublication);

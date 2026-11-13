@@ -19,6 +19,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if (parseNode.GetChildNode("b64_json") is null) { _explicitNullValueB64Json = default!; _explicitNullProperties?.Remove("b64_json"); }
             else if (parseNode.GetChildNode("b64_json") is { } nullNodeB64Json && nullNodeB64Json.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) B64Json = null;
+            if (parseNode.GetChildNode("layer") is null) { _explicitNullValueLayer = default!; _explicitNullProperties?.Remove("layer"); }
+            else if (parseNode.GetChildNode("layer") is { } nullNodeLayer && nullNodeLayer.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Layer = null;
             if (parseNode.GetChildNode("media_type") is null) { _explicitNullValueMediaType = default!; _explicitNullProperties?.Remove("media_type"); }
             else if (parseNode.GetChildNode("media_type") is { } nullNodeMediaType && nullNodeMediaType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MediaType = null;
         }
@@ -34,6 +36,16 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public string B64Json { get => _explicitNullValueB64Json; set { _explicitNullValueB64Json = value; AdditionalData?.Remove("b64_json"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("b64_json"); else _explicitNullProperties?.Remove("b64_json"); } }
         private string _explicitNullValueB64Json = default!;
+#endif
+        /// <summary>Layer metadata, present when the request asked the provider to split the image into layers (Seedream: `provider.options.seed.layer_decomposition: true` with the required `layer_decomposition_options.max_images`, 2 to 16). Decomposition requires `n` to be 1 or omitted; the response returns up to `max_images` images (the base image plus its layers).</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationLayer? Layer { get => _explicitNullValueLayer; set { _explicitNullValueLayer = value; AdditionalData?.Remove("layer"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("layer"); else _explicitNullProperties?.Remove("layer"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationLayer? _explicitNullValueLayer = default!;
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationLayer Layer { get => _explicitNullValueLayer; set { _explicitNullValueLayer = value; AdditionalData?.Remove("layer"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("layer"); else _explicitNullProperties?.Remove("layer"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationLayer _explicitNullValueLayer = default!;
 #endif
         /// <summary>Media type (MIME type) of the image, e.g. `image/png`, `image/jpeg`, `image/webp`, `image/svg+xml`. May be omitted if the format could not be determined.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -71,6 +83,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "b64_json", n => { B64Json = n.GetStringValue(); } },
+                { "layer", n => { Layer = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationLayer>(global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationLayer.CreateFromDiscriminatorValue); } },
                 { "media_type", n => { MediaType = n.GetStringValue(); } },
             };
         }
@@ -82,6 +95,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("b64_json", B64Json);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationLayer>("layer", Layer);
             writer.WriteStringValue("media_type", MediaType);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);

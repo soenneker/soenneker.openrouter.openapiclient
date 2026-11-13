@@ -24,6 +24,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             else if (parseNode.GetChildNode("completion_window") is { } nullNodeCompletionWindow && nullNodeCompletionWindow.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CompletionWindow = null;
             if (parseNode.GetChildNode("endpoint") is null) { _explicitNullValueEndpoint = default!; _explicitNullProperties?.Remove("endpoint"); }
             else if (parseNode.GetChildNode("endpoint") is { } nullNodeEndpoint && nullNodeEndpoint.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Endpoint = null;
+            if (parseNode.GetChildNode("input") is null) { _explicitNullValueInput = default!; _explicitNullProperties?.Remove("input"); }
+            else if (parseNode.GetChildNode("input") is { } nullNodeInput && nullNodeInput.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Input = null;
             if (parseNode.GetChildNode("model") is null) { _explicitNullValueModel = default!; _explicitNullProperties?.Remove("model"); }
             else if (parseNode.GetChildNode("model") is { } nullNodeModel && nullNodeModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Model = null;
             if (parseNode.GetChildNode("provider") is null) { _explicitNullValueProvider = default!; _explicitNullProperties?.Remove("provider"); }
@@ -50,6 +52,16 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The endpoint property</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.BatchSubmitBodyEndpoint? Endpoint { get => _explicitNullValueEndpoint; set { _explicitNullValueEndpoint = value; AdditionalData?.Remove("endpoint"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("endpoint"); else _explicitNullProperties?.Remove("endpoint"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.BatchSubmitBodyEndpoint? _explicitNullValueEndpoint = default!;
+        /// <summary>A batch input file or table in your own storage, named in place of `requests`. Available to allowlisted callers on Google Vertex BYOK endpoints only.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.BatchInputReference? Input { get => _explicitNullValueInput; set { _explicitNullValueInput = value; AdditionalData?.Remove("input"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input"); else _explicitNullProperties?.Remove("input"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.BatchInputReference? _explicitNullValueInput = default!;
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.BatchInputReference Input { get => _explicitNullValueInput; set { _explicitNullValueInput = value; AdditionalData?.Remove("input"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input"); else _explicitNullProperties?.Remove("input"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.BatchInputReference _explicitNullValueInput = default!;
+#endif
         /// <summary>The model property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -70,7 +82,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public global::Soenneker.OpenRouter.OpenApiClient.Models.BatchProviderPreferences Provider { get => _explicitNullValueProvider; set { _explicitNullValueProvider = value; AdditionalData?.Remove("provider"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("provider"); else _explicitNullProperties?.Remove("provider"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.BatchProviderPreferences _explicitNullValueProvider = default!;
 #endif
-        /// <summary>The requests property</summary>
+        /// <summary>The batch requests. Send exactly one of `requests` or `input`; `requests` must be the last field in the request body.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.OpenRouter.OpenApiClient.Models.BatchSubmitBodyRequestsItem>? Requests { get => _explicitNullValueRequests; set { _explicitNullValueRequests = value; AdditionalData?.Remove("requests"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("requests"); else _explicitNullProperties?.Remove("requests"); } }
@@ -108,6 +120,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "callback_url", n => { CallbackUrl = n.GetStringValue(); } },
                 { "completion_window", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.Value24HCompletionWindow>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueCompletionWindow = default; _explicitNullProperties?.Remove("completion_window"); AdditionalData["completion_window"] = unknown; } else { CompletionWindow = parsed; AdditionalData.Remove("completion_window"); } } },
                 { "endpoint", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.BatchSubmitBodyEndpoint>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueEndpoint = default; _explicitNullProperties?.Remove("endpoint"); AdditionalData["endpoint"] = unknown; } else { Endpoint = parsed; AdditionalData.Remove("endpoint"); } } },
+                { "input", n => { Input = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.BatchInputReference>(global::Soenneker.OpenRouter.OpenApiClient.Models.BatchInputReference.CreateFromDiscriminatorValue); } },
                 { "model", n => { Model = n.GetStringValue(); } },
                 { "provider", n => { Provider = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.BatchProviderPreferences>(global::Soenneker.OpenRouter.OpenApiClient.Models.BatchProviderPreferences.CreateFromDiscriminatorValue); } },
                 { "requests", n => { Requests = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.BatchSubmitBodyRequestsItem>(global::Soenneker.OpenRouter.OpenApiClient.Models.BatchSubmitBodyRequestsItem.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -123,6 +136,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteStringValue("callback_url", CallbackUrl);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.Value24HCompletionWindow>("completion_window", CompletionWindow);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.BatchSubmitBodyEndpoint>("endpoint", Endpoint);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.BatchInputReference>("input", Input);
             writer.WriteStringValue("model", Model);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.BatchProviderPreferences>("provider", Provider);
             writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.BatchSubmitBodyRequestsItem>("requests", Requests);

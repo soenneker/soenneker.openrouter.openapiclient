@@ -2682,182 +2682,6 @@
         }
       ]
     },
-    "/batches/{id}/cancel": {
-      "post": {
-        "tags": [
-          "Batch"
-        ],
-        "summary": "Cancel a batch",
-        "description": "Asks the provider to stop a batch that is still running. Cancellation is enabled per organization; other organizations get \u0060403\u0060. The response is the batch in its current status: it stays \u0060in_progress\u0060 until the provider confirms, then becomes \u0060cancelled\u0060, or \u0060completed\u0060 when the provider finished it first. Repeating the call is safe. On OpenAI a cancelled batch keeps the requests that finished before the cancellation: they are returned in \u0060results\u0060 and charged at the batch price. With your own provider key (BYOK), the provider charges your provider account for them. A Google Vertex batch is read the same way, but this has not been observed on a live cancelled job. On every other provider a cancelled batch has no results. See the [Batch API Quickstart](https://openrouter.ai/docs/batch-quickstart).",
-        "operationId": "CancelBatch",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "The batch job id returned from submit.",
-            "required": true,
-            "schema": {
-              "minLength": 1,
-              "type": "string",
-              "description": "The batch job id returned from submit.",
-              "example": "batch_abc123"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "The provider accepted the cancellation, or the batch had already ended at the provider. Poll the batch for its final status.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BatchObject"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "The API key resolved no active workspace.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BatchErrorResponse"
-                },
-                "example": {
-                  "error": {
-                    "code": 400,
-                    "message": "No active workspace resolved for this request."
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Missing or invalid API key.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BatchErrorResponse"
-                },
-                "example": {
-                  "error": {
-                    "code": 401,
-                    "message": "No auth credentials found."
-                  }
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Batch cancellation is not enabled for the organization.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BatchErrorResponse"
-                },
-                "example": {
-                  "error": {
-                    "code": 403,
-                    "message": "Batch cancellation is not enabled for this organization."
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "No batch exists for the given id.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BatchErrorResponse"
-                },
-                "example": {
-                  "error": {
-                    "code": 404,
-                    "message": "Batch not found."
-                  }
-                }
-              }
-            }
-          },
-          "409": {
-            "description": "The batch has already ended, has not reached the provider yet, runs on a provider without a cancel call, or its required provider key is unavailable.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BatchErrorResponse"
-                },
-                "example": {
-                  "error": {
-                    "code": 409,
-                    "message": "This batch has already ended and cannot be cancelled."
-                  }
-                }
-              }
-            }
-          },
-          "429": {
-            "description": "Batch API rate limit exceeded for the billable entity.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BatchErrorResponse"
-                },
-                "example": {
-                  "error": {
-                    "code": 429,
-                    "message": "Rate limit exceeded."
-                  }
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Unexpected error in the ingress or upstream batch-api.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BatchErrorResponse"
-                },
-                "example": {
-                  "error": {
-                    "code": 500,
-                    "message": "Internal server error."
-                  }
-                }
-              }
-            }
-          },
-          "502": {
-            "description": "The batch service is unavailable, or an upstream provider operation failed, including batch or file cleanup.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BatchErrorResponse"
-                },
-                "example": {
-                  "error": {
-                    "code": 502,
-                    "message": "Upstream batch-api is unavailable."
-                  }
-                }
-              }
-            }
-          }
-        },
-        "x-speakeasy-name-override": "cancel"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
-    },
     "/benchmarks": {
       "get": {
         "tags": [
@@ -5229,6 +5053,29 @@
       ]
     },
     "/credits/purchases": {
+      "get": {
+        "tags": [
+          "Credits"
+        ],
+        "summary": "Agent setup guide, served at the purchases collection",
+        "operationId": "GetCreditPurchasesSetupGuide",
+        "responses": {
+          "200": {
+            "description": "Markdown document, readable without a key.",
+            "content": {
+              "text/markdown": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetCreditPurchasesSetupGuide200MarkdownResponseSchema"
+                }
+              }
+            }
+          }
+        },
+        "security": [],
+        "x-fern-ignore": true,
+        "x-hidden": true,
+        "x-speakeasy-ignore": true
+      },
       "post": {
         "tags": [
           "Credits"
@@ -5433,17 +5280,21 @@
             }
           },
           "503": {
-            "description": "Service Unavailable - Service temporarily unavailable",
+            "description": "Temporarily unavailable, or the outcome of a paid request is unknown. When the outcome is unknown and the purchase is known, \u0060Location\u0060 and \u0060error.metadata.purchase_id\u0060 name the purchase: poll it before paying again.",
+            "headers": {
+              "Location": {
+                "description": "The purchase to poll: \u0060GET /api/v1/credits/purchases/{id}\u0060. Present when the outcome of a paid request is unknown and its purchase is known.",
+                "schema": {
+                  "type": "string",
+                  "description": "The purchase to poll: \u0060GET /api/v1/credits/purchases/{id}\u0060. Present when the outcome of a paid request is unknown and its purchase is known.",
+                  "example": "/api/v1/credits/purchases/pi_3PqXyZ2eZvKYlo2C0abc1234"
+                }
+              }
+            },
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ServiceUnavailableResponse"
-                },
-                "example": {
-                  "error": {
-                    "code": 503,
-                    "message": "Service temporarily unavailable"
-                  }
+                  "$ref": "#/components/schemas/CreditPurchaseUnavailableResponse"
                 }
               }
             }
@@ -23524,16 +23375,33 @@
             }
           },
           "400": {
-            "description": "Bad Request - Invalid request parameters or malformed input",
+            "description": "Bad Request - Invalid request parameters or malformed input. Request-shape validation failures carry a Responses API string code (e.g. \u0060invalid_prompt\u0060) with details in the top-level \u0060metadata\u0060; all other failures carry the integer HTTP status.",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/BadRequestResponse"
+                  "$ref": "#/components/schemas/ResponsesBadRequestResponse"
                 },
-                "example": {
-                  "error": {
-                    "code": 400,
-                    "message": "Invalid request parameters"
+                "examples": {
+                  "invalid-parameters": {
+                    "summary": "Invalid request parameters",
+                    "value": {
+                      "error": {
+                        "code": 400,
+                        "message": "Invalid request parameters"
+                      }
+                    }
+                  },
+                  "invalid-request-body": {
+                    "summary": "Request body failed Responses API validation",
+                    "value": {
+                      "error": {
+                        "code": "invalid_prompt",
+                        "message": "Invalid Responses API request"
+                      },
+                      "metadata": {
+                        "raw": "[{\u0022code\u0022:\u0022invalid_value\u0022,\u0022path\u0022:[\u0022input\u0022,0,\u0022type\u0022]}]"
+                      }
+                    }
                   }
                 }
               }
@@ -35682,6 +35550,21 @@
           }
         }
       },
+      "BatchInputReference": {
+        "required": [
+          "uri"
+        ],
+        "type": "object",
+        "properties": {
+          "uri": {
+            "type": "string",
+            "description": "URI of the batch input: a Cloud Storage file in the form \u0060gs://bucket/object\u0060, or a BigQuery table in the form \u0060bq://project.dataset.table\u0060. The input stays in your project and must already be in the provider batch input format.",
+            "example": "gs://my-bucket/batches/input.jsonl"
+          }
+        },
+        "additionalProperties": false,
+        "description": "A batch input file or table in your own storage, named in place of \u0060requests\u0060. Available to allowlisted callers on Google Vertex BYOK endpoints only."
+      },
       "BatchListItem": {
         "required": [
           "id",
@@ -35734,6 +35617,10 @@
           },
           "object": {
             "$ref": "#/components/schemas/BatchListItemObject"
+          },
+          "output": {
+            "description": "The output location of a batch submitted with \u0060input\u0060, whose \u0060results\u0060 are \u0060null\u0060. Returned only by \u0060GET /batches/{id}\u0060, once the batch has ended and the provider reported an output folder or table. Batch lists and responses for a batch with an unpaid charge leave it out.",
+            "$ref": "#/components/schemas/BatchOutputReference"
           },
           "provider": {
             "type": [
@@ -35912,6 +35799,10 @@
           "object": {
             "$ref": "#/components/schemas/BatchObjectObject"
           },
+          "output": {
+            "description": "The output location of a batch submitted with \u0060input\u0060, whose \u0060results\u0060 are \u0060null\u0060. Returned only by \u0060GET /batches/{id}\u0060, once the batch has ended and the provider reported an output folder or table. Batch lists and responses for a batch with an unpaid charge leave it out.",
+            "$ref": "#/components/schemas/BatchOutputReference"
+          },
           "provider": {
             "type": [
               "null",
@@ -35938,6 +35829,20 @@
             "$ref": "#/components/schemas/BatchObjectUsage"
           }
         }
+      },
+      "BatchOutputReference": {
+        "required": [
+          "uri"
+        ],
+        "type": "object",
+        "properties": {
+          "uri": {
+            "type": "string",
+            "description": "URI of the batch output in your own storage. For a Cloud Storage input file it is the output folder, in the form \u0060gs://bucket/folder\u0060, and the files are in the provider batch output format. For a BigQuery input table it is the output table, in the form \u0060bq://project.dataset.table\u0060.",
+            "example": "gs://my-bucket/openrouter-batch/output/org_abc/batch_123/batch_123/prediction-model-2026-01-01T00:00:00.000000Z"
+          }
+        },
+        "description": "The output location of a batch submitted with \u0060input\u0060, whose \u0060results\u0060 are \u0060null\u0060. Returned only by \u0060GET /batches/{id}\u0060, once the batch has ended and the provider reported an output folder or table. Batch lists and responses for a batch with an unpaid charge leave it out."
       },
       "BatchPaymentRequiredResponse": {
         "required": [
@@ -35991,6 +35896,10 @@
           },
           "object": {
             "$ref": "#/components/schemas/BatchPaymentRequiredResponseObject"
+          },
+          "output": {
+            "description": "The output location of a batch submitted with \u0060input\u0060, whose \u0060results\u0060 are \u0060null\u0060. Returned only by \u0060GET /batches/{id}\u0060, once the batch has ended and the provider reported an output folder or table. Batch lists and responses for a batch with an unpaid charge leave it out.",
+            "$ref": "#/components/schemas/BatchOutputReference"
           },
           "provider": {
             "type": [
@@ -36051,8 +35960,7 @@
       "BatchSubmitBody": {
         "required": [
           "endpoint",
-          "model",
-          "requests"
+          "model"
         ],
         "type": "object",
         "properties": {
@@ -36067,6 +35975,10 @@
           "endpoint": {
             "$ref": "#/components/schemas/BatchSubmitBodyEndpoint"
           },
+          "input": {
+            "description": "A batch input file or table in your own storage, named in place of \u0060requests\u0060. Available to allowlisted callers on Google Vertex BYOK endpoints only.",
+            "$ref": "#/components/schemas/BatchInputReference"
+          },
           "model": {
             "minLength": 1,
             "type": "string"
@@ -36080,7 +35992,8 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/BatchSubmitBodyRequestsItem"
-            }
+            },
+            "description": "The batch requests. Send exactly one of \u0060requests\u0060 or \u0060input\u0060; \u0060requests\u0060 must be the last field in the request body."
           }
         },
         "description": "Batch submit request body."
@@ -39903,6 +39816,47 @@
           "pattern": "\\b(sk-[a-zA-Z0-9]{48})\\b"
         }
       },
+      "ContentFilterReadEntry": {
+        "required": [
+          "pattern",
+          "action",
+          "is_enforced"
+        ],
+        "type": "object",
+        "properties": {
+          "action": {
+            "description": "Action taken when the pattern matches",
+            "$ref": "#/components/schemas/ContentFilterAction"
+          },
+          "label": {
+            "maxLength": 100,
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Optional label used in redaction placeholders or error messages",
+            "example": "[API_KEY]"
+          },
+          "pattern": {
+            "minLength": 1,
+            "type": "string",
+            "description": "A regex pattern to match against request content",
+            "example": "\\b(sk-[a-zA-Z0-9]{48})\\b"
+          },
+          "is_enforced": {
+            "type": "boolean",
+            "description": "Whether inference applies this pattern. False for a pattern saved before pattern validation that is too complex to run safely; it is kept but skipped until replaced.",
+            "example": true
+          }
+        },
+        "description": "A custom regex content filter, with whether inference enforces it.",
+        "example": {
+          "action": "redact",
+          "is_enforced": true,
+          "label": "[API_KEY]",
+          "pattern": "\\b(sk-[a-zA-Z0-9]{48})\\b"
+        }
+      },
       "ContentPartAudio": {
         "required": [
           "type",
@@ -41331,6 +41285,26 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/CreditPurchase"
+          }
+        }
+      },
+      "CreditPurchaseUnavailableResponse": {
+        "required": [
+          "error"
+        ],
+        "type": "object",
+        "properties": {
+          "error": {
+            "$ref": "#/components/schemas/CreditPurchaseUnavailableResponseError"
+          }
+        },
+        "example": {
+          "error": {
+            "code": 503,
+            "message": "The payment transfer could not be confirmed; poll the purchase before retrying",
+            "metadata": {
+              "purchase_id": "pi_3PqXyZ2eZvKYlo2C0abc1234"
+            }
           }
         }
       },
@@ -44151,7 +44125,7 @@
               "array"
             ],
             "items": {
-              "$ref": "#/components/schemas/ContentFilterEntry"
+              "$ref": "#/components/schemas/ContentFilterReadEntry"
             },
             "description": "Custom regex content filters applied to request messages"
           },
@@ -45067,6 +45041,167 @@
           "throughput": {
             "$ref": "#/components/schemas/ImageGenerationThroughput"
           }
+        }
+      },
+      "ImageGenerationLayer": {
+        "required": [
+          "z_index"
+        ],
+        "type": "object",
+        "properties": {
+          "background": {
+            "$ref": "#/components/schemas/ImageGenerationLayerBackground"
+          },
+          "bounding_box": {
+            "description": "Where a layer sits on the base image",
+            "$ref": "#/components/schemas/ImageGenerationLayerBoundingBox"
+          },
+          "description": {
+            "type": "string",
+            "description": "Provider description of the layer"
+          },
+          "name": {
+            "type": "string",
+            "description": "Short provider-assigned layer name"
+          },
+          "text_recognition": {
+            "description": "Text found in the layer, present when the provider ran text recognition",
+            "$ref": "#/components/schemas/ImageGenerationLayerTextRecognition"
+          },
+          "z_index": {
+            "type": "integer",
+            "description": "Stacking order; 0 is the opaque base image and higher values sit on top"
+          }
+        },
+        "description": "Layer metadata, present when the request asked the provider to split the image into layers (Seedream: \u0060provider.options.seed.layer_decomposition: true\u0060 with the required \u0060layer_decomposition_options.max_images\u0060, 2 to 16). Decomposition requires \u0060n\u0060 to be 1 or omitted; the response returns up to \u0060max_images\u0060 images (the base image plus its layers).",
+        "example": {
+          "background": "transparent",
+          "bounding_box": {
+            "absolute": [
+              238,
+              124,
+              786,
+              673
+            ],
+            "normalized": [
+              232,
+              121,
+              768,
+              657
+            ]
+          },
+          "description": "A solid red circle",
+          "name": "Red circle",
+          "z_index": 1
+        }
+      },
+      "ImageGenerationLayerBoundingBox": {
+        "required": [
+          "absolute",
+          "normalized"
+        ],
+        "type": "object",
+        "properties": {
+          "absolute": {
+            "maxItems": 4,
+            "minItems": 4,
+            "type": "array",
+            "items": {
+              "type": "integer"
+            },
+            "description": "Layer box in pixels of the base image, as \u0060[x_min, y_min, x_max, y_max]\u0060"
+          },
+          "normalized": {
+            "maxItems": 4,
+            "minItems": 4,
+            "type": "array",
+            "items": {
+              "type": "integer"
+            },
+            "description": "Layer box scaled to 0-1000 on each axis, as \u0060[x_min, y_min, x_max, y_max]\u0060"
+          }
+        },
+        "description": "Where a layer sits on the base image",
+        "example": {
+          "absolute": [
+            238,
+            124,
+            786,
+            673
+          ],
+          "normalized": [
+            232,
+            121,
+            768,
+            657
+          ]
+        }
+      },
+      "ImageGenerationLayerTextRecognition": {
+        "required": [
+          "text"
+        ],
+        "type": "object",
+        "properties": {
+          "lines": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ImageGenerationLayerTextRecognitionLinesItem"
+            }
+          },
+          "text": {
+            "type": "string",
+            "description": "Full text recognized in the layer"
+          }
+        },
+        "description": "Text found in the layer, present when the provider ran text recognition",
+        "example": {
+          "lines": [
+            {
+              "bounding_box": {
+                "absolute": [
+                  238,
+                  124,
+                  786,
+                  673
+                ],
+                "normalized": [
+                  232,
+                  121,
+                  768,
+                  657
+                ]
+              },
+              "runs": [
+                {
+                  "text": "SALE"
+                }
+              ]
+            }
+          ],
+          "text": "SALE"
+        }
+      },
+      "ImageGenerationLayerTextRun": {
+        "required": [
+          "text"
+        ],
+        "type": "object",
+        "properties": {
+          "style": {
+            "$ref": "#/components/schemas/ImageGenerationLayerTextRunStyleProperty"
+          },
+          "text": {
+            "type": "string"
+          }
+        },
+        "description": "A run of text that shares one style",
+        "example": {
+          "style": {
+            "bold": true,
+            "similar_font_family": "Menlo"
+          },
+          "text": "SALE"
         }
       },
       "ImageGenerationProviderPreferences": {
@@ -55501,6 +55636,11 @@
             "description": "The deferred-tool index the router showed the model with a pre-search, listing tool sources and names. Replaying the item shows the same index.",
             "example": "Deferred tools, found with tool_search and called with tool_exec:\nSources: mcp__sentry (12)."
           },
+          "catalog_index_note": {
+            "type": "boolean",
+            "description": "Whether the model read, after the catalog index, that the listed sources are those connected so far. Replaying the item shows that note only when this is true. Its wording follows the replaying request: it names \u0060WaitForMcpServers\u0060 only while that request carries the tool.",
+            "example": true
+          },
           "error": {
             "type": "string",
             "description": "The error message when the tool call failed before producing a result. Set together with \u0060status: \u0027failed\u0027\u0060; absent on a successful call.",
@@ -55575,6 +55715,11 @@
           },
           "id": {
             "type": "string"
+          },
+          "retrieved_at": {
+            "type": "string",
+            "description": "The time the content was fetched, as an ISO 8601 timestamp.",
+            "example": "2026-11-12T05:27:43.000Z"
           },
           "status": {
             "$ref": "#/components/schemas/ToolCallStatus"
@@ -60309,7 +60454,9 @@
           "computer_call_output.output.image_url",
           "reasoning.encrypted_content",
           "output.encrypted_content",
-          "code_interpreter_call.outputs"
+          "code_interpreter_call.outputs",
+          "web_search_call.results",
+          "web_search_call.action.sources"
         ],
         "type": "string",
         "example": "file_search_call.results",
@@ -60341,8 +60488,73 @@
             {
               "value": "code_interpreter_call.outputs",
               "name": "CodeInterpreterCallOutputs"
+            },
+            {
+              "value": "web_search_call.results",
+              "name": "WebSearchCallResults"
+            },
+            {
+              "value": "web_search_call.action.sources",
+              "name": "WebSearchCallActionSources"
             }
           ]
+        }
+      },
+      "ResponsesBadRequestResponse": {
+        "required": [
+          "error"
+        ],
+        "type": "object",
+        "properties": {
+          "error": {
+            "description": "Error data for ResponsesBadRequestResponse",
+            "$ref": "#/components/schemas/ResponsesBadRequestResponseErrorData"
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/ResponsesBadRequestResponseMetadataProperty"
+          },
+          "openrouter_metadata": {
+            "$ref": "#/components/schemas/ResponsesBadRequestResponseOpenrouterMetadataProperty"
+          },
+          "user_id": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        },
+        "description": "Bad Request - Invalid request parameters or malformed input. Request-shape validation failures carry a Responses API string code (e.g. \u0060invalid_prompt\u0060) with details in the top-level \u0060metadata\u0060; all other failures carry the integer HTTP status.",
+        "example": {
+          "error": {
+            "code": "invalid_prompt",
+            "message": "Invalid Responses API request"
+          },
+          "metadata": {
+            "raw": "[{\u0022code\u0022:\u0022invalid_value\u0022,\u0022path\u0022:[\u0022input\u0022,0,\u0022type\u0022]}]"
+          }
+        }
+      },
+      "ResponsesBadRequestResponseErrorData": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ResponsesBadRequestResponseErrorDataCode"
+          },
+          "message": {
+            "type": "string"
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/ResponsesBadRequestResponseErrorDataMetadataProperty"
+          }
+        },
+        "description": "Error data for ResponsesBadRequestResponse",
+        "example": {
+          "code": "invalid_prompt",
+          "message": "Invalid Responses API request"
         }
       },
       "ResponsesErrorField": {
@@ -69113,7 +69325,7 @@
               "array"
             ],
             "items": {
-              "$ref": "#/components/schemas/ContentFilterEntry"
+              "$ref": "#/components/schemas/ContentFilterReadEntry"
             },
             "description": "Custom regex content filters applied to request messages"
           },
@@ -70929,7 +71141,7 @@
               "array"
             ],
             "items": {
-              "$ref": "#/components/schemas/ContentFilterEntry"
+              "$ref": "#/components/schemas/ContentFilterReadEntry"
             },
             "description": "Custom regex content filters applied to request messages"
           },
@@ -71522,6 +71734,20 @@
           "p90": 48.7,
           "p99": 85.3
         }
+      },
+      "ImageGenerationLayerTextRunStyleAdditionalProperties": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "boolean"
+          },
+          {
+            "type": "number",
+            "format": "double"
+          }
+        ]
       },
       "ImageGenerationProviderPreferencesOptions": {
         "type": "object",
@@ -73339,6 +73565,18 @@
           "p99": 85.3
         }
       },
+      "ResponsesBadRequestResponseErrorDataCode": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "string"
+          }
+        ],
+        "description": "Integer HTTP status, or a Responses API error code string (e.g. \u0060invalid_prompt\u0060) when the request body fails validation",
+        "example": "invalid_prompt"
+      },
       "ResponsesRequestToolsItem": {
         "oneOf": [
           {
@@ -74196,7 +74434,7 @@
               "array"
             ],
             "items": {
-              "$ref": "#/components/schemas/ContentFilterEntry"
+              "$ref": "#/components/schemas/ContentFilterReadEntry"
             },
             "description": "Custom regex content filters applied to request messages"
           },
@@ -77800,6 +78038,24 @@
           }
         }
       },
+      "CreditPurchaseUnavailableResponseError": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer"
+          },
+          "message": {
+            "type": "string"
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/CreditPurchaseUnavailableResponseErrorMetadata"
+          }
+        }
+      },
       "DecisionsBoxAnswerBox": {
         "required": [
           "top",
@@ -78521,6 +78777,24 @@
         },
         "additionalProperties": false
       },
+      "ImageGenerationLayerTextRecognitionLinesItem": {
+        "required": [
+          "runs"
+        ],
+        "type": "object",
+        "properties": {
+          "bounding_box": {
+            "description": "Where a layer sits on the base image",
+            "$ref": "#/components/schemas/ImageGenerationLayerBoundingBox"
+          },
+          "runs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ImageGenerationLayerTextRun"
+            }
+          }
+        }
+      },
       "ImageGenerationResponseDataItem": {
         "required": [
           "b64_json"
@@ -78530,6 +78804,10 @@
           "b64_json": {
             "type": "string",
             "description": "Base64-encoded image bytes"
+          },
+          "layer": {
+            "description": "Layer metadata, present when the request asked the provider to split the image into layers (Seedream: \u0060provider.options.seed.layer_decomposition: true\u0060 with the required \u0060layer_decomposition_options.max_images\u0060, 2 to 16). Decomposition requires \u0060n\u0060 to be 1 or omitted; the response returns up to \u0060max_images\u0060 images (the base image plus its layers).",
+            "$ref": "#/components/schemas/ImageGenerationLayer"
           },
           "media_type": {
             "type": "string",
@@ -79280,6 +79558,15 @@
           },
           "headers": {
             "$ref": "#/components/schemas/ObservabilityOtelCollectorDestinationConfigHeadersProperty"
+          },
+          "metricsEndpoint": {
+            "type": "string",
+            "description": "OTLP/HTTP metrics URL. Required when \u0060shouldSendMetrics\u0060 (Send OTLP metrics) is true; ignored otherwise."
+          },
+          "shouldSendMetrics": {
+            "type": "boolean",
+            "description": "Also send OTLP metrics for each delivered generation to the metrics endpoint, with the same headers.",
+            "default": false
           }
         }
       },
@@ -81583,6 +81870,20 @@
         },
         "description": "Usage for server-side tool execution (e.g., web search)"
       },
+      "CreditPurchaseUnavailableResponseErrorMetadata": {
+        "required": [
+          "purchase_id"
+        ],
+        "type": "object",
+        "properties": {
+          "purchase_id": {
+            "type": "string",
+            "description": "The purchase to poll with \u0060GET /api/v1/credits/purchases/{id}\u0060 before paying again.",
+            "example": "pi_3PqXyZ2eZvKYlo2C0abc1234"
+          }
+        },
+        "description": "Present when the outcome of a paid request is unknown and its purchase is known."
+      },
       "FusionAnalysisResultContradictionsItemStancesItem": {
         "required": [
           "model",
@@ -83299,6 +83600,9 @@
       "DownloadContainerFileContent200OctetStreamResponseSchema": {
         "type": "string",
         "format": "binary"
+      },
+      "GetCreditPurchasesSetupGuide200MarkdownResponseSchema": {
+        "type": "string"
       },
       "ListCreditsPurchasesSetup200MarkdownResponseSchema": {
         "type": "string"
@@ -85141,6 +85445,13 @@
         ],
         "additionalProperties": {}
       },
+      "ImageGenerationLayerTextRunStyleProperty": {
+        "type": "object",
+        "additionalProperties": {
+          "$ref": "#/components/schemas/ImageGenerationLayerTextRunStyleAdditionalProperties"
+        },
+        "description": "Font and style the provider recognized for this run, e.g. \u0060similar_font_family\u0060, \u0060foreground_color\u0060, \u0060bold\u0060"
+      },
       "ImageModelListItemSupportedParameters": {
         "type": "object",
         "additionalProperties": {
@@ -85992,6 +86303,33 @@
         "additionalProperties": {}
       },
       "RequestTimeoutResponseErrorDataMetadataProperty": {
+        "type": [
+          "null",
+          "object"
+        ],
+        "additionalProperties": {}
+      },
+      "ResponsesBadRequestResponseMetadataProperty": {
+        "type": [
+          "null",
+          "object"
+        ],
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Validation details for string-coded errors; \u0060raw\u0060 holds the serialized schema issues",
+        "example": {
+          "raw": "[{\u0022code\u0022:\u0022invalid_value\u0022,\u0022path\u0022:[\u0022input\u0022,0,\u0022type\u0022]}]"
+        }
+      },
+      "ResponsesBadRequestResponseOpenrouterMetadataProperty": {
+        "type": [
+          "null",
+          "object"
+        ],
+        "additionalProperties": {}
+      },
+      "ResponsesBadRequestResponseErrorDataMetadataProperty": {
         "type": [
           "null",
           "object"
@@ -94384,6 +94722,29 @@
             "type": "null"
           }
         ]
+      },
+      "ImageGenerationLayerBackground": {
+        "enum": [
+          "opaque",
+          "transparent"
+        ],
+        "type": "string",
+        "description": "Whether the layer image has a transparent background",
+        "x-speakeasy-unknown-values": "allow",
+        "x-ms-enum": {
+          "name": "ImageGenerationLayerBackground",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "opaque",
+              "name": "Opaque"
+            },
+            {
+              "value": "transparent",
+              "name": "Transparent"
+            }
+          ]
+        }
       },
       "ImageGenerationRequestAspectRatio": {
         "enum": [
@@ -120784,7 +121145,7 @@
     },
     {
       "name": "Batch",
-      "description": "Submit, list, poll, cancel, and delete asynchronous batches of inference requests. See https://openrouter.ai/docs/batch-quickstart."
+      "description": "Submit, list, poll, and delete asynchronous batches of inference requests. See https://openrouter.ai/docs/batch-quickstart."
     },
     {
       "name": "Benchmarks",
@@ -130216,6 +130577,19 @@
       },
       "description": "Audio output data"
     },
+    "ContentFilterReadEntryAllOf2": {
+      "required": [
+        "is_enforced"
+      ],
+      "type": "object",
+      "properties": {
+        "is_enforced": {
+          "type": "boolean",
+          "description": "Whether inference applies this pattern. False for a pattern saved before pattern validation that is too complex to run safely; it is kept but skipped until replaced.",
+          "example": true
+        }
+      }
+    },
     "ContentPartAddedEventAllOf2": {
       "type": "object",
       "properties": {
@@ -133395,6 +133769,13 @@
       ],
       "additionalProperties": {}
     },
+    "ImageGenerationLayerTextRunStyle": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/components/schemas/ImageGenerationLayerTextRunStyleAdditionalProperties"
+      },
+      "description": "Font and style the provider recognized for this run, e.g. \u0060similar_font_family\u0060, \u0060foreground_color\u0060, \u0060bold\u0060"
+    },
     "ImageGenStreamErrorEventError": {
       "required": [
         "message"
@@ -134397,6 +134778,33 @@
       ],
       "additionalProperties": {}
     },
+    "ResponsesBadRequestResponseMetadata": {
+      "type": [
+        "null",
+        "object"
+      ],
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Validation details for string-coded errors; \u0060raw\u0060 holds the serialized schema issues",
+      "example": {
+        "raw": "[{\u0022code\u0022:\u0022invalid_value\u0022,\u0022path\u0022:[\u0022input\u0022,0,\u0022type\u0022]}]"
+      }
+    },
+    "ResponsesBadRequestResponseOpenrouterMetadata": {
+      "type": [
+        "null",
+        "object"
+      ],
+      "additionalProperties": {}
+    },
+    "ResponsesBadRequestResponseErrorDataMetadata": {
+      "type": [
+        "null",
+        "object"
+      ],
+      "additionalProperties": {}
+    },
     "ServerToolInputSchema": {
       "type": "object",
       "additionalProperties": {},
@@ -134781,6 +135189,9 @@
     "DownloadContainerFileContent200OctetStreamResponse": {
       "type": "string",
       "format": "binary"
+    },
+    "GetCreditPurchasesSetupGuide200MarkdownResponse": {
+      "type": "string"
     },
     "ListCreditsPurchasesSetup200MarkdownResponse": {
       "type": "string"

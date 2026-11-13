@@ -21,6 +21,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             else if (parseNode.GetChildNode("endpoint") is { } nullNodeEndpoint && nullNodeEndpoint.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Endpoint = null;
             if (parseNode.GetChildNode("headers") is null) { _explicitNullValueHeaders = default!; _explicitNullProperties?.Remove("headers"); }
             else if (parseNode.GetChildNode("headers") is { } nullNodeHeaders && nullNodeHeaders.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Headers = null;
+            if (parseNode.GetChildNode("metricsEndpoint") is null) { _explicitNullValueMetricsEndpoint = default!; _explicitNullProperties?.Remove("metricsEndpoint"); }
+            else if (parseNode.GetChildNode("metricsEndpoint") is { } nullNodeMetricsEndpoint && nullNodeMetricsEndpoint.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MetricsEndpoint = null;
+            if (parseNode.GetChildNode("shouldSendMetrics") is null) { _explicitNullValueShouldSendMetrics = default!; _explicitNullProperties?.Remove("shouldSendMetrics"); }
+            else if (parseNode.GetChildNode("shouldSendMetrics") is { } nullNodeShouldSendMetrics && nullNodeShouldSendMetrics.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShouldSendMetrics = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -45,12 +49,26 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityOtelCollectorDestinationConfigHeadersProperty Headers { get => _explicitNullValueHeaders; set { _explicitNullValueHeaders = value; AdditionalData?.Remove("headers"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("headers"); else _explicitNullProperties?.Remove("headers"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityOtelCollectorDestinationConfigHeadersProperty _explicitNullValueHeaders = default!;
 #endif
+        /// <summary>OTLP/HTTP metrics URL. Required when `shouldSendMetrics` (Send OTLP metrics) is true; ignored otherwise.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? MetricsEndpoint { get => _explicitNullValueMetricsEndpoint; set { _explicitNullValueMetricsEndpoint = value; AdditionalData?.Remove("metricsEndpoint"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metricsEndpoint"); else _explicitNullProperties?.Remove("metricsEndpoint"); } }
+        private string? _explicitNullValueMetricsEndpoint = default!;
+#nullable restore
+#else
+        public string MetricsEndpoint { get => _explicitNullValueMetricsEndpoint; set { _explicitNullValueMetricsEndpoint = value; AdditionalData?.Remove("metricsEndpoint"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metricsEndpoint"); else _explicitNullProperties?.Remove("metricsEndpoint"); } }
+        private string _explicitNullValueMetricsEndpoint = default!;
+#endif
+        /// <summary>Also send OTLP metrics for each delivered generation to the metrics endpoint, with the same headers.</summary>
+        public bool? ShouldSendMetrics { get => _explicitNullValueShouldSendMetrics; set { _explicitNullValueShouldSendMetrics = value; AdditionalData?.Remove("shouldSendMetrics"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("shouldSendMetrics"); else _explicitNullProperties?.Remove("shouldSendMetrics"); } }
+        private bool? _explicitNullValueShouldSendMetrics = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityOtelCollectorDestinationConfig"/> and sets the default values.
         /// </summary>
         public ObservabilityOtelCollectorDestinationConfig()
         {
             AdditionalData = new Dictionary<string, object>();
+            ShouldSendMetrics = false;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -72,6 +90,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             {
                 { "endpoint", n => { Endpoint = n.GetStringValue(); } },
                 { "headers", n => { Headers = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityOtelCollectorDestinationConfigHeadersProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityOtelCollectorDestinationConfigHeadersProperty.CreateFromDiscriminatorValue); } },
+                { "metricsEndpoint", n => { MetricsEndpoint = n.GetStringValue(); } },
+                { "shouldSendMetrics", n => { ShouldSendMetrics = n.GetBoolValue(); } },
             };
         }
         /// <summary>
@@ -83,6 +103,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("endpoint", Endpoint);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityOtelCollectorDestinationConfigHeadersProperty>("headers", Headers);
+            writer.WriteStringValue("metricsEndpoint", MetricsEndpoint);
+            writer.WriteBoolValue("shouldSendMetrics", ShouldSendMetrics);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
