@@ -104,6 +104,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             else if (parseNode.GetChildNode("dekallm") is { } nullNodeDekallm && nullNodeDekallm.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Dekallm = null;
             if (parseNode.GetChildNode("digitalocean") is null) { _explicitNullValueDigitalocean = default!; _explicitNullProperties?.Remove("digitalocean"); }
             else if (parseNode.GetChildNode("digitalocean") is { } nullNodeDigitalocean && nullNodeDigitalocean.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Digitalocean = null;
+            if (parseNode.GetChildNode("doubleword") is null) { _explicitNullValueDoubleword = default!; _explicitNullProperties?.Remove("doubleword"); }
+            else if (parseNode.GetChildNode("doubleword") is { } nullNodeDoubleword && nullNodeDoubleword.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Doubleword = null;
             if (parseNode.GetChildNode("elevenlabs") is null) { _explicitNullValueElevenlabs = default!; _explicitNullProperties?.Remove("elevenlabs"); }
             else if (parseNode.GetChildNode("elevenlabs") is { } nullNodeElevenlabs && nullNodeElevenlabs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Elevenlabs = null;
             if (parseNode.GetChildNode("enfer") is null) { _explicitNullValueEnfer = default!; _explicitNullProperties?.Remove("enfer"); }
@@ -763,6 +765,16 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsDigitaloceanProperty Digitalocean { get => _explicitNullValueDigitalocean; set { _explicitNullValueDigitalocean = value; AdditionalData?.Remove("digitalocean"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("digitalocean"); else _explicitNullProperties?.Remove("digitalocean"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsDigitaloceanProperty _explicitNullValueDigitalocean = default!;
+#endif
+        /// <summary>The doubleword property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsDoublewordProperty? Doubleword { get => _explicitNullValueDoubleword; set { _explicitNullValueDoubleword = value; AdditionalData?.Remove("doubleword"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("doubleword"); else _explicitNullProperties?.Remove("doubleword"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsDoublewordProperty? _explicitNullValueDoubleword = default!;
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsDoublewordProperty Doubleword { get => _explicitNullValueDoubleword; set { _explicitNullValueDoubleword = value; AdditionalData?.Remove("doubleword"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("doubleword"); else _explicitNullProperties?.Remove("doubleword"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsDoublewordProperty _explicitNullValueDoubleword = default!;
 #endif
         /// <summary>The elevenlabs property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -1962,6 +1974,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "deepseek", n => { Deepseek = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsDeepseekProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsDeepseekProperty.CreateFromDiscriminatorValue); } },
                 { "dekallm", n => { Dekallm = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsDekallmProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsDekallmProperty.CreateFromDiscriminatorValue); } },
                 { "digitalocean", n => { Digitalocean = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsDigitaloceanProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsDigitaloceanProperty.CreateFromDiscriminatorValue); } },
+                { "doubleword", n => { Doubleword = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsDoublewordProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsDoublewordProperty.CreateFromDiscriminatorValue); } },
                 { "elevenlabs", n => { Elevenlabs = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsElevenlabsProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsElevenlabsProperty.CreateFromDiscriminatorValue); } },
                 { "enfer", n => { Enfer = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsEnferProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsEnferProperty.CreateFromDiscriminatorValue); } },
                 { "fake-provider", n => { FakeProvider = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsFakeProviderProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsFakeProviderProperty.CreateFromDiscriminatorValue); } },
@@ -2127,6 +2140,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsDeepseekProperty>("deepseek", Deepseek);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsDekallmProperty>("dekallm", Dekallm);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsDigitaloceanProperty>("digitalocean", Digitalocean);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsDoublewordProperty>("doubleword", Doubleword);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsElevenlabsProperty>("elevenlabs", Elevenlabs);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsEnferProperty>("enfer", Enfer);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOptionsFakeProviderProperty>("fake-provider", FakeProvider);

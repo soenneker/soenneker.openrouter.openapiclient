@@ -271,6 +271,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning disable CS1591
         DigitalOcean,
         #pragma warning restore CS1591
+        [EnumMember(Value = "Doubleword")]
+        #pragma warning disable CS1591
+        Doubleword,
+        #pragma warning restore CS1591
         [EnumMember(Value = "ElevenLabs")]
         #pragma warning disable CS1591
         ElevenLabs,

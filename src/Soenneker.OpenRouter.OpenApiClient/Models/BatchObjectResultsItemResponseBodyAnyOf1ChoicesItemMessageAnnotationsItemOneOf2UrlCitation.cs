@@ -25,6 +25,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             else if (parseNode.GetChildNode("start_index") is { } nullNodeStartIndex && nullNodeStartIndex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StartIndex = null;
             if (parseNode.GetChildNode("title") is null) { _explicitNullValueTitle = default!; _explicitNullProperties?.Remove("title"); }
             else if (parseNode.GetChildNode("title") is { } nullNodeTitle && nullNodeTitle.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Title = null;
+            if (parseNode.GetChildNode("uncited") is null) { _explicitNullValueUncited = default!; _explicitNullProperties?.Remove("uncited"); }
+            else if (parseNode.GetChildNode("uncited") is { } nullNodeUncited && nullNodeUncited.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Uncited = null;
             if (parseNode.GetChildNode("url") is null) { _explicitNullValueUrl = default!; _explicitNullProperties?.Remove("url"); }
             else if (parseNode.GetChildNode("url") is { } nullNodeUrl && nullNodeUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Url = null;
         }
@@ -57,6 +59,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public string Title { get => _explicitNullValueTitle; set { _explicitNullValueTitle = value; AdditionalData?.Remove("title"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("title"); else _explicitNullProperties?.Remove("title"); } }
         private string _explicitNullValueTitle = default!;
 #endif
+        /// <summary>The uncited property</summary>
+        public bool? Uncited { get => _explicitNullValueUncited; set { _explicitNullValueUncited = value; AdditionalData?.Remove("uncited"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("uncited"); else _explicitNullProperties?.Remove("uncited"); } }
+        private bool? _explicitNullValueUncited = default!;
         /// <summary>The url property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -73,6 +78,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public BatchObjectResultsItemResponseBodyAnyOf1ChoicesItemMessageAnnotationsItemOneOf2UrlCitation()
         {
             AdditionalData = new Dictionary<string, object>();
+            Uncited = true;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -96,6 +102,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "end_index", n => { EndIndex = n.GetIntValue(); } },
                 { "start_index", n => { StartIndex = n.GetIntValue(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
+                { "uncited", n => { Uncited = n.GetBoolValue(); } },
                 { "url", n => { Url = n.GetStringValue(); } },
             };
         }
@@ -110,6 +117,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteIntValue("end_index", EndIndex);
             writer.WriteIntValue("start_index", StartIndex);
             writer.WriteStringValue("title", Title);
+            writer.WriteBoolValue("uncited", Uncited);
             writer.WriteStringValue("url", Url);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);

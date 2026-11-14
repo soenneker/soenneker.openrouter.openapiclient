@@ -36718,6 +36718,7 @@
           "deepseek",
           "dekallm",
           "digitalocean",
+          "doubleword",
           "elevenlabs",
           "featherless",
           "fireworks",
@@ -36965,6 +36966,10 @@
             {
               "value": "digitalocean",
               "name": "Digitalocean"
+            },
+            {
+              "value": "doubleword",
+              "name": "Doubleword"
             },
             {
               "value": "elevenlabs",
@@ -45214,6 +45219,9 @@
             ],
             "description": "Whether to allow backup providers to serve requests\n- true: (default) when the primary provider (or your custom providers in \u0022order\u0022) is unavailable, use the next best provider.\n- false: use only the primary/custom provider, and return the upstream error if it\u0027s unavailable.\n"
           },
+          "data_collection": {
+            "$ref": "#/components/schemas/ImageGenerationProviderPreferencesDataCollection"
+          },
           "ignore": {
             "type": [
               "null",
@@ -45252,6 +45260,14 @@
           },
           "sort": {
             "$ref": "#/components/schemas/ImageGenerationProviderPreferencesSort"
+          },
+          "zdr": {
+            "type": [
+              "null",
+              "boolean"
+            ],
+            "description": "Whether to restrict routing to only ZDR (Zero Data Retention) endpoints. When true, only endpoints that do not retain prompts will be used.",
+            "example": true
           }
         },
         "description": "Provider routing preferences and provider-specific passthrough configuration.",
@@ -58117,6 +58133,7 @@
           "DeepSeek",
           "DekaLLM",
           "DigitalOcean",
+          "Doubleword",
           "ElevenLabs",
           "Featherless",
           "Fireworks",
@@ -58464,6 +58481,9 @@
           },
           "digitalocean": {
             "$ref": "#/components/schemas/ProviderOptionsDigitaloceanProperty"
+          },
+          "doubleword": {
+            "$ref": "#/components/schemas/ProviderOptionsDoublewordProperty"
           },
           "elevenlabs": {
             "$ref": "#/components/schemas/ProviderOptionsElevenlabsProperty"
@@ -62373,7 +62393,7 @@
           "voice": {
             "minLength": 1,
             "type": "string",
-            "description": "Voice identifier (provider-specific).",
+            "description": "Voice identifier (provider-specific). Required by most providers; only Seed Audio, HeyGen, Fish Audio, AssemblyAI, Speechify accept requests without it.",
             "example": "en_paul_neutral"
           }
         },
@@ -65757,6 +65777,11 @@
           },
           "type": {
             "$ref": "#/components/schemas/UrlCitationType"
+          },
+          "uncited": {
+            "type": "boolean",
+            "default": true,
+            "x-client-original-const": true
           },
           "url": {
             "type": "string"
@@ -71884,6 +71909,9 @@
           "digitalocean": {
             "$ref": "#/components/schemas/ImageGenerationProviderPreferencesOptionsDigitalocean"
           },
+          "doubleword": {
+            "$ref": "#/components/schemas/ImageGenerationProviderPreferencesOptionsDoubleword"
+          },
           "elevenlabs": {
             "$ref": "#/components/schemas/ImageGenerationProviderPreferencesOptionsElevenlabs"
           },
@@ -75235,6 +75263,9 @@
           },
           "digitalocean": {
             "$ref": "#/components/schemas/VideoGenerationRequestProviderOptionsDigitalocean"
+          },
+          "doubleword": {
+            "$ref": "#/components/schemas/VideoGenerationRequestProviderOptionsDoubleword"
           },
           "elevenlabs": {
             "$ref": "#/components/schemas/VideoGenerationRequestProviderOptionsElevenlabs"
@@ -80916,6 +80947,9 @@
       "VideoGenerationRequestProvider": {
         "type": "object",
         "properties": {
+          "data_collection": {
+            "$ref": "#/components/schemas/VideoGenerationRequestProviderDataCollection"
+          },
           "ignore": {
             "type": [
               "null",
@@ -80951,9 +80985,17 @@
               "x-client-inline-scalar": true
             },
             "description": "An ordered list of provider slugs. The router will attempt to use the first provider in the subset of this list that supports your requested model, and fall back to the next if it is unavailable. If no providers are available, the request will fail with an error message."
+          },
+          "zdr": {
+            "type": [
+              "null",
+              "boolean"
+            ],
+            "description": "Whether to restrict routing to only ZDR (Zero Data Retention) endpoints. When true, only endpoints that do not retain prompts will be used.",
+            "example": true
           }
         },
-        "description": "Provider routing preferences (order, only, ignore) and provider-specific passthrough configuration"
+        "description": "Provider routing preferences (order, only, ignore), request-level data policy (zdr, data_collection) and provider-specific passthrough configuration. No video endpoint currently offers Zero Data Retention, so \u0060zdr: true\u0060 fails routing."
       },
       "VideoModelUpscaleFactor": {
         "type": [
@@ -81466,6 +81508,11 @@
           },
           "title": {
             "type": "string"
+          },
+          "uncited": {
+            "type": "boolean",
+            "default": true,
+            "x-client-original-const": true
           },
           "url": {
             "type": "string"
@@ -85809,6 +85856,10 @@
         "type": "object",
         "additionalProperties": {}
       },
+      "ProviderOptionsDoublewordProperty": {
+        "type": "object",
+        "additionalProperties": {}
+      },
       "ProviderOptionsElevenlabsProperty": {
         "type": "object",
         "additionalProperties": {}
@@ -86691,6 +86742,10 @@
         "type": "object",
         "additionalProperties": {}
       },
+      "ImageGenerationProviderPreferencesOptionsDoubleword": {
+        "type": "object",
+        "additionalProperties": {}
+      },
       "ImageGenerationProviderPreferencesOptionsElevenlabs": {
         "type": "object",
         "additionalProperties": {}
@@ -87312,6 +87367,10 @@
         "additionalProperties": {}
       },
       "VideoGenerationRequestProviderOptionsDigitalocean": {
+        "type": "object",
+        "additionalProperties": {}
+      },
+      "VideoGenerationRequestProviderOptionsDoubleword": {
         "type": "object",
         "additionalProperties": {}
       },
@@ -94746,6 +94805,42 @@
           ]
         }
       },
+      "ImageGenerationProviderPreferencesDataCollection": {
+        "title": "ImageGenerationRequestDataCollection",
+        "description": "Data collection setting. If no available model provider meets the requirement, your request will return an error.\n- allow: (default) allow providers that may train on user data\n\n- deny: use only providers that do not train on user data. Providers may still retain prompts; set \u0060zdr: true\u0060 to exclude retention.",
+        "example": "allow",
+        "x-speakeasy-unknown-values": "allow",
+        "anyOf": [
+          {
+            "title": "ImageGenerationRequestDataCollection",
+            "enum": [
+              "deny",
+              "allow"
+            ],
+            "type": "string",
+            "description": "Data collection setting. If no available model provider meets the requirement, your request will return an error.\n- allow: (default) allow providers that may train on user data\n\n- deny: use only providers that do not train on user data. Providers may still retain prompts; set \u0060zdr: true\u0060 to exclude retention.",
+            "example": "allow",
+            "x-speakeasy-unknown-values": "allow",
+            "x-ms-enum": {
+              "name": "ImageGenerationProviderPreferencesDataCollection",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "deny",
+                  "name": "Deny"
+                },
+                {
+                  "value": "allow",
+                  "name": "Allow"
+                }
+              ]
+            }
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
       "ImageGenerationRequestAspectRatio": {
         "enum": [
           "1:1",
@@ -97830,6 +97925,7 @@
           "DeepSeek",
           "DekaLLM",
           "DigitalOcean",
+          "Doubleword",
           "ElevenLabs",
           "Featherless",
           "Fireworks",
@@ -103068,6 +103164,42 @@
           ]
         }
       },
+      "VideoGenerationRequestProviderDataCollection": {
+        "title": "VideoGenerationRequestDataCollection",
+        "description": "Data collection setting. If no available model provider meets the requirement, your request will return an error.\n- allow: (default) allow providers that may train on user data\n\n- deny: use only providers that do not train on user data. Providers may still retain prompts; set \u0060zdr: true\u0060 to exclude retention.",
+        "example": "allow",
+        "x-speakeasy-unknown-values": "allow",
+        "anyOf": [
+          {
+            "title": "VideoGenerationRequestDataCollection",
+            "enum": [
+              "deny",
+              "allow"
+            ],
+            "type": "string",
+            "description": "Data collection setting. If no available model provider meets the requirement, your request will return an error.\n- allow: (default) allow providers that may train on user data\n\n- deny: use only providers that do not train on user data. Providers may still retain prompts; set \u0060zdr: true\u0060 to exclude retention.",
+            "example": "allow",
+            "x-speakeasy-unknown-values": "allow",
+            "x-ms-enum": {
+              "name": "VideoGenerationRequestProviderDataCollection",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "deny",
+                  "name": "Deny"
+                },
+                {
+                  "value": "allow",
+                  "name": "Allow"
+                }
+              ]
+            }
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
       "ObjectValueType": {
         "enum": [
           "object"
@@ -106475,6 +106607,7 @@
           "deepseek",
           "dekallm",
           "digitalocean",
+          "doubleword",
           "elevenlabs",
           "featherless",
           "fireworks",
@@ -106722,6 +106855,10 @@
             {
               "value": "digitalocean",
               "name": "Digitalocean"
+            },
+            {
+              "value": "doubleword",
+              "name": "Doubleword"
             },
             {
               "value": "elevenlabs",
@@ -134290,6 +134427,10 @@
       "type": "object",
       "additionalProperties": {}
     },
+    "ProviderOptionsDoubleword": {
+      "type": "object",
+      "additionalProperties": {}
+    },
     "ProviderOptionsElevenlabs": {
       "type": "object",
       "additionalProperties": {}
@@ -138455,6 +138596,7 @@
         "DeepSeek",
         "DekaLLM",
         "DigitalOcean",
+        "Doubleword",
         "ElevenLabs",
         "Featherless",
         "Fireworks",

@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     /// <summary>
-    /// Provider routing preferences (order, only, ignore) and provider-specific passthrough configuration
+    /// Provider routing preferences (order, only, ignore), request-level data policy (zdr, data_collection) and provider-specific passthrough configuration. No video endpoint currently offers Zero Data Retention, so `zdr: true` fails routing.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class VideoGenerationRequestProvider : IAdditionalDataHolder, IParsable
@@ -18,6 +18,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
+            if (parseNode.GetChildNode("data_collection") is null) { _explicitNullValueDataCollection = default!; _explicitNullProperties?.Remove("data_collection"); }
+            else if (parseNode.GetChildNode("data_collection") is { } nullNodeDataCollection && nullNodeDataCollection.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DataCollection = null;
             if (parseNode.GetChildNode("ignore") is null) { _explicitNullValueIgnore = default!; _explicitNullProperties?.Remove("ignore"); }
             else if (parseNode.GetChildNode("ignore") is { } nullNodeIgnore && nullNodeIgnore.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Ignore = null;
             if (parseNode.GetChildNode("only") is null) { _explicitNullValueOnly = default!; _explicitNullProperties?.Remove("only"); }
@@ -26,10 +28,22 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             else if (parseNode.GetChildNode("options") is { } nullNodeOptions && nullNodeOptions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Options = null;
             if (parseNode.GetChildNode("order") is null) { _explicitNullValueOrder = default!; _explicitNullProperties?.Remove("order"); }
             else if (parseNode.GetChildNode("order") is { } nullNodeOrder && nullNodeOrder.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Order = null;
+            if (parseNode.GetChildNode("zdr") is null) { _explicitNullValueZdr = default!; _explicitNullProperties?.Remove("zdr"); }
+            else if (parseNode.GetChildNode("zdr") is { } nullNodeZdr && nullNodeZdr.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Zdr = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Data collection setting. If no available model provider meets the requirement, your request will return an error.- allow: (default) allow providers that may train on user data- deny: use only providers that do not train on user data. Providers may still retain prompts; set `zdr: true` to exclude retention.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderDataCollection? DataCollection { get => _explicitNullValueDataCollection; set { _explicitNullValueDataCollection = value; AdditionalData?.Remove("data_collection"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data_collection"); else _explicitNullProperties?.Remove("data_collection"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderDataCollection? _explicitNullValueDataCollection = default!;
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderDataCollection DataCollection { get => _explicitNullValueDataCollection; set { _explicitNullValueDataCollection = value; AdditionalData?.Remove("data_collection"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data_collection"); else _explicitNullProperties?.Remove("data_collection"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderDataCollection _explicitNullValueDataCollection = default!;
+#endif
         /// <summary>List of provider slugs to ignore. If provided, this list is merged with your account-wide ignored provider settings for this request.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -70,6 +84,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public List<string> Order { get => _explicitNullValueOrder; set { _explicitNullValueOrder = value; AdditionalData?.Remove("order"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("order"); else _explicitNullProperties?.Remove("order"); } }
         private List<string> _explicitNullValueOrder = default!;
 #endif
+        /// <summary>Whether to restrict routing to only ZDR (Zero Data Retention) endpoints. When true, only endpoints that do not retain prompts will be used.</summary>
+        public bool? Zdr { get => _explicitNullValueZdr; set { _explicitNullValueZdr = value; AdditionalData?.Remove("zdr"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("zdr"); else _explicitNullProperties?.Remove("zdr"); } }
+        private bool? _explicitNullValueZdr = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProvider"/> and sets the default values.
         /// </summary>
@@ -95,10 +112,12 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "data_collection", n => { DataCollection = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderDataCollection>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderDataCollection.CreateFromDiscriminatorValue); } },
                 { "ignore", n => { Ignore = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "only", n => { Only = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "options", n => { Options = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptions>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptions.CreateFromDiscriminatorValue); } },
                 { "order", n => { Order = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "zdr", n => { Zdr = n.GetBoolValue(); } },
             };
         }
         /// <summary>
@@ -108,10 +127,12 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderDataCollection>("data_collection", DataCollection);
             writer.WriteCollectionOfPrimitiveValues<string>("ignore", Ignore);
             writer.WriteCollectionOfPrimitiveValues<string>("only", Only);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptions>("options", Options);
             writer.WriteCollectionOfPrimitiveValues<string>("order", Order);
+            writer.WriteBoolValue("zdr", Zdr);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }

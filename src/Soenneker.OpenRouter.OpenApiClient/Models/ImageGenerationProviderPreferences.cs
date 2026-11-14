@@ -20,6 +20,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if (parseNode.GetChildNode("allow_fallbacks") is null) { _explicitNullValueAllowFallbacks = default!; _explicitNullProperties?.Remove("allow_fallbacks"); }
             else if (parseNode.GetChildNode("allow_fallbacks") is { } nullNodeAllowFallbacks && nullNodeAllowFallbacks.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AllowFallbacks = null;
+            if (parseNode.GetChildNode("data_collection") is null) { _explicitNullValueDataCollection = default!; _explicitNullProperties?.Remove("data_collection"); }
+            else if (parseNode.GetChildNode("data_collection") is { } nullNodeDataCollection && nullNodeDataCollection.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DataCollection = null;
             if (parseNode.GetChildNode("ignore") is null) { _explicitNullValueIgnore = default!; _explicitNullProperties?.Remove("ignore"); }
             else if (parseNode.GetChildNode("ignore") is { } nullNodeIgnore && nullNodeIgnore.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Ignore = null;
             if (parseNode.GetChildNode("only") is null) { _explicitNullValueOnly = default!; _explicitNullProperties?.Remove("only"); }
@@ -30,6 +32,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             else if (parseNode.GetChildNode("order") is { } nullNodeOrder && nullNodeOrder.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Order = null;
             if (parseNode.GetChildNode("sort") is null) { _explicitNullValueSort = default!; _explicitNullProperties?.Remove("sort"); }
             else if (parseNode.GetChildNode("sort") is { } nullNodeSort && nullNodeSort.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Sort = null;
+            if (parseNode.GetChildNode("zdr") is null) { _explicitNullValueZdr = default!; _explicitNullProperties?.Remove("zdr"); }
+            else if (parseNode.GetChildNode("zdr") is { } nullNodeZdr && nullNodeZdr.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Zdr = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -37,6 +41,16 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Whether to allow backup providers to serve requests- true: (default) when the primary provider (or your custom providers in &quot;order&quot;) is unavailable, use the next best provider.- false: use only the primary/custom provider, and return the upstream error if it&apos;s unavailable.</summary>
         public bool? AllowFallbacks { get => _explicitNullValueAllowFallbacks; set { _explicitNullValueAllowFallbacks = value; AdditionalData?.Remove("allow_fallbacks"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allow_fallbacks"); else _explicitNullProperties?.Remove("allow_fallbacks"); } }
         private bool? _explicitNullValueAllowFallbacks = default!;
+        /// <summary>Data collection setting. If no available model provider meets the requirement, your request will return an error.- allow: (default) allow providers that may train on user data- deny: use only providers that do not train on user data. Providers may still retain prompts; set `zdr: true` to exclude retention.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesDataCollection? DataCollection { get => _explicitNullValueDataCollection; set { _explicitNullValueDataCollection = value; AdditionalData?.Remove("data_collection"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data_collection"); else _explicitNullProperties?.Remove("data_collection"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesDataCollection? _explicitNullValueDataCollection = default!;
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesDataCollection DataCollection { get => _explicitNullValueDataCollection; set { _explicitNullValueDataCollection = value; AdditionalData?.Remove("data_collection"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data_collection"); else _explicitNullProperties?.Remove("data_collection"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesDataCollection _explicitNullValueDataCollection = default!;
+#endif
         /// <summary>List of provider slugs to ignore. If provided, this list is merged with your account-wide ignored provider settings for this request.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -87,6 +101,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesSort Sort { get => _explicitNullValueSort; set { _explicitNullValueSort = value; AdditionalData?.Remove("sort"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sort"); else _explicitNullProperties?.Remove("sort"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesSort _explicitNullValueSort = default!;
 #endif
+        /// <summary>Whether to restrict routing to only ZDR (Zero Data Retention) endpoints. When true, only endpoints that do not retain prompts will be used.</summary>
+        public bool? Zdr { get => _explicitNullValueZdr; set { _explicitNullValueZdr = value; AdditionalData?.Remove("zdr"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("zdr"); else _explicitNullProperties?.Remove("zdr"); } }
+        private bool? _explicitNullValueZdr = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferences"/> and sets the default values.
         /// </summary>
@@ -113,11 +130,13 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "allow_fallbacks", n => { AllowFallbacks = n.GetBoolValue(); } },
+                { "data_collection", n => { DataCollection = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesDataCollection>(global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesDataCollection.CreateFromDiscriminatorValue); } },
                 { "ignore", n => { Ignore = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "only", n => { Only = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "options", n => { Options = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptions>(global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptions.CreateFromDiscriminatorValue); } },
                 { "order", n => { Order = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "sort", n => { Sort = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesSort>(global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesSort.CreateFromDiscriminatorValue); } },
+                { "zdr", n => { Zdr = n.GetBoolValue(); } },
             };
         }
         /// <summary>
@@ -128,11 +147,13 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("allow_fallbacks", AllowFallbacks);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesDataCollection>("data_collection", DataCollection);
             writer.WriteCollectionOfPrimitiveValues<string>("ignore", Ignore);
             writer.WriteCollectionOfPrimitiveValues<string>("only", Only);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesOptions>("options", Options);
             writer.WriteCollectionOfPrimitiveValues<string>("order", Order);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationProviderPreferencesSort>("sort", Sort);
+            writer.WriteBoolValue("zdr", Zdr);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
