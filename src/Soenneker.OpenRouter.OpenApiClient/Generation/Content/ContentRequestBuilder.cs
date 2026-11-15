@@ -46,6 +46,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Generation.Content
         /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.TooManyRequestsResponse">When receiving a 429 status code</exception>
         /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.InternalServerResponse">When receiving a 500 status code</exception>
         /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BadGatewayResponse">When receiving a 502 status code</exception>
+        /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ServiceUnavailableResponse">When receiving a 503 status code</exception>
         /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.EdgeNetworkTimeoutResponse">When receiving a 524 status code</exception>
         /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOverloadedResponse">When receiving a 529 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -67,6 +68,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Generation.Content
                 { "429", global::Soenneker.OpenRouter.OpenApiClient.Models.TooManyRequestsResponse.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.OpenRouter.OpenApiClient.Models.InternalServerResponse.CreateFromDiscriminatorValue },
                 { "502", global::Soenneker.OpenRouter.OpenApiClient.Models.BadGatewayResponse.CreateFromDiscriminatorValue },
+                { "503", global::Soenneker.OpenRouter.OpenApiClient.Models.ServiceUnavailableResponse.CreateFromDiscriminatorValue },
                 { "524", global::Soenneker.OpenRouter.OpenApiClient.Models.EdgeNetworkTimeoutResponse.CreateFromDiscriminatorValue },
                 { "529", global::Soenneker.OpenRouter.OpenApiClient.Models.ProviderOverloadedResponse.CreateFromDiscriminatorValue },
                 { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },

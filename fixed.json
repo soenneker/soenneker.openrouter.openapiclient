@@ -8913,6 +8913,22 @@
               }
             }
           },
+          "503": {
+            "description": "Service Unavailable - Service temporarily unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceUnavailableResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 503,
+                    "message": "Service temporarily unavailable"
+                  }
+                }
+              }
+            }
+          },
           "524": {
             "description": "Infrastructure Timeout - Provider request timed out at edge network",
             "content": {
@@ -62393,7 +62409,7 @@
           "voice": {
             "minLength": 1,
             "type": "string",
-            "description": "Voice identifier (provider-specific). Required by most providers; only Seed Audio, HeyGen, Fish Audio, AssemblyAI, Speechify accept requests without it.",
+            "description": "Voice identifier (provider-specific).",
             "example": "en_paul_neutral"
           }
         },
