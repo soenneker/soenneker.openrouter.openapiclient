@@ -47,7 +47,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public string CallbackUrl { get => _explicitNullValueCallbackUrl; set { _explicitNullValueCallbackUrl = value; AdditionalData?.Remove("callback_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("callback_url"); else _explicitNullProperties?.Remove("callback_url"); } }
         private string _explicitNullValueCallbackUrl = default!;
 #endif
-        /// <summary>PKCE code challenge for enhanced security</summary>
+        /// <summary>PKCE code challenge: the base64url-encoded SHA-256 hash of your `code_verifier`. Send it with `code_challenge_method` set to `S256`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? CodeChallenge { get => _explicitNullValueCodeChallenge; set { _explicitNullValueCodeChallenge = value; AdditionalData?.Remove("code_challenge"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("code_challenge"); else _explicitNullProperties?.Remove("code_challenge"); } }

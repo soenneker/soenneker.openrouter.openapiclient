@@ -1661,7 +1661,7 @@
                 "$ref": "#/components/schemas/ExchangeAuthCodeForApiKeyRequest"
               },
               "example": {
-                "code": "auth_code_abc123def456",
+                "code": "550e8400-e29b-41d4-a716-446655440000",
                 "code_challenge_method": "S256",
                 "code_verifier": "dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk"
               }
@@ -1782,7 +1782,7 @@
                   "data": {
                     "app_id": 12345,
                     "created_at": "2025-08-24T10:30:00Z",
-                    "id": "auth_code_xyz789"
+                    "id": "550e8400-e29b-41d4-a716-446655440000"
                   }
                 }
               }
@@ -38306,11 +38306,10 @@
             "example": "openai/gpt-4"
           },
           "models": {
+            "maxItems": 3,
             "type": "array",
             "items": {
-              "type": "string",
-              "description": "Model to use for completion",
-              "example": "openai/gpt-4"
+              "type": "string"
             },
             "description": "Models to use for completion",
             "example": [
@@ -48076,6 +48075,7 @@
             "$ref": "#/components/schemas/DeferredToolsControl"
           },
           "fallbacks": {
+            "maxItems": 3,
             "type": [
               "null",
               "array"
@@ -48104,6 +48104,7 @@
             "type": "string"
           },
           "models": {
+            "maxItems": 3,
             "type": "array",
             "items": {
               "type": "string"
@@ -60701,6 +60702,7 @@
             "type": "string"
           },
           "models": {
+            "maxItems": 3,
             "type": "array",
             "items": {
               "type": "string"
@@ -62409,7 +62411,7 @@
           "voice": {
             "minLength": 1,
             "type": "string",
-            "description": "Voice identifier (provider-specific).",
+            "description": "Voice identifier (provider-specific). Required by most providers; only Seed Audio, HeyGen, Fish Audio, AssemblyAI, Speechify accept requests without it.",
             "example": "en_paul_neutral"
           }
         },
@@ -82825,19 +82827,20 @@
           "code": {
             "type": "string",
             "description": "The authorization code received from the OAuth redirect",
-            "example": "auth_code_abc123def456"
+            "format": "uuid",
+            "example": "550e8400-e29b-41d4-a716-446655440000"
           },
           "code_challenge_method": {
             "$ref": "#/components/schemas/ExchangeAuthCodeForApiKeyRequestCodeChallengeMethod"
           },
           "code_verifier": {
             "type": "string",
-            "description": "The code verifier if code_challenge was used in the authorization request",
+            "description": "The \u0060code_verifier\u0060 whose SHA-256 hash was sent as \u0060code_challenge\u0060 in the authorization request.",
             "example": "dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk"
           }
         },
         "example": {
-          "code": "auth_code_abc123def456",
+          "code": "550e8400-e29b-41d4-a716-446655440000",
           "code_challenge_method": "S256",
           "code_verifier": "dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk"
         }
@@ -82882,7 +82885,7 @@
           },
           "code_challenge": {
             "type": "string",
-            "description": "PKCE code challenge for enhanced security",
+            "description": "PKCE code challenge: the base64url-encoded SHA-256 hash of your \u0060code_verifier\u0060. Send it with \u0060code_challenge_method\u0060 set to \u0060S256\u0060.",
             "example": "E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM"
           },
           "code_challenge_method": {
@@ -82939,7 +82942,7 @@
           "data": {
             "app_id": 12345,
             "created_at": "2025-08-24T10:30:00Z",
-            "id": "auth_code_xyz789"
+            "id": "550e8400-e29b-41d4-a716-446655440000"
           }
         }
       },
@@ -88197,14 +88200,14 @@
           "id": {
             "type": "string",
             "description": "The authorization code ID to use in the exchange request",
-            "example": "auth_code_xyz789"
+            "example": "550e8400-e29b-41d4-a716-446655440000"
           }
         },
         "description": "Auth code data",
         "example": {
           "app_id": 12345,
           "created_at": "2025-08-24T10:30:00Z",
-          "id": "auth_code_xyz789"
+          "id": "550e8400-e29b-41d4-a716-446655440000"
         }
       },
       "GetCredits200ResponseData": {
@@ -123567,11 +123570,10 @@
       ]
     },
     "ChatModelNames": {
+      "maxItems": 3,
       "type": "array",
       "items": {
-        "type": "string",
-        "description": "Model to use for completion",
-        "example": "openai/gpt-4"
+        "type": "string"
       },
       "description": "Models to use for completion",
       "example": [
@@ -130670,11 +130672,6 @@
     "BatchProviderPreferencesOnlyItem": {
       "type": "string",
       "x-client-inline-scalar": true
-    },
-    "ChatModelNamesItem": {
-      "type": "string",
-      "description": "Model to use for completion",
-      "example": "openai/gpt-4"
     },
     "ChatStreamChunkAlignment": {
       "required": [
