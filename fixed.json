@@ -1661,7 +1661,7 @@
                 "$ref": "#/components/schemas/ExchangeAuthCodeForApiKeyRequest"
               },
               "example": {
-                "code": "550e8400-e29b-41d4-a716-446655440000",
+                "code": "auth_code_abc123def456",
                 "code_challenge_method": "S256",
                 "code_verifier": "dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk"
               }
@@ -1752,7 +1752,7 @@
           "OAuth"
         ],
         "summary": "Create authorization code",
-        "description": "Create an authorization code for the PKCE flow to generate a user-controlled API key",
+        "description": "Create an authorization code for the PKCE flow to generate a user-controlled API key. Requires a Clerk session that completed reverification recently (Clerk \u0060lax\u0060 level); otherwise the response is \u0060403\u0060 with \u0060error.metadata.reverification\u0060 set to \u0060lax\u0060, and the caller must reverify the session before retrying.",
         "operationId": "CreateAuthKeysCode",
         "requestBody": {
           "content": {
@@ -1782,7 +1782,7 @@
                   "data": {
                     "app_id": 12345,
                     "created_at": "2025-08-24T10:30:00Z",
-                    "id": "550e8400-e29b-41d4-a716-446655440000"
+                    "id": "auth_code_xyz789"
                   }
                 }
               }
@@ -38306,10 +38306,11 @@
             "example": "openai/gpt-4"
           },
           "models": {
-            "maxItems": 3,
             "type": "array",
             "items": {
-              "type": "string"
+              "type": "string",
+              "description": "Model to use for completion",
+              "example": "openai/gpt-4"
             },
             "description": "Models to use for completion",
             "example": [
@@ -45361,6 +45362,9 @@
           "resolution": {
             "$ref": "#/components/schemas/ImageGenerationRequestResolution"
           },
+          "response_format": {
+            "$ref": "#/components/schemas/ImageGenerationRequestResponseFormat"
+          },
           "seed": {
             "type": "integer",
             "description": "If specified, the generation will sample deterministically, such that repeated requests with the same seed and parameters should return the same result. Determinism is not guaranteed for all providers."
@@ -45415,6 +45419,11 @@
               "$ref": "#/components/schemas/ImageGenerationResponseDataItem"
             },
             "description": "Generated images"
+          },
+          "expires_at": {
+            "type": "integer",
+            "description": "Unix timestamp (seconds) of the earliest expiry among the \u0060url\u0060s in \u0060data\u0060; treat every URL as expired after it. Present only when URLs were issued.",
+            "example": 1748458800
           },
           "usage": {
             "description": "Token and cost usage for the image generation request, when available",
@@ -48075,7 +48084,6 @@
             "$ref": "#/components/schemas/DeferredToolsControl"
           },
           "fallbacks": {
-            "maxItems": 3,
             "type": [
               "null",
               "array"
@@ -48104,7 +48112,6 @@
             "type": "string"
           },
           "models": {
-            "maxItems": 3,
             "type": "array",
             "items": {
               "type": "string"
@@ -60702,7 +60709,6 @@
             "type": "string"
           },
           "models": {
-            "maxItems": 3,
             "type": "array",
             "items": {
               "type": "string"
@@ -66326,7 +66332,7 @@
           },
           "generate_audio": {
             "type": "boolean",
-            "description": "Whether to generate audio alongside the video. Defaults to the endpoint\u0027s generate_audio capability flag, false if not set.",
+            "description": "Whether to generate audio alongside the video. Defaults to the endpoint\u0027s generate_audio capability flag, false if not set. When neither is set, some providers (such as xAI) apply their own default and generate audio, so send false to request a silent video. Some models always include audio and ignore false.",
             "example": true
           },
           "input_references": {
@@ -78845,14 +78851,11 @@
         }
       },
       "ImageGenerationResponseDataItem": {
-        "required": [
-          "b64_json"
-        ],
         "type": "object",
         "properties": {
           "b64_json": {
             "type": "string",
-            "description": "Base64-encoded image bytes"
+            "description": "Base64-encoded image bytes. Present unless the request asked for \u0060response_format: \u0022url\u0022\u0060 and \u0060url\u0060 was issued."
           },
           "layer": {
             "description": "Layer metadata, present when the request asked the provider to split the image into layers (Seedream: \u0060provider.options.seed.layer_decomposition: true\u0060 with the required \u0060layer_decomposition_options.max_images\u0060, 2 to 16). Decomposition requires \u0060n\u0060 to be 1 or omitted; the response returns up to \u0060max_images\u0060 images (the base image plus its layers).",
@@ -78862,6 +78865,11 @@
             "type": "string",
             "description": "Media type (MIME type) of the image, e.g. \u0060image/png\u0060, \u0060image/jpeg\u0060, \u0060image/webp\u0060, \u0060image/svg\u002Bxml\u0060. May be omitted if the format could not be determined.",
             "example": "image/png"
+          },
+          "url": {
+            "type": "string",
+            "description": "Signed download URL for the image bytes, issued for \u0060response_format: \u0022url\u0022\u0060 requests. Valid until \u0060expires_at\u0060. Absent when the response fell back to \u0060b64_json\u0060.",
+            "example": "https://storage.googleapis.com/openrouter-generated-media-us/v1/..."
           }
         }
       },
@@ -82827,8 +82835,7 @@
           "code": {
             "type": "string",
             "description": "The authorization code received from the OAuth redirect",
-            "format": "uuid",
-            "example": "550e8400-e29b-41d4-a716-446655440000"
+            "example": "auth_code_abc123def456"
           },
           "code_challenge_method": {
             "$ref": "#/components/schemas/ExchangeAuthCodeForApiKeyRequestCodeChallengeMethod"
@@ -82840,7 +82847,7 @@
           }
         },
         "example": {
-          "code": "550e8400-e29b-41d4-a716-446655440000",
+          "code": "auth_code_abc123def456",
           "code_challenge_method": "S256",
           "code_verifier": "dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk"
         }
@@ -82942,7 +82949,7 @@
           "data": {
             "app_id": 12345,
             "created_at": "2025-08-24T10:30:00Z",
-            "id": "550e8400-e29b-41d4-a716-446655440000"
+            "id": "auth_code_xyz789"
           }
         }
       },
@@ -88200,14 +88207,14 @@
           "id": {
             "type": "string",
             "description": "The authorization code ID to use in the exchange request",
-            "example": "550e8400-e29b-41d4-a716-446655440000"
+            "example": "auth_code_xyz789"
           }
         },
         "description": "Auth code data",
         "example": {
           "app_id": 12345,
           "created_at": "2025-08-24T10:30:00Z",
-          "id": "550e8400-e29b-41d4-a716-446655440000"
+          "id": "auth_code_xyz789"
         }
       },
       "GetCredits200ResponseData": {
@@ -91917,7 +91924,7 @@
           "max"
         ],
         "type": "string",
-        "description": "Named cost/quality setting. Tiers select cost-percentile bands: low = [0, 20), medium = [20, 40), high = [40, 60), xhigh = [60, 80), and max = [80, 100]. Takes precedence over the deprecated numeric cost_quality_tradeoff when both are provided.",
+        "description": "Named cost/quality setting. Tiers select cost-percentile bands: low = [0, 20), medium = [20, 40), high = [40, 60), xhigh = [60, 80), and max = [80, 100]. Takes precedence over the deprecated numeric cost_quality_tradeoff when both are provided. On openrouter/auto-code, low and high pick a cheaper or stronger version of the Auto Code policy (xhigh and max count as high), and medium, or a version that is not available, runs on the default Auto Code policy.",
         "example": "low",
         "x-speakeasy-unknown-values": "allow",
         "x-ms-enum": {
@@ -95166,6 +95173,30 @@
             {
               "value": "4K",
               "name": "Value4K"
+            }
+          ]
+        }
+      },
+      "ImageGenerationRequestResponseFormat": {
+        "enum": [
+          "b64_json",
+          "url"
+        ],
+        "type": "string",
+        "description": "\u0060b64_json\u0060 (default) returns the image bytes inline. \u0060url\u0060 stores each output in OpenRouter storage and returns a signed download URL in place of the bytes. The URL is a bearer link: anyone holding it can download the image until it expires, up to 24 hours after the image was stored (use \u0060expires_at\u0060); the stored copy is deleted by the storage lifecycle within the following day. The response falls back to \u0060b64_json\u0060 when a URL cannot be issued: streaming responses, zero-data-retention requests (account settings, guardrails or \u0060provider.zdr\u0060) or endpoints, or storage being unavailable.",
+        "example": "b64_json",
+        "x-speakeasy-unknown-values": "allow",
+        "x-ms-enum": {
+          "name": "ImageGenerationRequestResponseFormat",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "b64_json",
+              "name": "B64Json"
+            },
+            {
+              "value": "url",
+              "name": "Url"
             }
           ]
         }
@@ -100095,7 +100126,9 @@
           "3:2",
           "2:3",
           "21:9",
-          "9:21"
+          "9:21",
+          "2:1",
+          "5:2"
         ],
         "type": "string",
         "description": "Aspect ratio of the generated video. Omit it to use the model default, which on models with adaptive aspect ratio (e.g. BytePlus Seedance) follows the input image or video.",
@@ -100140,6 +100173,14 @@
             {
               "value": "9:21",
               "name": "Value9Colon21"
+            },
+            {
+              "value": "2:1",
+              "name": "Value2Colon1"
+            },
+            {
+              "value": "5:2",
+              "name": "Value5Colon2"
             }
           ]
         }
@@ -100250,7 +100291,9 @@
           "3:2",
           "2:3",
           "21:9",
-          "9:21"
+          "9:21",
+          "2:1",
+          "5:2"
         ],
         "type": "string",
         "x-speakeasy-unknown-values": "allow",
@@ -100293,6 +100336,14 @@
             {
               "value": "9:21",
               "name": "Value9Colon21"
+            },
+            {
+              "value": "2:1",
+              "name": "Value2Colon1"
+            },
+            {
+              "value": "5:2",
+              "name": "Value5Colon2"
             }
           ]
         }
@@ -100390,6 +100441,7 @@
           "640x360",
           "640x480",
           "640x640",
+          "720x360",
           "720x480",
           "720x720",
           "720x960",
@@ -100406,6 +100458,8 @@
           "840x360",
           "854x480",
           "864x496",
+          "960x480",
+          "900x360",
           "960x720",
           "960x960",
           "992x432",
@@ -100419,8 +100473,10 @@
           "1112x834",
           "1120x480",
           "1152x768",
+          "1200x480",
           "1280x720",
           "1366x768",
+          "1440x720",
           "1440x1080",
           "1440x1440",
           "1440x1920",
@@ -100428,11 +100484,15 @@
           "1440x2560",
           "1440x3360",
           "1470x630",
+          "1536x768",
           "1620x1080",
           "1680x720",
           "1792x768",
+          "1800x720",
+          "1920x768",
           "1920x1080",
           "1920x1440",
+          "2160x1080",
           "2160x1440",
           "2160x2160",
           "2160x2880",
@@ -100441,11 +100501,16 @@
           "2160x5040",
           "2520x1080",
           "2560x1440",
+          "2880x1440",
+          "2700x1080",
           "2880x2160",
           "3240x2160",
           "3360x1440",
+          "3600x1440",
           "3840x2160",
-          "5040x2160"
+          "4320x2160",
+          "5040x2160",
+          "5400x2160"
         ],
         "type": "string",
         "x-speakeasy-unknown-values": "allow",
@@ -100522,6 +100587,10 @@
               "name": "Value640X640"
             },
             {
+              "value": "720x360",
+              "name": "Value720X360"
+            },
+            {
               "value": "720x480",
               "name": "Value720X480"
             },
@@ -100586,6 +100655,14 @@
               "name": "Value864X496"
             },
             {
+              "value": "960x480",
+              "name": "Value960X480"
+            },
+            {
+              "value": "900x360",
+              "name": "Value900X360"
+            },
+            {
               "value": "960x720",
               "name": "Value960X720"
             },
@@ -100638,12 +100715,20 @@
               "name": "Value1152X768"
             },
             {
+              "value": "1200x480",
+              "name": "Value1200X480"
+            },
+            {
               "value": "1280x720",
               "name": "Value1280X720"
             },
             {
               "value": "1366x768",
               "name": "Value1366X768"
+            },
+            {
+              "value": "1440x720",
+              "name": "Value1440X720"
             },
             {
               "value": "1440x1080",
@@ -100674,6 +100759,10 @@
               "name": "Value1470X630"
             },
             {
+              "value": "1536x768",
+              "name": "Value1536X768"
+            },
+            {
               "value": "1620x1080",
               "name": "Value1620X1080"
             },
@@ -100686,12 +100775,24 @@
               "name": "Value1792X768"
             },
             {
+              "value": "1800x720",
+              "name": "Value1800X720"
+            },
+            {
+              "value": "1920x768",
+              "name": "Value1920X768"
+            },
+            {
               "value": "1920x1080",
               "name": "Value1920X1080"
             },
             {
               "value": "1920x1440",
               "name": "Value1920X1440"
+            },
+            {
+              "value": "2160x1080",
+              "name": "Value2160X1080"
             },
             {
               "value": "2160x1440",
@@ -100726,6 +100827,14 @@
               "name": "Value2560X1440"
             },
             {
+              "value": "2880x1440",
+              "name": "Value2880X1440"
+            },
+            {
+              "value": "2700x1080",
+              "name": "Value2700X1080"
+            },
+            {
               "value": "2880x2160",
               "name": "Value2880X2160"
             },
@@ -100738,12 +100847,24 @@
               "name": "Value3360X1440"
             },
             {
+              "value": "3600x1440",
+              "name": "Value3600X1440"
+            },
+            {
               "value": "3840x2160",
               "name": "Value3840X2160"
             },
             {
+              "value": "4320x2160",
+              "name": "Value4320X2160"
+            },
+            {
               "value": "5040x2160",
               "name": "Value5040X2160"
+            },
+            {
+              "value": "5400x2160",
+              "name": "Value5400X2160"
             }
           ]
         }
@@ -111582,7 +111703,7 @@
               "cost_tier": {
                 "pattern": "^[a-z][a-z0-9_-]{0,31}$",
                 "type": "string",
-                "description": "Select low, medium, high, or a cost tier configured by the operator. Overrides the live-config tier and replaces the shared routing policy with that tier. Omit to use the live configuration. Model exclusions and the router kill switch still apply.",
+                "description": "Select low, medium, high, or a cost tier configured by the operator. Overrides the live-config tier and replaces the shared routing policy with that tier. Omit to use the live configuration. On openrouter/auto-code, low and high (or auto-code-low and auto-code-high) pick a cheaper or stronger version of the Auto Code policy (xhigh and max count as high), and every other value, or a version that is not available, runs on the default Auto Code policy. Model exclusions and the router kill switch still apply.",
                 "example": "medium"
               },
               "excluded_models": {
@@ -123570,10 +123691,11 @@
       ]
     },
     "ChatModelNames": {
-      "maxItems": 3,
       "type": "array",
       "items": {
-        "type": "string"
+        "type": "string",
+        "description": "Model to use for completion",
+        "example": "openai/gpt-4"
       },
       "description": "Models to use for completion",
       "example": [
@@ -126633,7 +126755,7 @@
         "cost_tier": {
           "pattern": "^[a-z][a-z0-9_-]{0,31}$",
           "type": "string",
-          "description": "Select low, medium, high, or a cost tier configured by the operator. Overrides the live-config tier and replaces the shared routing policy with that tier. Omit to use the live configuration. Model exclusions and the router kill switch still apply.",
+          "description": "Select low, medium, high, or a cost tier configured by the operator. Overrides the live-config tier and replaces the shared routing policy with that tier. Omit to use the live configuration. On openrouter/auto-code, low and high (or auto-code-low and auto-code-high) pick a cheaper or stronger version of the Auto Code policy (xhigh and max count as high), and every other value, or a version that is not available, runs on the default Auto Code policy. Model exclusions and the router kill switch still apply.",
           "example": "medium"
         },
         "excluded_models": {
@@ -130672,6 +130794,11 @@
     "BatchProviderPreferencesOnlyItem": {
       "type": "string",
       "x-client-inline-scalar": true
+    },
+    "ChatModelNamesItem": {
+      "type": "string",
+      "description": "Model to use for completion",
+      "example": "openai/gpt-4"
     },
     "ChatStreamChunkAlignment": {
       "required": [

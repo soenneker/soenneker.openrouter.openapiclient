@@ -76,6 +76,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning disable CS1591
         Value640X640,
         #pragma warning restore CS1591
+        [EnumMember(Value = "720x360")]
+        #pragma warning disable CS1591
+        Value720X360,
+        #pragma warning restore CS1591
         [EnumMember(Value = "720x480")]
         #pragma warning disable CS1591
         Value720X480,
@@ -140,6 +144,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning disable CS1591
         Value864X496,
         #pragma warning restore CS1591
+        [EnumMember(Value = "960x480")]
+        #pragma warning disable CS1591
+        Value960X480,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "900x360")]
+        #pragma warning disable CS1591
+        Value900X360,
+        #pragma warning restore CS1591
         [EnumMember(Value = "960x720")]
         #pragma warning disable CS1591
         Value960X720,
@@ -192,6 +204,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning disable CS1591
         Value1152X768,
         #pragma warning restore CS1591
+        [EnumMember(Value = "1200x480")]
+        #pragma warning disable CS1591
+        Value1200X480,
+        #pragma warning restore CS1591
         [EnumMember(Value = "1280x720")]
         #pragma warning disable CS1591
         Value1280X720,
@@ -199,6 +215,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         [EnumMember(Value = "1366x768")]
         #pragma warning disable CS1591
         Value1366X768,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "1440x720")]
+        #pragma warning disable CS1591
+        Value1440X720,
         #pragma warning restore CS1591
         [EnumMember(Value = "1440x1080")]
         #pragma warning disable CS1591
@@ -228,6 +248,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning disable CS1591
         Value1470X630,
         #pragma warning restore CS1591
+        [EnumMember(Value = "1536x768")]
+        #pragma warning disable CS1591
+        Value1536X768,
+        #pragma warning restore CS1591
         [EnumMember(Value = "1620x1080")]
         #pragma warning disable CS1591
         Value1620X1080,
@@ -240,6 +264,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning disable CS1591
         Value1792X768,
         #pragma warning restore CS1591
+        [EnumMember(Value = "1800x720")]
+        #pragma warning disable CS1591
+        Value1800X720,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "1920x768")]
+        #pragma warning disable CS1591
+        Value1920X768,
+        #pragma warning restore CS1591
         [EnumMember(Value = "1920x1080")]
         #pragma warning disable CS1591
         Value1920X1080,
@@ -247,6 +279,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         [EnumMember(Value = "1920x1440")]
         #pragma warning disable CS1591
         Value1920X1440,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "2160x1080")]
+        #pragma warning disable CS1591
+        Value2160X1080,
         #pragma warning restore CS1591
         [EnumMember(Value = "2160x1440")]
         #pragma warning disable CS1591
@@ -280,6 +316,14 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning disable CS1591
         Value2560X1440,
         #pragma warning restore CS1591
+        [EnumMember(Value = "2880x1440")]
+        #pragma warning disable CS1591
+        Value2880X1440,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "2700x1080")]
+        #pragma warning disable CS1591
+        Value2700X1080,
+        #pragma warning restore CS1591
         [EnumMember(Value = "2880x2160")]
         #pragma warning disable CS1591
         Value2880X2160,
@@ -292,13 +336,25 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning disable CS1591
         Value3360X1440,
         #pragma warning restore CS1591
+        [EnumMember(Value = "3600x1440")]
+        #pragma warning disable CS1591
+        Value3600X1440,
+        #pragma warning restore CS1591
         [EnumMember(Value = "3840x2160")]
         #pragma warning disable CS1591
         Value3840X2160,
         #pragma warning restore CS1591
+        [EnumMember(Value = "4320x2160")]
+        #pragma warning disable CS1591
+        Value4320X2160,
+        #pragma warning restore CS1591
         [EnumMember(Value = "5040x2160")]
         #pragma warning disable CS1591
         Value5040X2160,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "5400x2160")]
+        #pragma warning disable CS1591
+        Value5400X2160,
         #pragma warning restore CS1591
     }
 }

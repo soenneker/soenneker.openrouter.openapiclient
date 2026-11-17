@@ -34,7 +34,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Auth.Keys.Code
         {
         }
         /// <summary>
-        /// Create an authorization code for the PKCE flow to generate a user-controlled API key
+        /// Create an authorization code for the PKCE flow to generate a user-controlled API key. Requires a Clerk session that completed reverification recently (Clerk `lax` level); otherwise the response is `403` with `error.metadata.reverification` set to `lax`, and the caller must reverify the session before retrying.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.CreateAuthKeysCode200Response"/></returns>
         /// <param name="body">The request body</param>
@@ -71,7 +71,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Auth.Keys.Code
             return await RequestAdapter.SendAsync<global::Soenneker.OpenRouter.OpenApiClient.Models.CreateAuthKeysCode200Response>(requestInfo, global::Soenneker.OpenRouter.OpenApiClient.Models.CreateAuthKeysCode200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Create an authorization code for the PKCE flow to generate a user-controlled API key
+        /// Create an authorization code for the PKCE flow to generate a user-controlled API key. Requires a Clerk session that completed reverification recently (Clerk `lax` level); otherwise the response is `403` with `error.metadata.reverification` set to `lax`, and the caller must reverify the session before retrying.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

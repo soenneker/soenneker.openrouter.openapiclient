@@ -38,7 +38,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public List<string> AllowedModels { get => _explicitNullValueAllowedModels; set { _explicitNullValueAllowedModels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allowed_models"); else _explicitNullProperties?.Remove("allowed_models"); } }
         private List<string> _explicitNullValueAllowedModels = default!;
 #endif
-        /// <summary>Select low, medium, high, or a cost tier configured by the operator. Overrides the live-config tier and replaces the shared routing policy with that tier. Omit to use the live configuration. Model exclusions and the router kill switch still apply.</summary>
+        /// <summary>Select low, medium, high, or a cost tier configured by the operator. Overrides the live-config tier and replaces the shared routing policy with that tier. Omit to use the live configuration. On openrouter/auto-code, low and high (or auto-code-low and auto-code-high) pick a cheaper or stronger version of the Auto Code policy (xhigh and max count as high), and every other value, or a version that is not available, runs on the default Auto Code policy. Model exclusions and the router kill switch still apply.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? CostTier { get => _explicitNullValueCostTier; set { _explicitNullValueCostTier = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cost_tier"); else _explicitNullProperties?.Remove("cost_tier"); } }
