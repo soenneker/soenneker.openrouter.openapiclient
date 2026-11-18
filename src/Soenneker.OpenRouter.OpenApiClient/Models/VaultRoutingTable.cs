@@ -148,7 +148,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(9)
             {
                 { "agent_id", n => { AgentId = n.GetStringValue(); } },
                 { "custom_origins", n => { CustomOrigins = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableCustomOriginsItem>(global::Soenneker.OpenRouter.OpenApiClient.Models.VaultRoutingTableCustomOriginsItem.CreateFromDiscriminatorValue)?.AsList(); } },

@@ -122,7 +122,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(7)
             {
                 { "allowed_passthrough_parameters", n => { AllowedPassthroughParameters = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "pricing", n => { Pricing = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ImagePricingEntry>(global::Soenneker.OpenRouter.OpenApiClient.Models.ImagePricingEntry.CreateFromDiscriminatorValue)?.AsList(); } },

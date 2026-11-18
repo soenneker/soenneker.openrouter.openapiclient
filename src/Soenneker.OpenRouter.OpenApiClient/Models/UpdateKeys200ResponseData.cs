@@ -223,7 +223,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(23)
             {
                 { "byok_usage", n => { ByokUsage = n.GetDoubleValue(); } },
                 { "byok_usage_daily", n => { ByokUsageDaily = n.GetDoubleValue(); } },

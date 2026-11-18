@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
-    /// <summary>Sort the returned models server-side. Prefer this over fetching the full list and sorting client-side. Options: pricing-low-to-high, pricing-high-to-low (average prompt/completion price), context-high-to-low (context length), throughput-high-to-low, latency-low-to-high (recent median performance), most-popular, top-weekly (tokens processed in the last week), newest (creation date), intelligence-high-to-low, coding-high-to-low, agentic-high-to-low (Artificial Analysis indices), design-arena-elo-high-to-low (best Design Arena ELO across arenas). Models without a score for the chosen benchmark are placed last. When omitted, the existing default ordering is preserved.</summary>
+    /// <summary>Sort the returned models server-side. Prefer this over fetching the full list and sorting client-side. Options: pricing-low-to-high, pricing-high-to-low (average prompt/completion price), context-high-to-low (context length), throughput-high-to-low, latency-low-to-high (recent median performance), most-popular, top-weekly (tokens processed in the last week), newest (creation date), &lt;index&gt;-high-to-low for each Artificial Analysis index (the coding and agentic sorts are deprecated: Artificial Analysis has retired those indexes), design-arena-elo-high-to-low (best Design Arena ELO across arenas). Models without a score for the chosen benchmark are placed last. The decision sort ranks decision models, so pass output_modalities=decisions or all with it. When omitted, the existing default ordering is preserved.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum ListModelsUserSortParameter
     {
@@ -50,6 +50,46 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         [EnumMember(Value = "agentic-high-to-low")]
         #pragma warning disable CS1591
         AgenticHighToLow,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "finance-and-accounting-high-to-low")]
+        #pragma warning disable CS1591
+        FinanceAndAccountingHighToLow,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "strategy-and-ops-high-to-low")]
+        #pragma warning disable CS1591
+        StrategyAndOpsHighToLow,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "legal-high-to-low")]
+        #pragma warning disable CS1591
+        LegalHighToLow,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "healthcare-and-medical-high-to-low")]
+        #pragma warning disable CS1591
+        HealthcareAndMedicalHighToLow,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "engineering-high-to-low")]
+        #pragma warning disable CS1591
+        EngineeringHighToLow,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "economics-high-to-low")]
+        #pragma warning disable CS1591
+        EconomicsHighToLow,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "cyber-high-to-low")]
+        #pragma warning disable CS1591
+        CyberHighToLow,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "openness-high-to-low")]
+        #pragma warning disable CS1591
+        OpennessHighToLow,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "multilingual-high-to-low")]
+        #pragma warning disable CS1591
+        MultilingualHighToLow,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "decision-high-to-low")]
+        #pragma warning disable CS1591
+        DecisionHighToLow,
         #pragma warning restore CS1591
         [EnumMember(Value = "design-arena-elo-high-to-low")]
         #pragma warning disable CS1591

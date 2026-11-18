@@ -163,7 +163,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(11)
             {
                 { "input", n => { Input = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechInput>(global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechInput.CreateFromDiscriminatorValue); } },
                 { "input_references", n => { InputReferences = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechInputReference>(global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechInputReference.CreateFromDiscriminatorValue)?.AsList(); } },

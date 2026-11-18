@@ -2688,7 +2688,7 @@
           "Benchmarks"
         ],
         "summary": "List Benchmarks",
-        "description": "Unified benchmark endpoint that aggregates scores from multiple benchmark sources (Artificial Analysis, Design Arena, and OpenRouter\u0027s own tau-bench, GPQA, and web-search evals). Filter by source to reproduce the exact shapes from the legacy per-source endpoints, or use task_type to find models suited for specific workloads. Use task_type=search (or a search_* benchmark_type) for OpenRouter\u0027s search benchmarks, which publish each model\u0027s highest-scoring eligible evaluation configuration with same-configuration runs combined by task-weighted mean. Authenticate with any valid OpenRouter API key. Rate-limited to 30 requests/minute per key and 500 requests/day per account.",
+        "description": "Unified benchmark endpoint that aggregates scores from multiple benchmark sources (Artificial Analysis, Design Arena, and OpenRouter\u0027s own tau-bench, GPQA, and web-search evals). Filter by source to reproduce the exact shapes from the legacy per-source endpoints, or use task_type to find models suited for specific workloads. Artificial Analysis items carry one score per Artificial Analysis index (Intelligence Index, Finance \u0026 Accounting Index, Strategy \u0026 Ops Index, Legal Index, Healthcare \u0026 Medical Index, Engineering Index, Economics Index, Cyber Index, Openness Index, Multilingual Index, Decision Index); attribute Artificial Analysis when you republish them. A response whose items all come from one source carries that source\u0027s citation in meta; in a mixed response, attribute each item by its source. Use task_type=search (or a search_* benchmark_type) for OpenRouter\u0027s search benchmarks, which publish each model\u0027s highest-scoring eligible evaluation configuration with same-configuration runs combined by task-weighted mean. Authenticate with any valid OpenRouter API key. Rate-limited to 30 requests/minute per key and 500 requests/day per account.",
         "operationId": "GetBenchmarks",
         "parameters": [
           {
@@ -2702,7 +2702,7 @@
           {
             "name": "task_type",
             "in": "query",
-            "description": "Filter results by task type. For Artificial Analysis, maps to the corresponding index. For Design Arena, maps to the matching category. \u0060search\u0060 returns OpenRouter search benchmark results only.",
+            "description": "Filter results by task type. Every value except \u0060search\u0060 names the Artificial Analysis index of the same name and returns only models scored on it, best first (\u0060coding\u0060 and \u0060agentic\u0060 are deprecated: Artificial Analysis has retired those indexes). Design Arena answers only \u0060coding\u0060, \u0060intelligence\u0060 and \u0060agentic\u0060, and OpenRouter\u0027s own evals only \u0060intelligence\u0060 and \u0060agentic\u0060. \u0060search\u0060 returns OpenRouter search benchmark results only.",
             "schema": {
               "$ref": "#/components/schemas/GetBenchmarksTaskTypeParameter"
             }
@@ -2785,16 +2785,26 @@
                 "example": {
                   "data": [
                     {
-                      "agentic_index": 58.3,
-                      "coding_index": 65.8,
+                      "agentic_index": 55.8,
+                      "coding_index": 63.2,
+                      "cyber_index": 36.4,
+                      "decision_index": 75.7,
                       "display_name": "GPT-4o",
-                      "intelligence_index": 71.2,
+                      "economics_index": 57.2,
+                      "engineering_index": 60.4,
+                      "finance_and_accounting_index": 58.1,
+                      "healthcare_and_medical_index": 56.9,
+                      "intelligence_index": 71.4,
+                      "legal_index": 52.3,
                       "model_permaslug": "openai/gpt-4o",
+                      "multilingual_index": 0.82,
+                      "openness_index": 33.3,
                       "pricing": {
                         "completion": "0.00001",
                         "prompt": "0.0000025"
                       },
-                      "source": "artificial-analysis"
+                      "source": "artificial-analysis",
+                      "strategy_and_ops_index": 61.7
                     },
                     {
                       "accuracy": 0.72,
@@ -15321,6 +15331,7 @@
             }
           }
         },
+        "x-speakeasy-max-method-params": 5,
         "x-speakeasy-name-override": "list",
         "x-speakeasy-pagination": {
           "inputs": [
@@ -16513,7 +16524,7 @@
           {
             "name": "sort",
             "in": "query",
-            "description": "Sort the returned models server-side. Prefer this over fetching the full list and sorting client-side. Options: pricing-low-to-high, pricing-high-to-low (average prompt/completion price), context-high-to-low (context length), throughput-high-to-low, latency-low-to-high (recent median performance), most-popular, top-weekly (tokens processed in the last week), newest (creation date), intelligence-high-to-low, coding-high-to-low, agentic-high-to-low (Artificial Analysis indices), design-arena-elo-high-to-low (best Design Arena ELO across arenas). Models without a score for the chosen benchmark are placed last. When omitted, the existing default ordering is preserved.",
+            "description": "Sort the returned models server-side. Prefer this over fetching the full list and sorting client-side. Options: pricing-low-to-high, pricing-high-to-low (average prompt/completion price), context-high-to-low (context length), throughput-high-to-low, latency-low-to-high (recent median performance), most-popular, top-weekly (tokens processed in the last week), newest (creation date), \u003Cindex\u003E-high-to-low for each Artificial Analysis index (the coding and agentic sorts are deprecated: Artificial Analysis has retired those indexes), design-arena-elo-high-to-low (best Design Arena ELO across arenas). Models without a score for the chosen benchmark are placed last. The decision sort ranks decision models, so pass output_modalities=decisions or all with it. When omitted, the existing default ordering is preserved.",
             "schema": {
               "$ref": "#/components/schemas/GetModelsSortParameter"
             }
@@ -16700,84 +16711,370 @@
           {
             "name": "min_intelligence_index",
             "in": "query",
-            "description": "Minimum Artificial Analysis intelligence index.",
+            "description": "Minimum Artificial Analysis Intelligence Index score (0-100); unscored models are excluded.",
             "schema": {
               "minimum": 0,
               "type": [
                 "null",
                 "number"
               ],
-              "description": "Minimum Artificial Analysis intelligence index.",
+              "description": "Minimum Artificial Analysis Intelligence Index score (0-100); unscored models are excluded.",
               "example": 50
             }
           },
           {
             "name": "max_intelligence_index",
             "in": "query",
-            "description": "Maximum Artificial Analysis intelligence index.",
+            "description": "Maximum Artificial Analysis Intelligence Index score (0-100); unscored models are excluded.",
             "schema": {
               "minimum": 0,
               "type": [
                 "null",
                 "number"
               ],
-              "description": "Maximum Artificial Analysis intelligence index.",
+              "description": "Maximum Artificial Analysis Intelligence Index score (0-100); unscored models are excluded.",
               "example": 100
             }
           },
           {
             "name": "min_coding_index",
             "in": "query",
-            "description": "Minimum Artificial Analysis coding index.",
+            "description": "Deprecated: Artificial Analysis has retired its Coding Index. Minimum score (0-100); unscored models are excluded.",
+            "deprecated": true,
             "schema": {
               "minimum": 0,
               "type": [
                 "null",
                 "number"
               ],
-              "description": "Minimum Artificial Analysis coding index.",
+              "description": "Deprecated: Artificial Analysis has retired its Coding Index. Minimum score (0-100); unscored models are excluded.",
               "example": 50
             }
           },
           {
             "name": "max_coding_index",
             "in": "query",
-            "description": "Maximum Artificial Analysis coding index.",
+            "description": "Deprecated: Artificial Analysis has retired its Coding Index. Maximum score (0-100); unscored models are excluded.",
+            "deprecated": true,
             "schema": {
               "minimum": 0,
               "type": [
                 "null",
                 "number"
               ],
-              "description": "Maximum Artificial Analysis coding index.",
+              "description": "Deprecated: Artificial Analysis has retired its Coding Index. Maximum score (0-100); unscored models are excluded.",
               "example": 100
             }
           },
           {
             "name": "min_agentic_index",
             "in": "query",
-            "description": "Minimum Artificial Analysis agentic index.",
+            "description": "Deprecated: Artificial Analysis has retired its Agentic Index. Minimum score (0-100); unscored models are excluded.",
+            "deprecated": true,
             "schema": {
               "minimum": 0,
               "type": [
                 "null",
                 "number"
               ],
-              "description": "Minimum Artificial Analysis agentic index.",
+              "description": "Deprecated: Artificial Analysis has retired its Agentic Index. Minimum score (0-100); unscored models are excluded.",
               "example": 50
             }
           },
           {
             "name": "max_agentic_index",
             "in": "query",
-            "description": "Maximum Artificial Analysis agentic index.",
+            "description": "Deprecated: Artificial Analysis has retired its Agentic Index. Maximum score (0-100); unscored models are excluded.",
+            "deprecated": true,
             "schema": {
               "minimum": 0,
               "type": [
                 "null",
                 "number"
               ],
-              "description": "Maximum Artificial Analysis agentic index.",
+              "description": "Deprecated: Artificial Analysis has retired its Agentic Index. Maximum score (0-100); unscored models are excluded.",
+              "example": 100
+            }
+          },
+          {
+            "name": "min_finance_and_accounting_index",
+            "in": "query",
+            "description": "Minimum Artificial Analysis Finance \u0026 Accounting Index score (0-100); unscored models are excluded.",
+            "schema": {
+              "minimum": 0,
+              "type": [
+                "null",
+                "number"
+              ],
+              "description": "Minimum Artificial Analysis Finance \u0026 Accounting Index score (0-100); unscored models are excluded.",
+              "example": 50
+            }
+          },
+          {
+            "name": "max_finance_and_accounting_index",
+            "in": "query",
+            "description": "Maximum Artificial Analysis Finance \u0026 Accounting Index score (0-100); unscored models are excluded.",
+            "schema": {
+              "minimum": 0,
+              "type": [
+                "null",
+                "number"
+              ],
+              "description": "Maximum Artificial Analysis Finance \u0026 Accounting Index score (0-100); unscored models are excluded.",
+              "example": 100
+            }
+          },
+          {
+            "name": "min_strategy_and_ops_index",
+            "in": "query",
+            "description": "Minimum Artificial Analysis Strategy \u0026 Ops Index score (0-100); unscored models are excluded.",
+            "schema": {
+              "minimum": 0,
+              "type": [
+                "null",
+                "number"
+              ],
+              "description": "Minimum Artificial Analysis Strategy \u0026 Ops Index score (0-100); unscored models are excluded.",
+              "example": 50
+            }
+          },
+          {
+            "name": "max_strategy_and_ops_index",
+            "in": "query",
+            "description": "Maximum Artificial Analysis Strategy \u0026 Ops Index score (0-100); unscored models are excluded.",
+            "schema": {
+              "minimum": 0,
+              "type": [
+                "null",
+                "number"
+              ],
+              "description": "Maximum Artificial Analysis Strategy \u0026 Ops Index score (0-100); unscored models are excluded.",
+              "example": 100
+            }
+          },
+          {
+            "name": "min_legal_index",
+            "in": "query",
+            "description": "Minimum Artificial Analysis Legal Index score (0-100); unscored models are excluded.",
+            "schema": {
+              "minimum": 0,
+              "type": [
+                "null",
+                "number"
+              ],
+              "description": "Minimum Artificial Analysis Legal Index score (0-100); unscored models are excluded.",
+              "example": 50
+            }
+          },
+          {
+            "name": "max_legal_index",
+            "in": "query",
+            "description": "Maximum Artificial Analysis Legal Index score (0-100); unscored models are excluded.",
+            "schema": {
+              "minimum": 0,
+              "type": [
+                "null",
+                "number"
+              ],
+              "description": "Maximum Artificial Analysis Legal Index score (0-100); unscored models are excluded.",
+              "example": 100
+            }
+          },
+          {
+            "name": "min_healthcare_and_medical_index",
+            "in": "query",
+            "description": "Minimum Artificial Analysis Healthcare \u0026 Medical Index score (0-100); unscored models are excluded.",
+            "schema": {
+              "minimum": 0,
+              "type": [
+                "null",
+                "number"
+              ],
+              "description": "Minimum Artificial Analysis Healthcare \u0026 Medical Index score (0-100); unscored models are excluded.",
+              "example": 50
+            }
+          },
+          {
+            "name": "max_healthcare_and_medical_index",
+            "in": "query",
+            "description": "Maximum Artificial Analysis Healthcare \u0026 Medical Index score (0-100); unscored models are excluded.",
+            "schema": {
+              "minimum": 0,
+              "type": [
+                "null",
+                "number"
+              ],
+              "description": "Maximum Artificial Analysis Healthcare \u0026 Medical Index score (0-100); unscored models are excluded.",
+              "example": 100
+            }
+          },
+          {
+            "name": "min_engineering_index",
+            "in": "query",
+            "description": "Minimum Artificial Analysis Engineering Index score (0-100); unscored models are excluded.",
+            "schema": {
+              "minimum": 0,
+              "type": [
+                "null",
+                "number"
+              ],
+              "description": "Minimum Artificial Analysis Engineering Index score (0-100); unscored models are excluded.",
+              "example": 50
+            }
+          },
+          {
+            "name": "max_engineering_index",
+            "in": "query",
+            "description": "Maximum Artificial Analysis Engineering Index score (0-100); unscored models are excluded.",
+            "schema": {
+              "minimum": 0,
+              "type": [
+                "null",
+                "number"
+              ],
+              "description": "Maximum Artificial Analysis Engineering Index score (0-100); unscored models are excluded.",
+              "example": 100
+            }
+          },
+          {
+            "name": "min_economics_index",
+            "in": "query",
+            "description": "Minimum Artificial Analysis Economics Index score (0-100); unscored models are excluded.",
+            "schema": {
+              "minimum": 0,
+              "type": [
+                "null",
+                "number"
+              ],
+              "description": "Minimum Artificial Analysis Economics Index score (0-100); unscored models are excluded.",
+              "example": 50
+            }
+          },
+          {
+            "name": "max_economics_index",
+            "in": "query",
+            "description": "Maximum Artificial Analysis Economics Index score (0-100); unscored models are excluded.",
+            "schema": {
+              "minimum": 0,
+              "type": [
+                "null",
+                "number"
+              ],
+              "description": "Maximum Artificial Analysis Economics Index score (0-100); unscored models are excluded.",
+              "example": 100
+            }
+          },
+          {
+            "name": "min_cyber_index",
+            "in": "query",
+            "description": "Minimum Artificial Analysis Cyber Index score (0-100); unscored models are excluded.",
+            "schema": {
+              "minimum": 0,
+              "type": [
+                "null",
+                "number"
+              ],
+              "description": "Minimum Artificial Analysis Cyber Index score (0-100); unscored models are excluded.",
+              "example": 50
+            }
+          },
+          {
+            "name": "max_cyber_index",
+            "in": "query",
+            "description": "Maximum Artificial Analysis Cyber Index score (0-100); unscored models are excluded.",
+            "schema": {
+              "minimum": 0,
+              "type": [
+                "null",
+                "number"
+              ],
+              "description": "Maximum Artificial Analysis Cyber Index score (0-100); unscored models are excluded.",
+              "example": 100
+            }
+          },
+          {
+            "name": "min_openness_index",
+            "in": "query",
+            "description": "Minimum Artificial Analysis Openness Index score (0-100); unscored models are excluded.",
+            "schema": {
+              "minimum": 0,
+              "type": [
+                "null",
+                "number"
+              ],
+              "description": "Minimum Artificial Analysis Openness Index score (0-100); unscored models are excluded.",
+              "example": 50
+            }
+          },
+          {
+            "name": "max_openness_index",
+            "in": "query",
+            "description": "Maximum Artificial Analysis Openness Index score (0-100); unscored models are excluded.",
+            "schema": {
+              "minimum": 0,
+              "type": [
+                "null",
+                "number"
+              ],
+              "description": "Maximum Artificial Analysis Openness Index score (0-100); unscored models are excluded.",
+              "example": 100
+            }
+          },
+          {
+            "name": "min_multilingual_index",
+            "in": "query",
+            "description": "Minimum Artificial Analysis Multilingual Index score (0-1); unscored models are excluded.",
+            "schema": {
+              "maximum": 1,
+              "minimum": 0,
+              "type": [
+                "null",
+                "number"
+              ],
+              "description": "Minimum Artificial Analysis Multilingual Index score (0-1); unscored models are excluded.",
+              "example": 0.5
+            }
+          },
+          {
+            "name": "max_multilingual_index",
+            "in": "query",
+            "description": "Maximum Artificial Analysis Multilingual Index score (0-1); unscored models are excluded.",
+            "schema": {
+              "maximum": 1,
+              "minimum": 0,
+              "type": [
+                "null",
+                "number"
+              ],
+              "description": "Maximum Artificial Analysis Multilingual Index score (0-1); unscored models are excluded.",
+              "example": 1
+            }
+          },
+          {
+            "name": "min_decision_index",
+            "in": "query",
+            "description": "Minimum Artificial Analysis Decision Index score (0-100); unscored models are excluded.",
+            "schema": {
+              "minimum": 0,
+              "type": [
+                "null",
+                "number"
+              ],
+              "description": "Minimum Artificial Analysis Decision Index score (0-100); unscored models are excluded.",
+              "example": 50
+            }
+          },
+          {
+            "name": "max_decision_index",
+            "in": "query",
+            "description": "Maximum Artificial Analysis Decision Index score (0-100); unscored models are excluded.",
+            "schema": {
+              "minimum": 0,
+              "type": [
+                "null",
+                "number"
+              ],
+              "description": "Maximum Artificial Analysis Decision Index score (0-100); unscored models are excluded.",
               "example": 100
             }
           },
@@ -17358,7 +17655,7 @@
           {
             "name": "sort",
             "in": "query",
-            "description": "Sort the returned models server-side. Prefer this over fetching the full list and sorting client-side. Options: pricing-low-to-high, pricing-high-to-low (average prompt/completion price), context-high-to-low (context length), throughput-high-to-low, latency-low-to-high (recent median performance), most-popular, top-weekly (tokens processed in the last week), newest (creation date), intelligence-high-to-low, coding-high-to-low, agentic-high-to-low (Artificial Analysis indices), design-arena-elo-high-to-low (best Design Arena ELO across arenas). Models without a score for the chosen benchmark are placed last. When omitted, the existing default ordering is preserved.",
+            "description": "Sort the returned models server-side. Prefer this over fetching the full list and sorting client-side. Options: pricing-low-to-high, pricing-high-to-low (average prompt/completion price), context-high-to-low (context length), throughput-high-to-low, latency-low-to-high (recent median performance), most-popular, top-weekly (tokens processed in the last week), newest (creation date), \u003Cindex\u003E-high-to-low for each Artificial Analysis index (the coding and agentic sorts are deprecated: Artificial Analysis has retired those indexes), design-arena-elo-high-to-low (best Design Arena ELO across arenas). Models without a score for the chosen benchmark are placed last. The decision sort ranks decision models, so pass output_modalities=decisions or all with it. When omitted, the existing default ordering is preserved.",
             "schema": {
               "$ref": "#/components/schemas/ListModelsUserSortParameter"
             }
@@ -30867,7 +31164,17 @@
         "required": [
           "intelligence_index",
           "coding_index",
-          "agentic_index"
+          "agentic_index",
+          "finance_and_accounting_index",
+          "strategy_and_ops_index",
+          "legal_index",
+          "healthcare_and_medical_index",
+          "engineering_index",
+          "economics_index",
+          "cyber_index",
+          "openness_index",
+          "multilingual_index",
+          "decision_index"
         ],
         "type": "object",
         "properties": {
@@ -30876,34 +31183,136 @@
               "null",
               "number"
             ],
-            "description": "Artificial Analysis Agentic Index score",
+            "description": "Deprecated: Artificial Analysis has retired its Agentic Index and no longer publishes it. Holds the last score Artificial Analysis published for the model, on a 0-100 scale, or null; it will be null for every model once those stored scores are removed.",
             "format": "double",
-            "example": 55.8
+            "example": 55.8,
+            "deprecated": true
           },
           "coding_index": {
             "type": [
               "null",
               "number"
             ],
-            "description": "Artificial Analysis Coding Index score",
+            "description": "Deprecated: Artificial Analysis has retired its Coding Index and no longer publishes it. Holds the last score Artificial Analysis published for the model, on a 0-100 scale, or null; it will be null for every model once those stored scores are removed.",
             "format": "double",
-            "example": 63.2
+            "example": 63.2,
+            "deprecated": true
+          },
+          "cyber_index": {
+            "type": [
+              "null",
+              "number"
+            ],
+            "description": "Artificial Analysis Cyber Index score, on a 0-100 scale: the model\u0027s best across the configurations Artificial Analysis evaluated. Higher is better. Null when Artificial Analysis has not published a score for the model.",
+            "format": "double",
+            "example": 36.4
+          },
+          "decision_index": {
+            "type": [
+              "null",
+              "number"
+            ],
+            "description": "Artificial Analysis Decision Index score, on a 0-100 scale: the model\u0027s best across the configurations Artificial Analysis evaluated. Higher is better. Published for decision models and for the language models Artificial Analysis evaluates on decision tasks. Null when Artificial Analysis has not published a score for the model.",
+            "format": "double",
+            "example": 75.7
+          },
+          "economics_index": {
+            "type": [
+              "null",
+              "number"
+            ],
+            "description": "Artificial Analysis Economics Index score, on a 0-100 scale: the model\u0027s best across the configurations Artificial Analysis evaluated. Higher is better. One of the six Artificial Analysis Capability Indexes. Null when Artificial Analysis has not published a score for the model.",
+            "format": "double",
+            "example": 57.2
+          },
+          "engineering_index": {
+            "type": [
+              "null",
+              "number"
+            ],
+            "description": "Artificial Analysis Engineering Index score, on a 0-100 scale: the model\u0027s best across the configurations Artificial Analysis evaluated. Higher is better. One of the six Artificial Analysis Capability Indexes. Null when Artificial Analysis has not published a score for the model.",
+            "format": "double",
+            "example": 60.4
+          },
+          "finance_and_accounting_index": {
+            "type": [
+              "null",
+              "number"
+            ],
+            "description": "Artificial Analysis Finance \u0026 Accounting Index score, on a 0-100 scale: the model\u0027s best across the configurations Artificial Analysis evaluated. Higher is better. One of the six Artificial Analysis Capability Indexes. Null when Artificial Analysis has not published a score for the model.",
+            "format": "double",
+            "example": 58.1
+          },
+          "healthcare_and_medical_index": {
+            "type": [
+              "null",
+              "number"
+            ],
+            "description": "Artificial Analysis Healthcare \u0026 Medical Index score, on a 0-100 scale: the model\u0027s best across the configurations Artificial Analysis evaluated. Higher is better. One of the six Artificial Analysis Capability Indexes. Null when Artificial Analysis has not published a score for the model.",
+            "format": "double",
+            "example": 56.9
           },
           "intelligence_index": {
             "type": [
               "null",
               "number"
             ],
-            "description": "Artificial Analysis Intelligence Index score",
+            "description": "Artificial Analysis Intelligence Index score, on a 0-100 scale: the model\u0027s best across the configurations Artificial Analysis evaluated. Higher is better. Null when Artificial Analysis has not published a score for the model.",
             "format": "double",
             "example": 71.4
+          },
+          "legal_index": {
+            "type": [
+              "null",
+              "number"
+            ],
+            "description": "Artificial Analysis Legal Index score, on a 0-100 scale: the model\u0027s best across the configurations Artificial Analysis evaluated. Higher is better. One of the six Artificial Analysis Capability Indexes. Null when Artificial Analysis has not published a score for the model.",
+            "format": "double",
+            "example": 52.3
+          },
+          "multilingual_index": {
+            "type": [
+              "null",
+              "number"
+            ],
+            "description": "Artificial Analysis Multilingual Index score, as a fraction from 0 to 1: the model\u0027s best across the configurations Artificial Analysis evaluated. Higher is better. Null when Artificial Analysis has not published a score for the model.",
+            "format": "double",
+            "example": 0.82
+          },
+          "openness_index": {
+            "type": [
+              "null",
+              "number"
+            ],
+            "description": "Artificial Analysis Openness Index score, on a 0-100 scale: the model\u0027s best across the configurations Artificial Analysis evaluated. Higher is better. Null when Artificial Analysis has not published a score for the model.",
+            "format": "double",
+            "example": 33.3
+          },
+          "strategy_and_ops_index": {
+            "type": [
+              "null",
+              "number"
+            ],
+            "description": "Artificial Analysis Strategy \u0026 Ops Index score, on a 0-100 scale: the model\u0027s best across the configurations Artificial Analysis evaluated. Higher is better. One of the six Artificial Analysis Capability Indexes. Null when Artificial Analysis has not published a score for the model.",
+            "format": "double",
+            "example": 61.7
           }
         },
-        "description": "Artificial Analysis benchmark index scores.",
+        "description": "Benchmark index scores published by Artificial Analysis (artificialanalysis.ai), one field per index. Each score is the model\u0027s best on that index across the configurations Artificial Analysis evaluated (for example reasoning levels), so two indexes of one model can come from different configurations. The deprecated Coding and Agentic Index scores are the exception: both come from one configuration, the model\u0027s strongest by Intelligence Index, then Coding Index, then Agentic Index. Attribute Artificial Analysis when you republish them. Omitted when Artificial Analysis has scored the model on none of them.",
         "example": {
           "agentic_index": 55.8,
           "coding_index": 63.2,
-          "intelligence_index": 71.4
+          "cyber_index": 36.4,
+          "decision_index": 75.7,
+          "economics_index": 57.2,
+          "engineering_index": 60.4,
+          "finance_and_accounting_index": 58.1,
+          "healthcare_and_medical_index": 56.9,
+          "intelligence_index": 71.4,
+          "legal_index": 52.3,
+          "multilingual_index": 0.82,
+          "openness_index": 33.3,
+          "strategy_and_ops_index": 61.7
         }
       },
       "AccountGuardrailPolicy": {
@@ -45362,9 +45771,6 @@
           "resolution": {
             "$ref": "#/components/schemas/ImageGenerationRequestResolution"
           },
-          "response_format": {
-            "$ref": "#/components/schemas/ImageGenerationRequestResponseFormat"
-          },
           "seed": {
             "type": "integer",
             "description": "If specified, the generation will sample deterministically, such that repeated requests with the same seed and parameters should return the same result. Determinism is not guaranteed for all providers."
@@ -45419,11 +45825,6 @@
               "$ref": "#/components/schemas/ImageGenerationResponseDataItem"
             },
             "description": "Generated images"
-          },
-          "expires_at": {
-            "type": "integer",
-            "description": "Unix timestamp (seconds) of the earliest expiry among the \u0060url\u0060s in \u0060data\u0060; treat every URL as expired after it. Present only when URLs were issued.",
-            "example": 1748458800
           },
           "usage": {
             "description": "Token and cost usage for the image generation request, when available",
@@ -48936,7 +49337,17 @@
           "artificial_analysis": {
             "agentic_index": 55.8,
             "coding_index": 63.2,
-            "intelligence_index": 71.4
+            "cyber_index": 36.4,
+            "decision_index": 75.7,
+            "economics_index": 57.2,
+            "engineering_index": 60.4,
+            "finance_and_accounting_index": 58.1,
+            "healthcare_and_medical_index": 56.9,
+            "intelligence_index": 71.4,
+            "legal_index": 52.3,
+            "multilingual_index": 0.82,
+            "openness_index": 33.3,
+            "strategy_and_ops_index": 61.7
           },
           "design_arena": [
             {
@@ -53187,6 +53598,14 @@
           "error_type": {
             "description": "Canonical OpenRouter error type, stable across all API formats",
             "$ref": "#/components/schemas/ApiErrorType"
+          },
+          "input_transformations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ResponsesInputTransformation"
+            },
+            "description": "Input items the upstream provider changed before inference (OpenAI \u0060input_transformations\u0060). Present only when the provider reported the field; empty when it changed nothing.",
+            "example": []
           },
           "openrouter_metadata": {
             "$ref": "#/components/schemas/OpenRouterMetadata"
@@ -60624,6 +61043,36 @@
           "message": "Rate limit exceeded. Please try again later."
         }
       },
+      "ResponsesInputTransformation": {
+        "required": [
+          "id",
+          "type",
+          "action",
+          "reason"
+        ],
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          }
+        },
+        "description": "One input item the upstream provider changed before inference, e.g. a replayed reasoning item removed because the conversation before it was edited.",
+        "example": {
+          "action": "removed",
+          "id": "rs_0ca73592c5f68037016afcc009779887",
+          "reason": "prefix_mismatch",
+          "type": "reasoning"
+        }
+      },
       "ResponsesRequest": {
         "type": "object",
         "properties": {
@@ -62758,6 +63207,11 @@
             "description": "STT model identifier",
             "example": "openai/whisper-large-v3"
           },
+          "prompt": {
+            "type": "string",
+            "description": "Context to guide transcription, such as domain vocabulary or a previous segment. Honored by OpenAI (except gpt-4o-transcribe-diarize), Azure OpenAI, Groq, Together, Alibaba, and AssemblyAI endpoints with prompted pricing configured. Other providers ignore it; use keyterms for supported keyword boosting. Takes precedence over provider-specific prompt options, including when empty.",
+            "example": "A discussion about OpenRouter and speech recognition."
+          },
           "provider": {
             "$ref": "#/components/schemas/SttRequestProvider"
           },
@@ -64133,6 +64587,16 @@
           "intelligence_index",
           "coding_index",
           "agentic_index",
+          "finance_and_accounting_index",
+          "strategy_and_ops_index",
+          "legal_index",
+          "healthcare_and_medical_index",
+          "engineering_index",
+          "economics_index",
+          "cyber_index",
+          "openness_index",
+          "multilingual_index",
+          "decision_index",
           "pricing"
         ],
         "type": "object",
@@ -64142,37 +64606,120 @@
               "null",
               "number"
             ],
-            "description": "Artificial Analysis Agentic Index composite score. Higher is better.",
+            "description": "Deprecated: Artificial Analysis has retired its Agentic Index and no longer publishes it. Holds the last score Artificial Analysis published for the model, on a 0-100 scale, or null; it will be null for every model once those stored scores are removed.",
             "format": "double",
-            "example": 58.3
+            "example": 55.8,
+            "deprecated": true
           },
           "coding_index": {
             "type": [
               "null",
               "number"
             ],
-            "description": "Artificial Analysis Coding Index composite score. Higher is better.",
+            "description": "Deprecated: Artificial Analysis has retired its Coding Index and no longer publishes it. Holds the last score Artificial Analysis published for the model, on a 0-100 scale, or null; it will be null for every model once those stored scores are removed.",
             "format": "double",
-            "example": 65.8
+            "example": 63.2,
+            "deprecated": true
+          },
+          "cyber_index": {
+            "type": [
+              "null",
+              "number"
+            ],
+            "description": "Artificial Analysis Cyber Index score, on a 0-100 scale: the model\u0027s best across the configurations Artificial Analysis evaluated. Higher is better. Null when Artificial Analysis has not published a score for the model.",
+            "format": "double",
+            "example": 36.4
+          },
+          "decision_index": {
+            "type": [
+              "null",
+              "number"
+            ],
+            "description": "Artificial Analysis Decision Index score, on a 0-100 scale: the model\u0027s best across the configurations Artificial Analysis evaluated. Higher is better. Published for decision models and for the language models Artificial Analysis evaluates on decision tasks. Null when Artificial Analysis has not published a score for the model.",
+            "format": "double",
+            "example": 75.7
           },
           "display_name": {
             "type": "string",
             "description": "Model name as listed on Artificial Analysis.",
             "example": "GPT-4o"
           },
+          "economics_index": {
+            "type": [
+              "null",
+              "number"
+            ],
+            "description": "Artificial Analysis Economics Index score, on a 0-100 scale: the model\u0027s best across the configurations Artificial Analysis evaluated. Higher is better. One of the six Artificial Analysis Capability Indexes. Null when Artificial Analysis has not published a score for the model.",
+            "format": "double",
+            "example": 57.2
+          },
+          "engineering_index": {
+            "type": [
+              "null",
+              "number"
+            ],
+            "description": "Artificial Analysis Engineering Index score, on a 0-100 scale: the model\u0027s best across the configurations Artificial Analysis evaluated. Higher is better. One of the six Artificial Analysis Capability Indexes. Null when Artificial Analysis has not published a score for the model.",
+            "format": "double",
+            "example": 60.4
+          },
+          "finance_and_accounting_index": {
+            "type": [
+              "null",
+              "number"
+            ],
+            "description": "Artificial Analysis Finance \u0026 Accounting Index score, on a 0-100 scale: the model\u0027s best across the configurations Artificial Analysis evaluated. Higher is better. One of the six Artificial Analysis Capability Indexes. Null when Artificial Analysis has not published a score for the model.",
+            "format": "double",
+            "example": 58.1
+          },
+          "healthcare_and_medical_index": {
+            "type": [
+              "null",
+              "number"
+            ],
+            "description": "Artificial Analysis Healthcare \u0026 Medical Index score, on a 0-100 scale: the model\u0027s best across the configurations Artificial Analysis evaluated. Higher is better. One of the six Artificial Analysis Capability Indexes. Null when Artificial Analysis has not published a score for the model.",
+            "format": "double",
+            "example": 56.9
+          },
           "intelligence_index": {
             "type": [
               "null",
               "number"
             ],
-            "description": "Artificial Analysis Intelligence Index composite score. Higher is better.",
+            "description": "Artificial Analysis Intelligence Index score, on a 0-100 scale: the model\u0027s best across the configurations Artificial Analysis evaluated. Higher is better. Null when Artificial Analysis has not published a score for the model.",
             "format": "double",
-            "example": 71.2
+            "example": 71.4
+          },
+          "legal_index": {
+            "type": [
+              "null",
+              "number"
+            ],
+            "description": "Artificial Analysis Legal Index score, on a 0-100 scale: the model\u0027s best across the configurations Artificial Analysis evaluated. Higher is better. One of the six Artificial Analysis Capability Indexes. Null when Artificial Analysis has not published a score for the model.",
+            "format": "double",
+            "example": 52.3
           },
           "model_permaslug": {
             "type": "string",
             "description": "Stable OpenRouter model identifier.",
             "example": "openai/gpt-4o"
+          },
+          "multilingual_index": {
+            "type": [
+              "null",
+              "number"
+            ],
+            "description": "Artificial Analysis Multilingual Index score, as a fraction from 0 to 1: the model\u0027s best across the configurations Artificial Analysis evaluated. Higher is better. Null when Artificial Analysis has not published a score for the model.",
+            "format": "double",
+            "example": 0.82
+          },
+          "openness_index": {
+            "type": [
+              "null",
+              "number"
+            ],
+            "description": "Artificial Analysis Openness Index score, on a 0-100 scale: the model\u0027s best across the configurations Artificial Analysis evaluated. Higher is better. Null when Artificial Analysis has not published a score for the model.",
+            "format": "double",
+            "example": 33.3
           },
           "pricing": {
             "description": "OpenRouter pricing per token for this model. Null if pricing is unavailable.",
@@ -64180,19 +64727,39 @@
           },
           "source": {
             "$ref": "#/components/schemas/ArtificialAnalysisSource"
+          },
+          "strategy_and_ops_index": {
+            "type": [
+              "null",
+              "number"
+            ],
+            "description": "Artificial Analysis Strategy \u0026 Ops Index score, on a 0-100 scale: the model\u0027s best across the configurations Artificial Analysis evaluated. Higher is better. One of the six Artificial Analysis Capability Indexes. Null when Artificial Analysis has not published a score for the model.",
+            "format": "double",
+            "example": 61.7
           }
         },
+        "description": "One model\u0027s Artificial Analysis index scores. Each score is the model\u0027s best on that index across the configurations Artificial Analysis evaluated (for example reasoning levels), so two indexes of one model can come from different configurations. The deprecated Coding and Agentic Index scores are the exception: both come from one configuration, the model\u0027s strongest by Intelligence Index, then Coding Index, then Agentic Index. With \u0060task_type\u0060 set to \u0060intelligence\u0060, \u0060coding\u0060 or \u0060agentic\u0060, those three indexes all come from the configuration that scores best on the one named.",
         "example": {
-          "agentic_index": 58.3,
-          "coding_index": 65.8,
+          "agentic_index": 55.8,
+          "coding_index": 63.2,
+          "cyber_index": 36.4,
+          "decision_index": 75.7,
           "display_name": "GPT-4o",
-          "intelligence_index": 71.2,
+          "economics_index": 57.2,
+          "engineering_index": 60.4,
+          "finance_and_accounting_index": 58.1,
+          "healthcare_and_medical_index": 56.9,
+          "intelligence_index": 71.4,
+          "legal_index": 52.3,
           "model_permaslug": "openai/gpt-4o",
+          "multilingual_index": 0.82,
+          "openness_index": 33.3,
           "pricing": {
             "completion": "0.00001",
             "prompt": "0.0000025"
           },
-          "source": "artificial-analysis"
+          "source": "artificial-analysis",
+          "strategy_and_ops_index": 61.7
         }
       },
       "UnifiedBenchmarksDaItem": {
@@ -64306,7 +64873,7 @@
               "null",
               "string"
             ],
-            "description": "Required attribution when republishing this data, or null when results span multiple sources (attribute each item individually by its \u0060source\u0060 discriminator).",
+            "description": "Required attribution when republishing this data. Always set when \u0060source\u0060 is set. When \u0060source\u0060 is null, set if every returned item comes from one source, and null if the items span sources (attribute each item by its \u0060source\u0060 discriminator) or there are none.",
             "example": "Source: Artificial Analysis (artificialanalysis.ai) via OpenRouter (openrouter.ai/rankings)."
           },
           "model_count": {
@@ -64321,7 +64888,7 @@
               "null",
               "string"
             ],
-            "description": "URL of the upstream data source, or null when results span multiple sources.",
+            "description": "URL of the upstream data source. Always set when \u0060source\u0060 is set. When \u0060source\u0060 is null, set if every returned item comes from one source, and null if the items span sources or there are none.",
             "example": "https://artificialanalysis.ai"
           },
           "task_type": {
@@ -64442,16 +65009,26 @@
         "example": {
           "data": [
             {
-              "agentic_index": 58.3,
-              "coding_index": 65.8,
+              "agentic_index": 55.8,
+              "coding_index": 63.2,
+              "cyber_index": 36.4,
+              "decision_index": 75.7,
               "display_name": "GPT-4o",
-              "intelligence_index": 71.2,
+              "economics_index": 57.2,
+              "engineering_index": 60.4,
+              "finance_and_accounting_index": 58.1,
+              "healthcare_and_medical_index": 56.9,
+              "intelligence_index": 71.4,
+              "legal_index": 52.3,
               "model_permaslug": "openai/gpt-4o",
+              "multilingual_index": 0.82,
+              "openness_index": 33.3,
               "pricing": {
                 "completion": "0.00001",
                 "prompt": "0.0000025"
               },
-              "source": "artificial-analysis"
+              "source": "artificial-analysis",
+              "strategy_and_ops_index": 61.7
             },
             {
               "accuracy": 0.72,
@@ -67712,6 +68289,10 @@
           "model": {
             "type": "string",
             "description": "The model to use for transcription."
+          },
+          "prompt": {
+            "type": "string",
+            "description": "Context to guide transcription on providers that support contextual prompting. Takes precedence over provider-specific prompt options, including when empty."
           },
           "provider": {
             "type": "string",
@@ -78851,11 +79432,14 @@
         }
       },
       "ImageGenerationResponseDataItem": {
+        "required": [
+          "b64_json"
+        ],
         "type": "object",
         "properties": {
           "b64_json": {
             "type": "string",
-            "description": "Base64-encoded image bytes. Present unless the request asked for \u0060response_format: \u0022url\u0022\u0060 and \u0060url\u0060 was issued."
+            "description": "Base64-encoded image bytes"
           },
           "layer": {
             "description": "Layer metadata, present when the request asked the provider to split the image into layers (Seedream: \u0060provider.options.seed.layer_decomposition: true\u0060 with the required \u0060layer_decomposition_options.max_images\u0060, 2 to 16). Decomposition requires \u0060n\u0060 to be 1 or omitted; the response returns up to \u0060max_images\u0060 images (the base image plus its layers).",
@@ -78865,11 +79449,6 @@
             "type": "string",
             "description": "Media type (MIME type) of the image, e.g. \u0060image/png\u0060, \u0060image/jpeg\u0060, \u0060image/webp\u0060, \u0060image/svg\u002Bxml\u0060. May be omitted if the format could not be determined.",
             "example": "image/png"
-          },
-          "url": {
-            "type": "string",
-            "description": "Signed download URL for the image bytes, issued for \u0060response_format: \u0022url\u0022\u0060 requests. Valid until \u0060expires_at\u0060. Absent when the response fell back to \u0060b64_json\u0060.",
-            "example": "https://storage.googleapis.com/openrouter-generated-media-us/v1/..."
           }
         }
       },
@@ -95177,30 +95756,6 @@
           ]
         }
       },
-      "ImageGenerationRequestResponseFormat": {
-        "enum": [
-          "b64_json",
-          "url"
-        ],
-        "type": "string",
-        "description": "\u0060b64_json\u0060 (default) returns the image bytes inline. \u0060url\u0060 stores each output in OpenRouter storage and returns a signed download URL in place of the bytes. The URL is a bearer link: anyone holding it can download the image until it expires, up to 24 hours after the image was stored (use \u0060expires_at\u0060); the stored copy is deleted by the storage lifecycle within the following day. The response falls back to \u0060b64_json\u0060 when a URL cannot be issued: streaming responses, zero-data-retention requests (account settings, guardrails or \u0060provider.zdr\u0060) or endpoints, or storage being unavailable.",
-        "example": "b64_json",
-        "x-speakeasy-unknown-values": "allow",
-        "x-ms-enum": {
-          "name": "ImageGenerationRequestResponseFormat",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "b64_json",
-              "name": "B64Json"
-            },
-            {
-              "value": "url",
-              "name": "Url"
-            }
-          ]
-        }
-      },
       "ImageGenerationServerToolBackground": {
         "enum": [
           "transparent",
@@ -99608,7 +100163,7 @@
         }
       },
       "UnifiedBenchmarksMetaSource": {
-        "description": "The source filter applied, or null when all sources are returned.",
+        "description": "The one source the response is limited to: the \u0060source\u0060 filter, or Artificial Analysis for a \u0060task_type\u0060 only it answers. Null when the response draws on every source.",
         "example": "artificial-analysis",
         "x-speakeasy-unknown-values": "allow",
         "anyOf": [
@@ -99619,7 +100174,7 @@
               "openrouter"
             ],
             "type": "string",
-            "description": "The source filter applied, or null when all sources are returned.",
+            "description": "The one source the response is limited to: the \u0060source\u0060 filter, or Artificial Analysis for a \u0060task_type\u0060 only it answers. Null when the response draws on every source.",
             "example": "artificial-analysis",
             "x-speakeasy-unknown-values": "allow",
             "x-ms-enum": {
@@ -106578,13 +107133,22 @@
       },
       "GetBenchmarksTaskTypeParameter": {
         "enum": [
-          "coding",
           "intelligence",
+          "coding",
           "agentic",
+          "finance-and-accounting",
+          "strategy-and-ops",
+          "legal",
+          "healthcare-and-medical",
+          "engineering",
+          "economics",
+          "cyber",
+          "multilingual",
+          "decision",
           "search"
         ],
         "type": "string",
-        "description": "Filter results by task type. For Artificial Analysis, maps to the corresponding index. For Design Arena, maps to the matching category. \u0060search\u0060 returns OpenRouter search benchmark results only.",
+        "description": "Filter results by task type. Every value except \u0060search\u0060 names the Artificial Analysis index of the same name and returns only models scored on it, best first (\u0060coding\u0060 and \u0060agentic\u0060 are deprecated: Artificial Analysis has retired those indexes). Design Arena answers only \u0060coding\u0060, \u0060intelligence\u0060 and \u0060agentic\u0060, and OpenRouter\u0027s own evals only \u0060intelligence\u0060 and \u0060agentic\u0060. \u0060search\u0060 returns OpenRouter search benchmark results only.",
         "example": "coding",
         "x-speakeasy-unknown-values": "allow",
         "x-ms-enum": {
@@ -106592,16 +107156,52 @@
           "modelAsString": false,
           "values": [
             {
-              "value": "coding",
-              "name": "Coding"
-            },
-            {
               "value": "intelligence",
               "name": "Intelligence"
             },
             {
+              "value": "coding",
+              "name": "Coding"
+            },
+            {
               "value": "agentic",
               "name": "Agentic"
+            },
+            {
+              "value": "finance-and-accounting",
+              "name": "FinanceAndAccounting"
+            },
+            {
+              "value": "strategy-and-ops",
+              "name": "StrategyAndOps"
+            },
+            {
+              "value": "legal",
+              "name": "Legal"
+            },
+            {
+              "value": "healthcare-and-medical",
+              "name": "HealthcareAndMedical"
+            },
+            {
+              "value": "engineering",
+              "name": "Engineering"
+            },
+            {
+              "value": "economics",
+              "name": "Economics"
+            },
+            {
+              "value": "cyber",
+              "name": "Cyber"
+            },
+            {
+              "value": "multilingual",
+              "name": "Multilingual"
+            },
+            {
+              "value": "decision",
+              "name": "Decision"
             },
             {
               "value": "search",
@@ -107934,10 +108534,20 @@
           "intelligence-high-to-low",
           "coding-high-to-low",
           "agentic-high-to-low",
+          "finance-and-accounting-high-to-low",
+          "strategy-and-ops-high-to-low",
+          "legal-high-to-low",
+          "healthcare-and-medical-high-to-low",
+          "engineering-high-to-low",
+          "economics-high-to-low",
+          "cyber-high-to-low",
+          "openness-high-to-low",
+          "multilingual-high-to-low",
+          "decision-high-to-low",
           "design-arena-elo-high-to-low"
         ],
         "type": "string",
-        "description": "Sort the returned models server-side. Prefer this over fetching the full list and sorting client-side. Options: pricing-low-to-high, pricing-high-to-low (average prompt/completion price), context-high-to-low (context length), throughput-high-to-low, latency-low-to-high (recent median performance), most-popular, top-weekly (tokens processed in the last week), newest (creation date), intelligence-high-to-low, coding-high-to-low, agentic-high-to-low (Artificial Analysis indices), design-arena-elo-high-to-low (best Design Arena ELO across arenas). Models without a score for the chosen benchmark are placed last. When omitted, the existing default ordering is preserved.",
+        "description": "Sort the returned models server-side. Prefer this over fetching the full list and sorting client-side. Options: pricing-low-to-high, pricing-high-to-low (average prompt/completion price), context-high-to-low (context length), throughput-high-to-low, latency-low-to-high (recent median performance), most-popular, top-weekly (tokens processed in the last week), newest (creation date), \u003Cindex\u003E-high-to-low for each Artificial Analysis index (the coding and agentic sorts are deprecated: Artificial Analysis has retired those indexes), design-arena-elo-high-to-low (best Design Arena ELO across arenas). Models without a score for the chosen benchmark are placed last. The decision sort ranks decision models, so pass output_modalities=decisions or all with it. When omitted, the existing default ordering is preserved.",
         "example": "newest",
         "x-speakeasy-unknown-values": "allow",
         "x-ms-enum": {
@@ -107987,6 +108597,46 @@
             {
               "value": "agentic-high-to-low",
               "name": "AgenticHighToLow"
+            },
+            {
+              "value": "finance-and-accounting-high-to-low",
+              "name": "FinanceAndAccountingHighToLow"
+            },
+            {
+              "value": "strategy-and-ops-high-to-low",
+              "name": "StrategyAndOpsHighToLow"
+            },
+            {
+              "value": "legal-high-to-low",
+              "name": "LegalHighToLow"
+            },
+            {
+              "value": "healthcare-and-medical-high-to-low",
+              "name": "HealthcareAndMedicalHighToLow"
+            },
+            {
+              "value": "engineering-high-to-low",
+              "name": "EngineeringHighToLow"
+            },
+            {
+              "value": "economics-high-to-low",
+              "name": "EconomicsHighToLow"
+            },
+            {
+              "value": "cyber-high-to-low",
+              "name": "CyberHighToLow"
+            },
+            {
+              "value": "openness-high-to-low",
+              "name": "OpennessHighToLow"
+            },
+            {
+              "value": "multilingual-high-to-low",
+              "name": "MultilingualHighToLow"
+            },
+            {
+              "value": "decision-high-to-low",
+              "name": "DecisionHighToLow"
             },
             {
               "value": "design-arena-elo-high-to-low",
@@ -108074,10 +108724,20 @@
           "intelligence-high-to-low",
           "coding-high-to-low",
           "agentic-high-to-low",
+          "finance-and-accounting-high-to-low",
+          "strategy-and-ops-high-to-low",
+          "legal-high-to-low",
+          "healthcare-and-medical-high-to-low",
+          "engineering-high-to-low",
+          "economics-high-to-low",
+          "cyber-high-to-low",
+          "openness-high-to-low",
+          "multilingual-high-to-low",
+          "decision-high-to-low",
           "design-arena-elo-high-to-low"
         ],
         "type": "string",
-        "description": "Sort the returned models server-side. Prefer this over fetching the full list and sorting client-side. Options: pricing-low-to-high, pricing-high-to-low (average prompt/completion price), context-high-to-low (context length), throughput-high-to-low, latency-low-to-high (recent median performance), most-popular, top-weekly (tokens processed in the last week), newest (creation date), intelligence-high-to-low, coding-high-to-low, agentic-high-to-low (Artificial Analysis indices), design-arena-elo-high-to-low (best Design Arena ELO across arenas). Models without a score for the chosen benchmark are placed last. When omitted, the existing default ordering is preserved.",
+        "description": "Sort the returned models server-side. Prefer this over fetching the full list and sorting client-side. Options: pricing-low-to-high, pricing-high-to-low (average prompt/completion price), context-high-to-low (context length), throughput-high-to-low, latency-low-to-high (recent median performance), most-popular, top-weekly (tokens processed in the last week), newest (creation date), \u003Cindex\u003E-high-to-low for each Artificial Analysis index (the coding and agentic sorts are deprecated: Artificial Analysis has retired those indexes), design-arena-elo-high-to-low (best Design Arena ELO across arenas). Models without a score for the chosen benchmark are placed last. The decision sort ranks decision models, so pass output_modalities=decisions or all with it. When omitted, the existing default ordering is preserved.",
         "example": "newest",
         "x-speakeasy-unknown-values": "allow",
         "x-ms-enum": {
@@ -108127,6 +108787,46 @@
             {
               "value": "agentic-high-to-low",
               "name": "AgenticHighToLow"
+            },
+            {
+              "value": "finance-and-accounting-high-to-low",
+              "name": "FinanceAndAccountingHighToLow"
+            },
+            {
+              "value": "strategy-and-ops-high-to-low",
+              "name": "StrategyAndOpsHighToLow"
+            },
+            {
+              "value": "legal-high-to-low",
+              "name": "LegalHighToLow"
+            },
+            {
+              "value": "healthcare-and-medical-high-to-low",
+              "name": "HealthcareAndMedicalHighToLow"
+            },
+            {
+              "value": "engineering-high-to-low",
+              "name": "EngineeringHighToLow"
+            },
+            {
+              "value": "economics-high-to-low",
+              "name": "EconomicsHighToLow"
+            },
+            {
+              "value": "cyber-high-to-low",
+              "name": "CyberHighToLow"
+            },
+            {
+              "value": "openness-high-to-low",
+              "name": "OpennessHighToLow"
+            },
+            {
+              "value": "multilingual-high-to-low",
+              "name": "MultilingualHighToLow"
+            },
+            {
+              "value": "decision-high-to-low",
+              "name": "DecisionHighToLow"
             },
             {
               "value": "design-arena-elo-high-to-low",
@@ -111547,9 +112247,9 @@
                 "maximum": 1,
                 "minimum": 0,
                 "type": "number",
-                "description": "Minimum coding quality score between 0 and 1. Maps to internal quality tiers: \u003E= 0.66 \u2192 high (top coding models), \u003E= 0.33 \u2192 medium (strong modern flagships), \u003C 0.33 \u2192 low (capable coders above the median). Omit to default to the highest tier (equivalent to \u003E= 0.66). Not used when max_price is set (price-based selection takes over).",
+                "description": "Selects one of three tiers of coding models with a number between 0 and 1. It is not a threshold on a model score: the tiers are groups of the current shortlist of top coding models. \u003E= 0.66 \u2192 high (the strongest group), \u003E= 0.33 \u2192 medium (the two strongest groups), \u003C 0.33 \u2192 low (the whole shortlist). Omit to use the high tier. Not used when max_price is set (price-based selection takes over).",
                 "format": "double",
-                "example": 0.8
+                "example": 0.4
               },
               "price_source": {
                 "$ref": "#/components/schemas/ParetoRouterPluginPriceSource"
@@ -128981,9 +129681,9 @@
           "maximum": 1,
           "minimum": 0,
           "type": "number",
-          "description": "Minimum coding quality score between 0 and 1. Maps to internal quality tiers: \u003E= 0.66 \u2192 high (top coding models), \u003E= 0.33 \u2192 medium (strong modern flagships), \u003C 0.33 \u2192 low (capable coders above the median). Omit to default to the highest tier (equivalent to \u003E= 0.66). Not used when max_price is set (price-based selection takes over).",
+          "description": "Selects one of three tiers of coding models with a number between 0 and 1. It is not a threshold on a model score: the tiers are groups of the current shortlist of top coding models. \u003E= 0.66 \u2192 high (the strongest group), \u003E= 0.33 \u2192 medium (the two strongest groups), \u003C 0.33 \u2192 low (the whole shortlist). Omit to use the high tier. Not used when max_price is set (price-based selection takes over).",
           "format": "double",
-          "example": 0.8
+          "example": 0.4
         },
         "price_source": {
           "$ref": "#/components/schemas/ParetoRouterPluginPriceSource"
@@ -131653,6 +132353,14 @@
         "error_type": {
           "description": "Canonical OpenRouter error type, stable across all API formats",
           "$ref": "#/components/schemas/ApiErrorType"
+        },
+        "input_transformations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/ResponsesInputTransformation"
+          },
+          "description": "Input items the upstream provider changed before inference (OpenAI \u0060input_transformations\u0060). Present only when the provider reported the field; empty when it changed nothing.",
+          "example": []
         },
         "openrouter_metadata": {
           "$ref": "#/components/schemas/OpenRouterMetadata"

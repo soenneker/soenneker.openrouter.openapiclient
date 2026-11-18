@@ -64,7 +64,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(4)
             {
                 { "classifier_context", n => { ClassifierContext = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ArmorContext>(global::Soenneker.OpenRouter.OpenApiClient.Models.ArmorContext.CreateFromDiscriminatorValue); } },
                 { "mode", n => { Mode = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.GuardrailModerationPolicyConfigArmorMode>(); } },

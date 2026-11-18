@@ -100,7 +100,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(5)
             {
                 { "message", n => { Message = n.GetStringValue(); } },
                 { "previous_errors", n => { PreviousErrors = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.GenerationContentErrorAttempt>(global::Soenneker.OpenRouter.OpenApiClient.Models.GenerationContentErrorAttempt.CreateFromDiscriminatorValue)?.AsList(); } },

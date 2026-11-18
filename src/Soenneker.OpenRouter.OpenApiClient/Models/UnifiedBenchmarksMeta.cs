@@ -45,7 +45,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public string AsOf { get => _explicitNullValueAsOf; set { _explicitNullValueAsOf = value; AdditionalData?.Remove("as_of"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("as_of"); else _explicitNullProperties?.Remove("as_of"); } }
         private string _explicitNullValueAsOf = default!;
 #endif
-        /// <summary>Required attribution when republishing this data, or null when results span multiple sources (attribute each item individually by its `source` discriminator).</summary>
+        /// <summary>Required attribution when republishing this data. Always set when `source` is set. When `source` is null, set if every returned item comes from one source, and null if the items span sources (attribute each item by its `source` discriminator) or there are none.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Citation { get => _explicitNullValueCitation; set { _explicitNullValueCitation = value; AdditionalData?.Remove("citation"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("citation"); else _explicitNullProperties?.Remove("citation"); } }
@@ -58,7 +58,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Number of unique models in the response.</summary>
         public int? ModelCount { get => _explicitNullValueModelCount; set { _explicitNullValueModelCount = value; AdditionalData?.Remove("model_count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_count"); else _explicitNullProperties?.Remove("model_count"); } }
         private int? _explicitNullValueModelCount = default!;
-        /// <summary>The source filter applied, or null when all sources are returned.</summary>
+        /// <summary>The one source the response is limited to: the `source` filter, or Artificial Analysis for a `task_type` only it answers. Null when the response draws on every source.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.OpenRouter.OpenApiClient.Models.UnifiedBenchmarksMetaSource? Source { get => _explicitNullValueSource; set { _explicitNullValueSource = value; AdditionalData?.Remove("source"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source"); else _explicitNullProperties?.Remove("source"); } }
@@ -68,7 +68,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public global::Soenneker.OpenRouter.OpenApiClient.Models.UnifiedBenchmarksMetaSource Source { get => _explicitNullValueSource; set { _explicitNullValueSource = value; AdditionalData?.Remove("source"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source"); else _explicitNullProperties?.Remove("source"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.UnifiedBenchmarksMetaSource _explicitNullValueSource = default!;
 #endif
-        /// <summary>URL of the upstream data source, or null when results span multiple sources.</summary>
+        /// <summary>URL of the upstream data source. Always set when `source` is set. When `source` is null, set if every returned item comes from one source, and null if the items span sources or there are none.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? SourceUrl { get => _explicitNullValueSourceUrl; set { _explicitNullValueSourceUrl = value; AdditionalData?.Remove("source_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_url"); else _explicitNullProperties?.Remove("source_url"); } }
@@ -114,7 +114,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(7)
             {
                 { "as_of", n => { AsOf = n.GetStringValue(); } },
                 { "citation", n => { Citation = n.GetStringValue(); } },

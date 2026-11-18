@@ -85,7 +85,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(4)
             {
                 { "caller", n => { Caller = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCaller>(global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCaller.CreateFromDiscriminatorValue); } },
                 { "content", n => { Content = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicWebSearchToolResultContent>(global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicWebSearchToolResultContent.CreateFromDiscriminatorValue); } },

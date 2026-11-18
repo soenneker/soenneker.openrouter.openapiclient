@@ -186,7 +186,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(15)
             {
                 { "completion_window", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.Value24HCompletionWindow>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueCompletionWindow = default; _explicitNullProperties?.Remove("completion_window"); AdditionalData["completion_window"] = unknown; } else { CompletionWindow = parsed; AdditionalData.Remove("completion_window"); } } },
                 { "created_at", n => { CreatedAt = n.GetIntValue(); } },

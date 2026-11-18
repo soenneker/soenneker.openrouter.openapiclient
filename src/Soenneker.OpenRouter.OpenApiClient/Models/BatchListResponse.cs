@@ -91,7 +91,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(5)
             {
                 { "data", n => { Data = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.BatchListItem>(global::Soenneker.OpenRouter.OpenApiClient.Models.BatchListItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "first_id", n => { FirstId = n.GetStringValue(); } },

@@ -88,7 +88,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(6)
             {
                 { "disabled", n => { Disabled = n.GetBoolValue(); } },
                 { "include_byok_in_limit", n => { IncludeByokInLimit = n.GetBoolValue(); } },

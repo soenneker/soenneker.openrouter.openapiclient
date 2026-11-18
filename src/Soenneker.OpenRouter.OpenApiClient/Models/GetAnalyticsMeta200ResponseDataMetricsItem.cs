@@ -78,7 +78,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(4)
             {
                 { "display_format", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.GetAnalyticsMeta200ResponseDataMetricsItemDisplayFormat>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueDisplayFormat = default; _explicitNullProperties?.Remove("display_format"); AdditionalData["display_format"] = unknown; } else { DisplayFormat = parsed; AdditionalData.Remove("display_format"); } } },
                 { "display_label", n => { DisplayLabel = n.GetStringValue(); } },

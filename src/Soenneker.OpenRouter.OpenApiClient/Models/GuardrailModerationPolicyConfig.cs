@@ -163,7 +163,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(13)
             {
                 { "armor", n => { Armor = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.GuardrailModerationPolicyConfigArmor>(global::Soenneker.OpenRouter.OpenApiClient.Models.GuardrailModerationPolicyConfigArmor.CreateFromDiscriminatorValue); } },
                 { "broadcast_model_armor_flagged_requests", n => { BroadcastModelArmorFlaggedRequests = n.GetBoolValue(); } },

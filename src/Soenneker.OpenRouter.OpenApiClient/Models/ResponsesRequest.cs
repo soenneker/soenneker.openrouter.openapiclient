@@ -480,7 +480,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(43)
             {
                 { "access_programs", n => { AccessPrograms = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesRequestAccessPrograms>(global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesRequestAccessPrograms.CreateFromDiscriminatorValue); } },
                 { "background", n => { Background = n.GetBoolValue(); } },

@@ -26,7 +26,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Artificial Analysis benchmark index scores.</summary>
+        /// <summary>Benchmark index scores published by Artificial Analysis (artificialanalysis.ai), one field per index. Each score is the model&apos;s best on that index across the configurations Artificial Analysis evaluated (for example reasoning levels), so two indexes of one model can come from different configurations. The deprecated Coding and Agentic Index scores are the exception: both come from one configuration, the model&apos;s strongest by Intelligence Index, then Coding Index, then Agentic Index. Attribute Artificial Analysis when you republish them. Omitted when Artificial Analysis has scored the model on none of them.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.OpenRouter.OpenApiClient.Models.AaBenchmarkEntry? ArtificialAnalysis { get => _explicitNullValueArtificialAnalysis; set { _explicitNullValueArtificialAnalysis = value; AdditionalData?.Remove("artificial_analysis"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("artificial_analysis"); else _explicitNullProperties?.Remove("artificial_analysis"); } }

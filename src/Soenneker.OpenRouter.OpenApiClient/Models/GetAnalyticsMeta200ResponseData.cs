@@ -92,7 +92,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(4)
             {
                 { "dimensions", n => { Dimensions = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.GetAnalyticsMeta200ResponseDataDimensionsItem>(global::Soenneker.OpenRouter.OpenApiClient.Models.GetAnalyticsMeta200ResponseDataDimensionsItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "granularities", n => { Granularities = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.GetAnalyticsMeta200ResponseDataGranularitiesItem>(global::Soenneker.OpenRouter.OpenApiClient.Models.GetAnalyticsMeta200ResponseDataGranularitiesItem.CreateFromDiscriminatorValue)?.AsList(); } },

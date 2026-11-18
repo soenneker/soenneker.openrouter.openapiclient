@@ -109,7 +109,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(10)
             {
                 { "announce_catalog_changes", n => { AnnounceCatalogChanges = n.GetBoolValue(); } },
                 { "cascade_mode", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.DeferredToolsControlCascadeMode>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueCascadeMode = default; _explicitNullProperties?.Remove("cascade_mode"); AdditionalData["cascade_mode"] = unknown; } else { CascadeMode = parsed; AdditionalData.Remove("cascade_mode"); } } },

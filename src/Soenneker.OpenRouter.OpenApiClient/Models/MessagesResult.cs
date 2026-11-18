@@ -211,7 +211,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(15)
             {
                 { "container", n => { Container = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicContainer>(global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicContainer.CreateFromDiscriminatorValue); } },
                 { "content", n => { Content = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.OrAnthropicContentBlock>(global::Soenneker.OpenRouter.OpenApiClient.Models.OrAnthropicContentBlock.CreateFromDiscriminatorValue)?.AsList(); } },

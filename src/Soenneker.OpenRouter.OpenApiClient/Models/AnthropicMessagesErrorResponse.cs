@@ -101,7 +101,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(5)
             {
                 { "error", n => { Error = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicMessagesErrorResponseError>(global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicMessagesErrorResponseError.CreateFromDiscriminatorValue); } },
                 { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicMessagesErrorResponseMetadataProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicMessagesErrorResponseMetadataProperty.CreateFromDiscriminatorValue); } },

@@ -139,7 +139,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(9)
             {
                 { "dimensions", n => { Dimensions = n.GetIntValue(); } },
                 { "encoding_format", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.CreateEmbeddingsRequestEncodingFormat>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueEncodingFormat = default; _explicitNullProperties?.Remove("encoding_format"); AdditionalData["encoding_format"] = unknown; } else { EncodingFormat = parsed; AdditionalData.Remove("encoding_format"); } } },

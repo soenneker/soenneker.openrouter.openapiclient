@@ -7,10 +7,11 @@ using System.IO;
 using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
+    /// <summary>
+    /// One model&apos;s Artificial Analysis index scores. Each score is the model&apos;s best on that index across the configurations Artificial Analysis evaluated (for example reasoning levels), so two indexes of one model can come from different configurations. The deprecated Coding and Agentic Index scores are the exception: both come from one configuration, the model&apos;s strongest by Intelligence Index, then Coding Index, then Agentic Index. With `task_type` set to `intelligence`, `coding` or `agentic`, those three indexes all come from the configuration that scores best on the one named.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public partial class UnifiedBenchmarksAaItem : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
     , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
         // Track explicitly assigned nulls separately from absent properties.
         private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
@@ -21,26 +22,54 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             else if (parseNode.GetChildNode("agentic_index") is { } nullNodeAgenticIndex && nullNodeAgenticIndex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AgenticIndex = null;
             if (parseNode.GetChildNode("coding_index") is null) { _explicitNullValueCodingIndex = default!; _explicitNullProperties?.Remove("coding_index"); }
             else if (parseNode.GetChildNode("coding_index") is { } nullNodeCodingIndex && nullNodeCodingIndex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CodingIndex = null;
+            if (parseNode.GetChildNode("cyber_index") is null) { _explicitNullValueCyberIndex = default!; _explicitNullProperties?.Remove("cyber_index"); }
+            else if (parseNode.GetChildNode("cyber_index") is { } nullNodeCyberIndex && nullNodeCyberIndex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CyberIndex = null;
+            if (parseNode.GetChildNode("decision_index") is null) { _explicitNullValueDecisionIndex = default!; _explicitNullProperties?.Remove("decision_index"); }
+            else if (parseNode.GetChildNode("decision_index") is { } nullNodeDecisionIndex && nullNodeDecisionIndex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DecisionIndex = null;
             if (parseNode.GetChildNode("display_name") is null) { _explicitNullValueDisplayName = default!; _explicitNullProperties?.Remove("display_name"); }
             else if (parseNode.GetChildNode("display_name") is { } nullNodeDisplayName && nullNodeDisplayName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DisplayName = null;
+            if (parseNode.GetChildNode("economics_index") is null) { _explicitNullValueEconomicsIndex = default!; _explicitNullProperties?.Remove("economics_index"); }
+            else if (parseNode.GetChildNode("economics_index") is { } nullNodeEconomicsIndex && nullNodeEconomicsIndex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EconomicsIndex = null;
+            if (parseNode.GetChildNode("engineering_index") is null) { _explicitNullValueEngineeringIndex = default!; _explicitNullProperties?.Remove("engineering_index"); }
+            else if (parseNode.GetChildNode("engineering_index") is { } nullNodeEngineeringIndex && nullNodeEngineeringIndex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EngineeringIndex = null;
+            if (parseNode.GetChildNode("finance_and_accounting_index") is null) { _explicitNullValueFinanceAndAccountingIndex = default!; _explicitNullProperties?.Remove("finance_and_accounting_index"); }
+            else if (parseNode.GetChildNode("finance_and_accounting_index") is { } nullNodeFinanceAndAccountingIndex && nullNodeFinanceAndAccountingIndex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FinanceAndAccountingIndex = null;
+            if (parseNode.GetChildNode("healthcare_and_medical_index") is null) { _explicitNullValueHealthcareAndMedicalIndex = default!; _explicitNullProperties?.Remove("healthcare_and_medical_index"); }
+            else if (parseNode.GetChildNode("healthcare_and_medical_index") is { } nullNodeHealthcareAndMedicalIndex && nullNodeHealthcareAndMedicalIndex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HealthcareAndMedicalIndex = null;
             if (parseNode.GetChildNode("intelligence_index") is null) { _explicitNullValueIntelligenceIndex = default!; _explicitNullProperties?.Remove("intelligence_index"); }
             else if (parseNode.GetChildNode("intelligence_index") is { } nullNodeIntelligenceIndex && nullNodeIntelligenceIndex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IntelligenceIndex = null;
+            if (parseNode.GetChildNode("legal_index") is null) { _explicitNullValueLegalIndex = default!; _explicitNullProperties?.Remove("legal_index"); }
+            else if (parseNode.GetChildNode("legal_index") is { } nullNodeLegalIndex && nullNodeLegalIndex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LegalIndex = null;
             if (parseNode.GetChildNode("model_permaslug") is null) { _explicitNullValueModelPermaslug = default!; _explicitNullProperties?.Remove("model_permaslug"); }
             else if (parseNode.GetChildNode("model_permaslug") is { } nullNodeModelPermaslug && nullNodeModelPermaslug.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ModelPermaslug = null;
+            if (parseNode.GetChildNode("multilingual_index") is null) { _explicitNullValueMultilingualIndex = default!; _explicitNullProperties?.Remove("multilingual_index"); }
+            else if (parseNode.GetChildNode("multilingual_index") is { } nullNodeMultilingualIndex && nullNodeMultilingualIndex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MultilingualIndex = null;
+            if (parseNode.GetChildNode("openness_index") is null) { _explicitNullValueOpennessIndex = default!; _explicitNullProperties?.Remove("openness_index"); }
+            else if (parseNode.GetChildNode("openness_index") is { } nullNodeOpennessIndex && nullNodeOpennessIndex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OpennessIndex = null;
             if (parseNode.GetChildNode("pricing") is null) { _explicitNullValuePricing = default!; _explicitNullProperties?.Remove("pricing"); }
             else if (parseNode.GetChildNode("pricing") is { } nullNodePricing && nullNodePricing.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Pricing = null;
             if (parseNode.GetChildNode("source") is null) { _explicitNullValueSource = default!; _explicitNullProperties?.Remove("source"); }
             else if (parseNode.GetChildNode("source") is { } nullNodeSource && nullNodeSource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Source = null;
+            if (parseNode.GetChildNode("strategy_and_ops_index") is null) { _explicitNullValueStrategyAndOpsIndex = default!; _explicitNullProperties?.Remove("strategy_and_ops_index"); }
+            else if (parseNode.GetChildNode("strategy_and_ops_index") is { } nullNodeStrategyAndOpsIndex && nullNodeStrategyAndOpsIndex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StrategyAndOpsIndex = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Artificial Analysis Agentic Index composite score. Higher is better.</summary>
+        /// <summary>Deprecated: Artificial Analysis has retired its Agentic Index and no longer publishes it. Holds the last score Artificial Analysis published for the model, on a 0-100 scale, or null; it will be null for every model once those stored scores are removed.</summary>
+        [Obsolete("")]
         public double? AgenticIndex { get => _explicitNullValueAgenticIndex; set { _explicitNullValueAgenticIndex = value; AdditionalData?.Remove("agentic_index"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agentic_index"); else _explicitNullProperties?.Remove("agentic_index"); } }
         private double? _explicitNullValueAgenticIndex = default!;
-        /// <summary>Artificial Analysis Coding Index composite score. Higher is better.</summary>
+        /// <summary>Deprecated: Artificial Analysis has retired its Coding Index and no longer publishes it. Holds the last score Artificial Analysis published for the model, on a 0-100 scale, or null; it will be null for every model once those stored scores are removed.</summary>
+        [Obsolete("")]
         public double? CodingIndex { get => _explicitNullValueCodingIndex; set { _explicitNullValueCodingIndex = value; AdditionalData?.Remove("coding_index"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("coding_index"); else _explicitNullProperties?.Remove("coding_index"); } }
         private double? _explicitNullValueCodingIndex = default!;
+        /// <summary>Artificial Analysis Cyber Index score, on a 0-100 scale: the model&apos;s best across the configurations Artificial Analysis evaluated. Higher is better. Null when Artificial Analysis has not published a score for the model.</summary>
+        public double? CyberIndex { get => _explicitNullValueCyberIndex; set { _explicitNullValueCyberIndex = value; AdditionalData?.Remove("cyber_index"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cyber_index"); else _explicitNullProperties?.Remove("cyber_index"); } }
+        private double? _explicitNullValueCyberIndex = default!;
+        /// <summary>Artificial Analysis Decision Index score, on a 0-100 scale: the model&apos;s best across the configurations Artificial Analysis evaluated. Higher is better. Published for decision models and for the language models Artificial Analysis evaluates on decision tasks. Null when Artificial Analysis has not published a score for the model.</summary>
+        public double? DecisionIndex { get => _explicitNullValueDecisionIndex; set { _explicitNullValueDecisionIndex = value; AdditionalData?.Remove("decision_index"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("decision_index"); else _explicitNullProperties?.Remove("decision_index"); } }
+        private double? _explicitNullValueDecisionIndex = default!;
         /// <summary>Model name as listed on Artificial Analysis.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -51,9 +80,24 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public string DisplayName { get => _explicitNullValueDisplayName; set { _explicitNullValueDisplayName = value; AdditionalData?.Remove("display_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("display_name"); else _explicitNullProperties?.Remove("display_name"); } }
         private string _explicitNullValueDisplayName = default!;
 #endif
-        /// <summary>Artificial Analysis Intelligence Index composite score. Higher is better.</summary>
+        /// <summary>Artificial Analysis Economics Index score, on a 0-100 scale: the model&apos;s best across the configurations Artificial Analysis evaluated. Higher is better. One of the six Artificial Analysis Capability Indexes. Null when Artificial Analysis has not published a score for the model.</summary>
+        public double? EconomicsIndex { get => _explicitNullValueEconomicsIndex; set { _explicitNullValueEconomicsIndex = value; AdditionalData?.Remove("economics_index"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("economics_index"); else _explicitNullProperties?.Remove("economics_index"); } }
+        private double? _explicitNullValueEconomicsIndex = default!;
+        /// <summary>Artificial Analysis Engineering Index score, on a 0-100 scale: the model&apos;s best across the configurations Artificial Analysis evaluated. Higher is better. One of the six Artificial Analysis Capability Indexes. Null when Artificial Analysis has not published a score for the model.</summary>
+        public double? EngineeringIndex { get => _explicitNullValueEngineeringIndex; set { _explicitNullValueEngineeringIndex = value; AdditionalData?.Remove("engineering_index"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("engineering_index"); else _explicitNullProperties?.Remove("engineering_index"); } }
+        private double? _explicitNullValueEngineeringIndex = default!;
+        /// <summary>Artificial Analysis Finance &amp; Accounting Index score, on a 0-100 scale: the model&apos;s best across the configurations Artificial Analysis evaluated. Higher is better. One of the six Artificial Analysis Capability Indexes. Null when Artificial Analysis has not published a score for the model.</summary>
+        public double? FinanceAndAccountingIndex { get => _explicitNullValueFinanceAndAccountingIndex; set { _explicitNullValueFinanceAndAccountingIndex = value; AdditionalData?.Remove("finance_and_accounting_index"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("finance_and_accounting_index"); else _explicitNullProperties?.Remove("finance_and_accounting_index"); } }
+        private double? _explicitNullValueFinanceAndAccountingIndex = default!;
+        /// <summary>Artificial Analysis Healthcare &amp; Medical Index score, on a 0-100 scale: the model&apos;s best across the configurations Artificial Analysis evaluated. Higher is better. One of the six Artificial Analysis Capability Indexes. Null when Artificial Analysis has not published a score for the model.</summary>
+        public double? HealthcareAndMedicalIndex { get => _explicitNullValueHealthcareAndMedicalIndex; set { _explicitNullValueHealthcareAndMedicalIndex = value; AdditionalData?.Remove("healthcare_and_medical_index"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("healthcare_and_medical_index"); else _explicitNullProperties?.Remove("healthcare_and_medical_index"); } }
+        private double? _explicitNullValueHealthcareAndMedicalIndex = default!;
+        /// <summary>Artificial Analysis Intelligence Index score, on a 0-100 scale: the model&apos;s best across the configurations Artificial Analysis evaluated. Higher is better. Null when Artificial Analysis has not published a score for the model.</summary>
         public double? IntelligenceIndex { get => _explicitNullValueIntelligenceIndex; set { _explicitNullValueIntelligenceIndex = value; AdditionalData?.Remove("intelligence_index"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("intelligence_index"); else _explicitNullProperties?.Remove("intelligence_index"); } }
         private double? _explicitNullValueIntelligenceIndex = default!;
+        /// <summary>Artificial Analysis Legal Index score, on a 0-100 scale: the model&apos;s best across the configurations Artificial Analysis evaluated. Higher is better. One of the six Artificial Analysis Capability Indexes. Null when Artificial Analysis has not published a score for the model.</summary>
+        public double? LegalIndex { get => _explicitNullValueLegalIndex; set { _explicitNullValueLegalIndex = value; AdditionalData?.Remove("legal_index"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("legal_index"); else _explicitNullProperties?.Remove("legal_index"); } }
+        private double? _explicitNullValueLegalIndex = default!;
         /// <summary>Stable OpenRouter model identifier.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -64,6 +108,12 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public string ModelPermaslug { get => _explicitNullValueModelPermaslug; set { _explicitNullValueModelPermaslug = value; AdditionalData?.Remove("model_permaslug"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_permaslug"); else _explicitNullProperties?.Remove("model_permaslug"); } }
         private string _explicitNullValueModelPermaslug = default!;
 #endif
+        /// <summary>Artificial Analysis Multilingual Index score, as a fraction from 0 to 1: the model&apos;s best across the configurations Artificial Analysis evaluated. Higher is better. Null when Artificial Analysis has not published a score for the model.</summary>
+        public double? MultilingualIndex { get => _explicitNullValueMultilingualIndex; set { _explicitNullValueMultilingualIndex = value; AdditionalData?.Remove("multilingual_index"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("multilingual_index"); else _explicitNullProperties?.Remove("multilingual_index"); } }
+        private double? _explicitNullValueMultilingualIndex = default!;
+        /// <summary>Artificial Analysis Openness Index score, on a 0-100 scale: the model&apos;s best across the configurations Artificial Analysis evaluated. Higher is better. Null when Artificial Analysis has not published a score for the model.</summary>
+        public double? OpennessIndex { get => _explicitNullValueOpennessIndex; set { _explicitNullValueOpennessIndex = value; AdditionalData?.Remove("openness_index"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("openness_index"); else _explicitNullProperties?.Remove("openness_index"); } }
+        private double? _explicitNullValueOpennessIndex = default!;
         /// <summary>OpenRouter pricing per token for this model. Null if pricing is unavailable.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -77,6 +127,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Benchmark source discriminator.</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.ArtificialAnalysisSource? Source { get => _explicitNullValueSource; set { _explicitNullValueSource = value; AdditionalData?.Remove("source"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source"); else _explicitNullProperties?.Remove("source"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.ArtificialAnalysisSource? _explicitNullValueSource = default!;
+        /// <summary>Artificial Analysis Strategy &amp; Ops Index score, on a 0-100 scale: the model&apos;s best across the configurations Artificial Analysis evaluated. Higher is better. One of the six Artificial Analysis Capability Indexes. Null when Artificial Analysis has not published a score for the model.</summary>
+        public double? StrategyAndOpsIndex { get => _explicitNullValueStrategyAndOpsIndex; set { _explicitNullValueStrategyAndOpsIndex = value; AdditionalData?.Remove("strategy_and_ops_index"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("strategy_and_ops_index"); else _explicitNullProperties?.Remove("strategy_and_ops_index"); } }
+        private double? _explicitNullValueStrategyAndOpsIndex = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.UnifiedBenchmarksAaItem"/> and sets the default values.
         /// </summary>
@@ -100,15 +153,25 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(17)
             {
                 { "agentic_index", n => { AgenticIndex = n.GetDoubleValue(); } },
                 { "coding_index", n => { CodingIndex = n.GetDoubleValue(); } },
+                { "cyber_index", n => { CyberIndex = n.GetDoubleValue(); } },
+                { "decision_index", n => { DecisionIndex = n.GetDoubleValue(); } },
                 { "display_name", n => { DisplayName = n.GetStringValue(); } },
+                { "economics_index", n => { EconomicsIndex = n.GetDoubleValue(); } },
+                { "engineering_index", n => { EngineeringIndex = n.GetDoubleValue(); } },
+                { "finance_and_accounting_index", n => { FinanceAndAccountingIndex = n.GetDoubleValue(); } },
+                { "healthcare_and_medical_index", n => { HealthcareAndMedicalIndex = n.GetDoubleValue(); } },
                 { "intelligence_index", n => { IntelligenceIndex = n.GetDoubleValue(); } },
+                { "legal_index", n => { LegalIndex = n.GetDoubleValue(); } },
                 { "model_permaslug", n => { ModelPermaslug = n.GetStringValue(); } },
+                { "multilingual_index", n => { MultilingualIndex = n.GetDoubleValue(); } },
+                { "openness_index", n => { OpennessIndex = n.GetDoubleValue(); } },
                 { "pricing", n => { Pricing = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.UnifiedBenchmarkPricing>(global::Soenneker.OpenRouter.OpenApiClient.Models.UnifiedBenchmarkPricing.CreateFromDiscriminatorValue); } },
                 { "source", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ArtificialAnalysisSource>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueSource = default; _explicitNullProperties?.Remove("source"); AdditionalData["source"] = unknown; } else { Source = parsed; AdditionalData.Remove("source"); } } },
+                { "strategy_and_ops_index", n => { StrategyAndOpsIndex = n.GetDoubleValue(); } },
             };
         }
         /// <summary>
@@ -120,11 +183,21 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDoubleValue("agentic_index", AgenticIndex);
             writer.WriteDoubleValue("coding_index", CodingIndex);
+            writer.WriteDoubleValue("cyber_index", CyberIndex);
+            writer.WriteDoubleValue("decision_index", DecisionIndex);
             writer.WriteStringValue("display_name", DisplayName);
+            writer.WriteDoubleValue("economics_index", EconomicsIndex);
+            writer.WriteDoubleValue("engineering_index", EngineeringIndex);
+            writer.WriteDoubleValue("finance_and_accounting_index", FinanceAndAccountingIndex);
+            writer.WriteDoubleValue("healthcare_and_medical_index", HealthcareAndMedicalIndex);
             writer.WriteDoubleValue("intelligence_index", IntelligenceIndex);
+            writer.WriteDoubleValue("legal_index", LegalIndex);
             writer.WriteStringValue("model_permaslug", ModelPermaslug);
+            writer.WriteDoubleValue("multilingual_index", MultilingualIndex);
+            writer.WriteDoubleValue("openness_index", OpennessIndex);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.UnifiedBenchmarkPricing>("pricing", Pricing);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ArtificialAnalysisSource>("source", Source);
+            writer.WriteDoubleValue("strategy_and_ops_index", StrategyAndOpsIndex);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }

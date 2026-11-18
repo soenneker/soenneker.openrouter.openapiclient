@@ -184,7 +184,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(13)
             {
                 { "accessKeyId", n => { AccessKeyId = n.GetStringValue(); } },
                 { "authMode", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityS3DestinationConfigAuthMode>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueAuthMode = default; _explicitNullProperties?.Remove("authMode"); AdditionalData["authMode"] = unknown; } else { AuthMode = parsed; AdditionalData.Remove("authMode"); } } },

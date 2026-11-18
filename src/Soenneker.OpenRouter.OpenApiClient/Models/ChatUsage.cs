@@ -130,7 +130,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(10)
             {
                 { "completion_tokens", n => { CompletionTokens = n.GetIntValue(); } },
                 { "completion_tokens_details", n => { CompletionTokensDetails = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatUsageCompletionTokensDetails>(global::Soenneker.OpenRouter.OpenApiClient.Models.ChatUsageCompletionTokensDetails.CreateFromDiscriminatorValue); } },

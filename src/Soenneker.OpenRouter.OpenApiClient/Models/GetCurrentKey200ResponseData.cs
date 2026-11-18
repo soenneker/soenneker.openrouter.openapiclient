@@ -242,7 +242,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(25)
             {
                 { "allowed_data_regions", n => { AllowedDataRegions = n.GetCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.GetCurrentKey200ResponseDataAllowedDataRegionsItem>()?.AsList(); } },
                 { "budgets", n => { Budgets = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.KeyBudget>(global::Soenneker.OpenRouter.OpenApiClient.Models.KeyBudget.CreateFromDiscriminatorValue)?.AsList(); } },

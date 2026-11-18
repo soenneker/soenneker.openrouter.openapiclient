@@ -128,7 +128,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(7)
             {
                 { "datacenters", n => { Datacenters = n.GetCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ListProviders200ResponseDataItemDatacentersItem>()?.AsList(); } },
                 { "headquarters", n => { Headquarters = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ListProviders200ResponseDataItemHeadquarters>(global::Soenneker.OpenRouter.OpenApiClient.Models.ListProviders200ResponseDataItemHeadquarters.CreateFromDiscriminatorValue); } },

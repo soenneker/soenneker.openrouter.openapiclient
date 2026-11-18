@@ -93,7 +93,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(4)
             {
                 { "baseUrl", n => { BaseUrl = n.GetStringValue(); } },
                 { "headers", n => { Headers = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityLangfuseDestinationConfigHeadersProperty>(global::Soenneker.OpenRouter.OpenApiClient.Models.ObservabilityLangfuseDestinationConfigHeadersProperty.CreateFromDiscriminatorValue); } },

@@ -47,7 +47,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.ModelsRequests
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ModelsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/models{?arch*,category*,context*,distillable*,endpoints*,input_modalities*,limit*,max_age_days*,max_agentic_index*,max_coding_index*,max_intelligence_index*,max_output_price*,max_price*,max_tool_success_rate*,min_age_days*,min_agentic_index*,min_coding_index*,min_intelligence_index*,min_output_price*,min_price*,min_tool_success_rate*,model_authors*,offset*,output_modalities*,providers*,q*,region*,sort*,supported_parameters*,zdr*}", pathParameters)
+        public ModelsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/models{?arch*,category*,context*,distillable*,endpoints*,input_modalities*,limit*,max_age_days*,max_agentic_index*,max_coding_index*,max_cyber_index*,max_decision_index*,max_economics_index*,max_engineering_index*,max_finance_and_accounting_index*,max_healthcare_and_medical_index*,max_intelligence_index*,max_legal_index*,max_multilingual_index*,max_openness_index*,max_output_price*,max_price*,max_strategy_and_ops_index*,max_tool_success_rate*,min_age_days*,min_agentic_index*,min_coding_index*,min_cyber_index*,min_decision_index*,min_economics_index*,min_engineering_index*,min_finance_and_accounting_index*,min_healthcare_and_medical_index*,min_intelligence_index*,min_legal_index*,min_multilingual_index*,min_openness_index*,min_output_price*,min_price*,min_strategy_and_ops_index*,min_tool_success_rate*,model_authors*,offset*,output_modalities*,providers*,q*,region*,sort*,supported_parameters*,zdr*}", pathParameters)
         {
         }
         /// <summary>
@@ -55,7 +55,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.ModelsRequests
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ModelsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/models{?arch*,category*,context*,distillable*,endpoints*,input_modalities*,limit*,max_age_days*,max_agentic_index*,max_coding_index*,max_intelligence_index*,max_output_price*,max_price*,max_tool_success_rate*,min_age_days*,min_agentic_index*,min_coding_index*,min_intelligence_index*,min_output_price*,min_price*,min_tool_success_rate*,model_authors*,offset*,output_modalities*,providers*,q*,region*,sort*,supported_parameters*,zdr*}", rawUrl)
+        public ModelsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/models{?arch*,category*,context*,distillable*,endpoints*,input_modalities*,limit*,max_age_days*,max_agentic_index*,max_coding_index*,max_cyber_index*,max_decision_index*,max_economics_index*,max_engineering_index*,max_finance_and_accounting_index*,max_healthcare_and_medical_index*,max_intelligence_index*,max_legal_index*,max_multilingual_index*,max_openness_index*,max_output_price*,max_price*,max_strategy_and_ops_index*,max_tool_success_rate*,min_age_days*,min_agentic_index*,min_coding_index*,min_cyber_index*,min_decision_index*,min_economics_index*,min_engineering_index*,min_finance_and_accounting_index*,min_healthcare_and_medical_index*,min_intelligence_index*,min_legal_index*,min_multilingual_index*,min_openness_index*,min_output_price*,min_price*,min_strategy_and_ops_index*,min_tool_success_rate*,model_authors*,offset*,output_modalities*,providers*,q*,region*,sort*,supported_parameters*,zdr*}", rawUrl)
         {
         }
         /// <summary>
@@ -178,42 +178,106 @@ namespace Soenneker.OpenRouter.OpenApiClient.ModelsRequests
             /// <summary>Maximum model age in days since its creation date.</summary>
             [QueryParameter("max_age_days")]
             public int? MaxAgeDays { get; set; }
-            /// <summary>Maximum Artificial Analysis agentic index.</summary>
+            /// <summary>Deprecated: Artificial Analysis has retired its Agentic Index. Maximum score (0-100); unscored models are excluded.</summary>
+            [Obsolete("")]
             [QueryParameter("max_agentic_index")]
             public double? MaxAgenticIndex { get; set; }
-            /// <summary>Maximum Artificial Analysis coding index.</summary>
+            /// <summary>Deprecated: Artificial Analysis has retired its Coding Index. Maximum score (0-100); unscored models are excluded.</summary>
+            [Obsolete("")]
             [QueryParameter("max_coding_index")]
             public double? MaxCodingIndex { get; set; }
-            /// <summary>Maximum Artificial Analysis intelligence index.</summary>
+            /// <summary>Maximum Artificial Analysis Cyber Index score (0-100); unscored models are excluded.</summary>
+            [QueryParameter("max_cyber_index")]
+            public double? MaxCyberIndex { get; set; }
+            /// <summary>Maximum Artificial Analysis Decision Index score (0-100); unscored models are excluded.</summary>
+            [QueryParameter("max_decision_index")]
+            public double? MaxDecisionIndex { get; set; }
+            /// <summary>Maximum Artificial Analysis Economics Index score (0-100); unscored models are excluded.</summary>
+            [QueryParameter("max_economics_index")]
+            public double? MaxEconomicsIndex { get; set; }
+            /// <summary>Maximum Artificial Analysis Engineering Index score (0-100); unscored models are excluded.</summary>
+            [QueryParameter("max_engineering_index")]
+            public double? MaxEngineeringIndex { get; set; }
+            /// <summary>Maximum Artificial Analysis Finance &amp; Accounting Index score (0-100); unscored models are excluded.</summary>
+            [QueryParameter("max_finance_and_accounting_index")]
+            public double? MaxFinanceAndAccountingIndex { get; set; }
+            /// <summary>Maximum Artificial Analysis Healthcare &amp; Medical Index score (0-100); unscored models are excluded.</summary>
+            [QueryParameter("max_healthcare_and_medical_index")]
+            public double? MaxHealthcareAndMedicalIndex { get; set; }
+            /// <summary>Maximum Artificial Analysis Intelligence Index score (0-100); unscored models are excluded.</summary>
             [QueryParameter("max_intelligence_index")]
             public double? MaxIntelligenceIndex { get; set; }
+            /// <summary>Maximum Artificial Analysis Legal Index score (0-100); unscored models are excluded.</summary>
+            [QueryParameter("max_legal_index")]
+            public double? MaxLegalIndex { get; set; }
+            /// <summary>Maximum Artificial Analysis Multilingual Index score (0-1); unscored models are excluded.</summary>
+            [QueryParameter("max_multilingual_index")]
+            public double? MaxMultilingualIndex { get; set; }
+            /// <summary>Maximum Artificial Analysis Openness Index score (0-100); unscored models are excluded.</summary>
+            [QueryParameter("max_openness_index")]
+            public double? MaxOpennessIndex { get; set; }
             /// <summary>Maximum completion (output) price in $/M tokens.</summary>
             [QueryParameter("max_output_price")]
             public double? MaxOutputPrice { get; set; }
             /// <summary>Maximum prompt price in $/M tokens.</summary>
             [QueryParameter("max_price")]
             public double? MaxPrice { get; set; }
+            /// <summary>Maximum Artificial Analysis Strategy &amp; Ops Index score (0-100); unscored models are excluded.</summary>
+            [QueryParameter("max_strategy_and_ops_index")]
+            public double? MaxStrategyAndOpsIndex { get; set; }
             /// <summary>Maximum tool-calling success rate, as a fraction in [0, 1].</summary>
             [QueryParameter("max_tool_success_rate")]
             public double? MaxToolSuccessRate { get; set; }
             /// <summary>Minimum model age in days since its creation date.</summary>
             [QueryParameter("min_age_days")]
             public int? MinAgeDays { get; set; }
-            /// <summary>Minimum Artificial Analysis agentic index.</summary>
+            /// <summary>Deprecated: Artificial Analysis has retired its Agentic Index. Minimum score (0-100); unscored models are excluded.</summary>
+            [Obsolete("")]
             [QueryParameter("min_agentic_index")]
             public double? MinAgenticIndex { get; set; }
-            /// <summary>Minimum Artificial Analysis coding index.</summary>
+            /// <summary>Deprecated: Artificial Analysis has retired its Coding Index. Minimum score (0-100); unscored models are excluded.</summary>
+            [Obsolete("")]
             [QueryParameter("min_coding_index")]
             public double? MinCodingIndex { get; set; }
-            /// <summary>Minimum Artificial Analysis intelligence index.</summary>
+            /// <summary>Minimum Artificial Analysis Cyber Index score (0-100); unscored models are excluded.</summary>
+            [QueryParameter("min_cyber_index")]
+            public double? MinCyberIndex { get; set; }
+            /// <summary>Minimum Artificial Analysis Decision Index score (0-100); unscored models are excluded.</summary>
+            [QueryParameter("min_decision_index")]
+            public double? MinDecisionIndex { get; set; }
+            /// <summary>Minimum Artificial Analysis Economics Index score (0-100); unscored models are excluded.</summary>
+            [QueryParameter("min_economics_index")]
+            public double? MinEconomicsIndex { get; set; }
+            /// <summary>Minimum Artificial Analysis Engineering Index score (0-100); unscored models are excluded.</summary>
+            [QueryParameter("min_engineering_index")]
+            public double? MinEngineeringIndex { get; set; }
+            /// <summary>Minimum Artificial Analysis Finance &amp; Accounting Index score (0-100); unscored models are excluded.</summary>
+            [QueryParameter("min_finance_and_accounting_index")]
+            public double? MinFinanceAndAccountingIndex { get; set; }
+            /// <summary>Minimum Artificial Analysis Healthcare &amp; Medical Index score (0-100); unscored models are excluded.</summary>
+            [QueryParameter("min_healthcare_and_medical_index")]
+            public double? MinHealthcareAndMedicalIndex { get; set; }
+            /// <summary>Minimum Artificial Analysis Intelligence Index score (0-100); unscored models are excluded.</summary>
             [QueryParameter("min_intelligence_index")]
             public double? MinIntelligenceIndex { get; set; }
+            /// <summary>Minimum Artificial Analysis Legal Index score (0-100); unscored models are excluded.</summary>
+            [QueryParameter("min_legal_index")]
+            public double? MinLegalIndex { get; set; }
+            /// <summary>Minimum Artificial Analysis Multilingual Index score (0-1); unscored models are excluded.</summary>
+            [QueryParameter("min_multilingual_index")]
+            public double? MinMultilingualIndex { get; set; }
+            /// <summary>Minimum Artificial Analysis Openness Index score (0-100); unscored models are excluded.</summary>
+            [QueryParameter("min_openness_index")]
+            public double? MinOpennessIndex { get; set; }
             /// <summary>Minimum completion (output) price in $/M tokens.</summary>
             [QueryParameter("min_output_price")]
             public double? MinOutputPrice { get; set; }
             /// <summary>Minimum prompt price in $/M tokens.</summary>
             [QueryParameter("min_price")]
             public double? MinPrice { get; set; }
+            /// <summary>Minimum Artificial Analysis Strategy &amp; Ops Index score (0-100); unscored models are excluded.</summary>
+            [QueryParameter("min_strategy_and_ops_index")]
+            public double? MinStrategyAndOpsIndex { get; set; }
             /// <summary>Minimum tool-calling success rate, as a fraction in [0, 1] (e.g. 0.9 = 90% of requests finishing with a tool_calls finish reason).</summary>
             [QueryParameter("min_tool_success_rate")]
             public double? MinToolSuccessRate { get; set; }
@@ -263,7 +327,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.ModelsRequests
             /// <summary>Filter to models with endpoints in the given data region (&quot;eu&quot; or &quot;us&quot;).</summary>
             [QueryParameter("region")]
             public global::Soenneker.OpenRouter.OpenApiClient.Models.GetModelsRegionParameter? Region { get; set; }
-            /// <summary>Sort the returned models server-side. Prefer this over fetching the full list and sorting client-side. Options: pricing-low-to-high, pricing-high-to-low (average prompt/completion price), context-high-to-low (context length), throughput-high-to-low, latency-low-to-high (recent median performance), most-popular, top-weekly (tokens processed in the last week), newest (creation date), intelligence-high-to-low, coding-high-to-low, agentic-high-to-low (Artificial Analysis indices), design-arena-elo-high-to-low (best Design Arena ELO across arenas). Models without a score for the chosen benchmark are placed last. When omitted, the existing default ordering is preserved.</summary>
+            /// <summary>Sort the returned models server-side. Prefer this over fetching the full list and sorting client-side. Options: pricing-low-to-high, pricing-high-to-low (average prompt/completion price), context-high-to-low (context length), throughput-high-to-low, latency-low-to-high (recent median performance), most-popular, top-weekly (tokens processed in the last week), newest (creation date), &lt;index&gt;-high-to-low for each Artificial Analysis index (the coding and agentic sorts are deprecated: Artificial Analysis has retired those indexes), design-arena-elo-high-to-low (best Design Arena ELO across arenas). Models without a score for the chosen benchmark are placed last. The decision sort ranks decision models, so pass output_modalities=decisions or all with it. When omitted, the existing default ordering is preserved.</summary>
             [QueryParameter("sort")]
             public global::Soenneker.OpenRouter.OpenApiClient.Models.GetModelsSortParameter? Sort { get; set; }
             /// <summary>Filter models by supported parameter (comma-separated)</summary>

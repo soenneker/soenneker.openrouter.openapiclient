@@ -38,6 +38,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             else if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
             if (parseNode.GetChildNode("incomplete_details") is null) { _explicitNullValueIncompleteDetails = default!; _explicitNullProperties?.Remove("incomplete_details"); }
             else if (parseNode.GetChildNode("incomplete_details") is { } nullNodeIncompleteDetails && nullNodeIncompleteDetails.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IncompleteDetails = null;
+            if (parseNode.GetChildNode("input_transformations") is null) { _explicitNullValueInputTransformations = default!; _explicitNullProperties?.Remove("input_transformations"); }
+            else if (parseNode.GetChildNode("input_transformations") is { } nullNodeInputTransformations && nullNodeInputTransformations.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InputTransformations = null;
             if (parseNode.GetChildNode("instructions") is null) { _explicitNullValueInstructions = default!; _explicitNullProperties?.Remove("instructions"); }
             else if (parseNode.GetChildNode("instructions") is { } nullNodeInstructions && nullNodeInstructions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Instructions = null;
             if (parseNode.GetChildNode("max_output_tokens") is null) { _explicitNullValueMaxOutputTokens = default!; _explicitNullProperties?.Remove("max_output_tokens"); }
@@ -166,6 +168,16 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public global::Soenneker.OpenRouter.OpenApiClient.Models.IncompleteDetails IncompleteDetails { get => _explicitNullValueIncompleteDetails; set { _explicitNullValueIncompleteDetails = value; AdditionalData?.Remove("incomplete_details"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("incomplete_details"); else _explicitNullProperties?.Remove("incomplete_details"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.IncompleteDetails _explicitNullValueIncompleteDetails = default!;
+#endif
+        /// <summary>Input items the upstream provider changed before inference (OpenAI `input_transformations`). Present only when the provider reported the field; empty when it changed nothing.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesInputTransformation>? InputTransformations { get => _explicitNullValueInputTransformations; set { _explicitNullValueInputTransformations = value; AdditionalData?.Remove("input_transformations"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input_transformations"); else _explicitNullProperties?.Remove("input_transformations"); } }
+        private List<global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesInputTransformation>? _explicitNullValueInputTransformations = default!;
+#nullable restore
+#else
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesInputTransformation> InputTransformations { get => _explicitNullValueInputTransformations; set { _explicitNullValueInputTransformations = value; AdditionalData?.Remove("input_transformations"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input_transformations"); else _explicitNullProperties?.Remove("input_transformations"); } }
+        private List<global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesInputTransformation> _explicitNullValueInputTransformations = default!;
 #endif
         /// <summary>The instructions property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -420,7 +432,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(41)
             {
                 { "access_programs", n => { AccessPrograms = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.OpenResponsesResultAllOf2AccessPrograms>(global::Soenneker.OpenRouter.OpenApiClient.Models.OpenResponsesResultAllOf2AccessPrograms.CreateFromDiscriminatorValue); } },
                 { "alignment", n => { Alignment = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.Alignment>(global::Soenneker.OpenRouter.OpenApiClient.Models.Alignment.CreateFromDiscriminatorValue); } },
@@ -432,6 +444,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "frequency_penalty", n => { FrequencyPenalty = n.GetDoubleValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "incomplete_details", n => { IncompleteDetails = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.IncompleteDetails>(global::Soenneker.OpenRouter.OpenApiClient.Models.IncompleteDetails.CreateFromDiscriminatorValue); } },
+                { "input_transformations", n => { InputTransformations = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesInputTransformation>(global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesInputTransformation.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "instructions", n => { Instructions = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.BaseInputs>(global::Soenneker.OpenRouter.OpenApiClient.Models.BaseInputs.CreateFromDiscriminatorValue); } },
                 { "max_output_tokens", n => { MaxOutputTokens = n.GetIntValue(); } },
                 { "max_tool_calls", n => { MaxToolCalls = n.GetIntValue(); } },
@@ -481,6 +494,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteDoubleValue("frequency_penalty", FrequencyPenalty);
             writer.WriteStringValue("id", Id);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.IncompleteDetails>("incomplete_details", IncompleteDetails);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesInputTransformation>("input_transformations", InputTransformations);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.BaseInputs>("instructions", Instructions);
             writer.WriteIntValue("max_output_tokens", MaxOutputTokens);
             writer.WriteIntValue("max_tool_calls", MaxToolCalls);

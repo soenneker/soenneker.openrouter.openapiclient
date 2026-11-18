@@ -283,7 +283,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(21)
             {
                 { "alias_target", n => { AliasTarget = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ModelAliasTarget>(global::Soenneker.OpenRouter.OpenApiClient.Models.ModelAliasTarget.CreateFromDiscriminatorValue); } },
                 { "architecture", n => { Architecture = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ModelArchitecture>(global::Soenneker.OpenRouter.OpenApiClient.Models.ModelArchitecture.CreateFromDiscriminatorValue); } },

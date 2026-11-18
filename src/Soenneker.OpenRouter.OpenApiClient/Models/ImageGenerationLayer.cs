@@ -103,7 +103,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(6)
             {
                 { "background", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationLayerBackground>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueBackground = default; _explicitNullProperties?.Remove("background"); AdditionalData["background"] = unknown; } else { Background = parsed; AdditionalData.Remove("background"); } } },
                 { "bounding_box", n => { BoundingBox = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationLayerBoundingBox>(global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationLayerBoundingBox.CreateFromDiscriminatorValue); } },

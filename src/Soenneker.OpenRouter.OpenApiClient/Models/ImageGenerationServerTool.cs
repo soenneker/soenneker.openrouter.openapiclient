@@ -128,7 +128,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(11)
             {
                 { "background", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerToolBackground>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueBackground = default; _explicitNullProperties?.Remove("background"); AdditionalData["background"] = unknown; } else { Background = parsed; AdditionalData.Remove("background"); } } },
                 { "input_fidelity", n => { InputFidelity = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerToolInputFidelity>(global::Soenneker.OpenRouter.OpenApiClient.Models.ImageGenerationServerToolInputFidelity.CreateFromDiscriminatorValue); } },

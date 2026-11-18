@@ -131,7 +131,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(9)
             {
                 { "byok", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ServerToolEngineByok>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueByok = default; _explicitNullProperties?.Remove("byok"); AdditionalData["byok"] = unknown; } else { Byok = parsed; AdditionalData.Remove("byok"); } } },
                 { "data_regions", n => { DataRegions = n.GetCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ServerToolEngineDataRegionsItem>()?.AsList(); } },

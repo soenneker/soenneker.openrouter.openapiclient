@@ -3,21 +3,57 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
-    /// <summary>Filter results by task type. For Artificial Analysis, maps to the corresponding index. For Design Arena, maps to the matching category. `search` returns OpenRouter search benchmark results only.</summary>
+    /// <summary>Filter results by task type. Every value except `search` names the Artificial Analysis index of the same name and returns only models scored on it, best first (`coding` and `agentic` are deprecated: Artificial Analysis has retired those indexes). Design Arena answers only `coding`, `intelligence` and `agentic`, and OpenRouter&apos;s own evals only `intelligence` and `agentic`. `search` returns OpenRouter search benchmark results only.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum GetBenchmarksTaskTypeParameter
     {
-        [EnumMember(Value = "coding")]
-        #pragma warning disable CS1591
-        Coding,
-        #pragma warning restore CS1591
         [EnumMember(Value = "intelligence")]
         #pragma warning disable CS1591
         Intelligence,
         #pragma warning restore CS1591
+        [EnumMember(Value = "coding")]
+        #pragma warning disable CS1591
+        Coding,
+        #pragma warning restore CS1591
         [EnumMember(Value = "agentic")]
         #pragma warning disable CS1591
         Agentic,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "finance-and-accounting")]
+        #pragma warning disable CS1591
+        FinanceAndAccounting,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "strategy-and-ops")]
+        #pragma warning disable CS1591
+        StrategyAndOps,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "legal")]
+        #pragma warning disable CS1591
+        Legal,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "healthcare-and-medical")]
+        #pragma warning disable CS1591
+        HealthcareAndMedical,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "engineering")]
+        #pragma warning disable CS1591
+        Engineering,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "economics")]
+        #pragma warning disable CS1591
+        Economics,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "cyber")]
+        #pragma warning disable CS1591
+        Cyber,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "multilingual")]
+        #pragma warning disable CS1591
+        Multilingual,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "decision")]
+        #pragma warning disable CS1591
+        Decision,
         #pragma warning restore CS1591
         [EnumMember(Value = "search")]
         #pragma warning disable CS1591
