@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
-    /// <summary>Filter results by task type. Every value except `search` names the Artificial Analysis index of the same name and returns only models scored on it, best first (`coding` and `agentic` are deprecated: Artificial Analysis has retired those indexes). Design Arena answers only `coding`, `intelligence` and `agentic`, and OpenRouter&apos;s own evals only `intelligence` and `agentic`. `search` returns OpenRouter search benchmark results only.</summary>
+    /// <summary>Filter results by task type. Every value except `search` names the Artificial Analysis index of the same name and returns only models scored on it, best first (`coding` and `agentic` are deprecated: Artificial Analysis has retired those indexes and returns no item for them). Design Arena answers only `coding`, `intelligence` and `agentic`, and OpenRouter&apos;s own evals only `intelligence` and `agentic`. `search` returns OpenRouter search benchmark results only.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum GetBenchmarksTaskTypeParameter
     {

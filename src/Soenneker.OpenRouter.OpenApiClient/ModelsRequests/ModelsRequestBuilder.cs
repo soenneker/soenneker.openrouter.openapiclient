@@ -178,11 +178,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.ModelsRequests
             /// <summary>Maximum model age in days since its creation date.</summary>
             [QueryParameter("max_age_days")]
             public int? MaxAgeDays { get; set; }
-            /// <summary>Deprecated: Artificial Analysis has retired its Agentic Index. Maximum score (0-100); unscored models are excluded.</summary>
+            /// <summary>Deprecated: Artificial Analysis has retired its Agentic Index; no model has a score, so this matches no model.</summary>
             [Obsolete("")]
             [QueryParameter("max_agentic_index")]
             public double? MaxAgenticIndex { get; set; }
-            /// <summary>Deprecated: Artificial Analysis has retired its Coding Index. Maximum score (0-100); unscored models are excluded.</summary>
+            /// <summary>Deprecated: Artificial Analysis has retired its Coding Index; no model has a score, so this matches no model.</summary>
             [Obsolete("")]
             [QueryParameter("max_coding_index")]
             public double? MaxCodingIndex { get; set; }
@@ -231,11 +231,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.ModelsRequests
             /// <summary>Minimum model age in days since its creation date.</summary>
             [QueryParameter("min_age_days")]
             public int? MinAgeDays { get; set; }
-            /// <summary>Deprecated: Artificial Analysis has retired its Agentic Index. Minimum score (0-100); unscored models are excluded.</summary>
+            /// <summary>Deprecated: Artificial Analysis has retired its Agentic Index; no model has a score, so this matches no model.</summary>
             [Obsolete("")]
             [QueryParameter("min_agentic_index")]
             public double? MinAgenticIndex { get; set; }
-            /// <summary>Deprecated: Artificial Analysis has retired its Coding Index. Minimum score (0-100); unscored models are excluded.</summary>
+            /// <summary>Deprecated: Artificial Analysis has retired its Coding Index; no model has a score, so this matches no model.</summary>
             [Obsolete("")]
             [QueryParameter("min_coding_index")]
             public double? MinCodingIndex { get; set; }
@@ -327,7 +327,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.ModelsRequests
             /// <summary>Filter to models with endpoints in the given data region (&quot;eu&quot; or &quot;us&quot;).</summary>
             [QueryParameter("region")]
             public global::Soenneker.OpenRouter.OpenApiClient.Models.GetModelsRegionParameter? Region { get; set; }
-            /// <summary>Sort the returned models server-side. Prefer this over fetching the full list and sorting client-side. Options: pricing-low-to-high, pricing-high-to-low (average prompt/completion price), context-high-to-low (context length), throughput-high-to-low, latency-low-to-high (recent median performance), most-popular, top-weekly (tokens processed in the last week), newest (creation date), &lt;index&gt;-high-to-low for each Artificial Analysis index (the coding and agentic sorts are deprecated: Artificial Analysis has retired those indexes), design-arena-elo-high-to-low (best Design Arena ELO across arenas). Models without a score for the chosen benchmark are placed last. The decision sort ranks decision models, so pass output_modalities=decisions or all with it. When omitted, the existing default ordering is preserved.</summary>
+            /// <summary>Sort the returned models server-side. Prefer this over fetching the full list and sorting client-side. Options: pricing-low-to-high, pricing-high-to-low (average prompt/completion price), context-high-to-low (context length), throughput-high-to-low, latency-low-to-high (recent median performance), most-popular, top-weekly (tokens processed in the last week), newest (creation date), &lt;index&gt;-high-to-low for each Artificial Analysis index (the coding and agentic sorts are deprecated: Artificial Analysis has retired those indexes, so they order by canonical slug and variant alone), design-arena-elo-high-to-low (best Design Arena ELO across arenas). Models without a score for the chosen benchmark are placed last. The decision sort ranks decision models, so pass output_modalities=decisions or all with it. When omitted, the existing default ordering is preserved.</summary>
             [QueryParameter("sort")]
             public global::Soenneker.OpenRouter.OpenApiClient.Models.GetModelsSortParameter? Sort { get; set; }
             /// <summary>Filter models by supported parameter (comma-separated)</summary>

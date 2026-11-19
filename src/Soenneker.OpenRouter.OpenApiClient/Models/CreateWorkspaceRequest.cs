@@ -95,7 +95,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public List<global::Soenneker.OpenRouter.OpenApiClient.Models.CreateWorkspaceRequestDisabledServerToolsItem?> DisabledServerTools { get => _explicitNullValueDisabledServerTools; set { _explicitNullValueDisabledServerTools = value; AdditionalData?.Remove("disabled_server_tools"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("disabled_server_tools"); else _explicitNullProperties?.Remove("disabled_server_tools"); } }
         private List<global::Soenneker.OpenRouter.OpenApiClient.Models.CreateWorkspaceRequestDisabledServerToolsItem?> _explicitNullValueDisabledServerTools = default!;
 #endif
-        /// <summary>Optional array of API key IDs to filter I/O logging</summary>
+        /// <summary>Optional array of API key IDs to filter I/O logging. Read-only for management keys: any value other than the default returns 403. Change it in the OpenRouter dashboard.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<int?>? IoLoggingApiKeyIds { get => _explicitNullValueIoLoggingApiKeyIds; set { _explicitNullValueIoLoggingApiKeyIds = value; AdditionalData?.Remove("io_logging_api_key_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("io_logging_api_key_ids"); else _explicitNullProperties?.Remove("io_logging_api_key_ids"); } }
@@ -105,16 +105,16 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public List<int?> IoLoggingApiKeyIds { get => _explicitNullValueIoLoggingApiKeyIds; set { _explicitNullValueIoLoggingApiKeyIds = value; AdditionalData?.Remove("io_logging_api_key_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("io_logging_api_key_ids"); else _explicitNullProperties?.Remove("io_logging_api_key_ids"); } }
         private List<int?> _explicitNullValueIoLoggingApiKeyIds = default!;
 #endif
-        /// <summary>Sampling rate for I/O logging (0.0001-1)</summary>
+        /// <summary>Sampling rate for I/O logging (0.0001-1). Read-only for management keys: any value other than the default returns 403. Change it in the OpenRouter dashboard.</summary>
         public double? IoLoggingSamplingRate { get => _explicitNullValueIoLoggingSamplingRate; set { _explicitNullValueIoLoggingSamplingRate = value; AdditionalData?.Remove("io_logging_sampling_rate"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("io_logging_sampling_rate"); else _explicitNullProperties?.Remove("io_logging_sampling_rate"); } }
         private double? _explicitNullValueIoLoggingSamplingRate = default!;
-        /// <summary>Whether data discount logging is enabled. Enabling it requires the account to allow workspace data-discount logging; otherwise the request returns 403.</summary>
+        /// <summary>Whether data discount logging is enabled. Read-only for management keys: any value other than the default returns 403. Change it in the OpenRouter dashboard.</summary>
         public bool? IsDataDiscountLoggingEnabled { get => _explicitNullValueIsDataDiscountLoggingEnabled; set { _explicitNullValueIsDataDiscountLoggingEnabled = value; AdditionalData?.Remove("is_data_discount_logging_enabled"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_data_discount_logging_enabled"); else _explicitNullProperties?.Remove("is_data_discount_logging_enabled"); } }
         private bool? _explicitNullValueIsDataDiscountLoggingEnabled = default!;
         /// <summary>Whether broadcast is enabled</summary>
         public bool? IsObservabilityBroadcastEnabled { get => _explicitNullValueIsObservabilityBroadcastEnabled; set { _explicitNullValueIsObservabilityBroadcastEnabled = value; AdditionalData?.Remove("is_observability_broadcast_enabled"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_observability_broadcast_enabled"); else _explicitNullProperties?.Remove("is_observability_broadcast_enabled"); } }
         private bool? _explicitNullValueIsObservabilityBroadcastEnabled = default!;
-        /// <summary>Whether private logging is enabled</summary>
+        /// <summary>Whether private logging is enabled. Read-only for management keys: any value other than the default returns 403. Change it in the OpenRouter dashboard.</summary>
         public bool? IsObservabilityIoLoggingEnabled { get => _explicitNullValueIsObservabilityIoLoggingEnabled; set { _explicitNullValueIsObservabilityIoLoggingEnabled = value; AdditionalData?.Remove("is_observability_io_logging_enabled"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_observability_io_logging_enabled"); else _explicitNullProperties?.Remove("is_observability_io_logging_enabled"); } }
         private bool? _explicitNullValueIsObservabilityIoLoggingEnabled = default!;
         /// <summary>Name for the new workspace</summary>

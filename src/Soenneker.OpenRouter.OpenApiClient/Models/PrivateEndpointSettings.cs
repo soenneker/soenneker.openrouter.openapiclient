@@ -30,6 +30,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             else if (parseNode.GetChildNode("max_completion_tokens") is { } nullNodeMaxCompletionTokens && nullNodeMaxCompletionTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxCompletionTokens = null;
             if (parseNode.GetChildNode("max_prompt_tokens") is null) { _explicitNullValueMaxPromptTokens = default!; _explicitNullProperties?.Remove("max_prompt_tokens"); }
             else if (parseNode.GetChildNode("max_prompt_tokens") is { } nullNodeMaxPromptTokens && nullNodeMaxPromptTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxPromptTokens = null;
+            if (parseNode.GetChildNode("prompt_caching") is null) { _explicitNullValuePromptCaching = default!; _explicitNullProperties?.Remove("prompt_caching"); }
+            else if (parseNode.GetChildNode("prompt_caching") is { } nullNodePromptCaching && nullNodePromptCaching.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PromptCaching = null;
             if (parseNode.GetChildNode("quantization") is null) { _explicitNullValueQuantization = default!; _explicitNullProperties?.Remove("quantization"); }
             else if (parseNode.GetChildNode("quantization") is { } nullNodeQuantization && nullNodeQuantization.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Quantization = null;
             if (parseNode.GetChildNode("reasoning") is null) { _explicitNullValueReasoning = default!; _explicitNullProperties?.Remove("reasoning"); }
@@ -79,6 +81,16 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Longest prompt, in tokens, or `null` for no cap below the context length. Cannot exceed `context_length`, or the model context length while `context_length` is `null`.</summary>
         public int? MaxPromptTokens { get => _explicitNullValueMaxPromptTokens; set { _explicitNullValueMaxPromptTokens = value; AdditionalData?.Remove("max_prompt_tokens"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_prompt_tokens"); else _explicitNullProperties?.Remove("max_prompt_tokens"); } }
         private int? _explicitNullValueMaxPromptTokens = default!;
+        /// <summary>Prompt-caching controls for an OpenAI-compatible private endpoint. Accepted fields default on after validation; explicit owner settings override the defaults.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointPromptCaching? PromptCaching { get => _explicitNullValuePromptCaching; set { _explicitNullValuePromptCaching = value; AdditionalData?.Remove("prompt_caching"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("prompt_caching"); else _explicitNullProperties?.Remove("prompt_caching"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointPromptCaching? _explicitNullValuePromptCaching = default!;
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointPromptCaching PromptCaching { get => _explicitNullValuePromptCaching; set { _explicitNullValuePromptCaching = value; AdditionalData?.Remove("prompt_caching"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("prompt_caching"); else _explicitNullProperties?.Remove("prompt_caching"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointPromptCaching _explicitNullValuePromptCaching = default!;
+#endif
         /// <summary>Weight precision the deployment runs at; `unknown` when not stated.</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointQuantization? Quantization { get => _explicitNullValueQuantization; set { _explicitNullValueQuantization = value; AdditionalData?.Remove("quantization"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quantization"); else _explicitNullProperties?.Remove("quantization"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointQuantization? _explicitNullValueQuantization = default!;
@@ -125,7 +137,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>(9)
+            return new Dictionary<string, Action<IParseNode>>(10)
             {
                 { "completions", n => { Completions = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointSettingsCompletions>(global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointSettingsCompletions.CreateFromDiscriminatorValue); } },
                 { "context_length", n => { ContextLength = n.GetIntValue(); } },
@@ -133,6 +145,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "inputs", n => { Inputs = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointSettingsInputs>(global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointSettingsInputs.CreateFromDiscriminatorValue); } },
                 { "max_completion_tokens", n => { MaxCompletionTokens = n.GetIntValue(); } },
                 { "max_prompt_tokens", n => { MaxPromptTokens = n.GetIntValue(); } },
+                { "prompt_caching", n => { PromptCaching = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointPromptCaching>(global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointPromptCaching.CreateFromDiscriminatorValue); } },
                 { "quantization", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointQuantization>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueQuantization = default; _explicitNullProperties?.Remove("quantization"); AdditionalData["quantization"] = unknown; } else { Quantization = parsed; AdditionalData.Remove("quantization"); } } },
                 { "reasoning", n => { Reasoning = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointSettingsReasoning>(global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointSettingsReasoning.CreateFromDiscriminatorValue); } },
                 { "tool_choice", n => { ToolChoice = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointSettingsToolChoice>(global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointSettingsToolChoice.CreateFromDiscriminatorValue); } },
@@ -151,6 +164,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointSettingsInputs>("inputs", Inputs);
             writer.WriteIntValue("max_completion_tokens", MaxCompletionTokens);
             writer.WriteIntValue("max_prompt_tokens", MaxPromptTokens);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointPromptCaching>("prompt_caching", PromptCaching);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointQuantization>("quantization", Quantization);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointSettingsReasoning>("reasoning", Reasoning);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.PrivateEndpointSettingsToolChoice>("tool_choice", ToolChoice);

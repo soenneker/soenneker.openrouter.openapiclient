@@ -136,7 +136,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Benchmarks
             /// <summary>Benchmark source to query. Determines the shape of the returned items. When omitted, returns results from all sources.</summary>
             [QueryParameter("source")]
             public global::Soenneker.OpenRouter.OpenApiClient.Models.GetBenchmarksSourceParameter? Source { get; set; }
-            /// <summary>Filter results by task type. Every value except `search` names the Artificial Analysis index of the same name and returns only models scored on it, best first (`coding` and `agentic` are deprecated: Artificial Analysis has retired those indexes). Design Arena answers only `coding`, `intelligence` and `agentic`, and OpenRouter&apos;s own evals only `intelligence` and `agentic`. `search` returns OpenRouter search benchmark results only.</summary>
+            /// <summary>Filter results by task type. Every value except `search` names the Artificial Analysis index of the same name and returns only models scored on it, best first (`coding` and `agentic` are deprecated: Artificial Analysis has retired those indexes and returns no item for them). Design Arena answers only `coding`, `intelligence` and `agentic`, and OpenRouter&apos;s own evals only `intelligence` and `agentic`. `search` returns OpenRouter search benchmark results only.</summary>
             [QueryParameter("task_type")]
             public global::Soenneker.OpenRouter.OpenApiClient.Models.GetBenchmarksTaskTypeParameter? TaskType { get; set; }
         }

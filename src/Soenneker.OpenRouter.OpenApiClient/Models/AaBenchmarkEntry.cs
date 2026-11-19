@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
     /// <summary>
-    /// Benchmark index scores published by Artificial Analysis (artificialanalysis.ai), one field per index. Each score is the model&apos;s best on that index across the configurations Artificial Analysis evaluated (for example reasoning levels), so two indexes of one model can come from different configurations. The deprecated Coding and Agentic Index scores are the exception: both come from one configuration, the model&apos;s strongest by Intelligence Index, then Coding Index, then Agentic Index. Attribute Artificial Analysis when you republish them. Omitted when Artificial Analysis has scored the model on none of them.
+    /// Benchmark index scores published by Artificial Analysis (artificialanalysis.ai), one field per index. Each score is the model&apos;s best on that index across the configurations Artificial Analysis evaluated (for example reasoning levels), so two indexes of one model can come from different configurations. The deprecated Coding Index and Agentic Index fields are null for every model: Artificial Analysis has retired those indexes. Attribute Artificial Analysis when you republish them. Omitted when Artificial Analysis has scored the model on none of them.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class AaBenchmarkEntry : IAdditionalDataHolder, IParsable
@@ -48,11 +48,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Deprecated: Artificial Analysis has retired its Agentic Index and no longer publishes it. Holds the last score Artificial Analysis published for the model, on a 0-100 scale, or null; it will be null for every model once those stored scores are removed.</summary>
+        /// <summary>Deprecated: Artificial Analysis has retired its Agentic Index and no longer publishes it. Always null.</summary>
         [Obsolete("")]
         public double? AgenticIndex { get => _explicitNullValueAgenticIndex; set { _explicitNullValueAgenticIndex = value; AdditionalData?.Remove("agentic_index"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agentic_index"); else _explicitNullProperties?.Remove("agentic_index"); } }
         private double? _explicitNullValueAgenticIndex = default!;
-        /// <summary>Deprecated: Artificial Analysis has retired its Coding Index and no longer publishes it. Holds the last score Artificial Analysis published for the model, on a 0-100 scale, or null; it will be null for every model once those stored scores are removed.</summary>
+        /// <summary>Deprecated: Artificial Analysis has retired its Coding Index and no longer publishes it. Always null.</summary>
         [Obsolete("")]
         public double? CodingIndex { get => _explicitNullValueCodingIndex; set { _explicitNullValueCodingIndex = value; AdditionalData?.Remove("coding_index"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("coding_index"); else _explicitNullProperties?.Remove("coding_index"); } }
         private double? _explicitNullValueCodingIndex = default!;

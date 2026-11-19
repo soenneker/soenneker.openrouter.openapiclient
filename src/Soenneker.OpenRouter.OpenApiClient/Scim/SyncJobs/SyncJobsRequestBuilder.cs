@@ -47,7 +47,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Scim.SyncJobs
         {
         }
         /// <summary>
-        /// Start a SCIM directory sync. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+        /// Start a SCIM directory sync. Disabled: no API key can perform this write, including management keys. Use the organization settings in the dashboard, which require step-up verification. A valid management key for an organization with SCIM access receives 403; an invalid key still receives 401 and an organization without SCIM access receives 404.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.CreateScimSyncJobResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -56,6 +56,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Scim.SyncJobs
         /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ForbiddenResponse">When receiving a 403 status code</exception>
         /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.NotFoundResponse">When receiving a 404 status code</exception>
         /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.InternalServerResponse">When receiving a 500 status code</exception>
+        [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.OpenRouter.OpenApiClient.Models.CreateScimSyncJobResponse?> PostAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -78,10 +79,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Scim.SyncJobs
             return await RequestAdapter.SendAsync<global::Soenneker.OpenRouter.OpenApiClient.Models.CreateScimSyncJobResponse>(requestInfo, global::Soenneker.OpenRouter.OpenApiClient.Models.CreateScimSyncJobResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Start a SCIM directory sync. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+        /// Start a SCIM directory sync. Disabled: no API key can perform this write, including management keys. Use the organization settings in the dashboard, which require step-up verification. A valid management key for an organization with SCIM access receives 403; an invalid key still receives 401 and an organization without SCIM access receives 404.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public RequestInformation ToPostRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
@@ -101,6 +103,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Scim.SyncJobs
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Scim.SyncJobs.SyncJobsRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
+        [Obsolete("")]
         public global::Soenneker.OpenRouter.OpenApiClient.Scim.SyncJobs.SyncJobsRequestBuilder WithUrl(string rawUrl)
         {
             return new global::Soenneker.OpenRouter.OpenApiClient.Scim.SyncJobs.SyncJobsRequestBuilder(rawUrl, RequestAdapter);

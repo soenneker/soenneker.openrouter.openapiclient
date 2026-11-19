@@ -34,7 +34,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Scim.GroupMappings.Item
         {
         }
         /// <summary>
-        /// Delete a SCIM group-to-workspace mapping. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+        /// Delete a SCIM group-to-workspace mapping. Disabled: no API key can perform this write, including management keys. Use the organization settings in the dashboard, which require step-up verification. A valid management key for an organization with SCIM access receives 403; an invalid key still receives 401 and an organization without SCIM access receives 404.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.DeleteScimGroupMappingResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -44,6 +44,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Scim.GroupMappings.Item
         /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ForbiddenResponse">When receiving a 403 status code</exception>
         /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.NotFoundResponse">When receiving a 404 status code</exception>
         /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.InternalServerResponse">When receiving a 500 status code</exception>
+        [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.OpenRouter.OpenApiClient.Models.DeleteScimGroupMappingResponse?> DeleteAsync(Action<RequestConfiguration<global::Soenneker.OpenRouter.OpenApiClient.Scim.GroupMappings.Item.GroupMappingsItemRequestBuilder.GroupMappingsItemRequestBuilderDeleteQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -98,7 +99,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Scim.GroupMappings.Item
             return await RequestAdapter.SendAsync<global::Soenneker.OpenRouter.OpenApiClient.Models.GetScimGroupMappingResponse>(requestInfo, global::Soenneker.OpenRouter.OpenApiClient.Models.GetScimGroupMappingResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Update a SCIM group mapping role. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+        /// Update a SCIM group mapping role. Disabled: no API key can perform this write, including management keys. Use the organization settings in the dashboard, which require step-up verification. A valid management key for an organization with SCIM access receives 403; an invalid key still receives 401 and an organization without SCIM access receives 404.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.UpdateScimGroupMappingResponse"/></returns>
         /// <param name="body">The request body</param>
@@ -109,6 +110,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Scim.GroupMappings.Item
         /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ForbiddenResponse">When receiving a 403 status code</exception>
         /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.NotFoundResponse">When receiving a 404 status code</exception>
         /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.InternalServerResponse">When receiving a 500 status code</exception>
+        [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.OpenRouter.OpenApiClient.Models.UpdateScimGroupMappingResponse?> PatchAsync(global::Soenneker.OpenRouter.OpenApiClient.Models.UpdateScimGroupMappingRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -133,10 +135,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Scim.GroupMappings.Item
             return await RequestAdapter.SendAsync<global::Soenneker.OpenRouter.OpenApiClient.Models.UpdateScimGroupMappingResponse>(requestInfo, global::Soenneker.OpenRouter.OpenApiClient.Models.UpdateScimGroupMappingResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Delete a SCIM group-to-workspace mapping. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+        /// Delete a SCIM group-to-workspace mapping. Disabled: no API key can perform this write, including management keys. Use the organization settings in the dashboard, which require step-up verification. A valid management key for an organization with SCIM access receives 403; an invalid key still receives 401 and an organization without SCIM access receives 404.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public RequestInformation ToDeleteRequestInformation(Action<RequestConfiguration<global::Soenneker.OpenRouter.OpenApiClient.Scim.GroupMappings.Item.GroupMappingsItemRequestBuilder.GroupMappingsItemRequestBuilderDeleteQueryParameters>>? requestConfiguration = default)
@@ -171,11 +174,12 @@ namespace Soenneker.OpenRouter.OpenApiClient.Scim.GroupMappings.Item
             return requestInfo;
         }
         /// <summary>
-        /// Update a SCIM group mapping role. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+        /// Update a SCIM group mapping role. Disabled: no API key can perform this write, including management keys. Use the organization settings in the dashboard, which require step-up verification. A valid management key for an organization with SCIM access receives 403; an invalid key still receives 401 and an organization without SCIM access receives 404.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public RequestInformation ToPatchRequestInformation(global::Soenneker.OpenRouter.OpenApiClient.Models.UpdateScimGroupMappingRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
@@ -202,7 +206,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Scim.GroupMappings.Item
             return new global::Soenneker.OpenRouter.OpenApiClient.Scim.GroupMappings.Item.GroupMappingsItemRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Delete a SCIM group-to-workspace mapping. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+        /// Delete a SCIM group-to-workspace mapping. Disabled: no API key can perform this write, including management keys. Use the organization settings in the dashboard, which require step-up verification. A valid management key for an organization with SCIM access receives 403; an invalid key still receives 401 and an organization without SCIM access receives 404.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class GroupMappingsItemRequestBuilderDeleteQueryParameters 
