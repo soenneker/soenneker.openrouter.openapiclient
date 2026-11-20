@@ -191,18 +191,7 @@
           }
         },
         "x-speakeasy-max-method-params": 5
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/analytics/meta": {
       "get": {
@@ -302,18 +291,7 @@
             }
           }
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/analytics/query": {
       "post": {
@@ -454,18 +432,7 @@
             }
           }
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/api/alpha/decisions": {
       "post": {
@@ -771,18 +738,7 @@
           }
         ],
         "x-speakeasy-name-override": "create"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/api/alpha/extractions": {
       "post": {
@@ -1108,18 +1064,7 @@
           }
         ],
         "x-speakeasy-name-override": "create"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/audio/speech": {
       "post": {
@@ -1352,18 +1297,355 @@
         },
         "x-speakeasy-max-method-params": 1,
         "x-speakeasy-name-override": "createSpeech"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
+      }
+    },
+    "/audio/speech/models": {
+      "get": {
+        "tags": [
+          "TTS"
+        ],
+        "summary": "List text-to-speech models",
+        "description": "Lists every text-to-speech model with the inputs it accepts and its speech output parameters, merged across its endpoints, plus each endpoint with its own.",
+        "operationId": "ListSpeechModels",
+        "responses": {
+          "200": {
+            "description": "List of text-to-speech models",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SpeechModelsListResponse"
+                },
+                "example": {
+                  "data": [
+                    {
+                      "created": 1742428800,
+                      "description": "Text-to-speech model with steerable delivery.",
+                      "endpoints": [
+                        {
+                          "input_modalities": [
+                            {
+                              "type": "text"
+                            }
+                          ],
+                          "output_modalities": [
+                            {
+                              "supported_parameters": {
+                                "instructions": {
+                                  "type": "unknown"
+                                },
+                                "response_format": {
+                                  "type": "enum",
+                                  "values": [
+                                    "mp3",
+                                    "pcm"
+                                  ]
+                                },
+                                "speed": {
+                                  "max": 4,
+                                  "min": 0.25,
+                                  "type": "range"
+                                },
+                                "voice": {
+                                  "type": "enum",
+                                  "values": [
+                                    "alloy",
+                                    "coral"
+                                  ]
+                                }
+                              },
+                              "type": "speech"
+                            }
+                          ],
+                          "provider_name": "OpenAI",
+                          "provider_slug": "openai"
+                        }
+                      ],
+                      "id": "openai/gpt-4o-mini-tts",
+                      "input_modalities": [
+                        {
+                          "type": "text"
+                        }
+                      ],
+                      "name": "OpenAI: GPT-4o mini TTS",
+                      "output_modalities": [
+                        {
+                          "supported_parameters": {
+                            "instructions": {
+                              "type": "unknown"
+                            },
+                            "response_format": {
+                              "type": "enum",
+                              "values": [
+                                "mp3",
+                                "pcm"
+                              ]
+                            },
+                            "speed": {
+                              "max": 4,
+                              "min": 0.25,
+                              "type": "range"
+                            },
+                            "voice": {
+                              "type": "enum",
+                              "values": [
+                                "alloy",
+                                "coral"
+                              ]
+                            }
+                          },
+                          "type": "speech"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden - Authentication successful but insufficient permissions",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ForbiddenResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 403,
+                    "message": "Only management keys can perform this operation"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error - Unexpected server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 500,
+                    "message": "Internal Server Error"
+                  }
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable - Service temporarily unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceUnavailableResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 503,
+                    "message": "Service temporarily unavailable"
+                  }
+                }
+              }
+            }
+          }
         },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
+        "security": [],
+        "x-speakeasy-name-override": "listModels"
+      }
+    },
+    "/audio/speech/models/{author}/{slug}": {
+      "get": {
+        "tags": [
+          "TTS"
+        ],
+        "summary": "Get a text-to-speech model",
+        "description": "Returns a text-to-speech model with each endpoint\u0027s own inputs and speech output parameters.",
+        "operationId": "GetSpeechModel",
+        "parameters": [
+          {
+            "name": "author",
+            "in": "path",
+            "description": "Model author/organization",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Model author/organization",
+              "example": "openai"
+            }
+          },
+          {
+            "name": "slug",
+            "in": "path",
+            "description": "Model slug",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Model slug",
+              "example": "gpt-4o-mini-tts"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A text-to-speech model and its endpoints",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SpeechModelResponse"
+                },
+                "example": {
+                  "created": 1742428800,
+                  "description": "Text-to-speech model with steerable delivery.",
+                  "endpoints": [
+                    {
+                      "input_modalities": [
+                        {
+                          "type": "text"
+                        }
+                      ],
+                      "output_modalities": [
+                        {
+                          "supported_parameters": {
+                            "instructions": {
+                              "type": "unknown"
+                            },
+                            "response_format": {
+                              "type": "enum",
+                              "values": [
+                                "mp3",
+                                "pcm"
+                              ]
+                            },
+                            "speed": {
+                              "max": 4,
+                              "min": 0.25,
+                              "type": "range"
+                            },
+                            "voice": {
+                              "type": "enum",
+                              "values": [
+                                "alloy",
+                                "coral"
+                              ]
+                            }
+                          },
+                          "type": "speech"
+                        }
+                      ],
+                      "provider_name": "OpenAI",
+                      "provider_slug": "openai"
+                    }
+                  ],
+                  "id": "openai/gpt-4o-mini-tts",
+                  "input_modalities": [
+                    {
+                      "type": "text"
+                    }
+                  ],
+                  "name": "OpenAI: GPT-4o mini TTS",
+                  "output_modalities": [
+                    {
+                      "supported_parameters": {
+                        "instructions": {
+                          "type": "unknown"
+                        },
+                        "response_format": {
+                          "type": "enum",
+                          "values": [
+                            "mp3",
+                            "pcm"
+                          ]
+                        },
+                        "speed": {
+                          "max": 4,
+                          "min": 0.25,
+                          "type": "range"
+                        },
+                        "voice": {
+                          "type": "enum",
+                          "values": [
+                            "alloy",
+                            "coral"
+                          ]
+                        }
+                      },
+                      "type": "speech"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden - Authentication successful but insufficient permissions",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ForbiddenResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 403,
+                    "message": "Only management keys can perform this operation"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found - Resource does not exist",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFoundResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 404,
+                    "message": "Resource not found"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error - Unexpected server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 500,
+                    "message": "Internal Server Error"
+                  }
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable - Service temporarily unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceUnavailableResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": 503,
+                    "message": "Service temporarily unavailable"
+                  }
+                }
+              }
+            }
+          }
         },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+        "security": [],
+        "x-speakeasy-name-override": "getModel"
+      }
     },
     "/audio/transcriptions": {
       "post": {
@@ -1633,18 +1915,7 @@
         },
         "x-speakeasy-max-method-params": 1,
         "x-speakeasy-name-override": "createTranscription"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/auth/keys": {
       "post": {
@@ -1733,18 +2004,7 @@
             }
           }
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/auth/keys/code": {
       "post": {
@@ -1886,18 +2146,7 @@
           }
         },
         "x-speakeasy-name-override": "createAuthCode"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/batches": {
       "get": {
@@ -2385,18 +2634,7 @@
           ],
           "strategy": "backoff"
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/batches/{id}": {
       "delete": {
@@ -2669,18 +2907,7 @@
             }
           }
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/benchmarks": {
       "get": {
@@ -2896,18 +3123,7 @@
             }
           }
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/byok": {
       "get": {
@@ -3235,18 +3451,7 @@
           }
         },
         "x-speakeasy-name-override": "create"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/byok/{id}": {
       "delete": {
@@ -3634,18 +3839,7 @@
           }
         },
         "x-speakeasy-name-override": "update"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/chat/completions": {
       "post": {
@@ -4034,18 +4228,7 @@
         "x-speakeasy-group": "chat",
         "x-speakeasy-name-override": "send",
         "x-speakeasy-stream-request-field": "stream"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/classifications/task": {
       "get": {
@@ -4173,18 +4356,7 @@
             }
           }
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/containers/{containerId}/files": {
       "get": {
@@ -4355,18 +4527,7 @@
             }
           }
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/containers/{containerId}/files/{fileId}": {
       "get": {
@@ -4533,18 +4694,7 @@
             }
           }
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/containers/{containerId}/files/{fileId}/content": {
       "get": {
@@ -4703,18 +4853,7 @@
             }
           }
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/containers/{containerId}/files/{fileId}/promote": {
       "post": {
@@ -4914,18 +5053,7 @@
             }
           }
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/credits": {
       "get": {
@@ -5002,18 +5130,7 @@
           }
         },
         "x-speakeasy-name-override": "getCredits"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/credits/coinbase": {
       "post": {
@@ -5049,18 +5166,7 @@
         "x-fern-ignore": true,
         "x-speakeasy-ignore": true,
         "x-speakeasy-name-override": "createCoinbaseCharge"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/credits/purchases": {
       "get": {
@@ -5368,18 +5474,7 @@
           ]
         },
         "x-speakeasy-ignore": true
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/credits/purchases/{id}": {
       "get": {
@@ -5530,18 +5625,7 @@
         "x-fern-ignore": true,
         "x-hidden": true,
         "x-speakeasy-ignore": true
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/credits/purchases/setup": {
       "get": {
@@ -5566,18 +5650,7 @@
         "x-fern-ignore": true,
         "x-hidden": true,
         "x-speakeasy-ignore": true
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/credits/purchases/SKILL.md": {
       "get": {
@@ -5602,18 +5675,7 @@
         "x-fern-ignore": true,
         "x-hidden": true,
         "x-speakeasy-ignore": true
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/datasets/app-rankings": {
       "get": {
@@ -5818,18 +5880,7 @@
           },
           "type": "offsetLimit"
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/datasets/rankings-daily": {
       "get": {
@@ -6004,18 +6055,7 @@
             }
           }
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/datasets/session-cost": {
       "get": {
@@ -6195,18 +6235,7 @@
           },
           "type": "offsetLimit"
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/embeddings": {
       "post": {
@@ -6488,18 +6517,7 @@
           }
         },
         "x-speakeasy-name-override": "generate"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/embeddings/models": {
       "get": {
@@ -6648,18 +6666,7 @@
           },
           "type": "offsetLimit"
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/endpoints/zdr": {
       "get": {
@@ -6794,24 +6801,12 @@
           }
         },
         "x-speakeasy-name-override": "listZdrEndpoints"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/external-users": {
       "get": {
         "tags": [
-          "External Users",
-          "End Users"
+          "External Users"
         ],
         "summary": "List registered external users",
         "description": "List registrations belonging to the authenticated organization. Inactive registrations are excluded by default. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
@@ -6973,6 +6968,7 @@
             }
           }
         },
+        "x-speakeasy-group": "externalUsers",
         "x-speakeasy-name-override": "list",
         "x-speakeasy-pagination": {
           "inputs": [
@@ -6995,8 +6991,7 @@
       },
       "post": {
         "tags": [
-          "External Users",
-          "End Users"
+          "External Users"
         ],
         "summary": "Register an external user",
         "description": "Register a caller-supplied tracking ID under the authenticated organization. No login account, policy, or credentials are created. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
@@ -7133,25 +7128,14 @@
             "x-client-success-response-status": "201"
           }
         },
+        "x-speakeasy-group": "externalUsers",
         "x-speakeasy-name-override": "create"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/external-users/{user}": {
       "delete": {
         "tags": [
-          "External Users",
-          "End Users"
+          "External Users"
         ],
         "summary": "Deactivate a registered external user",
         "description": "Soft-deactivate a registration while retaining its tracking ID. Repeat deactivation succeeds. This does not block inference; reactivate through PATCH. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
@@ -7241,12 +7225,12 @@
             }
           }
         },
+        "x-speakeasy-group": "externalUsers",
         "x-speakeasy-name-override": "delete"
       },
       "get": {
         "tags": [
-          "External Users",
-          "End Users"
+          "External Users"
         ],
         "summary": "Get a registered external user",
         "description": "Retrieve an active or inactive registration by its URL-encoded, caller-supplied tracking ID. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
@@ -7367,12 +7351,12 @@
             }
           }
         },
+        "x-speakeasy-group": "externalUsers",
         "x-speakeasy-name-override": "get"
       },
       "patch": {
         "tags": [
-          "External Users",
-          "End Users"
+          "External Users"
         ],
         "summary": "Update a registered external user",
         "description": "Update registration state without changing identity. State changes do not enforce inference access. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
@@ -7490,19 +7474,9 @@
             }
           }
         },
+        "x-speakeasy-group": "externalUsers",
         "x-speakeasy-name-override": "update"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/files": {
       "get": {
@@ -7959,18 +7933,7 @@
           }
         },
         "x-speakeasy-name-override": "upload"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/files/{fileId}": {
       "delete": {
@@ -8319,18 +8282,7 @@
           }
         },
         "x-speakeasy-name-override": "retrieve"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/files/{fileId}/content": {
       "get": {
@@ -8516,18 +8468,7 @@
           }
         },
         "x-speakeasy-name-override": "download"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/generation": {
       "get": {
@@ -8770,18 +8711,7 @@
             }
           }
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/generation/content": {
       "get": {
@@ -8994,18 +8924,7 @@
             }
           }
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/generation/feedback": {
       "post": {
@@ -9176,18 +9095,7 @@
           }
         },
         "x-speakeasy-name-override": "submitFeedback"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/guardrails": {
       "get": {
@@ -9540,18 +9448,7 @@
           }
         },
         "x-speakeasy-name-override": "create"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/guardrails/{id}": {
       "delete": {
@@ -9948,18 +9845,7 @@
           }
         },
         "x-speakeasy-name-override": "update"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/guardrails/{id}/assignments/keys": {
       "get": {
@@ -10253,18 +10139,7 @@
           }
         },
         "x-speakeasy-name-override": "bulkAssignKeys"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/guardrails/{id}/assignments/keys/remove": {
       "post": {
@@ -10399,18 +10274,7 @@
           }
         },
         "x-speakeasy-name-override": "bulkUnassignKeys"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/guardrails/{id}/assignments/members": {
       "get": {
@@ -10704,18 +10568,7 @@
           }
         },
         "x-speakeasy-name-override": "bulkAssignMembers"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/guardrails/{id}/assignments/members/remove": {
       "post": {
@@ -10851,18 +10704,7 @@
           }
         },
         "x-speakeasy-name-override": "bulkUnassignMembers"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/guardrails/assignments/keys": {
       "get": {
@@ -11038,18 +10880,7 @@
           },
           "type": "offsetLimit"
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/guardrails/assignments/members": {
       "get": {
@@ -11224,18 +11055,7 @@
           },
           "type": "offsetLimit"
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/guardrails/policies/account": {
       "get": {
@@ -11519,18 +11339,7 @@
           }
         },
         "x-speakeasy-name-override": "createAccountPolicy"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/guardrails/policies/account/{id}": {
       "delete": {
@@ -11804,18 +11613,7 @@
           }
         },
         "x-speakeasy-name-override": "updateAccountPolicy"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/guardrails/policies/assignments/api-keys/{hash}": {
       "get": {
@@ -12093,18 +11891,7 @@
           }
         },
         "x-speakeasy-name-override": "changeApiKeyPolicyAssignment"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/guardrails/policies/assignments/members/{memberId}": {
       "get": {
@@ -12382,18 +12169,7 @@
           }
         },
         "x-speakeasy-name-override": "changeMemberPolicyAssignment"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/guardrails/policies/budget": {
       "get": {
@@ -12688,18 +12464,7 @@
           }
         },
         "x-speakeasy-name-override": "createBudgetPolicy"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/guardrails/policies/budget/{id}": {
       "delete": {
@@ -13110,18 +12875,7 @@
           }
         },
         "x-speakeasy-name-override": "updateBudgetPolicy"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/guardrails/policies/model-availability": {
       "get": {
@@ -13416,18 +13170,7 @@
           }
         },
         "x-speakeasy-name-override": "createModelAvailabilityPolicy"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/guardrails/policies/model-availability/{id}": {
       "delete": {
@@ -13838,18 +13581,7 @@
           }
         },
         "x-speakeasy-name-override": "updateModelAvailabilityPolicy"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/guardrails/policies/moderation": {
       "get": {
@@ -14144,18 +13876,7 @@
           }
         },
         "x-speakeasy-name-override": "createModerationPolicy"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/guardrails/policies/moderation/{id}": {
       "delete": {
@@ -14566,18 +14287,7 @@
           }
         },
         "x-speakeasy-name-override": "updateModerationPolicy"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/images": {
       "post": {
@@ -14819,18 +14529,7 @@
           }
         },
         "x-speakeasy-name-override": "generate"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/images/models": {
       "get": {
@@ -14899,18 +14598,7 @@
           }
         },
         "x-speakeasy-name-override": "listModels"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/images/models/{author}/{slug}/endpoints": {
       "get": {
@@ -15018,18 +14706,7 @@
           }
         },
         "x-speakeasy-name-override": "listModelEndpoints"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/key": {
       "get": {
@@ -15147,18 +14824,7 @@
           }
         },
         "x-speakeasy-name-override": "getCurrentKeyMetadata"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/keys": {
       "get": {
@@ -15553,18 +15219,7 @@
           }
         },
         "x-speakeasy-name-override": "create"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/keys/{hash}": {
       "delete": {
@@ -16027,18 +15682,7 @@
           }
         },
         "x-speakeasy-name-override": "update"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/messages": {
       "post": {
@@ -16309,18 +15953,7 @@
         "x-speakeasy-ignore": true,
         "x-speakeasy-name-override": "create",
         "x-speakeasy-stream-request-field": "stream"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/model/{author}/{slug}": {
       "get": {
@@ -16466,18 +16099,7 @@
           }
         },
         "x-speakeasy-name-override": "get"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/models": {
       "get": {
@@ -17359,18 +16981,7 @@
           },
           "type": "offsetLimit"
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/models/{author}/{slug}/endpoints": {
       "get": {
@@ -17516,18 +17127,7 @@
           }
         },
         "x-speakeasy-name-override": "list"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/models/count": {
       "get": {
@@ -17614,18 +17214,7 @@
           }
         },
         "x-speakeasy-name-override": "count"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/models/user": {
       "get": {
@@ -17908,18 +17497,7 @@
           },
           "type": "offsetLimit"
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/oauth/jwks": {
       "get": {
@@ -17951,18 +17529,7 @@
             }
           }
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/oauth/token": {
       "post": {
@@ -18034,18 +17601,7 @@
             }
           }
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/observability/destinations": {
       "get": {
@@ -18406,18 +17962,7 @@
           }
         },
         "x-speakeasy-name-override": "create"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/observability/destinations/{id}": {
       "delete": {
@@ -18819,18 +18364,7 @@
           }
         },
         "x-speakeasy-name-override": "update"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/organization/members": {
       "get": {
@@ -18977,18 +18511,7 @@
           },
           "type": "offsetLimit"
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/organization/settings": {
       "get": {
@@ -19201,18 +18724,7 @@
           }
         },
         "x-speakeasy-name-override": "updateSettings"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/presets": {
       "get": {
@@ -19413,18 +18925,7 @@
           },
           "type": "offsetLimit"
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/presets/{slug}": {
       "delete": {
@@ -19748,18 +19249,7 @@
           }
         ],
         "x-speakeasy-name-override": "get"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/presets/{slug}/chat/completions": {
       "post": {
@@ -19959,18 +19449,7 @@
             "apiKey": []
           }
         ]
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/presets/{slug}/messages": {
       "post": {
@@ -20167,18 +19646,7 @@
             "apiKey": []
           }
         ]
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/presets/{slug}/responses": {
       "post": {
@@ -20368,18 +19836,7 @@
             "apiKey": []
           }
         ]
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/presets/{slug}/restore": {
       "post": {
@@ -20528,18 +19985,7 @@
           }
         ],
         "x-speakeasy-name-override": "restore"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/presets/{slug}/versions": {
       "get": {
@@ -20752,18 +20198,7 @@
           },
           "type": "offsetLimit"
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/presets/{slug}/versions/{version}": {
       "get": {
@@ -20939,18 +20374,7 @@
           }
         ],
         "x-speakeasy-name-override": "getVersion"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/private-endpoints": {
       "get": {
@@ -21207,18 +20631,7 @@
           }
         },
         "x-speakeasy-name-override": "create"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/private-endpoints/{id}": {
       "delete": {
@@ -21711,18 +21124,7 @@
           }
         },
         "x-speakeasy-name-override": "update"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/private-endpoints/{id}/activate": {
       "post": {
@@ -21903,18 +21305,7 @@
           }
         },
         "x-speakeasy-name-override": "activate"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/private-endpoints/{id}/disable": {
       "post": {
@@ -22095,18 +21486,7 @@
           }
         },
         "x-speakeasy-name-override": "disable"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/private-endpoints/{id}/enable": {
       "post": {
@@ -22287,18 +21667,7 @@
           }
         },
         "x-speakeasy-name-override": "enable"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/private-endpoints/{id}/validate": {
       "post": {
@@ -22489,18 +21858,7 @@
           }
         },
         "x-speakeasy-name-override": "validate"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/private-providers": {
       "get": {
@@ -22773,18 +22131,7 @@
           }
         },
         "x-speakeasy-name-override": "create"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/private-providers/{slug}": {
       "delete": {
@@ -23276,18 +22623,7 @@
           }
         },
         "x-speakeasy-name-override": "update"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/providers": {
       "get": {
@@ -23341,18 +22677,7 @@
           }
         },
         "x-speakeasy-name-override": "list"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/rerank": {
       "post": {
@@ -23586,18 +22911,7 @@
           }
         },
         "x-speakeasy-name-override": "rerank"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/responses": {
       "post": {
@@ -24009,18 +23323,7 @@
         },
         "x-speakeasy-name-override": "send",
         "x-speakeasy-stream-request-field": "stream"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/scim/group-mappings": {
       "get": {
@@ -24294,18 +23597,7 @@
         },
         "deprecated": true,
         "x-speakeasy-name-override": "create"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/scim/group-mappings/{id}": {
       "delete": {
@@ -24657,18 +23949,7 @@
         },
         "deprecated": true,
         "x-speakeasy-name-override": "update"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/scim/groups": {
       "get": {
@@ -24823,18 +24104,7 @@
           },
           "type": "offsetLimit"
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/scim/sync-jobs": {
       "post": {
@@ -24953,18 +24223,7 @@
         },
         "deprecated": true,
         "x-speakeasy-name-override": "createSyncJob"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/scim/sync-jobs/{id}": {
       "get": {
@@ -25062,18 +24321,7 @@
           }
         },
         "x-speakeasy-name-override": "getSyncJob"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/systemone": {
       "post": {
@@ -25374,18 +24622,7 @@
           }
         },
         "x-speakeasy-name-override": "create"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/tools": {
       "get": {
@@ -25514,18 +24751,7 @@
             "bearer": []
           }
         ]
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/tools/{name}": {
       "get": {
@@ -25641,18 +24867,7 @@
             "bearer": []
           }
         ]
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/vault/interns/{internId}/connections": {
       "get": {
@@ -26025,18 +25240,7 @@
             "apiKey": []
           }
         ]
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/vault/interns/{internId}/effective-secrets": {
       "get": {
@@ -26379,18 +25583,7 @@
             "apiKey": []
           }
         ]
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/vault/interns/{internId}/secrets": {
       "get": {
@@ -26722,18 +25915,7 @@
             "apiKey": []
           }
         ]
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/vault/interns/{internId}/secrets/{name}": {
       "delete": {
@@ -27414,18 +26596,7 @@
             "apiKey": []
           }
         ]
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/vault/interns/{internId}/secrets/copy": {
       "post": {
@@ -27781,18 +26952,7 @@
             "apiKey": []
           }
         ]
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/vault/secrets": {
       "get": {
@@ -28112,18 +27272,7 @@
             "apiKey": []
           }
         ]
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/vault/secrets/{name}": {
       "delete": {
@@ -28780,18 +27929,7 @@
             "apiKey": []
           }
         ]
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/videos": {
       "post": {
@@ -29014,18 +28152,7 @@
           }
         },
         "x-speakeasy-name-override": "generate"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/videos/{jobId}": {
       "get": {
@@ -29136,18 +28263,7 @@
           }
         },
         "x-speakeasy-name-override": "getGeneration"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/videos/{jobId}/content": {
       "get": {
@@ -29324,18 +28440,7 @@
           }
         },
         "x-speakeasy-name-override": "getVideoContent"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/videos/models": {
       "get": {
@@ -29421,18 +28526,7 @@
             }
           }
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/workspaces": {
       "get": {
@@ -29734,18 +28828,7 @@
           }
         },
         "x-speakeasy-name-override": "create"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/workspaces/{id}": {
       "delete": {
@@ -30145,18 +29228,7 @@
           }
         },
         "x-speakeasy-name-override": "update"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/workspaces/{id}/members": {
       "get": {
@@ -30315,18 +29387,7 @@
           },
           "type": "offsetLimit"
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/workspaces/{id}/members/add": {
       "post": {
@@ -30471,18 +29532,7 @@
           }
         },
         "x-speakeasy-name-override": "bulkAddMembers"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/workspaces/{id}/members/remove": {
       "post": {
@@ -30618,18 +29668,7 @@
           }
         },
         "x-speakeasy-name-override": "bulkRemoveMembers"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/workspaces/{id}/budgets": {
       "get": {
@@ -30743,18 +29782,7 @@
           }
         },
         "x-speakeasy-name-override": "listBudgets"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/workspaces/{id}/budgets/{interval}": {
       "delete": {
@@ -31026,7 +30054,7 @@
           "Workspaces"
         ],
         "summary": "Create or update a workspace budget",
-        "description": "Create or update the budget for a given interval. Budget limits must strictly decrease as the interval narrows (lifetime \u003E monthly \u003E weekly \u003E daily). The optional \u0060include_byok_in_budgets\u0060 flag is a workspace-wide setting: when provided it applies to every budget interval for the workspace, not just the interval in this request. Note that a change made here is applied to budget enforcement immediately, but an already-open workspace settings page in the web dashboard may keep showing the previous value until it is reloaded. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
+        "description": "Create or update the budget for a given interval. Budget limits must strictly decrease as the interval narrows (lifetime \u003E monthly \u003E weekly \u003E daily). Requires an organization-scoped management key with both budgets:view and budgets:update. The optional \u0060include_byok_in_budgets\u0060 flag is a workspace-wide setting: when provided it applies to every budget interval for the workspace, not just the interval in this request. Note that a change made here is applied to budget enforcement immediately, but an already-open workspace settings page in the web dashboard may keep showing the previous value until it is reloaded. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
         "operationId": "UpsertWorkspaceBudget",
         "parameters": [
           {
@@ -31170,18 +30198,7 @@
           }
         },
         "x-speakeasy-name-override": "setBudget"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     }
   },
   "components": {
@@ -41378,7 +40395,7 @@
             "example": "https://contoso.openai.azure.com"
           },
           "declared_parameters": {
-            "maxItems": 25,
+            "maxItems": 26,
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/PrivateEndpointDeclaredParameter"
@@ -53499,7 +52516,7 @@
             "type": "string"
           },
           "incomplete_details": {
-            "$ref": "#/components/schemas/BaseResponsesResultIncompleteDetails"
+            "$ref": "#/components/schemas/IncompleteDetails"
           },
           "instructions": {
             "$ref": "#/components/schemas/BaseInputs"
@@ -53561,7 +52578,7 @@
             "$ref": "#/components/schemas/PromptCacheOptions"
           },
           "reasoning": {
-            "$ref": "#/components/schemas/BaseResponsesResultReasoning"
+            "$ref": "#/components/schemas/BaseReasoningConfig"
           },
           "safety_identifier": {
             "type": [
@@ -53598,10 +52615,7 @@
             }
           },
           "top_logprobs": {
-            "type": [
-              "null",
-              "integer"
-            ]
+            "type": "integer"
           },
           "top_p": {
             "type": [
@@ -53611,7 +52625,7 @@
             "format": "double"
           },
           "truncation": {
-            "$ref": "#/components/schemas/BaseResponsesResultTruncation"
+            "$ref": "#/components/schemas/Truncation"
           },
           "usage": {
             "$ref": "#/components/schemas/OpenResponsesResultUsage"
@@ -56309,6 +55323,7 @@
           "seed",
           "response_format",
           "structured_outputs",
+          "strict_tool_schemas",
           "stop",
           "tools",
           "tool_choice",
@@ -56393,6 +55408,10 @@
             {
               "value": "structured_outputs",
               "name": "StructuredOutputs"
+            },
+            {
+              "value": "strict_tool_schemas",
+              "name": "StrictToolSchemas"
             },
             {
               "value": "stop",
@@ -57854,6 +56873,7 @@
           "seed",
           "response_format",
           "structured_outputs",
+          "strict_tool_schemas",
           "stop",
           "tools",
           "tool_choice",
@@ -57938,6 +56958,10 @@
             {
               "value": "structured_outputs",
               "name": "StructuredOutputs"
+            },
+            {
+              "value": "strict_tool_schemas",
+              "name": "StrictToolSchemas"
             },
             {
               "value": "stop",
@@ -59695,7 +58719,7 @@
           },
           "supports_diarization": {
             "type": "boolean",
-            "description": "Whether this STT endpoint can label each transcript segment with a speaker (speaker diarization). False when the endpoint has not declared support."
+            "description": "Whether this STT endpoint can label each transcript segment with a speaker (speaker diarization). For transcription endpoints, derived from the serving STT adapter: true when that adapter supports \u0060diarize: true\u0060 for this model. Diarized requests also need \u0060response_format: verbose_json\u0060."
           },
           "supports_image_reference": {
             "type": "boolean",
@@ -60034,7 +59058,7 @@
           },
           "supports_diarization": {
             "type": "boolean",
-            "description": "Whether this STT endpoint can label each transcript segment with a speaker (speaker diarization). False when the endpoint has not declared support."
+            "description": "Whether this STT endpoint can label each transcript segment with a speaker (speaker diarization). For transcription endpoints, derived from the serving STT adapter: true when that adapter supports \u0060diarize: true\u0060 for this model. Diarized requests also need \u0060response_format: verbose_json\u0060."
           },
           "supports_image_reference": {
             "type": "boolean",
@@ -62702,6 +61726,31 @@
           }
         }
       },
+      "SpeechEnumParameter": {
+        "required": [
+          "type",
+          "values"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/EnumValueType"
+          },
+          "values": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "example": {
+          "type": "enum",
+          "values": [
+            "alloy",
+            "coral"
+          ]
+        }
+      },
       "SpeechInput": {
         "anyOf": [
           {
@@ -62717,6 +61766,31 @@
         ],
         "description": "Text to synthesize, or a list of turns for multi-speaker input. Each turn has its own text, voice, and instructions. Multi-speaker input is supported by Gemini TTS models, by Fish Audio models other than S1, and by Speechify dialogue models.",
         "example": "Hello world"
+      },
+      "SpeechInputModality": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/SpeechInputModalityOneOf1"
+          },
+          {
+            "$ref": "#/components/schemas/SpeechInputModalityOneOf2"
+          },
+          {
+            "$ref": "#/components/schemas/SpeechInputModalityOneOf3"
+          }
+        ],
+        "description": "An input the model accepts. \u0060audio\u0060 and \u0060image\u0060 are \u0060input_references\u0060 for voice cloning and voice design.",
+        "example": {
+          "type": "text"
+        },
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "text": "#/components/schemas/SpeechInputModalityOneOf1",
+            "audio": "#/components/schemas/SpeechInputModalityOneOf2",
+            "image": "#/components/schemas/SpeechInputModalityOneOf3"
+          }
+        }
       },
       "SpeechInputReference": {
         "oneOf": [
@@ -62870,6 +61944,384 @@
           "type": "text"
         }
       },
+      "SpeechModelEndpoint": {
+        "required": [
+          "provider_name",
+          "provider_slug",
+          "input_modalities",
+          "output_modalities"
+        ],
+        "type": "object",
+        "properties": {
+          "input_modalities": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SpeechInputModality"
+            }
+          },
+          "output_modalities": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SpeechOutputModality"
+            }
+          },
+          "provider_name": {
+            "type": "string",
+            "description": "Provider display name",
+            "example": "OpenAI"
+          },
+          "provider_slug": {
+            "type": "string",
+            "description": "Provider slug",
+            "example": "openai"
+          }
+        },
+        "description": "One endpoint serving a speech model, with the inputs and parameters it accepts.",
+        "example": {
+          "input_modalities": [
+            {
+              "type": "text"
+            }
+          ],
+          "output_modalities": [
+            {
+              "supported_parameters": {
+                "instructions": {
+                  "type": "unknown"
+                },
+                "response_format": {
+                  "type": "enum",
+                  "values": [
+                    "mp3",
+                    "pcm"
+                  ]
+                },
+                "speed": {
+                  "max": 4,
+                  "min": 0.25,
+                  "type": "range"
+                },
+                "voice": {
+                  "type": "enum",
+                  "values": [
+                    "alloy",
+                    "coral"
+                  ]
+                }
+              },
+              "type": "speech"
+            }
+          ],
+          "provider_name": "OpenAI",
+          "provider_slug": "openai"
+        }
+      },
+      "SpeechModelResponse": {
+        "required": [
+          "id",
+          "name",
+          "description",
+          "created",
+          "input_modalities",
+          "output_modalities",
+          "endpoints"
+        ],
+        "type": "object",
+        "properties": {
+          "created": {
+            "type": "integer",
+            "description": "Unix timestamp (seconds) of when the model was created"
+          },
+          "description": {
+            "type": "string"
+          },
+          "endpoints": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SpeechModelEndpoint"
+            },
+            "description": "Each endpoint serving the model, with exactly the inputs and parameters it accepts. Some endpoints route only after the caller accepts a provider requirement such as a self-attestation; until then, a request to them is rejected with a 403 that names the requirement."
+          },
+          "id": {
+            "type": "string",
+            "description": "Model slug",
+            "example": "openai/gpt-4o-mini-tts"
+          },
+          "input_modalities": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SpeechInputModality"
+            }
+          },
+          "name": {
+            "type": "string",
+            "example": "OpenAI: GPT-4o mini TTS"
+          },
+          "output_modalities": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SpeechOutputModality"
+            }
+          }
+        },
+        "description": "A text-to-speech model. Its members are the envelope of its endpoints\u0027: enums are unioned and ranges widened, so a value inside a range may be accepted by no single endpoint. Each record in \u0060endpoints\u0060 lists exactly what that endpoint accepts.",
+        "example": {
+          "created": 1742428800,
+          "description": "Text-to-speech model with steerable delivery.",
+          "endpoints": [
+            {
+              "input_modalities": [
+                {
+                  "type": "text"
+                }
+              ],
+              "output_modalities": [
+                {
+                  "supported_parameters": {
+                    "instructions": {
+                      "type": "unknown"
+                    },
+                    "response_format": {
+                      "type": "enum",
+                      "values": [
+                        "mp3",
+                        "pcm"
+                      ]
+                    },
+                    "speed": {
+                      "max": 4,
+                      "min": 0.25,
+                      "type": "range"
+                    },
+                    "voice": {
+                      "type": "enum",
+                      "values": [
+                        "alloy",
+                        "coral"
+                      ]
+                    }
+                  },
+                  "type": "speech"
+                }
+              ],
+              "provider_name": "OpenAI",
+              "provider_slug": "openai"
+            }
+          ],
+          "id": "openai/gpt-4o-mini-tts",
+          "input_modalities": [
+            {
+              "type": "text"
+            }
+          ],
+          "name": "OpenAI: GPT-4o mini TTS",
+          "output_modalities": [
+            {
+              "supported_parameters": {
+                "instructions": {
+                  "type": "unknown"
+                },
+                "response_format": {
+                  "type": "enum",
+                  "values": [
+                    "mp3",
+                    "pcm"
+                  ]
+                },
+                "speed": {
+                  "max": 4,
+                  "min": 0.25,
+                  "type": "range"
+                },
+                "voice": {
+                  "type": "enum",
+                  "values": [
+                    "alloy",
+                    "coral"
+                  ]
+                }
+              },
+              "type": "speech"
+            }
+          ]
+        }
+      },
+      "SpeechModelsListResponse": {
+        "required": [
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SpeechModelResponse"
+            }
+          }
+        },
+        "description": "List of text-to-speech models, each with its endpoints.",
+        "example": {
+          "data": [
+            {
+              "created": 1742428800,
+              "description": "Text-to-speech model with steerable delivery.",
+              "endpoints": [
+                {
+                  "input_modalities": [
+                    {
+                      "type": "text"
+                    }
+                  ],
+                  "output_modalities": [
+                    {
+                      "supported_parameters": {
+                        "instructions": {
+                          "type": "unknown"
+                        },
+                        "response_format": {
+                          "type": "enum",
+                          "values": [
+                            "mp3",
+                            "pcm"
+                          ]
+                        },
+                        "speed": {
+                          "max": 4,
+                          "min": 0.25,
+                          "type": "range"
+                        },
+                        "voice": {
+                          "type": "enum",
+                          "values": [
+                            "alloy",
+                            "coral"
+                          ]
+                        }
+                      },
+                      "type": "speech"
+                    }
+                  ],
+                  "provider_name": "OpenAI",
+                  "provider_slug": "openai"
+                }
+              ],
+              "id": "openai/gpt-4o-mini-tts",
+              "input_modalities": [
+                {
+                  "type": "text"
+                }
+              ],
+              "name": "OpenAI: GPT-4o mini TTS",
+              "output_modalities": [
+                {
+                  "supported_parameters": {
+                    "instructions": {
+                      "type": "unknown"
+                    },
+                    "response_format": {
+                      "type": "enum",
+                      "values": [
+                        "mp3",
+                        "pcm"
+                      ]
+                    },
+                    "speed": {
+                      "max": 4,
+                      "min": 0.25,
+                      "type": "range"
+                    },
+                    "voice": {
+                      "type": "enum",
+                      "values": [
+                        "alloy",
+                        "coral"
+                      ]
+                    }
+                  },
+                  "type": "speech"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "SpeechOutputModality": {
+        "required": [
+          "type",
+          "supported_parameters"
+        ],
+        "type": "object",
+        "properties": {
+          "supported_parameters": {
+            "$ref": "#/components/schemas/SpeechSupportedParameters"
+          },
+          "type": {
+            "$ref": "#/components/schemas/SpeechType"
+          }
+        },
+        "example": {
+          "supported_parameters": {
+            "voice": {
+              "type": "enum",
+              "values": [
+                "alloy",
+                "coral"
+              ]
+            }
+          },
+          "type": "speech"
+        }
+      },
+      "SpeechRangeParameter": {
+        "required": [
+          "type",
+          "min",
+          "max"
+        ],
+        "type": "object",
+        "properties": {
+          "max": {
+            "type": "number",
+            "format": "double"
+          },
+          "min": {
+            "type": "number",
+            "format": "double"
+          },
+          "type": {
+            "$ref": "#/components/schemas/RangeType"
+          }
+        },
+        "description": "The accepted \u0060speed\u0060 range. Absent: the provider documents no range; some providers still forward \u0060speed\u0060.",
+        "example": {
+          "max": 4,
+          "min": 0.25,
+          "type": "range"
+        }
+      },
+      "SpeechReferenceCount": {
+        "required": [
+          "type",
+          "min"
+        ],
+        "type": "object",
+        "properties": {
+          "max": {
+            "type": "integer"
+          },
+          "min": {
+            "type": "integer"
+          },
+          "type": {
+            "$ref": "#/components/schemas/IntegerType"
+          }
+        },
+        "example": {
+          "max": 1,
+          "min": 1,
+          "type": "integer"
+        }
+      },
       "SpeechRequest": {
         "required": [
           "model",
@@ -62954,6 +62406,49 @@
           "voice": "en_paul_neutral"
         }
       },
+      "SpeechSupportedParameters": {
+        "type": "object",
+        "properties": {
+          "instructions": {
+            "$ref": "#/components/schemas/SpeechUnknownParameter"
+          },
+          "response_format": {
+            "$ref": "#/components/schemas/SpeechEnumParameter"
+          },
+          "speed": {
+            "description": "The accepted \u0060speed\u0060 range. Absent: the provider documents no range; some providers still forward \u0060speed\u0060.",
+            "$ref": "#/components/schemas/SpeechRangeParameter"
+          },
+          "voice": {
+            "description": "\u0060enum\u0060 lists the documented voices in \u0060values\u0060; some providers also accept voice IDs not listed there (custom or cloned voices). \u0060unknown\u0060 means the field is accepted but no voices are listed.",
+            "$ref": "#/components/schemas/SpeechVoiceParameter"
+          }
+        },
+        "example": {
+          "instructions": {
+            "type": "unknown"
+          },
+          "response_format": {
+            "type": "enum",
+            "values": [
+              "mp3",
+              "pcm"
+            ]
+          },
+          "speed": {
+            "max": 4,
+            "min": 0.25,
+            "type": "range"
+          },
+          "voice": {
+            "type": "enum",
+            "values": [
+              "alloy",
+              "coral"
+            ]
+          }
+        }
+      },
       "SpeechTurn": {
         "required": [
           "text"
@@ -62976,6 +62471,48 @@
             "description": "Voice for this turn. Defaults to the top-level \u0060voice\u0060.",
             "example": "Kore"
           }
+        }
+      },
+      "SpeechUnknownParameter": {
+        "required": [
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/UnknownType"
+          }
+        },
+        "example": {
+          "type": "unknown"
+        }
+      },
+      "SpeechVoiceParameter": {
+        "required": [
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "references": {
+            "$ref": "#/components/schemas/ExcludedReferences"
+          },
+          "type": {
+            "$ref": "#/components/schemas/SpeechVoiceParameterType"
+          },
+          "values": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "description": "\u0060enum\u0060 lists the documented voices in \u0060values\u0060; some providers also accept voice IDs not listed there (custom or cloned voices). \u0060unknown\u0060 means the field is accepted but no voices are listed.",
+        "example": {
+          "type": "enum",
+          "values": [
+            "alloy",
+            "coral"
+          ]
         }
       },
       "StopServerToolsWhenCondition": {
@@ -64029,6 +63566,25 @@
             ],
             "window_days": 7
           }
+        }
+      },
+      "TextConfig": {
+        "type": "object",
+        "properties": {
+          "format": {
+            "description": "Text response format configuration",
+            "$ref": "#/components/schemas/Formats"
+          },
+          "verbosity": {
+            "$ref": "#/components/schemas/TextConfigVerbosity"
+          }
+        },
+        "description": "Text output configuration including format and verbosity",
+        "example": {
+          "format": {
+            "type": "text"
+          },
+          "verbosity": "medium"
         }
       },
       "TextExtendedConfig": {
@@ -66118,7 +65674,7 @@
             "example": "https://contoso.openai.azure.com"
           },
           "declared_parameters": {
-            "maxItems": 25,
+            "maxItems": 26,
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/PrivateEndpointDeclaredParameter"
@@ -67104,8 +66660,18 @@
           "polling_url": {
             "type": "string"
           },
+          "progress": {
+            "maximum": 100,
+            "minimum": 0,
+            "type": "number",
+            "description": "Percent complete, from 0 to 100 and possibly fractional, reported by the provider while \u0060status_detail\u0060 is \u0060generating\u0060. Present only for providers that report it, and absent once the job moves to \u0060finalizing\u0060.",
+            "format": "double"
+          },
           "status": {
             "$ref": "#/components/schemas/VideoGenerationResponseStatus"
+          },
+          "status_detail": {
+            "$ref": "#/components/schemas/VideoGenerationResponseStatusDetail"
           },
           "unsigned_urls": {
             "type": "array",
@@ -67130,7 +66696,8 @@
           "generation_id": "gen-vid-1789480874-Ab3dEf9hIjKlMnOpQrSt",
           "id": "gen-vid-1789480874-Ab3dEf9hIjKlMnOpQrSt",
           "polling_url": "/api/v1/videos/gen-vid-1789480874-Ab3dEf9hIjKlMnOpQrSt",
-          "status": "pending"
+          "status": "pending",
+          "status_detail": "queued_at_provider"
         }
       },
       "VideoGenerationUsage": {
@@ -69214,36 +68781,6 @@
           }
         ]
       },
-      "BaseResponsesResultError": {
-        "anyOf": [
-          {
-            "$ref": "#/components/schemas/ResponsesErrorField"
-          },
-          {
-            "type": "null"
-          }
-        ]
-      },
-      "BaseResponsesResultIncompleteDetails": {
-        "anyOf": [
-          {
-            "$ref": "#/components/schemas/IncompleteDetails"
-          },
-          {
-            "type": "null"
-          }
-        ]
-      },
-      "BaseResponsesResultReasoning": {
-        "anyOf": [
-          {
-            "$ref": "#/components/schemas/BaseReasoningConfig"
-          },
-          {
-            "type": "null"
-          }
-        ]
-      },
       "BaseResponsesResultToolsItem": {
         "discriminator": {
           "propertyName": "type",
@@ -69342,16 +68879,6 @@
         },
         "required": [
           "type"
-        ]
-      },
-      "BaseResponsesResultTruncation": {
-        "anyOf": [
-          {
-            "$ref": "#/components/schemas/Truncation"
-          },
-          {
-            "type": "null"
-          }
         ]
       },
       "BatchObjectResultsItemResponseBody": {
@@ -74479,6 +74006,51 @@
         "required": [
           "type"
         ]
+      },
+      "SpeechInputModalityOneOf1": {
+        "required": [
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "turns": {
+            "$ref": "#/components/schemas/SpeechInputModalityOneOf1Turns"
+          },
+          "type": {
+            "$ref": "#/components/schemas/TextType"
+          }
+        },
+        "description": "The \u0060input\u0060 text."
+      },
+      "SpeechInputModalityOneOf2": {
+        "required": [
+          "type",
+          "supported_inputs"
+        ],
+        "type": "object",
+        "properties": {
+          "supported_inputs": {
+            "$ref": "#/components/schemas/SpeechInputModalityOneOf2SupportedInputs"
+          },
+          "type": {
+            "$ref": "#/components/schemas/AudioType"
+          }
+        }
+      },
+      "SpeechInputModalityOneOf3": {
+        "required": [
+          "type",
+          "supported_inputs"
+        ],
+        "type": "object",
+        "properties": {
+          "supported_inputs": {
+            "$ref": "#/components/schemas/SpeechInputModalityOneOf3SupportedInputs"
+          },
+          "type": {
+            "$ref": "#/components/schemas/ImageType"
+          }
+        }
       },
       "StoredPromptTemplateVariablesAdditionalProperties": {
         "anyOf": [
@@ -81861,6 +81433,32 @@
         },
         "additionalProperties": {}
       },
+      "SpeechInputModalityOneOf2SupportedInputs": {
+        "required": [
+          "references"
+        ],
+        "type": "object",
+        "properties": {
+          "references": {
+            "$ref": "#/components/schemas/SpeechReferenceCount"
+          }
+        },
+        "description": "\u0060references\u0060 is how many audio clips a request may send. With more than one, some providers require the text to address every clip with an \u0060@AudioN\u0060 placeholder."
+      },
+      "SpeechInputModalityOneOf3SupportedInputs": {
+        "required": [
+          "references"
+        ],
+        "type": "object",
+        "properties": {
+          "audio": {
+            "$ref": "#/components/schemas/SpeechInputModalityOneOf3SupportedInputsAudio"
+          },
+          "references": {
+            "$ref": "#/components/schemas/SpeechReferenceCount"
+          }
+        }
+      },
       "UsageAllOf2CostDetails": {
         "required": [
           "upstream_inference_input_cost",
@@ -84749,7 +84347,8 @@
       "OpenResponsesResultError": {
         "allOf": [
           {
-            "$ref": "#/components/schemas/BaseResponsesResultError"
+            "description": "Error information returned from the API",
+            "$ref": "#/components/schemas/ResponsesErrorField"
           },
           {
             "description": "Error of a failed response; \u0060metadata\u0060 carries OpenRouter-specific details.",
@@ -84777,19 +84376,13 @@
         "allOf": [
           {
             "description": "Text output configuration including format and verbosity",
+            "$ref": "#/components/schemas/TextConfig"
+          },
+          {
+            "description": "Text output configuration including format and verbosity",
             "$ref": "#/components/schemas/TextExtendedConfig"
           }
-        ],
-        "type": "object",
-        "properties": {
-          "format": {
-            "description": "Text response format configuration",
-            "$ref": "#/components/schemas/Formats"
-          },
-          "verbosity": {
-            "$ref": "#/components/schemas/TextConfigVerbosity"
-          }
-        }
+        ]
       },
       "OpenResponsesResultUsage": {
         "allOf": [
@@ -98417,6 +98010,7 @@
           "seed",
           "response_format",
           "structured_outputs",
+          "strict_tool_schemas",
           "stop",
           "tools",
           "tool_choice",
@@ -98500,6 +98094,10 @@
             {
               "value": "structured_outputs",
               "name": "StructuredOutputs"
+            },
+            {
+              "value": "strict_tool_schemas",
+              "name": "StrictToolSchemas"
             },
             {
               "value": "stop",
@@ -99665,6 +99263,38 @@
           ]
         }
       },
+      "SpeechType": {
+        "enum": [
+          "speech"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "SpeechType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "speech",
+              "name": "Speech"
+            }
+          ]
+        }
+      },
+      "IntegerType": {
+        "enum": [
+          "integer"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "IntegerType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "integer",
+              "name": "Integer"
+            }
+          ]
+        }
+      },
       "SpeechRequestResponseFormat": {
         "enum": [
           "mp3",
@@ -99685,6 +99315,61 @@
             {
               "value": "pcm",
               "name": "Pcm"
+            }
+          ]
+        }
+      },
+      "UnknownType": {
+        "enum": [
+          "unknown"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "UnknownType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "unknown",
+              "name": "Unknown"
+            }
+          ]
+        }
+      },
+      "ExcludedReferences": {
+        "enum": [
+          "excluded"
+        ],
+        "type": "string",
+        "description": "\u0060excluded\u0060: \u0060voice\u0060 is rejected when the request also sends a nonempty \u0060input_references\u0060. Absent: they can be combined.",
+        "x-ms-enum": {
+          "name": "ExcludedReferences",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "excluded",
+              "name": "Excluded"
+            }
+          ]
+        }
+      },
+      "SpeechVoiceParameterType": {
+        "enum": [
+          "enum",
+          "unknown"
+        ],
+        "type": "string",
+        "x-speakeasy-unknown-values": "allow",
+        "x-ms-enum": {
+          "name": "SpeechVoiceParameterType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "enum",
+              "name": "EnumValue"
+            },
+            {
+              "value": "unknown",
+              "name": "Unknown"
             }
           ]
         }
@@ -100549,6 +100234,7 @@
           "seed",
           "response_format",
           "structured_outputs",
+          "strict_tool_schemas",
           "stop",
           "tools",
           "tool_choice",
@@ -100632,6 +100318,10 @@
             {
               "value": "structured_outputs",
               "name": "StructuredOutputs"
+            },
+            {
+              "value": "strict_tool_schemas",
+              "name": "StrictToolSchemas"
             },
             {
               "value": "stop",
@@ -100960,6 +100650,39 @@
             {
               "value": "expired",
               "name": "Expired"
+            }
+          ]
+        }
+      },
+      "VideoGenerationResponseStatusDetail": {
+        "enum": [
+          "submitting",
+          "queued_at_provider",
+          "generating",
+          "finalizing"
+        ],
+        "type": "string",
+        "description": "The step within \u0060status\u0060 for a job that is not finished: \u0060submitting\u0060 and \u0060queued_at_provider\u0060 under \u0060pending\u0060, \u0060generating\u0060 and \u0060finalizing\u0060 under \u0060in_progress\u0060. When present, it only moves forward, and steps may be skipped between polls. It is absent once the job is finished and can also be absent mid-job when the step is unknown, so use \u0060status\u0060 to tell whether the job is finished.",
+        "x-speakeasy-unknown-values": "allow",
+        "x-ms-enum": {
+          "name": "VideoGenerationResponseStatusDetail",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "submitting",
+              "name": "Submitting"
+            },
+            {
+              "value": "queued_at_provider",
+              "name": "QueuedAtProvider"
+            },
+            {
+              "value": "generating",
+              "name": "Generating"
+            },
+            {
+              "value": "finalizing",
+              "name": "Finalizing"
             }
           ]
         }
@@ -102079,6 +101802,45 @@
             {
               "value": "final_answer",
               "name": "FinalAnswer"
+            }
+          ]
+        }
+      },
+      "SpeechInputModalityOneOf1Turns": {
+        "enum": [
+          "required",
+          "optional"
+        ],
+        "type": "string",
+        "description": "\u0060optional\u0060: \u0060input\u0060 may also be a multi-speaker turn array, which cannot be combined with \u0060input_references\u0060. \u0060required\u0060: \u0060input\u0060 must be a turn array with at least two distinct voices. Absent: \u0060input\u0060 is a string.",
+        "x-speakeasy-unknown-values": "allow",
+        "x-ms-enum": {
+          "name": "SpeechInputModalityOneOf1Turns",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "required",
+              "name": "Required"
+            },
+            {
+              "value": "optional",
+              "name": "Optional"
+            }
+          ]
+        }
+      },
+      "AudioType": {
+        "enum": [
+          "audio"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "AudioType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "audio",
+              "name": "Audio"
             }
           ]
         }
@@ -104062,6 +103824,29 @@
             {
               "value": "daybreak_red",
               "name": "DaybreakRed"
+            }
+          ]
+        }
+      },
+      "SpeechInputModalityOneOf3SupportedInputsAudio": {
+        "enum": [
+          "required",
+          "excluded"
+        ],
+        "type": "string",
+        "description": "\u0060required\u0060: an image reference is accepted only together with an audio reference. \u0060excluded\u0060: only without one. Absent: either.",
+        "x-speakeasy-unknown-values": "allow",
+        "x-ms-enum": {
+          "name": "SpeechInputModalityOneOf3SupportedInputsAudio",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "required",
+              "name": "Required"
+            },
+            {
+              "value": "excluded",
+              "name": "Excluded"
             }
           ]
         }
@@ -122195,22 +121980,12 @@
         }
       },
       "AppDisplayName": {
-        "name": "X-OpenRouter-Title",
+        "name": "X-Title",
         "in": "header",
         "description": "The app display name allows you to customize how your app appears in OpenRouter\u0027s dashboard.\n",
         "schema": {
           "type": "string"
-        },
-        "x-speakeasy-name-override": "appTitle"
-      },
-      "AppCategories": {
-        "name": "X-OpenRouter-Categories",
-        "in": "header",
-        "description": "Comma-separated list of app categories (e.g. \u0022cli-agent,cloud-agent\u0022). Used for marketplace rankings.\n",
-        "schema": {
-          "type": "string"
-        },
-        "x-speakeasy-name-override": "appCategories"
+        }
       }
     },
     "securitySchemes": {
@@ -122394,10 +122169,6 @@
     {
       "name": "beta.responses",
       "description": "Deprecated alias of responses. Use responses instead; scheduled for removal (sunset date TBD)."
-    },
-    {
-      "name": "End Users",
-      "description": "Deprecated alias of externalUsers. Use externalUsers instead; scheduled for removal (sunset date TBD)."
     }
   ],
   "externalDocs": {
@@ -122430,9 +122201,6 @@
       },
       {
         "$ref": "#/components/parameters/AppDisplayName"
-      },
-      {
-        "$ref": "#/components/parameters/AppCategories"
       }
     ]
   },
@@ -124084,7 +123852,8 @@
           "type": "integer"
         },
         "error": {
-          "$ref": "#/components/schemas/BaseResponsesResultError"
+          "description": "Error information returned from the API",
+          "$ref": "#/components/schemas/ResponsesErrorField"
         },
         "frequency_penalty": {
           "type": [
@@ -124097,7 +123866,7 @@
           "type": "string"
         },
         "incomplete_details": {
-          "$ref": "#/components/schemas/BaseResponsesResultIncompleteDetails"
+          "$ref": "#/components/schemas/IncompleteDetails"
         },
         "instructions": {
           "$ref": "#/components/schemas/BaseInputs"
@@ -124162,7 +123931,7 @@
           "$ref": "#/components/schemas/PromptCacheOptions"
         },
         "reasoning": {
-          "$ref": "#/components/schemas/BaseResponsesResultReasoning"
+          "$ref": "#/components/schemas/BaseReasoningConfig"
         },
         "safety_identifier": {
           "type": [
@@ -124187,7 +123956,8 @@
           "format": "double"
         },
         "text": {
-          "$ref": "#/components/schemas/BaseResponsesResultText"
+          "description": "Text output configuration including format and verbosity",
+          "$ref": "#/components/schemas/TextConfig"
         },
         "tool_choice": {
           "$ref": "#/components/schemas/OpenAiResponsesToolChoice"
@@ -124199,10 +123969,7 @@
           }
         },
         "top_logprobs": {
-          "type": [
-            "null",
-            "integer"
-          ]
+          "type": "integer"
         },
         "top_p": {
           "type": [
@@ -124212,7 +123979,7 @@
           "format": "double"
         },
         "truncation": {
-          "$ref": "#/components/schemas/BaseResponsesResultTruncation"
+          "$ref": "#/components/schemas/Truncation"
         },
         "usage": {
           "$ref": "#/components/schemas/OpenAiResponsesUsage"
@@ -131023,25 +130790,6 @@
         "id": "switchyard-router"
       }
     },
-    "TextConfig": {
-      "type": "object",
-      "properties": {
-        "format": {
-          "description": "Text response format configuration",
-          "$ref": "#/components/schemas/Formats"
-        },
-        "verbosity": {
-          "$ref": "#/components/schemas/TextConfigVerbosity"
-        }
-      },
-      "description": "Text output configuration including format and verbosity",
-      "example": {
-        "format": {
-          "type": "text"
-        },
-        "verbosity": "medium"
-      }
-    },
     "TextDeltaEvent": {
       "required": [
         "type",
@@ -131492,22 +131240,6 @@
         "service_tier": "standard"
       }
     },
-    "BaseResponsesResultInstructions": {
-      "anyOf": [
-        {
-          "type": "string"
-        },
-        {
-          "type": "array",
-          "items": {
-            "$ref": "#/components/schemas/BaseInputsAnyOf2Item"
-          }
-        },
-        {
-          "type": "null"
-        }
-      ]
-    },
     "BaseResponsesResultOutputItem": {
       "oneOf": [
         {
@@ -131585,38 +131317,6 @@
           "mcp_call": "#/components/schemas/OutputItemMcpCall",
           "mcp_approval_request": "#/components/schemas/OutputItemMcpApprovalRequest"
         }
-      }
-    },
-    "BaseResponsesResultText": {
-      "type": [
-        "object",
-        "null"
-      ],
-      "properties": {
-        "format": {
-          "description": "Text response format configuration",
-          "$ref": "#/components/schemas/Formats"
-        },
-        "verbosity": {
-          "$ref": "#/components/schemas/TextConfigVerbosity"
-        }
-      },
-      "description": "Text output configuration including format and verbosity",
-      "example": {
-        "format": {
-          "type": "text"
-        },
-        "verbosity": "medium"
-      },
-      "x-client-original-nullable-union": {
-        "anyOf": [
-          {
-            "$ref": "#/components/schemas/TextConfig"
-          },
-          {
-            "type": "null"
-          }
-        ]
       }
     },
     "BatchProviderPreferencesOnlyItem": {
@@ -136439,7 +136139,8 @@
           "type": "integer"
         },
         "error": {
-          "$ref": "#/components/schemas/BaseResponsesResultError"
+          "description": "Error information returned from the API",
+          "$ref": "#/components/schemas/ResponsesErrorField"
         },
         "frequency_penalty": {
           "type": [
@@ -136452,7 +136153,7 @@
           "type": "string"
         },
         "incomplete_details": {
-          "$ref": "#/components/schemas/BaseResponsesResultIncompleteDetails"
+          "$ref": "#/components/schemas/IncompleteDetails"
         },
         "instructions": {
           "$ref": "#/components/schemas/BaseInputs"
@@ -136517,7 +136218,7 @@
           "$ref": "#/components/schemas/PromptCacheOptions"
         },
         "reasoning": {
-          "$ref": "#/components/schemas/BaseResponsesResultReasoning"
+          "$ref": "#/components/schemas/BaseReasoningConfig"
         },
         "safety_identifier": {
           "type": [
@@ -136542,7 +136243,8 @@
           "format": "double"
         },
         "text": {
-          "$ref": "#/components/schemas/BaseResponsesResultText"
+          "description": "Text output configuration including format and verbosity",
+          "$ref": "#/components/schemas/TextConfig"
         },
         "tool_choice": {
           "$ref": "#/components/schemas/OpenAiResponsesToolChoice"
@@ -136554,10 +136256,7 @@
           }
         },
         "top_logprobs": {
-          "type": [
-            "null",
-            "integer"
-          ]
+          "type": "integer"
         },
         "top_p": {
           "type": [
@@ -136567,7 +136266,7 @@
           "format": "double"
         },
         "truncation": {
-          "$ref": "#/components/schemas/BaseResponsesResultTruncation"
+          "$ref": "#/components/schemas/Truncation"
         },
         "usage": {
           "$ref": "#/components/schemas/OpenAiResponsesUsage"
@@ -136625,7 +136324,8 @@
           "type": "integer"
         },
         "error": {
-          "$ref": "#/components/schemas/BaseResponsesResultError"
+          "description": "Error information returned from the API",
+          "$ref": "#/components/schemas/ResponsesErrorField"
         },
         "frequency_penalty": {
           "type": [
@@ -136638,7 +136338,7 @@
           "type": "string"
         },
         "incomplete_details": {
-          "$ref": "#/components/schemas/BaseResponsesResultIncompleteDetails"
+          "$ref": "#/components/schemas/IncompleteDetails"
         },
         "instructions": {
           "$ref": "#/components/schemas/BaseInputs"
@@ -136703,7 +136403,7 @@
           "$ref": "#/components/schemas/PromptCacheOptions"
         },
         "reasoning": {
-          "$ref": "#/components/schemas/BaseResponsesResultReasoning"
+          "$ref": "#/components/schemas/BaseReasoningConfig"
         },
         "safety_identifier": {
           "type": [
@@ -136728,7 +136428,8 @@
           "format": "double"
         },
         "text": {
-          "$ref": "#/components/schemas/BaseResponsesResultText"
+          "description": "Text output configuration including format and verbosity",
+          "$ref": "#/components/schemas/TextConfig"
         },
         "tool_choice": {
           "$ref": "#/components/schemas/OpenAiResponsesToolChoice"
@@ -136740,10 +136441,7 @@
           }
         },
         "top_logprobs": {
-          "type": [
-            "null",
-            "integer"
-          ]
+          "type": "integer"
         },
         "top_p": {
           "type": [
@@ -136753,7 +136451,7 @@
           "format": "double"
         },
         "truncation": {
-          "$ref": "#/components/schemas/BaseResponsesResultTruncation"
+          "$ref": "#/components/schemas/Truncation"
         },
         "usage": {
           "$ref": "#/components/schemas/OpenAiResponsesUsage"
@@ -136811,7 +136509,8 @@
           "type": "integer"
         },
         "error": {
-          "$ref": "#/components/schemas/BaseResponsesResultError"
+          "description": "Error information returned from the API",
+          "$ref": "#/components/schemas/ResponsesErrorField"
         },
         "frequency_penalty": {
           "type": [
@@ -136824,7 +136523,7 @@
           "type": "string"
         },
         "incomplete_details": {
-          "$ref": "#/components/schemas/BaseResponsesResultIncompleteDetails"
+          "$ref": "#/components/schemas/IncompleteDetails"
         },
         "instructions": {
           "$ref": "#/components/schemas/BaseInputs"
@@ -136889,7 +136588,7 @@
           "$ref": "#/components/schemas/PromptCacheOptions"
         },
         "reasoning": {
-          "$ref": "#/components/schemas/BaseResponsesResultReasoning"
+          "$ref": "#/components/schemas/BaseReasoningConfig"
         },
         "safety_identifier": {
           "type": [
@@ -136914,7 +136613,8 @@
           "format": "double"
         },
         "text": {
-          "$ref": "#/components/schemas/BaseResponsesResultText"
+          "description": "Text output configuration including format and verbosity",
+          "$ref": "#/components/schemas/TextConfig"
         },
         "tool_choice": {
           "$ref": "#/components/schemas/OpenAiResponsesToolChoice"
@@ -136926,10 +136626,7 @@
           }
         },
         "top_logprobs": {
-          "type": [
-            "null",
-            "integer"
-          ]
+          "type": "integer"
         },
         "top_p": {
           "type": [
@@ -136939,7 +136636,7 @@
           "format": "double"
         },
         "truncation": {
-          "$ref": "#/components/schemas/BaseResponsesResultTruncation"
+          "$ref": "#/components/schemas/Truncation"
         },
         "usage": {
           "$ref": "#/components/schemas/OpenAiResponsesUsage"
@@ -136997,7 +136694,8 @@
           "type": "integer"
         },
         "error": {
-          "$ref": "#/components/schemas/BaseResponsesResultError"
+          "description": "Error information returned from the API",
+          "$ref": "#/components/schemas/ResponsesErrorField"
         },
         "frequency_penalty": {
           "type": [
@@ -137010,7 +136708,7 @@
           "type": "string"
         },
         "incomplete_details": {
-          "$ref": "#/components/schemas/BaseResponsesResultIncompleteDetails"
+          "$ref": "#/components/schemas/IncompleteDetails"
         },
         "instructions": {
           "$ref": "#/components/schemas/BaseInputs"
@@ -137075,7 +136773,7 @@
           "$ref": "#/components/schemas/PromptCacheOptions"
         },
         "reasoning": {
-          "$ref": "#/components/schemas/BaseResponsesResultReasoning"
+          "$ref": "#/components/schemas/BaseReasoningConfig"
         },
         "safety_identifier": {
           "type": [
@@ -137100,7 +136798,8 @@
           "format": "double"
         },
         "text": {
-          "$ref": "#/components/schemas/BaseResponsesResultText"
+          "description": "Text output configuration including format and verbosity",
+          "$ref": "#/components/schemas/TextConfig"
         },
         "tool_choice": {
           "$ref": "#/components/schemas/OpenAiResponsesToolChoice"
@@ -137112,10 +136811,7 @@
           }
         },
         "top_logprobs": {
-          "type": [
-            "null",
-            "integer"
-          ]
+          "type": "integer"
         },
         "top_p": {
           "type": [
@@ -137125,7 +136821,7 @@
           "format": "double"
         },
         "truncation": {
-          "$ref": "#/components/schemas/BaseResponsesResultTruncation"
+          "$ref": "#/components/schemas/Truncation"
         },
         "usage": {
           "$ref": "#/components/schemas/OpenAiResponsesUsage"
@@ -137183,7 +136879,8 @@
           "type": "integer"
         },
         "error": {
-          "$ref": "#/components/schemas/BaseResponsesResultError"
+          "description": "Error information returned from the API",
+          "$ref": "#/components/schemas/ResponsesErrorField"
         },
         "frequency_penalty": {
           "type": [
@@ -137196,7 +136893,7 @@
           "type": "string"
         },
         "incomplete_details": {
-          "$ref": "#/components/schemas/BaseResponsesResultIncompleteDetails"
+          "$ref": "#/components/schemas/IncompleteDetails"
         },
         "instructions": {
           "$ref": "#/components/schemas/BaseInputs"
@@ -137261,7 +136958,7 @@
           "$ref": "#/components/schemas/PromptCacheOptions"
         },
         "reasoning": {
-          "$ref": "#/components/schemas/BaseResponsesResultReasoning"
+          "$ref": "#/components/schemas/BaseReasoningConfig"
         },
         "safety_identifier": {
           "type": [
@@ -137286,7 +136983,8 @@
           "format": "double"
         },
         "text": {
-          "$ref": "#/components/schemas/BaseResponsesResultText"
+          "description": "Text output configuration including format and verbosity",
+          "$ref": "#/components/schemas/TextConfig"
         },
         "tool_choice": {
           "$ref": "#/components/schemas/OpenAiResponsesToolChoice"
@@ -137298,10 +136996,7 @@
           }
         },
         "top_logprobs": {
-          "type": [
-            "null",
-            "integer"
-          ]
+          "type": "integer"
         },
         "top_p": {
           "type": [
@@ -137311,7 +137006,7 @@
           "format": "double"
         },
         "truncation": {
-          "$ref": "#/components/schemas/BaseResponsesResultTruncation"
+          "$ref": "#/components/schemas/Truncation"
         },
         "usage": {
           "$ref": "#/components/schemas/OpenAiResponsesUsage"

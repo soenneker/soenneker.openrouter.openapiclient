@@ -27,8 +27,12 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             else if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
             if (parseNode.GetChildNode("polling_url") is null) { _explicitNullValuePollingUrl = default!; _explicitNullProperties?.Remove("polling_url"); }
             else if (parseNode.GetChildNode("polling_url") is { } nullNodePollingUrl && nullNodePollingUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PollingUrl = null;
+            if (parseNode.GetChildNode("progress") is null) { _explicitNullValueProgress = default!; _explicitNullProperties?.Remove("progress"); }
+            else if (parseNode.GetChildNode("progress") is { } nullNodeProgress && nullNodeProgress.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Progress = null;
             if (parseNode.GetChildNode("status") is null) { _explicitNullValueStatus = default!; _explicitNullProperties?.Remove("status"); }
             else if (parseNode.GetChildNode("status") is { } nullNodeStatus && nullNodeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Status = null;
+            if (parseNode.GetChildNode("status_detail") is null) { _explicitNullValueStatusDetail = default!; _explicitNullProperties?.Remove("status_detail"); }
+            else if (parseNode.GetChildNode("status_detail") is { } nullNodeStatusDetail && nullNodeStatusDetail.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StatusDetail = null;
             if (parseNode.GetChildNode("unsigned_urls") is null) { _explicitNullValueUnsignedUrls = default!; _explicitNullProperties?.Remove("unsigned_urls"); }
             else if (parseNode.GetChildNode("unsigned_urls") is { } nullNodeUnsignedUrls && nullNodeUnsignedUrls.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UnsignedUrls = null;
             if (parseNode.GetChildNode("urls") is null) { _explicitNullValueUrls = default!; _explicitNullProperties?.Remove("urls"); }
@@ -82,9 +86,15 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public string PollingUrl { get => _explicitNullValuePollingUrl; set { _explicitNullValuePollingUrl = value; AdditionalData?.Remove("polling_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("polling_url"); else _explicitNullProperties?.Remove("polling_url"); } }
         private string _explicitNullValuePollingUrl = default!;
 #endif
+        /// <summary>Percent complete, from 0 to 100 and possibly fractional, reported by the provider while `status_detail` is `generating`. Present only for providers that report it, and absent once the job moves to `finalizing`.</summary>
+        public double? Progress { get => _explicitNullValueProgress; set { _explicitNullValueProgress = value; AdditionalData?.Remove("progress"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("progress"); else _explicitNullProperties?.Remove("progress"); } }
+        private double? _explicitNullValueProgress = default!;
         /// <summary>The status property</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationResponseStatus? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; AdditionalData?.Remove("status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationResponseStatus? _explicitNullValueStatus = default!;
+        /// <summary>The step within `status` for a job that is not finished: `submitting` and `queued_at_provider` under `pending`, `generating` and `finalizing` under `in_progress`. When present, it only moves forward, and steps may be skipped between polls. It is absent once the job is finished and can also be absent mid-job when the step is unknown, so use `status` to tell whether the job is finished.</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationResponseStatusDetail? StatusDetail { get => _explicitNullValueStatusDetail; set { _explicitNullValueStatusDetail = value; AdditionalData?.Remove("status_detail"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status_detail"); else _explicitNullProperties?.Remove("status_detail"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationResponseStatusDetail? _explicitNullValueStatusDetail = default!;
         /// <summary>OpenRouter content URLs for each output. They need your API key in the `Authorization` header and keep working for as long as the output is available.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -138,14 +148,16 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>(9)
+            return new Dictionary<string, Action<IParseNode>>(11)
             {
                 { "error", n => { Error = n.GetStringValue(); } },
                 { "expires_at", n => { ExpiresAt = n.GetIntValue(); } },
                 { "generation_id", n => { GenerationId = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "polling_url", n => { PollingUrl = n.GetStringValue(); } },
+                { "progress", n => { Progress = n.GetDoubleValue(); } },
                 { "status", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationResponseStatus>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueStatus = default; _explicitNullProperties?.Remove("status"); AdditionalData["status"] = unknown; } else { Status = parsed; AdditionalData.Remove("status"); } } },
+                { "status_detail", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationResponseStatusDetail>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueStatusDetail = default; _explicitNullProperties?.Remove("status_detail"); AdditionalData["status_detail"] = unknown; } else { StatusDetail = parsed; AdditionalData.Remove("status_detail"); } } },
                 { "unsigned_urls", n => { UnsignedUrls = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "urls", n => { Urls = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "usage", n => { Usage = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationUsage>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationUsage.CreateFromDiscriminatorValue); } },
@@ -163,7 +175,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteStringValue("generation_id", GenerationId);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("polling_url", PollingUrl);
+            writer.WriteDoubleValue("progress", Progress);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationResponseStatus>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationResponseStatusDetail>("status_detail", StatusDetail);
             writer.WriteCollectionOfPrimitiveValues<string>("unsigned_urls", UnsignedUrls);
             writer.WriteCollectionOfPrimitiveValues<string>("urls", Urls);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationUsage>("usage", Usage);

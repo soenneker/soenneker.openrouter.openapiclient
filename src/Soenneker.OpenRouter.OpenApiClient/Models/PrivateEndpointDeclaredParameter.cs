@@ -75,6 +75,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning disable CS1591
         StructuredOutputs,
         #pragma warning restore CS1591
+        [EnumMember(Value = "strict_tool_schemas")]
+        #pragma warning disable CS1591
+        StrictToolSchemas,
+        #pragma warning restore CS1591
         [EnumMember(Value = "stop")]
         #pragma warning disable CS1591
         Stop,
