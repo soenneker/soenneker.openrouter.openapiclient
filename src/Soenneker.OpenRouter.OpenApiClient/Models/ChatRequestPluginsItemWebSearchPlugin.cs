@@ -95,7 +95,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchPluginUserLocation UserLocation { get => _explicitNullValueUserLocation; set { _explicitNullValueUserLocation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_location"); else _explicitNullProperties?.Remove("user_location"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchPluginUserLocation _explicitNullValueUserLocation = default!;
 #endif
-        /// <summary>Enable SpaceXAI X (Twitter) search alongside native web search, with optional filters. Only applies to SpaceXAI endpoints with native search; omit to search the web only. X search is billed separately by SpaceXAI, per post and per user profile fetched.</summary>
+        /// <summary>Enable SpaceXSI X (Twitter) search alongside native web search, with optional filters. Only applies to SpaceXSI endpoints with native search; omit to search the web only. X search is billed separately by SpaceXSI, per post and per user profile fetched.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.OpenRouter.OpenApiClient.Models.XSearchOptions? XSearch { get => _explicitNullValueXSearch; set { _explicitNullValueXSearch = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("x_search"); else _explicitNullProperties?.Remove("x_search"); } }

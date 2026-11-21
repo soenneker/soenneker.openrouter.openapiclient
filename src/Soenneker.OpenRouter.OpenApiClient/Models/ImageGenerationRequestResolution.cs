@@ -31,5 +31,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning disable CS1591
         Value4K,
         #pragma warning restore CS1591
+        [EnumMember(Value = "8K")]
+        #pragma warning disable CS1591
+        Value8K,
+        #pragma warning restore CS1591
     }
 }

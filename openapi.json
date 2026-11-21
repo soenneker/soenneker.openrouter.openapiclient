@@ -10,12 +10,22 @@
         "description": "The app identifier should be your app's URL and is used as the primary identifier for rankings.\nThis is used to track API usage per application.\n"
       },
       "AppDisplayName": {
-        "name": "X-Title",
+        "name": "X-OpenRouter-Title",
         "in": "header",
+        "x-speakeasy-name-override": "appTitle",
         "schema": {
           "type": "string"
         },
         "description": "The app display name allows you to customize how your app appears in OpenRouter's dashboard.\n"
+      },
+      "AppCategories": {
+        "name": "X-OpenRouter-Categories",
+        "in": "header",
+        "x-speakeasy-name-override": "appCategories",
+        "schema": {
+          "type": "string"
+        },
+        "description": "Comma-separated list of app categories (e.g. \"cli-agent,cloud-agent\"). Used for marketplace rankings.\n"
       }
     },
     "schemas": {
@@ -7159,7 +7169,8 @@
             "type": "integer"
           },
           "error": {
-            "$ref": "#/components/schemas/ResponsesErrorField"
+            "$ref": "#/components/schemas/ResponsesErrorField",
+            "nullable": true
           },
           "frequency_penalty": {
             "format": "double",
@@ -7172,22 +7183,26 @@
             "type": "string"
           },
           "incomplete_details": {
-            "$ref": "#/components/schemas/IncompleteDetails"
+            "$ref": "#/components/schemas/IncompleteDetails",
+            "nullable": true
           },
           "instructions": {
-            "$ref": "#/components/schemas/BaseInputs"
+            "$ref": "#/components/schemas/BaseInputs",
+            "nullable": true
           },
           "max_output_tokens": {
             "type": [
               "integer",
               "null"
-            ]
+            ],
+            "nullable": true
           },
           "max_tool_calls": {
             "type": [
               "integer",
               "null"
-            ]
+            ],
+            "nullable": true
           },
           "metadata": {
             "$ref": "#/components/schemas/RequestMetadata"
@@ -7297,7 +7312,8 @@
             "$ref": "#/components/schemas/PromptCacheOptions"
           },
           "reasoning": {
-            "$ref": "#/components/schemas/BaseReasoningConfig"
+            "$ref": "#/components/schemas/BaseReasoningConfig",
+            "nullable": true
           },
           "safety_identifier": {
             "type": [
@@ -7322,7 +7338,8 @@
             ]
           },
           "text": {
-            "$ref": "#/components/schemas/TextConfig"
+            "$ref": "#/components/schemas/TextConfig",
+            "nullable": true
           },
           "tool_choice": {
             "$ref": "#/components/schemas/OpenAIResponsesToolChoice"
@@ -7446,7 +7463,8 @@
             "type": "array"
           },
           "top_logprobs": {
-            "type": "integer"
+            "type": "integer",
+            "nullable": true
           },
           "top_p": {
             "format": "double",
@@ -7456,7 +7474,8 @@
             ]
           },
           "truncation": {
-            "$ref": "#/components/schemas/Truncation"
+            "$ref": "#/components/schemas/Truncation",
+            "nullable": true
           },
           "usage": {
             "$ref": "#/components/schemas/OpenAIResponsesUsage"
@@ -11064,6 +11083,7 @@
           "parallel",
           "parasail",
           "pareto-alpha",
+          "pareto-inference",
           "particle-ai",
           "pearl-research",
           "perceptron",
@@ -13634,7 +13654,7 @@
         },
         "properties": {
           "allowed_domains": {
-            "description": "Limit search results to these domains. Supported by Exa, Firecrawl, Parallel, Perplexity, and most native providers (Anthropic, OpenAI, SpaceXAI). Cannot be used with excluded_domains.",
+            "description": "Limit search results to these domains. Supported by Exa, Firecrawl, Parallel, Perplexity, and most native providers (Anthropic, OpenAI, SpaceXSI). Cannot be used with excluded_domains.",
             "items": {
               "type": "string"
             },
@@ -13644,7 +13664,7 @@
             "$ref": "#/components/schemas/WebSearchEngineEnum"
           },
           "excluded_domains": {
-            "description": "Exclude search results from these domains. Supported by Exa, Firecrawl, Parallel, Perplexity, Anthropic, OpenAI, and SpaceXAI. Cannot be used with allowed_domains.",
+            "description": "Exclude search results from these domains. Supported by Exa, Firecrawl, Parallel, Perplexity, Anthropic, OpenAI, and SpaceXSI. Cannot be used with allowed_domains.",
             "items": {
               "type": "string"
             },
@@ -17857,28 +17877,32 @@
             "type": [
               "number",
               "null"
-            ]
+            ],
+            "nullable": true
           },
           "presence_penalty": {
             "format": "double",
             "type": [
               "number",
               "null"
-            ]
+            ],
+            "nullable": true
           },
           "repetition_penalty": {
             "format": "double",
             "type": [
               "number",
               "null"
-            ]
+            ],
+            "nullable": true
           },
           "temperature": {
             "format": "double",
             "type": [
               "number",
               "null"
-            ]
+            ],
+            "nullable": true
           },
           "top_k": {
             "type": [
@@ -17891,7 +17915,8 @@
             "type": [
               "number",
               "null"
-            ]
+            ],
+            "nullable": true
           }
         },
         "type": [
@@ -24839,7 +24864,8 @@
               "1K",
               "1.5K",
               "2K",
-              "4K"
+              "4K",
+              "8K"
             ],
             "example": "2K",
             "type": "string",
@@ -31042,6 +31068,7 @@
                   "Parallel",
                   "Parasail",
                   "ParetoAlpha",
+                  "Pareto Inference",
                   "Particle AI",
                   "Pearl Research",
                   "Poolside",
@@ -44121,6 +44148,7 @@
           "Parallel",
           "Parasail",
           "ParetoAlpha",
+          "Pareto Inference",
           "Particle AI",
           "Pearl Research",
           "Poolside",
@@ -44593,6 +44621,10 @@
             "type": "object"
           },
           "pareto-alpha": {
+            "additionalProperties": {},
+            "type": "object"
+          },
+          "pareto-inference": {
             "additionalProperties": {},
             "type": "object"
           },
@@ -45197,6 +45229,7 @@
               "Parallel",
               "Parasail",
               "ParetoAlpha",
+              "Pareto Inference",
               "Particle AI",
               "Pearl Research",
               "Poolside",
@@ -52343,7 +52376,8 @@
             "type": [
               "integer",
               "null"
-            ]
+            ],
+            "nullable": true
           },
           "is_moderated": {
             "description": "Whether the top provider moderates content",
@@ -52356,7 +52390,8 @@
             "type": [
               "integer",
               "null"
-            ]
+            ],
+            "nullable": true
           }
         },
         "required": [
@@ -56584,7 +56619,7 @@
         },
         "properties": {
           "allowed_domains": {
-            "description": "Limit search results to these domains. Supported by Exa, Firecrawl, Parallel, Perplexity, and most native providers (Anthropic, OpenAI, SpaceXAI). Cannot be used with excluded_domains.",
+            "description": "Limit search results to these domains. Supported by Exa, Firecrawl, Parallel, Perplexity, and most native providers (Anthropic, OpenAI, SpaceXSI). Cannot be used with excluded_domains.",
             "items": {
               "type": "string"
             },
@@ -56594,7 +56629,7 @@
             "$ref": "#/components/schemas/WebSearchEngineEnum"
           },
           "excluded_domains": {
-            "description": "Exclude search results from these domains. Supported by Exa, Firecrawl, Parallel, Perplexity, Anthropic, OpenAI, and SpaceXAI. Cannot be used with allowed_domains.",
+            "description": "Exclude search results from these domains. Supported by Exa, Firecrawl, Parallel, Perplexity, Anthropic, OpenAI, and SpaceXSI. Cannot be used with allowed_domains.",
             "items": {
               "type": "string"
             },
@@ -56895,7 +56930,7 @@
         },
         "properties": {
           "allowed_domains": {
-            "description": "Limit search results to these domains. Supported by Exa, Firecrawl, Parallel, Perplexity, and most native providers (Anthropic, OpenAI, SpaceXAI). Cannot be used with excluded_domains.",
+            "description": "Limit search results to these domains. Supported by Exa, Firecrawl, Parallel, Perplexity, and most native providers (Anthropic, OpenAI, SpaceXSI). Cannot be used with excluded_domains.",
             "items": {
               "type": "string"
             },
@@ -56905,7 +56940,7 @@
             "$ref": "#/components/schemas/WebSearchEngineEnum"
           },
           "excluded_domains": {
-            "description": "Exclude search results from these domains. Supported by Exa, Firecrawl, Parallel, Perplexity, Anthropic, OpenAI, and SpaceXAI. Cannot be used with allowed_domains.",
+            "description": "Exclude search results from these domains. Supported by Exa, Firecrawl, Parallel, Perplexity, Anthropic, OpenAI, and SpaceXSI. Cannot be used with allowed_domains.",
             "items": {
               "type": "string"
             },
@@ -57070,6 +57105,7 @@
         "type": "object"
       },
       "Workspace": {
+        "description": "Workspace metadata. Configuration fields are omitted without permission to view workspace settings.",
         "example": {
           "created_at": "2025-08-24T10:30:00Z",
           "created_by": "user_abc123",
@@ -57160,12 +57196,12 @@
             "type": "string"
           },
           "include_byok_in_budgets": {
-            "description": "Whether BYOK (bring-your-own-key) spend counts toward this workspace's budgets. Set it via the workspace budget endpoints.",
+            "description": "Whether BYOK (bring-your-own-key) spend counts toward this workspace's budgets. Omitted without settings and budget visibility. Set it via the workspace budget endpoints.",
             "example": false,
             "type": "boolean"
           },
           "io_logging_api_key_ids": {
-            "description": "Optional array of API key IDs to filter I/O logging. Null means all keys are logged.",
+            "description": "API key IDs used to filter I/O logging. Null means all keys are logged. Omitted without access to workspace settings and API key identifiers.",
             "example": null,
             "items": {
               "type": "integer"
@@ -57221,14 +57257,6 @@
           "name",
           "slug",
           "description",
-          "default_text_model",
-          "default_image_model",
-          "default_provider_sort",
-          "is_observability_io_logging_enabled",
-          "is_observability_broadcast_enabled",
-          "is_data_discount_logging_enabled",
-          "io_logging_sampling_rate",
-          "io_logging_api_key_ids",
           "created_at",
           "updated_at",
           "created_by"
@@ -57366,7 +57394,7 @@
       },
       "XSearchOptions": {
         "additionalProperties": false,
-        "description": "Enable SpaceXAI X (Twitter) search alongside native web search, with optional filters. Only applies to SpaceXAI endpoints with native search; omit to search the web only. X search is billed separately by SpaceXAI, per post and per user profile fetched.",
+        "description": "Enable SpaceXSI X (Twitter) search alongside native web search, with optional filters. Only applies to SpaceXSI endpoints with native search; omit to search the web only. X search is billed separately by SpaceXSI, per post and per user profile fetched.",
         "example": {
           "allowed_x_handles": [
             "OpenRouterAI"
@@ -57455,7 +57483,7 @@
   "paths": {
     "/activity": {
       "get": {
-        "description": "Returns user activity data grouped by endpoint for the last 30 (completed) UTC days. Pass `workspace_id` to scope the response to a single workspace. Pass `group_by=workspace` to split each row per workspace and include `workspace_id` on every item; by default rows are aggregated across workspaces and `workspace_id` is not returned. Activity recorded before workspace resolution existed is permanently attributed to the account default workspace (no backfill is possible). A workspace-scoped management key needs `activity:view_all` on its own workspace and reads only that workspace: an omitted `workspace_id` defaults to it, a `workspace_id` naming any other workspace returns 403, `api_key_hash` and `user_id` resolve only keys and members of that workspace, and legacy activity with no workspace is excluded (including for the default workspace). [Management key](/docs/guides/overview/auth/management-api-keys) required.",
+        "description": "Returns user activity data grouped by endpoint for the last 30 (completed) UTC days. Pass `workspace_id` to scope the response to a single workspace. Pass `group_by=workspace` to split each row per workspace and include `workspace_id` on every item; by default rows are aggregated across workspaces and `workspace_id` is not returned. Activity recorded before workspace resolution existed is permanently attributed to the account default workspace (no backfill is possible). A workspace-scoped management key needs `activity:view_all` on its own workspace and reads only that workspace: an omitted `workspace_id` defaults to it, a `workspace_id` naming any other workspace returns 403, `api_key_hash` and `user_id` resolve only keys and members of that workspace, and legacy activity with no workspace is excluded (including for the default workspace). For Custom keys, `api_key_hash` also requires `api_keys:view_all` and does not resolve deleted keys. `user_id` also requires `workspace_members:view` on an explicit non-default workspace; organization and default-workspace member filtering requires `org_members:view`, which is not available as a Custom grant. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
         "operationId": "getUserActivity",
         "parameters": [
           {
@@ -57632,11 +57660,22 @@
           "Analytics"
         ],
         "x-speakeasy-max-method-params": 5
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/analytics/meta": {
       "get": {
-        "description": "Returns the available metrics, dimensions, filter operators, and granularities for the analytics query endpoint. Workspace-scoped management keys are accepted. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
+        "description": "Returns the available metrics, dimensions, filter operators, and granularities for the analytics query endpoint. Custom access requires an organization-scoped key with `analytics:view`. Workspace-scoped keys with base Read Only or Read Write access are also accepted. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
         "operationId": "getAnalyticsMeta",
         "responses": {
           "200": {
@@ -57847,11 +57886,22 @@
         "tags": [
           "Analytics"
         ]
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/analytics/query": {
       "post": {
-        "description": "Execute an analytics query with specified metrics, dimensions, filters, and time range. A workspace-scoped management key needs `activity:view_all` on its own workspace and reads only that workspace: it is refused a `workspace` filter naming another workspace, it excludes legacy rows with no workspace (including for the default workspace), and possible-cache metrics such as `possible_cached_tokens` return 400. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
+        "description": "Execute an analytics query with specified metrics, dimensions, filters, and time range. Custom access requires an organization-scoped key with `analytics:view`; grouping or filtering by `api_key_id` or `api_key_tag` also requires `api_keys:view_all`, and by `user` requires `org_members:view`. Key hash filters resolve only non-deleted ordinary keys. Workspace-scoped keys with base Read Only or Read Write access can query only their own workspace: a `workspace` filter naming another workspace is refused, legacy rows with no workspace are excluded (including for the default workspace), and possible-cache metrics such as `possible_cached_tokens` return 400. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
         "operationId": "queryAnalytics",
         "requestBody": {
           "content": {
@@ -58181,7 +58231,18 @@
         "tags": [
           "Analytics"
         ]
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/api/alpha/decisions": {
       "post": {
@@ -58487,7 +58548,18 @@
           "alpha.decisions"
         ],
         "x-speakeasy-name-override": "create"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/api/alpha/extractions": {
       "post": {
@@ -58813,7 +58885,18 @@
           "alpha.extractions"
         ],
         "x-speakeasy-name-override": "create"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/audio/speech": {
       "post": {
@@ -59049,7 +59132,18 @@
         ],
         "x-speakeasy-max-method-params": 1,
         "x-speakeasy-name-override": "createSpeech"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/audio/speech/models": {
       "get": {
@@ -59205,7 +59299,18 @@
           "TTS"
         ],
         "x-speakeasy-name-override": "listModels"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/audio/speech/models/{author}/{slug}": {
       "get": {
@@ -59397,7 +59502,18 @@
           "TTS"
         ],
         "x-speakeasy-name-override": "getModel"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/audio/transcriptions": {
       "post": {
@@ -59753,7 +59869,18 @@
         ],
         "x-speakeasy-max-method-params": 1,
         "x-speakeasy-name-override": "createTranscription"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/auth/keys": {
       "post": {
@@ -59899,7 +60026,18 @@
         "tags": [
           "OAuth"
         ]
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/auth/keys/code": {
       "post": {
@@ -60153,7 +60291,18 @@
           "OAuth"
         ],
         "x-speakeasy-name-override": "createAuthCode"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/batches": {
       "get": {
@@ -60634,7 +60783,18 @@
           ],
           "strategy": "backoff"
         }
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/batches/{id}": {
       "delete": {
@@ -60907,7 +61067,18 @@
         "tags": [
           "Batch"
         ]
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/benchmarks": {
       "get": {
@@ -61184,7 +61355,18 @@
         "tags": [
           "Benchmarks"
         ]
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/byok": {
       "get": {
@@ -61324,6 +61506,7 @@
                 "parallel",
                 "parasail",
                 "pareto-alpha",
+                "pareto-inference",
                 "particle-ai",
                 "pearl-research",
                 "perceptron",
@@ -61616,7 +61799,18 @@
           "BYOK"
         ],
         "x-speakeasy-name-override": "create"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/byok/{id}": {
       "delete": {
@@ -62004,7 +62198,18 @@
           "BYOK"
         ],
         "x-speakeasy-name-override": "update"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/chat/completions": {
       "post": {
@@ -62392,7 +62597,18 @@
         "x-speakeasy-group": "chat",
         "x-speakeasy-name-override": "send",
         "x-speakeasy-stream-request-field": "stream"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/classifications/task": {
       "get": {
@@ -62527,7 +62743,18 @@
         "tags": [
           "Classifications"
         ]
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/containers/{container_id}/files": {
       "get": {
@@ -62700,7 +62927,18 @@
         "tags": [
           "Containers"
         ]
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/containers/{container_id}/files/{file_id}": {
       "get": {
@@ -62867,7 +63105,18 @@
         "tags": [
           "Containers"
         ]
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/containers/{container_id}/files/{file_id}/content": {
       "get": {
@@ -63027,7 +63276,18 @@
         "tags": [
           "Containers"
         ]
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/containers/{container_id}/files/{file_id}/promote": {
       "post": {
@@ -63227,7 +63487,18 @@
         "tags": [
           "Containers"
         ]
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/credits": {
       "get": {
@@ -63341,7 +63612,18 @@
           "Credits"
         ],
         "x-speakeasy-name-override": "getCredits"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/credits/coinbase": {
       "post": {
@@ -63377,7 +63659,18 @@
         "x-fern-ignore": true,
         "x-speakeasy-ignore": true,
         "x-speakeasy-name-override": "createCoinbaseCharge"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/credits/purchases": {
       "get": {
@@ -63659,7 +63952,18 @@
           ]
         },
         "x-speakeasy-ignore": true
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/credits/purchases/{id}": {
       "get": {
@@ -63812,7 +64116,18 @@
         "x-fern-ignore": true,
         "x-hidden": true,
         "x-speakeasy-ignore": true
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/credits/purchases/setup": {
       "get": {
@@ -63837,7 +64152,18 @@
         "x-fern-ignore": true,
         "x-hidden": true,
         "x-speakeasy-ignore": true
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/credits/purchases/SKILL.md": {
       "get": {
@@ -63862,7 +64188,18 @@
         "x-fern-ignore": true,
         "x-hidden": true,
         "x-speakeasy-ignore": true
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/datasets/app-rankings": {
       "get": {
@@ -64111,7 +64448,18 @@
           },
           "type": "offsetLimit"
         }
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/datasets/rankings-daily": {
       "get": {
@@ -64345,7 +64693,18 @@
         "tags": [
           "Datasets"
         ]
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/datasets/session-cost": {
       "get": {
@@ -64539,7 +64898,18 @@
           },
           "type": "offsetLimit"
         }
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/embeddings": {
       "post": {
@@ -65186,7 +65556,18 @@
           "Embeddings"
         ],
         "x-speakeasy-name-override": "generate"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/embeddings/models": {
       "get": {
@@ -65337,7 +65718,18 @@
           },
           "type": "offsetLimit"
         }
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/endpoints/zdr": {
       "get": {
@@ -65532,7 +65924,18 @@
           "Endpoints"
         ],
         "x-speakeasy-name-override": "listZdrEndpoints"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/external-users": {
       "get": {
@@ -65701,9 +66104,9 @@
         },
         "summary": "List registered external users",
         "tags": [
-          "External Users"
+          "External Users",
+          "End Users"
         ],
-        "x-speakeasy-group": "externalUsers",
         "x-speakeasy-name-override": "list",
         "x-speakeasy-pagination": {
           "inputs": [
@@ -65842,11 +66245,22 @@
         },
         "summary": "Register an external user",
         "tags": [
-          "External Users"
+          "External Users",
+          "End Users"
         ],
-        "x-speakeasy-group": "externalUsers",
         "x-speakeasy-name-override": "create"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/external-users/{user}": {
       "delete": {
@@ -65939,9 +66353,9 @@
         },
         "summary": "Deactivate a registered external user",
         "tags": [
-          "External Users"
+          "External Users",
+          "End Users"
         ],
-        "x-speakeasy-group": "externalUsers",
         "x-speakeasy-name-override": "delete"
       },
       "get": {
@@ -66065,9 +66479,9 @@
         },
         "summary": "Get a registered external user",
         "tags": [
-          "External Users"
+          "External Users",
+          "End Users"
         ],
-        "x-speakeasy-group": "externalUsers",
         "x-speakeasy-name-override": "get"
       },
       "patch": {
@@ -66188,11 +66602,22 @@
         },
         "summary": "Update a registered external user",
         "tags": [
-          "External Users"
+          "External Users",
+          "End Users"
         ],
-        "x-speakeasy-group": "externalUsers",
         "x-speakeasy-name-override": "update"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/files": {
       "get": {
@@ -66675,7 +67100,18 @@
           "Files"
         ],
         "x-speakeasy-name-override": "upload"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/files/{file_id}": {
       "delete": {
@@ -67028,7 +67464,18 @@
           "Files"
         ],
         "x-speakeasy-name-override": "retrieve"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/files/{file_id}/content": {
       "get": {
@@ -67217,7 +67664,18 @@
           "Files"
         ],
         "x-speakeasy-name-override": "download"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/generation": {
       "get": {
@@ -67460,7 +67918,18 @@
         "tags": [
           "Generations"
         ]
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/generation/content": {
       "get": {
@@ -67673,7 +68142,18 @@
         "tags": [
           "Generations"
         ]
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/generation/feedback": {
       "post": {
@@ -67844,7 +68324,18 @@
           "Generations"
         ],
         "x-speakeasy-name-override": "submitFeedback"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/guardrails": {
       "get": {
@@ -68162,7 +68653,18 @@
           "Guardrails"
         ],
         "x-speakeasy-name-override": "create"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/guardrails/{id}": {
       "delete": {
@@ -68559,7 +69061,18 @@
           "Guardrails"
         ],
         "x-speakeasy-name-override": "update"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/guardrails/{id}/assignments/keys": {
       "get": {
@@ -68855,7 +69368,18 @@
           "Guardrails"
         ],
         "x-speakeasy-name-override": "bulkAssignKeys"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/guardrails/{id}/assignments/keys/remove": {
       "post": {
@@ -68990,7 +69514,18 @@
           "Guardrails"
         ],
         "x-speakeasy-name-override": "bulkUnassignKeys"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/guardrails/{id}/assignments/members": {
       "get": {
@@ -69286,7 +69821,18 @@
           "Guardrails"
         ],
         "x-speakeasy-name-override": "bulkAssignMembers"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/guardrails/{id}/assignments/members/remove": {
       "post": {
@@ -69422,7 +69968,18 @@
           "Guardrails"
         ],
         "x-speakeasy-name-override": "bulkUnassignMembers"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/guardrails/assignments/keys": {
       "get": {
@@ -69601,7 +70158,18 @@
           },
           "type": "offsetLimit"
         }
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/guardrails/assignments/members": {
       "get": {
@@ -69779,7 +70347,18 @@
           },
           "type": "offsetLimit"
         }
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/guardrails/policies/account": {
       "get": {
@@ -70054,7 +70633,18 @@
           "Guardrail Policies"
         ],
         "x-speakeasy-name-override": "createAccountPolicy"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/guardrails/policies/account/{id}": {
       "delete": {
@@ -70328,7 +70918,18 @@
           "Guardrail Policies"
         ],
         "x-speakeasy-name-override": "updateAccountPolicy"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/guardrails/policies/assignments/api-keys/{hash}": {
       "get": {
@@ -70616,7 +71217,18 @@
           "Guardrail Policies"
         ],
         "x-speakeasy-name-override": "changeApiKeyPolicyAssignment"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/guardrails/policies/assignments/members/{member_id}": {
       "get": {
@@ -70904,7 +71516,18 @@
           "Guardrail Policies"
         ],
         "x-speakeasy-name-override": "changeMemberPolicyAssignment"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/guardrails/policies/budget": {
       "get": {
@@ -71191,7 +71814,18 @@
           "Guardrail Policies"
         ],
         "x-speakeasy-name-override": "createBudgetPolicy"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/guardrails/policies/budget/{id}": {
       "delete": {
@@ -71604,7 +72238,18 @@
           "Guardrail Policies"
         ],
         "x-speakeasy-name-override": "updateBudgetPolicy"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/guardrails/policies/model-availability": {
       "get": {
@@ -71891,7 +72536,18 @@
           "Guardrail Policies"
         ],
         "x-speakeasy-name-override": "createModelAvailabilityPolicy"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/guardrails/policies/model-availability/{id}": {
       "delete": {
@@ -72304,7 +72960,18 @@
           "Guardrail Policies"
         ],
         "x-speakeasy-name-override": "updateModelAvailabilityPolicy"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/guardrails/policies/moderation": {
       "get": {
@@ -72591,7 +73258,18 @@
           "Guardrail Policies"
         ],
         "x-speakeasy-name-override": "createModerationPolicy"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/guardrails/policies/moderation/{id}": {
       "delete": {
@@ -73004,7 +73682,18 @@
           "Guardrail Policies"
         ],
         "x-speakeasy-name-override": "updateModerationPolicy"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/images": {
       "post": {
@@ -73244,7 +73933,18 @@
           "Images"
         ],
         "x-speakeasy-name-override": "generate"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/images/models": {
       "get": {
@@ -73313,7 +74013,18 @@
           "Images"
         ],
         "x-speakeasy-name-override": "listModels"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/images/models/{author}/{slug}/endpoints": {
       "get": {
@@ -73421,7 +74132,18 @@
           "Images"
         ],
         "x-speakeasy-name-override": "listModelEndpoints"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/key": {
       "get": {
@@ -73912,7 +74634,18 @@
           "API Keys"
         ],
         "x-speakeasy-name-override": "getCurrentKeyMetadata"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/keys": {
       "get": {
@@ -74856,7 +75589,18 @@
           "API Keys"
         ],
         "x-speakeasy-name-override": "create"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/keys/{hash}": {
       "delete": {
@@ -75867,7 +76611,18 @@
           "API Keys"
         ],
         "x-speakeasy-name-override": "update"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/messages": {
       "post": {
@@ -76137,7 +76892,18 @@
         "x-speakeasy-ignore": true,
         "x-speakeasy-name-override": "create",
         "x-speakeasy-stream-request-field": "stream"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/model/{author}/{slug}": {
       "get": {
@@ -76283,7 +77049,18 @@
           "Models"
         ],
         "x-speakeasy-name-override": "get"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/models": {
       "get": {
@@ -77278,7 +78055,18 @@
           },
           "type": "offsetLimit"
         }
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/models/{author}/{slug}/endpoints": {
       "get": {
@@ -77494,7 +78282,18 @@
           "Endpoints"
         ],
         "x-speakeasy-name-override": "list"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/models/count": {
       "get": {
@@ -77582,7 +78381,18 @@
           "Models"
         ],
         "x-speakeasy-name-override": "count"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/models/user": {
       "get": {
@@ -77905,7 +78715,18 @@
           },
           "type": "offsetLimit"
         }
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/oauth/jwks": {
       "get": {
@@ -77937,7 +78758,18 @@
         "tags": [
           "OAuth"
         ]
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/oauth/token": {
       "post": {
@@ -78009,7 +78841,18 @@
         "tags": [
           "OAuth"
         ]
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/observability/destinations": {
       "get": {
@@ -78190,7 +79033,7 @@
         }
       },
       "post": {
-        "description": "Create a new observability destination. A maximum of 5 destinations per type is allowed. Defaults to the authenticated entity's default workspace, or a workspace-scoped management key's own workspace; use the `workspace_id` body field to scope to a different workspace. A workspace-scoped management key can only create in its own workspace; any other `workspace_id` returns 403. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
+        "description": "Create a new observability destination. A maximum of 5 enabled destinations per workspace, across all types, is allowed; disabled destinations do not count. A workspace already above the cap keeps its enabled destinations but cannot create or enable more until fewer than 5 are enabled. Defaults to the authenticated entity's default workspace, or a workspace-scoped management key's own workspace; use the `workspace_id` body field to scope to a different workspace. A workspace-scoped management key can only create in its own workspace; any other `workspace_id` returns 403. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
         "operationId": "createObservabilityDestination",
         "requestBody": {
           "content": {
@@ -78335,7 +79178,18 @@
           "Observability"
         ],
         "x-speakeasy-name-override": "create"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/observability/destinations/{id}": {
       "delete": {
@@ -78567,7 +79421,7 @@
         "x-speakeasy-name-override": "get"
       },
       "patch": {
-        "description": "Update an existing observability destination. Only the fields provided in the request body are updated. A workspace-scoped management key only reaches destinations in its own workspace; any other `id` returns 404. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
+        "description": "Update an existing observability destination. Only the fields provided in the request body are updated. Enabling a disabled destination returns 400 while the workspace already has 5 enabled destinations. A workspace-scoped management key only reaches destinations in its own workspace; any other `id` returns 404. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
         "operationId": "updateObservabilityDestination",
         "parameters": [
           {
@@ -78737,7 +79591,18 @@
           "Observability"
         ],
         "x-speakeasy-name-override": "update"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/organization/members": {
       "get": {
@@ -78950,7 +79815,18 @@
           },
           "type": "offsetLimit"
         }
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/organization/settings": {
       "get": {
@@ -79179,7 +80055,18 @@
           "Organization"
         ],
         "x-speakeasy-name-override": "updateSettings"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/presets": {
       "get": {
@@ -79383,7 +80270,18 @@
           },
           "type": "offsetLimit"
         }
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/presets/{slug}": {
       "delete": {
@@ -79709,7 +80607,18 @@
           "Presets"
         ],
         "x-speakeasy-name-override": "get"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/presets/{slug}/chat/completions": {
       "post": {
@@ -79910,7 +80819,18 @@
         "tags": [
           "Presets"
         ]
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/presets/{slug}/messages": {
       "post": {
@@ -80108,7 +81028,18 @@
         "tags": [
           "Presets"
         ]
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/presets/{slug}/responses": {
       "post": {
@@ -80299,7 +81230,18 @@
         "tags": [
           "Presets"
         ]
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/presets/{slug}/restore": {
       "post": {
@@ -80449,7 +81391,18 @@
           "Presets"
         ],
         "x-speakeasy-name-override": "restore"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/presets/{slug}/versions": {
       "get": {
@@ -80665,7 +81618,18 @@
           },
           "type": "offsetLimit"
         }
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/presets/{slug}/versions/{version}": {
       "get": {
@@ -80842,7 +81806,18 @@
           "Presets"
         ],
         "x-speakeasy-name-override": "getVersion"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/private-endpoints": {
       "get": {
@@ -81124,7 +82099,18 @@
           "Private Endpoints"
         ],
         "x-speakeasy-name-override": "create"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/private-endpoints/{id}": {
       "delete": {
@@ -81624,7 +82610,18 @@
           "Private Endpoints"
         ],
         "x-speakeasy-name-override": "update"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/private-endpoints/{id}/activate": {
       "post": {
@@ -81805,7 +82802,18 @@
           "Private Endpoints"
         ],
         "x-speakeasy-name-override": "activate"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/private-endpoints/{id}/disable": {
       "post": {
@@ -81986,7 +82994,18 @@
           "Private Endpoints"
         ],
         "x-speakeasy-name-override": "disable"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/private-endpoints/{id}/enable": {
       "post": {
@@ -82167,7 +83186,18 @@
           "Private Endpoints"
         ],
         "x-speakeasy-name-override": "enable"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/private-endpoints/{id}/validate": {
       "post": {
@@ -82358,7 +83388,18 @@
           "Private Endpoints"
         ],
         "x-speakeasy-name-override": "validate"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/private-providers": {
       "get": {
@@ -82639,7 +83680,18 @@
           "Private Providers"
         ],
         "x-speakeasy-name-override": "create"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/private-providers/{slug}": {
       "delete": {
@@ -83165,7 +84217,18 @@
           "Private Providers"
         ],
         "x-speakeasy-name-override": "update"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/providers": {
       "get": {
@@ -83826,7 +84889,18 @@
           "Providers"
         ],
         "x-speakeasy-name-override": "list"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/rerank": {
       "post": {
@@ -84273,7 +85347,18 @@
           "Rerank"
         ],
         "x-speakeasy-name-override": "rerank"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/responses": {
       "post": {
@@ -84684,7 +85769,18 @@
         ],
         "x-speakeasy-name-override": "send",
         "x-speakeasy-stream-request-field": "stream"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/scim/group-mappings": {
       "get": {
@@ -84823,8 +85919,7 @@
         }
       },
       "post": {
-        "deprecated": true,
-        "description": "Create a SCIM group-to-workspace role mapping. Disabled: no API key can perform this write, including management keys. Use the organization settings in the dashboard, which require step-up verification. A valid management key for an organization with SCIM access receives 403; an invalid key still receives 401 and an organization without SCIM access receives 404.",
+        "description": "Create a SCIM group-to-workspace role mapping. Creating a mapping that already exists with the same role succeeds and re-applies the mapping to the group members. Requesting a different role for an existing mapping returns 409. Assigning the `admin` role is dashboard-only and returns 403 for management keys. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
         "operationId": "createScimGroupMapping",
         "requestBody": {
           "content": {
@@ -84845,7 +85940,7 @@
                 }
               }
             },
-            "description": "SCIM group mapping created. Not returned: this operation is disabled. The schema is kept for SDK compatibility."
+            "description": "SCIM group mapping created"
           },
           "400": {
             "content": {
@@ -84885,7 +85980,7 @@
                 "example": {
                   "error": {
                     "code": 403,
-                    "message": "Management keys cannot change SCIM group mappings or start syncs. Use the organization settings in the dashboard."
+                    "message": "Only management keys can perform this operation"
                   }
                 },
                 "schema": {
@@ -84893,7 +85988,7 @@
                 }
               }
             },
-            "description": "Forbidden - SCIM writes are dashboard-only"
+            "description": "Forbidden - Authentication successful but insufficient permissions"
           },
           "404": {
             "content": {
@@ -84949,12 +86044,22 @@
           "SCIM"
         ],
         "x-speakeasy-name-override": "create"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/scim/group-mappings/{id}": {
       "delete": {
-        "deprecated": true,
-        "description": "Delete a SCIM group-to-workspace mapping. Disabled: no API key can perform this write, including management keys. Use the organization settings in the dashboard, which require step-up verification. A valid management key for an organization with SCIM access receives 403; an invalid key still receives 401 and an organization without SCIM access receives 404.",
+        "description": "Delete a SCIM group-to-workspace mapping. For an `admin` mapping, `keep_members=true` returns `403` and leaves the mapping in place — preserving members as workspace admins is dashboard-only. Deleting a mapping that has guardrail policies attached returns `403`; remove those policies in the dashboard first. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
         "operationId": "deleteScimGroupMapping",
         "parameters": [
           {
@@ -84967,7 +86072,7 @@
             }
           },
           {
-            "description": "Required. Whether to keep workspace members after deleting the mapping. `false` **removes** the members this mapping granted access to; `true` deletes the mapping while leaving membership intact as manually-managed. There is deliberately no default — omitting it returns `400` so the destructive path cannot be reached by accident. Mirrors the dashboard, whose `DeleteMappingSchema.keepMembers` is likewise required.",
+            "description": "Required. Whether to keep workspace members after deleting the mapping. `false` **removes** the members this mapping granted access to; `true` deletes the mapping while leaving membership intact as manually-managed. Exception: for an `admin` mapping, `keep_members=true` returns `403` and leaves the mapping in place — management keys cannot preserve members as workspace admins, so do not plan an admin mapping rotation around preserving members through this endpoint (use the dashboard instead). There is deliberately no default — omitting it returns `400` so the destructive path cannot be reached by accident. Mirrors the dashboard, whose `DeleteMappingSchema.keepMembers` is likewise required.",
             "in": "query",
             "name": "keep_members",
             "required": true,
@@ -84985,7 +86090,7 @@
                   "type": "boolean"
                 }
               ],
-              "description": "Required. Whether to keep workspace members after deleting the mapping. `false` **removes** the members this mapping granted access to; `true` deletes the mapping while leaving membership intact as manually-managed. There is deliberately no default — omitting it returns `400` so the destructive path cannot be reached by accident. Mirrors the dashboard, whose `DeleteMappingSchema.keepMembers` is likewise required.",
+              "description": "Required. Whether to keep workspace members after deleting the mapping. `false` **removes** the members this mapping granted access to; `true` deletes the mapping while leaving membership intact as manually-managed. Exception: for an `admin` mapping, `keep_members=true` returns `403` and leaves the mapping in place — management keys cannot preserve members as workspace admins, so do not plan an admin mapping rotation around preserving members through this endpoint (use the dashboard instead). There is deliberately no default — omitting it returns `400` so the destructive path cannot be reached by accident. Mirrors the dashboard, whose `DeleteMappingSchema.keepMembers` is likewise required.",
               "example": false
             }
           }
@@ -84999,7 +86104,7 @@
                 }
               }
             },
-            "description": "SCIM group mapping deleted. Not returned: this operation is disabled. The schema is kept for SDK compatibility."
+            "description": "SCIM group mapping deleted"
           },
           "400": {
             "content": {
@@ -85039,7 +86144,7 @@
                 "example": {
                   "error": {
                     "code": 403,
-                    "message": "Management keys cannot change SCIM group mappings or start syncs. Use the organization settings in the dashboard."
+                    "message": "Only management keys can perform this operation"
                   }
                 },
                 "schema": {
@@ -85047,7 +86152,7 @@
                 }
               }
             },
-            "description": "Forbidden - SCIM writes are dashboard-only"
+            "description": "Forbidden - Authentication successful but insufficient permissions"
           },
           "404": {
             "content": {
@@ -85185,8 +86290,7 @@
         "x-speakeasy-name-override": "read"
       },
       "patch": {
-        "deprecated": true,
-        "description": "Update a SCIM group mapping role. Disabled: no API key can perform this write, including management keys. Use the organization settings in the dashboard, which require step-up verification. A valid management key for an organization with SCIM access receives 403; an invalid key still receives 401 and an organization without SCIM access receives 404.",
+        "description": "Update a SCIM group mapping role. Assigning the `admin` role is dashboard-only and returns 403 for management keys. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
         "operationId": "updateScimGroupMapping",
         "parameters": [
           {
@@ -85218,7 +86322,7 @@
                 }
               }
             },
-            "description": "SCIM group mapping updated. Not returned: this operation is disabled. The schema is kept for SDK compatibility."
+            "description": "SCIM group mapping updated"
           },
           "400": {
             "content": {
@@ -85258,7 +86362,7 @@
                 "example": {
                   "error": {
                     "code": 403,
-                    "message": "Management keys cannot change SCIM group mappings or start syncs. Use the organization settings in the dashboard."
+                    "message": "Only management keys can perform this operation"
                   }
                 },
                 "schema": {
@@ -85266,7 +86370,7 @@
                 }
               }
             },
-            "description": "Forbidden - SCIM writes are dashboard-only"
+            "description": "Forbidden - Authentication successful but insufficient permissions"
           },
           "404": {
             "content": {
@@ -85306,7 +86410,18 @@
           "SCIM"
         ],
         "x-speakeasy-name-override": "update"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/scim/groups": {
       "get": {
@@ -85465,12 +86580,22 @@
           },
           "type": "offsetLimit"
         }
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/scim/sync-jobs": {
       "post": {
-        "deprecated": true,
-        "description": "Start a SCIM directory sync. Disabled: no API key can perform this write, including management keys. Use the organization settings in the dashboard, which require step-up verification. A valid management key for an organization with SCIM access receives 403; an invalid key still receives 401 and an organization without SCIM access receives 404.",
+        "description": "Start a SCIM directory sync. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
         "operationId": "createScimSyncJob",
         "responses": {
           "202": {
@@ -85481,7 +86606,7 @@
                 }
               }
             },
-            "description": "SCIM directory sync job queued. Not returned: this operation is disabled. The schema is kept for SDK compatibility.",
+            "description": "SCIM directory sync job queued",
             "headers": {
               "Location": {
                 "description": "Poll URL for the created sync job.",
@@ -85515,7 +86640,7 @@
                 "example": {
                   "error": {
                     "code": 403,
-                    "message": "Management keys cannot change SCIM group mappings or start syncs. Use the organization settings in the dashboard."
+                    "message": "Only management keys can perform this operation"
                   }
                 },
                 "schema": {
@@ -85523,7 +86648,7 @@
                 }
               }
             },
-            "description": "Forbidden - SCIM writes are dashboard-only"
+            "description": "Forbidden - Authentication successful but insufficient permissions"
           },
           "404": {
             "content": {
@@ -85563,7 +86688,18 @@
           "SCIM"
         ],
         "x-speakeasy-name-override": "createSyncJob"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/scim/sync-jobs/{id}": {
       "get": {
@@ -85661,7 +86797,18 @@
           "SCIM"
         ],
         "x-speakeasy-name-override": "getSyncJob"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/systemone": {
       "post": {
@@ -85962,7 +87109,18 @@
           "SystemOne"
         ],
         "x-speakeasy-name-override": "create"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/tools": {
       "get": {
@@ -86102,7 +87260,18 @@
         "tags": [
           "Tools"
         ]
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/tools/{name}": {
       "get": {
@@ -86218,7 +87387,18 @@
         "tags": [
           "Tools"
         ]
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/vault/interns/{internId}/connections": {
       "get": {
@@ -86622,7 +87802,18 @@
         "tags": [
           "Vault"
         ]
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/vault/interns/{internId}/effective-secrets": {
       "get": {
@@ -86967,7 +88158,18 @@
         "tags": [
           "Vault"
         ]
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/vault/interns/{internId}/secrets": {
       "get": {
@@ -87301,7 +88503,18 @@
         "tags": [
           "Vault"
         ]
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/vault/interns/{internId}/secrets/{name}": {
       "delete": {
@@ -87982,7 +89195,18 @@
         "tags": [
           "Vault"
         ]
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/vault/interns/{internId}/secrets/copy": {
       "post": {
@@ -88338,7 +89562,18 @@
         "tags": [
           "Vault"
         ]
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/vault/secrets": {
       "get": {
@@ -88660,7 +89895,18 @@
         "tags": [
           "Vault"
         ]
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/vault/secrets/{name}": {
       "delete": {
@@ -89317,7 +90563,18 @@
         "tags": [
           "Vault"
         ]
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/videos": {
       "post": {
@@ -89523,7 +90780,18 @@
           "Video Generation"
         ],
         "x-speakeasy-name-override": "generate"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/videos/{jobId}": {
       "get": {
@@ -89634,7 +90902,18 @@
           "Video Generation"
         ],
         "x-speakeasy-name-override": "getGeneration"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/videos/{jobId}/content": {
       "get": {
@@ -89813,7 +91092,18 @@
           "Video Generation"
         ],
         "x-speakeasy-name-override": "getVideoContent"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/videos/models": {
       "get": {
@@ -89899,7 +91189,18 @@
         "tags": [
           "Video Generation"
         ]
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/workspaces": {
       "get": {
@@ -90170,7 +91471,18 @@
           "Workspaces"
         ],
         "x-speakeasy-name-override": "create"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/workspaces/{id}": {
       "delete": {
@@ -90579,7 +91891,18 @@
           "Workspaces"
         ],
         "x-speakeasy-name-override": "update"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/workspaces/{id}/members": {
       "get": {
@@ -90740,7 +92063,18 @@
           },
           "type": "offsetLimit"
         }
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/workspaces/{id}/members/add": {
       "post": {
@@ -90885,7 +92219,18 @@
           "Workspaces"
         ],
         "x-speakeasy-name-override": "bulkAddMembers"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/workspaces/{id}/members/remove": {
       "post": {
@@ -91021,7 +92366,18 @@
           "Workspaces"
         ],
         "x-speakeasy-name-override": "bulkRemoveMembers"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/workspaces/{workspace_ref}/budgets": {
       "get": {
@@ -91135,7 +92491,18 @@
           "Workspaces"
         ],
         "x-speakeasy-name-override": "listBudgets"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     },
     "/workspaces/{workspace_ref}/budgets/{interval}": {
       "delete": {
@@ -91551,7 +92918,18 @@
           "Workspaces"
         ],
         "x-speakeasy-name-override": "setBudget"
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AppIdentifier"
+        },
+        {
+          "$ref": "#/components/parameters/AppDisplayName"
+        },
+        {
+          "$ref": "#/components/parameters/AppCategories"
+        }
+      ]
     }
   },
   "security": [
@@ -91729,6 +93107,10 @@
     {
       "name": "beta.responses",
       "description": "Deprecated alias of responses. Use responses instead; scheduled for removal (sunset date TBD)."
+    },
+    {
+      "name": "End Users",
+      "description": "Deprecated alias of externalUsers. Use externalUsers instead; scheduled for removal (sunset date TBD)."
     }
   ],
   "x-retry-strategy": {
@@ -91757,6 +93139,9 @@
       },
       {
         "$ref": "#/components/parameters/AppDisplayName"
+      },
+      {
+        "$ref": "#/components/parameters/AppCategories"
       }
     ]
   }

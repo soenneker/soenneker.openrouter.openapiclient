@@ -44,7 +44,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Limit search results to these domains. Supported by Exa, Firecrawl, Parallel, Perplexity, and most native providers (Anthropic, OpenAI, SpaceXAI). Cannot be used with excluded_domains.</summary>
+        /// <summary>Limit search results to these domains. Supported by Exa, Firecrawl, Parallel, Perplexity, and most native providers (Anthropic, OpenAI, SpaceXSI). Cannot be used with excluded_domains.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? AllowedDomains { get => _explicitNullValueAllowedDomains; set { _explicitNullValueAllowedDomains = value; AdditionalData?.Remove("allowed_domains"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allowed_domains"); else _explicitNullProperties?.Remove("allowed_domains"); } }
@@ -57,7 +57,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Which search engine to use. &quot;auto&quot; (default) uses native if the provider supports it, otherwise Exa. &quot;native&quot; forces the provider&apos;s built-in search. &quot;exa&quot; forces the Exa search API. &quot;firecrawl&quot; uses the Firecrawl search API. &quot;parallel&quot; uses the Parallel search API. &quot;perplexity&quot; uses the Perplexity Search API (raw ranked results).</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchEngineEnum? Engine { get => _explicitNullValueEngine; set { _explicitNullValueEngine = value; AdditionalData?.Remove("engine"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("engine"); else _explicitNullProperties?.Remove("engine"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchEngineEnum? _explicitNullValueEngine = default!;
-        /// <summary>Exclude search results from these domains. Supported by Exa, Firecrawl, Parallel, Perplexity, Anthropic, OpenAI, and SpaceXAI. Cannot be used with allowed_domains.</summary>
+        /// <summary>Exclude search results from these domains. Supported by Exa, Firecrawl, Parallel, Perplexity, Anthropic, OpenAI, and SpaceXSI. Cannot be used with allowed_domains.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? ExcludedDomains { get => _explicitNullValueExcludedDomains; set { _explicitNullValueExcludedDomains = value; AdditionalData?.Remove("excluded_domains"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("excluded_domains"); else _explicitNullProperties?.Remove("excluded_domains"); } }
@@ -95,7 +95,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchUserLocationServerTool UserLocation { get => _explicitNullValueUserLocation; set { _explicitNullValueUserLocation = value; AdditionalData?.Remove("user_location"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_location"); else _explicitNullProperties?.Remove("user_location"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.WebSearchUserLocationServerTool _explicitNullValueUserLocation = default!;
 #endif
-        /// <summary>Enable SpaceXAI X (Twitter) search alongside native web search, with optional filters. Only applies to SpaceXAI endpoints with native search; omit to search the web only. X search is billed separately by SpaceXAI, per post and per user profile fetched.</summary>
+        /// <summary>Enable SpaceXSI X (Twitter) search alongside native web search, with optional filters. Only applies to SpaceXSI endpoints with native search; omit to search the web only. X search is billed separately by SpaceXSI, per post and per user profile fetched.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.OpenRouter.OpenApiClient.Models.XSearchOptions? XSearch { get => _explicitNullValueXSearch; set { _explicitNullValueXSearch = value; AdditionalData?.Remove("x_search"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("x_search"); else _explicitNullProperties?.Remove("x_search"); } }

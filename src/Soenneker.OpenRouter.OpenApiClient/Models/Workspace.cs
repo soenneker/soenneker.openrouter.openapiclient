@@ -7,10 +7,11 @@ using System.IO;
 using System;
 namespace Soenneker.OpenRouter.OpenApiClient.Models
 {
+    /// <summary>
+    /// Workspace metadata. Configuration fields are omitted without permission to view workspace settings.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public partial class Workspace : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
     , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
         // Track explicitly assigned nulls separately from absent properties.
         private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
@@ -133,10 +134,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Unique identifier for the workspace</summary>
         public Guid? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; AdditionalData?.Remove("id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
         private Guid? _explicitNullValueId = default!;
-        /// <summary>Whether BYOK (bring-your-own-key) spend counts toward this workspace&apos;s budgets. Set it via the workspace budget endpoints.</summary>
+        /// <summary>Whether BYOK (bring-your-own-key) spend counts toward this workspace&apos;s budgets. Omitted without settings and budget visibility. Set it via the workspace budget endpoints.</summary>
         public bool? IncludeByokInBudgets { get => _explicitNullValueIncludeByokInBudgets; set { _explicitNullValueIncludeByokInBudgets = value; AdditionalData?.Remove("include_byok_in_budgets"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("include_byok_in_budgets"); else _explicitNullProperties?.Remove("include_byok_in_budgets"); } }
         private bool? _explicitNullValueIncludeByokInBudgets = default!;
-        /// <summary>Optional array of API key IDs to filter I/O logging. Null means all keys are logged.</summary>
+        /// <summary>API key IDs used to filter I/O logging. Null means all keys are logged. Omitted without access to workspace settings and API key identifiers.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<int?>? IoLoggingApiKeyIds { get => _explicitNullValueIoLoggingApiKeyIds; set { _explicitNullValueIoLoggingApiKeyIds = value; AdditionalData?.Remove("io_logging_api_key_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("io_logging_api_key_ids"); else _explicitNullProperties?.Remove("io_logging_api_key_ids"); } }

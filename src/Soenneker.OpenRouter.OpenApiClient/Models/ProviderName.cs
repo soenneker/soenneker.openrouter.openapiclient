@@ -340,6 +340,10 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning disable CS1591
         ParetoAlpha,
         #pragma warning restore CS1591
+        [EnumMember(Value = "Pareto Inference")]
+        #pragma warning disable CS1591
+        ParetoInference,
+        #pragma warning restore CS1591
         [EnumMember(Value = "Particle AI")]
         #pragma warning disable CS1591
         ParticleAi,

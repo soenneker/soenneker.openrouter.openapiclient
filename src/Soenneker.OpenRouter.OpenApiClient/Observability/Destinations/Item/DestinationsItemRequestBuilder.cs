@@ -96,7 +96,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Observability.Destinations.Item
             return await RequestAdapter.SendAsync<global::Soenneker.OpenRouter.OpenApiClient.Models.GetObservabilityDestinationResponse>(requestInfo, global::Soenneker.OpenRouter.OpenApiClient.Models.GetObservabilityDestinationResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Update an existing observability destination. Only the fields provided in the request body are updated. A workspace-scoped management key only reaches destinations in its own workspace; any other `id` returns 404. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+        /// Update an existing observability destination. Only the fields provided in the request body are updated. Enabling a disabled destination returns 400 while the workspace already has 5 enabled destinations. A workspace-scoped management key only reaches destinations in its own workspace; any other `id` returns 404. [Management key](/docs/guides/overview/auth/management-api-keys) required.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.UpdateObservabilityDestinationResponse"/></returns>
         /// <param name="body">The request body</param>
@@ -171,7 +171,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Observability.Destinations.Item
             return requestInfo;
         }
         /// <summary>
-        /// Update an existing observability destination. Only the fields provided in the request body are updated. A workspace-scoped management key only reaches destinations in its own workspace; any other `id` returns 404. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+        /// Update an existing observability destination. Only the fields provided in the request body are updated. Enabling a disabled destination returns 400 while the workspace already has 5 enabled destinations. A workspace-scoped management key only reaches destinations in its own workspace; any other `id` returns 404. [Management key](/docs/guides/overview/auth/management-api-keys) required.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

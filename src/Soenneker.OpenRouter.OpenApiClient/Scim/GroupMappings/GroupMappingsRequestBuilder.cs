@@ -78,7 +78,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Scim.GroupMappings
             return await RequestAdapter.SendAsync<global::Soenneker.OpenRouter.OpenApiClient.Models.ListScimGroupMappingsResponse>(requestInfo, global::Soenneker.OpenRouter.OpenApiClient.Models.ListScimGroupMappingsResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Create a SCIM group-to-workspace role mapping. Disabled: no API key can perform this write, including management keys. Use the organization settings in the dashboard, which require step-up verification. A valid management key for an organization with SCIM access receives 403; an invalid key still receives 401 and an organization without SCIM access receives 404.
+        /// Create a SCIM group-to-workspace role mapping. Creating a mapping that already exists with the same role succeeds and re-applies the mapping to the group members. Requesting a different role for an existing mapping returns 409. Assigning the `admin` role is dashboard-only and returns 403 for management keys. [Management key](/docs/guides/overview/auth/management-api-keys) required.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.CreateScimGroupMappingResponse"/></returns>
         /// <param name="body">The request body</param>
@@ -90,7 +90,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Scim.GroupMappings
         /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.NotFoundResponse">When receiving a 404 status code</exception>
         /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.ConflictResponse">When receiving a 409 status code</exception>
         /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.InternalServerResponse">When receiving a 500 status code</exception>
-        [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.OpenRouter.OpenApiClient.Models.CreateScimGroupMappingResponse?> PostAsync(global::Soenneker.OpenRouter.OpenApiClient.Models.CreateScimGroupMappingRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -135,12 +134,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Scim.GroupMappings
             return requestInfo;
         }
         /// <summary>
-        /// Create a SCIM group-to-workspace role mapping. Disabled: no API key can perform this write, including management keys. Use the organization settings in the dashboard, which require step-up verification. A valid management key for an organization with SCIM access receives 403; an invalid key still receives 401 and an organization without SCIM access receives 404.
+        /// Create a SCIM group-to-workspace role mapping. Creating a mapping that already exists with the same role succeeds and re-applies the mapping to the group members. Requesting a different role for an existing mapping returns 409. Assigning the `admin` role is dashboard-only and returns 403 for management keys. [Management key](/docs/guides/overview/auth/management-api-keys) required.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public RequestInformation ToPostRequestInformation(global::Soenneker.OpenRouter.OpenApiClient.Models.CreateScimGroupMappingRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)

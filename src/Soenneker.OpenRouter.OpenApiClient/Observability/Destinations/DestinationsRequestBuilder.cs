@@ -78,7 +78,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Observability.Destinations
             return await RequestAdapter.SendAsync<global::Soenneker.OpenRouter.OpenApiClient.Models.ListObservabilityDestinationsResponse>(requestInfo, global::Soenneker.OpenRouter.OpenApiClient.Models.ListObservabilityDestinationsResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Create a new observability destination. A maximum of 5 destinations per type is allowed. Defaults to the authenticated entity&apos;s default workspace, or a workspace-scoped management key&apos;s own workspace; use the `workspace_id` body field to scope to a different workspace. A workspace-scoped management key can only create in its own workspace; any other `workspace_id` returns 403. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+        /// Create a new observability destination. A maximum of 5 enabled destinations per workspace, across all types, is allowed; disabled destinations do not count. A workspace already above the cap keeps its enabled destinations but cannot create or enable more until fewer than 5 are enabled. Defaults to the authenticated entity&apos;s default workspace, or a workspace-scoped management key&apos;s own workspace; use the `workspace_id` body field to scope to a different workspace. A workspace-scoped management key can only create in its own workspace; any other `workspace_id` returns 403. [Management key](/docs/guides/overview/auth/management-api-keys) required.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.CreateObservabilityDestinationResponse"/></returns>
         /// <param name="body">The request body</param>
@@ -132,7 +132,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Observability.Destinations
             return requestInfo;
         }
         /// <summary>
-        /// Create a new observability destination. A maximum of 5 destinations per type is allowed. Defaults to the authenticated entity&apos;s default workspace, or a workspace-scoped management key&apos;s own workspace; use the `workspace_id` body field to scope to a different workspace. A workspace-scoped management key can only create in its own workspace; any other `workspace_id` returns 403. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+        /// Create a new observability destination. A maximum of 5 enabled destinations per workspace, across all types, is allowed; disabled destinations do not count. A workspace already above the cap keeps its enabled destinations but cannot create or enable more until fewer than 5 are enabled. Defaults to the authenticated entity&apos;s default workspace, or a workspace-scoped management key&apos;s own workspace; use the `workspace_id` body field to scope to a different workspace. A workspace-scoped management key can only create in its own workspace; any other `workspace_id` returns 403. [Management key](/docs/guides/overview/auth/management-api-keys) required.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

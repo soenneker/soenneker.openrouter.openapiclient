@@ -225,6 +225,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             else if (parseNode.GetChildNode("parasail") is { } nullNodeParasail && nullNodeParasail.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Parasail = null;
             if (parseNode.GetChildNode("pareto-alpha") is null) { _explicitNullValueParetoAlpha = default!; _explicitNullProperties?.Remove("pareto-alpha"); }
             else if (parseNode.GetChildNode("pareto-alpha") is { } nullNodeParetoAlpha && nullNodeParetoAlpha.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ParetoAlpha = null;
+            if (parseNode.GetChildNode("pareto-inference") is null) { _explicitNullValueParetoInference = default!; _explicitNullProperties?.Remove("pareto-inference"); }
+            else if (parseNode.GetChildNode("pareto-inference") is { } nullNodeParetoInference && nullNodeParetoInference.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ParetoInference = null;
             if (parseNode.GetChildNode("particle-ai") is null) { _explicitNullValueParticleAi = default!; _explicitNullProperties?.Remove("particle-ai"); }
             else if (parseNode.GetChildNode("particle-ai") is { } nullNodeParticleAi && nullNodeParticleAi.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ParticleAi = null;
             if (parseNode.GetChildNode("pearl-research") is null) { _explicitNullValuePearlResearch = default!; _explicitNullProperties?.Remove("pearl-research"); }
@@ -1375,6 +1377,16 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsParetoAlpha ParetoAlpha { get => _explicitNullValueParetoAlpha; set { _explicitNullValueParetoAlpha = value; AdditionalData?.Remove("pareto-alpha"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pareto-alpha"); else _explicitNullProperties?.Remove("pareto-alpha"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsParetoAlpha _explicitNullValueParetoAlpha = default!;
 #endif
+        /// <summary>The paretoInference property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsParetoInference? ParetoInference { get => _explicitNullValueParetoInference; set { _explicitNullValueParetoInference = value; AdditionalData?.Remove("pareto-inference"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pareto-inference"); else _explicitNullProperties?.Remove("pareto-inference"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsParetoInference? _explicitNullValueParetoInference = default!;
+#nullable restore
+#else
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsParetoInference ParetoInference { get => _explicitNullValueParetoInference; set { _explicitNullValueParetoInference = value; AdditionalData?.Remove("pareto-inference"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pareto-inference"); else _explicitNullProperties?.Remove("pareto-inference"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsParetoInference _explicitNullValueParetoInference = default!;
+#endif
         /// <summary>The particleAi property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -1928,7 +1940,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>(157)
+            return new Dictionary<string, Action<IParseNode>>(158)
             {
                 { "ai21", n => { Ai21 = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAi21>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAi21.CreateFromDiscriminatorValue); } },
                 { "aion-labs", n => { AionLabs = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAionLabs>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsAionLabs.CreateFromDiscriminatorValue); } },
@@ -2034,6 +2046,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "parallel", n => { Parallel = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsParallel>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsParallel.CreateFromDiscriminatorValue); } },
                 { "parasail", n => { Parasail = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsParasail>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsParasail.CreateFromDiscriminatorValue); } },
                 { "pareto-alpha", n => { ParetoAlpha = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsParetoAlpha>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsParetoAlpha.CreateFromDiscriminatorValue); } },
+                { "pareto-inference", n => { ParetoInference = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsParetoInference>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsParetoInference.CreateFromDiscriminatorValue); } },
                 { "particle-ai", n => { ParticleAi = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsParticleAi>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsParticleAi.CreateFromDiscriminatorValue); } },
                 { "pearl-research", n => { PearlResearch = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPearlResearch>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPearlResearch.CreateFromDiscriminatorValue); } },
                 { "perceptron", n => { Perceptron = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPerceptron>(global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPerceptron.CreateFromDiscriminatorValue); } },
@@ -2200,6 +2213,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsParallel>("parallel", Parallel);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsParasail>("parasail", Parasail);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsParetoAlpha>("pareto-alpha", ParetoAlpha);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsParetoInference>("pareto-inference", ParetoInference);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsParticleAi>("particle-ai", ParticleAi);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPearlResearch>("pearl-research", PearlResearch);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.VideoGenerationRequestProviderOptionsPerceptron>("perceptron", Perceptron);

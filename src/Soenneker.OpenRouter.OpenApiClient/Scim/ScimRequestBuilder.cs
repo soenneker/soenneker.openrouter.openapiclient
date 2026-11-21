@@ -28,7 +28,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Scim
             get => new global::Soenneker.OpenRouter.OpenApiClient.Scim.Groups.GroupsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The syncJobs property</summary>
-        [Obsolete("")]
         public global::Soenneker.OpenRouter.OpenApiClient.Scim.SyncJobs.SyncJobsRequestBuilder SyncJobs
         {
             get => new global::Soenneker.OpenRouter.OpenApiClient.Scim.SyncJobs.SyncJobsRequestBuilder(PathParameters, RequestAdapter);
