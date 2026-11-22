@@ -66780,6 +66780,22 @@
             },
             "description": "Unauthorized - Authentication required or invalid credentials"
           },
+          "402": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": {
+                    "code": 402,
+                    "message": "Insufficient credits. Add more using https://openrouter.ai/credits"
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/PaymentRequiredResponse"
+                }
+              }
+            },
+            "description": "Payment Required - Insufficient credits or quota to complete request"
+          },
           "403": {
             "content": {
               "application/json": {
@@ -66981,6 +66997,22 @@
               }
             },
             "description": "Unauthorized - Authentication required or invalid credentials"
+          },
+          "402": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": {
+                    "code": 402,
+                    "message": "Insufficient credits. Add more using https://openrouter.ai/credits"
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/PaymentRequiredResponse"
+                }
+              }
+            },
+            "description": "Payment Required - Insufficient credits or quota to complete request"
           },
           "403": {
             "content": {
@@ -67184,6 +67216,22 @@
             },
             "description": "Unauthorized - Authentication required or invalid credentials"
           },
+          "402": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": {
+                    "code": 402,
+                    "message": "Insufficient credits. Add more using https://openrouter.ai/credits"
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/PaymentRequiredResponse"
+                }
+              }
+            },
+            "description": "Payment Required - Insufficient credits or quota to complete request"
+          },
           "403": {
             "content": {
               "application/json": {
@@ -67361,6 +67409,22 @@
               }
             },
             "description": "Unauthorized - Authentication required or invalid credentials"
+          },
+          "402": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": {
+                    "code": 402,
+                    "message": "Insufficient credits. Add more using https://openrouter.ai/credits"
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/PaymentRequiredResponse"
+                }
+              }
+            },
+            "description": "Payment Required - Insufficient credits or quota to complete request"
           },
           "403": {
             "content": {
@@ -67561,6 +67625,22 @@
               }
             },
             "description": "Unauthorized - Authentication required or invalid credentials"
+          },
+          "402": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": {
+                    "code": 402,
+                    "message": "Insufficient credits. Add more using https://openrouter.ai/credits"
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/PaymentRequiredResponse"
+                }
+              }
+            },
+            "description": "Payment Required - Insufficient credits or quota to complete request"
           },
           "403": {
             "content": {
@@ -86059,7 +86139,7 @@
     },
     "/scim/group-mappings/{id}": {
       "delete": {
-        "description": "Delete a SCIM group-to-workspace mapping. For an `admin` mapping, `keep_members=true` returns `403` and leaves the mapping in place — preserving members as workspace admins is dashboard-only. Deleting a mapping that has guardrail policies attached returns `403`; remove those policies in the dashboard first. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
+        "description": "Delete a SCIM group-to-workspace mapping. For an `admin` mapping, `keep_members=true` returns `403` and leaves the mapping in place — preserving members as workspace admins is dashboard-only. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
         "operationId": "deleteScimGroupMapping",
         "parameters": [
           {
