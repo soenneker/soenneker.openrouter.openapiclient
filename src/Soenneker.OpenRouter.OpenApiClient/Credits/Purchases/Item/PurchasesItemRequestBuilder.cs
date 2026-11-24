@@ -34,7 +34,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Credits.Purchases.Item
         {
         }
         /// <summary>
-        /// Returns one agent credit purchase of the calling account, read from its Stripe PaymentIntent. Poll this after a `202` until `status` is `credited` or `failed`.
+        /// Returns one agent credit purchase of the calling account, read from its Stripe PaymentIntent and any pending x402 Tempo payout. Poll this after a `202` until `status` is `credited` or `failed`. A failed Tempo payout can follow a completed Base payment: do not pay again; contact support with the purchase ID for reconciliation.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.CreditPurchaseResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -71,7 +71,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Credits.Purchases.Item
             return await RequestAdapter.SendAsync<global::Soenneker.OpenRouter.OpenApiClient.Models.CreditPurchaseResponse>(requestInfo, global::Soenneker.OpenRouter.OpenApiClient.Models.CreditPurchaseResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Returns one agent credit purchase of the calling account, read from its Stripe PaymentIntent. Poll this after a `202` until `status` is `credited` or `failed`.
+        /// Returns one agent credit purchase of the calling account, read from its Stripe PaymentIntent and any pending x402 Tempo payout. Poll this after a `202` until `status` is `credited` or `failed`. A failed Tempo payout can follow a completed Base payment: do not pay again; contact support with the purchase ID for reconciliation.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

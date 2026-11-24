@@ -66,6 +66,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 "tool_addition" => new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesMessageParamContentAnyOf2ItemMessagesToolAdditionBlock(),
                 "tool_removal" => new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesMessageParamContentAnyOf2ItemMessagesToolRemovalBlock(),
                 "tool_result" => new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesMessageParamContentAnyOf2ItemOneOf5Variant(),
+                "tool_search_tool_result" => new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesMessageParamContentAnyOf2ItemMessagesToolSearchToolResultBlock(),
                 "tool_use" => new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesMessageParamContentAnyOf2ItemOneOf4Variant(),
                 "web_search_tool_result" => new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesMessageParamContentAnyOf2ItemOneOf9Variant(),
                 _ => new global::Soenneker.OpenRouter.OpenApiClient.Models.MessagesMessageParamContentAnyOf2Item(),

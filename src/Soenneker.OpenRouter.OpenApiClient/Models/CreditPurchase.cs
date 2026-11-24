@@ -59,7 +59,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public string CreditAmountUsd { get => _explicitNullValueCreditAmountUsd; set { _explicitNullValueCreditAmountUsd = value; AdditionalData?.Remove("credit_amount_usd"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("credit_amount_usd"); else _explicitNullProperties?.Remove("credit_amount_usd"); } }
         private string _explicitNullValueCreditAmountUsd = default!;
 #endif
-        /// <summary>The failure_reason property</summary>
+        /// <summary>Why fulfillment failed. A Tempo payout failure does not reverse the Base payment; contact support with the purchase ID instead of paying again.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? FailureReason { get => _explicitNullValueFailureReason; set { _explicitNullValueFailureReason = value; AdditionalData?.Remove("failure_reason"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failure_reason"); else _explicitNullProperties?.Remove("failure_reason"); } }

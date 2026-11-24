@@ -5461,9 +5461,27 @@
           "Credits"
         ],
         "summary": "Buy credits with a machine payment",
-        "description": "Starts an agent credit purchase paid with a Machine Payments Protocol (MPP) credential: Bridged USDC (USDC.e) or Open USD (OUSD) on Tempo, with USDC.e offered first, or a card when one is offered. Discover currencies in \u0060x-payment-info.offers\u0060; select a runtime challenge by its \u0060request.currency\u0060 contract address, not a purchase-body field. Production currently refuses OUSD selections. The first call answers \u0060402\u0060 with one \u0060WWW-Authenticate: Payment ...\u0060 challenge per payment option; pay one of them and retry the same request, same \u0060Idempotency-Key\u0060, with the signed credential in \u0060Payment-Authorization: Payment ...\u0060 (or in \u0060Authorization: Payment ...\u0060 when the management key is sent as \u0060X-Api-Key\u0060). A paid request answers \u0060202\u0060: the transfer was broadcast or the card was charged, and the payment is still being confirmed, so credits arrive asynchronously. Poll the URL in the \u0060Location\u0060 header, \u0060GET /api/v1/credits/purchases/{id}\u0060, until \u0060status\u0060 is \u0060credited\u0060 or \u0060failed\u0060.",
+        "description": "Starts an agent credit purchase paid with a Machine Payments Protocol (MPP) credential: Bridged USDC (USDC.e) or Open USD (OUSD) on Tempo, with USDC.e offered first, or a card when one is offered. Discover currencies in \u0060x-payment-info.offers\u0060; select a runtime challenge by its \u0060request.currency\u0060 contract address, not a purchase-body field. Production currently refuses OUSD selections. The first call answers \u0060402\u0060 with one \u0060WWW-Authenticate: Payment ...\u0060 challenge per payment option; pay one of them and retry the same request, same \u0060Idempotency-Key\u0060, with the signed credential in \u0060Payment-Authorization: Payment ...\u0060 (or in \u0060Authorization: Payment ...\u0060 when the management key is sent as \u0060X-Api-Key\u0060). When x402 is enabled for the account, set \u0060protocol: \u0022x402\u0022\u0060 to buy with Base USDC instead: sign the \u0060PAYMENT-REQUIRED\u0060 challenge and retry with \u0060PAYMENT-SIGNATURE\u0060; a newly settled retry includes \u0060PAYMENT-RESPONSE\u0060, but an already-paid recovery may omit it. Do not mix the protocols. A paid request answers \u0060202\u0060: the transfer was broadcast or the card was charged, and the payment is still being confirmed, so credits arrive asynchronously. Poll the URL in the \u0060Location\u0060 header, \u0060GET /api/v1/credits/purchases/{id}\u0060, until \u0060status\u0060 is \u0060credited\u0060 or \u0060failed\u0060.",
         "operationId": "CreateCreditsPurchases",
         "parameters": [
+          {
+            "name": "payment-signature",
+            "in": "header",
+            "description": "The signed x402 credential; only for protocol x402. Keep the management key in Authorization or X-Api-Key.",
+            "schema": {
+              "type": "string",
+              "description": "The signed x402 credential; only for protocol x402. Keep the management key in Authorization or X-Api-Key."
+            }
+          },
+          {
+            "name": "payment-authorization",
+            "in": "header",
+            "description": "The MPP Payment credential; only for protocol mpp. Do not combine it with PAYMENT-SIGNATURE.",
+            "schema": {
+              "type": "string",
+              "description": "The MPP Payment credential; only for protocol mpp. Do not combine it with PAYMENT-SIGNATURE."
+            }
+          },
           {
             "name": "idempotency-key",
             "in": "header",
@@ -5502,11 +5520,18 @@
                 }
               },
               "Payment-Receipt": {
-                "description": "The payment reference, on the request that paid: the transaction hash for a Tempo payment, or the PaymentIntent ID for a card. Absent when an earlier request already paid this purchase.",
+                "description": "The payment reference on the request that paid: the transaction hash for a Tempo stablecoin or Base USDC payment, or the PaymentIntent ID for a card. An x402 payment also includes PAYMENT-RESPONSE. Absent when an earlier request already paid this purchase.",
                 "schema": {
                   "type": "string",
-                  "description": "The payment reference, on the request that paid: the transaction hash for a Tempo payment, or the PaymentIntent ID for a card. Absent when an earlier request already paid this purchase.",
+                  "description": "The payment reference on the request that paid: the transaction hash for a Tempo stablecoin or Base USDC payment, or the PaymentIntent ID for a card. An x402 payment also includes PAYMENT-RESPONSE. Absent when an earlier request already paid this purchase.",
                   "example": "0x8f3c2b1a9e7d6c5b4a39281706f5e4d3c2b1a09f8e7d6c5b4a39281706f5e4d3"
+                }
+              },
+              "PAYMENT-RESPONSE": {
+                "description": "The x402 settlement receipt. Credits still depend on Stripe confirmation; poll Location.",
+                "schema": {
+                  "type": "string",
+                  "description": "The x402 settlement receipt. Credits still depend on Stripe confirmation; poll Location."
                 }
               }
             },
@@ -5551,7 +5576,7 @@
             }
           },
           "402": {
-            "description": "Payment required. An unpaid request carries the MPP challenge in \u0060WWW-Authenticate\u0060, and a \u0060Link: rel=\u0022help\u0022\u0060 header plus a \u0060setup\u0060 field pointing at the agent setup guide, \u0060GET /api/v1/credits/purchases/setup\u0060.",
+            "description": "Payment required. The challenge is in \u0060WWW-Authenticate\u0060 for MPP or \u0060PAYMENT-REQUIRED\u0060 for x402; \u0060Link: rel=\u0022help\u0022\u0060 and the \u0060setup\u0060 field point to the agent setup guide.",
             "headers": {
               "Link": {
                 "description": "The agent setup guide.",
@@ -5562,9 +5587,22 @@
                   "example": "\u003Chttps://openrouter.ai/api/v1/credits/purchases/setup\u003E; rel=\u0022help\u0022"
                 }
               },
+              "Location": {
+                "description": "For x402, save this purchase URL before paying. Within 24 hours, a retry without payment headers using the same body, key and protocol can recover it if the quoted total is unchanged. Fee changes can cause a conflict; use the saved URL or support then, never another payment.",
+                "schema": {
+                  "type": "string",
+                  "description": "For x402, save this purchase URL before paying. Within 24 hours, a retry without payment headers using the same body, key and protocol can recover it if the quoted total is unchanged. Fee changes can cause a conflict; use the saved URL or support then, never another payment."
+                }
+              },
+              "PAYMENT-REQUIRED": {
+                "description": "Base USDC x402 challenge. Use a bound-client-capable mppx EVM client and retry with PAYMENT-SIGNATURE.",
+                "schema": {
+                  "type": "string",
+                  "description": "Base USDC x402 challenge. Use a bound-client-capable mppx EVM client and retry with PAYMENT-SIGNATURE."
+                }
+              },
               "WWW-Authenticate": {
                 "description": "The MPP challenges, one per way to pay: \u0060Payment id=\u0022...\u0022, method=\u0022tempo\u0022, intent=\u0022charge\u0022, ...\u0060 for the selected stablecoin on Tempo and, when cards are offered, \u0060Payment id=\u0022...\u0022, method=\u0022stripe\u0022, intent=\u0022charge\u0022, ...\u0060 for a card. Pay one of them.",
-                "required": true,
                 "schema": {
                   "type": "string",
                   "description": "The MPP challenges, one per way to pay: \u0060Payment id=\u0022...\u0022, method=\u0022tempo\u0022, intent=\u0022charge\u0022, ...\u0060 for the selected stablecoin on Tempo and, when cards are offered, \u0060Payment id=\u0022...\u0022, method=\u0022stripe\u0022, intent=\u0022charge\u0022, ...\u0060 for a card. Pay one of them."
@@ -5692,11 +5730,18 @@
                 }
               },
               "Payment-Receipt": {
-                "description": "The payment reference, on the request that paid: the transaction hash for a Tempo payment, or the PaymentIntent ID for a card. Absent when an earlier request already paid this purchase.",
+                "description": "The payment reference on the request that paid: the transaction hash for a Tempo stablecoin or Base USDC payment, or the PaymentIntent ID for a card. An x402 payment also includes PAYMENT-RESPONSE. Absent when an earlier request already paid this purchase.",
                 "schema": {
                   "type": "string",
-                  "description": "The payment reference, on the request that paid: the transaction hash for a Tempo payment, or the PaymentIntent ID for a card. Absent when an earlier request already paid this purchase.",
+                  "description": "The payment reference on the request that paid: the transaction hash for a Tempo stablecoin or Base USDC payment, or the PaymentIntent ID for a card. An x402 payment also includes PAYMENT-RESPONSE. Absent when an earlier request already paid this purchase.",
                   "example": "0x8f3c2b1a9e7d6c5b4a39281706f5e4d3c2b1a09f8e7d6c5b4a39281706f5e4d3"
+                }
+              },
+              "PAYMENT-RESPONSE": {
+                "description": "The x402 settlement receipt. Credits still depend on Stripe confirmation; poll Location.",
+                "schema": {
+                  "type": "string",
+                  "description": "The x402 settlement receipt. Credits still depend on Stripe confirmation; poll Location."
                 }
               }
             },
@@ -5757,7 +5802,7 @@
           "Credits"
         ],
         "summary": "Get a credit purchase",
-        "description": "Returns one agent credit purchase of the calling account, read from its Stripe PaymentIntent. Poll this after a \u0060202\u0060 until \u0060status\u0060 is \u0060credited\u0060 or \u0060failed\u0060.",
+        "description": "Returns one agent credit purchase of the calling account, read from its Stripe PaymentIntent and any pending x402 Tempo payout. Poll this after a \u0060202\u0060 until \u0060status\u0060 is \u0060credited\u0060 or \u0060failed\u0060. A failed Tempo payout can follow a completed Base payment: do not pay again; contact support with the purchase ID for reconciliation.",
         "operationId": "ListCreditsPurchases",
         "parameters": [
           {
@@ -8024,22 +8069,6 @@
               }
             }
           },
-          "402": {
-            "description": "Payment Required - Insufficient credits or quota to complete request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PaymentRequiredResponse"
-                },
-                "example": {
-                  "error": {
-                    "code": 402,
-                    "message": "Insufficient credits. Add more using https://openrouter.ai/credits"
-                  }
-                }
-              }
-            }
-          },
           "403": {
             "description": "Forbidden - Authentication successful but insufficient permissions",
             "content": {
@@ -8226,22 +8255,6 @@
                   "error": {
                     "code": 401,
                     "message": "Missing Authentication header"
-                  }
-                }
-              }
-            }
-          },
-          "402": {
-            "description": "Payment Required - Insufficient credits or quota to complete request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PaymentRequiredResponse"
-                },
-                "example": {
-                  "error": {
-                    "code": 402,
-                    "message": "Insufficient credits. Add more using https://openrouter.ai/credits"
                   }
                 }
               }
@@ -8447,22 +8460,6 @@
               }
             }
           },
-          "402": {
-            "description": "Payment Required - Insufficient credits or quota to complete request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PaymentRequiredResponse"
-                },
-                "example": {
-                  "error": {
-                    "code": 402,
-                    "message": "Insufficient credits. Add more using https://openrouter.ai/credits"
-                  }
-                }
-              }
-            }
-          },
           "403": {
             "description": "Forbidden - Authentication successful but insufficient permissions",
             "content": {
@@ -8634,22 +8631,6 @@
                   "error": {
                     "code": 401,
                     "message": "Missing Authentication header"
-                  }
-                }
-              }
-            }
-          },
-          "402": {
-            "description": "Payment Required - Insufficient credits or quota to complete request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PaymentRequiredResponse"
-                },
-                "example": {
-                  "error": {
-                    "code": 402,
-                    "message": "Insufficient credits. Add more using https://openrouter.ai/credits"
                   }
                 }
               }
@@ -8847,22 +8828,6 @@
                   "error": {
                     "code": 401,
                     "message": "Missing Authentication header"
-                  }
-                }
-              }
-            }
-          },
-          "402": {
-            "description": "Payment Required - Insufficient credits or quota to complete request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PaymentRequiredResponse"
-                },
-                "example": {
-                  "error": {
-                    "code": 402,
-                    "message": "Insufficient credits. Add more using https://openrouter.ai/credits"
                   }
                 }
               }
@@ -15045,7 +15010,8 @@
               },
               "example": {
                 "model": "bytedance-seed/seedream-4.5",
-                "prompt": "a red panda astronaut floating in space, studio lighting"
+                "prompt": "a red panda astronaut floating in space, studio lighting",
+                "response_format": "url"
               }
             }
           },
@@ -15063,9 +15029,11 @@
                   "created": 1748372400,
                   "data": [
                     {
-                      "b64_json": "\u003Cbase64-encoded-image\u003E"
+                      "media_type": "image/png",
+                      "url": "https://storage.googleapis.com/openrouter-generated-media-us/v1/..."
                     }
                   ],
+                  "expires_at": 1748458800,
                   "usage": {
                     "completion_tokens": 4175,
                     "cost": 0.04,
@@ -41143,6 +41111,9 @@
             "type": "string",
             "description": "Credits to buy, in USD with at most two decimals. The platform fee is added on top and shown in the challenge and the receipt.",
             "example": "25.00"
+          },
+          "protocol": {
+            "$ref": "#/components/schemas/CreateCreditPurchaseRequestProtocol"
           }
         }
       },
@@ -42129,7 +42100,8 @@
             "type": [
               "null",
               "string"
-            ]
+            ],
+            "description": "Why fulfillment failed. A Tempo payout failure does not reverse the Base payment; contact support with the purchase ID instead of paying again."
           },
           "id": {
             "type": "string",
@@ -46284,7 +46256,8 @@
         "description": "Image generation request input",
         "example": {
           "model": "bytedance-seed/seedream-4.5",
-          "prompt": "a red panda astronaut floating in space, studio lighting"
+          "prompt": "a red panda astronaut floating in space, studio lighting",
+          "response_format": "url"
         }
       },
       "ImageGenerationResponse": {
@@ -46321,9 +46294,11 @@
           "created": 1748372400,
           "data": [
             {
-              "b64_json": "\u003Cbase64-encoded-image\u003E"
+              "media_type": "image/png",
+              "url": "https://storage.googleapis.com/openrouter-generated-media-us/v1/..."
             }
           ],
+          "expires_at": 1748458800,
           "usage": {
             "completion_tokens": 4175,
             "cost": 0.04,
@@ -49248,6 +49223,150 @@
             "max_results": 5
           },
           "type": "openrouter:experimental__search_models"
+        }
+      },
+      "MessagesToolSearchToolReference": {
+        "required": [
+          "type",
+          "tool_name"
+        ],
+        "type": "object",
+        "properties": {
+          "tool_name": {
+            "type": "string"
+          },
+          "type": {
+            "$ref": "#/components/schemas/ToolReferenceType"
+          }
+        },
+        "description": "The name of one tool a tool search found.",
+        "example": {
+          "tool_name": "get_weather",
+          "type": "tool_reference"
+        }
+      },
+      "MessagesToolSearchToolResultContent": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/MessagesToolSearchToolResultError"
+          },
+          {
+            "$ref": "#/components/schemas/MessagesToolSearchToolSearchResult"
+          }
+        ],
+        "description": "What a tool search returned: the tools it found, or an error.",
+        "example": {
+          "tool_references": [
+            {
+              "tool_name": "get_weather",
+              "type": "tool_reference"
+            }
+          ],
+          "type": "tool_search_tool_search_result"
+        },
+        "x-client-original-discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "tool_search_tool_result_error": "#/components/schemas/MessagesToolSearchToolResultError",
+            "tool_search_tool_search_result": "#/components/schemas/MessagesToolSearchToolSearchResult"
+          }
+        },
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "tool_search_tool_result_error": "#/components/schemas/MessagesToolSearchToolResultError",
+            "tool_search_tool_search_result": "#/components/schemas/MessagesToolSearchToolSearchResult"
+          }
+        }
+      },
+      "MessagesToolSearchToolResultError": {
+        "required": [
+          "type",
+          "error_code"
+        ],
+        "type": "object",
+        "properties": {
+          "error_code": {
+            "description": "Why a tool search returned no result.",
+            "$ref": "#/components/schemas/MessagesToolSearchToolResultErrorCode"
+          },
+          "error_message": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "type": {
+            "$ref": "#/components/schemas/ToolSearchToolResultErrorType"
+          }
+        },
+        "description": "A tool search that returned an error in place of tools.",
+        "example": {
+          "error_code": "unavailable",
+          "error_message": null,
+          "type": "tool_search_tool_result_error"
+        }
+      },
+      "MessagesToolSearchToolResultErrorCode": {
+        "enum": [
+          "invalid_tool_input",
+          "unavailable",
+          "too_many_requests",
+          "execution_time_exceeded"
+        ],
+        "type": "string",
+        "description": "Why a tool search returned no result.",
+        "example": "unavailable",
+        "x-speakeasy-unknown-values": "allow",
+        "x-ms-enum": {
+          "name": "MessagesToolSearchToolResultErrorCode",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "invalid_tool_input",
+              "name": "InvalidToolInput"
+            },
+            {
+              "value": "unavailable",
+              "name": "Unavailable"
+            },
+            {
+              "value": "too_many_requests",
+              "name": "TooManyRequests"
+            },
+            {
+              "value": "execution_time_exceeded",
+              "name": "ExecutionTimeExceeded"
+            }
+          ]
+        }
+      },
+      "MessagesToolSearchToolSearchResult": {
+        "required": [
+          "type",
+          "tool_references"
+        ],
+        "type": "object",
+        "properties": {
+          "tool_references": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MessagesToolSearchToolReference"
+            }
+          },
+          "type": {
+            "$ref": "#/components/schemas/ToolSearchToolSearchResultType"
+          }
+        },
+        "description": "The tools a tool search found, by name, in match order.",
+        "example": {
+          "tool_references": [
+            {
+              "tool_name": "get_weather",
+              "type": "tool_reference"
+            }
+          ],
+          "type": "tool_search_tool_search_result"
         }
       },
       "MetadataLevel": {
@@ -74320,7 +74439,8 @@
                 "tool_removal": "#/components/schemas/MessagesMessageParamContentAnyOf2ItemMessagesToolRemovalBlock",
                 "openrouter_shell_tool_result": "#/components/schemas/MessagesMessageParamContentAnyOf2ItemMessagesShellToolResultBlock",
                 "openrouter_bash_tool_result": "#/components/schemas/MessagesMessageParamContentAnyOf2ItemMessagesBashToolResultBlock",
-                "openrouter_tool_search_result": "#/components/schemas/MessagesMessageParamContentAnyOf2ItemOrAnthropicToolSearchResultParam"
+                "openrouter_tool_search_result": "#/components/schemas/MessagesMessageParamContentAnyOf2ItemOrAnthropicToolSearchResultParam",
+                "tool_search_tool_result": "#/components/schemas/MessagesMessageParamContentAnyOf2ItemMessagesToolSearchToolResultBlock"
               }
             },
             "x-client-array-item-dispatch": true
@@ -77857,7 +77977,8 @@
             "tool_removal": "#/components/schemas/MessagesMessageParamContentAnyOf2ItemMessagesToolRemovalBlock",
             "openrouter_shell_tool_result": "#/components/schemas/MessagesMessageParamContentAnyOf2ItemMessagesShellToolResultBlock",
             "openrouter_bash_tool_result": "#/components/schemas/MessagesMessageParamContentAnyOf2ItemMessagesBashToolResultBlock",
-            "openrouter_tool_search_result": "#/components/schemas/MessagesMessageParamContentAnyOf2ItemOrAnthropicToolSearchResultParam"
+            "openrouter_tool_search_result": "#/components/schemas/MessagesMessageParamContentAnyOf2ItemOrAnthropicToolSearchResultParam",
+            "tool_search_tool_result": "#/components/schemas/MessagesMessageParamContentAnyOf2ItemMessagesToolSearchToolResultBlock"
           }
         },
         "x-client-original-tagged-union": {
@@ -77912,6 +78033,9 @@
             },
             {
               "$ref": "#/components/schemas/OrAnthropicToolSearchResultParam"
+            },
+            {
+              "$ref": "#/components/schemas/MessagesToolSearchToolResultBlock"
             }
           ],
           "discriminator": {
@@ -77933,7 +78057,8 @@
               "tool_removal": "#/components/schemas/MessagesToolRemovalBlock",
               "openrouter_shell_tool_result": "#/components/schemas/MessagesShellToolResultBlock",
               "openrouter_bash_tool_result": "#/components/schemas/MessagesBashToolResultBlock",
-              "openrouter_tool_search_result": "#/components/schemas/OrAnthropicToolSearchResultParam"
+              "openrouter_tool_search_result": "#/components/schemas/OrAnthropicToolSearchResultParam",
+              "tool_search_tool_result": "#/components/schemas/MessagesToolSearchToolResultBlock"
             }
           }
         },
@@ -95010,6 +95135,29 @@
           }
         ]
       },
+      "CreateCreditPurchaseRequestProtocol": {
+        "enum": [
+          "mpp",
+          "x402"
+        ],
+        "type": "string",
+        "description": "Payment protocol. Defaults to MPP on Tempo; x402 pays USDC on Base when enabled. Keep the protocol and Idempotency-Key unchanged on retries.",
+        "x-speakeasy-unknown-values": "allow",
+        "x-ms-enum": {
+          "name": "CreateCreditPurchaseRequestProtocol",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "mpp",
+              "name": "Mpp"
+            },
+            {
+              "value": "x402",
+              "name": "X402"
+            }
+          ]
+        }
+      },
       "ModelAvailabilityPolicyType": {
         "enum": [
           "model_availability"
@@ -96923,7 +97071,7 @@
         ],
         "type": "string",
         "description": "\u0060b64_json\u0060 (default) returns the image bytes inline. \u0060url\u0060 stores each output in OpenRouter storage and returns a signed download URL in place of the bytes. The URL is a bearer link: anyone holding it can download the image until it expires, up to 24 hours after the image was stored (use \u0060expires_at\u0060); the stored copy is deleted by the storage lifecycle within the following day. The response falls back to \u0060b64_json\u0060 when a URL cannot be issued: streaming responses, zero-data-retention requests (account settings, guardrails or \u0060provider.zdr\u0060) or endpoints, or storage being unavailable.",
-        "example": "b64_json",
+        "example": "url",
         "x-speakeasy-unknown-values": "allow",
         "x-ms-enum": {
           "name": "ImageGenerationRequestResponseFormat",
@@ -123148,6 +123296,51 @@
           }
         ]
       },
+      "MessagesMessageParamContentAnyOf2ItemMessagesToolSearchToolResultBlock": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/MessagesMessageParamContentAnyOf2Item"
+          },
+          {
+            "required": [
+              "type",
+              "tool_use_id",
+              "content"
+            ],
+            "type": "object",
+            "properties": {
+              "cache_control": {
+                "description": "Enable automatic prompt caching. When set at the top level, the system automatically applies cache breakpoints to the last cacheable block in the request. When set on an individual content block, it marks an explicit cache breakpoint; block-level markers also work on OpenAI models that support explicit prompt caching \u2014 OpenRouter converts them to the provider\u0027s native format.",
+                "$ref": "#/components/schemas/AnthropicCacheControlDirective"
+              },
+              "content": {
+                "description": "What a tool search returned: the tools it found, or an error.",
+                "$ref": "#/components/schemas/MessagesToolSearchToolResultContent"
+              },
+              "tool_use_id": {
+                "type": "string"
+              },
+              "type": {
+                "$ref": "#/components/schemas/ToolSearchToolResultType"
+              }
+            },
+            "description": "Tool search result from a prior assistant turn, returned beside the \u0060server_tool_use\u0060 it answers.",
+            "example": {
+              "content": {
+                "tool_references": [
+                  {
+                    "tool_name": "get_weather",
+                    "type": "tool_reference"
+                  }
+                ],
+                "type": "tool_search_tool_search_result"
+              },
+              "tool_use_id": "srvtoolu_01abc",
+              "type": "tool_search_tool_result"
+            }
+          }
+        ]
+      },
       "BatchObjectResultsItemResponseBodyAnyOf1ChoicesItemMessageAnnotationsItemOneOf1Variant": {
         "allOf": [
           {
@@ -129609,6 +129802,44 @@
           "type": "tool_reference"
         },
         "type": "tool_removal"
+      }
+    },
+    "MessagesToolSearchToolResultBlock": {
+      "required": [
+        "type",
+        "tool_use_id",
+        "content"
+      ],
+      "type": "object",
+      "properties": {
+        "cache_control": {
+          "description": "Enable automatic prompt caching. When set at the top level, the system automatically applies cache breakpoints to the last cacheable block in the request. When set on an individual content block, it marks an explicit cache breakpoint; block-level markers also work on OpenAI models that support explicit prompt caching \u2014 OpenRouter converts them to the provider\u0027s native format.",
+          "$ref": "#/components/schemas/AnthropicCacheControlDirective"
+        },
+        "content": {
+          "description": "What a tool search returned: the tools it found, or an error.",
+          "$ref": "#/components/schemas/MessagesToolSearchToolResultContent"
+        },
+        "tool_use_id": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/components/schemas/ToolSearchToolResultType"
+        }
+      },
+      "description": "Tool search result from a prior assistant turn, returned beside the \u0060server_tool_use\u0060 it answers.",
+      "example": {
+        "content": {
+          "tool_references": [
+            {
+              "tool_name": "get_weather",
+              "type": "tool_reference"
+            }
+          ],
+          "type": "tool_search_tool_search_result"
+        },
+        "tool_use_id": "srvtoolu_01abc",
+        "type": "tool_search_tool_result"
       }
     },
     "ModelAvailabilityAccountGuardrailPolicy": {
