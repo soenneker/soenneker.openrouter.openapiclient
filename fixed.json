@@ -191,18 +191,7 @@
           }
         },
         "x-speakeasy-max-method-params": 5
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/analytics/meta": {
       "get": {
@@ -302,18 +291,7 @@
             }
           }
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/analytics/query": {
       "post": {
@@ -454,18 +432,7 @@
             }
           }
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/api/alpha/decisions": {
       "post": {
@@ -771,18 +738,7 @@
           }
         ],
         "x-speakeasy-name-override": "create"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/api/alpha/extractions": {
       "post": {
@@ -1108,18 +1064,7 @@
           }
         ],
         "x-speakeasy-name-override": "create"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/audio/speech": {
       "post": {
@@ -1127,7 +1072,7 @@
           "TTS"
         ],
         "summary": "Create speech",
-        "description": "Synthesizes audio from the input text. Returns a raw audio bytestream in the requested format (e.g. mp3, pcm, wav).",
+        "description": "Synthesizes audio from the input text. Returns a raw audio bytestream in the requested format (e.g. mp3, pcm) by default, or a JSON response with a 24-hour signed download URL when \u0060output_delivery\u0060 is set to \u0060\u0022url\u0022\u0060.",
         "operationId": "CreateAudioSpeech",
         "requestBody": {
           "content": {
@@ -1148,7 +1093,7 @@
         },
         "responses": {
           "200": {
-            "description": "Audio bytes stream",
+            "description": "Raw audio bytes stream (\u0060audio/*\u0060) by default. When \u0060output_delivery\u0060 is \u0060\u0022url\u0022\u0060, returns \u0060application/json\u0060 with \u0060{ url, expires_at, media_type }\u0060 (a 24-hour signed download URL) unless zero-data-retention or missing workspace causes fallback to raw audio streaming.",
             "content": {
               "audio/*": {
                 "schema": {
@@ -1352,18 +1297,7 @@
         },
         "x-speakeasy-max-method-params": 1,
         "x-speakeasy-name-override": "createSpeech"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/audio/speech/models": {
       "get": {
@@ -1519,18 +1453,7 @@
         },
         "security": [],
         "x-speakeasy-name-override": "listModels"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/audio/speech/models/{author}/{slug}": {
       "get": {
@@ -1722,18 +1645,7 @@
         },
         "security": [],
         "x-speakeasy-name-override": "getModel"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/audio/transcriptions": {
       "post": {
@@ -2003,18 +1915,7 @@
         },
         "x-speakeasy-max-method-params": 1,
         "x-speakeasy-name-override": "createTranscription"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/auth/keys": {
       "post": {
@@ -2103,18 +2004,7 @@
             }
           }
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/auth/keys/code": {
       "post": {
@@ -2256,18 +2146,7 @@
           }
         },
         "x-speakeasy-name-override": "createAuthCode"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/batches": {
       "get": {
@@ -2755,18 +2634,7 @@
           ],
           "strategy": "backoff"
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/batches/{id}": {
       "delete": {
@@ -3039,18 +2907,7 @@
             }
           }
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/benchmarks": {
       "get": {
@@ -3266,18 +3123,7 @@
             }
           }
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/byok": {
       "get": {
@@ -3356,6 +3202,7 @@
                       "disabled": false,
                       "id": "11111111-2222-3333-4444-555555555555",
                       "is_byok_only": false,
+                      "is_exclusive": false,
                       "is_fallback": false,
                       "is_required": false,
                       "label": "sk-...AbCd",
@@ -3496,6 +3343,7 @@
                     "disabled": false,
                     "id": "11111111-2222-3333-4444-555555555555",
                     "is_byok_only": false,
+                    "is_exclusive": false,
                     "is_fallback": false,
                     "is_required": false,
                     "label": "sk-...AbCd",
@@ -3590,6 +3438,7 @@
                     "disabled": false,
                     "id": "11111111-2222-3333-4444-555555555555",
                     "is_byok_only": false,
+                    "is_exclusive": false,
                     "is_fallback": false,
                     "is_required": false,
                     "label": "sk-...AbCd",
@@ -3605,18 +3454,7 @@
           }
         },
         "x-speakeasy-name-override": "create"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/byok/{id}": {
       "delete": {
@@ -3761,6 +3599,7 @@
                     "disabled": false,
                     "id": "11111111-2222-3333-4444-555555555555",
                     "is_byok_only": false,
+                    "is_exclusive": false,
                     "is_fallback": false,
                     "is_required": false,
                     "label": "sk-...AbCd",
@@ -3894,6 +3733,7 @@
                     "disabled": false,
                     "id": "11111111-2222-3333-4444-555555555555",
                     "is_byok_only": false,
+                    "is_exclusive": false,
                     "is_fallback": false,
                     "is_required": false,
                     "label": "sk-...AbCd",
@@ -4004,18 +3844,7 @@
           }
         },
         "x-speakeasy-name-override": "update"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/chat/completions": {
       "post": {
@@ -4404,18 +4233,7 @@
         "x-speakeasy-group": "chat",
         "x-speakeasy-name-override": "send",
         "x-speakeasy-stream-request-field": "stream"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/classifications/task": {
       "get": {
@@ -4543,18 +4361,7 @@
             }
           }
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/containers/{containerId}/files": {
       "get": {
@@ -4725,18 +4532,7 @@
             }
           }
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/containers/{containerId}/files/{fileId}": {
       "get": {
@@ -4903,18 +4699,7 @@
             }
           }
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/containers/{containerId}/files/{fileId}/content": {
       "get": {
@@ -5073,18 +4858,7 @@
             }
           }
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/containers/{containerId}/files/{fileId}/promote": {
       "post": {
@@ -5284,18 +5058,7 @@
             }
           }
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/credits": {
       "get": {
@@ -5372,18 +5135,7 @@
           }
         },
         "x-speakeasy-name-override": "getCredits"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/credits/coinbase": {
       "post": {
@@ -5419,18 +5171,7 @@
         "x-fern-ignore": true,
         "x-speakeasy-ignore": true,
         "x-speakeasy-name-override": "createCoinbaseCharge"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/credits/purchases": {
       "get": {
@@ -5461,27 +5202,9 @@
           "Credits"
         ],
         "summary": "Buy credits with a machine payment",
-        "description": "Starts an agent credit purchase paid with a Machine Payments Protocol (MPP) credential: Bridged USDC (USDC.e) or Open USD (OUSD) on Tempo, with USDC.e offered first, or a card when one is offered. Discover currencies in \u0060x-payment-info.offers\u0060; select a runtime challenge by its \u0060request.currency\u0060 contract address, not a purchase-body field. Production currently refuses OUSD selections. The first call answers \u0060402\u0060 with one \u0060WWW-Authenticate: Payment ...\u0060 challenge per payment option; pay one of them and retry the same request, same \u0060Idempotency-Key\u0060, with the signed credential in \u0060Payment-Authorization: Payment ...\u0060 (or in \u0060Authorization: Payment ...\u0060 when the management key is sent as \u0060X-Api-Key\u0060). When x402 is enabled for the account, set \u0060protocol: \u0022x402\u0022\u0060 to buy with Base USDC instead: sign the \u0060PAYMENT-REQUIRED\u0060 challenge and retry with \u0060PAYMENT-SIGNATURE\u0060; a newly settled retry includes \u0060PAYMENT-RESPONSE\u0060, but an already-paid recovery may omit it. Do not mix the protocols. A paid request answers \u0060202\u0060: the transfer was broadcast or the card was charged, and the payment is still being confirmed, so credits arrive asynchronously. Poll the URL in the \u0060Location\u0060 header, \u0060GET /api/v1/credits/purchases/{id}\u0060, until \u0060status\u0060 is \u0060credited\u0060 or \u0060failed\u0060.",
+        "description": "Starts an agent credit purchase paid with a Machine Payments Protocol (MPP) credential: Bridged USDC (USDC.e) or Open USD (OUSD) on Tempo, with USDC.e offered first, or a card when one is offered. Discover currencies in \u0060x-payment-info.offers\u0060; select a runtime challenge by its \u0060request.currency\u0060 contract address, not a purchase-body field. Production currently refuses OUSD selections. The first call answers \u0060402\u0060 with one \u0060WWW-Authenticate: Payment ...\u0060 challenge per payment option; pay one of them and retry the same request, same \u0060Idempotency-Key\u0060, with the signed credential in \u0060Payment-Authorization: Payment ...\u0060 (or in \u0060Authorization: Payment ...\u0060 when the management key is sent as \u0060X-Api-Key\u0060). A paid request answers \u0060202\u0060: the transfer was broadcast or the card was charged, and the payment is still being confirmed, so credits arrive asynchronously. Poll the URL in the \u0060Location\u0060 header, \u0060GET /api/v1/credits/purchases/{id}\u0060, until \u0060status\u0060 is \u0060credited\u0060 or \u0060failed\u0060.",
         "operationId": "CreateCreditsPurchases",
         "parameters": [
-          {
-            "name": "payment-signature",
-            "in": "header",
-            "description": "The signed x402 credential; only for protocol x402. Keep the management key in Authorization or X-Api-Key.",
-            "schema": {
-              "type": "string",
-              "description": "The signed x402 credential; only for protocol x402. Keep the management key in Authorization or X-Api-Key."
-            }
-          },
-          {
-            "name": "payment-authorization",
-            "in": "header",
-            "description": "The MPP Payment credential; only for protocol mpp. Do not combine it with PAYMENT-SIGNATURE.",
-            "schema": {
-              "type": "string",
-              "description": "The MPP Payment credential; only for protocol mpp. Do not combine it with PAYMENT-SIGNATURE."
-            }
-          },
           {
             "name": "idempotency-key",
             "in": "header",
@@ -5520,18 +5243,11 @@
                 }
               },
               "Payment-Receipt": {
-                "description": "The payment reference on the request that paid: the transaction hash for a Tempo stablecoin or Base USDC payment, or the PaymentIntent ID for a card. An x402 payment also includes PAYMENT-RESPONSE. Absent when an earlier request already paid this purchase.",
+                "description": "The payment reference, on the request that paid: the transaction hash for a Tempo payment, or the PaymentIntent ID for a card. Absent when an earlier request already paid this purchase.",
                 "schema": {
                   "type": "string",
-                  "description": "The payment reference on the request that paid: the transaction hash for a Tempo stablecoin or Base USDC payment, or the PaymentIntent ID for a card. An x402 payment also includes PAYMENT-RESPONSE. Absent when an earlier request already paid this purchase.",
+                  "description": "The payment reference, on the request that paid: the transaction hash for a Tempo payment, or the PaymentIntent ID for a card. Absent when an earlier request already paid this purchase.",
                   "example": "0x8f3c2b1a9e7d6c5b4a39281706f5e4d3c2b1a09f8e7d6c5b4a39281706f5e4d3"
-                }
-              },
-              "PAYMENT-RESPONSE": {
-                "description": "The x402 settlement receipt. Credits still depend on Stripe confirmation; poll Location.",
-                "schema": {
-                  "type": "string",
-                  "description": "The x402 settlement receipt. Credits still depend on Stripe confirmation; poll Location."
                 }
               }
             },
@@ -5576,7 +5292,7 @@
             }
           },
           "402": {
-            "description": "Payment required. The challenge is in \u0060WWW-Authenticate\u0060 for MPP or \u0060PAYMENT-REQUIRED\u0060 for x402; \u0060Link: rel=\u0022help\u0022\u0060 and the \u0060setup\u0060 field point to the agent setup guide.",
+            "description": "Payment required. An unpaid request carries the MPP challenge in \u0060WWW-Authenticate\u0060, and a \u0060Link: rel=\u0022help\u0022\u0060 header plus a \u0060setup\u0060 field pointing at the agent setup guide, \u0060GET /api/v1/credits/purchases/setup\u0060.",
             "headers": {
               "Link": {
                 "description": "The agent setup guide.",
@@ -5587,22 +5303,9 @@
                   "example": "\u003Chttps://openrouter.ai/api/v1/credits/purchases/setup\u003E; rel=\u0022help\u0022"
                 }
               },
-              "Location": {
-                "description": "For x402, save this purchase URL before paying. Within 24 hours, a retry without payment headers using the same body, key and protocol can recover it if the quoted total is unchanged. Fee changes can cause a conflict; use the saved URL or support then, never another payment.",
-                "schema": {
-                  "type": "string",
-                  "description": "For x402, save this purchase URL before paying. Within 24 hours, a retry without payment headers using the same body, key and protocol can recover it if the quoted total is unchanged. Fee changes can cause a conflict; use the saved URL or support then, never another payment."
-                }
-              },
-              "PAYMENT-REQUIRED": {
-                "description": "Base USDC x402 challenge. Use a bound-client-capable mppx EVM client and retry with PAYMENT-SIGNATURE.",
-                "schema": {
-                  "type": "string",
-                  "description": "Base USDC x402 challenge. Use a bound-client-capable mppx EVM client and retry with PAYMENT-SIGNATURE."
-                }
-              },
               "WWW-Authenticate": {
                 "description": "The MPP challenges, one per way to pay: \u0060Payment id=\u0022...\u0022, method=\u0022tempo\u0022, intent=\u0022charge\u0022, ...\u0060 for the selected stablecoin on Tempo and, when cards are offered, \u0060Payment id=\u0022...\u0022, method=\u0022stripe\u0022, intent=\u0022charge\u0022, ...\u0060 for a card. Pay one of them.",
+                "required": true,
                 "schema": {
                   "type": "string",
                   "description": "The MPP challenges, one per way to pay: \u0060Payment id=\u0022...\u0022, method=\u0022tempo\u0022, intent=\u0022charge\u0022, ...\u0060 for the selected stablecoin on Tempo and, when cards are offered, \u0060Payment id=\u0022...\u0022, method=\u0022stripe\u0022, intent=\u0022charge\u0022, ...\u0060 for a card. Pay one of them."
@@ -5730,18 +5433,11 @@
                 }
               },
               "Payment-Receipt": {
-                "description": "The payment reference on the request that paid: the transaction hash for a Tempo stablecoin or Base USDC payment, or the PaymentIntent ID for a card. An x402 payment also includes PAYMENT-RESPONSE. Absent when an earlier request already paid this purchase.",
+                "description": "The payment reference, on the request that paid: the transaction hash for a Tempo payment, or the PaymentIntent ID for a card. Absent when an earlier request already paid this purchase.",
                 "schema": {
                   "type": "string",
-                  "description": "The payment reference on the request that paid: the transaction hash for a Tempo stablecoin or Base USDC payment, or the PaymentIntent ID for a card. An x402 payment also includes PAYMENT-RESPONSE. Absent when an earlier request already paid this purchase.",
+                  "description": "The payment reference, on the request that paid: the transaction hash for a Tempo payment, or the PaymentIntent ID for a card. Absent when an earlier request already paid this purchase.",
                   "example": "0x8f3c2b1a9e7d6c5b4a39281706f5e4d3c2b1a09f8e7d6c5b4a39281706f5e4d3"
-                }
-              },
-              "PAYMENT-RESPONSE": {
-                "description": "The x402 settlement receipt. Credits still depend on Stripe confirmation; poll Location.",
-                "schema": {
-                  "type": "string",
-                  "description": "The x402 settlement receipt. Credits still depend on Stripe confirmation; poll Location."
                 }
               }
             },
@@ -5783,18 +5479,7 @@
           ]
         },
         "x-speakeasy-ignore": true
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/credits/purchases/{id}": {
       "get": {
@@ -5802,7 +5487,7 @@
           "Credits"
         ],
         "summary": "Get a credit purchase",
-        "description": "Returns one agent credit purchase of the calling account, read from its Stripe PaymentIntent and any pending x402 Tempo payout. Poll this after a \u0060202\u0060 until \u0060status\u0060 is \u0060credited\u0060 or \u0060failed\u0060. A failed Tempo payout can follow a completed Base payment: do not pay again; contact support with the purchase ID for reconciliation.",
+        "description": "Returns one agent credit purchase of the calling account, read from its Stripe PaymentIntent. Poll this after a \u0060202\u0060 until \u0060status\u0060 is \u0060credited\u0060 or \u0060failed\u0060.",
         "operationId": "ListCreditsPurchases",
         "parameters": [
           {
@@ -5945,18 +5630,7 @@
         "x-fern-ignore": true,
         "x-hidden": true,
         "x-speakeasy-ignore": true
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/credits/purchases/setup": {
       "get": {
@@ -5981,18 +5655,7 @@
         "x-fern-ignore": true,
         "x-hidden": true,
         "x-speakeasy-ignore": true
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/credits/purchases/SKILL.md": {
       "get": {
@@ -6017,18 +5680,7 @@
         "x-fern-ignore": true,
         "x-hidden": true,
         "x-speakeasy-ignore": true
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/datasets/app-rankings": {
       "get": {
@@ -6233,18 +5885,7 @@
           },
           "type": "offsetLimit"
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/datasets/rankings-daily": {
       "get": {
@@ -6419,18 +6060,7 @@
             }
           }
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/datasets/session-cost": {
       "get": {
@@ -6610,18 +6240,7 @@
           },
           "type": "offsetLimit"
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/embeddings": {
       "post": {
@@ -6903,18 +6522,7 @@
           }
         },
         "x-speakeasy-name-override": "generate"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/embeddings/models": {
       "get": {
@@ -7063,18 +6671,7 @@
           },
           "type": "offsetLimit"
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/endpoints/zdr": {
       "get": {
@@ -7209,24 +6806,12 @@
           }
         },
         "x-speakeasy-name-override": "listZdrEndpoints"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/external-users": {
       "get": {
         "tags": [
-          "External Users",
-          "End Users"
+          "External Users"
         ],
         "summary": "List registered external users",
         "description": "List registrations belonging to the authenticated organization. Inactive registrations are excluded by default. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
@@ -7388,6 +6973,7 @@
             }
           }
         },
+        "x-speakeasy-group": "externalUsers",
         "x-speakeasy-name-override": "list",
         "x-speakeasy-pagination": {
           "inputs": [
@@ -7410,8 +6996,7 @@
       },
       "post": {
         "tags": [
-          "External Users",
-          "End Users"
+          "External Users"
         ],
         "summary": "Register an external user",
         "description": "Register a caller-supplied tracking ID under the authenticated organization. No login account, policy, or credentials are created. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
@@ -7548,25 +7133,14 @@
             "x-client-success-response-status": "201"
           }
         },
+        "x-speakeasy-group": "externalUsers",
         "x-speakeasy-name-override": "create"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/external-users/{user}": {
       "delete": {
         "tags": [
-          "External Users",
-          "End Users"
+          "External Users"
         ],
         "summary": "Deactivate a registered external user",
         "description": "Soft-deactivate a registration while retaining its tracking ID. Repeat deactivation succeeds. This does not block inference; reactivate through PATCH. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
@@ -7656,12 +7230,12 @@
             }
           }
         },
+        "x-speakeasy-group": "externalUsers",
         "x-speakeasy-name-override": "delete"
       },
       "get": {
         "tags": [
-          "External Users",
-          "End Users"
+          "External Users"
         ],
         "summary": "Get a registered external user",
         "description": "Retrieve an active or inactive registration by its URL-encoded, caller-supplied tracking ID. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
@@ -7782,12 +7356,12 @@
             }
           }
         },
+        "x-speakeasy-group": "externalUsers",
         "x-speakeasy-name-override": "get"
       },
       "patch": {
         "tags": [
-          "External Users",
-          "End Users"
+          "External Users"
         ],
         "summary": "Update a registered external user",
         "description": "Update registration state without changing identity. State changes do not enforce inference access. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
@@ -7905,19 +7479,9 @@
             }
           }
         },
+        "x-speakeasy-group": "externalUsers",
         "x-speakeasy-name-override": "update"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/files": {
       "get": {
@@ -8374,18 +7938,7 @@
           }
         },
         "x-speakeasy-name-override": "upload"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/files/{fileId}": {
       "delete": {
@@ -8734,18 +8287,7 @@
           }
         },
         "x-speakeasy-name-override": "retrieve"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/files/{fileId}/content": {
       "get": {
@@ -8931,18 +8473,7 @@
           }
         },
         "x-speakeasy-name-override": "download"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/generation": {
       "get": {
@@ -9185,18 +8716,7 @@
             }
           }
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/generation/content": {
       "get": {
@@ -9409,18 +8929,7 @@
             }
           }
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/generation/feedback": {
       "post": {
@@ -9591,18 +9100,7 @@
           }
         },
         "x-speakeasy-name-override": "submitFeedback"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/guardrails": {
       "get": {
@@ -9955,18 +9453,7 @@
           }
         },
         "x-speakeasy-name-override": "create"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/guardrails/{id}": {
       "delete": {
@@ -10363,18 +9850,7 @@
           }
         },
         "x-speakeasy-name-override": "update"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/guardrails/{id}/assignments/keys": {
       "get": {
@@ -10668,18 +10144,7 @@
           }
         },
         "x-speakeasy-name-override": "bulkAssignKeys"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/guardrails/{id}/assignments/keys/remove": {
       "post": {
@@ -10814,18 +10279,7 @@
           }
         },
         "x-speakeasy-name-override": "bulkUnassignKeys"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/guardrails/{id}/assignments/members": {
       "get": {
@@ -11119,18 +10573,7 @@
           }
         },
         "x-speakeasy-name-override": "bulkAssignMembers"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/guardrails/{id}/assignments/members/remove": {
       "post": {
@@ -11266,18 +10709,7 @@
           }
         },
         "x-speakeasy-name-override": "bulkUnassignMembers"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/guardrails/assignments/keys": {
       "get": {
@@ -11453,18 +10885,7 @@
           },
           "type": "offsetLimit"
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/guardrails/assignments/members": {
       "get": {
@@ -11639,18 +11060,7 @@
           },
           "type": "offsetLimit"
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/guardrails/policies/account": {
       "get": {
@@ -11934,18 +11344,7 @@
           }
         },
         "x-speakeasy-name-override": "createAccountPolicy"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/guardrails/policies/account/{id}": {
       "delete": {
@@ -12219,18 +11618,7 @@
           }
         },
         "x-speakeasy-name-override": "updateAccountPolicy"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/guardrails/policies/assignments/api-keys/{hash}": {
       "get": {
@@ -12508,18 +11896,7 @@
           }
         },
         "x-speakeasy-name-override": "changeApiKeyPolicyAssignment"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/guardrails/policies/assignments/members/{memberId}": {
       "get": {
@@ -12797,18 +12174,7 @@
           }
         },
         "x-speakeasy-name-override": "changeMemberPolicyAssignment"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/guardrails/policies/budget": {
       "get": {
@@ -13103,18 +12469,7 @@
           }
         },
         "x-speakeasy-name-override": "createBudgetPolicy"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/guardrails/policies/budget/{id}": {
       "delete": {
@@ -13525,18 +12880,7 @@
           }
         },
         "x-speakeasy-name-override": "updateBudgetPolicy"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/guardrails/policies/model-availability": {
       "get": {
@@ -13831,18 +13175,7 @@
           }
         },
         "x-speakeasy-name-override": "createModelAvailabilityPolicy"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/guardrails/policies/model-availability/{id}": {
       "delete": {
@@ -14253,18 +13586,7 @@
           }
         },
         "x-speakeasy-name-override": "updateModelAvailabilityPolicy"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/guardrails/policies/moderation": {
       "get": {
@@ -14559,18 +13881,7 @@
           }
         },
         "x-speakeasy-name-override": "createModerationPolicy"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/guardrails/policies/moderation/{id}": {
       "delete": {
@@ -14981,18 +14292,7 @@
           }
         },
         "x-speakeasy-name-override": "updateModerationPolicy"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/images": {
       "post": {
@@ -15237,18 +14537,7 @@
           }
         },
         "x-speakeasy-name-override": "generate"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/images/models": {
       "get": {
@@ -15317,18 +14606,7 @@
           }
         },
         "x-speakeasy-name-override": "listModels"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/images/models/{author}/{slug}/endpoints": {
       "get": {
@@ -15436,18 +14714,7 @@
           }
         },
         "x-speakeasy-name-override": "listModelEndpoints"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/key": {
       "get": {
@@ -15565,18 +14832,7 @@
           }
         },
         "x-speakeasy-name-override": "getCurrentKeyMetadata"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/keys": {
       "get": {
@@ -15971,18 +15227,7 @@
           }
         },
         "x-speakeasy-name-override": "create"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/keys/{hash}": {
       "delete": {
@@ -16445,18 +15690,7 @@
           }
         },
         "x-speakeasy-name-override": "update"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/messages": {
       "post": {
@@ -16727,18 +15961,7 @@
         "x-speakeasy-ignore": true,
         "x-speakeasy-name-override": "create",
         "x-speakeasy-stream-request-field": "stream"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/model/{author}/{slug}": {
       "get": {
@@ -16884,18 +16107,7 @@
           }
         },
         "x-speakeasy-name-override": "get"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/models": {
       "get": {
@@ -17777,18 +16989,7 @@
           },
           "type": "offsetLimit"
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/models/{author}/{slug}/endpoints": {
       "get": {
@@ -17934,18 +17135,7 @@
           }
         },
         "x-speakeasy-name-override": "list"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/models/count": {
       "get": {
@@ -18032,18 +17222,7 @@
           }
         },
         "x-speakeasy-name-override": "count"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/models/user": {
       "get": {
@@ -18326,18 +17505,7 @@
           },
           "type": "offsetLimit"
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/oauth/jwks": {
       "get": {
@@ -18369,18 +17537,7 @@
             }
           }
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/oauth/token": {
       "post": {
@@ -18452,18 +17609,7 @@
             }
           }
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/observability/destinations": {
       "get": {
@@ -18824,18 +17970,7 @@
           }
         },
         "x-speakeasy-name-override": "create"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/observability/destinations/{id}": {
       "delete": {
@@ -19237,18 +18372,7 @@
           }
         },
         "x-speakeasy-name-override": "update"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/organization/members": {
       "get": {
@@ -19395,18 +18519,7 @@
           },
           "type": "offsetLimit"
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/organization/settings": {
       "get": {
@@ -19619,18 +18732,7 @@
           }
         },
         "x-speakeasy-name-override": "updateSettings"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/presets": {
       "get": {
@@ -19831,18 +18933,7 @@
           },
           "type": "offsetLimit"
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/presets/{slug}": {
       "delete": {
@@ -20166,18 +19257,7 @@
           }
         ],
         "x-speakeasy-name-override": "get"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/presets/{slug}/chat/completions": {
       "post": {
@@ -20377,18 +19457,7 @@
             "apiKey": []
           }
         ]
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/presets/{slug}/messages": {
       "post": {
@@ -20585,18 +19654,7 @@
             "apiKey": []
           }
         ]
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/presets/{slug}/responses": {
       "post": {
@@ -20786,18 +19844,7 @@
             "apiKey": []
           }
         ]
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/presets/{slug}/restore": {
       "post": {
@@ -20946,18 +19993,7 @@
           }
         ],
         "x-speakeasy-name-override": "restore"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/presets/{slug}/versions": {
       "get": {
@@ -21170,18 +20206,7 @@
           },
           "type": "offsetLimit"
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/presets/{slug}/versions/{version}": {
       "get": {
@@ -21357,18 +20382,7 @@
           }
         ],
         "x-speakeasy-name-override": "getVersion"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/private-endpoints": {
       "get": {
@@ -21625,18 +20639,7 @@
           }
         },
         "x-speakeasy-name-override": "create"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/private-endpoints/{id}": {
       "delete": {
@@ -22129,18 +21132,7 @@
           }
         },
         "x-speakeasy-name-override": "update"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/private-endpoints/{id}/activate": {
       "post": {
@@ -22321,18 +21313,7 @@
           }
         },
         "x-speakeasy-name-override": "activate"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/private-endpoints/{id}/disable": {
       "post": {
@@ -22513,18 +21494,7 @@
           }
         },
         "x-speakeasy-name-override": "disable"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/private-endpoints/{id}/enable": {
       "post": {
@@ -22705,18 +21675,7 @@
           }
         },
         "x-speakeasy-name-override": "enable"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/private-endpoints/{id}/validate": {
       "post": {
@@ -22907,18 +21866,7 @@
           }
         },
         "x-speakeasy-name-override": "validate"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/private-providers": {
       "get": {
@@ -23191,18 +22139,7 @@
           }
         },
         "x-speakeasy-name-override": "create"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/private-providers/{slug}": {
       "delete": {
@@ -23694,18 +22631,7 @@
           }
         },
         "x-speakeasy-name-override": "update"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/providers": {
       "get": {
@@ -23759,18 +22685,7 @@
           }
         },
         "x-speakeasy-name-override": "list"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/rerank": {
       "post": {
@@ -24004,18 +22919,7 @@
           }
         },
         "x-speakeasy-name-override": "rerank"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/responses": {
       "post": {
@@ -24427,18 +23331,7 @@
         },
         "x-speakeasy-name-override": "send",
         "x-speakeasy-stream-request-field": "stream"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/scim/group-mappings": {
       "get": {
@@ -24711,18 +23604,7 @@
           }
         },
         "x-speakeasy-name-override": "create"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/scim/group-mappings/{id}": {
       "delete": {
@@ -24730,7 +23612,7 @@
           "SCIM"
         ],
         "summary": "Delete a SCIM group mapping",
-        "description": "Delete a SCIM group-to-workspace mapping. For an \u0060admin\u0060 mapping, \u0060keep_members=true\u0060 returns \u0060403\u0060 and leaves the mapping in place \u2014 preserving members as workspace admins is dashboard-only. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
+        "description": "Delete a SCIM group-to-workspace mapping. For an \u0060admin\u0060 mapping, \u0060keep_members=true\u0060 returns \u0060403\u0060 and leaves the mapping in place \u2014 preserving members as workspace admins is dashboard-only. Deleting a mapping that has guardrail policies attached returns \u0060403\u0060; remove those policies in the dashboard first. [Management key](/docs/guides/overview/auth/management-api-keys) required.",
         "operationId": "DeleteScimGroupMapping",
         "parameters": [
           {
@@ -25072,18 +23954,7 @@
           }
         },
         "x-speakeasy-name-override": "update"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/scim/groups": {
       "get": {
@@ -25238,18 +24109,7 @@
           },
           "type": "offsetLimit"
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/scim/sync-jobs": {
       "post": {
@@ -25367,18 +24227,7 @@
           }
         },
         "x-speakeasy-name-override": "createSyncJob"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/scim/sync-jobs/{id}": {
       "get": {
@@ -25476,18 +24325,7 @@
           }
         },
         "x-speakeasy-name-override": "getSyncJob"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/systemone": {
       "post": {
@@ -25788,18 +24626,7 @@
           }
         },
         "x-speakeasy-name-override": "create"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/tools": {
       "get": {
@@ -25928,18 +24755,7 @@
             "bearer": []
           }
         ]
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/tools/{name}": {
       "get": {
@@ -26055,18 +24871,7 @@
             "bearer": []
           }
         ]
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/vault/interns/{internId}/connections": {
       "get": {
@@ -26439,18 +25244,7 @@
             "apiKey": []
           }
         ]
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/vault/interns/{internId}/effective-secrets": {
       "get": {
@@ -26793,18 +25587,7 @@
             "apiKey": []
           }
         ]
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/vault/interns/{internId}/secrets": {
       "get": {
@@ -27136,18 +25919,7 @@
             "apiKey": []
           }
         ]
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/vault/interns/{internId}/secrets/{name}": {
       "delete": {
@@ -27828,18 +26600,7 @@
             "apiKey": []
           }
         ]
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/vault/interns/{internId}/secrets/copy": {
       "post": {
@@ -28195,18 +26956,7 @@
             "apiKey": []
           }
         ]
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/vault/secrets": {
       "get": {
@@ -28526,18 +27276,7 @@
             "apiKey": []
           }
         ]
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/vault/secrets/{name}": {
       "delete": {
@@ -29194,18 +27933,7 @@
             "apiKey": []
           }
         ]
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/videos": {
       "post": {
@@ -29428,18 +28156,7 @@
           }
         },
         "x-speakeasy-name-override": "generate"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/videos/{jobId}": {
       "get": {
@@ -29550,18 +28267,7 @@
           }
         },
         "x-speakeasy-name-override": "getGeneration"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/videos/{jobId}/content": {
       "get": {
@@ -29738,18 +28444,7 @@
           }
         },
         "x-speakeasy-name-override": "getVideoContent"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/videos/models": {
       "get": {
@@ -29835,18 +28530,7 @@
             }
           }
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/workspaces": {
       "get": {
@@ -30148,18 +28832,7 @@
           }
         },
         "x-speakeasy-name-override": "create"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/workspaces/{id}": {
       "delete": {
@@ -30559,18 +29232,7 @@
           }
         },
         "x-speakeasy-name-override": "update"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/workspaces/{id}/members": {
       "get": {
@@ -30729,18 +29391,7 @@
           },
           "type": "offsetLimit"
         }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/workspaces/{id}/members/add": {
       "post": {
@@ -30885,18 +29536,7 @@
           }
         },
         "x-speakeasy-name-override": "bulkAddMembers"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/workspaces/{id}/members/remove": {
       "post": {
@@ -31032,18 +29672,7 @@
           }
         },
         "x-speakeasy-name-override": "bulkRemoveMembers"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/workspaces/{id}/budgets": {
       "get": {
@@ -31157,18 +29786,7 @@
           }
         },
         "x-speakeasy-name-override": "listBudgets"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     },
     "/workspaces/{id}/budgets/{interval}": {
       "delete": {
@@ -31584,18 +30202,7 @@
           }
         },
         "x-speakeasy-name-override": "setBudget"
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AppIdentifier"
-        },
-        {
-          "$ref": "#/components/parameters/AppDisplayName"
-        },
-        {
-          "$ref": "#/components/parameters/AppCategories"
-        }
-      ]
+      }
     }
   },
   "components": {
@@ -37406,6 +36013,7 @@
           "is_fallback",
           "is_required",
           "is_byok_only",
+          "is_exclusive",
           "declared_zdr",
           "declared_region",
           "allowed_models",
@@ -37483,6 +36091,11 @@
             "description": "Whether OpenRouter\u0027s shared endpoints on this provider are removed for every model, including models outside \u0060allowed_models\u0060 and after all of your keys for the provider fail. The provider is skipped instead of spending OpenRouter credits. Only valid on non-fallback credentials.",
             "example": false
           },
+          "is_exclusive": {
+            "type": "boolean",
+            "description": "Whether requests for the models this credential covers run only on exclusive credentials covering that model: never on another provider, a non-exclusive key, or OpenRouter\u0027s shared capacity. Every exclusive credential that covers the model and is eligible for the request may serve it, so two exclusive credentials with overlapping models share those models. Only credentials eligible for the request (its API key and member restrictions) count, so a request no exclusive credential is eligible for uses normal routing. A request for a model that an eligible exclusive credential covers returns a 404 when none of those credentials can serve it. The covered models are \u0060allowed_models\u0060 when non-empty; with no or an empty \u0060allowed_models\u0060, an OpenAI, Anthropic, or Google credential covers every closed-weight model by that lab (for example every \u0060openai/*\u0060 model except open-weight models such as \u0060openai/gpt-oss-120b\u0060, which stay on normal routing unless listed), and other providers must set a non-empty \u0060allowed_models\u0060. Only valid on non-fallback credentials.",
+            "example": false
+          },
           "is_fallback": {
             "type": "boolean",
             "description": "Whether this credential is treated as a fallback \u2014 used only after non-fallback keys for the same provider have been tried. Cannot be combined with \u0060is_byok_only\u0060.",
@@ -37534,6 +36147,7 @@
           "disabled": false,
           "id": "11111111-2222-3333-4444-555555555555",
           "is_byok_only": false,
+          "is_exclusive": false,
           "is_fallback": false,
           "is_required": false,
           "label": "sk-...AbCd",
@@ -41029,6 +39643,11 @@
             "description": "Whether OpenRouter\u0027s shared endpoints on this provider are removed for every model, including models outside \u0060allowed_models\u0060 and after all of your keys for the provider fail. The provider is skipped instead of spending OpenRouter credits. Only valid on non-fallback credentials. Defaults to \u0060false\u0060.",
             "example": false
           },
+          "is_exclusive": {
+            "type": "boolean",
+            "description": "Whether requests for the models this credential covers run only on exclusive credentials covering that model: never on another provider, a non-exclusive key, or OpenRouter\u0027s shared capacity. Every exclusive credential that covers the model and is eligible for the request may serve it, so two exclusive credentials with overlapping models share those models. Only credentials eligible for the request (its API key and member restrictions) count, so a request no exclusive credential is eligible for uses normal routing. A request for a model that an eligible exclusive credential covers returns a 404 when none of those credentials can serve it. The covered models are \u0060allowed_models\u0060 when non-empty; with no or an empty \u0060allowed_models\u0060, an OpenAI, Anthropic, or Google credential covers every closed-weight model by that lab (for example every \u0060openai/*\u0060 model except open-weight models such as \u0060openai/gpt-oss-120b\u0060, which stay on normal routing unless listed), and other providers must set a non-empty \u0060allowed_models\u0060. Only valid on non-fallback credentials. Defaults to \u0060false\u0060.",
+            "example": false
+          },
           "is_fallback": {
             "type": "boolean",
             "description": "Whether this credential is treated as a fallback \u2014 used only after non-fallback keys for the same provider have been tried. Cannot be combined with \u0060is_byok_only\u0060.",
@@ -41091,6 +39710,7 @@
             "disabled": false,
             "id": "11111111-2222-3333-4444-555555555555",
             "is_byok_only": false,
+            "is_exclusive": false,
             "is_fallback": false,
             "is_required": false,
             "label": "sk-...AbCd",
@@ -41111,9 +39731,6 @@
             "type": "string",
             "description": "Credits to buy, in USD with at most two decimals. The platform fee is added on top and shown in the challenge and the receipt.",
             "example": "25.00"
-          },
-          "protocol": {
-            "$ref": "#/components/schemas/CreateCreditPurchaseRequestProtocol"
           }
         }
       },
@@ -41143,6 +39760,14 @@
         ],
         "type": "object",
         "properties": {
+          "allow_provisional_providers": {
+            "type": [
+              "null",
+              "boolean"
+            ],
+            "description": "Whether requests may use provisional providers, whose security practices have not been reviewed by OpenRouter. false excludes them. true and null never override an account that excludes them. Inherits the account setting when not provided.",
+            "example": false
+          },
           "allow_safety_retention_google": {
             "type": [
               "null",
@@ -42100,8 +40725,7 @@
             "type": [
               "null",
               "string"
-            ],
-            "description": "Why fulfillment failed. A Tempo payout failure does not reverse the Base payment; contact support with the purchase ID instead of paying again."
+            ]
           },
           "id": {
             "type": "string",
@@ -44622,6 +43246,7 @@
             "disabled": false,
             "id": "11111111-2222-3333-4444-555555555555",
             "is_byok_only": false,
+            "is_exclusive": false,
             "is_fallback": false,
             "is_required": false,
             "label": "sk-...AbCd",
@@ -44942,6 +43567,14 @@
         ],
         "type": "object",
         "properties": {
+          "allow_provisional_providers": {
+            "type": [
+              "null",
+              "boolean"
+            ],
+            "description": "Whether requests may use provisional providers, whose security practices have not been reviewed by OpenRouter. false excludes them. true and null never override an account that excludes them. Inherits the account setting when not provided.",
+            "example": false
+          },
           "allow_safety_retention_google": {
             "type": [
               "null",
@@ -45334,6 +43967,12 @@
       "GuardrailModelAvailabilityPolicyAuthoringConfig": {
         "type": "object",
         "properties": {
+          "allow_provisional_providers": {
+            "type": [
+              "null",
+              "boolean"
+            ]
+          },
           "allow_safety_retention_google": {
             "type": [
               "null",
@@ -45503,6 +44142,12 @@
       "GuardrailModelAvailabilityPolicyConfig": {
         "type": "object",
         "properties": {
+          "allow_provisional_providers": {
+            "type": [
+              "null",
+              "boolean"
+            ]
+          },
           "allow_safety_retention_google": {
             "type": [
               "null",
@@ -47633,6 +46278,7 @@
               "disabled": false,
               "id": "11111111-2222-3333-4444-555555555555",
               "is_byok_only": false,
+              "is_exclusive": false,
               "is_fallback": false,
               "is_required": false,
               "label": "sk-...AbCd",
@@ -54069,7 +52715,7 @@
             "type": "string"
           },
           "incomplete_details": {
-            "$ref": "#/components/schemas/BaseResponsesResultIncompleteDetails"
+            "$ref": "#/components/schemas/IncompleteDetails"
           },
           "instructions": {
             "$ref": "#/components/schemas/BaseInputs"
@@ -54131,7 +52777,7 @@
             "$ref": "#/components/schemas/PromptCacheOptions"
           },
           "reasoning": {
-            "$ref": "#/components/schemas/BaseResponsesResultReasoning"
+            "$ref": "#/components/schemas/BaseReasoningConfig"
           },
           "safety_identifier": {
             "type": [
@@ -54168,10 +52814,7 @@
             }
           },
           "top_logprobs": {
-            "type": [
-              "null",
-              "integer"
-            ]
+            "type": "integer"
           },
           "top_p": {
             "type": [
@@ -54181,7 +52824,7 @@
             "format": "double"
           },
           "truncation": {
-            "$ref": "#/components/schemas/BaseResponsesResultTruncation"
+            "$ref": "#/components/schemas/Truncation"
           },
           "usage": {
             "$ref": "#/components/schemas/OpenResponsesResultUsage"
@@ -63926,6 +62569,9 @@
             "description": "TTS model identifier",
             "example": "mistralai/voxtral-mini-tts-2603"
           },
+          "output_delivery": {
+            "$ref": "#/components/schemas/SpeechRequestOutputDelivery"
+          },
           "provider": {
             "$ref": "#/components/schemas/SpeechRequestProvider"
           },
@@ -65130,6 +63776,25 @@
             ],
             "window_days": 7
           }
+        }
+      },
+      "TextConfig": {
+        "type": "object",
+        "properties": {
+          "format": {
+            "description": "Text response format configuration",
+            "$ref": "#/components/schemas/Formats"
+          },
+          "verbosity": {
+            "$ref": "#/components/schemas/TextConfigVerbosity"
+          }
+        },
+        "description": "Text output configuration including format and verbosity",
+        "example": {
+          "format": {
+            "type": "text"
+          },
+          "verbosity": "medium"
         }
       },
       "TextExtendedConfig": {
@@ -66561,6 +65226,11 @@
             "description": "Whether OpenRouter\u0027s shared endpoints on this provider are removed for every model, including models outside \u0060allowed_models\u0060 and after all of your keys for the provider fail. The provider is skipped instead of spending OpenRouter credits. Only valid on non-fallback credentials. Omit to leave the stored value unchanged.",
             "example": false
           },
+          "is_exclusive": {
+            "type": "boolean",
+            "description": "Whether requests for the models this credential covers run only on exclusive credentials covering that model: never on another provider, a non-exclusive key, or OpenRouter\u0027s shared capacity. Every exclusive credential that covers the model and is eligible for the request may serve it, so two exclusive credentials with overlapping models share those models. Only credentials eligible for the request (its API key and member restrictions) count, so a request no exclusive credential is eligible for uses normal routing. A request for a model that an eligible exclusive credential covers returns a 404 when none of those credentials can serve it. The covered models are \u0060allowed_models\u0060 when non-empty; with no or an empty \u0060allowed_models\u0060, an OpenAI, Anthropic, or Google credential covers every closed-weight model by that lab (for example every \u0060openai/*\u0060 model except open-weight models such as \u0060openai/gpt-oss-120b\u0060, which stay on normal routing unless listed), and other providers must set a non-empty \u0060allowed_models\u0060. Only valid on non-fallback credentials. Omit to leave the stored value unchanged.",
+            "example": false
+          },
           "is_fallback": {
             "type": "boolean",
             "description": "Whether this credential is treated as a fallback \u2014 used only after non-fallback keys for the same provider have been tried. Cannot be combined with \u0060is_byok_only\u0060. Omit to leave the stored value unchanged.",
@@ -66613,6 +65283,7 @@
             "disabled": false,
             "id": "11111111-2222-3333-4444-555555555555",
             "is_byok_only": false,
+            "is_exclusive": false,
             "is_fallback": false,
             "is_required": false,
             "label": "sk-...AbCd",
@@ -66643,6 +65314,14 @@
       "UpdateGuardrailRequest": {
         "type": "object",
         "properties": {
+          "allow_provisional_providers": {
+            "type": [
+              "null",
+              "boolean"
+            ],
+            "description": "Whether requests may use provisional providers, whose security practices have not been reviewed by OpenRouter. false excludes them. true and null never override an account that excludes them. Inherits the account setting when not provided.",
+            "example": false
+          },
           "allow_safety_retention_google": {
             "type": [
               "null",
@@ -70319,36 +68998,6 @@
           }
         ]
       },
-      "BaseResponsesResultError": {
-        "anyOf": [
-          {
-            "$ref": "#/components/schemas/ResponsesErrorField"
-          },
-          {
-            "type": "null"
-          }
-        ]
-      },
-      "BaseResponsesResultIncompleteDetails": {
-        "anyOf": [
-          {
-            "$ref": "#/components/schemas/IncompleteDetails"
-          },
-          {
-            "type": "null"
-          }
-        ]
-      },
-      "BaseResponsesResultReasoning": {
-        "anyOf": [
-          {
-            "$ref": "#/components/schemas/BaseReasoningConfig"
-          },
-          {
-            "type": "null"
-          }
-        ]
-      },
       "BaseResponsesResultToolsItem": {
         "discriminator": {
           "propertyName": "type",
@@ -70447,16 +69096,6 @@
         },
         "required": [
           "type"
-        ]
-      },
-      "BaseResponsesResultTruncation": {
-        "anyOf": [
-          {
-            "$ref": "#/components/schemas/Truncation"
-          },
-          {
-            "type": "null"
-          }
         ]
       },
       "BatchObjectResultsItemResponseBody": {
@@ -70966,6 +69605,7 @@
           "is_fallback",
           "is_required",
           "is_byok_only",
+          "is_exclusive",
           "declared_zdr",
           "declared_region",
           "allowed_models",
@@ -71043,6 +69683,11 @@
             "description": "Whether OpenRouter\u0027s shared endpoints on this provider are removed for every model, including models outside \u0060allowed_models\u0060 and after all of your keys for the provider fail. The provider is skipped instead of spending OpenRouter credits. Only valid on non-fallback credentials.",
             "example": false
           },
+          "is_exclusive": {
+            "type": "boolean",
+            "description": "Whether requests for the models this credential covers run only on exclusive credentials covering that model: never on another provider, a non-exclusive key, or OpenRouter\u0027s shared capacity. Every exclusive credential that covers the model and is eligible for the request may serve it, so two exclusive credentials with overlapping models share those models. Only credentials eligible for the request (its API key and member restrictions) count, so a request no exclusive credential is eligible for uses normal routing. A request for a model that an eligible exclusive credential covers returns a 404 when none of those credentials can serve it. The covered models are \u0060allowed_models\u0060 when non-empty; with no or an empty \u0060allowed_models\u0060, an OpenAI, Anthropic, or Google credential covers every closed-weight model by that lab (for example every \u0060openai/*\u0060 model except open-weight models such as \u0060openai/gpt-oss-120b\u0060, which stay on normal routing unless listed), and other providers must set a non-empty \u0060allowed_models\u0060. Only valid on non-fallback credentials.",
+            "example": false
+          },
           "is_fallback": {
             "type": "boolean",
             "description": "Whether this credential is treated as a fallback \u2014 used only after non-fallback keys for the same provider have been tried. Cannot be combined with \u0060is_byok_only\u0060.",
@@ -71096,6 +69741,14 @@
         ],
         "type": "object",
         "properties": {
+          "allow_provisional_providers": {
+            "type": [
+              "null",
+              "boolean"
+            ],
+            "description": "Whether requests may use provisional providers, whose security practices have not been reviewed by OpenRouter. false excludes them. true and null never override an account that excludes them. Inherits the account setting when not provided.",
+            "example": false
+          },
           "allow_safety_retention_google": {
             "type": [
               "null",
@@ -72774,6 +71427,7 @@
           "is_fallback",
           "is_required",
           "is_byok_only",
+          "is_exclusive",
           "declared_zdr",
           "declared_region",
           "allowed_models",
@@ -72851,6 +71505,11 @@
             "description": "Whether OpenRouter\u0027s shared endpoints on this provider are removed for every model, including models outside \u0060allowed_models\u0060 and after all of your keys for the provider fail. The provider is skipped instead of spending OpenRouter credits. Only valid on non-fallback credentials.",
             "example": false
           },
+          "is_exclusive": {
+            "type": "boolean",
+            "description": "Whether requests for the models this credential covers run only on exclusive credentials covering that model: never on another provider, a non-exclusive key, or OpenRouter\u0027s shared capacity. Every exclusive credential that covers the model and is eligible for the request may serve it, so two exclusive credentials with overlapping models share those models. Only credentials eligible for the request (its API key and member restrictions) count, so a request no exclusive credential is eligible for uses normal routing. A request for a model that an eligible exclusive credential covers returns a 404 when none of those credentials can serve it. The covered models are \u0060allowed_models\u0060 when non-empty; with no or an empty \u0060allowed_models\u0060, an OpenAI, Anthropic, or Google credential covers every closed-weight model by that lab (for example every \u0060openai/*\u0060 model except open-weight models such as \u0060openai/gpt-oss-120b\u0060, which stay on normal routing unless listed), and other providers must set a non-empty \u0060allowed_models\u0060. Only valid on non-fallback credentials.",
+            "example": false
+          },
           "is_fallback": {
             "type": "boolean",
             "description": "Whether this credential is treated as a fallback \u2014 used only after non-fallback keys for the same provider have been tried. Cannot be combined with \u0060is_byok_only\u0060.",
@@ -72904,6 +71563,14 @@
         ],
         "type": "object",
         "properties": {
+          "allow_provisional_providers": {
+            "type": [
+              "null",
+              "boolean"
+            ],
+            "description": "Whether requests may use provisional providers, whose security practices have not been reviewed by OpenRouter. false excludes them. true and null never override an account that excludes them. Inherits the account setting when not provided.",
+            "example": false
+          },
           "allow_safety_retention_google": {
             "type": [
               "null",
@@ -76111,6 +74778,7 @@
           "is_fallback",
           "is_required",
           "is_byok_only",
+          "is_exclusive",
           "declared_zdr",
           "declared_region",
           "allowed_models",
@@ -76188,6 +74856,11 @@
             "description": "Whether OpenRouter\u0027s shared endpoints on this provider are removed for every model, including models outside \u0060allowed_models\u0060 and after all of your keys for the provider fail. The provider is skipped instead of spending OpenRouter credits. Only valid on non-fallback credentials.",
             "example": false
           },
+          "is_exclusive": {
+            "type": "boolean",
+            "description": "Whether requests for the models this credential covers run only on exclusive credentials covering that model: never on another provider, a non-exclusive key, or OpenRouter\u0027s shared capacity. Every exclusive credential that covers the model and is eligible for the request may serve it, so two exclusive credentials with overlapping models share those models. Only credentials eligible for the request (its API key and member restrictions) count, so a request no exclusive credential is eligible for uses normal routing. A request for a model that an eligible exclusive credential covers returns a 404 when none of those credentials can serve it. The covered models are \u0060allowed_models\u0060 when non-empty; with no or an empty \u0060allowed_models\u0060, an OpenAI, Anthropic, or Google credential covers every closed-weight model by that lab (for example every \u0060openai/*\u0060 model except open-weight models such as \u0060openai/gpt-oss-120b\u0060, which stay on normal routing unless listed), and other providers must set a non-empty \u0060allowed_models\u0060. Only valid on non-fallback credentials.",
+            "example": false
+          },
           "is_fallback": {
             "type": "boolean",
             "description": "Whether this credential is treated as a fallback \u2014 used only after non-fallback keys for the same provider have been tried. Cannot be combined with \u0060is_byok_only\u0060.",
@@ -76241,6 +74914,14 @@
         ],
         "type": "object",
         "properties": {
+          "allow_provisional_providers": {
+            "type": [
+              "null",
+              "boolean"
+            ],
+            "description": "Whether requests may use provisional providers, whose security practices have not been reviewed by OpenRouter. false excludes them. true and null never override an account that excludes them. Inherits the account setting when not provided.",
+            "example": false
+          },
           "allow_safety_retention_google": {
             "type": [
               "null",
@@ -85913,7 +84594,8 @@
       "OpenResponsesResultError": {
         "allOf": [
           {
-            "$ref": "#/components/schemas/BaseResponsesResultError"
+            "description": "Error information returned from the API",
+            "$ref": "#/components/schemas/ResponsesErrorField"
           },
           {
             "description": "Error of a failed response; \u0060metadata\u0060 carries OpenRouter-specific details.",
@@ -85941,19 +84623,13 @@
         "allOf": [
           {
             "description": "Text output configuration including format and verbosity",
+            "$ref": "#/components/schemas/TextConfig"
+          },
+          {
+            "description": "Text output configuration including format and verbosity",
             "$ref": "#/components/schemas/TextExtendedConfig"
           }
-        ],
-        "type": "object",
-        "properties": {
-          "format": {
-            "description": "Text response format configuration",
-            "$ref": "#/components/schemas/Formats"
-          },
-          "verbosity": {
-            "$ref": "#/components/schemas/TextConfigVerbosity"
-          }
-        }
+        ]
       },
       "OpenResponsesResultUsage": {
         "allOf": [
@@ -95135,29 +93811,6 @@
           }
         ]
       },
-      "CreateCreditPurchaseRequestProtocol": {
-        "enum": [
-          "mpp",
-          "x402"
-        ],
-        "type": "string",
-        "description": "Payment protocol. Defaults to MPP on Tempo; x402 pays USDC on Base when enabled. Keep the protocol and Idempotency-Key unchanged on retries.",
-        "x-speakeasy-unknown-values": "allow",
-        "x-ms-enum": {
-          "name": "CreateCreditPurchaseRequestProtocol",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "mpp",
-              "name": "Mpp"
-            },
-            {
-              "value": "x402",
-              "name": "X402"
-            }
-          ]
-        }
-      },
       "ModelAvailabilityPolicyType": {
         "enum": [
           "model_availability"
@@ -97458,6 +96111,7 @@
           "jev-router"
         ],
         "type": "string",
+        "description": "The decisions router plugin. A request may also send \u0060decisions-router\u0060, an alias that configures the same plugin; responses and pipeline stages report it as \u0060jev-router\u0060.",
         "x-ms-enum": {
           "name": "JevRouterId",
           "modelAsString": false,
@@ -100907,6 +99561,30 @@
             {
               "value": "integer",
               "name": "Integer"
+            }
+          ]
+        }
+      },
+      "SpeechRequestOutputDelivery": {
+        "enum": [
+          "stream",
+          "url"
+        ],
+        "type": "string",
+        "description": "\u0060stream\u0060 (default) streams the audio bytes directly in the response body. \u0060url\u0060 stores the generated audio in OpenRouter storage and returns a JSON response with a signed download \u0060url\u0060, \u0060expires_at\u0060, and \u0060media_type\u0060. The URL is a bearer link: anyone holding it can download the audio until it expires, up to 24 hours after the audio was stored (use \u0060expires_at\u0060); the stored copy is deleted by the storage lifecycle within the following day. Falls back to streaming raw audio bytes when a URL cannot be issued because zero-data-retention applies (account settings, guardrails, \u0060provider.zdr\u0060, or a ZDR endpoint) or the request has no workspace.",
+        "example": "stream",
+        "x-speakeasy-unknown-values": "allow",
+        "x-ms-enum": {
+          "name": "SpeechRequestOutputDelivery",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "stream",
+              "name": "Stream"
+            },
+            {
+              "value": "url",
+              "name": "Url"
             }
           ]
         }
@@ -123646,22 +122324,12 @@
         }
       },
       "AppDisplayName": {
-        "name": "X-OpenRouter-Title",
+        "name": "X-Title",
         "in": "header",
         "description": "The app display name allows you to customize how your app appears in OpenRouter\u0027s dashboard.\n",
         "schema": {
           "type": "string"
-        },
-        "x-speakeasy-name-override": "appTitle"
-      },
-      "AppCategories": {
-        "name": "X-OpenRouter-Categories",
-        "in": "header",
-        "description": "Comma-separated list of app categories (e.g. \u0022cli-agent,cloud-agent\u0022). Used for marketplace rankings.\n",
-        "schema": {
-          "type": "string"
-        },
-        "x-speakeasy-name-override": "appCategories"
+        }
       }
     },
     "securitySchemes": {
@@ -123845,10 +122513,6 @@
     {
       "name": "beta.responses",
       "description": "Deprecated alias of responses. Use responses instead; scheduled for removal (sunset date TBD)."
-    },
-    {
-      "name": "End Users",
-      "description": "Deprecated alias of externalUsers. Use externalUsers instead; scheduled for removal (sunset date TBD)."
     }
   ],
   "externalDocs": {
@@ -123881,9 +122545,6 @@
       },
       {
         "$ref": "#/components/parameters/AppDisplayName"
-      },
-      {
-        "$ref": "#/components/parameters/AppCategories"
       }
     ]
   },
@@ -125535,7 +124196,8 @@
           "type": "integer"
         },
         "error": {
-          "$ref": "#/components/schemas/BaseResponsesResultError"
+          "description": "Error information returned from the API",
+          "$ref": "#/components/schemas/ResponsesErrorField"
         },
         "frequency_penalty": {
           "type": [
@@ -125548,7 +124210,7 @@
           "type": "string"
         },
         "incomplete_details": {
-          "$ref": "#/components/schemas/BaseResponsesResultIncompleteDetails"
+          "$ref": "#/components/schemas/IncompleteDetails"
         },
         "instructions": {
           "$ref": "#/components/schemas/BaseInputs"
@@ -125613,7 +124275,7 @@
           "$ref": "#/components/schemas/PromptCacheOptions"
         },
         "reasoning": {
-          "$ref": "#/components/schemas/BaseResponsesResultReasoning"
+          "$ref": "#/components/schemas/BaseReasoningConfig"
         },
         "safety_identifier": {
           "type": [
@@ -125638,7 +124300,8 @@
           "format": "double"
         },
         "text": {
-          "$ref": "#/components/schemas/BaseResponsesResultText"
+          "description": "Text output configuration including format and verbosity",
+          "$ref": "#/components/schemas/TextConfig"
         },
         "tool_choice": {
           "$ref": "#/components/schemas/OpenAiResponsesToolChoice"
@@ -125650,10 +124313,7 @@
           }
         },
         "top_logprobs": {
-          "type": [
-            "null",
-            "integer"
-          ]
+          "type": "integer"
         },
         "top_p": {
           "type": [
@@ -125663,7 +124323,7 @@
           "format": "double"
         },
         "truncation": {
-          "$ref": "#/components/schemas/BaseResponsesResultTruncation"
+          "$ref": "#/components/schemas/Truncation"
         },
         "usage": {
           "$ref": "#/components/schemas/OpenAiResponsesUsage"
@@ -132512,25 +131172,6 @@
         "id": "switchyard-router"
       }
     },
-    "TextConfig": {
-      "type": "object",
-      "properties": {
-        "format": {
-          "description": "Text response format configuration",
-          "$ref": "#/components/schemas/Formats"
-        },
-        "verbosity": {
-          "$ref": "#/components/schemas/TextConfigVerbosity"
-        }
-      },
-      "description": "Text output configuration including format and verbosity",
-      "example": {
-        "format": {
-          "type": "text"
-        },
-        "verbosity": "medium"
-      }
-    },
     "TextDeltaEvent": {
       "required": [
         "type",
@@ -132981,22 +131622,6 @@
         "service_tier": "standard"
       }
     },
-    "BaseResponsesResultInstructions": {
-      "anyOf": [
-        {
-          "type": "string"
-        },
-        {
-          "type": "array",
-          "items": {
-            "$ref": "#/components/schemas/BaseInputsAnyOf2Item"
-          }
-        },
-        {
-          "type": "null"
-        }
-      ]
-    },
     "BaseResponsesResultOutputItem": {
       "oneOf": [
         {
@@ -133074,38 +131699,6 @@
           "mcp_call": "#/components/schemas/OutputItemMcpCall",
           "mcp_approval_request": "#/components/schemas/OutputItemMcpApprovalRequest"
         }
-      }
-    },
-    "BaseResponsesResultText": {
-      "type": [
-        "object",
-        "null"
-      ],
-      "properties": {
-        "format": {
-          "description": "Text response format configuration",
-          "$ref": "#/components/schemas/Formats"
-        },
-        "verbosity": {
-          "$ref": "#/components/schemas/TextConfigVerbosity"
-        }
-      },
-      "description": "Text output configuration including format and verbosity",
-      "example": {
-        "format": {
-          "type": "text"
-        },
-        "verbosity": "medium"
-      },
-      "x-client-original-nullable-union": {
-        "anyOf": [
-          {
-            "$ref": "#/components/schemas/TextConfig"
-          },
-          {
-            "type": "null"
-          }
-        ]
       }
     },
     "BatchProviderPreferencesOnlyItem": {
@@ -137932,7 +136525,8 @@
           "type": "integer"
         },
         "error": {
-          "$ref": "#/components/schemas/BaseResponsesResultError"
+          "description": "Error information returned from the API",
+          "$ref": "#/components/schemas/ResponsesErrorField"
         },
         "frequency_penalty": {
           "type": [
@@ -137945,7 +136539,7 @@
           "type": "string"
         },
         "incomplete_details": {
-          "$ref": "#/components/schemas/BaseResponsesResultIncompleteDetails"
+          "$ref": "#/components/schemas/IncompleteDetails"
         },
         "instructions": {
           "$ref": "#/components/schemas/BaseInputs"
@@ -138010,7 +136604,7 @@
           "$ref": "#/components/schemas/PromptCacheOptions"
         },
         "reasoning": {
-          "$ref": "#/components/schemas/BaseResponsesResultReasoning"
+          "$ref": "#/components/schemas/BaseReasoningConfig"
         },
         "safety_identifier": {
           "type": [
@@ -138035,7 +136629,8 @@
           "format": "double"
         },
         "text": {
-          "$ref": "#/components/schemas/BaseResponsesResultText"
+          "description": "Text output configuration including format and verbosity",
+          "$ref": "#/components/schemas/TextConfig"
         },
         "tool_choice": {
           "$ref": "#/components/schemas/OpenAiResponsesToolChoice"
@@ -138047,10 +136642,7 @@
           }
         },
         "top_logprobs": {
-          "type": [
-            "null",
-            "integer"
-          ]
+          "type": "integer"
         },
         "top_p": {
           "type": [
@@ -138060,7 +136652,7 @@
           "format": "double"
         },
         "truncation": {
-          "$ref": "#/components/schemas/BaseResponsesResultTruncation"
+          "$ref": "#/components/schemas/Truncation"
         },
         "usage": {
           "$ref": "#/components/schemas/OpenAiResponsesUsage"
@@ -138118,7 +136710,8 @@
           "type": "integer"
         },
         "error": {
-          "$ref": "#/components/schemas/BaseResponsesResultError"
+          "description": "Error information returned from the API",
+          "$ref": "#/components/schemas/ResponsesErrorField"
         },
         "frequency_penalty": {
           "type": [
@@ -138131,7 +136724,7 @@
           "type": "string"
         },
         "incomplete_details": {
-          "$ref": "#/components/schemas/BaseResponsesResultIncompleteDetails"
+          "$ref": "#/components/schemas/IncompleteDetails"
         },
         "instructions": {
           "$ref": "#/components/schemas/BaseInputs"
@@ -138196,7 +136789,7 @@
           "$ref": "#/components/schemas/PromptCacheOptions"
         },
         "reasoning": {
-          "$ref": "#/components/schemas/BaseResponsesResultReasoning"
+          "$ref": "#/components/schemas/BaseReasoningConfig"
         },
         "safety_identifier": {
           "type": [
@@ -138221,7 +136814,8 @@
           "format": "double"
         },
         "text": {
-          "$ref": "#/components/schemas/BaseResponsesResultText"
+          "description": "Text output configuration including format and verbosity",
+          "$ref": "#/components/schemas/TextConfig"
         },
         "tool_choice": {
           "$ref": "#/components/schemas/OpenAiResponsesToolChoice"
@@ -138233,10 +136827,7 @@
           }
         },
         "top_logprobs": {
-          "type": [
-            "null",
-            "integer"
-          ]
+          "type": "integer"
         },
         "top_p": {
           "type": [
@@ -138246,7 +136837,7 @@
           "format": "double"
         },
         "truncation": {
-          "$ref": "#/components/schemas/BaseResponsesResultTruncation"
+          "$ref": "#/components/schemas/Truncation"
         },
         "usage": {
           "$ref": "#/components/schemas/OpenAiResponsesUsage"
@@ -138304,7 +136895,8 @@
           "type": "integer"
         },
         "error": {
-          "$ref": "#/components/schemas/BaseResponsesResultError"
+          "description": "Error information returned from the API",
+          "$ref": "#/components/schemas/ResponsesErrorField"
         },
         "frequency_penalty": {
           "type": [
@@ -138317,7 +136909,7 @@
           "type": "string"
         },
         "incomplete_details": {
-          "$ref": "#/components/schemas/BaseResponsesResultIncompleteDetails"
+          "$ref": "#/components/schemas/IncompleteDetails"
         },
         "instructions": {
           "$ref": "#/components/schemas/BaseInputs"
@@ -138382,7 +136974,7 @@
           "$ref": "#/components/schemas/PromptCacheOptions"
         },
         "reasoning": {
-          "$ref": "#/components/schemas/BaseResponsesResultReasoning"
+          "$ref": "#/components/schemas/BaseReasoningConfig"
         },
         "safety_identifier": {
           "type": [
@@ -138407,7 +136999,8 @@
           "format": "double"
         },
         "text": {
-          "$ref": "#/components/schemas/BaseResponsesResultText"
+          "description": "Text output configuration including format and verbosity",
+          "$ref": "#/components/schemas/TextConfig"
         },
         "tool_choice": {
           "$ref": "#/components/schemas/OpenAiResponsesToolChoice"
@@ -138419,10 +137012,7 @@
           }
         },
         "top_logprobs": {
-          "type": [
-            "null",
-            "integer"
-          ]
+          "type": "integer"
         },
         "top_p": {
           "type": [
@@ -138432,7 +137022,7 @@
           "format": "double"
         },
         "truncation": {
-          "$ref": "#/components/schemas/BaseResponsesResultTruncation"
+          "$ref": "#/components/schemas/Truncation"
         },
         "usage": {
           "$ref": "#/components/schemas/OpenAiResponsesUsage"
@@ -138490,7 +137080,8 @@
           "type": "integer"
         },
         "error": {
-          "$ref": "#/components/schemas/BaseResponsesResultError"
+          "description": "Error information returned from the API",
+          "$ref": "#/components/schemas/ResponsesErrorField"
         },
         "frequency_penalty": {
           "type": [
@@ -138503,7 +137094,7 @@
           "type": "string"
         },
         "incomplete_details": {
-          "$ref": "#/components/schemas/BaseResponsesResultIncompleteDetails"
+          "$ref": "#/components/schemas/IncompleteDetails"
         },
         "instructions": {
           "$ref": "#/components/schemas/BaseInputs"
@@ -138568,7 +137159,7 @@
           "$ref": "#/components/schemas/PromptCacheOptions"
         },
         "reasoning": {
-          "$ref": "#/components/schemas/BaseResponsesResultReasoning"
+          "$ref": "#/components/schemas/BaseReasoningConfig"
         },
         "safety_identifier": {
           "type": [
@@ -138593,7 +137184,8 @@
           "format": "double"
         },
         "text": {
-          "$ref": "#/components/schemas/BaseResponsesResultText"
+          "description": "Text output configuration including format and verbosity",
+          "$ref": "#/components/schemas/TextConfig"
         },
         "tool_choice": {
           "$ref": "#/components/schemas/OpenAiResponsesToolChoice"
@@ -138605,10 +137197,7 @@
           }
         },
         "top_logprobs": {
-          "type": [
-            "null",
-            "integer"
-          ]
+          "type": "integer"
         },
         "top_p": {
           "type": [
@@ -138618,7 +137207,7 @@
           "format": "double"
         },
         "truncation": {
-          "$ref": "#/components/schemas/BaseResponsesResultTruncation"
+          "$ref": "#/components/schemas/Truncation"
         },
         "usage": {
           "$ref": "#/components/schemas/OpenAiResponsesUsage"
@@ -138676,7 +137265,8 @@
           "type": "integer"
         },
         "error": {
-          "$ref": "#/components/schemas/BaseResponsesResultError"
+          "description": "Error information returned from the API",
+          "$ref": "#/components/schemas/ResponsesErrorField"
         },
         "frequency_penalty": {
           "type": [
@@ -138689,7 +137279,7 @@
           "type": "string"
         },
         "incomplete_details": {
-          "$ref": "#/components/schemas/BaseResponsesResultIncompleteDetails"
+          "$ref": "#/components/schemas/IncompleteDetails"
         },
         "instructions": {
           "$ref": "#/components/schemas/BaseInputs"
@@ -138754,7 +137344,7 @@
           "$ref": "#/components/schemas/PromptCacheOptions"
         },
         "reasoning": {
-          "$ref": "#/components/schemas/BaseResponsesResultReasoning"
+          "$ref": "#/components/schemas/BaseReasoningConfig"
         },
         "safety_identifier": {
           "type": [
@@ -138779,7 +137369,8 @@
           "format": "double"
         },
         "text": {
-          "$ref": "#/components/schemas/BaseResponsesResultText"
+          "description": "Text output configuration including format and verbosity",
+          "$ref": "#/components/schemas/TextConfig"
         },
         "tool_choice": {
           "$ref": "#/components/schemas/OpenAiResponsesToolChoice"
@@ -138791,10 +137382,7 @@
           }
         },
         "top_logprobs": {
-          "type": [
-            "null",
-            "integer"
-          ]
+          "type": "integer"
         },
         "top_p": {
           "type": [
@@ -138804,7 +137392,7 @@
           "format": "double"
         },
         "truncation": {
-          "$ref": "#/components/schemas/BaseResponsesResultTruncation"
+          "$ref": "#/components/schemas/Truncation"
         },
         "usage": {
           "$ref": "#/components/schemas/OpenAiResponsesUsage"

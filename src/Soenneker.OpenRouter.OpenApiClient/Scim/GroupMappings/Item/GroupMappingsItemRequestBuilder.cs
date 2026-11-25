@@ -34,7 +34,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Scim.GroupMappings.Item
         {
         }
         /// <summary>
-        /// Delete a SCIM group-to-workspace mapping. For an `admin` mapping, `keep_members=true` returns `403` and leaves the mapping in place — preserving members as workspace admins is dashboard-only. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+        /// Delete a SCIM group-to-workspace mapping. For an `admin` mapping, `keep_members=true` returns `403` and leaves the mapping in place — preserving members as workspace admins is dashboard-only. Deleting a mapping that has guardrail policies attached returns `403`; remove those policies in the dashboard first. [Management key](/docs/guides/overview/auth/management-api-keys) required.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.DeleteScimGroupMappingResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -133,7 +133,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Scim.GroupMappings.Item
             return await RequestAdapter.SendAsync<global::Soenneker.OpenRouter.OpenApiClient.Models.UpdateScimGroupMappingResponse>(requestInfo, global::Soenneker.OpenRouter.OpenApiClient.Models.UpdateScimGroupMappingResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Delete a SCIM group-to-workspace mapping. For an `admin` mapping, `keep_members=true` returns `403` and leaves the mapping in place — preserving members as workspace admins is dashboard-only. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+        /// Delete a SCIM group-to-workspace mapping. For an `admin` mapping, `keep_members=true` returns `403` and leaves the mapping in place — preserving members as workspace admins is dashboard-only. Deleting a mapping that has guardrail policies attached returns `403`; remove those policies in the dashboard first. [Management key](/docs/guides/overview/auth/management-api-keys) required.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -202,7 +202,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Scim.GroupMappings.Item
             return new global::Soenneker.OpenRouter.OpenApiClient.Scim.GroupMappings.Item.GroupMappingsItemRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Delete a SCIM group-to-workspace mapping. For an `admin` mapping, `keep_members=true` returns `403` and leaves the mapping in place — preserving members as workspace admins is dashboard-only. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+        /// Delete a SCIM group-to-workspace mapping. For an `admin` mapping, `keep_members=true` returns `403` and leaves the mapping in place — preserving members as workspace admins is dashboard-only. Deleting a mapping that has guardrail policies attached returns `403`; remove those policies in the dashboard first. [Management key](/docs/guides/overview/auth/management-api-keys) required.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class GroupMappingsItemRequestBuilderDeleteQueryParameters 

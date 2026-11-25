@@ -19,8 +19,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if (parseNode.GetChildNode("credit_amount_usd") is null) { _explicitNullValueCreditAmountUsd = default!; _explicitNullProperties?.Remove("credit_amount_usd"); }
             else if (parseNode.GetChildNode("credit_amount_usd") is { } nullNodeCreditAmountUsd && nullNodeCreditAmountUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CreditAmountUsd = null;
-            if (parseNode.GetChildNode("protocol") is null) { _explicitNullValueProtocol = default!; _explicitNullProperties?.Remove("protocol"); }
-            else if (parseNode.GetChildNode("protocol") is { } nullNodeProtocol && nullNodeProtocol.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Protocol = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -35,9 +33,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public string CreditAmountUsd { get => _explicitNullValueCreditAmountUsd; set { _explicitNullValueCreditAmountUsd = value; AdditionalData?.Remove("credit_amount_usd"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("credit_amount_usd"); else _explicitNullProperties?.Remove("credit_amount_usd"); } }
         private string _explicitNullValueCreditAmountUsd = default!;
 #endif
-        /// <summary>Payment protocol. Defaults to MPP on Tempo; x402 pays USDC on Base when enabled. Keep the protocol and Idempotency-Key unchanged on retries.</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.CreateCreditPurchaseRequestProtocol? Protocol { get => _explicitNullValueProtocol; set { _explicitNullValueProtocol = value; AdditionalData?.Remove("protocol"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("protocol"); else _explicitNullProperties?.Remove("protocol"); } }
-        private global::Soenneker.OpenRouter.OpenApiClient.Models.CreateCreditPurchaseRequestProtocol? _explicitNullValueProtocol = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Models.CreateCreditPurchaseRequest"/> and sets the default values.
         /// </summary>
@@ -64,7 +59,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "credit_amount_usd", n => { CreditAmountUsd = n.GetStringValue(); } },
-                { "protocol", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.CreateCreditPurchaseRequestProtocol>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueProtocol = default; _explicitNullProperties?.Remove("protocol"); AdditionalData["protocol"] = unknown; } else { Protocol = parsed; AdditionalData.Remove("protocol"); } } },
             };
         }
         /// <summary>
@@ -75,7 +69,6 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("credit_amount_usd", CreditAmountUsd);
-            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.CreateCreditPurchaseRequestProtocol>("protocol", Protocol);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }

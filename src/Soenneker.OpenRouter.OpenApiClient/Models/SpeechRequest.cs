@@ -26,6 +26,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             else if (parseNode.GetChildNode("instructions") is { } nullNodeInstructions && nullNodeInstructions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Instructions = null;
             if (parseNode.GetChildNode("model") is null) { _explicitNullValueModel = default!; _explicitNullProperties?.Remove("model"); }
             else if (parseNode.GetChildNode("model") is { } nullNodeModel && nullNodeModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Model = null;
+            if (parseNode.GetChildNode("output_delivery") is null) { _explicitNullValueOutputDelivery = default!; _explicitNullProperties?.Remove("output_delivery"); }
+            else if (parseNode.GetChildNode("output_delivery") is { } nullNodeOutputDelivery && nullNodeOutputDelivery.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OutputDelivery = null;
             if (parseNode.GetChildNode("provider") is null) { _explicitNullValueProvider = default!; _explicitNullProperties?.Remove("provider"); }
             else if (parseNode.GetChildNode("provider") is { } nullNodeProvider && nullNodeProvider.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Provider = null;
             if (parseNode.GetChildNode("response_format") is null) { _explicitNullValueResponseFormat = default!; _explicitNullProperties?.Remove("response_format"); }
@@ -84,6 +86,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public string Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; AdditionalData?.Remove("model"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
         private string _explicitNullValueModel = default!;
 #endif
+        /// <summary>`stream` (default) streams the audio bytes directly in the response body. `url` stores the generated audio in OpenRouter storage and returns a JSON response with a signed download `url`, `expires_at`, and `media_type`. The URL is a bearer link: anyone holding it can download the audio until it expires, up to 24 hours after the audio was stored (use `expires_at`); the stored copy is deleted by the storage lifecycle within the following day. Falls back to streaming raw audio bytes when a URL cannot be issued because zero-data-retention applies (account settings, guardrails, `provider.zdr`, or a ZDR endpoint) or the request has no workspace.</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequestOutputDelivery? OutputDelivery { get => _explicitNullValueOutputDelivery; set { _explicitNullValueOutputDelivery = value; AdditionalData?.Remove("output_delivery"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("output_delivery"); else _explicitNullProperties?.Remove("output_delivery"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequestOutputDelivery? _explicitNullValueOutputDelivery = default!;
         /// <summary>Provider configuration: provider routing preferences (`order`, `only`, `ignore`, `allow_fallbacks`), data policy routing preferences (`zdr`, `data_collection`) and provider-specific passthrough options</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -163,12 +168,13 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>(11)
+            return new Dictionary<string, Action<IParseNode>>(12)
             {
                 { "input", n => { Input = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechInput>(global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechInput.CreateFromDiscriminatorValue); } },
                 { "input_references", n => { InputReferences = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechInputReference>(global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechInputReference.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "instructions", n => { Instructions = n.GetStringValue(); } },
                 { "model", n => { Model = n.GetStringValue(); } },
+                { "output_delivery", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequestOutputDelivery>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueOutputDelivery = default; _explicitNullProperties?.Remove("output_delivery"); AdditionalData["output_delivery"] = unknown; } else { OutputDelivery = parsed; AdditionalData.Remove("output_delivery"); } } },
                 { "provider", n => { Provider = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequestProvider>(global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequestProvider.CreateFromDiscriminatorValue); } },
                 { "response_format", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequestResponseFormat>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueResponseFormat = default; _explicitNullProperties?.Remove("response_format"); AdditionalData["response_format"] = unknown; } else { ResponseFormat = parsed; AdditionalData.Remove("response_format"); } } },
                 { "session_id", n => { SessionId = n.GetStringValue(); } },
@@ -189,6 +195,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechInputReference>("input_references", InputReferences);
             writer.WriteStringValue("instructions", Instructions);
             writer.WriteStringValue("model", Model);
+            writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequestOutputDelivery>("output_delivery", OutputDelivery);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequestProvider>("provider", Provider);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.SpeechRequestResponseFormat>("response_format", ResponseFormat);
             writer.WriteStringValue("session_id", SessionId);

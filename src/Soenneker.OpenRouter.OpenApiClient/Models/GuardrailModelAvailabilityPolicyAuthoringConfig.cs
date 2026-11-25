@@ -23,6 +23,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             else if (parseNode.GetChildNode("allowed_models") is { } nullNodeAllowedModels && nullNodeAllowedModels.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AllowedModels = null;
             if (parseNode.GetChildNode("allowed_providers") is null) { _explicitNullValueAllowedProviders = default!; _explicitNullProperties?.Remove("allowed_providers"); }
             else if (parseNode.GetChildNode("allowed_providers") is { } nullNodeAllowedProviders && nullNodeAllowedProviders.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AllowedProviders = null;
+            if (parseNode.GetChildNode("allow_provisional_providers") is null) { _explicitNullValueAllowProvisionalProviders = default!; _explicitNullProperties?.Remove("allow_provisional_providers"); }
+            else if (parseNode.GetChildNode("allow_provisional_providers") is { } nullNodeAllowProvisionalProviders && nullNodeAllowProvisionalProviders.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AllowProvisionalProviders = null;
             if (parseNode.GetChildNode("allow_safety_retention_google") is null) { _explicitNullValueAllowSafetyRetentionGoogle = default!; _explicitNullProperties?.Remove("allow_safety_retention_google"); }
             else if (parseNode.GetChildNode("allow_safety_retention_google") is { } nullNodeAllowSafetyRetentionGoogle && nullNodeAllowSafetyRetentionGoogle.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AllowSafetyRetentionGoogle = null;
             if (parseNode.GetChildNode("allow_safety_retention_other") is null) { _explicitNullValueAllowSafetyRetentionOther = default!; _explicitNullProperties?.Remove("allow_safety_retention_other"); }
@@ -91,6 +93,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public List<string> AllowedProviders { get => _explicitNullValueAllowedProviders; set { _explicitNullValueAllowedProviders = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allowed_providers"); else _explicitNullProperties?.Remove("allowed_providers"); } }
         private List<string> _explicitNullValueAllowedProviders = default!;
 #endif
+        /// <summary>The allow_provisional_providers property</summary>
+        public bool? AllowProvisionalProviders { get => _explicitNullValueAllowProvisionalProviders; set { _explicitNullValueAllowProvisionalProviders = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allow_provisional_providers"); else _explicitNullProperties?.Remove("allow_provisional_providers"); } }
+        private bool? _explicitNullValueAllowProvisionalProviders = default!;
         /// <summary>The allow_safety_retention_google property</summary>
         public bool? AllowSafetyRetentionGoogle { get => _explicitNullValueAllowSafetyRetentionGoogle; set { _explicitNullValueAllowSafetyRetentionGoogle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allow_safety_retention_google"); else _explicitNullProperties?.Remove("allow_safety_retention_google"); } }
         private bool? _explicitNullValueAllowSafetyRetentionGoogle = default!;
@@ -196,8 +201,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>(21)
+            return new Dictionary<string, Action<IParseNode>>(22)
             {
+                { "allow_provisional_providers", n => { AllowProvisionalProviders = n.GetBoolValue(); } },
                 { "allow_safety_retention_google", n => { AllowSafetyRetentionGoogle = n.GetBoolValue(); } },
                 { "allow_safety_retention_other", n => { AllowSafetyRetentionOther = n.GetBoolValue(); } },
                 { "allowed_data_regions", n => { AllowedDataRegions = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
@@ -231,6 +237,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("allowed_data_regions", AllowedDataRegions);
             writer.WriteCollectionOfPrimitiveValues<string>("allowed_models", AllowedModels);
             writer.WriteCollectionOfPrimitiveValues<string>("allowed_providers", AllowedProviders);
+            writer.WriteBoolValue("allow_provisional_providers", AllowProvisionalProviders);
             writer.WriteBoolValue("allow_safety_retention_google", AllowSafetyRetentionGoogle);
             writer.WriteBoolValue("allow_safety_retention_other", AllowSafetyRetentionOther);
             writer.WriteBoolValue("enable_free_model_publication", EnableFreeModelPublication);

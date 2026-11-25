@@ -31,6 +31,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             else if (parseNode.GetChildNode("disabled") is { } nullNodeDisabled && nullNodeDisabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Disabled = null;
             if (parseNode.GetChildNode("is_byok_only") is null) { _explicitNullValueIsByokOnly = default!; _explicitNullProperties?.Remove("is_byok_only"); }
             else if (parseNode.GetChildNode("is_byok_only") is { } nullNodeIsByokOnly && nullNodeIsByokOnly.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsByokOnly = null;
+            if (parseNode.GetChildNode("is_exclusive") is null) { _explicitNullValueIsExclusive = default!; _explicitNullProperties?.Remove("is_exclusive"); }
+            else if (parseNode.GetChildNode("is_exclusive") is { } nullNodeIsExclusive && nullNodeIsExclusive.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsExclusive = null;
             if (parseNode.GetChildNode("is_fallback") is null) { _explicitNullValueIsFallback = default!; _explicitNullProperties?.Remove("is_fallback"); }
             else if (parseNode.GetChildNode("is_fallback") is { } nullNodeIsFallback && nullNodeIsFallback.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsFallback = null;
             if (parseNode.GetChildNode("is_required") is null) { _explicitNullValueIsRequired = default!; _explicitNullProperties?.Remove("is_required"); }
@@ -96,6 +98,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Whether OpenRouter&apos;s shared endpoints on this provider are removed for every model, including models outside `allowed_models` and after all of your keys for the provider fail. The provider is skipped instead of spending OpenRouter credits. Only valid on non-fallback credentials. Defaults to `false`.</summary>
         public bool? IsByokOnly { get => _explicitNullValueIsByokOnly; set { _explicitNullValueIsByokOnly = value; AdditionalData?.Remove("is_byok_only"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_byok_only"); else _explicitNullProperties?.Remove("is_byok_only"); } }
         private bool? _explicitNullValueIsByokOnly = default!;
+        /// <summary>Whether requests for the models this credential covers run only on exclusive credentials covering that model: never on another provider, a non-exclusive key, or OpenRouter&apos;s shared capacity. Every exclusive credential that covers the model and is eligible for the request may serve it, so two exclusive credentials with overlapping models share those models. Only credentials eligible for the request (its API key and member restrictions) count, so a request no exclusive credential is eligible for uses normal routing. A request for a model that an eligible exclusive credential covers returns a 404 when none of those credentials can serve it. The covered models are `allowed_models` when non-empty; with no or an empty `allowed_models`, an OpenAI, Anthropic, or Google credential covers every closed-weight model by that lab (for example every `openai/*` model except open-weight models such as `openai/gpt-oss-120b`, which stay on normal routing unless listed), and other providers must set a non-empty `allowed_models`. Only valid on non-fallback credentials. Defaults to `false`.</summary>
+        public bool? IsExclusive { get => _explicitNullValueIsExclusive; set { _explicitNullValueIsExclusive = value; AdditionalData?.Remove("is_exclusive"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_exclusive"); else _explicitNullProperties?.Remove("is_exclusive"); } }
+        private bool? _explicitNullValueIsExclusive = default!;
         /// <summary>Whether this credential is treated as a fallback — used only after non-fallback keys for the same provider have been tried. Cannot be combined with `is_byok_only`.</summary>
         public bool? IsFallback { get => _explicitNullValueIsFallback; set { _explicitNullValueIsFallback = value; AdditionalData?.Remove("is_fallback"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_fallback"); else _explicitNullProperties?.Remove("is_fallback"); } }
         private bool? _explicitNullValueIsFallback = default!;
@@ -151,7 +156,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>(13)
+            return new Dictionary<string, Action<IParseNode>>(14)
             {
                 { "allowed_api_key_hashes", n => { AllowedApiKeyHashes = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "allowed_models", n => { AllowedModels = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
@@ -160,6 +165,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "declared_zdr", n => { DeclaredZdr = n.GetBoolValue(); } },
                 { "disabled", n => { Disabled = n.GetBoolValue(); } },
                 { "is_byok_only", n => { IsByokOnly = n.GetBoolValue(); } },
+                { "is_exclusive", n => { IsExclusive = n.GetBoolValue(); } },
                 { "is_fallback", n => { IsFallback = n.GetBoolValue(); } },
                 { "is_required", n => { IsRequired = n.GetBoolValue(); } },
                 { "key", n => { Key = n.GetStringValue(); } },
@@ -182,6 +188,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteBoolValue("declared_zdr", DeclaredZdr);
             writer.WriteBoolValue("disabled", Disabled);
             writer.WriteBoolValue("is_byok_only", IsByokOnly);
+            writer.WriteBoolValue("is_exclusive", IsExclusive);
             writer.WriteBoolValue("is_fallback", IsFallback);
             writer.WriteBoolValue("is_required", IsRequired);
             writer.WriteStringValue("key", Key);
