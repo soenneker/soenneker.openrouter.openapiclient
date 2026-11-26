@@ -24,6 +24,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             else if (parseNode.GetChildNode("background") is { } nullNodeBackground && nullNodeBackground.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Background = null;
             if (parseNode.GetChildNode("cache_control") is null) { _explicitNullValueCacheControl = default!; _explicitNullProperties?.Remove("cache_control"); }
             else if (parseNode.GetChildNode("cache_control") is { } nullNodeCacheControl && nullNodeCacheControl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CacheControl = null;
+            if (parseNode.GetChildNode("context_management") is null) { _explicitNullValueContextManagement = default!; _explicitNullProperties?.Remove("context_management"); }
+            else if (parseNode.GetChildNode("context_management") is { } nullNodeContextManagement && nullNodeContextManagement.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ContextManagement = null;
             if (parseNode.GetChildNode("debug") is null) { _explicitNullValueDebug = default!; _explicitNullProperties?.Remove("debug"); }
             else if (parseNode.GetChildNode("debug") is { } nullNodeDebug && nullNodeDebug.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Debug = null;
             if (parseNode.GetChildNode("deferred_tools") is null) { _explicitNullValueDeferredTools = default!; _explicitNullProperties?.Remove("deferred_tools"); }
@@ -130,6 +132,16 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
 #else
         public global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective CacheControl { get => _explicitNullValueCacheControl; set { _explicitNullValueCacheControl = value; AdditionalData?.Remove("cache_control"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cache_control"); else _explicitNullProperties?.Remove("cache_control"); } }
         private global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective _explicitNullValueCacheControl = default!;
+#endif
+        /// <summary>Server-side context management (compaction). Supported for OpenAI models served by OpenAI or Azure, which return `compaction` output items. Providers translated to another API format drop it. Replay returned `compaction` items in `input` on later turns.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesContextManagement>? ContextManagement { get => _explicitNullValueContextManagement; set { _explicitNullValueContextManagement = value; AdditionalData?.Remove("context_management"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("context_management"); else _explicitNullProperties?.Remove("context_management"); } }
+        private List<global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesContextManagement>? _explicitNullValueContextManagement = default!;
+#nullable restore
+#else
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesContextManagement> ContextManagement { get => _explicitNullValueContextManagement; set { _explicitNullValueContextManagement = value; AdditionalData?.Remove("context_management"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("context_management"); else _explicitNullProperties?.Remove("context_management"); } }
+        private List<global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesContextManagement> _explicitNullValueContextManagement = default!;
 #endif
         /// <summary>Debug options for inspecting request transformations (streaming only)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -480,11 +492,12 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>(43)
+            return new Dictionary<string, Action<IParseNode>>(44)
             {
                 { "access_programs", n => { AccessPrograms = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesRequestAccessPrograms>(global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesRequestAccessPrograms.CreateFromDiscriminatorValue); } },
                 { "background", n => { Background = n.GetBoolValue(); } },
                 { "cache_control", n => { CacheControl = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective>(global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective.CreateFromDiscriminatorValue); } },
+                { "context_management", n => { ContextManagement = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesContextManagement>(global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesContextManagement.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "debug", n => { Debug = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatDebugOptions>(global::Soenneker.OpenRouter.OpenApiClient.Models.ChatDebugOptions.CreateFromDiscriminatorValue); } },
                 { "deferred_tools", n => { DeferredTools = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.DeferredToolsControl>(global::Soenneker.OpenRouter.OpenApiClient.Models.DeferredToolsControl.CreateFromDiscriminatorValue); } },
                 { "frequency_penalty", n => { FrequencyPenalty = n.GetDoubleValue(); } },
@@ -537,6 +550,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesRequestAccessPrograms>("access_programs", AccessPrograms);
             writer.WriteBoolValue("background", Background);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.AnthropicCacheControlDirective>("cache_control", CacheControl);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ResponsesContextManagement>("context_management", ContextManagement);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ChatDebugOptions>("debug", Debug);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.DeferredToolsControl>("deferred_tools", DeferredTools);
             writer.WriteDoubleValue("frequency_penalty", FrequencyPenalty);
