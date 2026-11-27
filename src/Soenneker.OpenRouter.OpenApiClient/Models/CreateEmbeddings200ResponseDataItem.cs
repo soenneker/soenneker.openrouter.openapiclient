@@ -36,12 +36,12 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Embedding vector as an array of floats or a base64 string</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.BatchObjectResultsItemResponseBodyAnyOf4DataItemEmbedding? Embedding { get => _explicitNullValueEmbedding; set { _explicitNullValueEmbedding = value; AdditionalData?.Remove("embedding"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("embedding"); else _explicitNullProperties?.Remove("embedding"); } }
-        private global::Soenneker.OpenRouter.OpenApiClient.Models.BatchObjectResultsItemResponseBodyAnyOf4DataItemEmbedding? _explicitNullValueEmbedding = default!;
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.BatchResultResponseBodyAnyOf4DataItemEmbedding? Embedding { get => _explicitNullValueEmbedding; set { _explicitNullValueEmbedding = value; AdditionalData?.Remove("embedding"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("embedding"); else _explicitNullProperties?.Remove("embedding"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.BatchResultResponseBodyAnyOf4DataItemEmbedding? _explicitNullValueEmbedding = default!;
 #nullable restore
 #else
-        public global::Soenneker.OpenRouter.OpenApiClient.Models.BatchObjectResultsItemResponseBodyAnyOf4DataItemEmbedding Embedding { get => _explicitNullValueEmbedding; set { _explicitNullValueEmbedding = value; AdditionalData?.Remove("embedding"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("embedding"); else _explicitNullProperties?.Remove("embedding"); } }
-        private global::Soenneker.OpenRouter.OpenApiClient.Models.BatchObjectResultsItemResponseBodyAnyOf4DataItemEmbedding _explicitNullValueEmbedding = default!;
+        public global::Soenneker.OpenRouter.OpenApiClient.Models.BatchResultResponseBodyAnyOf4DataItemEmbedding Embedding { get => _explicitNullValueEmbedding; set { _explicitNullValueEmbedding = value; AdditionalData?.Remove("embedding"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("embedding"); else _explicitNullProperties?.Remove("embedding"); } }
+        private global::Soenneker.OpenRouter.OpenApiClient.Models.BatchResultResponseBodyAnyOf4DataItemEmbedding _explicitNullValueEmbedding = default!;
 #endif
         /// <summary>Index of the embedding in the input list</summary>
         public int? Index { get => _explicitNullValueIndex; set { _explicitNullValueIndex = value; AdditionalData?.Remove("index"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("index"); else _explicitNullProperties?.Remove("index"); } }
@@ -75,7 +75,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>(4)
             {
                 { "document_index", n => { DocumentIndex = n.GetIntValue(); } },
-                { "embedding", n => { Embedding = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.BatchObjectResultsItemResponseBodyAnyOf4DataItemEmbedding>(global::Soenneker.OpenRouter.OpenApiClient.Models.BatchObjectResultsItemResponseBodyAnyOf4DataItemEmbedding.CreateFromDiscriminatorValue); } },
+                { "embedding", n => { Embedding = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.BatchResultResponseBodyAnyOf4DataItemEmbedding>(global::Soenneker.OpenRouter.OpenApiClient.Models.BatchResultResponseBodyAnyOf4DataItemEmbedding.CreateFromDiscriminatorValue); } },
                 { "index", n => { Index = n.GetIntValue(); } },
                 { "object", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.EmbeddingObject>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueObject = default; _explicitNullProperties?.Remove("object"); AdditionalData["object"] = unknown; } else { Object = parsed; AdditionalData.Remove("object"); } } },
             };
@@ -88,7 +88,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("document_index", DocumentIndex);
-            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.BatchObjectResultsItemResponseBodyAnyOf4DataItemEmbedding>("embedding", Embedding);
+            writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.BatchResultResponseBodyAnyOf4DataItemEmbedding>("embedding", Embedding);
             writer.WriteIntValue("index", Index);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.EmbeddingObject>("object", Object);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);

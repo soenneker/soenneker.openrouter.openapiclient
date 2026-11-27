@@ -28,15 +28,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The authorization code received from the OAuth redirect</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Code { get => _explicitNullValueCode; set { _explicitNullValueCode = value; AdditionalData?.Remove("code"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("code"); else _explicitNullProperties?.Remove("code"); } }
-        private string? _explicitNullValueCode = default!;
-#nullable restore
-#else
-        public string Code { get => _explicitNullValueCode; set { _explicitNullValueCode = value; AdditionalData?.Remove("code"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("code"); else _explicitNullProperties?.Remove("code"); } }
-        private string _explicitNullValueCode = default!;
-#endif
+        public Guid? Code { get => _explicitNullValueCode; set { _explicitNullValueCode = value; AdditionalData?.Remove("code"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("code"); else _explicitNullProperties?.Remove("code"); } }
+        private Guid? _explicitNullValueCode = default!;
         /// <summary>The method used to generate the code challenge</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -82,7 +75,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "code", n => { Code = n.GetStringValue(); } },
+                { "code", n => { Code = n.GetGuidValue(); } },
                 { "code_challenge_method", n => { CodeChallengeMethod = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ExchangeAuthCodeForApiKeyRequestCodeChallengeMethod>(global::Soenneker.OpenRouter.OpenApiClient.Models.ExchangeAuthCodeForApiKeyRequestCodeChallengeMethod.CreateFromDiscriminatorValue); } },
                 { "code_verifier", n => { CodeVerifier = n.GetStringValue(); } },
             };
@@ -94,7 +87,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("code", Code);
+            writer.WriteGuidValue("code", Code);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.ExchangeAuthCodeForApiKeyRequestCodeChallengeMethod>("code_challenge_method", CodeChallengeMethod);
             writer.WriteStringValue("code_verifier", CodeVerifier);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);

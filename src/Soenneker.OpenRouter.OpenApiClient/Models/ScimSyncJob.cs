@@ -50,7 +50,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Number of groups deleted, when the job completed successfully.</summary>
         public int? DeletedGroups { get => _explicitNullValueDeletedGroups; set { _explicitNullValueDeletedGroups = value; AdditionalData?.Remove("deleted_groups"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deleted_groups"); else _explicitNullProperties?.Remove("deleted_groups"); } }
         private int? _explicitNullValueDeletedGroups = default!;
-        /// <summary>Stable error message when the job failed.</summary>
+        /// <summary>Stable message code, or null. On a failed job, the failure reason. On a succeeded job, set when optional work beyond the group synchronization could not be completed; the groups were still synchronized.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ErrorMessage { get => _explicitNullValueErrorMessage; set { _explicitNullValueErrorMessage = value; AdditionalData?.Remove("error_message"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error_message"); else _explicitNullProperties?.Remove("error_message"); } }

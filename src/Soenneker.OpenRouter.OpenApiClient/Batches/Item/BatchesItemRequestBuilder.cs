@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.OpenRouter.OpenApiClient.Batches.Item.Results;
 using Soenneker.OpenRouter.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -17,6 +18,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Batches.Item
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class BatchesItemRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The results property</summary>
+        public global::Soenneker.OpenRouter.OpenApiClient.Batches.Item.Results.ResultsRequestBuilder Results
+        {
+            get => new global::Soenneker.OpenRouter.OpenApiClient.Batches.Item.Results.ResultsRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.OpenRouter.OpenApiClient.Batches.Item.BatchesItemRequestBuilder"/> and sets the default values.
         /// </summary>
@@ -45,6 +51,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Batches.Item
         /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BatchErrorResponse">When receiving a 429 status code</exception>
         /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BatchErrorResponse">When receiving a 500 status code</exception>
         /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BatchErrorResponse">When receiving a 502 status code</exception>
+        /// <exception cref="global::Soenneker.OpenRouter.OpenApiClient.Models.BatchErrorResponse">When receiving a 503 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.OpenRouter.OpenApiClient.Models.BatchDeletedObject?> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -63,6 +70,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Batches.Item
                 { "429", global::Soenneker.OpenRouter.OpenApiClient.Models.BatchErrorResponse.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.OpenRouter.OpenApiClient.Models.BatchErrorResponse.CreateFromDiscriminatorValue },
                 { "502", global::Soenneker.OpenRouter.OpenApiClient.Models.BatchErrorResponse.CreateFromDiscriminatorValue },
+                { "503", global::Soenneker.OpenRouter.OpenApiClient.Models.BatchErrorResponse.CreateFromDiscriminatorValue },
                 { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
                 { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };

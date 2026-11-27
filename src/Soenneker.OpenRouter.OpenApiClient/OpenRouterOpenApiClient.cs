@@ -19,7 +19,6 @@ using Soenneker.OpenRouter.OpenApiClient.Classifications;
 using Soenneker.OpenRouter.OpenApiClient.Containers;
 using Soenneker.OpenRouter.OpenApiClient.Credits;
 using Soenneker.OpenRouter.OpenApiClient.Datasets;
-using Soenneker.OpenRouter.OpenApiClient.Decisions;
 using Soenneker.OpenRouter.OpenApiClient.Embeddings;
 using Soenneker.OpenRouter.OpenApiClient.Endpoints;
 using Soenneker.OpenRouter.OpenApiClient.ExternalUsers;
@@ -123,11 +122,6 @@ namespace Soenneker.OpenRouter.OpenApiClient
         public global::Soenneker.OpenRouter.OpenApiClient.Datasets.DatasetsRequestBuilder Datasets
         {
             get => new global::Soenneker.OpenRouter.OpenApiClient.Datasets.DatasetsRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The decisions property</summary>
-        public global::Soenneker.OpenRouter.OpenApiClient.Decisions.DecisionsRequestBuilder Decisions
-        {
-            get => new global::Soenneker.OpenRouter.OpenApiClient.Decisions.DecisionsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The embeddings property</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Embeddings.EmbeddingsRequestBuilder Embeddings

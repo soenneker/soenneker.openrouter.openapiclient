@@ -27,6 +27,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             else if (parseNode.GetChildNode("allow_provisional_providers") is { } nullNodeAllowProvisionalProviders && nullNodeAllowProvisionalProviders.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AllowProvisionalProviders = null;
             if (parseNode.GetChildNode("allow_safety_retention_google") is null) { _explicitNullValueAllowSafetyRetentionGoogle = default!; _explicitNullProperties?.Remove("allow_safety_retention_google"); }
             else if (parseNode.GetChildNode("allow_safety_retention_google") is { } nullNodeAllowSafetyRetentionGoogle && nullNodeAllowSafetyRetentionGoogle.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AllowSafetyRetentionGoogle = null;
+            if (parseNode.GetChildNode("allow_safety_retention_openai") is null) { _explicitNullValueAllowSafetyRetentionOpenai = default!; _explicitNullProperties?.Remove("allow_safety_retention_openai"); }
+            else if (parseNode.GetChildNode("allow_safety_retention_openai") is { } nullNodeAllowSafetyRetentionOpenai && nullNodeAllowSafetyRetentionOpenai.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AllowSafetyRetentionOpenai = null;
             if (parseNode.GetChildNode("allow_safety_retention_other") is null) { _explicitNullValueAllowSafetyRetentionOther = default!; _explicitNullProperties?.Remove("allow_safety_retention_other"); }
             else if (parseNode.GetChildNode("allow_safety_retention_other") is { } nullNodeAllowSafetyRetentionOther && nullNodeAllowSafetyRetentionOther.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AllowSafetyRetentionOther = null;
             if (parseNode.GetChildNode("content_filter_builtins") is null) { _explicitNullValueContentFilterBuiltins = default!; _explicitNullProperties?.Remove("content_filter_builtins"); }
@@ -109,6 +111,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>Whether ZDR-only requests to google/* models may also use Safety Retention endpoints, which may retain prompts and responses from any request, only to prevent abuse, and do not use them for training. false allows only ZDR endpoints. A guardrail can only be more restrictive than the account setting. Inherits the account setting when not provided.</summary>
         public bool? AllowSafetyRetentionGoogle { get => _explicitNullValueAllowSafetyRetentionGoogle; set { _explicitNullValueAllowSafetyRetentionGoogle = value; AdditionalData?.Remove("allow_safety_retention_google"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allow_safety_retention_google"); else _explicitNullProperties?.Remove("allow_safety_retention_google"); } }
         private bool? _explicitNullValueAllowSafetyRetentionGoogle = default!;
+        /// <summary>Whether ZDR-only requests to openai/* models may also use Safety Retention endpoints, which may retain prompts and responses from any request, only to prevent abuse, and do not use them for training. false allows only ZDR endpoints. Applies only while OpenAI ZDR is on for the account or this guardrail; otherwise allow_safety_retention_other applies. Follows allow_safety_retention_other when null; on update, null clears a saved choice and omitting the field leaves it unchanged. While the account enforces ZDR for OpenAI or for other models, a guardrail can only be more restrictive than that account setting.</summary>
+        public bool? AllowSafetyRetentionOpenai { get => _explicitNullValueAllowSafetyRetentionOpenai; set { _explicitNullValueAllowSafetyRetentionOpenai = value; AdditionalData?.Remove("allow_safety_retention_openai"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allow_safety_retention_openai"); else _explicitNullProperties?.Remove("allow_safety_retention_openai"); } }
+        private bool? _explicitNullValueAllowSafetyRetentionOpenai = default!;
         /// <summary>Whether ZDR-only requests to models outside the named providers (for example open-weight models on Vertex) may also use Safety Retention endpoints, which may retain prompts and responses from any request, only to prevent abuse, and do not use them for training. false allows only ZDR endpoints. A guardrail can only be more restrictive than the account setting. Inherits the account setting when not provided.</summary>
         public bool? AllowSafetyRetentionOther { get => _explicitNullValueAllowSafetyRetentionOther; set { _explicitNullValueAllowSafetyRetentionOther = value; AdditionalData?.Remove("allow_safety_retention_other"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allow_safety_retention_other"); else _explicitNullProperties?.Remove("allow_safety_retention_other"); } }
         private bool? _explicitNullValueAllowSafetyRetentionOther = default!;
@@ -245,10 +250,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>(26)
+            return new Dictionary<string, Action<IParseNode>>(27)
             {
                 { "allow_provisional_providers", n => { AllowProvisionalProviders = n.GetBoolValue(); } },
                 { "allow_safety_retention_google", n => { AllowSafetyRetentionGoogle = n.GetBoolValue(); } },
+                { "allow_safety_retention_openai", n => { AllowSafetyRetentionOpenai = n.GetBoolValue(); } },
                 { "allow_safety_retention_other", n => { AllowSafetyRetentionOther = n.GetBoolValue(); } },
                 { "allowed_data_regions", n => { AllowedDataRegions = n.GetCollectionOfEnumValues<global::Soenneker.OpenRouter.OpenApiClient.Models.GuardrailDataRegion>()?.AsList(); } },
                 { "allowed_models", n => { AllowedModels = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
@@ -287,6 +293,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("allowed_providers", AllowedProviders);
             writer.WriteBoolValue("allow_provisional_providers", AllowProvisionalProviders);
             writer.WriteBoolValue("allow_safety_retention_google", AllowSafetyRetentionGoogle);
+            writer.WriteBoolValue("allow_safety_retention_openai", AllowSafetyRetentionOpenai);
             writer.WriteBoolValue("allow_safety_retention_other", AllowSafetyRetentionOther);
             writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterBuiltinEntryInput>("content_filter_builtins", ContentFilterBuiltins);
             writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.ContentFilterEntry>("content_filters", ContentFilters);

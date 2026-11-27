@@ -15,5 +15,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         #pragma warning disable CS1591
         Pcm,
         #pragma warning restore CS1591
+        [EnumMember(Value = "wav")]
+        #pragma warning disable CS1591
+        Wav,
+        #pragma warning restore CS1591
     }
 }

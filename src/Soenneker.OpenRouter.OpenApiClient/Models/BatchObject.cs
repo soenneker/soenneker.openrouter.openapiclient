@@ -139,12 +139,12 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The results property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.BatchObjectResultsItem>? Results { get => _explicitNullValueResults; set { _explicitNullValueResults = value; AdditionalData?.Remove("results"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("results"); else _explicitNullProperties?.Remove("results"); } }
-        private List<global::Soenneker.OpenRouter.OpenApiClient.Models.BatchObjectResultsItem>? _explicitNullValueResults = default!;
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.BatchResult>? Results { get => _explicitNullValueResults; set { _explicitNullValueResults = value; AdditionalData?.Remove("results"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("results"); else _explicitNullProperties?.Remove("results"); } }
+        private List<global::Soenneker.OpenRouter.OpenApiClient.Models.BatchResult>? _explicitNullValueResults = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.BatchObjectResultsItem> Results { get => _explicitNullValueResults; set { _explicitNullValueResults = value; AdditionalData?.Remove("results"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("results"); else _explicitNullProperties?.Remove("results"); } }
-        private List<global::Soenneker.OpenRouter.OpenApiClient.Models.BatchObjectResultsItem> _explicitNullValueResults = default!;
+        public List<global::Soenneker.OpenRouter.OpenApiClient.Models.BatchResult> Results { get => _explicitNullValueResults; set { _explicitNullValueResults = value; AdditionalData?.Remove("results"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("results"); else _explicitNullProperties?.Remove("results"); } }
+        private List<global::Soenneker.OpenRouter.OpenApiClient.Models.BatchResult> _explicitNullValueResults = default!;
 #endif
         /// <summary>The status property</summary>
         public global::Soenneker.OpenRouter.OpenApiClient.Models.BatchObjectStatus? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; AdditionalData?.Remove("status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
@@ -196,7 +196,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
                 { "output", n => { Output = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.BatchOutputReference>(global::Soenneker.OpenRouter.OpenApiClient.Models.BatchOutputReference.CreateFromDiscriminatorValue); } },
                 { "provider", n => { Provider = n.GetStringValue(); } },
                 { "request_counts", n => { RequestCounts = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.BatchObjectRequestCounts>(global::Soenneker.OpenRouter.OpenApiClient.Models.BatchObjectRequestCounts.CreateFromDiscriminatorValue); } },
-                { "results", n => { Results = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.BatchObjectResultsItem>(global::Soenneker.OpenRouter.OpenApiClient.Models.BatchObjectResultsItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "results", n => { Results = n.GetCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.BatchResult>(global::Soenneker.OpenRouter.OpenApiClient.Models.BatchResult.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "status", n => { var parsed = n.GetEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.BatchObjectStatus>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueStatus = default; _explicitNullProperties?.Remove("status"); AdditionalData["status"] = unknown; } else { Status = parsed; AdditionalData.Remove("status"); } } },
                 { "usage", n => { Usage = n.GetObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.BatchObjectUsage>(global::Soenneker.OpenRouter.OpenApiClient.Models.BatchObjectUsage.CreateFromDiscriminatorValue); } },
             };
@@ -220,7 +220,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.BatchOutputReference>("output", Output);
             writer.WriteStringValue("provider", Provider);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.BatchObjectRequestCounts>("request_counts", RequestCounts);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.BatchObjectResultsItem>("results", Results);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.OpenRouter.OpenApiClient.Models.BatchResult>("results", Results);
             writer.WriteEnumValue<global::Soenneker.OpenRouter.OpenApiClient.Models.BatchObjectStatus>("status", Status);
             writer.WriteObjectValue<global::Soenneker.OpenRouter.OpenApiClient.Models.BatchObjectUsage>("usage", Usage);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);

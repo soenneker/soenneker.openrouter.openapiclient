@@ -35,7 +35,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Keys
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public KeysRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/keys{?include_disabled*,include_expired*,offset*,workspace_id*}", pathParameters)
+        public KeysRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/keys{?creator_user_id*,include_disabled*,include_expired*,offset*,workspace_id*}", pathParameters)
         {
         }
         /// <summary>
@@ -43,7 +43,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Keys
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public KeysRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/keys{?include_disabled*,include_expired*,offset*,workspace_id*}", rawUrl)
+        public KeysRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/keys{?creator_user_id*,include_disabled*,include_expired*,offset*,workspace_id*}", rawUrl)
         {
         }
         /// <summary>
@@ -172,6 +172,16 @@ namespace Soenneker.OpenRouter.OpenApiClient.Keys
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class KeysRequestBuilderGetQueryParameters 
         {
+            /// <summary>Only return API keys created by this user ID (the `creator_user_id` on each key). Requires a management key that can view key creators.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("creator_user_id")]
+            public string? CreatorUserId { get; set; }
+#nullable restore
+#else
+            [QueryParameter("creator_user_id")]
+            public string CreatorUserId { get; set; }
+#endif
             /// <summary>Whether to include disabled API keys in the response</summary>
             [QueryParameter("include_disabled")]
             public bool? IncludeDisabled { get; set; }

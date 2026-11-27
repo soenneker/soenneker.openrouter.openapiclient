@@ -27,6 +27,8 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             else if (parseNode.GetChildNode("allow_provisional_providers") is { } nullNodeAllowProvisionalProviders && nullNodeAllowProvisionalProviders.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AllowProvisionalProviders = null;
             if (parseNode.GetChildNode("allow_safety_retention_google") is null) { _explicitNullValueAllowSafetyRetentionGoogle = default!; _explicitNullProperties?.Remove("allow_safety_retention_google"); }
             else if (parseNode.GetChildNode("allow_safety_retention_google") is { } nullNodeAllowSafetyRetentionGoogle && nullNodeAllowSafetyRetentionGoogle.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AllowSafetyRetentionGoogle = null;
+            if (parseNode.GetChildNode("allow_safety_retention_openai") is null) { _explicitNullValueAllowSafetyRetentionOpenai = default!; _explicitNullProperties?.Remove("allow_safety_retention_openai"); }
+            else if (parseNode.GetChildNode("allow_safety_retention_openai") is { } nullNodeAllowSafetyRetentionOpenai && nullNodeAllowSafetyRetentionOpenai.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AllowSafetyRetentionOpenai = null;
             if (parseNode.GetChildNode("allow_safety_retention_other") is null) { _explicitNullValueAllowSafetyRetentionOther = default!; _explicitNullProperties?.Remove("allow_safety_retention_other"); }
             else if (parseNode.GetChildNode("allow_safety_retention_other") is { } nullNodeAllowSafetyRetentionOther && nullNodeAllowSafetyRetentionOther.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AllowSafetyRetentionOther = null;
             if (parseNode.GetChildNode("enable_free_model_publication") is null) { _explicitNullValueEnableFreeModelPublication = default!; _explicitNullProperties?.Remove("enable_free_model_publication"); }
@@ -99,6 +101,9 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <summary>The allow_safety_retention_google property</summary>
         public bool? AllowSafetyRetentionGoogle { get => _explicitNullValueAllowSafetyRetentionGoogle; set { _explicitNullValueAllowSafetyRetentionGoogle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allow_safety_retention_google"); else _explicitNullProperties?.Remove("allow_safety_retention_google"); } }
         private bool? _explicitNullValueAllowSafetyRetentionGoogle = default!;
+        /// <summary>The allow_safety_retention_openai property</summary>
+        public bool? AllowSafetyRetentionOpenai { get => _explicitNullValueAllowSafetyRetentionOpenai; set { _explicitNullValueAllowSafetyRetentionOpenai = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allow_safety_retention_openai"); else _explicitNullProperties?.Remove("allow_safety_retention_openai"); } }
+        private bool? _explicitNullValueAllowSafetyRetentionOpenai = default!;
         /// <summary>The allow_safety_retention_other property</summary>
         public bool? AllowSafetyRetentionOther { get => _explicitNullValueAllowSafetyRetentionOther; set { _explicitNullValueAllowSafetyRetentionOther = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allow_safety_retention_other"); else _explicitNullProperties?.Remove("allow_safety_retention_other"); } }
         private bool? _explicitNullValueAllowSafetyRetentionOther = default!;
@@ -201,10 +206,11 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>(22)
+            return new Dictionary<string, Action<IParseNode>>(23)
             {
                 { "allow_provisional_providers", n => { AllowProvisionalProviders = n.GetBoolValue(); } },
                 { "allow_safety_retention_google", n => { AllowSafetyRetentionGoogle = n.GetBoolValue(); } },
+                { "allow_safety_retention_openai", n => { AllowSafetyRetentionOpenai = n.GetBoolValue(); } },
                 { "allow_safety_retention_other", n => { AllowSafetyRetentionOther = n.GetBoolValue(); } },
                 { "allowed_data_regions", n => { AllowedDataRegions = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "allowed_models", n => { AllowedModels = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
@@ -239,6 +245,7 @@ namespace Soenneker.OpenRouter.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("allowed_providers", AllowedProviders);
             writer.WriteBoolValue("allow_provisional_providers", AllowProvisionalProviders);
             writer.WriteBoolValue("allow_safety_retention_google", AllowSafetyRetentionGoogle);
+            writer.WriteBoolValue("allow_safety_retention_openai", AllowSafetyRetentionOpenai);
             writer.WriteBoolValue("allow_safety_retention_other", AllowSafetyRetentionOther);
             writer.WriteBoolValue("enable_free_model_publication", EnableFreeModelPublication);
             writer.WriteBoolValue("enable_free_model_training", EnableFreeModelTraining);
