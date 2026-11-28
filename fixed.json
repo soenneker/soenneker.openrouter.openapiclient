@@ -2031,7 +2031,7 @@
                 "$ref": "#/components/schemas/ExchangeAuthCodeForApiKeyRequest"
               },
               "example": {
-                "code": "550e8400-e29b-41d4-a716-446655440000",
+                "code": "auth_code_abc123def456",
                 "code_challenge_method": "S256",
                 "code_verifier": "dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk"
               }
@@ -2152,7 +2152,7 @@
                   "data": {
                     "app_id": 12345,
                     "created_at": "2025-08-24T10:30:00Z",
-                    "id": "550e8400-e29b-41d4-a716-446655440000"
+                    "id": "auth_code_xyz789"
                   }
                 }
               }
@@ -39475,10 +39475,11 @@
             "example": "openai/gpt-4"
           },
           "models": {
-            "maxItems": 3,
             "type": "array",
             "items": {
-              "type": "string"
+              "type": "string",
+              "description": "Model to use for completion",
+              "example": "openai/gpt-4"
             },
             "description": "Models to use for completion",
             "example": [
@@ -49319,7 +49320,6 @@
             "$ref": "#/components/schemas/DeferredToolsControl"
           },
           "fallbacks": {
-            "maxItems": 3,
             "type": [
               "null",
               "array"
@@ -49348,7 +49348,6 @@
             "type": "string"
           },
           "models": {
-            "maxItems": 3,
             "type": "array",
             "items": {
               "type": "string"
@@ -62234,7 +62233,6 @@
             "type": "string"
           },
           "models": {
-            "maxItems": 3,
             "type": "array",
             "items": {
               "type": "string"
@@ -85210,8 +85208,7 @@
           "code": {
             "type": "string",
             "description": "The authorization code received from the OAuth redirect",
-            "format": "uuid",
-            "example": "550e8400-e29b-41d4-a716-446655440000"
+            "example": "auth_code_abc123def456"
           },
           "code_challenge_method": {
             "$ref": "#/components/schemas/ExchangeAuthCodeForApiKeyRequestCodeChallengeMethod"
@@ -85223,7 +85220,7 @@
           }
         },
         "example": {
-          "code": "550e8400-e29b-41d4-a716-446655440000",
+          "code": "auth_code_abc123def456",
           "code_challenge_method": "S256",
           "code_verifier": "dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk"
         }
@@ -85325,7 +85322,7 @@
           "data": {
             "app_id": 12345,
             "created_at": "2025-08-24T10:30:00Z",
-            "id": "550e8400-e29b-41d4-a716-446655440000"
+            "id": "auth_code_xyz789"
           }
         }
       },
@@ -90595,14 +90592,14 @@
           "id": {
             "type": "string",
             "description": "The authorization code ID to use in the exchange request",
-            "example": "550e8400-e29b-41d4-a716-446655440000"
+            "example": "auth_code_xyz789"
           }
         },
         "description": "Auth code data",
         "example": {
           "app_id": 12345,
           "created_at": "2025-08-24T10:30:00Z",
-          "id": "550e8400-e29b-41d4-a716-446655440000"
+          "id": "auth_code_xyz789"
         }
       },
       "GetCredits200ResponseData": {
@@ -126506,10 +126503,11 @@
       ]
     },
     "ChatModelNames": {
-      "maxItems": 3,
       "type": "array",
       "items": {
-        "type": "string"
+        "type": "string",
+        "description": "Model to use for completion",
+        "example": "openai/gpt-4"
       },
       "description": "Models to use for completion",
       "example": [
@@ -133646,6 +133644,11 @@
     "BatchProviderPreferencesOnlyItem": {
       "type": "string",
       "x-client-inline-scalar": true
+    },
+    "ChatModelNamesItem": {
+      "type": "string",
+      "description": "Model to use for completion",
+      "example": "openai/gpt-4"
     },
     "ChatStreamChunkAlignment": {
       "required": [
